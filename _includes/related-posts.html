@@ -1,0 +1,17 @@
+{% if page.categories %}
+<section class="related-posts">
+  <h2>Related reading</h2>
+  <ul>
+    {% assign found = 0 %}
+    {% for post in site.posts %}
+      {% if post.url != page.url and post.categories == page.categories and found < 3 %}
+        <li>
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+        </li>
+        {% assign found = found | plus: 1 %}
+      {% endif %}
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

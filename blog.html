@@ -1,0 +1,27 @@
+---
+layout: default
+title: Articles
+permalink: /blog/
+---
+
+<header class="blog-hero">
+  <div class="container">
+    <p class="eyebrow">Archive</p>
+    <h1>All articles</h1>
+    <p class="page-lead">Every guide is tested on my own network first. Filter mentally by topic: networking, privacy, home lab, side income.</p>
+  </div>
+</header>
+
+<section class="container blog-list">
+  {% assign grouped = site.posts | group_by: "categories" %}
+  {% for post in site.posts %}
+  <article class="blog-item" id="{{ post.categories | first | downcase | replace: ' ', '-' }}">
+    <div class="blog-date">{{ post.date | date: "%b %-d" }}<br>{{ post.date | date: "%Y" }}</div>
+    <div>
+      <p class="blog-tags">{{ post.categories | join: " · " }}{% if post.read_time %} · {{ post.read_time }}{% endif %}</p>
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <p>{{ post.description | default: post.excerpt | strip_html | truncate: 220 }}</p>
+    </div>
+  </article>
+  {% endfor %}
+</section>

@@ -1,0 +1,24 @@
+<header class="site-header" id="top">
+  <div class="container header-inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">
+        <strong>{{ site.title }}</strong>
+        <small>by {{ site.author.name }}</small>
+      </span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="site-nav" id="site-nav">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/start-here/' | relative_url }}">Start Here</a>
+      <a href="{{ '/blog/' | relative_url }}">Articles</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="{{ '/contact/' | relative_url }}">Contact</a>
+    </nav>
+  </div>
+</header>

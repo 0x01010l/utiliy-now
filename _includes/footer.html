@@ -1,0 +1,37 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <section>
+      <h2>{{ site.title }}</h2>
+      <p>{{ site.description }}</p>
+      <p class="footer-meta">Publishing since {{ site.author.started }}. Based in {{ site.author.location }}.</p>
+    </section>
+    <section>
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="{{ '/start-here/' | relative_url }}">Start Here</a></li>
+        <li><a href="{{ '/blog/' | relative_url }}">All Articles</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">About Mike</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      </ul>
+    </section>
+    <section>
+      <h3>Legal</h3>
+      <ul>
+        <li><a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a></li>
+        <li><a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a></li>
+        <li><a href="{{ '/editorial-policy/' | relative_url }}">Editorial Policy</a></li>
+      </ul>
+    </section>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}. All rights reserved.</p>
+    <p>This site uses cookies for analytics and advertising. See our <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>.</p>
+  </div>
+</footer>
+
+<div class="cookie-banner" id="cookie-banner" hidden>
+  <div class="cookie-inner">
+    <p>We use cookies for site analytics and, after approval, Google AdSense advertising. By continuing, you accept our <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>.</p>
+    <button type="button" id="cookie-accept">Accept</button>
+  </div>
+</div>

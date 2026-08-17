@@ -1,0 +1,50 @@
+---
+layout: default
+---
+<article class="post-article">
+  <header class="post-hero {% if page.hero_tone %}{{ page.hero_tone }}{% endif %}">
+    <div class="container post-hero-inner">
+      {% if page.categories %}
+      <p class="post-kicker">{{ page.categories | join: " · " }}</p>
+      {% endif %}
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}
+      <p class="post-subtitle">{{ page.subtitle }}</p>
+      {% endif %}
+      <div class="post-byline">
+        <span>{{ page.author | default: site.author.name }}</span>
+        <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+        {% if page.read_time %}<span>{{ page.read_time }} read</span>{% endif %}
+      </div>
+    </div>
+  </header>
+
+  <div class="container post-layout">
+    <div class="post-body">
+      {% if page.toc %}
+      <nav class="post-toc" aria-label="Table of contents">
+        <strong>On this page</strong>
+        <ul id="post-toc-list"></ul>
+      </nav>
+      {% endif %}
+
+      <div class="post-content prose" id="post-content">
+        {{ content }}
+      </div>
+
+      {% include author-box.html %}
+      {% include related-posts.html %}
+    </div>
+
+    <aside class="post-sidebar" aria-label="Supplementary content">
+      <div class="sidebar-card">
+        <h3>Need the short version?</h3>
+        <p>Bookmark this page and jump to the section you need from the table of contents on mobile, or scroll the headings on desktop.</p>
+      </div>
+      <div class="sidebar-card ad-slot" data-ad-slot="sidebar">
+        <p class="ad-label">Advertisement</p>
+        <div class="ad-placeholder">AdSense unit goes here after approval</div>
+      </div>
+    </aside>
+  </div>
+</article>
