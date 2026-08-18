@@ -2,12 +2,15 @@
 layout: post
 title: "Five Router Settings I Change on Every Home Network — Including My Own"
 subtitle: "Ten minutes, no command line, disproportionate risk reduction."
-date: 2025-08-13
+date: 2026-08-17
 categories: [Networking, Security]
 description: "Default router configs favor convenience over safety. These five changes are the first things I do on any home network."
 read_time: "7 min"
 toc: true
 hero_tone: warm
+featured: true
+tldr_label: "Do these five"
+tldr: "New admin password, firmware, WPA3 or WPA2-AES, guest network, DNS that is not your ISP. Ten minutes."
 ---
 
 I've logged into maybe 200 consumer routers for friends and family. Five settings account for the majority of avoidable problems — and none require buying new hardware.
@@ -61,4 +64,4 @@ These changes remove **low-hanging fruit**. They won't stop a targeted attack fr
 
 ## Update log
 
-- **Aug 13, 2025:** Published from MSP field notes
+- **Aug 17, 2026:** Published from field notes I still use on family routers

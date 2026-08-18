@@ -2,15 +2,17 @@
 layout: post
 title: "UserTesting Paid Me $127 in July — Here's the Schedule, Screen-Outs, and Boring Reality"
 subtitle: "Not a lifestyle business. A decent side gig if you're home anyway."
-date: 2025-08-14
+date: 2026-09-02
 categories: [Side Income]
-description: "An honest UserTesting.com review with actual July 2025 earnings, time spent, disqualification rate, and who should skip it."
+description: "An honest UserTesting.com review with actual July earnings, time spent, disqualification rate, and who should skip it."
 read_time: "8 min"
 toc: false
 hero_tone: warm
+tldr_label: "The number"
+tldr: "$127 in a month for about six hours. Fine as a side gig if you are already at the desk. Not rent money."
 ---
 
-UserTesting isn't new. I joined in March 2024, ignored it for two months, then kept the dashboard open while working remote in July 2025. Total payout: **$127.00** via PayPal for roughly **6 hours 20 minutes** of recorded tests.
+UserTesting isn't new. I joined in March 2024, ignored it for two months, then kept the dashboard open while working remote last July. Total payout: **$127.00** via PayPal for roughly **6 hours 20 minutes** of recorded tests.
 
 That's **~$20/hour** — better than surveys, worse than billable network consulting.
 
@@ -24,7 +26,7 @@ That's **~$20/hour** — better than surveys, worse than billable network consul
 
 Average test length for me: **12–18 minutes**. Longest: 45-minute live interview ($60).
 
-## July 2025 breakdown
+## July breakdown
 
 | Date | Type | Paid | Time |
 |------|------|------|------|
@@ -78,4 +80,4 @@ I'll publish a three-way comparison after 30 days of parallel use.
 
 ## Update log
 
-- **Aug 14, 2025:** Published with July 2025 spreadsheet export
+- **Sep 2, 2026:** Published with the July spreadsheet export

@@ -9,21 +9,20 @@ title: Home
       <p class="eyebrow">Home lab · Privacy · Side income</p>
       <h1>Fix your network. Protect your data. Skip the hype.</h1>
       <p class="home-lead">
-        I'm Mike Chen, a network engineer in Portland. I write detailed walkthroughs from projects I run at home —
-        Pi-hole stats, router configs that survived my parents' house, and side gigs that actually paid me.
-        No affiliate-first listicles. No ChatGPT filler.
+        I'm Mike Chen, a network engineer in Portland. Utiliy is where I write walkthroughs from projects I run at home —
+        DNS filtering, router configs that survived my parents' house, and side gigs that actually paid me.
       </p>
-      <p style="margin-top:1.5rem;font-family:var(--sans);">
+      <p class="home-cta">
         New here? Start with the <a href="{{ '/start-here/' | relative_url }}">guided reading path</a>.
       </p>
     </div>
     <aside class="hero-card">
       <h2>What you'll find here</h2>
-      <p>Long-form guides with command output, failure stories, and the numbers behind my setup.</p>
+      <p>Long-form guides with command output, failure stories, and the numbers behind the setup.</p>
       <div class="hero-stats">
-        <div><strong>12</strong><span>In-depth guides</span></div>
-        <div><strong>14</strong><span>Devices in my lab</span></div>
-        <div><strong>6 yr</strong><span>Running Pi-hole</span></div>
+        <div><strong>{{ site.posts.size }}</strong><span>Published guides</span></div>
+        <div><strong>3</strong><span>Reading paths</span></div>
+        <div><strong>2026</strong><span>Year this started</span></div>
       </div>
     </aside>
   </div>
@@ -35,7 +34,7 @@ title: Home
       <p class="eyebrow">Featured</p>
       <h2>Start with these</h2>
     </div>
-    <p>Hand-picked for people setting up their first home lab or tightening security without buying enterprise gear.</p>
+    <p>Hand-picked for a first home lab or tightening security without buying enterprise gear.</p>
   </div>
 
   <div class="feature-grid">
@@ -71,19 +70,19 @@ title: Home
 </section>
 
 <section class="container topic-grid">
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}#networking">
+  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
     <strong>Networking</strong>
     <span>DNS, VLANs, Wi-Fi fixes</span>
   </a>
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}#privacy">
+  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
     <strong>Privacy</strong>
     <span>Pi-hole, VPNs, password managers</span>
   </a>
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}#homelab">
+  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
     <strong>Home Lab</strong>
     <span>Pi, Proxmox, Tailscale</span>
   </a>
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}#income">
+  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
     <strong>Side Income</strong>
     <span>Testing apps, freelance writing</span>
   </a>
@@ -91,6 +90,6 @@ title: Home
 
 <section class="container cta-band">
   <h2>Want a specific guide?</h2>
-  <p>I take reader requests seriously — last month's Tailscale-for-parents article came from three emails asking the same question.</p>
+  <p>If three people email the same question, it becomes the next article. Tell me what is breaking.</p>
   <a href="{{ '/contact/' | relative_url }}">Send a topic request →</a>
 </section>

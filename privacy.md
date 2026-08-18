@@ -2,88 +2,89 @@
 layout: page
 title: Privacy Policy
 permalink: /privacy/
-description: How Tech Pulse Daily collects, uses, and protects visitor information.
+description: How Utiliy collects, uses, and protects visitor information.
 ---
 
-*Last updated: August 17, 2025*
+*Last updated: August 18, 2026*
 
-Tech Pulse Daily ("we", "us", "our") is operated by Mike Chen at {{ site.url }}. This Privacy Policy describes how we handle information when you visit our website.
+Utiliy ("we", "us", "our") is operated by Mike Chen at {{ site.url }}. This policy explains what happens when you visit the site.
 
 ## Information we collect
 
 ### Automatically collected data
 
-When you visit the site, standard web logs may record:
+GitHub Pages and its CDN may record standard web logs:
 
-- IP address (often truncated by analytics tools)
+- IP address
 - Browser type and version
-- Pages visited and time spent
+- Pages visited and timestamps
 - Referring URL
 - Device type
 
-This data helps us understand traffic patterns and fix broken pages.
+We use this to keep the site working, not to sell profiles.
 
 ### Information you provide
 
-If you use our contact form, we receive your name, email address, and message content via Formspree. We use this only to respond to your inquiry.
+If you use the contact form, FormSubmit delivers your name, email, and message to [{{ site.author.email }}](mailto:{{ site.author.email }}). We use that only to reply.
 
-## Cookies and similar technologies
+## Cookies
 
-We use cookies and similar technologies for:
+The site uses local storage to remember a cookie-banner choice **if advertising is enabled**.
 
-| Purpose | Provider | Notes |
-|---------|----------|-------|
-| Site analytics | Google Analytics | Aggregated traffic measurement |
-| Advertising | Google AdSense | Display ads after program approval |
-| Cookie consent | Local storage | Remembers your banner choice |
+{% if site.google_analytics and site.google_analytics != "" %}
+We use **Google Analytics** (`{{ site.google_analytics }}`) to measure traffic. Google's policy: [policies.google.com/privacy](https://policies.google.com/privacy).
+{% else %}
+We do **not** currently load Google Analytics. If that changes, this page will be updated with the measurement ID.
+{% endif %}
 
-You can control cookies through your browser settings. To opt out of personalized advertising, visit [Google Ad Settings](https://adssettings.google.com).
+{% if site.adsense_client and site.adsense_client != "" %}
+We display ads through **Google AdSense**. Personalized ads can be controlled at [adssettings.google.com](https://adssettings.google.com).
+{% else %}
+We do **not** currently display Google AdSense ads. After approval, ads and a consent banner will appear, and this section will name the publisher ID.
+{% endif %}
+
+You can also block cookies in your browser.
 
 ## How we use information
 
-We use collected information to:
+- Operate and fix the website
+- Reply to messages
+- Understand which guides are useful
+- Show ads, if and when AdSense is approved
+- Detect abuse
 
-- Operate and improve the website
-- Respond to reader messages
-- Measure article performance
-- Display advertisements (where enabled)
-- Detect abuse and technical issues
-
-We do not sell your personal information.
+We do not sell personal information.
 
 ## Third-party services
 
-Our site relies on:
+| Service | Why |
+|---------|-----|
+| GitHub Pages | Hosting |
+| FormSubmit | Contact form delivery ([privacy](https://formsubmit.co/privacy.pdf)) |
+| Google Fonts | Typefaces |
 
-- **GitHub Pages** — hosting
-- **Google Analytics** — analytics ([Google Privacy Policy](https://policies.google.com/privacy))
-- **Google AdSense** — advertising ([Google Advertising Policies](https://support.google.com/adspense/answer/48182))
-- **Formspree** — contact form delivery ([Formspree Privacy Policy](https://formspree.io/legal/privacy-policy))
+Each provider has its own policy.
 
-Each provider processes data under its own policy. We recommend reviewing those policies.
+## Retention
 
-## Data retention
-
-Server logs are retained according to our hosting provider's defaults. Contact form submissions are kept in email until the conversation is resolved, then archived or deleted.
+Hosting logs follow GitHub's defaults. Contact emails are kept until the conversation is done, then deleted or archived.
 
 ## Your rights
 
-Depending on your location (including EEA/UK under GDPR, or California under CCPA), you may have rights to access, correct, delete, or restrict processing of personal data.
+Depending on where you live (including GDPR and CCPA), you may ask to access, correct, or delete personal data. Email [{{ site.author.email }}](mailto:{{ site.author.email }}) with the subject **Privacy Request**.
 
-To exercise these rights, email [{{ site.author.email }}](mailto:{{ site.author.email }}) with the subject line "Privacy Request".
+## Children
 
-## Children's privacy
-
-This site is not directed at children under 13. We do not knowingly collect information from children.
+This site is not directed at children under 13. We do not knowingly collect their information.
 
 ## International visitors
 
-Our site is hosted in the United States. By using the site, you understand data may be processed in the U.S.
+Hosting is in the United States. Using the site means data may be processed there.
 
 ## Changes
 
-We may update this policy. Material changes will be posted on this page with a revised date.
+Updates will be posted here with a new date.
 
 ## Contact
 
-Privacy questions: [{{ site.author.email }}](mailto:{{ site.author.email }})
+[{{ site.author.email }}](mailto:{{ site.author.email }})

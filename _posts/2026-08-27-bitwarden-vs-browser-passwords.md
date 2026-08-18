@@ -2,12 +2,14 @@
 layout: post
 title: "I Moved My Mom to Bitwarden in One Afternoon (She Still Uses Chrome)"
 subtitle: "Browser password managers vs dedicated vaults — what changed and what didn't."
-date: 2025-08-18
+date: 2026-08-27
 categories: [Privacy, Security]
 description: "A practical comparison of browser-built password saving versus Bitwarden, based on migrating a non-technical parent without breaking her workflow."
 read_time: "10 min"
 toc: true
 hero_tone: warm
+tldr_label: "For parents"
+tldr: "Chrome is fine until you need sharing, TOTP, or a second browser. Bitwarden Families was the migration that stuck."
 ---
 
 My mom had **214 saved passwords in Chrome**. Sixty were duplicates. Fourteen were "Sign in with Google" with no independent password at all. When I suggested Bitwarden, she heard "another app to break."
@@ -85,4 +87,4 @@ What she doesn't notice: breach reports, duplicate cleanup I did once in the vau
 
 ## Update log
 
-- **Aug 18, 2025:** Published after Eugene visit migration
+- **Aug 27, 2026:** Published after the Eugene migration

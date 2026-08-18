@@ -2,17 +2,19 @@
 layout: post
 title: "My First $500 Month Writing About Tech (Not Medium Partner Program)"
 subtitle: "Freelance bylines, boring invoices, and why I stopped chasing viral posts."
-date: 2025-08-20
+date: 2026-09-05
 categories: [Side Income]
-description: "How I earned $512 in March 2025 writing technical tutorials for small SaaS blogs and trade publications — rates, pitches, and what failed."
+description: "How I earned $512 in one month writing technical tutorials for small SaaS blogs and trade publications — rates, pitches, and what failed."
 read_time: "10 min"
 toc: false
 hero_tone: warm
+tldr_label: "What paid"
+tldr: "B2B guest posts beat Medium. $512 that month. First paid pitch took six weeks."
 ---
 
-Medium's partner program paid me **$11.40** in February 2025 for a post with 4,200 views. Same month, a boring 1,800-word router guide for a networking vendor's blog paid **$350**.
+Medium's partner program paid me **$11.40** in one February for a post with 4,200 views. Same month, a boring 1,800-word router guide for a networking vendor's blog paid **$350**.
 
-March 2025 total freelance writing: **$512**. This is how that happened — no course upsell at the end.
+March total freelance writing: **$512**. This is how that happened — no course upsell at the end.
 
 ## Income sources that month
 
@@ -84,4 +86,4 @@ This site is partly a **portfolio**. AdSense might add passive income later; fre
 
 ## Update log
 
-- **Aug 20, 2025:** Published with March 2025 invoice totals (client names redacted)
+- **Sep 5, 2026:** Published with invoice totals (client names redacted)

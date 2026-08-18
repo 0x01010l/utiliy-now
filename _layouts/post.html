@@ -1,19 +1,19 @@
 ---
 layout: default
 ---
-<article class="post-article">
+<article class="post-article" itemscope itemtype="https://schema.org/Article">
   <header class="post-hero {% if page.hero_tone %}{{ page.hero_tone }}{% endif %}">
     <div class="container post-hero-inner">
       {% if page.categories %}
       <p class="post-kicker">{{ page.categories | join: " · " }}</p>
       {% endif %}
-      <h1>{{ page.title }}</h1>
+      <h1 itemprop="headline">{{ page.title }}</h1>
       {% if page.subtitle %}
       <p class="post-subtitle">{{ page.subtitle }}</p>
       {% endif %}
       <div class="post-byline">
-        <span>{{ page.author | default: site.author.name }}</span>
-        <span>{{ page.date | date: "%B %-d, %Y" }}</span>
+        <span itemprop="author">{{ page.author | default: site.author.name }}</span>
+        <time datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">{{ page.date | date: "%B %-d, %Y" }}</time>
         {% if page.read_time %}<span>{{ page.read_time }} read</span>{% endif %}
       </div>
     </div>
@@ -28,7 +28,7 @@ layout: default
       </nav>
       {% endif %}
 
-      <div class="post-content prose" id="post-content">
+      <div class="post-content prose" id="post-content" itemprop="articleBody">
         {{ content }}
       </div>
 
@@ -37,14 +37,23 @@ layout: default
     </div>
 
     <aside class="post-sidebar" aria-label="Supplementary content">
+      {% if page.tldr %}
       <div class="sidebar-card">
-        <h3>Need the short version?</h3>
-        <p>Bookmark this page and jump to the section you need from the table of contents on mobile, or scroll the headings on desktop.</p>
+        <h3>{{ page.tldr_label | default: "Takeaway" }}</h3>
+        <p>{{ page.tldr }}</p>
       </div>
-      <div class="sidebar-card ad-slot" data-ad-slot="sidebar">
+      {% endif %}
+      {% if site.adsense_client and site.adsense_client != "" %}
+      <div class="sidebar-card ad-slot">
         <p class="ad-label">Advertisement</p>
-        <div class="ad-placeholder">AdSense unit goes here after approval</div>
+        <ins class="adsbygoogle"
+             style="display:block"
+             data-ad-client="{{ site.adsense_client }}"
+             data-ad-slot="{{ page.ad_slot | default: site.adsense_slot }}"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
       </div>
+      {% endif %}
     </aside>
   </div>
 </article>

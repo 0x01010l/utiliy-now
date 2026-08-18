@@ -1,35 +1,21 @@
-# Tech Pulse Daily
+# Utiliy — utiliy.com
 
-Production-ready Jekyll site for GitHub Pages, custom domain, and Google AdSense.
-
-## What's included
-
-- **12 long-form articles** — unique structure, real numbers, update logs
-- **8 static pages** — Home, Start Here, Blog, About, Contact, Privacy, Disclaimer, Editorial Policy
-- **AdSense-ready** — cookie banner, ad placeholder slots, legal pages
-- **Custom editorial design** — not a stock GitHub theme
+Jekyll site on GitHub Pages.
 
 ## Local preview
 
 ```bash
 bundle install
 bundle exec jekyll serve
-# http://localhost:4000
 ```
 
-## Before going live
+Future-dated posts stay unpublished until their date (`future: false`). A daily GitHub Action rebuilds the site so scheduled posts go live without another push.
 
-1. Domain configured: `utiliy.com` in `_config.yml`, `CNAME`, `robots.txt`
-2. Add Formspree ID in `contact.md`
-3. After AdSense approval, replace sidebar ad placeholder with your ad unit code
-4. Optional: add Google Analytics tag in `_includes/head.html`
+## After AdSense / Search Console (you have to click these)
 
-## Deploy
+1. **Email for the contact form** — create `hello@utiliy.com` (or forwarding) at your domain host. The first FormSubmit message sends a confirmation to that inbox. Click it.
+2. **Search Console** — add `https://utiliy.com`, verify (DNS TXT is easiest on Azure DNS), submit `https://utiliy.com/sitemap.xml`. Then paste the verification code into `_config.yml` as `google_site_verification`.
+3. **AdSense** — apply after a few weeks of the site being live. When approved, put your publisher id in `_config.yml` as `adsense_client` (example `ca-pub-xxxxxxxx`).
+4. **Optional Analytics** — put `G-XXXXXXXX` in `google_analytics`.
 
-Push to GitHub → Settings → Pages → Source: **GitHub Actions**
-
-DNS: A records to GitHub Pages IPs + CNAME `www` → `username.github.io`
-
-## AdSense timeline
-
-Publish 2–3 posts/week for 3–4 weeks, verify Search Console, then apply. See articles for content quality bar.
+Do not add a fake `ads.txt` until AdSense gives you the real line.

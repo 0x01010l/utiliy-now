@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 300" role="img" aria-labelledby="t">
+  <title id="t">Home network with VLANs</title>
+  <rect width="720" height="300" fill="#fffcf8" rx="12"/>
+  <text x="24" y="32" font-family="system-ui,sans-serif" font-size="13" fill="#0f766e" font-weight="700">TOWNHOUSE RACK  LOGICAL VIEW</text>
+  <rect x="260" y="50" width="200" height="44" rx="8" fill="#c2410c"/>
+  <text x="360" y="78" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#fff7ed">UDM-SE gateway</text>
+  <rect x="24" y="130" width="150" height="56" rx="8" fill="#134e4a"/>
+  <text x="99" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#ecfdf5">VLAN 1 trusted</text>
+  <text x="99" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#99f6e4">laptops, phones</text>
+  <rect x="198" y="130" width="150" height="56" rx="8" fill="#f3ede4"/>
+  <text x="273" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1c1917">VLAN 20 IoT</text>
+  <text x="273" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#44403c">cams, plugs</text>
+  <rect x="372" y="130" width="150" height="56" rx="8" fill="#f3ede4"/>
+  <text x="447" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1c1917">VLAN 30 guest</text>
+  <text x="447" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#44403c">visitors isolated</text>
+  <rect x="546" y="130" width="150" height="56" rx="8" fill="#f3ede4"/>
+  <text x="621" y="154" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1c1917">VLAN 40 lab</text>
+  <text x="621" y="172" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#44403c">Proxmox VMs</text>
+  <text x="24" y="226" font-family="system-ui,sans-serif" font-size="14" fill="#1c1917">Rule that matters: IoT cannot start connections into trusted.</text>
+  <text x="24" y="252" font-family="system-ui,sans-serif" font-size="14" fill="#44403c">Pi-hole at 192.168.1.53 is DNS for every VLAN.</text>
+</svg>

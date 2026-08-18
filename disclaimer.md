@@ -2,41 +2,41 @@
 layout: page
 title: Disclaimer
 permalink: /disclaimer/
-description: Legal disclaimer for informational content, advertising, and affiliate links on Tech Pulse Daily.
+description: Legal disclaimer for informational content, advertising, and affiliate links on Utiliy.
 ---
 
-*Last updated: August 17, 2025*
+*Last updated: August 18, 2026*
 
 ## General information
 
-The content on {{ site.title }} ({{ site.url }}) is published for general informational and educational purposes. While we strive for accuracy, we make no warranties — express or implied — about completeness, reliability, or suitability of any information.
+Content on {{ site.title }} ({{ site.url }}) is for general information and education. We try to be accurate, but we do not warrant completeness, reliability, or fitness for a particular purpose.
 
 ## Not professional advice
 
-Articles on this site do not constitute legal, financial, medical, or professional IT advice. Network configurations that work in my home lab may not suit your environment. Consult qualified professionals before making decisions that affect security, compliance, or business operations.
+Nothing here is legal, financial, medical, or professional IT advice. A config that works in one home lab can fail in another. Ask a qualified professional before you change anything that affects security, compliance, or a business.
 
 ## Affiliate links and advertising
 
-{{ site.title }} may participate in affiliate programs and display advertisements through Google AdSense. We may earn commissions when you purchase through affiliate links, at no additional cost to you.
+{{ site.title }} may use affiliate links and, after approval, Google AdSense. We may earn a commission if you buy through an affiliate link, at no extra cost to you.
 
-Affiliate relationships do not override our editorial judgment. See our [Editorial Policy](/editorial-policy/) for how products are tested.
+Affiliate deals do not decide rankings. See the [Editorial Policy](/editorial-policy/) for how products are tested.
 
-Advertisers do not review or approve article content before publication.
+Advertisers do not review articles before they go live.
 
 ## External links
 
-Posts may link to third-party websites. We are not responsible for their content, availability, or privacy practices.
+Posts may link off-site. We are not responsible for those sites' content or privacy practices.
 
 ## Limitation of liability
 
-To the fullest extent permitted by law, {{ site.author.name }} and {{ site.title }} shall not be liable for any direct, indirect, incidental, or consequential damages arising from use of this website or reliance on its content.
+To the fullest extent allowed by law, {{ site.author.name }} and {{ site.title }} are not liable for damages from using this website or relying on it.
 
-You follow tutorials at your own risk. Back up configurations before changing router, firewall, or server settings.
+You follow tutorials at your own risk. Back up configs before you change a router, firewall, or server.
 
 ## Errors and updates
 
-Technical products change frequently. We update guides when possible but cannot guarantee every page reflects the latest firmware, pricing, or feature set.
+Firmware, prices, and features move. We update guides when we can. We cannot promise every page is current.
 
 ## Contact
 
-Questions about this disclaimer: [{{ site.author.email }}](mailto:{{ site.author.email }})
+[{{ site.author.email }}](mailto:{{ site.author.email }})

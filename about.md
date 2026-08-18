@@ -1,38 +1,28 @@
 ---
 layout: page
-title: About Mike Chen
+title: About
 permalink: /about/
-description: Network engineer, home lab builder, and the person actually answering emails on this site.
+description: Who writes Utiliy and how the guides get made.
 ---
 
-I'm Mike Chen. I live in Portland, Oregon, and I've worked as a network engineer since 2014 — mostly enterprise routing, firewalls, and the unglamorous work of making printers show up on the right VLAN.
+I'm **Mike Chen**. I live in Portland, Oregon, and I work on networks for a living — routing, firewalls, and the unglamorous job of making printers show up on the right VLAN.
 
-This site started in 2019 because my brother-in-law asked me to "just fix the Wi-Fi" and I realized most tutorials skip the part where things go wrong.
+Utiliy started in 2026 because most tutorials skip the part where things go wrong. I wanted a place for the messy version: double NAT from an ISP combo unit, a smart TV that hammers DNS at 2 a.m., and the whitelist entry that saved movie night.
 
 ## What I write about
 
-**Home networking that survives real houses.** Not lab-perfect diagrams — setups that handle double NAT from ISP combo units, concrete walls, and a smart TV that hammers DNS at 2 a.m.
+**Home networking that survives real houses.** Placement, channels, guest Wi-Fi, and diagrams of what is actually plugged in.
 
-**Privacy tools I actually run.** Pi-hole on a Raspberry Pi 4, WireGuard, Bitwarden Families, Tailscale for remote access. I publish block rates, false positives, and the domains I had to whitelist.
+**Privacy tools I run at home.** Pi-hole, WireGuard, Bitwarden, Tailscale. I publish block rates, false positives, and the domains I had to allow.
 
 **Side income I've tested.** UserTesting, freelance tech writing, and a few platforms that wasted my time. I include dollar amounts when I can.
 
-## Credentials (the boring part)
+## How to read this site
 
-- CCNP Enterprise (2021)
-- Previously: field engineer at a regional MSP, now internal infra at a healthcare SaaS company
-- Home lab: 14 devices including a Dell OptiPlex running Proxmox, three Pis, and a TP-Link Omada setup I'm constantly tweaking
-
-## What I won't do on this site
-
-- Publish guides for tools I haven't used for at least two weeks
-- Rank products by affiliate commission
-- Use AI to draft articles without rewriting every paragraph myself
-
-If you spot a technical error, email me. I add correction notes at the bottom of posts when something changes — router firmware updates, pricing shifts, deprecated features.
+If you want a sequence instead of a random article, use **[Start Here](/start-here/)**. If something in a guide is wrong, email me — I add a dated note at the bottom of the post when I change it.
 
 ## Contact
 
-Email: [hello@utiliy.com](mailto:hello@utiliy.com)
+[hello@utiliy.com](mailto:hello@utiliy.com) · [Contact form](/contact/)
 
-I read everything. Response time is usually 48 hours, slower when I'm on-call at my day job.
+I usually reply within 48 hours.

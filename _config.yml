@@ -1,11 +1,12 @@
-title: "Tech Pulse Daily"
-description: "Hands-on guides on home networking, privacy, and earning from tech — written by a working network engineer."
+title: "Utiliy"
+description: "Practical guides on home networking, privacy, and earning from tech — written without the hype."
 url: "https://utiliy.com"
 baseurl: ""
 lang: en
 timezone: America/Los_Angeles
 
 theme: null
+future: false
 
 permalink: /blog/:title/
 markdown: kramdown
@@ -19,12 +20,19 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
+logo: /assets/img/og-cover.svg
+
 author:
   name: Mike Chen
   email: hello@utiliy.com
   location: Portland, Oregon
-  bio: "CCNP-certified network engineer. I run a 14-device home lab and write about what I actually deploy — not what vendor slides promise."
-  started: "2019"
+  bio: "Network engineer writing about privacy, home labs, and side income from setups I actually run."
+  started: "2026"
+
+# Leave blank until you add each service. Empty values are not loaded on the site.
+google_analytics: ""
+google_site_verification: ""
+adsense_client: ""
 
 defaults:
   - scope:
@@ -33,6 +41,7 @@ defaults:
     values:
       layout: post
       author: Mike Chen
+      image: /assets/img/og-cover.svg
 
 exclude:
   - README.md

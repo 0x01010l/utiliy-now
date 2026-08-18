@@ -2,17 +2,24 @@
 layout: post
 title: "The Home Network Diagram I Actually Use (And What Each VLAN Is For)"
 subtitle: "No textbook OSI wall. Just the boxes, cables, and why my printer can't see the IoT cameras."
-date: 2025-08-16
+date: 2026-08-24
 categories: [Networking, Home Lab]
 description: "A plain-language walkthrough of a real home network: ISP handoff, router, switch, Pi-hole, VLANs, and where Wi-Fi access points sit."
 read_time: "12 min"
 toc: true
 hero_tone: warm
+tldr_label: "Steal this layout"
+tldr: "Four VLANs, IoT cannot initiate into trusted, one Pi-hole as DNS for all of them."
 ---
 
 Network diagrams in certification books are clean. Mine has a label maker tag that says **"DO NOT UNPLUG — MIKE"** on the Pi-hole Ethernet cable.
 
-This is the layout running in my Portland townhouse as of August 2025.
+This is the layout running in my Portland townhouse.
+
+<figure class="diagram">
+  <img src="{{ '/assets/img/home-vlans.svg' | relative_url }}" alt="Gateway feeding four VLANs: trusted, IoT, guest, and lab">
+  <figcaption>Logical view. The physical rack is uglier. The VLAN rules are the part worth copying.</figcaption>
+</figure>
 
 ## Physical map
 
@@ -91,4 +98,4 @@ That alone beats 80% of default installs I walk into.
 
 ## Update log
 
-- **Aug 16, 2025:** Initial diagram from UniFi export + label maker photos
+- **Aug 24, 2026:** Published from the UniFi export and the label-maker photo I did not put on the internet

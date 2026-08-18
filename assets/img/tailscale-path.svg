@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-labelledby="t">
+  <title id="t">Tailscale tailnet between family devices and a NAS</title>
+  <rect width="720" height="200" fill="#fffcf8" rx="12"/>
+  <text x="24" y="32" font-family="system-ui,sans-serif" font-size="13" fill="#0f766e" font-weight="700">NO PORT FORWARD  JUST A TAILNET</text>
+  <rect x="24" y="70" width="130" height="50" rx="8" fill="#f3ede4"/>
+  <text x="89" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1c1917">Mom laptop</text>
+  <rect x="174" y="70" width="130" height="50" rx="8" fill="#f3ede4"/>
+  <text x="239" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#1c1917">Mom phone</text>
+  <rect x="324" y="70" width="150" height="50" rx="8" fill="#134e4a"/>
+  <text x="399" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#ecfdf5">Tailscale</text>
+  <rect x="494" y="70" width="202" height="50" rx="8" fill="#c2410c"/>
+  <text x="595" y="100" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" fill="#fff7ed">Synology NAS</text>
+  <text x="24" y="160" font-family="system-ui,sans-serif" font-size="14" fill="#44403c">She opens the desktop shortcut. I stopped reciting 192.168 addresses on FaceTime.</text>
+</svg>

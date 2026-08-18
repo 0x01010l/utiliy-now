@@ -2,17 +2,24 @@
 layout: post
 title: "DNS Explained Without the Computer Science Degree"
 subtitle: "What happens in the 40 milliseconds between typing gmail.com and seeing your inbox."
-date: 2025-08-17
+date: 2026-08-17
 categories: [Networking]
 description: "A plain-language guide to DNS: resolvers, records, caching, and why changing DNS fixes weird problems."
 read_time: "9 min"
 toc: true
 hero_tone: cool
+tldr_label: "In one line"
+tldr: "DNS is the phone book. Pi-hole is a phone book that can refuse to look up ads."
 ---
 
 Every networking article assumes you already know DNS. You don't — and that's fine. I didn't really get it until my third year on the job, when a misconfigured CNAME took down email for a dental office.
 
 Here's the version I wish someone sent me before I touched Pi-hole.
+
+<figure class="diagram">
+  <img src="{{ '/assets/img/dns-path.svg' | relative_url }}" alt="Four boxes showing a browser asking a resolver, which walks root and TLD servers to the authoritative answer">
+  <figcaption>Your laptop almost never talks to the authoritative server itself. The resolver does the walking — and caches the answer.</figcaption>
+</figure>
 
 ## The phone book analogy (accurate enough)
 
@@ -94,4 +101,4 @@ If pages load, streaming works, and Pi-hole query log isn't red with your own de
 
 ## Update log
 
-- **Aug 17, 2025:** Published for Start Here networking path
+- **Aug 17, 2026:** Published as the networking starting point

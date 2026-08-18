@@ -1,13 +1,15 @@
 ---
 layout: post
-title: "Should You Pay for a VPN in 2025? I Cancelled NordVPN and Kept WireGuard"
+title: "Should You Pay for a VPN in 2026? I Cancelled NordVPN and Kept WireGuard"
 subtitle: "Marketing says everyone needs one. My threat model says otherwise."
-date: 2025-08-15
+date: 2026-08-18
 categories: [Privacy]
 description: "A nuanced take on paid VPNs versus self-hosted WireGuard — when $60/year helps, when it doesn't, and what I use daily."
 read_time: "9 min"
 toc: true
 hero_tone: cool
+tldr_label: "My answer"
+tldr: "Pay if you travel on hotel Wi-Fi and will not maintain a server. I cancelled Nord and kept WireGuard to home."
 ---
 
 VPN ads promise anonymity in thirty seconds. I paid for **NordVPN for two years**, used it heavily for six months, then cancelled and kept a **$5/month VPS running WireGuard** instead.
@@ -91,4 +93,4 @@ Pick based on jurisdiction and audit history, not YouTube sponsor reads.
 
 ## Update log
 
-- **Aug 15, 2025:** Published; NordVPN pricing as of my last renewal Apr 2025
+- **Aug 18, 2026:** Published; NordVPN pricing from my last renewal

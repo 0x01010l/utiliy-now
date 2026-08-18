@@ -3,14 +3,14 @@
     <section>
       <h2>{{ site.title }}</h2>
       <p>{{ site.description }}</p>
-      <p class="footer-meta">Publishing since {{ site.author.started }}. Based in {{ site.author.location }}.</p>
+      <p class="footer-meta">Started {{ site.author.started }}. Based in {{ site.author.location }}.</p>
     </section>
     <section>
       <h3>Explore</h3>
       <ul>
         <li><a href="{{ '/start-here/' | relative_url }}">Start Here</a></li>
         <li><a href="{{ '/blog/' | relative_url }}">All Articles</a></li>
-        <li><a href="{{ '/about/' | relative_url }}">About Mike</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">About</a></li>
         <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
       </ul>
     </section>
@@ -24,14 +24,16 @@
     </section>
   </div>
   <div class="container footer-bottom">
-    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}. All rights reserved.</p>
-    <p>This site uses cookies for analytics and advertising. See our <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>.</p>
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    <p>See our <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a> for how visitor data is handled.</p>
   </div>
 </footer>
 
+{% if site.adsense_client and site.adsense_client != "" %}
 <div class="cookie-banner" id="cookie-banner" hidden>
   <div class="cookie-inner">
-    <p>We use cookies for site analytics and, after approval, Google AdSense advertising. By continuing, you accept our <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>.</p>
+    <p>We use cookies for advertising. See our <a href="{{ '/privacy/' | relative_url }}">Privacy Policy</a>.</p>
     <button type="button" id="cookie-accept">Accept</button>
   </div>
 </div>
+{% endif %}

@@ -2,22 +2,29 @@
 layout: post
 title: "Raspberry Pi Privacy Setup: Pi-hole, Unbound, and WireGuard Without the Reddit Rabbit Hole"
 subtitle: "The minimum viable privacy stack I run at home — not every project on GitHub."
-date: 2025-08-12
+date: 2026-08-18
 categories: [Privacy, Home Lab]
 description: "A focused guide to building a Raspberry Pi privacy gateway: local DNS filtering, recursive resolver, and remote access VPN."
 read_time: "14 min"
 toc: true
 hero_tone: cool
 featured: true
+tldr_label: "Minimum stack"
+tldr: "One Pi 4: Pi-hole for filtering, Unbound for recursive DNS, WireGuard for coffee-shop Wi-Fi. Skip the dashboards."
 ---
 
-I own four Raspberry Pis. Only one is dedicated to privacy.full stop. The others run Home Assistant and a print server. The privacy Pi handles **DNS filtering (Pi-hole)**, **recursive DNS (Unbound)**, and **WireGuard** for when I'm on airport Wi-Fi.
+I own four Raspberry Pis. Only one is dedicated to privacy. The others run Home Assistant and a print server. The privacy Pi handles **DNS filtering (Pi-hole)**, **recursive DNS (Unbound)**, and **WireGuard** for when I'm on airport Wi-Fi.
 
 This guide is the trimmed path — no Docker swarm, no Grafana dashboards you'll never open.
 
+<figure class="diagram">
+  <img src="{{ '/assets/img/pihole-path.svg' | relative_url }}" alt="Diagram of DNS queries flowing from a laptop through Pi-hole and Unbound to the internet">
+  <figcaption>Every query on the LAN hits Pi-hole first. Unbound talks to the internet so Cloudflare does not see the full list.</figcaption>
+</figure>
+
 ## Hardware I used
 
-| Part | Model | Cost (Aug 2025) |
+| Part | Model | Cost (when I bought it) |
 |------|-------|-----------------|
 | Board | Raspberry Pi 4, 2 GB | $45 |
 | Storage | SanDisk Ultra 64 GB microSD | $11 |
@@ -140,5 +147,5 @@ sudo dpkg-reconfigure -plow unattended-upgrades
 
 ## Update log
 
-- **Aug 12, 2025:** Initial publish from Pi 4 setup notes
-- **Aug 15, 2025:** Added Unbound verbosity tweak after log disk usage scare
+- **Aug 18, 2026:** Published from the Pi 4 setup notes
+- **Aug 18, 2026:** Added the query-path diagram

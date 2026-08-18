@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-labelledby="t">
+  <title id="t">DNS lookup from browser to authoritative server</title>
+  <rect width="720" height="260" fill="#fffcf8" rx="12"/>
+  <text x="24" y="32" font-family="system-ui,sans-serif" font-size="13" fill="#0f766e" font-weight="700">WHAT HAPPENS AFTER YOU TYPE A DOMAIN</text>
+  <rect x="24" y="56" width="150" height="72" rx="10" fill="#f3ede4"/>
+  <text x="99" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#1c1917">Browser</text>
+  <text x="99" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#44403c">asks for IP</text>
+  <rect x="198" y="56" width="150" height="72" rx="10" fill="#134e4a"/>
+  <text x="273" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#ecfdf5">Resolver</text>
+  <text x="273" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#99f6e4">Pi-hole / 1.1.1.1</text>
+  <rect x="372" y="56" width="150" height="72" rx="10" fill="#f3ede4"/>
+  <text x="447" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#1c1917">Root ’ TLD</text>
+  <text x="447" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#44403c">walk the tree</text>
+  <rect x="546" y="56" width="150" height="72" rx="10" fill="#c2410c"/>
+  <text x="621" y="88" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" fill="#fff7ed">Auth server</text>
+  <text x="621" y="108" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#ffedd5">final answer</text>
+  <text x="24" y="170" font-family="system-ui,sans-serif" font-size="14" fill="#1c1917">Cached for the TTL. That is why DNS changes can take minutes  or a day.</text>
+  <text x="24" y="198" font-family="system-ui,sans-serif" font-size="14" fill="#44403c">Pi-hole sits in the resolver box and can refuse an answer before it ever reaches the root.</text>
+</svg>

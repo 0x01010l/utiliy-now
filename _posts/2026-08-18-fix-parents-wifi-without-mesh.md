@@ -2,13 +2,15 @@
 layout: post
 title: "How I Fixed My Parents' Wi-Fi Without Buying a $400 Mesh System"
 subtitle: "Three afternoons, zero new hardware, and a 4x speed improvement in the back bedroom."
-date: 2025-08-10
+date: 2026-08-18
 categories: [Networking]
 description: "A step-by-step case study of diagnosing slow Wi-Fi in a 1980s ranch house — channel overlap, bad placement, and ISP double NAT included."
 read_time: "11 min"
 toc: true
 hero_tone: warm
 featured: true
+tldr_label: "Skip the mesh?"
+tldr: "Move the router to open air, change the 2.4 GHz channel, and kill double NAT before you spend $400 on mesh."
 ---
 
 My mom called on a Sunday. "The internet works in the kitchen but Netflix buffers in the bedroom. Should we buy one of those Eero things?"
@@ -16,6 +18,11 @@ My mom called on a Sunday. "The internet works in the kitchen but Netflix buffer
 I drove to Eugene the following weekend with a laptop, WiFi Explorer on my phone, and strong opinions about consumer mesh marketing. Four hours later, download speeds in the back bedroom went from **8 Mbps to 34 Mbps** — without opening Amazon.
 
 This is exactly what I did, in the order I'd do it again.
+
+<figure class="diagram">
+  <img src="{{ '/assets/img/wifi-before-after.svg' | relative_url }}" alt="Bar chart showing bedroom Wi-Fi rising from 8 Mbps to 34 Mbps after placement and channel fixes">
+  <figcaption>Guest bedroom throughput after four changes and zero new hardware.</figcaption>
+</figure>
 
 ## The house and the complaint
 
@@ -85,5 +92,5 @@ Buy mesh if, after placement and channel fixes, you still have dead zones **and*
 
 ## Update log
 
-- **Aug 10, 2025:** Initial publish after on-site visit
-- **Aug 12, 2025:** Added iperf3 numbers; corrected guest SSID isolation note for Arris firmware 9.1.103
+- **Aug 18, 2026:** Published from the Eugene visit notes
+- **Aug 18, 2026:** Added the before/after diagram from the iperf3 table

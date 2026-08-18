@@ -2,12 +2,14 @@
 layout: post
 title: "Proxmox on a $90 Used Dell OptiPlex: What Runs, What Struggles"
 subtitle: "Homelab virtualization without burning electricity or buying a NUC."
-date: 2025-08-21
+date: 2026-09-08
 categories: [Home Lab]
 description: "An honest review of running Proxmox VE on a Dell OptiPlex 7040 — specs, VM inventory, power draw, and when to buy real server gear instead."
 read_time: "13 min"
 toc: true
 hero_tone: cool
+tldr_label: "Buy this used?"
+tldr: "A $90 OptiPlex Micro is enough to learn Proxmox. It is not enough if you need 32 GB of RAM or quiet transcoding."
 ---
 
 Everyone on r/homelab buys a rack mount and regrets the noise. I bought a **Dell OptiPlex 7040 Micro** off Facebook Marketplace for **$90** — i5-6500T, 16 GB RAM, 256 GB SSD — and installed **Proxmox VE 8.2**.
@@ -90,5 +92,5 @@ Avoid: anything without AES-NI if you care about VPN throughput (older Core 2 Du
 
 ## Update log
 
-- **Aug 21, 2025:** Published from Proxmox node `pve-home` export
-- **Aug 22, 2025:** Corrected idle wattage after meter recalibration
+- **Sep 8, 2026:** Published from the `pve-home` node export
+- **Sep 8, 2026:** Idle wattage after meter recalibration

@@ -2,17 +2,24 @@
 layout: post
 title: "Tailscale for Remote Tech Support: How My Mom Accesses Her Files Without Port Forwarding"
 subtitle: "WireGuard magic with a login button she actually understands."
-date: 2025-08-19
+date: 2026-08-30
 categories: [Home Lab, Privacy]
 description: "Setting up Tailscale on a Synology NAS so a non-technical parent can reach photos and documents remotely — no router config required."
 read_time: "11 min"
 toc: true
 hero_tone: cool
+tldr_label: "Why Tailscale"
+tldr: "No port forwards. She taps an icon. I stopped reciting subnet masks on the phone."
 ---
 
 Port forwarding to my parents' NAS was my nightmare — double NAT, dynamic IP, and the words "What's a subnet mask?" on every phone call.
 
-**Tailscale** replaced the whole conversation. Mom taps an app, her laptop sees the NAS like it's on the couch. This is the setup I deployed April 2025, still running unchanged.
+**Tailscale** replaced the whole conversation. Mom taps an app, her laptop sees the NAS like it's on the couch. This is the setup I deployed last spring, still running unchanged.
+
+<figure class="diagram">
+  <img src="{{ '/assets/img/tailscale-path.svg' | relative_url }}" alt="Mom's laptop and phone connecting through Tailscale to a Synology NAS">
+  <figcaption>The NAS never gets a public port. Tailscale punches the path.</figcaption>
+</figure>
 
 ## Why not classic VPN here?
 
@@ -96,5 +103,5 @@ Average support call dropped from 25 minutes to 6.
 
 ## Update log
 
-- **Aug 19, 2025:** Published from April 2025 deployment notes
-- **Aug 20, 2025:** Added exit node caveat after Mom's Hulu complaint in Chicago hotel
+- **Aug 30, 2026:** Published from the spring deployment notes
+- **Aug 30, 2026:** Exit-node caveat kept after the Hulu complaint on hotel Wi-Fi

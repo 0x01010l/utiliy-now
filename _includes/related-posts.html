@@ -1,17 +1,28 @@
-{% if page.categories %}
-<section class="related-posts">
-  <h2>Related reading</h2>
-  <ul>
-    {% assign found = 0 %}
-    {% for post in site.posts %}
-      {% if post.url != page.url and post.categories == page.categories and found < 3 %}
-        <li>
-          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          <span>{{ post.date | date: "%b %-d, %Y" }}</span>
-        </li>
-        {% assign found = found | plus: 1 %}
+{% assign related_count = 0 %}
+{% capture related_html %}
+{% for post in site.posts %}
+  {% if post.url != page.url and related_count < 3 %}
+    {% assign share = false %}
+    {% for cat in page.categories %}
+      {% if post.categories contains cat %}
+        {% assign share = true %}
       {% endif %}
     {% endfor %}
+    {% if share %}
+      <li>
+        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+      </li>
+      {% assign related_count = related_count | plus: 1 %}
+    {% endif %}
+  {% endif %}
+{% endfor %}
+{% endcapture %}
+{% if related_count > 0 %}
+<section class="related-posts">
+  <h2>Keep reading</h2>
+  <ul>
+    {{ related_html }}
   </ul>
 </section>
 {% endif %}

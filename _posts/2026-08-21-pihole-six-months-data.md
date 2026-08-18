@@ -2,18 +2,25 @@
 layout: post
 title: "Six Months of Pi-hole Data: 412,000 Blocks and the 14 Domains I Had to Whitelist"
 subtitle: "Real query logs, false positives, and whether network-wide ad blocking is worth the maintenance."
-date: 2025-08-11
+date: 2026-08-21
 categories: [Privacy]
 description: "I exported six months of Pi-hole stats from my home network. Here's what got blocked, what broke, and the exact allowlist entries I still need."
 read_time: "10 min"
 toc: true
 hero_tone: cool
-featured: true
+featured: false
+tldr_label: "Was it worth it?"
+tldr: "21.9% of queries blocked, about 20 minutes of maintenance a month, and 14 domains I had to whitelist so streaming still worked."
 ---
 
 People sell Pi-hole like a set-and-forget miracle. Six months in on my network — two adults, one teenager, ~22 client devices — I have **412,338 blocked queries**, a teenager who briefly hated me, and a whitelist that reads like a confession.
 
-I pulled the stats on July 31, 2025 from Pi-hole v5.18 running on a Pi 4 (2 GB) with a Samsung BAR Plus 64 GB USB boot drive.
+I pulled the stats on July 31 from Pi-hole v5.18 running on a Pi 4 (2 GB) with a Samsung BAR Plus 64 GB USB boot drive.
+
+<figure class="diagram">
+  <img src="{{ '/assets/img/pihole-path.svg' | relative_url }}" alt="Queries flowing from devices through Pi-hole before they reach the internet">
+  <figcaption>Same box as the setup guide. This post is the six-month scoreboard.</figcaption>
+</figure>
 
 ## The headline numbers
 
@@ -96,5 +103,5 @@ Adjust status codes for your Pi-hole version — check their docs before running
 
 ## Update log
 
-- **Aug 11, 2025:** Published with July 2025 export
-- **Aug 14, 2025:** Added Microsoft trafficmanager whitelist note after Patch Tuesday retest
+- **Aug 21, 2026:** Published with the July export
+- **Aug 21, 2026:** Microsoft trafficmanager whitelist kept after Patch Tuesday retest
