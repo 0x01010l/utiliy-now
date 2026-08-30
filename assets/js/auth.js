@@ -1,6 +1,16 @@
 const API = document.body.dataset.apiUrl || 'https://utiliy-audit-api.azurewebsites.net/api';
 const GOOGLE_CLIENT_ID = document.querySelector('meta[name="google-client-id"]')?.content || '';
 
+let lastUsage = null;
+
+function getUsage() {
+  return lastUsage;
+}
+
+function isAtAuditLimit() {
+  return lastUsage != null && lastUsage.remaining <= 0;
+}
+
 function getClientId() {
   let id = localStorage.getItem('utiliy_client_id');
   if (!id) {
@@ -43,28 +53,51 @@ function authHeaders() {
 
 function renderUsage(usage) {
   if (!usage) return;
+  lastUsage = usage;
+
   const pct = usage.limit > 0 ? Math.min(100, (usage.used / usage.limit) * 100) : 0;
-  const text = `${usage.used} / ${usage.limit} audits`;
+  const atLimit = usage.remaining <= 0;
+  const user = getUser();
+  const canUpgrade = !user || user.plan !== 'pro';
+
   const tracker = document.getElementById('usage-tracker');
+  const trackerNormal = document.getElementById('usage-tracker-normal');
+  const trackerLimit = document.getElementById('usage-tracker-limit');
   const barFill = document.getElementById('usage-bar-fill');
   const trackerText = document.getElementById('usage-tracker-text');
   const ddFill = document.getElementById('usage-dropdown-fill');
   const ddText = document.getElementById('usage-dropdown-text');
+  const inlineNormal = document.getElementById('usage-inline-normal');
+  const inlineLimit = document.getElementById('usage-inline-limit');
+  const upgradeBtn = document.getElementById('header-upgrade');
+  const upgradeBtnInline = document.getElementById('header-upgrade-inline');
 
   if (tracker) {
     tracker.hidden = false;
-    tracker.classList.toggle('at-limit', usage.remaining <= 0);
+    tracker.classList.toggle('at-limit', atLimit);
   }
-  if (barFill) barFill.style.width = `${pct}%`;
-  if (trackerText) trackerText.textContent = text;
-  if (ddFill) ddFill.style.width = `${pct}%`;
-  if (ddText) {
-    ddText.textContent = usage.remaining > 0
-      ? `${usage.remaining} remaining this month`
-      : 'Monthly limit reached';
+  if (trackerNormal) trackerNormal.hidden = atLimit;
+  if (trackerLimit) trackerLimit.hidden = !atLimit || !canUpgrade;
+  if (inlineNormal) inlineNormal.hidden = atLimit;
+  if (inlineLimit) inlineLimit.hidden = !atLimit || !canUpgrade;
+
+  if (!atLimit) {
+    if (barFill) barFill.style.width = `${pct}%`;
+    if (trackerText) trackerText.textContent = `${usage.used} / ${usage.limit} audits`;
+    if (ddFill) ddFill.style.width = `${pct}%`;
+    if (ddText) {
+      ddText.textContent = `${usage.remaining} remaining this month`;
+    }
+  } else if (!canUpgrade && ddText) {
+    ddText.textContent = 'Monthly limit reached — resets next month';
   }
 
-  const user = getUser();
+  [upgradeBtn, upgradeBtnInline].forEach((btn) => {
+    if (!btn) return;
+    if (canUpgrade && atLimit) btn.removeAttribute('hidden');
+    else btn.setAttribute('hidden', '');
+  });
+
   if (user) {
     user.usage = usage;
     localStorage.setItem('utiliy_user', JSON.stringify(user));
@@ -72,9 +105,13 @@ function renderUsage(usage) {
 
   const submit = document.getElementById('audit-submit');
   if (submit) {
-    submit.disabled = usage.remaining <= 0;
-    submit.title = usage.remaining <= 0 ? 'Monthly audit limit reached' : '';
+    submit.disabled = false;
+    submit.removeAttribute('title');
   }
+}
+
+function promptUpgrade(msg) {
+  showPaywall(msg);
 }
 
 async function refreshUsage() {
@@ -145,38 +182,40 @@ function showPaywall(msg) {
   const overlay = document.getElementById('paywall-modal');
   const guestActions = document.getElementById('paywall-guest-actions');
   const userActions = document.getElementById('paywall-user-actions');
+  const proLimitActions = document.getElementById('paywall-pro-limit-actions');
   const title = document.getElementById('paywall-title');
   const msgEl = document.getElementById('paywall-msg');
+  const perks = overlay?.querySelector('.pro-perks');
 
   if (!overlay) {
     alert(msg);
     return;
   }
 
-  if (msgEl) msgEl.textContent = msg || '';
-  sessionStorage.setItem('utiliy_paywall_active', '1');
+  guestActions?.setAttribute('hidden', '');
+  userActions?.setAttribute('hidden', '');
+  proLimitActions?.setAttribute('hidden', '');
+  if (perks) perks.hidden = false;
 
   if (!user) {
-    if (title) title.textContent = 'Create an account to continue';
+    if (title) title.textContent = 'Upgrade to keep auditing';
     if (msgEl) {
-      msgEl.textContent = msg || 'Your free audit is used. Sign up for an account, then subscribe to Pro for 80 audits per month.';
+      msgEl.textContent = msg || 'Your free audit is used. Create an account, then upgrade to Pro for 80 audits per month.';
     }
     guestActions?.removeAttribute('hidden');
-    userActions?.setAttribute('hidden', '');
   } else if (user.plan !== 'pro') {
     if (title) title.textContent = 'Upgrade to Pro';
     if (msgEl) {
-      msgEl.textContent = msg || 'Upgrade to Pro for 80 product page audits per month.';
+      msgEl.textContent = msg || 'You have reached your audit limit. Upgrade to Pro for 80 audits per month.';
     }
-    guestActions?.setAttribute('hidden', '');
     userActions?.removeAttribute('hidden');
   } else {
     if (title) title.textContent = 'Monthly limit reached';
     if (msgEl) {
-      msgEl.textContent = msg || 'You have used all 80 audits this month. Your limit resets next month.';
+      msgEl.textContent = msg || 'You have used all 80 Pro audits this month.';
     }
-    guestActions?.setAttribute('hidden', '');
-    userActions?.setAttribute('hidden', '');
+    if (perks) perks.hidden = true;
+    proLimitActions?.removeAttribute('hidden');
   }
 
   overlay.removeAttribute('hidden');
@@ -404,6 +443,9 @@ document.addEventListener('DOMContentLoaded', () => {
     openAuth('login');
   });
 
+  document.getElementById('header-upgrade')?.addEventListener('click', () => promptUpgrade());
+  document.getElementById('header-upgrade-inline')?.addEventListener('click', () => promptUpgrade());
+
   document.querySelectorAll('[data-close-modal]').forEach((el) => {
     el.addEventListener('click', () => closeModal(el.dataset.closeModal));
   });
@@ -505,4 +547,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-window.UtiliyAuth = { getToken, getClientId, authHeaders, startCheckout, openModal, closeModal, getUser, showToast, openAuth, refreshUsage, renderUsage, showPaywall };
+window.UtiliyAuth = {
+  getToken, getClientId, authHeaders, startCheckout, openModal, closeModal,
+  getUser, getUsage, isAtAuditLimit, showToast, openAuth, refreshUsage,
+  renderUsage, showPaywall, promptUpgrade,
+};

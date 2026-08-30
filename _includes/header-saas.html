@@ -24,8 +24,14 @@
     </nav>
     <div class="auth-actions">
       <div class="usage-tracker" id="usage-tracker" hidden>
-        <div class="usage-tracker-bar"><span id="usage-bar-fill"></span></div>
-        <span class="usage-tracker-text" id="usage-tracker-text">0 / 1 audits</span>
+        <div class="usage-tracker-normal" id="usage-tracker-normal">
+          <div class="usage-tracker-bar"><span id="usage-bar-fill"></span></div>
+          <span class="usage-tracker-text" id="usage-tracker-text">0 / 1 audits</span>
+        </div>
+        <div class="usage-tracker-limit" id="usage-tracker-limit" hidden>
+          <span class="usage-limit-label">Limit reached</span>
+          <button type="button" class="btn btn-primary btn-xs" id="header-upgrade">Upgrade</button>
+        </div>
       </div>
       <div id="guest-actions" class="guest-actions">
         <button type="button" class="btn btn-ghost btn-sm" id="btn-signin">Sign in</button>
@@ -34,8 +40,14 @@
       <div id="logged-in-actions" class="logged-in-actions" hidden>
         <span class="user-pill" id="user-pill" title=""></span>
         <div class="usage-dropdown-inline" id="usage-dropdown-inline" hidden>
-          <div class="usage-dropdown-bar"><span id="usage-dropdown-fill"></span></div>
-          <span class="usage-dropdown-text" id="usage-dropdown-text">—</span>
+          <div class="usage-inline-normal" id="usage-inline-normal">
+            <div class="usage-dropdown-bar"><span id="usage-dropdown-fill"></span></div>
+            <span class="usage-dropdown-text" id="usage-dropdown-text">—</span>
+          </div>
+          <div class="usage-inline-limit" id="usage-inline-limit" hidden>
+            <span class="usage-limit-label">Limit reached</span>
+            <button type="button" class="btn btn-primary btn-xs" id="header-upgrade-inline">Upgrade</button>
+          </div>
         </div>
         <button type="button" class="btn btn-ghost btn-sm" id="btn-signout">Log out</button>
       </div>

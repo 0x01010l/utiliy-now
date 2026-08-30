@@ -92,6 +92,18 @@ body.saas-body {
   padding: .3rem .65rem .3rem .5rem;
   font-size: .72rem; font-weight: 600; color: var(--muted);
 }
+.usage-tracker-normal { display: flex; align-items: center; gap: .5rem; }
+.usage-tracker-limit {
+  display: flex; align-items: center; gap: .5rem;
+}
+.usage-tracker-limit[hidden], .usage-tracker-normal[hidden] { display: none !important; }
+.usage-limit-label { font-size: .72rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.usage-tracker.at-limit { border-color: rgba(255,59,48,.25); background: rgba(255,59,48,.06); }
+.usage-inline-limit {
+  display: flex; align-items: center; gap: .5rem; flex-wrap: wrap;
+}
+.usage-inline-limit[hidden], .usage-inline-normal[hidden] { display: none !important; }
+.btn-xs { padding: .3rem .65rem; font-size: .72rem; border-radius: 6px; }
 .usage-tracker-bar {
   width: 48px; height: 4px; background: rgba(0,0,0,.08);
   border-radius: 99px; overflow: hidden;

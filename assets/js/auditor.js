@@ -499,8 +499,9 @@ async function runAudit(url) {
 
     if (res.status === 402 || data.paywall) {
       document.body.classList.remove('audit-active');
+      progress.hidden = true;
       if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
-      showPaywall(data.error || 'Audit limit reached. Upgrade to Pro for 80 audits per month.');
+      showPaywall(data.error || 'You have reached your audit limit. Upgrade to continue.');
       return;
     }
     if (!res.ok) throw new Error(data.error || 'Audit failed');
@@ -527,6 +528,11 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('audit-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const url = document.getElementById('audit-url').value.trim();
-    if (url) runAudit(url);
+    if (!url) return;
+    if (window.UtiliyAuth?.isAtAuditLimit?.()) {
+      window.UtiliyAuth.promptUpgrade();
+      return;
+    }
+    runAudit(url);
   });
 });
