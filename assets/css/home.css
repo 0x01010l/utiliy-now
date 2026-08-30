@@ -290,6 +290,7 @@
 }
 .btn-light:hover { transform: scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,.25); color: var(--ink); }
 
+body.audit-active .hero-marketing,
 body.audit-active .hero-visual-wrap,
 body.audit-active .hero-glow,
 body.audit-active .platform-strip,
@@ -300,8 +301,19 @@ body.audit-active .section-report,
 body.audit-active .section-audience,
 body.audit-active .section-faq,
 body.audit-active .cta-band { display: none; }
-body.audit-active .hero-home { padding-bottom: 1.5rem; }
-body.audit-active .hero-home-grid { grid-template-columns: 1fr; }
+body.audit-active .hero-home {
+  padding: 1rem 0 .25rem;
+  background: var(--bg);
+}
+body.audit-active .hero-home-grid { grid-template-columns: 1fr; gap: 0; }
+body.audit-active .hero-copy { max-width: none; }
+body.audit-active .audit-workspace { margin: 0; }
+body.audit-active .audit-form { margin-top: 0; }
+body.audit-active .audit-input-row {
+  max-width: 720px;
+  margin: 0 auto;
+}
+body.audit-active #audit-results { margin-top: .75rem; }
 
 @media (max-width: 900px) {
   .hero-home-grid { grid-template-columns: 1fr; }

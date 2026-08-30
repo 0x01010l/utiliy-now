@@ -62,20 +62,26 @@ function categoryRings(categories) {
 
 function statTiles(sev, total) {
   const tiles = [
-    { key: 'critical', label: 'Critical', val: sev.critical || 0, icon: '⚠' },
-    { key: 'high', label: 'High', val: sev.high || 0, icon: '▲' },
-    { key: 'medium', label: 'Medium', val: sev.medium || 0, icon: '●' },
-    { key: 'low', label: 'Low', val: sev.low || 0, icon: '○' },
-    { key: 'total', label: 'Total issues', val: total || 0, icon: '◈' },
+    { key: 'critical', label: 'Critical', val: sev.critical || 0 },
+    { key: 'high', label: 'High', val: sev.high || 0 },
+    { key: 'medium', label: 'Medium', val: sev.medium || 0 },
+    { key: 'low', label: 'Low', val: sev.low || 0 },
+    { key: 'total', label: 'Total', val: total || 0 },
   ];
   return tiles
     .filter((t) => t.val > 0 || t.key === 'total')
     .map((t) => `<div class="lab-stat-tile ${t.key}">
-      <span class="tile-icon">${t.icon}</span>
       <strong class="tile-val">${t.val}</strong>
       <span class="tile-label">${t.label}</span>
     </div>`)
     .join('');
+}
+
+function scrollToSection(id) {
+  const el = document.querySelector(id);
+  if (!el) return;
+  const top = el.getBoundingClientRect().top + window.scrollY - 88;
+  window.scrollTo({ top, behavior: 'smooth' });
 }
 
 function bigScoreRing(score) {
@@ -307,12 +313,11 @@ function renderLab(data) {
 
   return `
     <div class="audit-lab" id="audit-lab">
-      <div class="lab-grid-bg" aria-hidden="true"></div>
       ${warningBanner}
       <div class="lab-hero">
         ${bigScoreRing(data.scores.overall)}
         <div class="lab-hero-copy">
-          <p class="lab-eyebrow">Audit lab report</p>
+          <p class="lab-eyebrow">Audit report</p>
           <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product Page')}</h2>
           <div class="lab-url">${escapeHtml(data.final_url)}</div>
           <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${shopifyBadge}</span>
@@ -321,9 +326,9 @@ function renderLab(data) {
       </div>
 
       <div class="lab-shell">
-        <aside class="lab-nav-wrap">
-          <nav class="lab-nav" aria-label="Report sections">
-            <div class="lab-nav-title"><span class="nav-dot"></span> Lab modules</div>
+        <aside class="lab-nav-wrap" id="lab-nav-wrap">
+          <nav class="lab-nav" id="lab-nav" aria-label="Report sections">
+            <p class="lab-nav-title">Report</p>
             ${nav}
           </nav>
         </aside>
@@ -331,8 +336,8 @@ function renderLab(data) {
         <div class="lab-main">
           <section class="lab-section" id="lab-overview">
             <div class="lab-section-head">
-              <h3><span class="section-icon">◈</span> Overview</h3>
-              <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} issues found</span>
+              <h3>Overview</h3>
+              <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} issues</span>
             </div>
             <div class="lab-ring-grid">${categoryRings(data.scores.categories)}</div>
             <div class="charts-row">
@@ -341,7 +346,7 @@ function renderLab(data) {
                 ${barChart(data.scores.categories)}
               </div>
               <div class="chart-card chart-card-heat">
-                <h4>Zone heatmap <span class="chart-hint">Click a zone to jump</span></h4>
+                <h4>Zone scores</h4>
                 <div class="heatmap-grid">${heatmap(zones)}</div>
               </div>
             </div>
@@ -350,7 +355,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-seo">
             <div class="lab-section-head">
-              <h3><span class="section-icon">◎</span> SEO & Meta</h3>
+              <h3>SEO & Meta</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.seo)}">${data.scores.categories.seo}/100</span>
             </div>
             <div class="signal-cards">
@@ -367,7 +372,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-keywords">
             <div class="lab-section-head">
-              <h3><span class="section-icon">◇</span> Keywords</h3>
+              <h3>Keywords</h3>
               ${data.keywords?.primary_keyword ? `<span class="zone-score good">Focus: ${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
             </div>
             ${renderKeywords(data.keywords)}
@@ -375,7 +380,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-product">
             <div class="lab-section-head">
-              <h3><span class="section-icon">▣</span> Product Information</h3>
+              <h3>Product Information</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.product_information)}">${data.scores.categories.product_information}/100</span>
             </div>
             <div class="product-facts">${renderProductFacts(lab, data)}</div>
@@ -392,7 +397,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-schema">
             <div class="lab-section-head">
-              <h3><span class="section-icon">{ }</span> Structured Data</h3>
+              <h3>Structured Data</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
             </div>
             ${renderSchema(data)}
@@ -400,7 +405,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-images">
             <div class="lab-section-head">
-              <h3><span class="section-icon">▦</span> Image Lab</h3>
+              <h3>Images</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.images)}">${data.scores.categories.images}/100</span>
             </div>
             <p style="font-size:.88rem;color:var(--muted);margin:0 0 1rem;">${escapeHtml(data.images?.summary || '')}</p>
@@ -409,7 +414,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-code">
             <div class="lab-section-head">
-              <h3><span class="section-icon">&lt;/&gt;</span> Page Code</h3>
+              <h3>Page Code</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.page_code?.html_size_kb || '—'} KB</span>
             </div>
             <div class="signal-cards" style="margin-bottom:1rem;">
@@ -431,7 +436,7 @@ function renderLab(data) {
 
           <section class="lab-section fix-queue" id="lab-fixes">
             <div class="lab-section-head">
-              <h3><span class="section-icon">⚡</span> Fix Queue</h3>
+              <h3>Fix Queue</h3>
               <span class="zone-score good">${(data.fixes || []).length} actionable fixes</span>
             </div>
             ${(data.fixes || []).map(renderFix).join('') || '<p>No fixes generated.</p>'}
@@ -506,7 +511,7 @@ function bindLabInteractions(root) {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const id = link.getAttribute('href');
-      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToSection(id);
       root.querySelectorAll('.lab-nav a').forEach((a) => a.classList.remove('active'));
       link.classList.add('active');
     });
@@ -514,8 +519,7 @@ function bindLabInteractions(root) {
 
   root.querySelectorAll('.heat-cell[data-scroll]').forEach((cell) => {
     cell.addEventListener('click', () => {
-      const target = document.getElementById(cell.dataset.scroll);
-      target?.scrollIntoView({ behavior: 'smooth' });
+      scrollToSection(`#${cell.dataset.scroll}`);
     });
   });
 
@@ -549,18 +553,6 @@ function bindLabInteractions(root) {
   sections.forEach((s) => observer.observe(s));
 
   animateLabMetrics(root);
-
-  const navWrap = root.querySelector('.lab-nav-wrap');
-  if (navWrap && window.matchMedia('(min-width: 901px)').matches) {
-    const onScroll = () => {
-      const shell = root.querySelector('.lab-shell');
-      if (!shell) return;
-      const rect = shell.getBoundingClientRect();
-      navWrap.classList.toggle('is-floating', rect.top < 88 && rect.bottom > 200);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-  }
 }
 
 async function runAudit(url) {
