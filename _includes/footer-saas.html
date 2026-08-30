@@ -1,0 +1,36 @@
+<footer class="saas-footer">
+  <div class="container footer-grid">
+    <section>
+      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="Utiliy" width="100" height="24">
+      <p>{{ site.description }}</p>
+    </section>
+    <section>
+      <h2>Product</h2>
+      <ul>
+        <li><a href="{{ '/product-page-auditor/' | relative_url }}">Product page auditor</a></li>
+        <li><a href="{{ '/product-page-seo-checker/' | relative_url }}">SEO checker</a></li>
+        <li><a href="{{ '/product-schema-checker/' | relative_url }}">Schema checker</a></li>
+        <li><a href="{{ '/ai-shopping-readiness/' | relative_url }}">AI shopping readiness</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Platforms</h2>
+      <ul>
+        <li><a href="{{ '/shopify-product-page-seo/' | relative_url }}">Shopify</a></li>
+        <li><a href="{{ '/woocommerce-product-page-seo/' | relative_url }}">WooCommerce</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Company</h2>
+      <ul>
+        <li><a href="{{ '/pricing/' | relative_url }}">Pricing</a></li>
+        <li><a href="{{ '/guides/' | relative_url }}">Guides</a></li>
+        <li><a href="{{ '/privacy/' | relative_url }}">Privacy</a></li>
+        <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+      </ul>
+    </section>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.company.name }}. All rights reserved.</p>
+  </div>
+</footer>

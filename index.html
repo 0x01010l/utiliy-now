@@ -1,95 +1,70 @@
 ---
-layout: default
-title: Home
+layout: saas
+title: Utiliy — AI Product Page Auditor for Ecommerce SEO
+description: Audit any product page for SEO, structured data, AI shopping readiness, images, and conversion clarity. Paste a URL, get a prioritized fix list.
+auditor: true
 ---
 
-<section class="home-hero">
-  <div class="container home-hero-grid">
-    <div>
-      <p class="eyebrow">Home lab · Privacy · Side income</p>
-      <h1>Fix your network. Protect your data. Skip the hype.</h1>
-      <p class="home-lead">
-        I'm Mike Chen, a network engineer in Portland. Utiliy is where I write walkthroughs from projects I run at home —
-        DNS filtering, router configs that survived my parents' house, and side gigs that actually paid me.
-      </p>
-      <p class="home-cta">
-        New here? Start with the <a href="{{ '/start-here/' | relative_url }}">guided reading path</a>.
-      </p>
-    </div>
-    <aside class="hero-card">
-      <h2>What you'll find here</h2>
-      <p>Long-form guides with command output, failure stories, and the numbers behind the setup.</p>
-      <div class="hero-stats">
-        <div><strong>{{ site.posts.size }}</strong><span>Published guides</span></div>
-        <div><strong>3</strong><span>Reading paths</span></div>
-        <div><strong>2026</strong><span>Year this started</span></div>
+<section class="hero" id="audit">
+  <div class="container">
+    <p class="eyebrow">Product page auditor</p>
+    <h1>Find what's holding your product page back</h1>
+    <p class="hero-lead">
+      One audit for SEO, structured data, AI shopping visibility, product information, images, and conversion clarity.
+      Paste a URL. Get a score and a prioritized fix list.
+    </p>
+    {% include audit-form.html %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <h2>One audit. Every important product-page signal.</h2>
+    <p class="lead">Generic SEO tools crawl entire sites. Utiliy focuses on the page that actually converts — your product detail page.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <h3>SEO & technical</h3>
+        <p>Title, meta, headings, canonical, indexability, and on-page structure — explained in plain language.</p>
       </div>
-    </aside>
-  </div>
-</section>
-
-<section class="container">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Featured</p>
-      <h2>Start with these</h2>
+      <div class="feature-card">
+        <h3>AI shopping readiness</h3>
+        <p>Could ChatGPT, Perplexity, or Google AI Mode confidently recommend this product? We score missing facts.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Structured data</h3>
+        <p>Product, Offer, price, availability, brand, GTIN — validated against what is visible on the page.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Product information</h3>
+        <p>Specs, dimensions, materials, warranty, shipping, returns — the details buyers and AI agents need.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Images</h3>
+        <p>Alt text, image count, and visual support for the product story — without unsupported claims.</p>
+      </div>
+      <div class="feature-card">
+        <h3>Conversion clarity</h3>
+        <p>Is the offer obvious? Do benefits, differentiation, and trust signals show up above the fold?</p>
+      </div>
     </div>
-    <p>Hand-picked for a first home lab or tightening security without buying enterprise gear.</p>
-  </div>
-
-  <div class="feature-grid">
-    {% assign featured = site.posts | where_exp: "post", "post.featured == true" %}
-    {% for post in featured limit:3 %}
-      <article class="card {% if forloop.first %}card-feature{% endif %}">
-        <p class="card-kicker">{{ post.categories | first }}</p>
-        <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-        <p>{{ post.description | default: post.excerpt | strip_html | truncate: 180 }}</p>
-      </article>
-    {% endfor %}
   </div>
 </section>
 
-<section class="container">
-  <div class="section-head">
-    <div>
-      <p class="eyebrow">Latest</p>
-      <h2>Recent articles</h2>
+<section class="section">
+  <div class="container">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><h3>Enter URL</h3><p>Paste any public Shopify, WooCommerce, or ecommerce product page.</p></div>
+      <div class="step"><h3>We analyze</h3><p>Deterministic checks plus AI reasoning on structure, content, and schema.</p></div>
+      <div class="step"><h3>Fix what matters</h3><p>Critical issues first, then quick wins — not a wall of jargon.</p></div>
     </div>
-    <a href="{{ '/blog/' | relative_url }}">View all →</a>
-  </div>
-
-  <div class="article-grid">
-    {% for post in site.posts limit:6 %}
-    <article class="card">
-      <p class="card-meta">{{ post.date | date: "%b %-d, %Y" }}</p>
-      <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
-      <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
-    </article>
-    {% endfor %}
   </div>
 </section>
 
-<section class="container topic-grid">
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
-    <strong>Networking</strong>
-    <span>DNS, VLANs, Wi-Fi fixes</span>
-  </a>
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
-    <strong>Privacy</strong>
-    <span>Pi-hole, VPNs, password managers</span>
-  </a>
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
-    <strong>Home Lab</strong>
-    <span>Pi, Proxmox, Tailscale</span>
-  </a>
-  <a class="card topic-card" href="{{ '/blog/' | relative_url }}">
-    <strong>Side Income</strong>
-    <span>Testing apps, freelance writing</span>
-  </a>
-</section>
-
-<section class="container cta-band">
-  <h2>Want a specific guide?</h2>
-  <p>If three people email the same question, it becomes the next article. Tell me what is breaking.</p>
-  <a href="{{ '/contact/' | relative_url }}">Send a topic request →</a>
+<section class="section">
+  <div class="container cta-band">
+    <h2>Audit your first product page free</h2>
+    <p class="lead" style="margin-inline:auto;">No credit card. See your score in under a minute.</p>
+    <p style="margin-top:1.25rem;"><a class="btn btn-primary" href="#audit">Analyze a product page</a></p>
+  </div>
 </section>

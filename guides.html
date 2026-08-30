@@ -1,0 +1,23 @@
+---
+layout: saas
+title: Guides
+description: Ecommerce product page SEO guides, structured data tutorials, and AI shopping optimization resources from Utiliy.
+permalink: /guides/
+---
+
+<section class="section" style="padding-top:3rem;">
+  <div class="container">
+    <p class="eyebrow">Resources</p>
+    <h1 style="font-family:var(--serif);font-size:2.5rem;">Product page optimization guides</h1>
+    <p class="lead">Practical guides for ecommerce SEO, structured data, and AI shopping — not generic content marketing.</p>
+
+    <div class="feature-grid" style="margin-top:2rem;">
+      {% for guide in site.guides %}
+      <a class="feature-card" href="{{ guide.url | relative_url }}" style="color:inherit;">
+        <h3>{{ guide.title }}</h3>
+        <p>{{ guide.description }}</p>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

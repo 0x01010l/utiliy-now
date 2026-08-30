@@ -6,3 +6,4 @@ vendor/
 .bundle/
 *.gem
 .DS_Store
+api-deploy.zip

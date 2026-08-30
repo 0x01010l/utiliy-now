@@ -1,50 +1,54 @@
-title: "Utiliy"
-description: "Practical guides on home networking, privacy, and earning from tech — written without the hype."
-url: "https://utiliy.com"
+title: Utiliy
+description: AI product page auditor for ecommerce SEO, structured data, AI shopping readiness, and conversion clarity.
+url: https://utiliy.com
 baseurl: ""
 lang: en
-timezone: America/Los_Angeles
+timezone: UTC
 
 theme: null
 future: false
 
-permalink: /blog/:title/
+permalink: pretty
 markdown: kramdown
 highlighter: rouge
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
 
 plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
 
-logo: /assets/img/og-cover.svg
+logo: /assets/img/utiliy-logo.svg
+api_url: https://utiliy-audit-api.azurewebsites.net/api
 
-author:
-  name: Mike Chen
+company:
+  name: Utiliy
   email: hello@utiliy.com
-  location: Portland, Oregon
-  bio: "Network engineer writing about privacy, home labs, and side income from setups I actually run."
-  started: "2026"
-
-# Leave blank until you add each service. Empty values are not loaded on the site.
-google_analytics: ""
-google_site_verification: ""
-adsense_client: ""
+  founded: "2026"
 
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: pages
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: posts
     values:
       layout: post
-      author: Mike Chen
-      image: /assets/img/og-cover.svg
+      author: Utiliy Team
 
 exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
   - vendor
+  - api
+  - docs
+  - node_modules
+  - _archive
+
+collections:
+  guides:
+    output: true
+    permalink: /guides/:name/

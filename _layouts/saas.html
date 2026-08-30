@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  {% include head-saas.html %}
+</head>
+<body class="saas-body" data-api-url="{{ site.api_url }}">
+  {% include header-saas.html %}
+  <main id="main">{{ content }}</main>
+  {% include footer-saas.html %}
+  <script src="{{ '/assets/js/saas.js' | relative_url }}" defer></script>
+  {% if page.auditor %}
+  <script src="{{ '/assets/js/auditor.js' | relative_url }}" defer></script>
+  {% endif %}
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  {% include head-saas.html %}
+</head>
+<body class="saas-body" data-api-url="{{ site.api_url }}">
+  {% include header-saas.html %}
+  <main id="main" class="landing-main">
+    <article class="landing-article">
+      <header class="landing-hero">
+        <div class="container landing-hero-inner">
+          <p class="eyebrow">{{ page.eyebrow | default: "Product page audit" }}</p>
+          <h1>{{ page.title }}</h1>
+          {% if page.subtitle %}<p class="landing-lead">{{ page.subtitle }}</p>{% endif %}
+          {% include audit-form.html %}
+        </div>
+      </header>
+      <div class="container landing-content prose">
+        {{ content }}
+      </div>
+    </article>
+  </main>
+  {% include footer-saas.html %}
+  <script src="{{ '/assets/js/saas.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/auditor.js' | relative_url }}" defer></script>
+</body>
+</html>
