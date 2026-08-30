@@ -513,7 +513,7 @@ function setupFloatingNav(root) {
   if (!wrap || !nav || !shell) return null;
 
   const mq = window.matchMedia('(min-width: 901px)');
-  const top = 84;
+  const headerOffset = 84;
 
   const update = () => {
     if (!mq.matches) {
@@ -525,21 +525,25 @@ function setupFloatingNav(root) {
 
     const shellRect = shell.getBoundingClientRect();
     const wrapRect = wrap.getBoundingClientRect();
-    const inView = shellRect.bottom > top + 60 && shellRect.top < window.innerHeight - 40;
+
+    if (shellRect.bottom < headerOffset || shellRect.top > window.innerHeight) {
+      nav.classList.remove('is-floating');
+      nav.style.visibility = 'hidden';
+      wrap.style.minHeight = '';
+      return;
+    }
 
     wrap.style.minHeight = `${nav.offsetHeight}px`;
 
-    if (!inView) {
-      nav.classList.remove('is-floating');
-      nav.style.visibility = 'hidden';
-      return;
-    }
+    // Stay aligned with the sidebar slot; only pin to header after scrolling past hero
+    const top = Math.max(headerOffset, wrapRect.top);
 
     nav.classList.add('is-floating');
     nav.style.visibility = 'visible';
     nav.style.top = `${top}px`;
     nav.style.left = `${wrapRect.left}px`;
     nav.style.width = `${wrapRect.width}px`;
+    nav.style.maxHeight = `calc(100vh - ${top}px - 1.5rem)`;
   };
 
   update();
