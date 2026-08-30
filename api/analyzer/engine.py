@@ -8,14 +8,112 @@ from .ai_analyzer import analyze_with_llm
 from .content_analyzer import analyze_ai_readiness, analyze_product_info
 from .crawler import fetch_page
 from .fixes import build_fixes
+from .keyword_analyzer import analyze_keywords
+from .page_code_analyzer import analyze_page_code
 from .schema_analyzer import analyze_schema, _collect_products
 from .scoring import bucket_issues, compute_overall
 from .seo_analyzer import analyze_seo
 from .vision_analyzer import analyze_product_images
 
 
-def _issue_dict(severity: str, code: str, message: str, category: str) -> dict[str, str]:
-    return {"severity": severity, "code": code, "message": message, "category": category}
+def _issue_dict(severity: str, code: str, message: str, category: str, field: str | None = None) -> dict[str, str]:
+    d: dict[str, str] = {"severity": severity, "code": code, "message": message, "category": category}
+    if field:
+        d["field"] = field
+    return d
+
+
+def _build_lab(
+    scores: dict[str, int],
+    all_issues: list[dict[str, str]],
+    seo,
+    keywords: dict,
+    page_code: dict,
+    schema,
+    product_info,
+    vision: dict,
+) -> dict[str, Any]:
+    severity_counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
+    for issue in all_issues:
+        sev = issue.get("severity", "medium")
+        if sev in severity_counts:
+            severity_counts[sev] += 1
+
+    zone_defs = [
+        ("seo", "SEO & Meta", scores.get("seo", 0)),
+        ("structured_data", "Schema", scores.get("structured_data", 0)),
+        ("product_information", "Product Info", scores.get("product_information", 0)),
+        ("images", "Images", scores.get("images", 0)),
+        ("ai_readiness", "AI Shopping", scores.get("ai_readiness", 0)),
+        ("content_quality", "Content", scores.get("content_quality", 0)),
+        ("technical", "Technical", scores.get("technical", 0)),
+    ]
+
+    zones = []
+    for zone_id, label, score in zone_defs:
+        zone_issues = [i for i in all_issues if i.get("category") == zone_id]
+        for i in page_code.get("issues", []):
+            if zone_id == "technical":
+                zone_issues.append({**i, "category": "technical"})
+        status = "good" if score >= 80 else "warn" if score >= 60 else "bad"
+        zones.append({
+            "id": zone_id,
+            "label": label,
+            "score": score,
+            "error_count": len(zone_issues),
+            "status": status,
+            "issues": zone_issues[:8],
+        })
+
+    return {
+        "severity_counts": severity_counts,
+        "total_issues": len(all_issues),
+        "zones": zones,
+        "keywords": keywords,
+        "page_code": page_code,
+        "title_meta": seo.title_meta,
+        "product_fields": {
+            "found": [k for k, v in product_info.extracted.items() if v],
+            "missing": product_info.missing,
+            "extracted": product_info.extracted,
+        },
+        "schema_checklist": _schema_checklist(schema),
+        "image_gallery": _image_gallery(vision, []),
+    }
+
+
+def _schema_checklist(schema) -> list[dict[str, Any]]:
+    props = ["name", "description", "image", "sku", "brand", "offers", "price", "availability", "gtin", "aggregateRating"]
+    found_set = set(schema.properties_found)
+    missing_set = set(schema.properties_missing)
+    checklist = []
+    for p in props:
+        if p in found_set or any(p in f for f in found_set):
+            checklist.append({"property": p, "status": "found"})
+        elif p in missing_set:
+            checklist.append({"property": p, "status": "missing"})
+        else:
+            checklist.append({"property": p, "status": "optional"})
+    return checklist
+
+
+def _image_gallery(vision: dict, crawl_images: list) -> list[dict[str, Any]]:
+    results = vision.get("results", [])
+    gallery = []
+    for i, img in enumerate(results):
+        issues = img.get("issues", [])
+        status = "good" if not issues and img.get("alt") else "warn" if issues else "bad" if not img.get("alt") else "good"
+        gallery.append({
+            "index": i + 1,
+            "src": img.get("src", ""),
+            "alt": img.get("alt", ""),
+            "caption": img.get("caption", ""),
+            "ocr": img.get("ocr_snippet", ""),
+            "issues": issues,
+            "status": status,
+            "fix": issues[0] if issues else ("Add descriptive alt text" if not img.get("alt") else None),
+        })
+    return gallery
 
 
 async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
@@ -27,6 +125,8 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
         og_hints=crawl.og_product_hints,
     )
     seo = analyze_seo(crawl)
+    page_code = analyze_page_code(crawl)
+    keywords = analyze_keywords(crawl)
     products = _collect_products(crawl.json_ld)
     schema_product = products[0] if products else None
     product_info = analyze_product_info(crawl, schema_product)
@@ -38,6 +138,11 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
         technical_score -= 40
     if not crawl.headers.get("content-type", "").startswith("text/html"):
         technical_score -= 20
+    for issue in page_code.get("issues", []):
+        if issue["severity"] == "critical":
+            technical_score -= 25
+        elif issue["severity"] == "high":
+            technical_score -= 10
     technical_score = max(0, technical_score)
 
     content_score = 70
@@ -56,6 +161,7 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             "schema_issues": [i.message for i in schema.issues],
             "seo_issues": [i.message for i in seo.issues],
             "missing_product_fields": product_info.missing,
+            "keywords": keywords.get("top_keywords", [])[:8],
             "og_hints": crawl.og_product_hints,
             "image_count": len(crawl.images),
         }
@@ -80,17 +186,22 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
 
     all_issues: list[dict[str, str]] = []
     for i in seo.issues:
-        all_issues.append(_issue_dict(i.severity, i.code, i.message, "seo"))
+        all_issues.append(_issue_dict(i.severity, i.code, i.message, "seo", i.field))
     for i in schema.issues:
-        all_issues.append(_issue_dict(i.severity, i.code, i.message, "structured_data"))
+        all_issues.append(_issue_dict(i.severity, i.code, i.message, "structured_data", i.field))
     for i in product_info.issues:
         all_issues.append(_issue_dict(i["severity"], i["code"], i["message"], "product_information"))
+    for issue in page_code.get("issues", []):
+        all_issues.append(_issue_dict(issue["severity"], issue["code"], issue["message"], "technical"))
     for img in vision.get("results", []):
         for msg in img.get("issues", []):
             all_issues.append(_issue_dict("medium", "image_issue", msg, "images"))
 
     buckets = bucket_issues(all_issues)
     fixes = build_fixes(crawl, seo, schema, vision, product_info, llm_notes)
+
+    lab = _build_lab(category_scores, all_issues, seo, keywords, page_code, schema, product_info, vision)
+    lab["image_gallery"] = _image_gallery(vision, crawl.images)
 
     return {
         "url": crawl.url,
@@ -103,6 +214,7 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             "categories": scores.categories,
             "weights": scores.weights,
         },
+        "lab": lab,
         "ai_shopping_readiness": ai_ready,
         "product_information": {
             "extracted": product_info.extracted,
@@ -113,12 +225,16 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             "properties_found": schema.properties_found,
             "properties_missing": schema.properties_missing,
             "json_ld_blocks_found": len(crawl.json_ld),
+            "snippets": page_code.get("json_ld_snippets", []),
         },
         "seo": {
             "signals": seo.signals,
+            "title_meta": seo.title_meta,
             "analysis": llm_notes.get("seo_analysis") if llm_notes else _seo_narrative(seo, crawl),
-            "issues": [{"severity": i.severity, "message": i.message, "code": i.code} for i in seo.issues],
+            "issues": [{"severity": i.severity, "message": i.message, "code": i.code, "field": i.field} for i in seo.issues],
         },
+        "keywords": keywords,
+        "page_code": page_code,
         "content": {
             "analysis": llm_notes.get("content_analysis") if llm_notes else "Review product description depth, benefits, and differentiation above the fold.",
             "word_count_estimate": len(crawl.visible_text.split()),

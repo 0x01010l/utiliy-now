@@ -8,29 +8,25 @@ auditor: true
 <section class="hero" id="audit">
   <div class="container hero-grid">
     <div>
-      <p class="eyebrow">AI product page auditor</p>
-      <h1>Fix your product page — don't just score it</h1>
+      <p class="eyebrow">Product page audit lab</p>
+      <h1>Deep-dive your product page like a growth lab</h1>
       <p class="hero-lead">
-        Paste a URL. Get SEO analysis, schema validation, Azure Vision image review, AI shopping readiness,
-        and <strong>copy-paste fixes</strong> — not a wall of numbers.
+        Paste a URL. Get a full diagnostic dashboard — SEO meters, keyword map, schema checklist,
+        image lab with vision data, page code inspector, and a prioritized fix queue.
       </p>
-      <p class="audit-hint" style="margin-bottom:1rem;">✓ 1 free audit · then Pro from $15/mo</p>
+      <p class="audit-hint" style="margin-bottom:1rem;">✓ 1 free full lab report · Pro from $15/mo</p>
       {% include audit-form.html %}
-      <div class="audit-progress" id="audit-progress" hidden></div>
-      <div class="audit-results" id="audit-results" hidden></div>
     </div>
     <div class="hero-visual">
-      <p class="eyebrow">Example report</p>
-      <div class="mock-score">
-        <svg class="score-ring" viewBox="0 0 100 100">
-          <circle class="bg" cx="50" cy="50" r="42" fill="none" stroke="#e2e8f0" stroke-width="8"/>
-          <circle class="fg" cx="50" cy="50" r="42" fill="none" stroke="#4f46e5" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round" transform="rotate(-90 50 50)"/>
-          <text x="50" y="54" text-anchor="middle" font-size="1.4rem" font-weight="700" fill="#0f172a">75</text>
-        </svg>
-        <div>
-          <strong>SEO, schema, images, AI readiness</strong>
-          <p style="color:var(--muted);font-size:.88rem;margin:.35rem 0 0;">Actionable fixes with code you can paste into Shopify or WooCommerce.</p>
+      <p class="eyebrow">Lab preview</p>
+      <div class="mock-lab-preview">
+        <div class="mock-heat">
+          <div class="mock-cell good">82<span>SEO</span></div>
+          <div class="mock-cell warn">58<span>Schema</span></div>
+          <div class="mock-cell bad">41<span>Images</span></div>
+          <div class="mock-cell good">76<span>Keywords</span></div>
         </div>
+        <p style="color:var(--muted);font-size:.85rem;margin:.75rem 0 0;">Heatmap · bar charts · fix queue · code snippets</p>
       </div>
     </div>
   </div>
@@ -38,14 +34,14 @@ auditor: true
 
 <section class="section">
   <div class="container">
-    <h2 style="font-family:var(--serif);">Diagnosis + fixes, not generic AI fluff</h2>
+    <h2 style="font-family:var(--serif);">A full audit lab, not a single score</h2>
     <div class="feature-grid">
-      <div class="feature-card"><h3>🔍 Deep SEO analysis</h3><p>Title, meta, H1, canonical, thin content — with written analysis and fix snippets.</p></div>
-      <div class="feature-card"><h3>📋 Schema checker + template</h3><p>Detects JSON-LD, microdata, OG. Missing Product schema? We generate the JSON-LD to paste.</p></div>
-      <div class="feature-card"><h3>🖼 Azure Vision images</h3><p>Caption, OCR, alt-text gaps — see what AI vision detects in your gallery.</p></div>
-      <div class="feature-card"><h3>🤖 AI shopping score</h3><p>Could an AI assistant recommend this product? Missing weight, price, warranty flagged.</p></div>
-      <div class="feature-card"><h3>✅ Prioritized fixes</h3><p>Critical → high → quick wins. Each fix has steps and copy-paste code.</p></div>
-      <div class="feature-card"><h3>💳 1 free, then Pro</h3><p>One full audit free. Unlimited with Stripe Pro subscription.</p></div>
+      <div class="feature-card"><h3>📊 Lab dashboard</h3><p>Category bar charts, error heatmap, severity counts — see exactly where your page breaks.</p></div>
+      <div class="feature-card"><h3>🏷 Keyword map</h3><p>Top terms, title/H1 alignment, density signals, and keyword opportunities.</p></div>
+      <div class="feature-card"><h3>🔍 SEO meters</h3><p>Title and meta length bars with optimal zones, heading outline, OG tags.</p></div>
+      <div class="feature-card"><h3>🖼 Image lab</h3><p>Thumbnail grid with alt status, vision captions, and per-image fix notes.</p></div>
+      <div class="feature-card"><h3>💻 Page code</h3><p>Head markup preview, JSON-LD snippets, link stats, technical flags.</p></div>
+      <div class="feature-card"><h3>✅ Fix queue</h3><p>Prioritized fixes with copy-paste code for Shopify, WooCommerce, or custom themes.</p></div>
     </div>
   </div>
 </section>

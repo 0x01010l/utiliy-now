@@ -1,15 +1,19 @@
 const API_URL = document.body.dataset.apiUrl || 'https://utiliy-audit-api.azurewebsites.net/api';
 
 const LABELS = {
-  seo: 'SEO',
-  structured_data: 'Structured data',
-  product_information: 'Product info',
+  seo: 'SEO & Meta',
+  structured_data: 'Schema',
+  product_information: 'Product Info',
   images: 'Images',
-  ai_readiness: 'AI readiness',
+  ai_readiness: 'AI Shopping',
   content_quality: 'Content',
   conversion_clarity: 'Conversion',
   technical: 'Technical',
 };
+
+function escapeHtml(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+}
 
 function scoreTier(n) {
   if (n >= 80) return 'good';
@@ -17,139 +21,357 @@ function scoreTier(n) {
   return 'bad';
 }
 
-function ringSvg(score) {
-  const r = 42;
-  const c = 2 * Math.PI * r;
-  const offset = c - (score / 100) * c;
-  const color = score >= 80 ? '#059669' : score >= 60 ? '#d97706' : '#dc2626';
-  return `<svg class="score-ring" viewBox="0 0 100 100">
-    <circle class="bg" cx="50" cy="50" r="${r}"/>
-    <circle class="fg" cx="50" cy="50" r="${r}" stroke="${color}"
-      stroke-dasharray="${c}" stroke-dashoffset="${offset}"/>
-    <text x="50" y="54" text-anchor="middle">${score}</text>
-  </svg>`;
+function scoreColor(n) {
+  return n >= 80 ? '#059669' : n >= 60 ? '#d97706' : '#dc2626';
 }
 
-function renderFix(fix) {
-  const steps = (fix.steps || []).map((s) => `<li>${s}</li>`).join('');
+function bigScoreRing(score) {
+  const r = 46;
+  const c = 2 * Math.PI * r;
+  const offset = c - (score / 100) * c;
+  const color = scoreColor(score);
+  return `<div class="lab-score-big">
+    <svg viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="${r}" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7"/>
+      <circle cx="50" cy="50" r="${r}" fill="none" stroke="${color}" stroke-width="7"
+        stroke-dasharray="${c}" stroke-dashoffset="${offset}" stroke-linecap="round"
+        transform="rotate(-90 50 50)"/>
+    </svg>
+    <div class="score-num"><strong>${score}</strong><span>Score</span></div>
+  </div>`;
+}
+
+function barChart(categories) {
+  const rows = Object.entries(categories)
+    .map(([k, v]) => {
+      const tier = scoreTier(v);
+      return `<div class="bar-row">
+        <span>${LABELS[k] || k}</span>
+        <div class="bar-track"><div class="bar-fill ${tier}" style="width:${v}%"></div></div>
+        <span class="bar-val">${v}</span>
+      </div>`;
+    })
+    .join('');
+  return `<div class="bar-chart">${rows}</div>`;
+}
+
+function heatmap(zones) {
+  return (zones || [])
+    .map(
+      (z) => `<div class="heat-cell ${z.status}" data-scroll="lab-${z.id}">
+        <strong>${z.score}</strong>
+        <span>${escapeHtml(z.label)}</span>
+        <div class="err-count">${z.error_count} issue${z.error_count !== 1 ? 's' : ''}</div>
+      </div>`
+    )
+    .join('');
+}
+
+function issueCard(issue) {
+  const sev = issue.severity || 'medium';
+  return `<div class="issue-card">
+    <span class="issue-sev ${sev}">${sev}</span>
+    <div>${escapeHtml(issue.message)}</div>
+  </div>`;
+}
+
+function lengthMeter(label, text, length, status, ideal) {
+  const pct = Math.min(100, (length / 70) * 100);
+  return `<div class="signal-card">
+    <label>${label}</label>
+    <div class="signal-text">${escapeHtml(text) || '<em>Not found</em>'}</div>
+    <div class="meter"><div class="meter-fill ${status}" style="width:${length ? pct : 0}%"></div></div>
+    <div class="meter-labels"><span>0</span><span>${ideal}</span><span>${length} chars</span></div>
+    <span class="status-tag ${status}">${status === 'good' ? 'Optimal' : status === 'missing' ? 'Missing' : status}</span>
+  </div>`;
+}
+
+function renderKeywords(kw) {
+  if (!kw) return '<p>No keyword data.</p>';
+  const cloud = (kw.top_keywords || [])
+    .map((k) => {
+      const cls = k.in_title ? 'in-title' : '';
+      return `<span class="kw-tag ${cls}" title="Score: ${k.score}">${escapeHtml(k.term)}</span>`;
+    })
+    .join('');
+
+  const table = (kw.title_alignment || [])
+    .map(
+      (r) => `<tr>
+        <td>${escapeHtml(r.term)}</td>
+        <td><span class="align-dot ${r.status}"></span> ${r.status}</td>
+        <td>${r.in_title ? '✓' : '—'}</td>
+        <td>${r.in_h1 ? '✓' : '—'}</td>
+      </tr>`
+    )
+    .join('');
+
+  const opps = (kw.opportunities || []).map((o) => `<li>${escapeHtml(o)}</li>`).join('');
+
+  return `
+    <p style="color:var(--muted);font-size:.9rem;margin:0 0 1rem;">${escapeHtml(kw.summary || '')}</p>
+    <div class="kw-cloud">${cloud}</div>
+    <table class="kw-table">
+      <thead><tr><th>Keyword</th><th>Alignment</th><th>Title</th><th>H1</th></tr></thead>
+      <tbody>${table}</tbody>
+    </table>
+    ${opps ? `<h4 style="margin:1rem 0 .5rem;font-size:.85rem;">Opportunities</h4><ul style="font-size:.88rem;color:var(--muted);">${opps}</ul>` : ''}
+  `;
+}
+
+function renderSchema(data) {
+  const checklist = (data.lab?.schema_checklist || []).map((item) => {
+    const icon = item.status === 'found' ? '✓' : item.status === 'missing' ? '✗' : '○';
+    return `<div class="schema-item ${item.status}">${icon} ${escapeHtml(item.property)}</div>`;
+  }).join('');
+
+  const snippets = (data.structured_data?.snippets || data.page_code?.json_ld_snippets || [])
+    .map((s, i) => `<div class="code-viewer"><div class="code-label">JSON-LD block ${i + 1}</div>${escapeHtml(s)}</div>`)
+    .join('');
+
+  return `
+    <p>Product schema: <strong>${data.structured_data?.has_product_schema ? 'Detected' : 'Not detected'}</strong>
+    · ${data.structured_data?.json_ld_blocks_found ?? 0} JSON-LD blocks</p>
+    <div class="schema-grid" style="margin:1rem 0;">${checklist}</div>
+    ${snippets || '<p style="color:var(--muted)">No JSON-LD snippets in page source. Use the Fixes tab for a template.</p>'}
+  `;
+}
+
+function renderImages(gallery) {
+  if (!gallery?.length) return '<p style="color:var(--muted)">No product images analyzed.</p>';
+  return gallery
+    .map(
+      (img, i) => `<div class="img-lab-card" data-img="${i}">
+        <div class="img-thumb">
+          <img src="${escapeHtml(img.src)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<span style=color:#94a3b8>No preview</span>'">
+          <span class="img-status ${img.status}">${img.status}</span>
+        </div>
+        <div class="img-lab-body">
+          <strong>Alt text</strong>
+          ${escapeHtml(img.alt || '— missing —')}
+          ${img.caption ? `<br><strong>Vision</strong> ${escapeHtml(img.caption)}` : ''}
+          ${img.fix ? `<div class="img-fix">Fix: ${escapeHtml(img.fix)}</div>` : ''}
+        </div>
+      </div>`
+    )
+    .join('');
+}
+
+function renderProductFacts(lab) {
+  const fields = lab?.product_fields;
+  if (!fields) return '';
+  const all = [...(fields.found || []), ...(fields.missing || [])];
+  const unique = [...new Set(all)];
+  return unique
+    .map((key) => {
+      const val = fields.extracted?.[key];
+      const missing = fields.missing?.includes(key);
+      return `<div class="fact-card ${missing ? 'missing' : ''}">
+        <label>${escapeHtml(key.replace(/_/g, ' '))}</label>
+        <div class="val">${missing ? 'Not found' : escapeHtml(String(val || '—'))}</div>
+      </div>`;
+    })
+    .join('');
+}
+
+function renderFix(fix, i) {
+  const pri = i < 2 ? 'priority-critical' : i < 5 ? 'priority-high' : 'priority-medium';
+  const steps = (fix.steps || []).map((s) => `<li>${escapeHtml(s)}</li>`).join('');
   const copy = fix.copy_paste
-    ? `<div class="copy-block"><button type="button" class="copy-btn" data-copy>Copy</button>${escapeHtml(fix.copy_paste)}</div>`
+    ? `<div class="copy-block"><button type="button" class="copy-btn">Copy</button>${escapeHtml(fix.copy_paste)}</div>`
     : '';
-  return `<article class="fix-card">
-    <h4>${escapeHtml(fix.title)}</h4>
-    <p class="fix-meta">${fix.category} · ~${fix.effort || '10 min'}</p>
+  return `<article class="fix-card ${pri}">
+    <h4>${i + 1}. ${escapeHtml(fix.title)}</h4>
+    <p class="fix-meta">${escapeHtml(fix.category)} · ~${fix.effort || '10 min'}</p>
     <p><strong>Problem:</strong> ${escapeHtml(fix.problem)}</p>
-    <p><strong>Why it matters:</strong> ${escapeHtml(fix.why_it_matters)}</p>
+    <p><strong>Fix:</strong> ${escapeHtml(fix.why_it_matters)}</p>
     ${steps ? `<ol>${steps}</ol>` : ''}
     ${copy}
   </article>`;
 }
 
-function escapeHtml(s) {
-  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-}
+function renderLab(data) {
+  const lab = data.lab || {};
+  const sev = lab.severity_counts || {};
+  const zones = lab.zones || [];
+  const tm = lab.title_meta || data.seo?.title_meta || {};
 
-function renderResults(data) {
-  const cats = data.scores.categories;
-  const catCards = Object.entries(cats)
-    .map(([k, v]) => `<div class="cat-card ${scoreTier(v)}"><strong>${v}</strong><span>${LABELS[k] || k}</span></div>`)
-    .join('');
+  const navItems = [
+    { id: 'overview', label: 'Overview', badge: data.scores.overall },
+    { id: 'seo', label: 'SEO', badge: sev.high + sev.critical || null },
+    { id: 'keywords', label: 'Keywords', badge: (data.keywords?.opportunities || []).length || null },
+    { id: 'product', label: 'Product', badge: (lab.product_fields?.missing || []).length || null },
+    { id: 'schema', label: 'Schema', badge: data.structured_data?.properties_missing?.length || null },
+    { id: 'images', label: 'Images', badge: (lab.image_gallery || []).filter((i) => i.status !== 'good').length || null },
+    { id: 'code', label: 'Page Code', badge: (data.page_code?.issues || []).length || null },
+    { id: 'fixes', label: 'Fix Queue', badge: (data.fixes || []).length },
+  ];
 
-  const fixes = (data.fixes || []).map(renderFix).join('') || '<p>No fixes generated.</p>';
-
-  const seoIssues = (data.seo?.issues || [])
-    .map((i) => `<li class="sev-${i.severity}">${escapeHtml(i.message)}</li>`)
-    .join('');
-
-  const images = (data.images?.results || [])
+  const nav = navItems
+    .filter((n) => n.badge !== null || n.id === 'overview')
     .map(
-      (img) => `<div class="image-card">
-        <img src="${escapeHtml(img.src)}" alt="" loading="lazy" onerror="this.style.display='none'">
-        <div class="img-meta">
-          <strong>Alt:</strong> ${escapeHtml(img.alt || '—')}<br>
-          ${img.caption ? `<strong>Vision:</strong> ${escapeHtml(img.caption)}<br>` : ''}
-          ${(img.issues || []).map((x) => `<span style="color:var(--warn)">⚠ ${escapeHtml(x)}</span>`).join('<br>')}
-        </div>
-      </div>`
+      (n) =>
+        `<a href="#lab-${n.id}" class="${n.id === 'overview' ? 'active' : ''}" data-nav="${n.id}">
+          ${n.label}${n.badge != null ? `<span class="nav-badge">${n.badge}</span>` : ''}
+        </a>`
     )
     .join('');
 
-  const critical = (data.issues?.critical || [])
-    .map((i) => `<li>${escapeHtml(i.message)}</li>`)
-    .join('');
+  const allSeoIssues = [
+    ...(data.seo?.issues || []),
+    ...(zones.find((z) => z.id === 'seo')?.issues || []),
+  ];
 
   return `
-    <div class="report-header">
-      ${ringSvg(data.scores.overall)}
-      <div>
-        <p class="eyebrow">Audit complete</p>
-        <h2 style="margin:0;font-family:var(--serif);">Product page score: ${data.scores.overall}/100</h2>
-        <p style="color:var(--muted);font-size:.9rem;margin:.35rem 0 1rem;">
-          ${escapeHtml(data.final_url)} · ${data.platform} · HTTP ${data.status_code}
-        </p>
-        <div class="category-grid">${catCards}</div>
+    <div class="audit-lab" id="audit-lab">
+      <div class="lab-hero">
+        ${bigScoreRing(data.scores.overall)}
+        <div>
+          <p class="eyebrow" style="color:#a5b4fc;margin:0;">Audit Lab Report</p>
+          <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product Page')}</h2>
+          <div class="lab-url">${escapeHtml(data.final_url)}</div>
+          <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code}</span>
+        </div>
+        <div class="severity-row">
+          ${sev.critical ? `<span class="sev-pill critical"><span class="dot"></span>${sev.critical} critical</span>` : ''}
+          ${sev.high ? `<span class="sev-pill high"><span class="dot"></span>${sev.high} high</span>` : ''}
+          ${sev.medium ? `<span class="sev-pill medium"><span class="dot"></span>${sev.medium} medium</span>` : ''}
+          ${sev.low ? `<span class="sev-pill low"><span class="dot"></span>${sev.low} low</span>` : ''}
+        </div>
       </div>
-    </div>
 
-    <div class="report-tabs" role="tablist">
-      <button type="button" class="tab-btn active" data-tab="fixes">Fixes (${(data.fixes||[]).length})</button>
-      <button type="button" class="tab-btn" data-tab="seo">SEO</button>
-      <button type="button" class="tab-btn" data-tab="schema">Schema</button>
-      <button type="button" class="tab-btn" data-tab="images">Images</button>
-      <button type="button" class="tab-btn" data-tab="ai">AI shopping</button>
-    </div>
+      <div class="lab-shell">
+        <nav class="lab-nav" aria-label="Report sections">
+          <div class="lab-nav-title">Sections</div>
+          ${nav}
+        </nav>
 
-    <div class="tab-panel active" id="tab-fixes">${fixes}</div>
+        <div class="lab-main">
+          <section class="lab-section" id="lab-overview">
+            <div class="lab-section-head">
+              <h3>📊 Overview</h3>
+              <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} total issues</span>
+            </div>
+            <div class="charts-row">
+              <div class="chart-card">
+                <h4>Category scores</h4>
+                ${barChart(data.scores.categories)}
+              </div>
+              <div class="chart-card">
+                <h4>Error heatmap by zone</h4>
+                <div class="heatmap-grid">${heatmap(zones)}</div>
+              </div>
+            </div>
+            <p style="font-size:.9rem;color:var(--muted);">${escapeHtml(data.seo?.analysis || '')}</p>
+          </section>
 
-    <div class="tab-panel" id="tab-seo">
-      <div class="analysis-block">
-        <h3>SEO analysis</h3>
-        <p>${escapeHtml(data.seo?.analysis || '')}</p>
+          <section class="lab-section" id="lab-seo">
+            <div class="lab-section-head">
+              <h3>🔍 SEO & Meta</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.seo)}">${data.scores.categories.seo}/100</span>
+            </div>
+            <div class="signal-cards">
+              ${lengthMeter('Title tag', tm.title, tm.title_length || 0, tm.title_status || 'missing', tm.title_ideal || '30–60')}
+              ${lengthMeter('Meta description', tm.meta_description, tm.meta_length || 0, tm.meta_status || 'missing', tm.meta_ideal || '120–155')}
+            </div>
+            <div style="margin-top:1rem;">
+              <strong style="font-size:.82rem;">H1:</strong>
+              <span style="font-size:.88rem;color:var(--muted);"> ${escapeHtml(tm.h1 || '—')}</span>
+              ${tm.canonical ? `<br><strong style="font-size:.82rem;">Canonical:</strong> <span style="font-size:.82rem;color:var(--muted);">${escapeHtml(tm.canonical)}</span>` : ''}
+            </div>
+            <div class="issue-cards" style="margin-top:1rem;">${allSeoIssues.map(issueCard).join('') || '<p style="color:var(--muted)">No SEO issues detected.</p>'}</div>
+          </section>
+
+          <section class="lab-section" id="lab-keywords">
+            <div class="lab-section-head">
+              <h3>🏷 Keywords</h3>
+              ${data.keywords?.primary_keyword ? `<span class="zone-score good">Focus: ${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
+            </div>
+            ${renderKeywords(data.keywords)}
+          </section>
+
+          <section class="lab-section" id="lab-product">
+            <div class="lab-section-head">
+              <h3>📦 Product Information</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.product_information)}">${data.scores.categories.product_information}/100</span>
+            </div>
+            <div class="product-facts">${renderProductFacts(lab)}</div>
+            <div style="margin-top:1rem;padding:1rem;background:var(--surface-2);border-radius:10px;">
+              <strong>AI shopping readiness: ${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
+              <p style="margin:.35rem 0 0;font-size:.88rem;color:var(--muted);">${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
+            </div>
+          </section>
+
+          <section class="lab-section" id="lab-schema">
+            <div class="lab-section-head">
+              <h3>📋 Structured Data</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
+            </div>
+            ${renderSchema(data)}
+          </section>
+
+          <section class="lab-section" id="lab-images">
+            <div class="lab-section-head">
+              <h3>🖼 Image Lab</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.images)}">${data.scores.categories.images}/100</span>
+            </div>
+            <p style="font-size:.88rem;color:var(--muted);margin:0 0 1rem;">${escapeHtml(data.images?.summary || '')}</p>
+            <div class="img-lab-grid">${renderImages(lab.image_gallery)}</div>
+          </section>
+
+          <section class="lab-section" id="lab-code">
+            <div class="lab-section-head">
+              <h3>💻 Page Code</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.page_code?.html_size_kb || '—'} KB</span>
+            </div>
+            <div class="signal-cards" style="margin-bottom:1rem;">
+              <div class="signal-card">
+                <label>Links</label>
+                <div class="signal-text">${data.page_code?.links?.internal || 0} internal · ${data.page_code?.links?.external || 0} external · ${data.page_code?.links?.nofollow || 0} nofollow</div>
+              </div>
+              <div class="signal-card">
+                <label>Technical</label>
+                <div class="signal-text">Lang: ${escapeHtml(data.page_code?.lang || '—')} · Viewport: ${data.page_code?.viewport ? '✓' : '✗'} · Scripts: ${data.page_code?.script_count || 0}</div>
+              </div>
+            </div>
+            <h4 style="font-size:.82rem;margin:0 0 .5rem;">Heading outline</h4>
+            <div class="heading-tree">${escapeHtml(data.page_code?.heading_outline || 'No headings')}</div>
+            <h4 style="font-size:.82rem;margin:1rem 0 .5rem;">Head markup preview</h4>
+            <div class="code-viewer">${escapeHtml(data.page_code?.head_preview || '')}</div>
+            ${(data.page_code?.issues || []).map(issueCard).join('')}
+          </section>
+
+          <section class="lab-section fix-queue" id="lab-fixes">
+            <div class="lab-section-head">
+              <h3>✅ Fix Queue</h3>
+              <span class="zone-score good">${(data.fixes || []).length} actionable fixes</span>
+            </div>
+            ${(data.fixes || []).map(renderFix).join('') || '<p>No fixes generated.</p>'}
+          </section>
+        </div>
       </div>
-      <div class="analysis-block">
-        <h3>Signals</h3>
-        <p>Title length: ${data.seo?.signals?.title_length || '—'} · Meta: ${data.seo?.signals?.meta_description_length || '—'} · H1 count: ${data.seo?.signals?.h1_count ?? '—'} · Images: ${data.seo?.signals?.image_count ?? '—'}</p>
-      </div>
-      ${seoIssues ? `<ul class="issue-list">${seoIssues}</ul>` : ''}
-    </div>
-
-    <div class="tab-panel" id="tab-schema">
-      <div class="analysis-block">
-        <h3>Structured data</h3>
-        <p>Product schema: <strong>${data.structured_data?.has_product_schema ? 'Found' : 'Missing'}</strong> · JSON-LD blocks: ${data.structured_data?.json_ld_blocks_found ?? 0}</p>
-        <p>Found: ${(data.structured_data?.properties_found || []).join(', ') || 'none'}</p>
-        <p>Missing: ${(data.structured_data?.properties_missing || []).join(', ') || 'none'}</p>
-      </div>
-    </div>
-
-    <div class="tab-panel" id="tab-images">
-      <div class="analysis-block"><h3>Image analysis</h3><p>${escapeHtml(data.images?.summary || '')}</p></div>
-      <div class="image-grid">${images || '<p>No images analyzed.</p>'}</div>
-    </div>
-
-    <div class="tab-panel" id="tab-ai">
-      <div class="analysis-block">
-        <h3>AI shopping readiness: ${data.ai_shopping_readiness?.score ?? '—'}/100</h3>
-        <p>${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
-        <p><strong>Missing:</strong> ${(data.ai_shopping_readiness?.missing || []).join(', ') || 'none detected'}</p>
-      </div>
-      <div class="analysis-block">
-        <h3>Extracted product facts</h3>
-        <pre style="font-size:.82rem;overflow:auto;">${escapeHtml(JSON.stringify(data.product_information?.extracted || {}, null, 2))}</pre>
-      </div>
-      ${critical ? `<h3>Critical</h3><ul>${critical}</ul>` : ''}
     </div>
   `;
 }
 
-function showProgress(step) {
+function showScanning(step) {
   const el = document.getElementById('audit-progress');
   if (!el) return;
   el.hidden = false;
-  const steps = ['Crawling page…', 'Analyzing SEO & schema…', 'Running image vision…', 'Generating fixes…'];
-  el.innerHTML = `<div class="progress-steps">${steps
-    .map((s, i) => `<div class="progress-step ${i < step ? 'done' : i === step ? 'active' : ''}"><span class="step-dot"></span>${s}</div>`)
-    .join('')}</div>`;
+  const steps = [
+    'Crawling product page…',
+    'Extracting SEO & keywords…',
+    'Analyzing schema & product data…',
+    'Running image vision…',
+    'Building fix queue…',
+  ];
+  el.innerHTML = `<div class="lab-scan">
+    <div class="scan-radar"></div>
+    <p style="font-weight:700;margin:0 0 1rem;">Running audit lab analysis</p>
+    <div class="scan-steps">${steps
+      .map((s, i) => `<div class="scan-step ${i < step ? 'done' : i === step ? 'active' : ''}">${i < step ? '✓' : '○'} ${s}</div>`)
+      .join('')}</div>
+  </div>`;
 }
 
 function showPaywall(msg) {
@@ -162,19 +384,74 @@ function showPaywall(msg) {
   }
 }
 
+function bindLabInteractions(root) {
+  root.querySelectorAll('.lab-nav a').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const id = link.getAttribute('href');
+      document.querySelector(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      root.querySelectorAll('.lab-nav a').forEach((a) => a.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+
+  root.querySelectorAll('.heat-cell[data-scroll]').forEach((cell) => {
+    cell.addEventListener('click', () => {
+      const target = document.getElementById(cell.dataset.scroll);
+      target?.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  root.querySelectorAll('.img-lab-card').forEach((card) => {
+    card.addEventListener('click', () => card.classList.toggle('expanded'));
+  });
+
+  root.querySelectorAll('.copy-btn').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const text = btn.parentElement.textContent.replace('Copy', '').trim();
+      navigator.clipboard.writeText(text);
+      btn.textContent = 'Copied!';
+      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+    });
+  });
+
+  const sections = root.querySelectorAll('.lab-section');
+  const navLinks = root.querySelectorAll('.lab-nav a');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id.replace('lab-', '');
+          navLinks.forEach((a) => a.classList.toggle('active', a.dataset.nav === id));
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -60% 0px' }
+  );
+  sections.forEach((s) => observer.observe(s));
+}
+
 async function runAudit(url) {
   const progress = document.getElementById('audit-progress');
   const results = document.getElementById('audit-results');
   const submit = document.getElementById('audit-submit');
 
   results.hidden = true;
+  results.innerHTML = '';
   submit.disabled = true;
-  showProgress(0);
+  document.body.classList.add('audit-active');
+  showScanning(0);
 
   const headers = window.UtiliyAuth ? window.UtiliyAuth.authHeaders() : { 'Content-Type': 'application/json' };
 
   try {
-    const timers = [setTimeout(() => showProgress(1), 800), setTimeout(() => showProgress(2), 2500), setTimeout(() => showProgress(3), 4500)];
+    const timers = [
+      setTimeout(() => showScanning(1), 600),
+      setTimeout(() => showScanning(2), 2000),
+      setTimeout(() => showScanning(3), 4000),
+      setTimeout(() => showScanning(4), 6000),
+    ];
 
     const res = await fetch(`${API_URL}/audit`, {
       method: 'POST',
@@ -185,34 +462,20 @@ async function runAudit(url) {
     const data = await res.json();
 
     if (res.status === 402 || data.paywall) {
+      document.body.classList.remove('audit-active');
       showPaywall(data.error || 'Free plan includes 1 audit. Upgrade to Pro for unlimited audits.');
       return;
     }
     if (!res.ok) throw new Error(data.error || 'Audit failed');
 
     progress.hidden = true;
-    results.innerHTML = renderResults(data);
+    results.innerHTML = renderLab(data);
     results.hidden = false;
+    bindLabInteractions(results);
 
-    results.querySelectorAll('.tab-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        results.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
-        results.querySelectorAll('.tab-panel').forEach((p) => p.classList.remove('active'));
-        btn.classList.add('active');
-        document.getElementById(`tab-${btn.dataset.tab}`)?.classList.add('active');
-      });
-    });
-
-    results.querySelectorAll('.copy-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        const text = btn.parentElement.textContent.replace('Copy', '').trim();
-        navigator.clipboard.writeText(text);
-        btn.textContent = 'Copied!';
-      });
-    });
-
-    results.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('audit-lab')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
+    document.body.classList.remove('audit-active');
     progress.hidden = true;
     alert(err.message || 'Audit failed');
   } finally {

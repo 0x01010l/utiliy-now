@@ -137,8 +137,20 @@ body.saas-body {
 .progress-step.active .step-dot { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
 .progress-step.done .step-dot { background: var(--good); }
 
-/* Results */
-.audit-results { margin-top: 2rem; }
+.mock-lab-preview { padding: .5rem 0; }
+.mock-heat { display: grid; grid-template-columns: repeat(4, 1fr); gap: .4rem; }
+.mock-cell {
+  border-radius: 8px; padding: .6rem .4rem; text-align: center;
+  font-weight: 700; font-size: 1.1rem;
+}
+.mock-cell span { display: block; font-size: .62rem; font-weight: 600; text-transform: uppercase; opacity: .8; margin-top: .15rem; }
+.mock-cell.good { background: #ecfdf5; color: #065f46; }
+.mock-cell.warn { background: #fffbeb; color: #92400e; }
+.mock-cell.bad { background: #fef2f2; color: #991b1b; }
+
+/* Results full width */
+.audit-results { margin-top: 1.5rem; }
+body.audit-active .container { width: min(calc(100% - 1.5rem), 1280px); }
 .report-header {
   display: grid; grid-template-columns: auto 1fr; gap: 1.5rem;
   background: var(--surface); border: 1px solid var(--line);
