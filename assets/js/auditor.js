@@ -137,36 +137,55 @@ function renderSchema(data) {
   `;
 }
 
+function imgUrl(img) {
+  let src = img.src_display || img.src || '';
+  if (src.startsWith('//')) src = 'https:' + src;
+  return src;
+}
+
 function renderImages(gallery) {
-  if (!gallery?.length) return '<p style="color:var(--muted)">No product images analyzed.</p>';
+  if (!gallery?.length) return '<p class="lab-empty">No product images found.</p>';
   return gallery
     .map(
-      (img, i) => `<div class="img-lab-card" data-img="${i}">
+      (img, i) => {
+        const src = imgUrl(img);
+        return `<div class="img-lab-card" data-img="${i}">
         <div class="img-thumb">
-          <img src="${escapeHtml(img.src)}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<span style=color:#94a3b8>No preview</span>'">
+          <img src="${escapeHtml(src)}" alt="${escapeHtml(img.alt || 'Product image')}" loading="lazy" referrerpolicy="no-referrer" decoding="async"
+            onerror="this.classList.add('img-broken'); this.nextElementSibling?.classList.add('show');">
+          <div class="img-fallback">Preview blocked — <a href="${escapeHtml(src)}" target="_blank" rel="noopener">open image</a></div>
           <span class="img-status ${img.status}">${img.status}</span>
         </div>
         <div class="img-lab-body">
-          <strong>Alt text</strong>
-          ${escapeHtml(img.alt || '— missing —')}
-          ${img.caption ? `<br><strong>Vision</strong> ${escapeHtml(img.caption)}` : ''}
+          <div class="img-row"><span class="img-label">Alt</span><span>${escapeHtml(img.alt || '— missing —')}</span></div>
+          ${img.caption ? `<div class="img-row"><span class="img-label">Vision</span><span>${escapeHtml(img.caption)}</span></div>` : ''}
+          ${img.ocr ? `<div class="img-row"><span class="img-label">OCR</span><span>${escapeHtml(img.ocr)}</span></div>` : ''}
           ${img.fix ? `<div class="img-fix">Fix: ${escapeHtml(img.fix)}</div>` : ''}
         </div>
-      </div>`
+      </div>`;
+      }
     )
     .join('');
 }
 
-function renderProductFacts(lab) {
+const PRODUCT_FIELDS = [
+  'name', 'brand', 'price', 'compare_at_price', 'sku', 'availability',
+  'weight', 'category', 'material', 'warranty', 'shipping', 'returns',
+];
+
+function renderProductFacts(lab, data) {
   const fields = lab?.product_fields;
   if (!fields) return '';
-  const all = [...(fields.found || []), ...(fields.missing || [])];
-  const unique = [...new Set(all)];
-  return unique
+  const extracted = fields.extracted || data?.product_information?.extracted || {};
+  const missingSet = new Set(fields.missing || []);
+  const keys = [...new Set([...PRODUCT_FIELDS, ...Object.keys(extracted)])];
+
+  return keys
+    .filter((key) => PRODUCT_FIELDS.includes(key) || extracted[key])
     .map((key) => {
-      const val = fields.extracted?.[key];
-      const missing = fields.missing?.includes(key);
-      return `<div class="fact-card ${missing ? 'missing' : ''}">
+      const val = extracted[key];
+      const missing = missingSet.has(key) && !val;
+      return `<div class="fact-card ${missing ? 'missing' : val ? 'found' : ''}">
         <label>${escapeHtml(key.replace(/_/g, ' '))}</label>
         <div class="val">${missing ? 'Not found' : escapeHtml(String(val || '—'))}</div>
       </div>`;
@@ -222,15 +241,24 @@ function renderLab(data) {
     ...(zones.find((z) => z.id === 'seo')?.issues || []),
   ];
 
+  const warningBanner = (lab.warnings || [])
+    .map((w) => `<div class="lab-warning">${escapeHtml(w)}</div>`)
+    .join('');
+
+  const shopifyBadge = data.product_information?.shopify_enriched
+    ? '<span class="shopify-badge">Shopify data enriched</span>'
+    : '';
+
   return `
     <div class="audit-lab" id="audit-lab">
+      ${warningBanner}
       <div class="lab-hero">
         ${bigScoreRing(data.scores.overall)}
         <div>
           <p class="eyebrow" style="color:#a5b4fc;margin:0;">Audit Lab Report</p>
           <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product Page')}</h2>
           <div class="lab-url">${escapeHtml(data.final_url)}</div>
-          <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code}</span>
+          <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${shopifyBadge}</span>
         </div>
         <div class="severity-row">
           ${sev.critical ? `<span class="sev-pill critical"><span class="dot"></span>${sev.critical} critical</span>` : ''}
@@ -295,7 +323,8 @@ function renderLab(data) {
               <h3>📦 Product Information</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.product_information)}">${data.scores.categories.product_information}/100</span>
             </div>
-            <div class="product-facts">${renderProductFacts(lab)}</div>
+            <div class="product-facts">${renderProductFacts(lab, data)}</div>
+            ${lab.shopify?.tags?.length ? `<p class="lab-tags">Tags: ${lab.shopify.tags.map((t) => `<span class="kw-tag">${escapeHtml(t)}</span>`).join('')}</p>` : ''}
             <div style="margin-top:1rem;padding:1rem;background:var(--surface-2);border-radius:10px;">
               <strong>AI shopping readiness: ${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
               <p style="margin:.35rem 0 0;font-size:.88rem;color:var(--muted);">${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>

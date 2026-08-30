@@ -14,6 +14,7 @@ from w3lib.html import get_base_url
 
 from .schema_extract import extract_json_ld_blocks, merge_json_ld, find_microdata_products, og_as_product_hints
 from .security import validate_public_url
+from .image_utils import extract_image_src, normalize_image_url
 
 USER_AGENT = "UtiliyBot/1.0 (+https://utiliy.com; product-page-auditor)"
 MAX_BYTES = 2_500_000
@@ -99,12 +100,12 @@ async def fetch_page(url: str) -> CrawlResult:
 
     images: list[dict[str, Any]] = []
     for img in soup.find_all("img"):
-        src = img.get("src") or img.get("data-src") or img.get("data-lazy-src")
+        src = extract_image_src(img, base)
         if not src:
             continue
         images.append(
             {
-                "src": urljoin(base, src),
+                "src": src,
                 "alt": (img.get("alt") or "").strip(),
                 "width": img.get("width"),
                 "height": img.get("height"),

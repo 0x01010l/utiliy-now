@@ -7,6 +7,8 @@ from typing import Any
 
 import httpx
 
+from .image_utils import normalize_image_url
+
 
 async def analyze_product_images(images: list[dict[str, Any]], limit: int = 3) -> dict[str, Any]:
     endpoint = os.getenv("AZURE_VISION_ENDPOINT") or os.getenv("AZURE_OPENAI_ENDPOINT", "").replace("openai", "cognitiveservices")
@@ -24,7 +26,7 @@ async def analyze_product_images(images: list[dict[str, Any]], limit: int = 3) -
 
     async with httpx.AsyncClient(timeout=15.0) as client:
         for img in images[:limit]:
-            src = img.get("src")
+            src = normalize_image_url(img.get("src", ""))
             if not src or not src.startswith("http"):
                 continue
             try:

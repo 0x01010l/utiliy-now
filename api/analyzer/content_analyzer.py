@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass, field
 
 from .crawler import CrawlResult
@@ -76,33 +77,68 @@ def _text_contains_any(text: str, needles: list[str]) -> bool:
     return any(n in lower for n in needles)
 
 
-def analyze_product_info(crawl: CrawlResult, schema_product: dict | None) -> ProductInfoAnalysis:
+def analyze_product_info(
+    crawl: CrawlResult,
+    schema_product: dict | None,
+    shopify_data: dict | None = None,
+) -> ProductInfoAnalysis:
     result = ProductInfoAnalysis()
     text = crawl.visible_text.lower()
     title = (crawl.title or "").strip()
     h1 = crawl.h1s[0] if crawl.h1s else ""
 
+    shopify_extracted = (shopify_data or {}).get("extracted") or {}
+    if shopify_data and shopify_data.get("description_text"):
+        text = text + " " + shopify_data["description_text"].lower()
+
     extracted: dict[str, str | list[str] | None] = {
-        "name": schema_product.get("name") if schema_product else (h1 or title or None),
-        "brand": None,
-        "price": None,
-        "availability": None,
-        "category": schema_product.get("category") if schema_product else None,
+        "name": shopify_extracted.get("name") or (schema_product.get("name") if schema_product else None) or h1 or title or None,
+        "brand": shopify_extracted.get("brand"),
+        "price": shopify_extracted.get("price"),
+        "availability": shopify_extracted.get("availability"),
+        "sku": shopify_extracted.get("sku"),
+        "weight": shopify_extracted.get("weight"),
+        "category": shopify_extracted.get("category") or (schema_product.get("category") if schema_product else None),
+        "warranty": shopify_extracted.get("warranty"),
+        "shipping": shopify_extracted.get("shipping"),
+        "returns": shopify_extracted.get("returns"),
+        "material": shopify_extracted.get("material"),
     }
 
     if schema_product:
         brand = schema_product.get("brand")
-        if isinstance(brand, dict):
-            extracted["brand"] = brand.get("name")
-        elif isinstance(brand, str):
-            extracted["brand"] = brand
+        if not extracted["brand"]:
+            if isinstance(brand, dict):
+                extracted["brand"] = brand.get("name")
+            elif isinstance(brand, str):
+                extracted["brand"] = brand
         offers = schema_product.get("offers")
-        if isinstance(offers, dict):
-            extracted["price"] = offers.get("price")
-            extracted["availability"] = offers.get("availability")
-        for og_key in ("product:price:amount", "og:price:amount"):
-            if crawl.open_graph.get(og_key):
-                extracted["price"] = crawl.open_graph.get(og_key)
+        if isinstance(offers, dict) and not extracted["price"]:
+            price = offers.get("price")
+            currency = offers.get("priceCurrency", "USD")
+            if price:
+                extracted["price"] = f"{currency} {price}" if not str(price).startswith("$") else str(price)
+            avail = offers.get("availability", "")
+            if avail and not extracted["availability"]:
+                extracted["availability"] = "In stock" if "InStock" in str(avail) else "Out of stock" if "OutOfStock" in str(avail) else str(avail)
+
+    for og_key, field in (
+        ("product:price:amount", "price"),
+        ("og:price:amount", "price"),
+        ("product:brand", "brand"),
+    ):
+        if not extracted.get(field) and crawl.open_graph.get(og_key):
+            val = crawl.open_graph.get(og_key)
+            if field == "price":
+                extracted["price"] = f"${val}" if val and not str(val).startswith("$") else val
+            else:
+                extracted[field] = val
+
+    # Price patterns in visible text
+    if not extracted["price"]:
+        m = re.search(r"[\$£€]\s?\d{1,4}(?:[.,]\d{2})?", crawl.visible_text)
+        if m:
+            extracted["price"] = m.group(0).strip()
 
     missing: list[str] = []
     for field_name, hints in INFO_FIELDS:
@@ -113,15 +149,16 @@ def analyze_product_info(crawl: CrawlResult, schema_product: dict | None) -> Pro
             present = True
         if not present:
             missing.append(field_name)
+            sev = "medium" if field_name in {"dimensions", "weight", "warranty", "material"} else "high"
             result.issues.append(
                 {
-                    "severity": "medium" if field_name in {"dimensions", "weight", "warranty"} else "high",
+                    "severity": sev,
                     "code": f"missing_{field_name}",
                     "message": f"Could not find clear {field_name.replace('_', ' ')} information.",
                 }
             )
 
-    result.extracted = extracted
+    result.extracted = {k: v for k, v in extracted.items() if v is not None}
     result.missing = missing
     penalty = min(80, len(missing) * 8)
     result.score = max(0, 100 - penalty)
