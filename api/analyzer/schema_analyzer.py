@@ -6,9 +6,10 @@ from dataclasses import dataclass, field
 from typing import Any
 
 
+from .schema_extract import find_microdata_products
+
 PRODUCT_TYPES = {"Product", "ProductGroup"}
 OFFER_TYPES = {"Offer", "AggregateOffer"}
-RATING_TYPES = {"AggregateRating", "Review"}
 
 
 @dataclass
@@ -74,10 +75,36 @@ def _get_offers(product: dict[str, Any]) -> list[dict[str, Any]]:
     return []
 
 
-def analyze_schema(json_ld: list[Any], visible: dict[str, Any]) -> SchemaAnalysis:
+def analyze_schema(json_ld: list[Any], visible: dict[str, Any], microdata: list | None = None, og_hints: dict | None = None) -> SchemaAnalysis:
     analysis = SchemaAnalysis()
     analysis.products = _collect_products(json_ld)
+    if microdata:
+        md_products = find_microdata_products(microdata)
+        if md_products and not analysis.products:
+            analysis.products = md_products
+            analysis.has_product_schema = True
+            analysis.issues.append(
+                SchemaIssue(
+                    severity="medium",
+                    code="microdata_only",
+                    message="Product found via microdata but not JSON-LD. JSON-LD is preferred for Google rich results.",
+                )
+            )
+
     analysis.has_product_schema = len(analysis.products) > 0
+
+    if not analysis.has_product_schema and og_hints and og_hints.get("name"):
+        analysis.has_product_schema = False  # OG is not full schema
+        analysis.issues.append(
+            SchemaIssue(
+                severity="high",
+                code="og_only_no_jsonld",
+                message="Open Graph product tags found but no Product JSON-LD. Add full Product schema — OG alone is insufficient for rich results.",
+            )
+        )
+        analysis.score = 35
+        analysis.properties_missing = ["name", "description", "image", "offers", "sku", "brand"]
+        return analysis
 
     recommended = [
         "name",

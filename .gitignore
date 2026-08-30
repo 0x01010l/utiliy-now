@@ -7,3 +7,4 @@ vendor/
 *.gem
 .DS_Store
 api-deploy.zip
+api/.venv/

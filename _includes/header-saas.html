@@ -1,14 +1,18 @@
 <header class="saas-header">
   <div class="container header-row">
     <a class="logo" href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="Utiliy" width="120" height="28">
+      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="Utiliy" width="100" height="24">
     </a>
     <nav class="nav" aria-label="Primary">
       <a href="{{ '/product-page-auditor/' | relative_url }}">Auditor</a>
       <a href="{{ '/pricing/' | relative_url }}">Pricing</a>
       <a href="{{ '/guides/' | relative_url }}">Guides</a>
-      <a href="{{ '/product-schema-checker/' | relative_url }}">Schema</a>
     </nav>
-    <a class="btn btn-sm btn-primary" href="{{ '/' | relative_url }}#audit">Audit a page</a>
+    <div class="auth-actions">
+      <span class="user-pill" id="user-pill" hidden></span>
+      <button type="button" class="btn btn-ghost btn-sm" id="btn-signin">Sign in</button>
+      <button type="button" class="btn btn-primary btn-sm" id="btn-signup">Sign up</button>
+      <a class="btn btn-primary btn-sm" href="{{ '/' | relative_url }}#audit">Audit</a>
+    </div>
   </div>
 </header>

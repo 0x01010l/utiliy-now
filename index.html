@@ -1,70 +1,51 @@
 ---
 layout: saas
-title: Utiliy — AI Product Page Auditor for Ecommerce SEO
-description: Audit any product page for SEO, structured data, AI shopping readiness, images, and conversion clarity. Paste a URL, get a prioritized fix list.
+title: Utiliy — AI Product Page Auditor
+description: Audit ecommerce product pages for SEO, structured data, AI shopping readiness, and images. Get actionable fixes, not just scores.
 auditor: true
 ---
 
 <section class="hero" id="audit">
-  <div class="container">
-    <p class="eyebrow">Product page auditor</p>
-    <h1>Find what's holding your product page back</h1>
-    <p class="hero-lead">
-      One audit for SEO, structured data, AI shopping visibility, product information, images, and conversion clarity.
-      Paste a URL. Get a score and a prioritized fix list.
-    </p>
-    {% include audit-form.html %}
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">AI product page auditor</p>
+      <h1>Fix your product page — don't just score it</h1>
+      <p class="hero-lead">
+        Paste a URL. Get SEO analysis, schema validation, Azure Vision image review, AI shopping readiness,
+        and <strong>copy-paste fixes</strong> — not a wall of numbers.
+      </p>
+      <p class="audit-hint" style="margin-bottom:1rem;">✓ 1 free audit · then Pro from $15/mo</p>
+      {% include audit-form.html %}
+      <div class="audit-progress" id="audit-progress" hidden></div>
+      <div class="audit-results" id="audit-results" hidden></div>
+    </div>
+    <div class="hero-visual">
+      <p class="eyebrow">Example report</p>
+      <div class="mock-score">
+        <svg class="score-ring" viewBox="0 0 100 100">
+          <circle class="bg" cx="50" cy="50" r="42" fill="none" stroke="#e2e8f0" stroke-width="8"/>
+          <circle class="fg" cx="50" cy="50" r="42" fill="none" stroke="#4f46e5" stroke-width="8" stroke-dasharray="264" stroke-dashoffset="66" stroke-linecap="round" transform="rotate(-90 50 50)"/>
+          <text x="50" y="54" text-anchor="middle" font-size="1.4rem" font-weight="700" fill="#0f172a">75</text>
+        </svg>
+        <div>
+          <strong>SEO, schema, images, AI readiness</strong>
+          <p style="color:var(--muted);font-size:.88rem;margin:.35rem 0 0;">Actionable fixes with code you can paste into Shopify or WooCommerce.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section">
   <div class="container">
-    <h2>One audit. Every important product-page signal.</h2>
-    <p class="lead">Generic SEO tools crawl entire sites. Utiliy focuses on the page that actually converts — your product detail page.</p>
+    <h2 style="font-family:var(--serif);">Diagnosis + fixes, not generic AI fluff</h2>
     <div class="feature-grid">
-      <div class="feature-card">
-        <h3>SEO & technical</h3>
-        <p>Title, meta, headings, canonical, indexability, and on-page structure — explained in plain language.</p>
-      </div>
-      <div class="feature-card">
-        <h3>AI shopping readiness</h3>
-        <p>Could ChatGPT, Perplexity, or Google AI Mode confidently recommend this product? We score missing facts.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Structured data</h3>
-        <p>Product, Offer, price, availability, brand, GTIN — validated against what is visible on the page.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Product information</h3>
-        <p>Specs, dimensions, materials, warranty, shipping, returns — the details buyers and AI agents need.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Images</h3>
-        <p>Alt text, image count, and visual support for the product story — without unsupported claims.</p>
-      </div>
-      <div class="feature-card">
-        <h3>Conversion clarity</h3>
-        <p>Is the offer obvious? Do benefits, differentiation, and trust signals show up above the fold?</p>
-      </div>
+      <div class="feature-card"><h3>🔍 Deep SEO analysis</h3><p>Title, meta, H1, canonical, thin content — with written analysis and fix snippets.</p></div>
+      <div class="feature-card"><h3>📋 Schema checker + template</h3><p>Detects JSON-LD, microdata, OG. Missing Product schema? We generate the JSON-LD to paste.</p></div>
+      <div class="feature-card"><h3>🖼 Azure Vision images</h3><p>Caption, OCR, alt-text gaps — see what AI vision detects in your gallery.</p></div>
+      <div class="feature-card"><h3>🤖 AI shopping score</h3><p>Could an AI assistant recommend this product? Missing weight, price, warranty flagged.</p></div>
+      <div class="feature-card"><h3>✅ Prioritized fixes</h3><p>Critical → high → quick wins. Each fix has steps and copy-paste code.</p></div>
+      <div class="feature-card"><h3>💳 1 free, then Pro</h3><p>One full audit free. Unlimited with Stripe Pro subscription.</p></div>
     </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="step"><h3>Enter URL</h3><p>Paste any public Shopify, WooCommerce, or ecommerce product page.</p></div>
-      <div class="step"><h3>We analyze</h3><p>Deterministic checks plus AI reasoning on structure, content, and schema.</p></div>
-      <div class="step"><h3>Fix what matters</h3><p>Critical issues first, then quick wins — not a wall of jargon.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container cta-band">
-    <h2>Audit your first product page free</h2>
-    <p class="lead" style="margin-inline:auto;">No credit card. See your score in under a minute.</p>
-    <p style="margin-top:1.25rem;"><a class="btn btn-primary" href="#audit">Analyze a product page</a></p>
   </div>
 </section>

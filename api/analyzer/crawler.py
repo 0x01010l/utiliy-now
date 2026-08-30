@@ -12,6 +12,7 @@ import httpx
 from bs4 import BeautifulSoup
 from w3lib.html import get_base_url
 
+from .schema_extract import extract_json_ld_blocks, merge_json_ld, find_microdata_products, og_as_product_hints
 from .security import validate_public_url
 
 USER_AGENT = "UtiliyBot/1.0 (+https://utiliy.com; product-page-auditor)"
@@ -35,6 +36,7 @@ class CrawlResult:
     json_ld: list[dict[str, Any]]
     microdata: list[dict[str, Any]]
     open_graph: dict[str, str]
+    og_product_hints: dict[str, str]
     visible_text: str
     platform: str
     errors: list[str] = field(default_factory=list)
@@ -65,7 +67,11 @@ async def fetch_page(url: str) -> CrawlResult:
     async with httpx.AsyncClient(
         follow_redirects=True,
         timeout=TIMEOUT,
-        headers={"User-Agent": USER_AGENT, "Accept": "text/html,application/xhtml+xml"},
+        headers={
+            "User-Agent": USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml",
+            "Accept-Language": "en-US,en;q=0.9",
+        },
     ) as client:
         response = await client.get(normalized)
         content_type = response.headers.get("content-type", "")
@@ -106,10 +112,13 @@ async def fetch_page(url: str) -> CrawlResult:
         )
 
     structured = extruct.extract(html, base_url=base, syntaxes=["json-ld", "microdata", "opengraph"])
-    json_ld = structured.get("json-ld", []) or []
+    extruct_ld = structured.get("json-ld", []) or []
+    manual_ld = extract_json_ld_blocks(html)
+    json_ld = merge_json_ld(extruct_ld, manual_ld)
     microdata = structured.get("microdata", []) or []
     og_list = structured.get("opengraph", []) or []
     open_graph = {item.get("property", ""): item.get("content", "") for item in og_list if item.get("property")}
+    og_product_hints = og_as_product_hints(open_graph)
 
     for script in soup(["script", "style", "noscript"]):
         script.decompose()
@@ -130,6 +139,7 @@ async def fetch_page(url: str) -> CrawlResult:
         json_ld=json_ld,
         microdata=microdata,
         open_graph=open_graph,
+        og_product_hints=og_product_hints,
         visible_text=visible_text,
         platform=detect_platform(str(response.url), html),
         errors=errors,

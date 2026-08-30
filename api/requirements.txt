@@ -6,3 +6,7 @@ extruct==0.17.0
 w3lib==2.2.1
 openai==1.54.0
 pydantic==2.9.2
+stripe==11.1.0
+PyJWT==2.9.0
+bcrypt==4.2.0
+azure-data-tables==12.5.0

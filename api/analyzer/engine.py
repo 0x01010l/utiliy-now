@@ -5,11 +5,13 @@ from __future__ import annotations
 from typing import Any
 
 from .ai_analyzer import analyze_with_llm
-from .content_analyzer import analyze_ai_readiness, analyze_images, analyze_product_info
-from .crawler import CrawlResult, fetch_page
+from .content_analyzer import analyze_ai_readiness, analyze_product_info
+from .crawler import fetch_page
+from .fixes import build_fixes
 from .schema_analyzer import analyze_schema, _collect_products
 from .scoring import bucket_issues, compute_overall
 from .seo_analyzer import analyze_seo
+from .vision_analyzer import analyze_product_images
 
 
 def _issue_dict(severity: str, code: str, message: str, category: str) -> dict[str, str]:
@@ -18,12 +20,17 @@ def _issue_dict(severity: str, code: str, message: str, category: str) -> dict[s
 
 async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
     crawl = await fetch_page(url)
-    schema = analyze_schema(crawl.json_ld, {"title": crawl.title or ""})
+    schema = analyze_schema(
+        crawl.json_ld,
+        {"title": crawl.title or ""},
+        microdata=crawl.microdata,
+        og_hints=crawl.og_product_hints,
+    )
     seo = analyze_seo(crawl)
     products = _collect_products(crawl.json_ld)
     schema_product = products[0] if products else None
     product_info = analyze_product_info(crawl, schema_product)
-    images = analyze_images(crawl)
+    vision = await analyze_product_images(crawl.images)
     ai_ready = analyze_ai_readiness(product_info, schema.score)
 
     technical_score = 100
@@ -44,21 +51,26 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             "title": crawl.title,
             "meta_description": crawl.meta_description,
             "h1s": crawl.h1s,
-            "visible_text_excerpt": crawl.visible_text[:4000],
+            "canonical": crawl.canonical,
+            "visible_text_excerpt": crawl.visible_text[:5000],
             "schema_issues": [i.message for i in schema.issues],
             "seo_issues": [i.message for i in seo.issues],
             "missing_product_fields": product_info.missing,
+            "og_hints": crawl.og_product_hints,
+            "image_count": len(crawl.images),
         }
         llm_notes = await analyze_with_llm(summary)
         if llm_notes:
             content_score = int(llm_notes.get("content_quality_score", content_score))
             conversion_score = int(llm_notes.get("conversion_clarity_score", conversion_score))
 
+    image_score = vision.get("score", 70)
+
     category_scores = {
         "seo": seo.score,
         "structured_data": schema.score,
         "product_information": product_info.score,
-        "images": images.score,
+        "images": image_score,
         "ai_readiness": ai_ready["score"],
         "content_quality": content_score,
         "conversion_clarity": conversion_score,
@@ -73,17 +85,12 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
         all_issues.append(_issue_dict(i.severity, i.code, i.message, "structured_data"))
     for i in product_info.issues:
         all_issues.append(_issue_dict(i["severity"], i["code"], i["message"], "product_information"))
-    for i in images.issues:
-        all_issues.append(_issue_dict(i["severity"], i["code"], i["message"], "images"))
+    for img in vision.get("results", []):
+        for msg in img.get("issues", []):
+            all_issues.append(_issue_dict("medium", "image_issue", msg, "images"))
 
     buckets = bucket_issues(all_issues)
-    recommendations = []
-    if llm_notes and llm_notes.get("recommendations"):
-        recommendations = llm_notes["recommendations"]
-
-    if not recommendations:
-        for issue in buckets["critical"][:3] + buckets["high_priority"][:3]:
-            recommendations.append(issue["message"])
+    fixes = build_fixes(crawl, seo, schema, vision, product_info, llm_notes)
 
     return {
         "url": crawl.url,
@@ -105,16 +112,24 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             "has_product_schema": schema.has_product_schema,
             "properties_found": schema.properties_found,
             "properties_missing": schema.properties_missing,
+            "json_ld_blocks_found": len(crawl.json_ld),
         },
         "seo": {
             "signals": seo.signals,
+            "analysis": llm_notes.get("seo_analysis") if llm_notes else _seo_narrative(seo, crawl),
+            "issues": [{"severity": i.severity, "message": i.message, "code": i.code} for i in seo.issues],
         },
-        "images": {
-            "count": images.image_count,
-            "with_alt": images.with_alt,
+        "content": {
+            "analysis": llm_notes.get("content_analysis") if llm_notes else "Review product description depth, benefits, and differentiation above the fold.",
+            "word_count_estimate": len(crawl.visible_text.split()),
+        },
+        "images": vision,
+        "conversion": {
+            "score": conversion_score,
+            "analysis": llm_notes.get("ai_shopping_notes") if llm_notes else ai_ready.get("summary"),
         },
         "issues": buckets,
-        "recommendations": recommendations[:8],
+        "fixes": fixes,
         "llm_analysis": llm_notes,
         "meta": {
             "title": crawl.title,
@@ -122,3 +137,18 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             "h1": crawl.h1s[0] if crawl.h1s else None,
         },
     }
+
+
+def _seo_narrative(seo, crawl) -> str:
+    parts = []
+    if crawl.title:
+        parts.append(f"Title ({len(crawl.title)} chars): \"{crawl.title[:80]}\"")
+    if crawl.meta_description:
+        parts.append(f"Meta description ({len(crawl.meta_description)} chars) is present.")
+    else:
+        parts.append("Meta description is missing — write one for better search snippets.")
+    if crawl.h1s:
+        parts.append(f"H1: \"{crawl.h1s[0][:80]}\"")
+    if seo.issues:
+        parts.append(f"Found {len(seo.issues)} SEO issues to address.")
+    return " ".join(parts)

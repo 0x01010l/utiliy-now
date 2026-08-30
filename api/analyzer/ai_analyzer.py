@@ -27,29 +27,29 @@ async def analyze_with_llm(crawl_summary: dict[str, Any]) -> dict[str, Any] | No
         return None
 
     deployment = os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
-    prompt = {
-        "role": "user",
-        "content": (
-            "You are an ecommerce product page auditor. Analyze this extracted page data and return JSON only with keys: "
-            "content_quality_score (0-100), conversion_clarity_score (0-100), content_issues (array of {severity, message}), "
-            "conversion_issues (array), recommendations (array of short actionable strings max 5), "
-            "ai_shopping_notes (string). Be conservative. Do not invent product facts not in the data.\n\n"
-            f"DATA:\n{json.dumps(crawl_summary)[:8000]}"
-        ),
-    }
+    prompt = (
+        "You are an expert ecommerce SEO consultant. Analyze this product page data.\n"
+        "Return JSON only with keys:\n"
+        "- content_quality_score (0-100)\n"
+        "- conversion_clarity_score (0-100)\n"
+        "- seo_analysis (string, 2-3 sentences on title/meta/headings)\n"
+        "- content_analysis (string, 2-3 sentences on description quality)\n"
+        "- ai_shopping_notes (string)\n"
+        "- fixes (array of max 4 objects with: category, title, problem, why_it_matters, steps array, copy_paste string, effort)\n"
+        "Each fix must be actionable with specific copy-paste HTML or JSON-LD when possible.\n"
+        "Do not invent product facts.\n\n"
+        f"DATA:\n{json.dumps(crawl_summary)[:9000]}"
+    )
 
     try:
         response = client.chat.completions.create(
             model=deployment,
             messages=[
-                {
-                    "role": "system",
-                    "content": "Return valid JSON only. No markdown.",
-                },
-                prompt,
+                {"role": "system", "content": "Return valid JSON only. No markdown."},
+                {"role": "user", "content": prompt},
             ],
             temperature=0.2,
-            max_tokens=900,
+            max_tokens=1400,
             response_format={"type": "json_object"},
         )
         text = response.choices[0].message.content or "{}"
