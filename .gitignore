@@ -8,3 +8,4 @@ vendor/
 .DS_Store
 api-deploy.zip
 api/.venv/
+api/.stripe-live-backup.env

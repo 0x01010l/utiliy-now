@@ -58,47 +58,36 @@ function renderUsage(usage) {
   const pct = usage.limit > 0 ? Math.min(100, (usage.used / usage.limit) * 100) : 0;
   const atLimit = usage.remaining <= 0;
   const user = getUser();
-  const canUpgrade = !user || user.plan !== 'pro';
+  const plan = usage.plan || user?.plan || 'free';
+  const isPro = plan === 'pro';
+  const showUpgrade = atLimit && !isPro;
 
   const tracker = document.getElementById('usage-tracker');
-  const trackerNormal = document.getElementById('usage-tracker-normal');
-  const trackerLimit = document.getElementById('usage-tracker-limit');
   const barFill = document.getElementById('usage-bar-fill');
   const trackerText = document.getElementById('usage-tracker-text');
-  const ddFill = document.getElementById('usage-dropdown-fill');
-  const ddText = document.getElementById('usage-dropdown-text');
-  const inlineNormal = document.getElementById('usage-inline-normal');
-  const inlineLimit = document.getElementById('usage-inline-limit');
   const upgradeBtn = document.getElementById('header-upgrade');
-  const upgradeBtnInline = document.getElementById('header-upgrade-inline');
 
   if (tracker) {
     tracker.hidden = false;
     tracker.classList.toggle('at-limit', atLimit);
   }
-  if (trackerNormal) trackerNormal.hidden = atLimit;
-  if (trackerLimit) trackerLimit.hidden = !atLimit || !canUpgrade;
-  if (inlineNormal) inlineNormal.hidden = atLimit;
-  if (inlineLimit) inlineLimit.hidden = !atLimit || !canUpgrade;
-
-  if (!atLimit) {
-    if (barFill) barFill.style.width = `${pct}%`;
-    if (trackerText) trackerText.textContent = `${usage.used} / ${usage.limit} audits`;
-    if (ddFill) ddFill.style.width = `${pct}%`;
-    if (ddText) {
-      ddText.textContent = `${usage.remaining} remaining this month`;
-    }
-  } else if (!canUpgrade && ddText) {
-    ddText.textContent = 'Monthly limit reached — resets next month';
+  if (barFill) barFill.style.width = `${pct}%`;
+  if (trackerText) trackerText.textContent = `${usage.used} / ${usage.limit}`;
+  if (upgradeBtn) {
+    if (showUpgrade) upgradeBtn.removeAttribute('hidden');
+    else upgradeBtn.setAttribute('hidden', '');
   }
 
-  [upgradeBtn, upgradeBtnInline].forEach((btn) => {
-    if (!btn) return;
-    if (canUpgrade && atLimit) btn.removeAttribute('hidden');
-    else btn.setAttribute('hidden', '');
-  });
-
   if (user) {
+    if (usage.plan && user.plan !== usage.plan) {
+      user.plan = usage.plan;
+      const planLabel = user.plan === 'pro' ? 'Pro' : 'Free';
+      const label = `${user.email.split('@')[0]} · ${planLabel}`;
+      const userEl = document.getElementById('user-pill');
+      const userMobile = document.getElementById('user-pill-mobile');
+      if (userEl) userEl.textContent = label;
+      if (userMobile) userMobile.textContent = label;
+    }
     user.usage = usage;
     localStorage.setItem('utiliy_user', JSON.stringify(user));
   }
@@ -150,7 +139,6 @@ function updateAuthUI() {
   const navUser = document.getElementById('nav-user-mobile');
   const userEl = document.getElementById('user-pill');
   const userMobile = document.getElementById('user-pill-mobile');
-  const usageInline = document.getElementById('usage-dropdown-inline');
 
   if (!guestActions) return;
 
@@ -159,7 +147,6 @@ function updateAuthUI() {
     loggedInActions.hidden = false;
     navGuest?.setAttribute('hidden', '');
     navUser?.removeAttribute('hidden');
-    usageInline?.removeAttribute('hidden');
     const plan = user.plan === 'pro' ? 'Pro' : 'Free';
     const label = `${user.email.split('@')[0]} · ${plan}`;
     if (userEl) {
@@ -172,7 +159,6 @@ function updateAuthUI() {
     loggedInActions.hidden = true;
     navGuest?.removeAttribute('hidden');
     navUser?.setAttribute('hidden', '');
-    usageInline?.setAttribute('hidden', '');
   }
   refreshUsage();
 }
@@ -444,7 +430,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   document.getElementById('header-upgrade')?.addEventListener('click', () => promptUpgrade());
-  document.getElementById('header-upgrade-inline')?.addEventListener('click', () => promptUpgrade());
 
   document.querySelectorAll('[data-close-modal]').forEach((el) => {
     el.addEventListener('click', () => closeModal(el.dataset.closeModal));

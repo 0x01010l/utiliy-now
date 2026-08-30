@@ -25,19 +25,72 @@ function scoreColor(n) {
   return n >= 80 ? '#059669' : n >= 60 ? '#d97706' : '#dc2626';
 }
 
+function animateCounter(el, target, duration = 800) {
+  const start = performance.now();
+  const tick = (now) => {
+    const p = Math.min(1, (now - start) / duration);
+    const eased = 1 - (1 - p) ** 3;
+    el.textContent = Math.round(target * eased);
+    if (p < 1) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+function miniRing(score, label) {
+  const r = 22;
+  const c = 2 * Math.PI * r;
+  const tier = scoreTier(score);
+  const color = scoreColor(score);
+  return `<div class="lab-ring-card ${tier}" data-score="${score}">
+    <svg viewBox="0 0 56 56" class="lab-ring-svg" aria-hidden="true">
+      <circle cx="28" cy="28" r="${r}" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="5"/>
+      <circle class="ring-progress" cx="28" cy="28" r="${r}" fill="none" stroke="${color}" stroke-width="5"
+        stroke-dasharray="${c}" stroke-dashoffset="${c}" stroke-linecap="round" transform="rotate(-90 28 28)"/>
+    </svg>
+    <div class="lab-ring-label">
+      <strong class="ring-val">0</strong>
+      <span>${escapeHtml(label)}</span>
+    </div>
+  </div>`;
+}
+
+function categoryRings(categories) {
+  return Object.entries(categories || {})
+    .map(([k, v]) => miniRing(v, LABELS[k] || k))
+    .join('');
+}
+
+function statTiles(sev, total) {
+  const tiles = [
+    { key: 'critical', label: 'Critical', val: sev.critical || 0, icon: '⚠' },
+    { key: 'high', label: 'High', val: sev.high || 0, icon: '▲' },
+    { key: 'medium', label: 'Medium', val: sev.medium || 0, icon: '●' },
+    { key: 'low', label: 'Low', val: sev.low || 0, icon: '○' },
+    { key: 'total', label: 'Total issues', val: total || 0, icon: '◈' },
+  ];
+  return tiles
+    .filter((t) => t.val > 0 || t.key === 'total')
+    .map((t) => `<div class="lab-stat-tile ${t.key}">
+      <span class="tile-icon">${t.icon}</span>
+      <strong class="tile-val">${t.val}</strong>
+      <span class="tile-label">${t.label}</span>
+    </div>`)
+    .join('');
+}
+
 function bigScoreRing(score) {
   const r = 46;
   const c = 2 * Math.PI * r;
   const offset = c - (score / 100) * c;
   const color = scoreColor(score);
-  return `<div class="lab-score-big">
-    <svg viewBox="0 0 100 100">
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="7"/>
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="${color}" stroke-width="7"
-        stroke-dasharray="${c}" stroke-dashoffset="${offset}" stroke-linecap="round"
+  return `<div class="lab-score-big" data-score="${score}">
+    <svg viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="${r}" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="7"/>
+      <circle class="hero-ring-progress" cx="50" cy="50" r="${r}" fill="none" stroke="${color}" stroke-width="7"
+        stroke-dasharray="${c}" stroke-dashoffset="${c}" stroke-linecap="round"
         transform="rotate(-90 50 50)"/>
     </svg>
-    <div class="score-num"><strong>${score}</strong><span>Score</span></div>
+    <div class="score-num"><strong class="hero-score-val">0</strong><span>Overall</span></div>
   </div>`;
 }
 
@@ -254,51 +307,50 @@ function renderLab(data) {
 
   return `
     <div class="audit-lab" id="audit-lab">
+      <div class="lab-grid-bg" aria-hidden="true"></div>
       ${warningBanner}
       <div class="lab-hero">
         ${bigScoreRing(data.scores.overall)}
-        <div>
-          <p class="eyebrow" style="margin:0;">Audit report</p>
+        <div class="lab-hero-copy">
+          <p class="lab-eyebrow">Audit lab report</p>
           <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product Page')}</h2>
           <div class="lab-url">${escapeHtml(data.final_url)}</div>
           <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${shopifyBadge}</span>
         </div>
-        <div class="severity-row">
-          ${sev.critical ? `<span class="sev-pill critical"><span class="dot"></span>${sev.critical} critical</span>` : ''}
-          ${sev.high ? `<span class="sev-pill high"><span class="dot"></span>${sev.high} high</span>` : ''}
-          ${sev.medium ? `<span class="sev-pill medium"><span class="dot"></span>${sev.medium} medium</span>` : ''}
-          ${sev.low ? `<span class="sev-pill low"><span class="dot"></span>${sev.low} low</span>` : ''}
-        </div>
+        <div class="lab-stat-strip">${statTiles(sev, lab.total_issues)}</div>
       </div>
 
       <div class="lab-shell">
-        <nav class="lab-nav" aria-label="Report sections">
-          <div class="lab-nav-title">Sections</div>
-          ${nav}
-        </nav>
+        <aside class="lab-nav-wrap">
+          <nav class="lab-nav" aria-label="Report sections">
+            <div class="lab-nav-title"><span class="nav-dot"></span> Lab modules</div>
+            ${nav}
+          </nav>
+        </aside>
 
         <div class="lab-main">
           <section class="lab-section" id="lab-overview">
             <div class="lab-section-head">
-              <h3>Overview</h3>
-              <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} total issues</span>
+              <h3><span class="section-icon">◈</span> Overview</h3>
+              <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} issues found</span>
             </div>
+            <div class="lab-ring-grid">${categoryRings(data.scores.categories)}</div>
             <div class="charts-row">
-              <div class="chart-card">
-                <h4>Category scores</h4>
+              <div class="chart-card chart-card-bars">
+                <h4>Category breakdown</h4>
                 ${barChart(data.scores.categories)}
               </div>
-              <div class="chart-card">
-                <h4>Error heatmap by zone</h4>
+              <div class="chart-card chart-card-heat">
+                <h4>Zone heatmap <span class="chart-hint">Click a zone to jump</span></h4>
                 <div class="heatmap-grid">${heatmap(zones)}</div>
               </div>
             </div>
-            <p style="font-size:.9rem;color:var(--muted);">${escapeHtml(data.seo?.analysis || '')}</p>
+            ${data.seo?.analysis ? `<p class="lab-summary">${escapeHtml(data.seo.analysis)}</p>` : ''}
           </section>
 
           <section class="lab-section" id="lab-seo">
             <div class="lab-section-head">
-              <h3>SEO & Meta</h3>
+              <h3><span class="section-icon">◎</span> SEO & Meta</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.seo)}">${data.scores.categories.seo}/100</span>
             </div>
             <div class="signal-cards">
@@ -315,7 +367,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-keywords">
             <div class="lab-section-head">
-              <h3>Keywords</h3>
+              <h3><span class="section-icon">◇</span> Keywords</h3>
               ${data.keywords?.primary_keyword ? `<span class="zone-score good">Focus: ${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
             </div>
             ${renderKeywords(data.keywords)}
@@ -323,20 +375,24 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-product">
             <div class="lab-section-head">
-              <h3>Product Information</h3>
+              <h3><span class="section-icon">▣</span> Product Information</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.product_information)}">${data.scores.categories.product_information}/100</span>
             </div>
             <div class="product-facts">${renderProductFacts(lab, data)}</div>
             ${lab.shopify?.tags?.length ? `<p class="lab-tags">Tags: ${lab.shopify.tags.map((t) => `<span class="kw-tag">${escapeHtml(t)}</span>`).join('')}</p>` : ''}
-            <div style="margin-top:1rem;padding:1rem;background:var(--surface-2);border-radius:10px;">
-              <strong>AI shopping readiness: ${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
-              <p style="margin:.35rem 0 0;font-size:.88rem;color:var(--muted);">${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
+            <div class="ai-readiness-card">
+              <div class="ai-readiness-head">
+                <span>AI shopping readiness</span>
+                <strong>${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
+              </div>
+              <div class="ai-readiness-bar"><span style="width:${data.ai_shopping_readiness?.score || 0}%"></span></div>
+              <p>${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
             </div>
           </section>
 
           <section class="lab-section" id="lab-schema">
             <div class="lab-section-head">
-              <h3>Structured Data</h3>
+              <h3><span class="section-icon">{ }</span> Structured Data</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
             </div>
             ${renderSchema(data)}
@@ -344,7 +400,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-images">
             <div class="lab-section-head">
-              <h3>Image Lab</h3>
+              <h3><span class="section-icon">▦</span> Image Lab</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.images)}">${data.scores.categories.images}/100</span>
             </div>
             <p style="font-size:.88rem;color:var(--muted);margin:0 0 1rem;">${escapeHtml(data.images?.summary || '')}</p>
@@ -353,7 +409,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-code">
             <div class="lab-section-head">
-              <h3>Page Code</h3>
+              <h3><span class="section-icon">&lt;/&gt;</span> Page Code</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.page_code?.html_size_kb || '—'} KB</span>
             </div>
             <div class="signal-cards" style="margin-bottom:1rem;">
@@ -375,7 +431,7 @@ function renderLab(data) {
 
           <section class="lab-section fix-queue" id="lab-fixes">
             <div class="lab-section-head">
-              <h3>Fix Queue</h3>
+              <h3><span class="section-icon">⚡</span> Fix Queue</h3>
               <span class="zone-score good">${(data.fixes || []).length} actionable fixes</span>
             </div>
             ${(data.fixes || []).map(renderFix).join('') || '<p>No fixes generated.</p>'}
@@ -418,6 +474,31 @@ function showPaywall(msg) {
   } else {
     alert(msg);
   }
+}
+
+function animateLabMetrics(root) {
+  root.querySelectorAll('.bar-fill').forEach((bar) => {
+    const w = bar.style.width;
+    bar.style.width = '0';
+    requestAnimationFrame(() => { bar.style.width = w; });
+  });
+
+  root.querySelectorAll('.ring-progress, .hero-ring-progress').forEach((ring) => {
+    const card = ring.closest('[data-score]');
+    const score = Number(card?.dataset.score || 0);
+    const r = ring.classList.contains('hero-ring-progress') ? 46 : 22;
+    const c = 2 * Math.PI * r;
+    const offset = c - (score / 100) * c;
+    requestAnimationFrame(() => { ring.style.strokeDashoffset = offset; });
+    const valEl = card?.querySelector('.ring-val, .hero-score-val');
+    if (valEl) animateCounter(valEl, score);
+  });
+
+  root.querySelectorAll('.ai-readiness-bar span').forEach((bar) => {
+    const w = bar.style.width;
+    bar.style.width = '0';
+    requestAnimationFrame(() => { bar.style.width = w; });
+  });
 }
 
 function bindLabInteractions(root) {
@@ -463,9 +544,23 @@ function bindLabInteractions(root) {
         }
       });
     },
-    { rootMargin: '-20% 0px -60% 0px' }
+    { rootMargin: '-15% 0px -55% 0px' }
   );
   sections.forEach((s) => observer.observe(s));
+
+  animateLabMetrics(root);
+
+  const navWrap = root.querySelector('.lab-nav-wrap');
+  if (navWrap && window.matchMedia('(min-width: 901px)').matches) {
+    const onScroll = () => {
+      const shell = root.querySelector('.lab-shell');
+      if (!shell) return;
+      const rect = shell.getBoundingClientRect();
+      navWrap.classList.toggle('is-floating', rect.top < 88 && rect.bottom > 200);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
 }
 
 async function runAudit(url) {

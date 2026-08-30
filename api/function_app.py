@@ -20,6 +20,7 @@ from storage import (
     create_user,
     get_usage_stats,
     get_user_by_email,
+    get_user_by_id,
     increment_audit_usage,
     mark_email_verified,
     set_user_plan,
@@ -50,6 +51,15 @@ def _get_auth(req: func.HttpRequest) -> dict | None:
     if auth.startswith("Bearer "):
         return decode_token(auth[7:])
     return None
+
+
+def _resolve_plan(auth: dict | None) -> str:
+    if not auth:
+        return "free"
+    user = get_user_by_id(auth.get("sub", ""))
+    if user and user.get("plan"):
+        return user["plan"]
+    return auth.get("plan", "free")
 
 
 @app.route(route="health", methods=["GET", "OPTIONS"])
@@ -234,7 +244,7 @@ async def usage(req: func.HttpRequest) -> func.HttpResponse:
     client_id = req.headers.get("X-Client-Id", "") or secrets.token_hex(8)
     ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
     user_id = auth["sub"] if auth else None
-    plan = auth.get("plan", "free") if auth else "free"
+    plan = _resolve_plan(auth)
 
     stats = get_usage_stats(user_id, client_id, ip, plan)
     return func.HttpResponse(json.dumps(stats), status_code=200, headers=_cors_headers())
@@ -249,7 +259,7 @@ async def me(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(json.dumps({"error": "Unauthorized"}), status_code=401, headers=_cors_headers())
     client_id = req.headers.get("X-Client-Id", "") or ""
     ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
-    plan = payload.get("plan", "free")
+    plan = _resolve_plan(payload)
     usage_stats = get_usage_stats(payload["sub"], client_id or "unknown", ip, plan)
     return func.HttpResponse(json.dumps({
         "email": payload["email"],
@@ -363,7 +373,7 @@ async def audit(req: func.HttpRequest) -> func.HttpResponse:
     ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
 
     user_id = auth["sub"] if auth else None
-    plan = auth.get("plan", "free") if auth else "free"
+    plan = _resolve_plan(auth)
 
     allowed, reason = can_run_audit(user_id, client_id, ip, plan)
     if not allowed:
