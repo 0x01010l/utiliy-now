@@ -140,6 +140,9 @@ function renderSchema(data) {
 function imgUrl(img) {
   let src = img.src_display || img.src || '';
   if (src.startsWith('//')) src = 'https:' + src;
+  if (src.includes('cdn.shopify.com') || src.includes('/cdn/shop/')) {
+    return `${API_URL}/img?url=${encodeURIComponent(src)}`;
+  }
   return src;
 }
 
@@ -245,8 +248,8 @@ function renderLab(data) {
     .map((w) => `<div class="lab-warning">${escapeHtml(w)}</div>`)
     .join('');
 
-  const shopifyBadge = data.product_information?.shopify_enriched
-    ? '<span class="shopify-badge">Shopify data enriched</span>'
+  const shopifyBadge = data.product_information?.platform_enriched
+    ? `<span class="shopify-badge">${escapeHtml(data.product_information?.data_source || 'enriched')}</span>`
     : '';
 
   return `
@@ -255,7 +258,7 @@ function renderLab(data) {
       <div class="lab-hero">
         ${bigScoreRing(data.scores.overall)}
         <div>
-          <p class="eyebrow" style="color:#a5b4fc;margin:0;">Audit Lab Report</p>
+          <p class="eyebrow" style="margin:0;">Audit report</p>
           <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product Page')}</h2>
           <div class="lab-url">${escapeHtml(data.final_url)}</div>
           <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${shopifyBadge}</span>
@@ -277,7 +280,7 @@ function renderLab(data) {
         <div class="lab-main">
           <section class="lab-section" id="lab-overview">
             <div class="lab-section-head">
-              <h3>📊 Overview</h3>
+              <h3>Overview</h3>
               <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} total issues</span>
             </div>
             <div class="charts-row">
@@ -295,7 +298,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-seo">
             <div class="lab-section-head">
-              <h3>🔍 SEO & Meta</h3>
+              <h3>SEO & Meta</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.seo)}">${data.scores.categories.seo}/100</span>
             </div>
             <div class="signal-cards">
@@ -312,7 +315,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-keywords">
             <div class="lab-section-head">
-              <h3>🏷 Keywords</h3>
+              <h3>Keywords</h3>
               ${data.keywords?.primary_keyword ? `<span class="zone-score good">Focus: ${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
             </div>
             ${renderKeywords(data.keywords)}
@@ -320,7 +323,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-product">
             <div class="lab-section-head">
-              <h3>📦 Product Information</h3>
+              <h3>Product Information</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.product_information)}">${data.scores.categories.product_information}/100</span>
             </div>
             <div class="product-facts">${renderProductFacts(lab, data)}</div>
@@ -333,7 +336,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-schema">
             <div class="lab-section-head">
-              <h3>📋 Structured Data</h3>
+              <h3>Structured Data</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
             </div>
             ${renderSchema(data)}
@@ -341,7 +344,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-images">
             <div class="lab-section-head">
-              <h3>🖼 Image Lab</h3>
+              <h3>Image Lab</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.images)}">${data.scores.categories.images}/100</span>
             </div>
             <p style="font-size:.88rem;color:var(--muted);margin:0 0 1rem;">${escapeHtml(data.images?.summary || '')}</p>
@@ -350,7 +353,7 @@ function renderLab(data) {
 
           <section class="lab-section" id="lab-code">
             <div class="lab-section-head">
-              <h3>💻 Page Code</h3>
+              <h3>Page Code</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.page_code?.html_size_kb || '—'} KB</span>
             </div>
             <div class="signal-cards" style="margin-bottom:1rem;">
@@ -372,7 +375,7 @@ function renderLab(data) {
 
           <section class="lab-section fix-queue" id="lab-fixes">
             <div class="lab-section-head">
-              <h3>✅ Fix Queue</h3>
+              <h3>Fix Queue</h3>
               <span class="zone-score good">${(data.fixes || []).length} actionable fixes</span>
             </div>
             ${(data.fixes || []).map(renderFix).join('') || '<p>No fixes generated.</p>'}

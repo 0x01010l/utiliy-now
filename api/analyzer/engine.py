@@ -14,7 +14,8 @@ from .page_code_analyzer import analyze_page_code
 from .schema_analyzer import analyze_schema, _collect_products
 from .scoring import bucket_issues, compute_overall
 from .seo_analyzer import analyze_seo
-from .shopify_extractor import fetch_shopify_product, is_likely_collection_redirect
+from .product_extractor import enrich_product_data
+from .shopify_extractor import is_likely_collection_redirect
 from .vision_analyzer import analyze_product_images
 
 
@@ -106,12 +107,9 @@ def _image_gallery(vision: dict, crawl_images: list, shopify_images: list | None
 async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
     crawl = await fetch_page(url)
 
-    shopify_data = None
-    shopify_images: list[dict] = []
-    if crawl.platform == "shopify":
-        shopify_data = await fetch_shopify_product(crawl.final_url)
-        if shopify_data:
-            shopify_images = shopify_data.get("images") or []
+    platform_data = await enrich_product_data(crawl)
+
+    platform_images: list[dict] = (platform_data.get("images") or []) if platform_data else []
 
     collection_redirect = (
         crawl.platform == "shopify"
@@ -128,8 +126,8 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
     keywords = analyze_keywords(crawl)
     products = _collect_products(crawl.json_ld)
     schema_product = products[0] if products else None
-    product_info = analyze_product_info(crawl, schema_product, shopify_data)
-    audit_images = shopify_images if shopify_images else crawl.images
+    product_info = analyze_product_info(crawl, schema_product, platform_data)
+    audit_images = platform_images if platform_images else crawl.images
     vision = await analyze_product_images(audit_images)
     ai_ready = analyze_ai_readiness(product_info, schema.score)
 
@@ -211,12 +209,13 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
     fixes = build_fixes(crawl, seo, schema, vision, product_info, llm_notes)
 
     lab = _build_lab(category_scores, all_issues, seo, keywords, page_code, schema, product_info, vision)
-    lab["image_gallery"] = _image_gallery(vision, crawl.images, shopify_images)
-    if shopify_data:
-        lab["shopify"] = {
-            "handle": shopify_data.get("handle"),
-            "variant_count": shopify_data.get("extracted", {}).get("variant_count"),
-            "tags": shopify_data.get("extracted", {}).get("tags", [])[:8],
+    lab["image_gallery"] = _image_gallery(vision, crawl.images, platform_images)
+    if platform_data:
+        lab["platform"] = {
+            "source": platform_data.get("source"),
+            "handle": platform_data.get("handle"),
+            "variant_count": platform_data.get("extracted", {}).get("variant_count"),
+            "tags": platform_data.get("extracted", {}).get("tags", [])[:8],
         }
     if collection_redirect:
         lab["warnings"] = ["URL appears to be a collection page — product data may be incomplete. Paste a direct product URL."]
@@ -237,7 +236,8 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
         "product_information": {
             "extracted": product_info.extracted,
             "missing": product_info.missing,
-            "shopify_enriched": bool(shopify_data),
+            "platform_enriched": bool(platform_data),
+            "data_source": platform_data.get("source") if platform_data else None,
         },
         "structured_data": {
             "has_product_schema": schema.has_product_schema,

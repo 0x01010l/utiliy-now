@@ -20,12 +20,15 @@
 .shopify-badge {
   display: inline-block;
   margin-left: .35rem;
-  background: #95bf47;
-  color: #fff;
-  font-size: .62rem;
+  background: var(--surface-2);
+  color: var(--muted);
+  font-size: .6rem;
   padding: .15rem .45rem;
   border-radius: 4px;
   vertical-align: middle;
+  border: 1px solid var(--line);
+  text-transform: uppercase;
+  letter-spacing: .04em;
 }
 
 .lab-shell {
@@ -53,13 +56,22 @@
   font-size: .85rem; font-weight: 600; color: var(--muted);
   text-decoration: none; transition: .15s;
 }
-.lab-nav a:hover, .lab-nav a.active { background: var(--accent-soft); color: var(--accent); }
+.lab-nav a:hover, .lab-nav a.active { background: var(--surface-2); color: var(--ink); }
 .lab-nav .nav-badge {
   margin-left: auto; font-size: .7rem; font-weight: 700;
   background: var(--surface-2); color: var(--muted);
   padding: .1rem .45rem; border-radius: 999px;
 }
-.lab-nav a.active .nav-badge { background: var(--accent); color: #fff; }
+.lab-nav a.active .nav-badge { background: var(--ink); color: #fff; }
+
+.lab-score-big { width: 110px; height: 110px; position: relative; }
+.lab-score-big svg { width: 100%; height: 100%; }
+.lab-score-big .score-num {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+}
+.lab-score-big .score-num strong { font-size: 2rem; line-height: 1; }
 
 .lab-main { min-width: 0; }
 
@@ -68,47 +80,39 @@
   display: grid;
   grid-template-columns: auto 1fr auto;
   gap: 1.5rem; align-items: center;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  color: #f8fafc;
+  background: var(--surface);
+  color: var(--ink);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 1.5rem 1.75rem;
   margin-bottom: 1.25rem;
-  box-shadow: 0 8px 32px rgba(15,23,42,.18);
+  box-shadow: var(--shadow);
 }
 .lab-hero .lab-url {
-  font-size: .78rem; color: #94a3b8; word-break: break-all;
+  font-size: .78rem; color: var(--muted); word-break: break-all;
   margin-top: .25rem;
 }
-.lab-hero h2 { margin: 0; font-family: var(--serif); font-size: 1.5rem; }
+.lab-hero h2 { margin: 0; font-family: var(--serif); font-size: 1.35rem; font-weight: 500; letter-spacing: -.02em; }
 .lab-hero .platform-pill {
-  display: inline-block; font-size: .72rem; font-weight: 700;
-  background: rgba(79,70,229,.35); color: #c7d2fe;
-  padding: .2rem .6rem; border-radius: 999px; margin-top: .35rem;
+  display: inline-block; font-size: .7rem; font-weight: 600;
+  background: var(--surface-2); color: var(--muted);
+  padding: .25rem .55rem; border-radius: 4px; margin-top: .4rem;
+  border: 1px solid var(--line);
+  text-transform: uppercase; letter-spacing: .05em;
 }
-.lab-score-big {
-  width: 110px; height: 110px; position: relative;
-}
-.lab-score-big svg { width: 100%; height: 100%; }
-.lab-score-big .score-num {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-}
-.lab-score-big .score-num strong { font-size: 2rem; line-height: 1; }
-.lab-score-big .score-num span { font-size: .65rem; color: #94a3b8; text-transform: uppercase; letter-spacing: .06em; }
+.lab-score-big .score-num span { font-size: .65rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 
-.severity-row { display: flex; gap: .5rem; flex-wrap: wrap; }
+.severity-row { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: flex-end; }
 .sev-pill {
   display: flex; align-items: center; gap: .35rem;
-  font-size: .78rem; font-weight: 700;
-  padding: .4rem .75rem; border-radius: 8px;
-  background: rgba(255,255,255,.08);
+  font-size: .75rem; font-weight: 600;
+  padding: .35rem .65rem; border-radius: 6px;
+  background: var(--surface-2); border: 1px solid var(--line);
 }
-.sev-pill.critical { color: #fca5a5; }
-.sev-pill.high { color: #fdba74; }
-.sev-pill.medium { color: #fde047; }
-.sev-pill.low { color: #86efac; }
-.sev-pill .dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.sev-pill.critical { color: var(--bad); border-color: #fecaca; background: #fef2f2; }
+.sev-pill.high { color: #9a3412; border-color: #fed7aa; background: #fff7ed; }
+.sev-pill.medium { color: #854d0e; border-color: #fde68a; background: #fffbeb; }
+.sev-pill.low { color: #166534; border-color: #bbf7d0; background: #f0fdf4; }
 
 /* Section panels */
 .lab-section {

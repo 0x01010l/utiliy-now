@@ -2,8 +2,10 @@ import json
 import logging
 import os
 import secrets
+from urllib.parse import urlparse
 
 import azure.functions as func
+import httpx
 import stripe
 
 from analyzer.engine import run_audit
@@ -140,6 +142,45 @@ async def stripe_webhook(req: func.HttpRequest) -> func.HttpResponse:
         if email:
             set_user_plan(email, "pro", customer_id)
     return func.HttpResponse(json.dumps({"received": True}), status_code=200)
+
+
+@app.route(route="img", methods=["GET", "OPTIONS"])
+async def image_proxy(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers={**_cors_headers(), "Access-Control-Allow-Origin": "*"})
+
+    raw_url = req.params.get("url", "").strip()
+    if not raw_url:
+        return func.HttpResponse("Missing url", status_code=400)
+
+    parsed = urlparse(raw_url)
+    if parsed.scheme not in {"http", "https"}:
+        return func.HttpResponse("Invalid url", status_code=400)
+
+    host = (parsed.hostname or "").lower()
+    allowed = (
+        "cdn.shopify.com",
+        "shopifycdn.com",
+        "skims.com",
+        "allbirds.com",
+    )
+    if not any(host == a or host.endswith("." + a) for a in allowed) and "shopify" not in host:
+        return func.HttpResponse("Host not allowed", status_code=403)
+
+    try:
+        async with httpx.AsyncClient(timeout=12.0, follow_redirects=True) as client:
+            resp = await client.get(raw_url, headers={"User-Agent": "UtiliyBot/1.0", "Accept": "image/*"})
+        if resp.status_code != 200:
+            return func.HttpResponse("Upstream error", status_code=502)
+        ctype = resp.headers.get("content-type", "image/jpeg")
+        headers = {
+            "Content-Type": ctype,
+            "Cache-Control": "public, max-age=86400",
+            "Access-Control-Allow-Origin": "*",
+        }
+        return func.HttpResponse(resp.content, status_code=200, headers=headers)
+    except Exception:
+        return func.HttpResponse("Proxy failed", status_code=502)
 
 
 @app.route(route="audit", methods=["POST", "OPTIONS"])
