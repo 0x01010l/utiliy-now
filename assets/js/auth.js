@@ -41,6 +41,54 @@ function authHeaders() {
   return h;
 }
 
+function renderUsage(usage) {
+  if (!usage) return;
+  const pct = usage.limit > 0 ? Math.min(100, (usage.used / usage.limit) * 100) : 0;
+  const text = `${usage.used} / ${usage.limit} audits`;
+  const tracker = document.getElementById('usage-tracker');
+  const barFill = document.getElementById('usage-bar-fill');
+  const trackerText = document.getElementById('usage-tracker-text');
+  const ddFill = document.getElementById('usage-dropdown-fill');
+  const ddText = document.getElementById('usage-dropdown-text');
+
+  if (tracker) {
+    tracker.hidden = false;
+    tracker.classList.toggle('at-limit', usage.remaining <= 0);
+  }
+  if (barFill) barFill.style.width = `${pct}%`;
+  if (trackerText) trackerText.textContent = text;
+  if (ddFill) ddFill.style.width = `${pct}%`;
+  if (ddText) {
+    ddText.textContent = usage.remaining > 0
+      ? `${usage.remaining} remaining this month`
+      : 'Monthly limit reached';
+  }
+
+  const user = getUser();
+  if (user) {
+    user.usage = usage;
+    localStorage.setItem('utiliy_user', JSON.stringify(user));
+  }
+
+  const submit = document.getElementById('audit-submit');
+  if (submit) {
+    submit.disabled = usage.remaining <= 0;
+    submit.title = usage.remaining <= 0 ? 'Monthly audit limit reached' : '';
+  }
+}
+
+async function refreshUsage() {
+  try {
+    const res = await fetch(`${API}/usage`, { headers: authHeaders() });
+    if (!res.ok) return;
+    const usage = await res.json();
+    renderUsage(usage);
+    return usage;
+  } catch {
+    return null;
+  }
+}
+
 function showToast(msg, duration = 4000) {
   const el = document.getElementById('toast');
   if (!el) return;
@@ -77,6 +125,7 @@ function updateAuthUI() {
     userMenu.hidden = true;
     closeUserMenu();
   }
+  refreshUsage();
 }
 
 function closeUserMenu() {
@@ -277,6 +326,7 @@ function handleUpgradeSuccess() {
 document.addEventListener('DOMContentLoaded', () => {
   updateAuthUI();
   handleUpgradeSuccess();
+  refreshUsage();
 
   document.getElementById('btn-signin')?.addEventListener('click', () => openAuth('login'));
   document.getElementById('btn-signup')?.addEventListener('click', () => openAuth('register'));
@@ -408,4 +458,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-window.UtiliyAuth = { getToken, getClientId, authHeaders, startCheckout, openModal, getUser, showToast, openAuth };
+window.UtiliyAuth = { getToken, getClientId, authHeaders, startCheckout, openModal, getUser, showToast, openAuth, refreshUsage, renderUsage };

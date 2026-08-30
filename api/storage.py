@@ -14,7 +14,21 @@ from azure.data.tables import TableServiceClient
 
 _conn: TableServiceClient | None = None
 FREE_AUDIT_LIMIT = 1
+PRO_AUDIT_LIMIT = 80
+BUSINESS_AUDIT_LIMIT = 250
 TOKEN_TABLE = "tokens"
+
+
+def plan_limit(plan: str) -> int:
+    if plan == "pro":
+        return PRO_AUDIT_LIMIT
+    if plan == "business":
+        return BUSINESS_AUDIT_LIMIT
+    return FREE_AUDIT_LIMIT
+
+
+def _current_month() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m")
 
 
 def _conn_str() -> str:
@@ -198,14 +212,13 @@ def consume_auth_token(token_type: str, raw_token: str) -> str | None:
     return entity.get("email", "")
 
 
-def _usage_key(user_id: str | None, fingerprint: str) -> str:
-    return user_id or f"fp:{fingerprint}"
+def _usage_key(kind: str, value: str) -> str:
+    return f"{kind}:{value}"
 
 
-def get_audit_count(user_id: str | None, fingerprint: str) -> int:
+def get_audit_count_for_key(key: str) -> int:
     client = _client()
-    key = _usage_key(user_id, fingerprint)
-    month = datetime.now(timezone.utc).strftime("%Y-%m")
+    month = _current_month()
     try:
         entity = client.get_table_client("usage").get_entity(key, month)
         return int(entity.get("audit_count", 0))
@@ -213,10 +226,9 @@ def get_audit_count(user_id: str | None, fingerprint: str) -> int:
         return 0
 
 
-def increment_audit_count(user_id: str | None, fingerprint: str) -> int:
+def increment_audit_count_for_key(key: str) -> int:
     client = _client()
-    key = _usage_key(user_id, fingerprint)
-    month = datetime.now(timezone.utc).strftime("%Y-%m")
+    month = _current_month()
     table = client.get_table_client("usage")
     try:
         entity = table.get_entity(key, month)
@@ -229,12 +241,65 @@ def increment_audit_count(user_id: str | None, fingerprint: str) -> int:
     return count
 
 
-def can_run_audit(user_id: str | None, fingerprint: str, plan: str) -> tuple[bool, str]:
-    if plan in {"pro", "business"}:
-        return True, ""
-    count = get_audit_count(user_id, fingerprint)
-    if count >= FREE_AUDIT_LIMIT:
-        return False, "Free plan includes 1 audit. Upgrade to Pro for unlimited audits."
+def ip_hash(ip: str) -> str:
+    return hashlib.sha256(ip.strip().encode()).hexdigest()[:32]
+
+
+def get_usage_stats(user_id: str | None, client_id: str, ip: str, plan: str) -> dict:
+    limit = plan_limit(plan)
+    month = _current_month()
+    client_key = _usage_key("client", client_id)
+    ip_key = _usage_key("ip", ip_hash(ip))
+    user_key = _usage_key("user", user_id) if user_id else None
+
+    client_count = get_audit_count_for_key(client_key)
+    ip_count = get_audit_count_for_key(ip_key)
+    user_count = get_audit_count_for_key(user_key) if user_key else 0
+
+    if plan == "free":
+        used = 1 if max(client_count, ip_count, user_count) >= FREE_AUDIT_LIMIT else 0
+        remaining = max(0, FREE_AUDIT_LIMIT - used)
+    else:
+        used = user_count
+        remaining = max(0, limit - used)
+
+    return {
+        "plan": plan,
+        "used": used if plan == "free" else user_count,
+        "limit": limit,
+        "remaining": remaining,
+        "period": month,
+        "tracked": {
+            "client": client_count,
+            "ip": ip_count,
+            "account": user_count,
+        },
+    }
+
+
+def increment_audit_usage(user_id: str | None, client_id: str, ip: str, plan: str) -> dict:
+    client_key = _usage_key("client", client_id)
+    ip_key = _usage_key("ip", ip_hash(ip))
+
+    if plan == "free":
+        increment_audit_count_for_key(client_key)
+        increment_audit_count_for_key(ip_key)
+        if user_id:
+            increment_audit_count_for_key(_usage_key("user", user_id))
+    elif user_id:
+        increment_audit_count_for_key(_usage_key("user", user_id))
+
+    return get_usage_stats(user_id, client_id, ip, plan)
+
+
+def can_run_audit(user_id: str | None, client_id: str, ip: str, plan: str) -> tuple[bool, str]:
+    stats = get_usage_stats(user_id, client_id, ip, plan)
+    if stats["remaining"] <= 0:
+        if plan == "free":
+            return False, "Your free audit is used. Upgrade to Pro for 80 audits per month."
+        if plan == "pro":
+            return False, f"Pro plan includes {PRO_AUDIT_LIMIT} audits per month. You've reached your limit."
+        return False, f"You've reached your monthly audit limit ({stats['limit']})."
     return True, ""
 
 

@@ -495,10 +495,13 @@ async function runAudit(url) {
 
     if (res.status === 402 || data.paywall) {
       document.body.classList.remove('audit-active');
-      showPaywall(data.error || 'Free plan includes 1 audit. Upgrade to Pro for unlimited audits.');
+      if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
+      showPaywall(data.error || 'Audit limit reached. Upgrade to Pro for 80 audits per month.');
       return;
     }
     if (!res.ok) throw new Error(data.error || 'Audit failed');
+
+    if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
 
     progress.hidden = true;
     results.innerHTML = renderLab(data);

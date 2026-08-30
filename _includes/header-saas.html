@@ -18,9 +18,18 @@
       </div>
     </nav>
     <div class="auth-actions">
+      <div class="usage-tracker" id="usage-tracker" hidden>
+        <div class="usage-tracker-bar"><span id="usage-bar-fill"></span></div>
+        <span class="usage-tracker-text" id="usage-tracker-text">0 / 1 audits</span>
+      </div>
       <div class="user-menu" id="user-menu" hidden>
         <button type="button" class="user-pill" id="user-pill" aria-haspopup="true" aria-expanded="false"></button>
         <div class="user-dropdown" id="user-dropdown" hidden>
+          <div class="usage-dropdown" id="usage-dropdown">
+            <p class="usage-dropdown-label">Audits this month</p>
+            <div class="usage-dropdown-bar"><span id="usage-dropdown-fill"></span></div>
+            <p class="usage-dropdown-text" id="usage-dropdown-text">—</p>
+          </div>
           <button type="button" class="user-dropdown-item" id="btn-signout">Sign out</button>
         </div>
       </div>

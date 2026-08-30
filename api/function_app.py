@@ -18,9 +18,9 @@ from storage import (
     create_auth_token,
     create_or_get_google_user,
     create_user,
+    get_usage_stats,
     get_user_by_email,
-    increment_audit_count,
-    ip_fingerprint,
+    increment_audit_usage,
     mark_email_verified,
     set_user_plan,
     update_password,
@@ -225,6 +225,21 @@ async def login(req: func.HttpRequest) -> func.HttpResponse:
         return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
 
 
+@app.route(route="usage", methods=["GET", "OPTIONS"])
+async def usage(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers=_cors_headers())
+
+    auth = _get_auth(req)
+    client_id = req.headers.get("X-Client-Id", "") or secrets.token_hex(8)
+    ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
+    user_id = auth["sub"] if auth else None
+    plan = auth.get("plan", "free") if auth else "free"
+
+    stats = get_usage_stats(user_id, client_id, ip, plan)
+    return func.HttpResponse(json.dumps(stats), status_code=200, headers=_cors_headers())
+
+
 @app.route(route="auth/me", methods=["GET", "OPTIONS"])
 async def me(req: func.HttpRequest) -> func.HttpResponse:
     if req.method == "OPTIONS":
@@ -232,10 +247,15 @@ async def me(req: func.HttpRequest) -> func.HttpResponse:
     payload = _get_auth(req)
     if not payload:
         return func.HttpResponse(json.dumps({"error": "Unauthorized"}), status_code=401, headers=_cors_headers())
+    client_id = req.headers.get("X-Client-Id", "") or ""
+    ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
+    plan = payload.get("plan", "free")
+    usage_stats = get_usage_stats(payload["sub"], client_id or "unknown", ip, plan)
     return func.HttpResponse(json.dumps({
         "email": payload["email"],
-        "plan": payload.get("plan", "free"),
+        "plan": plan,
         "email_verified": True,
+        "usage": usage_stats,
     }), status_code=200, headers=_cors_headers())
 
 
@@ -341,15 +361,15 @@ async def audit(req: func.HttpRequest) -> func.HttpResponse:
     auth = _get_auth(req)
     client_id = req.headers.get("X-Client-Id", "") or (body or {}).get("client_id", "") or secrets.token_hex(8)
     ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
-    fingerprint = ip_fingerprint(ip, req.headers.get("User-Agent", ""))
 
     user_id = auth["sub"] if auth else None
     plan = auth.get("plan", "free") if auth else "free"
 
-    allowed, reason = can_run_audit(user_id, client_id or fingerprint, plan)
+    allowed, reason = can_run_audit(user_id, client_id, ip, plan)
     if not allowed:
+        usage_stats = get_usage_stats(user_id, client_id, ip, plan)
         return func.HttpResponse(
-            json.dumps({"error": reason, "paywall": True, "upgrade_url": "/pricing/"}),
+            json.dumps({"error": reason, "paywall": True, "upgrade_url": "/pricing/", "usage": usage_stats}),
             status_code=402,
             headers=_cors_headers(),
         )
@@ -358,8 +378,8 @@ async def audit(req: func.HttpRequest) -> func.HttpResponse:
 
     try:
         result = await run_audit(url, use_ai=use_ai)
-        increment_audit_count(user_id, client_id or fingerprint)
-        result["usage"] = {"audits_used": 1, "plan": plan, "client_id": client_id}
+        usage_stats = increment_audit_usage(user_id, client_id, ip, plan)
+        result["usage"] = usage_stats
         return func.HttpResponse(json.dumps(result), status_code=200, headers=_cors_headers())
     except ValueError as exc:
         return func.HttpResponse(json.dumps({"error": str(exc)}), status_code=400, headers=_cors_headers())
