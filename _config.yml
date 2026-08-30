@@ -19,7 +19,7 @@ plugins:
 
 logo: /assets/img/utiliy-logo.svg
 api_url: https://utiliy-audit-api.azurewebsites.net/api
-google_client_id: ""
+google_client_id: "1045087131327-7j37s03u3h13rb45phtp2llks8595ap8.apps.googleusercontent.com"
 
 company:
   name: Utiliy
