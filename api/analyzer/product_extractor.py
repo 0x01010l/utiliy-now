@@ -178,7 +178,7 @@ async def enrich_product_data(crawl: CrawlResult) -> dict[str, Any] | None:
     if not data:
         return None
 
-    # Supplement images from HTML gallery (critical for headless Shopify like SKIMS)
+    # Supplement images from HTML gallery (critical for headless Shopify stores)
     seed = [i.get("src_full") or i.get("src", "") for i in data.get("images", [])]
     seed += [crawl.og_product_hints.get("image", "")] if crawl.og_product_hints else []
     html_gallery = extract_html_gallery(crawl.html, [s for s in seed if s], _product_handle(crawl.final_url))

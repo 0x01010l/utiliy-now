@@ -24,7 +24,7 @@ description: Utiliy is an AI product page auditor operated by Fix Figures LLC. L
       <li><strong>Shopify & DTC brands</strong> — audit PDPs before launches and seasonal campaigns</li>
       <li><strong>Growth & SEO teams</strong> — prioritize fixes across a catalog with severity-ranked issues</li>
       <li><strong>Agencies</strong> — deliver client-ready reports with actionable copy-paste code</li>
-      <li><strong>Headless commerce</strong> — extract product data from SKIMS-style stores via JSON-LD and CDN galleries</li>
+      <li><strong>Headless commerce</strong> — extract product data from JSON-LD and CDN galleries on custom storefronts</li>
     </ul>
 
     <h2>Operated by</h2>
