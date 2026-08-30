@@ -1,0 +1,50 @@
+---
+layout: saas
+title: Verify email
+description: Verify your Utiliy account email address.
+permalink: /verify-email/
+---
+
+<section class="auth-page">
+  <div class="container auth-page-inner">
+    <div class="auth-page-card" id="verify-card">
+      <img src="{{ '/assets/img/favicon.svg' | relative_url }}" alt="" width="40" height="40">
+      <h1>Verifying your email…</h1>
+      <p id="verify-msg">Please wait while we confirm your account.</p>
+      <p class="modal-error" id="verify-error"></p>
+      <a class="btn btn-primary" href="/" id="verify-home" hidden>Go to auditor</a>
+    </div>
+  </div>
+</section>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+  const token = new URLSearchParams(window.location.search).get('token');
+  const msg = document.getElementById('verify-msg');
+  const err = document.getElementById('verify-error');
+  const home = document.getElementById('verify-home');
+  const api = document.body.dataset.apiUrl || 'https://utiliy-audit-api.azurewebsites.net/api';
+  if (!token) {
+    msg.textContent = 'Missing verification token.';
+    return;
+  }
+  try {
+    const res = await fetch(`${api}/auth/verify-email?token=${encodeURIComponent(token)}`);
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Verification failed');
+    if (data.token) {
+      localStorage.setItem('utiliy_token', data.token);
+      localStorage.setItem('utiliy_user', JSON.stringify(data.user));
+    }
+    document.querySelector('#verify-card h1').textContent = 'Email verified!';
+    msg.textContent = data.message || 'You can now sign in and run audits.';
+    home.hidden = false;
+    window.history.replaceState({}, '', '/verify-email/');
+  } catch (e) {
+    err.textContent = e.message;
+    msg.textContent = 'We could not verify your email.';
+    home.textContent = 'Back to home';
+    home.href = '/';
+    home.hidden = false;
+  }
+});
+</script>

@@ -10,14 +10,22 @@ import stripe
 
 from analyzer.engine import run_audit
 from auth import create_token, decode_token
+from email_service import send_password_reset_email, send_verification_email
+from google_auth import verify_google_id_token
 from storage import (
     can_run_audit,
+    consume_auth_token,
+    create_auth_token,
+    create_or_get_google_user,
     create_user,
     get_user_by_email,
     increment_audit_count,
     ip_fingerprint,
+    mark_email_verified,
     set_user_plan,
+    update_password,
     verify_password,
+    _is_email_verified,
 )
 
 app = func.FunctionApp(http_auth_level=func.AuthLevel.ANONYMOUS)
@@ -62,12 +70,133 @@ async def register(req: func.HttpRequest) -> func.HttpResponse:
         if not email or len(password) < 8:
             return func.HttpResponse(json.dumps({"error": "Valid email and password (8+ chars) required."}), status_code=400, headers=_cors_headers())
         user = create_user(email, password)
+        token = create_auth_token("verify_email", email, hours=48)
+        try:
+            await send_verification_email(email, token)
+        except Exception as e:
+            logging.exception("verification email failed")
+            return func.HttpResponse(json.dumps({"error": "Account created but verification email could not be sent. Try resend or contact support."}), status_code=503, headers=_cors_headers())
+        return func.HttpResponse(json.dumps({
+            "message": "Check your email to verify your account before signing in.",
+            "email": user["email"],
+            "verification_required": True,
+        }), status_code=200, headers=_cors_headers())
+    except ValueError as e:
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=400, headers=_cors_headers())
+    except Exception as e:
+        logging.exception("register failed")
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
+
+
+@app.route(route="auth/verify-email", methods=["GET", "POST", "OPTIONS"])
+async def verify_email(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers=_cors_headers())
+    try:
+        token = req.params.get("token", "")
+        if req.method == "POST":
+            body = req.get_json() or {}
+            token = body.get("token", token)
+        if not token:
+            return func.HttpResponse(json.dumps({"error": "Verification token required."}), status_code=400, headers=_cors_headers())
+        email = consume_auth_token("verify_email", token)
+        if not email:
+            return func.HttpResponse(json.dumps({"error": "Invalid or expired verification link."}), status_code=400, headers=_cors_headers())
+        mark_email_verified(email)
+        user = get_user_by_email(email)
+        if not user:
+            return func.HttpResponse(json.dumps({"error": "User not found."}), status_code=404, headers=_cors_headers())
+        jwt_token = create_token(user["user_id"], email, user.get("plan", "free"))
+        return func.HttpResponse(json.dumps({
+            "message": "Email verified successfully.",
+            "token": jwt_token,
+            "user": {"email": email, "plan": user.get("plan", "free"), "email_verified": True},
+        }), status_code=200, headers=_cors_headers())
+    except Exception as e:
+        logging.exception("verify email failed")
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
+
+
+@app.route(route="auth/resend-verification", methods=["POST", "OPTIONS"])
+async def resend_verification(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers=_cors_headers())
+    try:
+        body = req.get_json() or {}
+        email = (body.get("email") or "").strip()
+        user = get_user_by_email(email)
+        if not user:
+            return func.HttpResponse(json.dumps({"message": "If that email exists, a verification link was sent."}), status_code=200, headers=_cors_headers())
+        if user.get("email_verified") in (True, "true", "True", 1, "1"):
+            return func.HttpResponse(json.dumps({"message": "Email is already verified."}), status_code=200, headers=_cors_headers())
+        token = create_auth_token("verify_email", email, hours=48)
+        await send_verification_email(email, token)
+        return func.HttpResponse(json.dumps({"message": "Verification email sent."}), status_code=200, headers=_cors_headers())
+    except Exception as e:
+        logging.exception("resend verification failed")
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
+
+
+@app.route(route="auth/forgot-password", methods=["POST", "OPTIONS"])
+async def forgot_password(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers=_cors_headers())
+    try:
+        body = req.get_json() or {}
+        email = (body.get("email") or "").strip()
+        user = get_user_by_email(email)
+        if user and user.get("auth_provider", "email") == "email" and user.get("password_hash"):
+            token = create_auth_token("reset_password", email, hours=1)
+            await send_password_reset_email(email, token)
+        return func.HttpResponse(json.dumps({"message": "If that email exists, a reset link was sent."}), status_code=200, headers=_cors_headers())
+    except Exception as e:
+        logging.exception("forgot password failed")
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
+
+
+@app.route(route="auth/reset-password", methods=["POST", "OPTIONS"])
+async def reset_password(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers=_cors_headers())
+    try:
+        body = req.get_json() or {}
+        token = (body.get("token") or "").strip()
+        password = (body.get("password") or "")
+        if not token or len(password) < 8:
+            return func.HttpResponse(json.dumps({"error": "Token and password (8+ chars) required."}), status_code=400, headers=_cors_headers())
+        email = consume_auth_token("reset_password", token)
+        if not email:
+            return func.HttpResponse(json.dumps({"error": "Invalid or expired reset link."}), status_code=400, headers=_cors_headers())
+        update_password(email, password)
+        user = get_user_by_email(email)
+        jwt_token = create_token(user["user_id"], email, user.get("plan", "free"))
+        return func.HttpResponse(json.dumps({
+            "message": "Password updated.",
+            "token": jwt_token,
+            "user": {"email": email, "plan": user.get("plan", "free"), "email_verified": True},
+        }), status_code=200, headers=_cors_headers())
+    except Exception as e:
+        logging.exception("reset password failed")
+        return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
+
+
+@app.route(route="auth/google", methods=["POST", "OPTIONS"])
+async def google_login(req: func.HttpRequest) -> func.HttpResponse:
+    if req.method == "OPTIONS":
+        return func.HttpResponse("", status_code=204, headers=_cors_headers())
+    try:
+        body = req.get_json() or {}
+        credential = (body.get("credential") or body.get("id_token") or "").strip()
+        if not credential:
+            return func.HttpResponse(json.dumps({"error": "Google credential required."}), status_code=400, headers=_cors_headers())
+        profile = await verify_google_id_token(credential)
+        user = create_or_get_google_user(profile["email"], profile["google_id"])
         token = create_token(user["user_id"], user["email"], user["plan"])
         return func.HttpResponse(json.dumps({"token": token, "user": user}), status_code=200, headers=_cors_headers())
     except ValueError as e:
         return func.HttpResponse(json.dumps({"error": str(e)}), status_code=400, headers=_cors_headers())
     except Exception as e:
-        logging.exception("register failed")
+        logging.exception("google login failed")
         return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
 
 
@@ -80,10 +209,18 @@ async def login(req: func.HttpRequest) -> func.HttpResponse:
         email = (body or {}).get("email", "").strip()
         password = (body or {}).get("password", "")
         user = get_user_by_email(email)
-        if not user or not verify_password(password, user["password_hash"]):
+        if not user or not verify_password(password, user.get("password_hash", "")):
             return func.HttpResponse(json.dumps({"error": "Invalid email or password."}), status_code=401, headers=_cors_headers())
+        if user.get("auth_provider") == "google" and not user.get("password_hash"):
+            return func.HttpResponse(json.dumps({"error": "This account uses Google sign-in."}), status_code=400, headers=_cors_headers())
+        if not _is_email_verified(user):
+            return func.HttpResponse(json.dumps({
+                "error": "Please verify your email before signing in.",
+                "verification_required": True,
+                "email": user["PartitionKey"],
+            }), status_code=403, headers=_cors_headers())
         token = create_token(user["user_id"], user["PartitionKey"], user.get("plan", "free"))
-        return func.HttpResponse(json.dumps({"token": token, "user": {"email": user["PartitionKey"], "plan": user.get("plan", "free")}}), status_code=200, headers=_cors_headers())
+        return func.HttpResponse(json.dumps({"token": token, "user": {"email": user["PartitionKey"], "plan": user.get("plan", "free"), "email_verified": True}}), status_code=200, headers=_cors_headers())
     except Exception as e:
         return func.HttpResponse(json.dumps({"error": str(e)}), status_code=500, headers=_cors_headers())
 
@@ -95,7 +232,11 @@ async def me(req: func.HttpRequest) -> func.HttpResponse:
     payload = _get_auth(req)
     if not payload:
         return func.HttpResponse(json.dumps({"error": "Unauthorized"}), status_code=401, headers=_cors_headers())
-    return func.HttpResponse(json.dumps({"email": payload["email"], "plan": payload.get("plan", "free")}), status_code=200, headers=_cors_headers())
+    return func.HttpResponse(json.dumps({
+        "email": payload["email"],
+        "plan": payload.get("plan", "free"),
+        "email_verified": True,
+    }), status_code=200, headers=_cors_headers())
 
 
 @app.route(route="billing/checkout", methods=["POST", "OPTIONS"])
@@ -117,7 +258,7 @@ async def checkout(req: func.HttpRequest) -> func.HttpResponse:
             customer_email=email,
             line_items=[{"price": STRIPE_PRICE_PRO, "quantity": 1}],
             success_url=os.getenv("STRIPE_SUCCESS_URL", "https://utiliy.com/?upgraded=1"),
-            cancel_url=os.getenv("STRIPE_CANCEL_URL", "https://utiliy.com/pricing/"),
+            cancel_url=os.getenv("STRIPE_CANCEL_URL", "https://utiliy.com/pricing/?canceled=1"),
             metadata={"email": email},
         )
         return func.HttpResponse(json.dumps({"url": session.url}), status_code=200, headers=_cors_headers())

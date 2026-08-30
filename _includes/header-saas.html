@@ -1,18 +1,33 @@
 <header class="saas-header">
   <div class="container header-row">
-    <a class="logo" href="{{ '/' | relative_url }}">
-      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="Utiliy" width="100" height="24">
+    <a class="logo" href="{{ '/' | relative_url }}" aria-label="Utiliy home">
+      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="" width="128" height="28">
     </a>
-    <nav class="nav" aria-label="Primary">
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+      <span class="sr-only">Menu</span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <nav class="nav" id="site-nav" aria-label="Primary">
       <a href="{{ '/product-page-auditor/' | relative_url }}">Auditor</a>
       <a href="{{ '/pricing/' | relative_url }}">Pricing</a>
       <a href="{{ '/guides/' | relative_url }}">Guides</a>
+      <div class="nav-auth-mobile">
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-signin-mobile">Sign in</button>
+        <button type="button" class="btn btn-primary btn-sm" id="btn-signup-mobile">Get started</button>
+      </div>
     </nav>
     <div class="auth-actions">
-      <span class="user-pill" id="user-pill" hidden></span>
+      <div class="user-menu" id="user-menu" hidden>
+        <button type="button" class="user-pill" id="user-pill" aria-haspopup="true" aria-expanded="false"></button>
+        <div class="user-dropdown" id="user-dropdown" hidden>
+          <button type="button" class="user-dropdown-item" id="btn-signout">Sign out</button>
+        </div>
+      </div>
       <button type="button" class="btn btn-ghost btn-sm" id="btn-signin">Sign in</button>
-      <button type="button" class="btn btn-primary btn-sm" id="btn-signup">Sign up</button>
-      <a class="btn btn-primary btn-sm" href="{{ '/' | relative_url }}#audit">Audit</a>
+      <button type="button" class="btn btn-primary btn-sm" id="btn-signup">Get started</button>
     </div>
   </div>
 </header>
+
+<div class="toast" id="toast" hidden role="status"></div>

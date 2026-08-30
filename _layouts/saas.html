@@ -3,13 +3,16 @@
 <head>
   {% include head-saas.html %}
 </head>
-<body class="saas-body" data-api-url="{{ site.api_url }}">
+<body class="saas-body{% if page.home %} home-page{% endif %}" data-api-url="{{ site.api_url }}">
   {% include header-saas.html %}
   <main id="main">{{ content }}</main>
   {% include footer-saas.html %}
   {% include auth-modals.html %}
   <script src="{{ '/assets/js/auth.js' | relative_url }}" defer></script>
   <script src="{{ '/assets/js/saas.js' | relative_url }}" defer></script>
+  {% if page.home %}
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}">
+  {% endif %}
   {% if page.auditor %}
   <link rel="stylesheet" href="{{ '/assets/css/audit-lab.css' | relative_url }}">
   <script src="{{ '/assets/js/auditor.js' | relative_url }}" defer></script>

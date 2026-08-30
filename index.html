@@ -3,45 +3,137 @@ layout: saas
 title: Utiliy — AI Product Page Auditor
 description: Audit ecommerce product pages for SEO, structured data, AI shopping readiness, and images. Get actionable fixes, not just scores.
 auditor: true
+home: true
 ---
 
-<section class="hero" id="audit">
-  <div class="container hero-grid">
-    <div>
-      <p class="eyebrow">Product intelligence</p>
-      <h1>Every product page, fully diagnosed</h1>
+<section class="hero-home" id="audit">
+  <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-3" aria-hidden="true"></div>
+  <div class="container hero-home-grid">
+    <div class="hero-copy">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        AI-powered product intelligence
+      </div>
+      <h1>Every product page,<br><span class="gradient-text">fully diagnosed</span></h1>
       <p class="hero-lead">
         Paste a URL from Shopify, SKIMS, WooCommerce, or any store. Utiliy extracts real product data,
         audits SEO and schema, analyzes your image gallery, and delivers a prioritized fix queue.
       </p>
-      <p class="audit-hint" style="margin-bottom:1rem;">One full report free · Pro from $15/mo</p>
+      <div class="hero-trust">
+        <span>1 free full report</span>
+        <span class="dot">·</span>
+        <span>Pro from $15/mo</span>
+        <span class="dot">·</span>
+        <span>No credit card</span>
+      </div>
       {% include audit-form.html %}
-    </div>
-    <div class="hero-visual">
-      <p class="eyebrow">Report preview</p>
-      <div class="mock-lab-preview">
-        <div class="mock-heat">
-          <div class="mock-cell">82<span>SEO</span></div>
-          <div class="mock-cell">58<span>Schema</span></div>
-          <div class="mock-cell">41<span>Images</span></div>
-          <div class="mock-cell">76<span>Keywords</span></div>
+      <div class="platform-strip">
+        <span>Works with</span>
+        <div class="platform-logos">
+          <span class="platform-tag">Shopify</span>
+          <span class="platform-tag">SKIMS</span>
+          <span class="platform-tag">WooCommerce</span>
+          <span class="platform-tag">Headless</span>
         </div>
-        <p style="color:var(--muted);font-size:.85rem;margin:.75rem 0 0;">Scores · heatmap · product data · image lab · fixes</p>
+      </div>
+    </div>
+    <div class="hero-visual-wrap">
+      <div class="hero-dashboard float-card">
+        <div class="dash-header">
+          <img src="{{ '/assets/img/favicon.svg' | relative_url }}" alt="" width="22" height="22">
+          <span>Live audit report</span>
+          <span class="dash-live">Live</span>
+        </div>
+        <div class="dash-scores">
+          <div class="dash-score good"><strong>82</strong><span>SEO</span></div>
+          <div class="dash-score warn"><strong>58</strong><span>Schema</span></div>
+          <div class="dash-score bad"><strong>41</strong><span>Images</span></div>
+          <div class="dash-score good"><strong>76</strong><span>Keywords</span></div>
+        </div>
+        <div class="dash-fix">
+          <p class="dash-fix-label">Top fix</p>
+          <p class="dash-fix-text">Add Product JSON-LD with price + availability</p>
+        </div>
+        <div class="dash-bars">
+          <div class="dash-bar"><span style="width:82%"></span></div>
+          <div class="dash-bar"><span style="width:58%"></span></div>
+          <div class="dash-bar"><span style="width:76%"></span></div>
+        </div>
+      </div>
+      <div class="hero-float-card float-card-2">
+        <span class="float-icon violet">◆</span>
+        <div>
+          <strong>12 images</strong>
+          <p>3 missing alt text</p>
+        </div>
+      </div>
+      <div class="hero-float-card float-card-3">
+        <span class="float-icon cyan">✓</span>
+        <div>
+          <strong>5 fixes</strong>
+          <p>Ready to copy-paste</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="stats-band">
+  <div class="container stats-grid">
+    <div class="stat"><strong>40+</strong><span>SEO & schema checks</span></div>
+    <div class="stat"><strong>Real</strong><span>Product data extraction</span></div>
+    <div class="stat"><strong>AI</strong><span>Vision image analysis</span></div>
+    <div class="stat"><strong>1-click</strong><span>Copy-paste fix queue</span></div>
+  </div>
+</section>
+
+<section class="section section-bento">
   <div class="container">
-    <h2>Built for operators, not vanity metrics</h2>
-    <div class="feature-grid">
-      <div class="feature-card"><h3>Product data</h3><p>Price, SKU, weight, availability — extracted from Shopify JSON, JSON-LD, and page markup. Works on headless stores like SKIMS.</p></div>
-      <div class="feature-card"><h3>SEO analysis</h3><p>Title and meta length meters, heading outline, keyword alignment, and issue severity ranking.</p></div>
-      <div class="feature-card"><h3>Schema audit</h3><p>JSON-LD detection, property checklist, and copy-paste templates when Product schema is missing.</p></div>
-      <div class="feature-card"><h3>Image lab</h3><p>Real product gallery thumbnails, alt-text gaps, and Azure Vision captions on each image.</p></div>
-      <div class="feature-card"><h3>Page code</h3><p>Head markup preview, link stats, technical flags, and structured data snippets from source.</p></div>
-      <div class="feature-card"><h3>Fix queue</h3><p>Prioritized actions with copy-paste HTML and JSON-LD — ready for your theme or CMS.</p></div>
+    <p class="eyebrow center">The audit lab</p>
+    <h2 class="section-title center">Built for operators,<br>not vanity metrics</h2>
+    <div class="bento-grid">
+      <article class="bento-card bento-wide accent-violet">
+        <div class="bento-icon">PD</div>
+        <h3>Product data</h3>
+        <p>Price, SKU, weight, availability — extracted from Shopify JSON, JSON-LD, and page markup. Works on headless stores like SKIMS.</p>
+      </article>
+      <article class="bento-card accent-indigo">
+        <div class="bento-icon">SEO</div>
+        <h3>SEO analysis</h3>
+        <p>Title and meta length meters, heading outline, keyword alignment, and issue severity ranking.</p>
+      </article>
+      <article class="bento-card accent-cyan">
+        <div class="bento-icon">LD</div>
+        <h3>Schema audit</h3>
+        <p>JSON-LD detection, property checklist, and copy-paste templates when Product schema is missing.</p>
+      </article>
+      <article class="bento-card accent-rose">
+        <div class="bento-icon">IMG</div>
+        <h3>Image lab</h3>
+        <p>Real product gallery thumbnails, alt-text gaps, and Azure Vision captions on each image.</p>
+      </article>
+      <article class="bento-card accent-amber">
+        <div class="bento-icon">&lt;/&gt;</div>
+        <h3>Page code</h3>
+        <p>Head markup preview, link stats, technical flags, and structured data snippets from source.</p>
+      </article>
+      <article class="bento-card bento-wide accent-emerald">
+        <div class="bento-icon">FX</div>
+        <h3>Fix queue</h3>
+        <p>Prioritized actions with copy-paste HTML and JSON-LD — ready for your theme or CMS. Ship fixes in minutes, not days.</p>
+      </article>
     </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>Stop guessing. Start fixing.</h2>
+      <p>Run your first audit free — see exactly what's holding your product pages back.</p>
+    </div>
+    <a class="btn btn-light" href="#audit">Audit a product page</a>
   </div>
 </section>

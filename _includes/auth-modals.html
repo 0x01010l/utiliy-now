@@ -1,29 +1,89 @@
 <div class="modal-overlay" id="auth-modal" hidden>
   <div class="modal" role="dialog" aria-labelledby="auth-title">
-    <h2 id="auth-title">Sign in</h2>
-    <p>Save audits and upgrade to Pro for unlimited product page analysis.</p>
-    <p class="modal-error" id="auth-error"></p>
-    <form id="auth-form">
-      <input type="hidden" id="auth-mode" value="login">
-      <label class="sr-only" for="auth-email">Email</label>
-      <input type="email" id="auth-email" required placeholder="you@store.com" autocomplete="email">
-      <label class="sr-only" for="auth-password">Password</label>
-      <input type="password" id="auth-password" required placeholder="Password (8+ characters)" minlength="8" autocomplete="current-password">
-      <button type="submit" class="btn btn-primary" id="auth-submit" style="width:100%;">Sign in</button>
-    </form>
-    <p style="margin-top:1rem;text-align:center;">
-      <button type="button" class="btn btn-ghost btn-sm" id="auth-toggle" style="border:none;">Need an account? Register</button>
-    </p>
-    <button type="button" class="btn btn-ghost btn-sm" data-close-modal="auth-modal" style="margin-top:.5rem;width:100%;">Close</button>
+    <button type="button" class="modal-close" data-close-modal="auth-modal" aria-label="Close">&times;</button>
+    <div class="modal-brand">
+      <img src="{{ '/assets/img/favicon.svg' | relative_url }}" alt="" width="28" height="28">
+      <span>Utiliy</span>
+    </div>
+
+    <div id="auth-panel-login">
+      <h2 id="auth-title">Sign in</h2>
+      <p class="modal-sub">Access your audits and manage your Pro subscription.</p>
+      <p class="modal-error" id="auth-error"></p>
+      <div id="google-signin-btn" class="google-btn-wrap"></div>
+      <div class="auth-divider"><span>or</span></div>
+      <form id="auth-form" class="modal-form">
+        <input type="hidden" id="auth-mode" value="login">
+        <label class="field-label" for="auth-email">Email</label>
+        <input type="email" id="auth-email" required placeholder="you@store.com" autocomplete="email">
+        <label class="field-label" for="auth-password">Password</label>
+        <input type="password" id="auth-password" required placeholder="8+ characters" minlength="8" autocomplete="current-password">
+        <button type="button" class="link-btn forgot-link" id="btn-forgot">Forgot password?</button>
+        <button type="submit" class="btn btn-primary" id="auth-submit">Sign in</button>
+      </form>
+      <p class="modal-foot">
+        <button type="button" class="link-btn" id="auth-toggle">Need an account? Register</button>
+      </p>
+    </div>
+
+    <div id="auth-panel-register" hidden>
+      <h2>Create account</h2>
+      <p class="modal-sub">Start with one free full audit report.</p>
+      <p class="modal-error" id="register-error"></p>
+      <div id="google-signin-btn-register" class="google-btn-wrap"></div>
+      <div class="auth-divider"><span>or</span></div>
+      <form id="register-form" class="modal-form">
+        <label class="field-label" for="register-email">Email</label>
+        <input type="email" id="register-email" required placeholder="you@store.com" autocomplete="email">
+        <label class="field-label" for="register-password">Password</label>
+        <input type="password" id="register-password" required placeholder="8+ characters" minlength="8" autocomplete="new-password">
+        <button type="submit" class="btn btn-primary">Create account</button>
+      </form>
+      <p class="modal-foot">
+        <button type="button" class="link-btn" id="auth-toggle-back">Already have an account? Sign in</button>
+      </p>
+    </div>
+
+    <div id="auth-panel-verify" hidden>
+      <h2>Check your email</h2>
+      <p class="modal-sub" id="verify-pending-msg">We sent a verification link to your inbox. Click it to activate your account.</p>
+      <button type="button" class="btn btn-ghost" id="btn-resend-verify" style="width:100%;">Resend verification email</button>
+      <p class="modal-foot">
+        <button type="button" class="link-btn" id="btn-back-login">Back to sign in</button>
+      </p>
+    </div>
+
+    <div id="auth-panel-forgot" hidden>
+      <h2>Reset password</h2>
+      <p class="modal-sub">Enter your email and we'll send a reset link.</p>
+      <p class="modal-error" id="forgot-error"></p>
+      <form id="forgot-form" class="modal-form">
+        <label class="field-label" for="forgot-email">Email</label>
+        <input type="email" id="forgot-email" required placeholder="you@store.com" autocomplete="email">
+        <button type="submit" class="btn btn-primary">Send reset link</button>
+      </form>
+      <p class="modal-foot">
+        <button type="button" class="link-btn" id="btn-back-from-forgot">Back to sign in</button>
+      </p>
+    </div>
   </div>
 </div>
 
 <div class="modal-overlay" id="paywall-modal" hidden>
   <div class="modal" role="dialog">
+    <button type="button" class="modal-close" data-close-modal="paywall-modal" aria-label="Close">&times;</button>
+    <div class="modal-brand">
+      <img src="{{ '/assets/img/favicon.svg' | relative_url }}" alt="" width="28" height="28">
+      <span>Utiliy Pro</span>
+    </div>
     <h2>Upgrade to continue</h2>
-    <p id="paywall-msg">Your free audit is used. Upgrade to Pro for unlimited product page audits.</p>
-    <button type="button" class="btn btn-primary" data-checkout style="width:100%;margin-top:1rem;">Upgrade to Pro — $15/mo</button>
-    <p style="font-size:.82rem;color:var(--muted);margin-top:.75rem;">Sign in first if you haven't. Stripe secure checkout.</p>
-    <button type="button" class="btn btn-ghost btn-sm" data-close-modal="paywall-modal" style="margin-top:.75rem;width:100%;">Maybe later</button>
+    <p class="modal-sub" id="paywall-msg">Your free audit is used. Pro unlocks unlimited product page audits.</p>
+    <ul class="pro-perks">
+      <li>Unlimited audits</li>
+      <li>Full AI + image analysis</li>
+      <li>Priority processing</li>
+    </ul>
+    <button type="button" class="btn btn-primary" data-checkout id="paywall-checkout" style="width:100%;">Continue to Stripe — $15/mo</button>
+    <p class="modal-foot muted">Secure payment via Stripe. Cancel anytime.</p>
   </div>
 </div>
