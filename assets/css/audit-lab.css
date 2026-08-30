@@ -155,7 +155,7 @@
 .lab-stat-tile.total { background: #f0f7ff; border-color: rgba(0, 113, 227, .15); }
 .lab-stat-tile.total .tile-val { color: #0071e3; }
 
-/* Layout — sticky sidebar */
+/* Layout — floating fixed sidebar (desktop) */
 .lab-shell {
   display: grid;
   grid-template-columns: var(--lab-nav-w) minmax(0, 1fr);
@@ -163,11 +163,10 @@
 }
 
 .lab-nav-wrap {
-  position: sticky;
-  top: var(--lab-sticky-top);
+  position: relative;
   align-self: start;
   z-index: 30;
-  height: fit-content;
+  min-height: 200px;
 }
 
 .lab-nav {
@@ -179,6 +178,14 @@
   max-height: calc(100vh - var(--lab-sticky-top) - 1.5rem);
   overflow-y: auto;
   overscroll-behavior: contain;
+}
+
+@media (min-width: 901px) {
+  .lab-nav.is-floating {
+    position: fixed;
+    z-index: 60;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
 }
 
 .lab-nav-title {
@@ -755,6 +762,14 @@ body.audit-active .container { width: min(calc(100% - 2rem), 1240px); }
     top: 4.25rem;
     z-index: 35;
     margin: 0 0 .75rem;
+    min-height: 0;
+  }
+  .lab-nav.is-floating {
+    position: sticky !important;
+    left: auto !important;
+    width: auto !important;
+    top: auto !important;
+    visibility: visible !important;
   }
   .lab-nav {
     display: flex;

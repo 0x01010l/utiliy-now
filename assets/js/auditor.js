@@ -506,6 +506,53 @@ function animateLabMetrics(root) {
   });
 }
 
+function setupFloatingNav(root) {
+  const wrap = root.querySelector('.lab-nav-wrap');
+  const nav = root.querySelector('.lab-nav');
+  const shell = root.querySelector('.lab-shell');
+  if (!wrap || !nav || !shell) return null;
+
+  const mq = window.matchMedia('(min-width: 901px)');
+  const top = 84;
+
+  const update = () => {
+    if (!mq.matches) {
+      nav.classList.remove('is-floating');
+      nav.style.cssText = '';
+      wrap.style.minHeight = '';
+      return;
+    }
+
+    const shellRect = shell.getBoundingClientRect();
+    const wrapRect = wrap.getBoundingClientRect();
+    const inView = shellRect.bottom > top + 60 && shellRect.top < window.innerHeight - 40;
+
+    wrap.style.minHeight = `${nav.offsetHeight}px`;
+
+    if (!inView) {
+      nav.classList.remove('is-floating');
+      nav.style.visibility = 'hidden';
+      return;
+    }
+
+    nav.classList.add('is-floating');
+    nav.style.visibility = 'visible';
+    nav.style.top = `${top}px`;
+    nav.style.left = `${wrapRect.left}px`;
+    nav.style.width = `${wrapRect.width}px`;
+  };
+
+  update();
+  const onScroll = () => requestAnimationFrame(update);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+
+  return () => {
+    window.removeEventListener('scroll', onScroll);
+    window.removeEventListener('resize', onScroll);
+  };
+}
+
 function bindLabInteractions(root) {
   root.querySelectorAll('.lab-nav a').forEach((link) => {
     link.addEventListener('click', (e) => {
@@ -553,6 +600,7 @@ function bindLabInteractions(root) {
   sections.forEach((s) => observer.observe(s));
 
   animateLabMetrics(root);
+  setupFloatingNav(root);
 }
 
 async function runAudit(url) {
