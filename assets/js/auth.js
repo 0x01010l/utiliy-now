@@ -107,43 +107,80 @@ function showAuthPanel(name) {
 
 function updateAuthUI() {
   const user = getUser();
-  const signIn = document.getElementById('btn-signin');
-  const signUp = document.getElementById('btn-signup');
-  const userMenu = document.getElementById('user-menu');
+  const guestActions = document.getElementById('guest-actions');
+  const loggedInActions = document.getElementById('logged-in-actions');
+  const navGuest = document.getElementById('nav-guest-mobile');
+  const navUser = document.getElementById('nav-user-mobile');
   const userEl = document.getElementById('user-pill');
-  if (!signIn) return;
+  const userMobile = document.getElementById('user-pill-mobile');
+  const usageInline = document.getElementById('usage-dropdown-inline');
+
+  if (!guestActions) return;
+
   if (user) {
-    signIn.hidden = true;
-    signUp.hidden = true;
-    userMenu.hidden = false;
+    guestActions.hidden = true;
+    loggedInActions.hidden = false;
+    navGuest?.setAttribute('hidden', '');
+    navUser?.removeAttribute('hidden');
+    usageInline?.removeAttribute('hidden');
     const plan = user.plan === 'pro' ? 'Pro' : 'Free';
-    userEl.textContent = `${user.email.split('@')[0]} · ${plan}`;
-    userEl.title = user.email;
+    const label = `${user.email.split('@')[0]} · ${plan}`;
+    if (userEl) {
+      userEl.textContent = label;
+      userEl.title = user.email;
+    }
+    if (userMobile) userMobile.textContent = label;
   } else {
-    signIn.hidden = false;
-    signUp.hidden = false;
-    userMenu.hidden = true;
-    closeUserMenu();
+    guestActions.hidden = false;
+    loggedInActions.hidden = true;
+    navGuest?.removeAttribute('hidden');
+    navUser?.setAttribute('hidden', '');
+    usageInline?.setAttribute('hidden', '');
   }
   refreshUsage();
 }
 
-function closeUserMenu() {
-  document.getElementById('user-dropdown')?.setAttribute('hidden', '');
-  document.getElementById('user-pill')?.setAttribute('aria-expanded', 'false');
-}
+function showPaywall(msg) {
+  const user = getUser();
+  const overlay = document.getElementById('paywall-modal');
+  const guestActions = document.getElementById('paywall-guest-actions');
+  const userActions = document.getElementById('paywall-user-actions');
+  const title = document.getElementById('paywall-title');
+  const msgEl = document.getElementById('paywall-msg');
 
-function toggleUserMenu() {
-  const dd = document.getElementById('user-dropdown');
-  const pill = document.getElementById('user-pill');
-  if (!dd || !pill) return;
-  const open = dd.hasAttribute('hidden');
-  if (open) {
-    dd.removeAttribute('hidden');
-    pill.setAttribute('aria-expanded', 'true');
-  } else {
-    closeUserMenu();
+  if (!overlay) {
+    alert(msg);
+    return;
   }
+
+  if (msgEl) msgEl.textContent = msg || '';
+  sessionStorage.setItem('utiliy_paywall_active', '1');
+
+  if (!user) {
+    if (title) title.textContent = 'Create an account to continue';
+    if (msgEl) {
+      msgEl.textContent = msg || 'Your free audit is used. Sign up for an account, then subscribe to Pro for 80 audits per month.';
+    }
+    guestActions?.removeAttribute('hidden');
+    userActions?.setAttribute('hidden', '');
+  } else if (user.plan !== 'pro') {
+    if (title) title.textContent = 'Upgrade to Pro';
+    if (msgEl) {
+      msgEl.textContent = msg || 'Upgrade to Pro for 80 product page audits per month.';
+    }
+    guestActions?.setAttribute('hidden', '');
+    userActions?.removeAttribute('hidden');
+  } else {
+    if (title) title.textContent = 'Monthly limit reached';
+    if (msgEl) {
+      msgEl.textContent = msg || 'You have used all 80 audits this month. Your limit resets next month.';
+    }
+    guestActions?.setAttribute('hidden', '');
+    userActions?.setAttribute('hidden', '');
+  }
+
+  overlay.removeAttribute('hidden');
+  document.body.style.overflow = 'hidden';
 }
 
 function openModal(id) {
@@ -346,16 +383,26 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
 
-  document.getElementById('user-pill')?.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleUserMenu();
-  });
   document.getElementById('btn-signout')?.addEventListener('click', () => {
     clearAuth();
-    closeUserMenu();
     showToast('Signed out');
   });
-  document.addEventListener('click', () => closeUserMenu());
+  document.getElementById('btn-signout-mobile')?.addEventListener('click', () => {
+    clearAuth();
+    document.getElementById('site-nav')?.classList.remove('is-open');
+    showToast('Signed out');
+  });
+
+  document.getElementById('paywall-signup')?.addEventListener('click', () => {
+    closeModal('paywall-modal');
+    sessionStorage.setItem('utiliy_checkout_after_auth', '1');
+    openAuth('register');
+  });
+  document.getElementById('paywall-signin')?.addEventListener('click', () => {
+    closeModal('paywall-modal');
+    sessionStorage.setItem('utiliy_checkout_after_auth', '1');
+    openAuth('login');
+  });
 
   document.querySelectorAll('[data-close-modal]').forEach((el) => {
     el.addEventListener('click', () => closeModal(el.dataset.closeModal));
@@ -458,4 +505,4 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-window.UtiliyAuth = { getToken, getClientId, authHeaders, startCheckout, openModal, getUser, showToast, openAuth, refreshUsage, renderUsage };
+window.UtiliyAuth = { getToken, getClientId, authHeaders, startCheckout, openModal, closeModal, getUser, showToast, openAuth, refreshUsage, renderUsage, showPaywall };

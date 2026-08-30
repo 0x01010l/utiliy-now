@@ -1,36 +1,38 @@
 <footer class="saas-footer">
   <div class="container footer-grid">
     <section>
-      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="Utiliy" width="100" height="24">
-      <p>{{ site.description }}</p>
+      <img src="{{ '/assets/img/utiliy-logo.svg' | relative_url }}" alt="Utiliy" width="148" height="36">
+      <p>AI product page auditor for ecommerce SEO, schema, and conversion clarity.</p>
+      <p class="footer-legal">Utiliy is operated by Fix Figures LLC</p>
     </section>
     <section>
       <h2>Product</h2>
       <ul>
-        <li><a href="{{ '/product-page-auditor/' | relative_url }}">Product page auditor</a></li>
-        <li><a href="{{ '/product-page-seo-checker/' | relative_url }}">SEO checker</a></li>
-        <li><a href="{{ '/product-schema-checker/' | relative_url }}">Schema checker</a></li>
-        <li><a href="{{ '/ai-shopping-readiness/' | relative_url }}">AI shopping readiness</a></li>
-      </ul>
-    </section>
-    <section>
-      <h2>Platforms</h2>
-      <ul>
-        <li><a href="{{ '/shopify-product-page-seo/' | relative_url }}">Shopify</a></li>
-        <li><a href="{{ '/woocommerce-product-page-seo/' | relative_url }}">WooCommerce</a></li>
+        <li><a href="{{ '/#audit' | relative_url }}">Run an audit</a></li>
+        <li><a href="{{ '/pricing/' | relative_url }}">Pricing</a></li>
+        <li><a href="{{ '/product-page-auditor/' | relative_url }}">Product auditor</a></li>
+        <li><a href="{{ '/guides/' | relative_url }}">Guides</a></li>
       </ul>
     </section>
     <section>
       <h2>Company</h2>
       <ul>
-        <li><a href="{{ '/pricing/' | relative_url }}">Pricing</a></li>
-        <li><a href="{{ '/guides/' | relative_url }}">Guides</a></li>
-        <li><a href="{{ '/privacy/' | relative_url }}">Privacy</a></li>
+        <li><a href="{{ '/about/' | relative_url }}">About</a></li>
         <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+        <li><a href="mailto:contact@utiliy.com">contact@utiliy.com</a></li>
+      </ul>
+    </section>
+    <section>
+      <h2>Legal</h2>
+      <ul>
+        <li><a href="{{ '/privacy/' | relative_url }}">Privacy</a></li>
+        <li><a href="{{ '/terms/' | relative_url }}">Terms</a></li>
+        <li><a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a></li>
       </ul>
     </section>
   </div>
   <div class="container footer-bottom">
-    <p>&copy; {{ 'now' | date: '%Y' }} {{ site.company.name }}. All rights reserved.</p>
+    <p>&copy; {{ 'now' | date: '%Y' }} Fix Figures LLC · Utiliy. All rights reserved.</p>
+    <p class="footer-address">6545 Market Avenue North, North Canton, OH 44720</p>
   </div>
 </footer>

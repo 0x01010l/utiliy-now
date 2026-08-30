@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 108 28" fill="none" role="img" aria-label="Utiliy">
-  <rect x="6" y="4" width="16" height="20" rx="5" fill="#1d1d1f"/>
-  <path d="M11 10h6v1.5h-3v5.5h-3v-5.5H11z" fill="#f5f5f7"/>
-  <text x="28" y="20" font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif" font-size="17" font-weight="600" letter-spacing="-0.03em" fill="#1d1d1f">Utiliy</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 148 36" fill="none" role="img" aria-label="Utiliy">
+  <defs>
+    <linearGradient id="g" x1="4" y1="4" x2="28" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0071e3"/>
+      <stop offset="1" stop-color="#5856d6"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="32" height="32" rx="9" fill="url(#g)"/>
+  <path d="M11 11h5.5a4.5 4.5 0 014.5 4.5V22a2 2 0 01-2 2h-1.5a2 2 0 01-2-2v-6.5a1 1 0 00-1-1H11V11z" fill="#fff"/>
+  <circle cx="23" cy="18" r="3" fill="#fff" fill-opacity=".95"/>
+  <text x="42" y="25" font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, sans-serif" font-size="22" font-weight="700" letter-spacing="-0.045em" fill="#1d1d1f">utiliy</text>
 </svg>

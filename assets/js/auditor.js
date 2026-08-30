@@ -407,6 +407,10 @@ function showScanning(step) {
 }
 
 function showPaywall(msg) {
+  if (window.UtiliyAuth?.showPaywall) {
+    window.UtiliyAuth.showPaywall(msg);
+    return;
+  }
   const overlay = document.getElementById('paywall-modal');
   if (overlay) {
     document.getElementById('paywall-msg').textContent = msg;
@@ -506,6 +510,7 @@ async function runAudit(url) {
     progress.hidden = true;
     results.innerHTML = renderLab(data);
     results.hidden = false;
+    results.classList.add('lab-enter');
     bindLabInteractions(results);
 
     document.getElementById('audit-lab')?.scrollIntoView({ behavior: 'smooth', block: 'start' });

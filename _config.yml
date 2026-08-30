@@ -23,7 +23,9 @@ google_client_id: ""
 
 company:
   name: Utiliy
-  email: hello@utiliy.com
+  legal_name: Fix Figures LLC
+  email: contact@utiliy.com
+  address: "6545 Market Avenue North, North Canton, OH 44720"
   founded: "2026"
 
 defaults:
