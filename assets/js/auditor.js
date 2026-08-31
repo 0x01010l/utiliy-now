@@ -44,7 +44,7 @@ function overallStatus(score) {
 function keywordScore(kw) {
   const rows = kw?.title_alignment || [];
   if (!rows.length) return null;
-  const good = rows.filter((r) => r.status === 'good').length;
+  const good = rows.filter((r) => r.status === 'good' || r.status === 'body').length;
   return Math.round((good / rows.length) * 100);
 }
 
@@ -211,7 +211,7 @@ function renderKeywords(kw) {
     .map(
       (r) => `<tr>
         <td>${escapeHtml(r.term)}</td>
-        <td><span class="align-dot ${r.status}"></span> ${r.status}</td>
+        <td><span class="align-dot ${r.status}"></span> ${r.status === 'body' ? 'in copy' : r.status}</td>
         <td>${r.in_title ? 'Yes' : '—'}</td>
         <td>${r.in_h1 ? 'Yes' : '—'}</td>
       </tr>`
@@ -230,6 +230,7 @@ function renderKeywords(kw) {
 }
 
 function renderSchemaPanel(data) {
+  const platform = data.platform_label || data.platform || 'generic';
   const checklist = (data.lab?.schema_checklist || []).map((item) => {
     const icon = item.status === 'found' ? '✓' : item.status === 'missing' ? '✗' : '·';
     return `<div class="schema-chip ${item.status}">${icon} ${escapeHtml(item.property)}</div>`;
@@ -238,20 +239,24 @@ function renderSchemaPanel(data) {
   const snippetBlocks = snippets
     .map((s, i) => `<details class="evidence-panel"><summary>JSON-LD block ${i + 1}</summary><div class="code-viewer">${escapeHtml(s)}</div></details>`)
     .join('');
+  const modeNote = ['amazon', 'shopify', 'woocommerce'].includes(data.platform)
+    ? `<p class="section-lead">Platform audit: <strong>${escapeHtml(platform)}</strong> — checklist reflects listing data extracted for this marketplace (not merchant JSON-LD).</p>`
+    : '';
   return `
+    ${modeNote}
     <div class="schema-status">
-      <span>Product schema: <strong>${data.structured_data?.has_product_schema ? 'Detected' : 'Not detected'}</strong></span>
+      <span>Product schema: <strong>${data.structured_data?.has_product_schema ? 'JSON-LD detected' : `${escapeHtml(platform)} listing data`}</strong></span>
       <span>${data.structured_data?.json_ld_blocks_found ?? 0} JSON-LD blocks</span>
     </div>
     <div class="schema-grid">${checklist}</div>
-    ${snippetBlocks || '<p class="lab-empty">No JSON-LD in page source. See priority fixes for a template.</p>'}
+    ${snippetBlocks || '<p class="lab-empty">No public JSON-LD on this marketplace listing.</p>'}
   `;
 }
 
 function imgUrl(img) {
   let src = img.src_display || img.src || '';
   if (src.startsWith('//')) src = 'https:' + src;
-  if (src.includes('cdn.shopify.com') || src.includes('/cdn/shop/')) {
+  if (src.includes('cdn.shopify.com') || src.includes('/cdn/shop/') || src.includes('media-amazon.com')) {
     return `${API_URL}/img?url=${encodeURIComponent(src)}`;
   }
   return src;
