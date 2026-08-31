@@ -85,29 +85,24 @@ function renderFixEditor(fix, i, data, tm) {
   </article>`;
 }
 
-function renderOptimizerSidebar(data, pillars, fixes) {
+function renderOptimizerStatsBar(data, pillars, fixes) {
   const ready = fixes.filter((f) => f.copy_paste).length;
-  return `<aside class="optimizer-sidebar">
-    <div class="sidebar-card">
-      <p class="sidebar-label">Visibility</p>
-      <p class="sidebar-score">${data.scores.overall}<span>/100</span></p>
-      <div class="sidebar-pillars">${PILLARS.map(({ key, label }) => {
-        const v = pillarScore(pillars, key);
-        if (v == null) return '';
-        return `<div class="sidebar-pillar"><span>${label}</span><strong>${v}</strong></div>`;
-      }).join('')}</div>
+  const pillarChips = PILLARS.map(({ key, label }) => {
+    const v = pillarScore(pillars, key);
+    if (v == null) return '';
+    return `<span class="stat-chip ${scoreTier(v)}">${label} <strong>${v}</strong></span>`;
+  }).join('');
+  return `<div class="optimizer-stats-bar">
+    <div class="stats-bar-group">
+      <span class="stats-bar-label">Visibility</span>
+      <span class="stats-bar-score ${scoreTier(data.scores.overall)}">${data.scores.overall}/100</span>
     </div>
-    <div class="sidebar-card">
-      <p class="sidebar-label">Lab progress</p>
-      <p class="sidebar-stat"><strong>${ready}</strong> AI fixes ready</p>
-      <p class="sidebar-stat"><strong>${fixes.length}</strong> total actions</p>
+    <div class="stats-bar-pillars">${pillarChips}</div>
+    <div class="stats-bar-group stats-bar-progress">
+      <span class="stats-bar-label">${ready} of ${fixes.length} AI fixes ready</span>
       <div class="lab-progress-bar"><span style="width:${fixes.length ? Math.round((ready / fixes.length) * 100) : 0}%"></span></div>
     </div>
-    <div class="sidebar-card product-snapshot">
-      <p class="sidebar-label">Product snapshot</p>
-      ${renderProductFacts(data.lab, data) || '<p class="lab-empty">Limited product data extracted.</p>'}
-    </div>
-  </aside>`;
+  </div>`;
 }
 
 function renderDiagnosticsReport(data, pillars, tm, lab, fixes) {
@@ -185,13 +180,13 @@ function renderOptimizerApp(data) {
       </div>
 
       <div class="optimizer-view optimizer-view-lab" data-view="lab">
-        <p class="optimizer-lead">We scanned your page and found <strong>${fixes.length} ways</strong> to improve visibility. Select a fix — apply the AI-generated copy in your theme or CMS.</p>
+        ${renderOptimizerStatsBar(data, pillars, fixes)}
+        <p class="optimizer-lead">Select a weakness on the left. Copy the AI-generated fix on the right into your theme or CMS.</p>
         <div class="optimizer-layout">
           <nav class="fix-queue" aria-label="Optimization queue">${queue}</nav>
           <div class="fix-workspace">
             ${renderFixEditor(fixes[0], 0, data, tm)}
           </div>
-          ${renderOptimizerSidebar(data, pillars, fixes)}
         </div>
       </div>
 

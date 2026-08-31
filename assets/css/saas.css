@@ -166,7 +166,8 @@ body.saas-body {
 /* Results */
 .audit-results { margin-top: 1.5rem; }
 .audit-results.lab-enter { animation: labFadeIn .5s ease; }
-body.audit-active .container { width: min(calc(100% - 2rem), 1280px); }
+body.audit-active .container,
+body.optimizer-active .container { width: min(calc(100% - 2rem), 1280px); }
 body.audit-active .hero-visual { display: none; }
 body.audit-active .hero-grid { grid-template-columns: 1fr; }
 body.audit-active .hero { padding-bottom: 1.5rem; }

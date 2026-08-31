@@ -300,20 +300,38 @@ body.audit-active .section-how,
 body.audit-active .section-report,
 body.audit-active .section-audience,
 body.audit-active .section-faq,
-body.audit-active .cta-band { display: none; }
-body.audit-active .hero-home {
+body.audit-active .cta-band,
+body.optimizer-active .hero-marketing,
+body.optimizer-active .hero-visual-wrap,
+body.optimizer-active .hero-glow,
+body.optimizer-active .platform-strip,
+body.optimizer-active .glass-stats,
+body.optimizer-active .section-glass,
+body.optimizer-active .section-how,
+body.optimizer-active .section-report,
+body.optimizer-active .section-audience,
+body.optimizer-active .section-faq,
+body.optimizer-active .cta-band { display: none; }
+body.audit-active .hero-home,
+body.optimizer-active .hero-home {
   padding: 1rem 0 .25rem;
   background: var(--bg);
 }
-body.audit-active .hero-home-grid { grid-template-columns: 1fr; gap: 0; }
-body.audit-active .hero-copy { max-width: none; }
-body.audit-active .audit-workspace { margin: 0; }
-body.audit-active .audit-form { margin-top: 0; }
-body.audit-active .audit-input-row {
+body.audit-active .hero-home-grid,
+body.optimizer-active .hero-home-grid { grid-template-columns: 1fr; gap: 0; }
+body.audit-active .hero-copy,
+body.optimizer-active .hero-copy { max-width: none; width: 100%; }
+body.audit-active .audit-workspace,
+body.optimizer-active .audit-workspace { margin: 0; width: 100%; }
+body.audit-active .audit-form,
+body.optimizer-active .audit-form { margin-top: 0; }
+body.audit-active .audit-input-row,
+body.optimizer-active .audit-input-row {
   max-width: 720px;
   margin: 0 auto;
 }
-body.audit-active #audit-results { margin-top: .75rem; }
+body.audit-active #audit-results,
+body.optimizer-active #audit-results { margin-top: .75rem; width: 100%; }
 
 @media (max-width: 900px) {
   .hero-home-grid { grid-template-columns: 1fr; }

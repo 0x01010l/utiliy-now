@@ -391,7 +391,7 @@ async function runOptimization(url) {
   results.hidden = true;
   results.innerHTML = '';
   submit.disabled = true;
-  document.body.classList.add('optimizer-active');
+  document.body.classList.add('optimizer-active', 'audit-active');
   showScanning(0);
 
   const headers = window.UtiliyAuth ? window.UtiliyAuth.authHeaders() : { 'Content-Type': 'application/json' };
@@ -413,7 +413,7 @@ async function runOptimization(url) {
     const data = await res.json();
 
     if (res.status === 402 || data.paywall) {
-      document.body.classList.remove('optimizer-active');
+      document.body.classList.remove('optimizer-active', 'audit-active');
       progress.hidden = true;
       if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
       showPaywall(data.error || 'You have reached your optimization limit. Upgrade to continue.');
@@ -431,7 +431,7 @@ async function runOptimization(url) {
 
     document.getElementById('optimizer-app')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
-    document.body.classList.remove('optimizer-active');
+    document.body.classList.remove('optimizer-active', 'audit-active');
     progress.hidden = true;
     alert(err.message || 'Optimization failed');
   } finally {
