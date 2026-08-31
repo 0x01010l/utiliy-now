@@ -383,198 +383,90 @@ function renderFixDetail(fix, i) {
   </article>`;
 }
 
-function renderLab(data) {
-  const lab = data.lab || {};
-  const sev = lab.severity_counts || {};
-  const tm = lab.title_meta || data.seo?.title_meta || {};
-  const fixes = data.fixes || [];
-  const overall = data.scores.overall;
-  const status = overallStatus(overall);
-  const critical = sev.critical || 0;
-  const improvements = (sev.high || 0) + (sev.medium || 0);
-  const strengths = (lab.zones || []).filter((z) => z.status === 'good').length;
-  const seoIssueCount = (data.seo?.issues || []).length;
-  const issueBadge = critical + (sev.high || 0) || fixes.length;
+async function runOptimization(url) {
+  const progress = document.getElementById('audit-progress');
+  const results = document.getElementById('audit-results');
+  const submit = document.getElementById('audit-submit');
 
-  const pillars = visibilityPillars(data);
-  const navItems = [
-    { id: 'header', label: 'Overview' },
-    { id: 'priorities', label: 'Opportunities', badge: issueBadge || null },
-    { id: 'scores', label: 'Visibility' },
-    { id: 'ai', label: 'AI Visibility' },
-    { id: 'seo', label: 'Google SEO', badge: seoIssueCount || null },
-    { id: 'keywords', label: 'Keywords', badge: (data.keywords?.opportunities || []).length || null },
-    { id: 'content', label: 'Content' },
-    { id: 'images', label: 'Images', badge: (lab.image_gallery || []).filter((i) => i.status !== 'good').length || null },
-    { id: 'schema', label: 'Schema' },
-  ];
+  results.hidden = true;
+  results.innerHTML = '';
+  submit.disabled = true;
+  document.body.classList.add('optimizer-active');
+  showScanning(0);
 
-  const nav = navItems
-    .map(
-      (n) =>
-        `<a href="#lab-${n.id}" class="${n.id === 'header' ? 'active' : ''}" data-nav="${n.id}">
-          ${n.label}${n.badge != null && n.badge > 0 ? `<span class="nav-badge">${n.badge}</span>` : ''}
-        </a>`
-    )
-    .join('');
+  const headers = window.UtiliyAuth ? window.UtiliyAuth.authHeaders() : { 'Content-Type': 'application/json' };
 
-  const allSeoIssues = [...(data.seo?.issues || [])];
-  const warnings = (lab.warnings || []).map((w) => `<div class="lab-warning">${escapeHtml(w)}</div>`).join('');
-  const enriched = data.product_information?.platform_enriched
-    ? `<span class="platform-pill">${escapeHtml(data.product_information?.data_source || 'enriched')}</span>`
-    : '';
+  try {
+    const timers = [
+      setTimeout(() => showScanning(1), 600),
+      setTimeout(() => showScanning(2), 2200),
+      setTimeout(() => showScanning(3), 4500),
+      setTimeout(() => showScanning(4), 6500),
+    ];
 
-  return `
-    <div class="audit-cockpit" id="audit-lab">
-      ${warnings}
-      <header class="cockpit-header" id="lab-header">
-        <div class="cockpit-header-main">
-          ${bigScoreRing(overall)}
-          <div class="cockpit-header-copy">
-            <p class="cockpit-eyebrow">Product page score · ${escapeHtml(data.platform_label || data.platform)} · HTTP ${data.status_code} ${enriched}</p>
-            <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product page')}</h2>
-            <p class="cockpit-url">${escapeHtml(data.final_url)}</p>
-            <p class="cockpit-score-label">Visibility score</p>
-            <p class="cockpit-status ${status.tier}">${status.label.toUpperCase()}</p>
-            <p class="cockpit-summary">${escapeHtml(executiveSummary(data))}</p>
-            <div class="cockpit-stats">
-              <span class="stat-critical"><em>${critical}</em> Critical</span>
-              <span class="stat-improve"><em>${improvements}</em> Opportunities</span>
-              <span class="stat-strong"><em>${strengths}</em> Strengths</span>
-            </div>
-            <div class="cockpit-actions">
-              <button type="button" class="btn btn-primary btn-sm" id="cockpit-optimize" data-scroll="#lab-priorities">Optimize my listing</button>
-              <button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-priorities">View opportunities</button>
-              <button type="button" class="btn btn-ghost btn-sm" id="cockpit-rerun">Re-analyze</button>
-              <button type="button" class="btn btn-ghost btn-sm" id="cockpit-export">Export report</button>
-            </div>
-          </div>
-        </div>
-      </header>
+    const res = await fetch(`${API_URL}/audit`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ url, use_ai: true, client_id: window.UtiliyAuth?.getClientId() }),
+    });
+    timers.forEach(clearTimeout);
+    const data = await res.json();
 
-      <div class="lab-shell">
-        <aside class="lab-nav-wrap" id="lab-nav-wrap">
-          <nav class="lab-nav" id="lab-nav" aria-label="Optimizer sections">
-            <p class="lab-nav-title">Optimizer</p>
-            ${nav}
-          </nav>
-        </aside>
+    if (res.status === 402 || data.paywall) {
+      document.body.classList.remove('optimizer-active');
+      progress.hidden = true;
+      if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
+      showPaywall(data.error || 'You have reached your optimization limit. Upgrade to continue.');
+      return;
+    }
+    if (!res.ok) throw new Error(data.error || 'Scan failed');
 
-        <div class="lab-main">
-          <section class="cockpit-block priority-block" id="lab-priorities">
-            <div class="block-head">
-              <h3>Top opportunities</h3>
-              <span class="block-sub">${fixes.length} optimization actions</span>
-            </div>
-            <p class="block-lead">Highest-impact changes to improve Google rankings, AI discovery, and conversion.</p>
-            <div class="priority-list">${fixes.slice(0, 6).map(renderPriorityFix).join('') || '<p class="lab-empty">No optimization actions generated.</p>'}</div>
-            ${fixes.length > 6 ? `<button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-fixes-all">View all ${fixes.length} actions</button>` : ''}
-          </section>
+    if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
 
-          <section class="cockpit-block" id="lab-scores">
-            <div class="block-head"><h3>Visibility breakdown</h3></div>
-            <p class="block-lead">SEO + GEO + ecommerce — how discoverable this product page is across search surfaces.</p>
-            <div class="score-dashboard">${renderScoreDashboard(pillars)}</div>
-          </section>
+    progress.hidden = true;
+    results.innerHTML = renderOptimizerApp(data);
+    results.hidden = false;
+    results.classList.add('lab-enter');
+    bindOptimizerInteractions(results, data);
 
-          <section class="cockpit-block strategist-block" id="lab-ai">
-            <div class="block-head">
-              <h3>AI visibility</h3>
-              <span class="zone-score ${scoreTier(pillarScore(pillars, 'ai_visibility') || 0)}">${pillarScore(pillars, 'ai_visibility') ?? '—'}/100</span>
-            </div>
-            <p class="block-lead">How well ChatGPT, Gemini, Perplexity, and shopping agents can understand and recommend this product.</p>
-            ${renderAIStrategist(data, fixes, tm)}
-          </section>
-
-          <section class="detail-panel" id="lab-seo">
-            <div class="panel-head">
-              <h3>Google SEO</h3>
-              <span class="zone-score ${scoreTier(pillarScore(pillars, 'google_seo') || 0)}">${pillarScore(pillars, 'google_seo') ?? '—'}/100</span>
-            </div>
-            <p class="section-lead">On-page signals for Google Search, Shopping, and Bing — titles, meta, headings, and technical health.</p>
-            <div class="metric-grid">
-              ${lengthMeter('Title tag', tm.title, tm.title_length || 0, tm.title_status || 'missing', tm.title_ideal || '30–60')}
-              ${lengthMeter('Meta description', tm.meta_description, tm.meta_length || 0, tm.meta_status || 'missing', tm.meta_ideal || '120–155')}
-            </div>
-            <div class="meta-extra">
-              <p><strong>H1:</strong> ${escapeHtml(tm.h1 || '—')}</p>
-              ${tm.canonical ? `<p><strong>Canonical:</strong> ${escapeHtml(tm.canonical)}</p>` : ''}
-            </div>
-            <div class="tech-summary">
-              <span>${data.page_code?.html_size_kb || '—'} KB HTML</span>
-              <span>${data.page_code?.links?.internal || 0} internal links</span>
-              <span>Viewport: ${data.page_code?.viewport ? 'Yes' : 'No'}</span>
-            </div>
-            <div class="issue-list">${[...allSeoIssues, ...(data.page_code?.issues || [])].map(issueCard).join('') || '<p class="lab-empty">No Google SEO issues detected.</p>'}</div>
-          </section>
-
-          <section class="detail-panel" id="lab-keywords">
-            <div class="panel-head">
-              <h3>Keywords</h3>
-              <span class="zone-score ${scoreTier(pillarScore(pillars, 'keywords') || 0)}">${pillarScore(pillars, 'keywords') ?? '—'}/100</span>
-            </div>
-            ${renderKeywords(data.keywords)}
-          </section>
-
-          <section class="detail-panel" id="lab-content">
-            <div class="panel-head">
-              <h3>Content &amp; product data</h3>
-              <span class="zone-score ${scoreTier(pillarScore(pillars, 'content') || 0)}">${pillarScore(pillars, 'content') ?? '—'}/100</span>
-            </div>
-            <p class="section-lead">${escapeHtml(data.content?.analysis || '')}</p>
-            <div class="fact-grid">${renderProductFacts(lab, data)}</div>
-            ${lab.shopify?.tags?.length ? `<p class="lab-tags">Tags: ${lab.shopify.tags.map((t) => `<span class="kw-tag">${escapeHtml(t)}</span>`).join('')}</p>` : ''}
-            <div class="readiness-strip">
-              <span>Product attributes for AI agents</span>
-              <div class="readiness-bar"><span style="width:${data.ai_shopping_readiness?.score || 0}%"></span></div>
-              <strong>${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
-            </div>
-            <p class="section-lead">${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
-          </section>
-
-          <section class="detail-panel" id="lab-images">
-            <div class="panel-head">
-              <h3>Images</h3>
-              <span class="zone-score ${scoreTier(pillarScore(pillars, 'images') || 0)}">${pillarScore(pillars, 'images') ?? '—'}/100</span>
-            </div>
-            ${renderImages(lab.image_gallery, data.scores.categories.images, data.images?.summary)}
-          </section>
-
-          <section class="detail-panel" id="lab-schema">
-            <div class="panel-head">
-              <h3>Schema</h3>
-              <span class="zone-score ${scoreTier(pillarScore(pillars, 'schema') || 0)}">${pillarScore(pillars, 'schema') ?? '—'}/100</span>
-            </div>
-            ${renderSchemaPanel(data)}
-          </section>
-
-          <section class="detail-panel" id="lab-fixes-all">
-            <div class="panel-head">
-              <h3>All optimization actions</h3>
-              <span class="zone-score good">${fixes.length} actions</span>
-            </div>
-            ${fixes.map(renderFixDetail).join('') || '<p class="lab-empty">No fixes generated.</p>'}
-          </section>
-        </div>
-      </div>
-    </div>
-  `;
+    document.getElementById('optimizer-app')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (err) {
+    document.body.classList.remove('optimizer-active');
+    progress.hidden = true;
+    alert(err.message || 'Optimization failed');
+  } finally {
+    submit.disabled = false;
+  }
 }
+
+const runAudit = runOptimization;
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('audit-form')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const url = document.getElementById('audit-url').value.trim();
+    if (!url) return;
+    if (window.UtiliyAuth?.isAtAuditLimit?.()) {
+      window.UtiliyAuth.promptUpgrade();
+      return;
+    }
+    runOptimization(url);
+  });
+});
 
 function showScanning(step) {
   const el = document.getElementById('audit-progress');
   if (!el) return;
   el.hidden = false;
   const steps = [
-    'Fetching product page…',
-    'Analyzing Google SEO & keywords…',
-    'Checking AI visibility & product data…',
-    'Reviewing images & schema…',
-    'Building optimization roadmap…',
+    'Scanning page for weaknesses…',
+    'Extracting product data…',
+    'AI generating fixes…',
+    'Building your optimization lab…',
   ];
   el.innerHTML = `<div class="lab-scan">
     <div class="scan-radar"></div>
-    <p style="font-weight:700;margin:0 0 1rem;">Optimizing your product page</p>
+    <p style="font-weight:700;margin:0 0 1rem;">Preparing your AI lab</p>
     <div class="scan-steps">${steps
       .map((s, i) => `<div class="scan-step ${i < step ? 'done' : i === step ? 'active' : ''}">${i < step ? '✓' : '○'} ${s}</div>`)
       .join('')}</div>
@@ -596,7 +488,7 @@ function showPaywall(msg) {
 }
 
 function animateLabMetrics(root) {
-  root.querySelectorAll('.score-nav-fill, .readiness-bar span').forEach((bar) => {
+  root.querySelectorAll('.lab-progress-bar span, .score-nav-fill, .readiness-bar span').forEach((bar) => {
     const w = bar.style.width;
     bar.style.width = '0';
     requestAnimationFrame(() => { bar.style.width = w; });
@@ -612,181 +504,3 @@ function animateLabMetrics(root) {
     if (valEl) animateCounter(valEl, score);
   });
 }
-
-function setupFloatingNav(root) {
-  const wrap = root.querySelector('.lab-nav-wrap');
-  const nav = root.querySelector('.lab-nav');
-  const shell = root.querySelector('.lab-shell');
-  const header = root.querySelector('.cockpit-header');
-  if (!wrap || !nav || !shell) return null;
-
-  const mq = window.matchMedia('(min-width: 901px)');
-  const headerOffset = 84;
-
-  const update = () => {
-    if (!mq.matches) {
-      nav.classList.remove('is-floating');
-      nav.style.cssText = '';
-      wrap.style.minHeight = '';
-      return;
-    }
-
-    const shellRect = shell.getBoundingClientRect();
-    const wrapRect = wrap.getBoundingClientRect();
-    const headerRect = header?.getBoundingClientRect();
-
-    if (shellRect.bottom < headerOffset || shellRect.top > window.innerHeight) {
-      nav.classList.remove('is-floating');
-      nav.style.visibility = 'hidden';
-      wrap.style.minHeight = '';
-      return;
-    }
-
-    wrap.style.minHeight = `${nav.offsetHeight}px`;
-    let top = Math.max(headerOffset, wrapRect.top);
-    if (headerRect && headerRect.bottom > headerOffset) {
-      top = Math.max(top, headerRect.bottom + 12);
-    }
-
-    nav.classList.add('is-floating');
-    nav.style.visibility = 'visible';
-    nav.style.top = `${top}px`;
-    nav.style.left = `${wrapRect.left}px`;
-    nav.style.width = `${wrapRect.width}px`;
-    nav.style.maxHeight = `calc(100vh - ${top}px - 1.5rem)`;
-  };
-
-  update();
-  const onScroll = () => requestAnimationFrame(update);
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll, { passive: true });
-  return () => {
-    window.removeEventListener('scroll', onScroll);
-    window.removeEventListener('resize', onScroll);
-  };
-}
-
-function bindLabInteractions(root) {
-  root.querySelectorAll('[data-scroll]').forEach((el) => {
-    el.addEventListener('click', () => scrollToSection(el.dataset.scroll));
-  });
-
-  root.querySelectorAll('.lab-nav a').forEach((link) => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      scrollToSection(link.getAttribute('href'));
-      root.querySelectorAll('.lab-nav a').forEach((a) => a.classList.remove('active'));
-      link.classList.add('active');
-    });
-  });
-
-  root.querySelectorAll('.copy-btn').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const fromAttr = btn.getAttribute('data-copy');
-      const text = fromAttr || (btn.parentElement.querySelector('pre')?.textContent || btn.parentElement.textContent.replace('Copy', '').replace('Copy recommendation', '').replace('Copy fix', '').trim());
-      navigator.clipboard.writeText(text);
-      const orig = btn.textContent;
-      btn.textContent = 'Copied';
-      setTimeout(() => { btn.textContent = orig; }, 2000);
-    });
-  });
-
-  root.querySelector('#cockpit-rerun')?.addEventListener('click', () => {
-    const url = document.getElementById('audit-url')?.value?.trim();
-    if (url) runAudit(url);
-    else {
-      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
-      document.getElementById('audit-url')?.focus();
-    }
-  });
-
-  root.querySelector('#cockpit-export')?.addEventListener('click', () => window.print());
-
-  const sections = root.querySelectorAll('[id^="lab-"]');
-  const navLinks = root.querySelectorAll('.lab-nav a');
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.id.replace('lab-', '');
-          navLinks.forEach((a) => a.classList.toggle('active', a.dataset.nav === id));
-        }
-      });
-    },
-    { rootMargin: '-12% 0px -60% 0px' }
-  );
-  sections.forEach((s) => observer.observe(s));
-
-  animateLabMetrics(root);
-  setupFloatingNav(root);
-}
-
-async function runAudit(url) {
-  const progress = document.getElementById('audit-progress');
-  const results = document.getElementById('audit-results');
-  const submit = document.getElementById('audit-submit');
-
-  results.hidden = true;
-  results.innerHTML = '';
-  submit.disabled = true;
-  document.body.classList.add('audit-active');
-  showScanning(0);
-
-  const headers = window.UtiliyAuth ? window.UtiliyAuth.authHeaders() : { 'Content-Type': 'application/json' };
-
-  try {
-    const timers = [
-      setTimeout(() => showScanning(1), 600),
-      setTimeout(() => showScanning(2), 2000),
-      setTimeout(() => showScanning(3), 4000),
-      setTimeout(() => showScanning(4), 6000),
-    ];
-
-    const res = await fetch(`${API_URL}/audit`, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({ url, use_ai: true, client_id: window.UtiliyAuth?.getClientId() }),
-    });
-    timers.forEach(clearTimeout);
-    const data = await res.json();
-
-    if (res.status === 402 || data.paywall) {
-      document.body.classList.remove('audit-active');
-      progress.hidden = true;
-      if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
-      showPaywall(data.error || 'You have reached your audit limit. Upgrade to continue.');
-      return;
-    }
-    if (!res.ok) throw new Error(data.error || 'Audit failed');
-
-    if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
-
-    progress.hidden = true;
-    results.innerHTML = renderLab(data);
-    results.hidden = false;
-    results.classList.add('lab-enter');
-    bindLabInteractions(results);
-
-    document.getElementById('lab-header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  } catch (err) {
-    document.body.classList.remove('audit-active');
-    progress.hidden = true;
-    alert(err.message || 'Audit failed');
-  } finally {
-    submit.disabled = false;
-  }
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  document.getElementById('audit-form')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const url = document.getElementById('audit-url').value.trim();
-    if (!url) return;
-    if (window.UtiliyAuth?.isAtAuditLimit?.()) {
-      window.UtiliyAuth.promptUpgrade();
-      return;
-    }
-    runAudit(url);
-  });
-});
