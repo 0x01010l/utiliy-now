@@ -21,6 +21,10 @@ def _walk_json_ld(node: Any, products: list[dict]) -> None:
         types.update(str(x) for x in t)
     if types & {"Product", "ProductGroup"}:
         products.append(node)
+        if "ProductGroup" in types:
+            for variant in node.get("hasVariant") or []:
+                if isinstance(variant, dict):
+                    products.append(variant)
     for value in node.values():
         if isinstance(value, (dict, list)):
             _walk_json_ld(value, products)
@@ -122,6 +126,8 @@ def extract_from_json_ld(json_ld: list[Any]) -> dict[str, Any] | None:
         all_images.extend(_images_from_product(p))
         if not sku and p.get("sku"):
             sku = p.get("sku")
+        if not sku and p.get("mpn"):
+            sku = p.get("mpn")
         b = p.get("brand")
         if isinstance(b, dict):
             brand = brand or b.get("name")

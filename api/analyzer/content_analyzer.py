@@ -4,8 +4,10 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass, field
+from typing import Any
 
 from .crawler import CrawlResult
+from .page_fetcher import is_bot_blocked_page
 
 
 @dataclass
@@ -28,15 +30,17 @@ INFO_FIELDS = [
     ("name", ["product", "item", "title"]),
     ("price", ["price", "$", "€", "£"]),
     ("brand", ["brand"]),
-    ("availability", ["in stock", "out of stock", "available", "sold out"]),
-    ("sku", ["sku", "model", "item #"]),
+    ("availability", ["in stock", "out of stock", "available", "sold out", "unavailable"]),
+    ("sku", ["sku", "model", "item #", "asin"]),
     ("dimensions", ["dimension", "size", "width", "height", "length"]),
     ("weight", ["weight", " lbs", " kg", " oz"]),
-    ("material", ["material", "fabric", "made of"]),
+    ("material", ["material", "fabric", "made of", "croslite", "leather", "rubber"]),
     ("warranty", ["warranty", "guarantee"]),
     ("shipping", ["shipping", "delivery", "ships"]),
     ("returns", ["return", "refund"]),
 ]
+
+AMAZON_OPTIONAL_FIELDS = {"warranty", "dimensions", "weight"}
 
 
 def analyze_images(crawl: CrawlResult) -> ImageAnalysis:
@@ -77,32 +81,64 @@ def _text_contains_any(text: str, needles: list[str]) -> bool:
     return any(n in lower for n in needles)
 
 
+def _platform_extracted(crawl: CrawlResult, platform_data: dict[str, Any] | None) -> dict[str, Any]:
+    extracted = dict((platform_data or {}).get("extracted") or {})
+
+    if crawl.platform == "shopify" and len(extracted) < 3:
+        from .headless_shopify_extractor import extract_from_next_data
+
+        next_data = extract_from_next_data(crawl.html, crawl.final_url)
+        if next_data:
+            for key, value in (next_data.get("extracted") or {}).items():
+                if value and not extracted.get(key):
+                    extracted[key] = value
+
+    if crawl.platform == "amazon":
+        from .amazon_extractor import extract_amazon_product
+
+        amazon = extract_amazon_product(crawl.html, crawl.final_url)
+        if amazon:
+            for key, value in (amazon.get("extracted") or {}).items():
+                if value and not extracted.get(key):
+                    extracted[key] = value
+
+    return extracted
+
+
 def analyze_product_info(
     crawl: CrawlResult,
     schema_product: dict | None,
-    shopify_data: dict | None = None,
+    platform_data: dict[str, Any] | None = None,
 ) -> ProductInfoAnalysis:
     result = ProductInfoAnalysis()
-    text = crawl.visible_text.lower()
-    title = (crawl.title or "").strip()
-    h1 = crawl.h1s[0] if crawl.h1s else ""
+    platform_extracted = _platform_extracted(crawl, platform_data)
 
-    shopify_extracted = (shopify_data or {}).get("extracted") or {}
-    if shopify_data and shopify_data.get("description_text"):
-        text = text + " " + shopify_data["description_text"].lower()
+    text = (crawl.product_text or crawl.visible_text).lower()
+    if platform_data and platform_data.get("description_text"):
+        text = text + " " + platform_data["description_text"].lower()
+    elif platform_extracted.get("features"):
+        text = text + " " + str(platform_extracted["features"]).lower()
+
+    title = (crawl.h1s[0] if crawl.h1s else "") or (crawl.title or "").strip()
+    if is_bot_blocked_page(crawl.html, crawl.title, crawl.status_code):
+        title = crawl.h1s[0] if crawl.h1s else ""
+    if crawl.platform == "shopify" and crawl.h1s:
+        title = crawl.h1s[0]
 
     extracted: dict[str, str | list[str] | None] = {
-        "name": shopify_extracted.get("name") or (schema_product.get("name") if schema_product else None) or h1 or title or None,
-        "brand": shopify_extracted.get("brand"),
-        "price": shopify_extracted.get("price"),
-        "availability": shopify_extracted.get("availability"),
-        "sku": shopify_extracted.get("sku"),
-        "weight": shopify_extracted.get("weight"),
-        "category": shopify_extracted.get("category") or (schema_product.get("category") if schema_product else None),
-        "warranty": shopify_extracted.get("warranty"),
-        "shipping": shopify_extracted.get("shipping"),
-        "returns": shopify_extracted.get("returns"),
-        "material": shopify_extracted.get("material"),
+        "name": platform_extracted.get("name") or (schema_product.get("name") if schema_product else None) or title or None,
+        "brand": platform_extracted.get("brand"),
+        "price": platform_extracted.get("price"),
+        "compare_at_price": platform_extracted.get("compare_at_price"),
+        "availability": platform_extracted.get("availability"),
+        "sku": platform_extracted.get("sku") or platform_extracted.get("asin"),
+        "weight": platform_extracted.get("weight"),
+        "dimensions": platform_extracted.get("dimensions"),
+        "category": platform_extracted.get("category") or (schema_product.get("category") if schema_product else None),
+        "warranty": platform_extracted.get("warranty"),
+        "shipping": platform_extracted.get("shipping"),
+        "returns": platform_extracted.get("returns"),
+        "material": platform_extracted.get("material"),
     }
 
     if schema_product:
@@ -134,22 +170,23 @@ def analyze_product_info(
             else:
                 extracted[field] = val
 
-    # Price patterns in visible text
     if not extracted["price"]:
-        m = re.search(r"[\$£€]\s?\d{1,4}(?:[.,]\d{2})?", crawl.visible_text)
+        m = re.search(r"[\$£€]\s?\d{1,4}(?:[.,]\d{2})?", crawl.product_text or crawl.visible_text)
         if m:
             extracted["price"] = m.group(0).strip()
 
     missing: list[str] = []
     for field_name, hints in INFO_FIELDS:
-        present = False
-        if field_name in extracted and extracted[field_name]:
-            present = True
-        elif _text_contains_any(text, hints):
+        present = bool(extracted.get(field_name))
+        if not present and _text_contains_any(text, hints):
             present = True
         if not present:
             missing.append(field_name)
+            if crawl.platform == "amazon" and field_name in AMAZON_OPTIONAL_FIELDS:
+                continue
             sev = "medium" if field_name in {"dimensions", "weight", "warranty", "material"} else "high"
+            if crawl.platform == "amazon" and field_name == "price" and extracted.get("availability"):
+                sev = "medium"
             result.issues.append(
                 {
                     "severity": sev,
@@ -160,8 +197,14 @@ def analyze_product_info(
 
     result.extracted = {k: v for k, v in extracted.items() if v is not None}
     result.missing = missing
-    penalty = min(80, len(missing) * 8)
-    result.score = max(0, 100 - penalty)
+
+    if crawl.platform == "amazon":
+        found_core = sum(1 for f in ("name", "brand", "sku", "availability", "material") if extracted.get(f))
+        result.score = max(35, min(100, 40 + found_core * 12 - len(missing) * 3))
+    else:
+        penalty = min(80, len(missing) * 8)
+        result.score = max(0, 100 - penalty)
+
     return result
 
 

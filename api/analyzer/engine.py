@@ -6,15 +6,17 @@ from typing import Any
 
 from .ai_analyzer import analyze_with_llm
 from .content_analyzer import analyze_ai_readiness, analyze_product_info
-from .crawler import fetch_page
+from .crawler import fetch_page, is_likely_shopify_product_url
 from .fixes import build_fixes
 from .image_utils import build_gallery
 from .keyword_analyzer import analyze_keywords
 from .page_code_analyzer import analyze_page_code
 from .schema_analyzer import analyze_schema, _collect_products
-from .scoring import bucket_issues, compute_overall
+from .scoring import bucket_issues, compute_overall, compute_visibility_pillars, VISIBILITY_WEIGHTS
 from .seo_analyzer import analyze_seo
 from .product_extractor import enrich_product_data
+from .platform_audit import build_schema_checklist, marketplace_structured_score, platform_label
+from .page_fetcher import is_bot_blocked_page
 from .shopify_extractor import is_likely_collection_redirect
 from .vision_analyzer import analyze_product_images
 
@@ -35,6 +37,9 @@ def _build_lab(
     schema,
     product_info,
     vision: dict,
+    platform: str,
+    platform_images: list[dict],
+    crawl_images: list[dict],
 ) -> dict[str, Any]:
     severity_counts = {"critical": 0, "high": 0, "medium": 0, "low": 0}
     for issue in all_issues:
@@ -43,13 +48,12 @@ def _build_lab(
             severity_counts[sev] += 1
 
     zone_defs = [
-        ("seo", "SEO & Meta", scores.get("seo", 0)),
-        ("structured_data", "Schema", scores.get("structured_data", 0)),
-        ("product_information", "Product Info", scores.get("product_information", 0)),
+        ("google_seo", "Google SEO", scores.get("google_seo", scores.get("seo", 0))),
+        ("ai_visibility", "AI Visibility", scores.get("ai_visibility", scores.get("ai_readiness", 0))),
+        ("content", "Content", scores.get("content", scores.get("content_quality", 0))),
+        ("keywords", "Keywords", scores.get("keywords", 0)),
         ("images", "Images", scores.get("images", 0)),
-        ("ai_readiness", "AI Shopping", scores.get("ai_readiness", 0)),
-        ("content_quality", "Content", scores.get("content_quality", 0)),
-        ("technical", "Technical", scores.get("technical", 0)),
+        ("schema", "Schema", scores.get("schema", scores.get("structured_data", 0))),
     ]
 
     zones = []
@@ -80,8 +84,10 @@ def _build_lab(
             "missing": product_info.missing,
             "extracted": product_info.extracted,
         },
-        "schema_checklist": _schema_checklist(schema),
-        "image_gallery": _image_gallery(vision, []),
+        "schema_checklist": build_schema_checklist(
+            platform, schema, product_info.extracted, platform_images or crawl_images
+        ),
+        "image_gallery": _image_gallery(vision, crawl_images, platform_images),
     }
 
 
@@ -104,10 +110,64 @@ def _image_gallery(vision: dict, crawl_images: list, shopify_images: list | None
     return build_gallery(crawl_images, shopify_images or [], vision.get("results", []))
 
 
+def _marketplace_score_adjustments(
+    crawl,
+    platform_data: dict[str, Any] | None,
+    product_info,
+    schema,
+    ai_ready: dict[str, Any],
+) -> tuple[int, int, int, list[dict[str, str]]]:
+    """Fair scoring for marketplaces that don't expose merchant-style JSON-LD."""
+    schema_score = schema.score
+    product_score = product_info.score
+    ai_score = ai_ready["score"]
+    extra_issues: list[dict[str, str]] = []
+
+    if crawl.platform not in {"amazon", "shopify", "woocommerce"}:
+        return schema_score, product_score, ai_score, extra_issues
+
+    extracted = product_info.extracted
+    images = (platform_data or {}).get("images") or []
+    adjusted = marketplace_structured_score(crawl.platform, extracted, images)
+    if adjusted:
+        schema_score = max(schema_score, adjusted)
+
+    if crawl.platform == "amazon" and not schema.has_product_schema:
+        extra_issues.append(
+            _issue_dict(
+                "low",
+                "amazon_no_public_jsonld",
+                f"Amazon audit mode: product facts extracted from listing HTML ({platform_data.get('source') if platform_data else 'amazon'}).",
+                "structured_data",
+            )
+        )
+
+    core_fields = ("name", "brand", "sku", "availability", "material", "price")
+    core_found = sum(1 for key in core_fields if extracted.get(key))
+    product_score = max(product_score, min(95, 45 + core_found * 9))
+    if extracted.get("name") and extracted.get("brand") and extracted.get("sku"):
+        ai_score = max(ai_score, min(92, 55 + core_found * 7))
+
+    return schema_score, product_score, ai_score, extra_issues
+
+
 async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
     crawl = await fetch_page(url)
 
     platform_data = await enrich_product_data(crawl)
+
+    if platform_data:
+        source = str(platform_data.get("source") or "")
+        if source.startswith("shopify") or (
+            is_likely_shopify_product_url(crawl.final_url) and platform_data.get("extracted")
+        ):
+            crawl.platform = "shopify"
+        elif source.startswith("amazon"):
+            crawl.platform = "amazon"
+
+    if platform_data and platform_data.get("product_text"):
+        crawl.product_text = platform_data["product_text"]
+        crawl.visible_text = platform_data["product_text"][:12000]
 
     platform_images: list[dict] = (platform_data.get("images") or []) if platform_data else []
 
@@ -130,6 +190,11 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
     audit_images = platform_images if platform_images else crawl.images
     vision = await analyze_product_images(audit_images)
     ai_ready = analyze_ai_readiness(product_info, schema.score)
+
+    schema_score, product_score, ai_score, marketplace_issues = _marketplace_score_adjustments(
+        crawl, platform_data, product_info, schema, ai_ready
+    )
+    ai_ready["score"] = ai_score
 
     technical_score = 100
     if crawl.status_code >= 400:
@@ -172,21 +237,27 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
 
     category_scores = {
         "seo": seo.score,
-        "structured_data": schema.score,
-        "product_information": product_info.score,
+        "structured_data": schema_score,
+        "product_information": product_score,
         "images": image_score,
         "ai_readiness": ai_ready["score"],
         "content_quality": content_score,
         "conversion_clarity": conversion_score,
         "technical": technical_score,
     }
-    scores = compute_overall(category_scores)
+    scores = compute_overall(category_scores, keywords)
+    visibility_pillars = compute_visibility_pillars(category_scores, keywords)
 
     all_issues: list[dict[str, str]] = []
     for i in seo.issues:
         all_issues.append(_issue_dict(i.severity, i.code, i.message, "seo", i.field))
     for i in schema.issues:
+        if crawl.platform in {"amazon", "shopify", "woocommerce"} and i.code in {
+            "missing_product_schema", "og_only_no_jsonld"
+        }:
+            continue
         all_issues.append(_issue_dict(i.severity, i.code, i.message, "structured_data", i.field))
+    all_issues.extend(marketplace_issues)
     for i in product_info.issues:
         all_issues.append(_issue_dict(i["severity"], i["code"], i["message"], "product_information"))
     for issue in page_code.get("issues", []):
@@ -205,39 +276,68 @@ async def run_audit(url: str, use_ai: bool = True) -> dict[str, Any]:
             )
         )
 
+    fetch_blocked = is_bot_blocked_page(crawl.html, crawl.title, crawl.status_code)
+    if fetch_blocked and not platform_data:
+        all_issues.insert(
+            0,
+            _issue_dict(
+                "critical",
+                "storefront_bot_block",
+                "This store blocked automated access (Vercel/Cloudflare). Product data could not be extracted — try again later or audit from a store with public product feeds.",
+                "technical",
+            ),
+        )
+
     buckets = bucket_issues(all_issues)
     fixes = build_fixes(crawl, seo, schema, vision, product_info, llm_notes)
 
-    lab = _build_lab(category_scores, all_issues, seo, keywords, page_code, schema, product_info, vision)
-    lab["image_gallery"] = _image_gallery(vision, crawl.images, platform_images)
+    lab = _build_lab(
+        scores.categories, all_issues, seo, keywords, page_code, schema, product_info, vision,
+        crawl.platform, platform_images, crawl.images,
+    )
     if platform_data:
         lab["platform"] = {
+            "name": platform_label(crawl.platform),
             "source": platform_data.get("source"),
-            "handle": platform_data.get("handle"),
+            "handle": platform_data.get("handle") or platform_data.get("asin"),
             "variant_count": platform_data.get("extracted", {}).get("variant_count"),
             "tags": platform_data.get("extracted", {}).get("tags", [])[:8],
+            "audit_mode": f"{crawl.platform}_listing",
         }
     if collection_redirect:
         lab["warnings"] = ["URL appears to be a collection page — product data may be incomplete. Paste a direct product URL."]
+    elif fetch_blocked and not platform_data:
+        lab["warnings"] = [
+            "Storefront blocked our crawler (bot protection). Product fields and images could not be loaded."
+        ]
 
     return {
         "url": crawl.url,
         "final_url": crawl.final_url,
         "platform": crawl.platform,
+        "platform_label": platform_label(crawl.platform),
         "status_code": crawl.status_code,
         "canonical": crawl.canonical,
         "scores": {
             "overall": scores.overall,
             "categories": scores.categories,
             "weights": scores.weights,
+            "pillars": visibility_pillars,
+        },
+        "visibility": {
+            "overall": scores.overall,
+            "pillars": visibility_pillars,
+            "weights": dict(VISIBILITY_WEIGHTS),
+            "promise": "Roadmap to improve visibility across Google Search, AI discovery, and on-page conversion.",
         },
         "lab": lab,
         "ai_shopping_readiness": ai_ready,
         "product_information": {
             "extracted": product_info.extracted,
             "missing": product_info.missing,
-            "platform_enriched": bool(platform_data),
-            "data_source": platform_data.get("source") if platform_data else None,
+            "platform_enriched": bool(platform_data) or crawl.platform in {"amazon", "shopify", "woocommerce"},
+            "data_source": (platform_data or {}).get("source")
+            or ("amazon_html" if crawl.platform == "amazon" else None),
         },
         "structured_data": {
             "has_product_schema": schema.has_product_schema,

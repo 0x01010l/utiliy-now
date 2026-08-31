@@ -1,23 +1,50 @@
 const API_URL = document.body.dataset.apiUrl || 'https://utiliy-audit-api.azurewebsites.net/api';
 
+const PILLARS = [
+  { key: 'google_seo', label: 'Google SEO', section: 'seo' },
+  { key: 'ai_visibility', label: 'AI Visibility', section: 'ai' },
+  { key: 'content', label: 'Content', section: 'content' },
+  { key: 'keywords', label: 'Keywords', section: 'keywords' },
+  { key: 'images', label: 'Images', section: 'images' },
+  { key: 'schema', label: 'Schema', section: 'schema' },
+];
+
 const LABELS = {
-  seo: 'SEO',
-  structured_data: 'Structured Data',
-  product_information: 'Product',
+  google_seo: 'Google SEO',
+  ai_visibility: 'AI Visibility',
+  content: 'Content',
+  keywords: 'Keywords',
   images: 'Images',
-  ai_readiness: 'AI Shopping',
+  schema: 'Schema',
+  seo: 'Google SEO',
+  structured_data: 'Schema',
+  product_information: 'Content',
+  ai_readiness: 'AI Visibility',
   content_quality: 'Content',
-  conversion_clarity: 'Conversion',
-  technical: 'Technical',
+  conversion_clarity: 'AI Visibility',
+  technical: 'Google SEO',
+};
+
+const IMPACT_BY_CATEGORY = {
+  seo: { text: 'Google SEO impact', cls: 'high' },
+  technical: { text: 'Google SEO impact', cls: 'high' },
+  structured_data: { text: 'Search & schema impact', cls: 'medium' },
+  ai_readiness: { text: 'AI visibility impact', cls: 'high' },
+  product_information: { text: 'AI visibility impact', cls: 'high' },
+  content_quality: { text: 'Content impact', cls: 'medium' },
+  images: { text: 'Conversion impact', cls: 'medium' },
+  keywords: { text: 'Keyword impact', cls: 'high' },
 };
 
 const SECTION_FOR_CATEGORY = {
   seo: 'seo',
+  technical: 'seo',
   structured_data: 'schema',
   product_information: 'content',
   images: 'images',
   content_quality: 'content',
-  technical: 'technical',
+  ai_readiness: 'ai',
+  conversion_clarity: 'ai',
   keywords: 'keywords',
 };
 
@@ -36,9 +63,28 @@ function scoreColor(n) {
 }
 
 function overallStatus(score) {
-  if (score >= 80) return { label: 'Strong listing', tier: 'good' };
-  if (score >= 60) return { label: 'Needs improvement', tier: 'warn' };
-  return { label: 'Critical issues', tier: 'bad' };
+  if (score >= 80) return { label: 'Strong visibility', tier: 'good' };
+  if (score >= 60) return { label: 'Room to optimize', tier: 'warn' };
+  return { label: 'Needs attention', tier: 'bad' };
+}
+
+function visibilityPillars(data) {
+  const pillars = data.visibility?.pillars || data.scores?.pillars;
+  if (pillars) return pillars;
+  const c = data.scores?.categories || {};
+  return {
+    google_seo: Math.round(((c.seo || 0) + (c.technical || 0)) / 2),
+    ai_visibility: Math.round(((c.ai_readiness || 0) + (c.conversion_clarity || 0)) / 2),
+    content: Math.round(((c.content_quality || 0) + (c.product_information || 0)) / 2),
+    keywords: keywordScore(data.keywords),
+    images: c.images || 0,
+    schema: c.structured_data || 0,
+  };
+}
+
+function pillarScore(pillars, key) {
+  const val = pillars[key];
+  return val == null ? null : Math.round(val);
 }
 
 function keywordScore(kw) {
@@ -54,7 +100,7 @@ function executiveSummary(data) {
   if (llm?.content_analysis) return llm.content_analysis;
   if (data.seo?.analysis) return data.seo.analysis;
   if (data.ai_shopping_readiness?.summary) return data.ai_shopping_readiness.summary;
-  return 'Your listing has room to improve. Start with the priority fixes below for the fastest impact on visibility and conversions.';
+  return 'Your product page has optimization opportunities. Start with the top actions below to improve visibility in Google and AI search.';
 }
 
 function impactLabel(i) {
@@ -98,32 +144,29 @@ function bigScoreRing(score) {
   </div>`;
 }
 
-function renderScoreDashboard(categories, kw) {
-  const rows = [
-    { key: 'seo', label: 'SEO', section: 'seo' },
-    { key: 'content_quality', label: 'Content', section: 'content' },
-    { key: '_keywords', label: 'Keywords', section: 'keywords', score: keywordScore(kw) },
-    { key: 'images', label: 'Images', section: 'images' },
-    { key: 'technical', label: 'Technical', section: 'technical' },
-    { key: 'structured_data', label: 'Structured Data', section: 'schema' },
-  ];
-  return rows
-    .map(({ key, label, section, score }) => {
-      const val = score != null ? score : categories[key];
-      if (val == null) return '';
-      const tier = scoreTier(val);
-      return `<button type="button" class="score-nav-row ${tier}" data-scroll="#lab-${section}">
-        <span class="score-nav-label">${label}</span>
-        <span class="score-nav-track"><span class="score-nav-fill" style="width:${val}%"></span></span>
-        <strong class="score-nav-val">${val}</strong>
-      </button>`;
-    })
-    .join('');
+function fixImpact(fix, i) {
+  const mapped = IMPACT_BY_CATEGORY[fix.category];
+  if (mapped) return mapped;
+  return impactLabel(i);
+}
+
+function renderScoreDashboard(pillars) {
+  return PILLARS.map(({ key, label, section }) => {
+    const val = pillarScore(pillars, key);
+    if (val == null) return '';
+    const tier = scoreTier(val);
+    return `<button type="button" class="score-nav-row ${tier}" data-scroll="#lab-${section}">
+      <span class="score-nav-label">${label}</span>
+      <span class="score-nav-track"><span class="score-nav-fill" style="width:${val}%"></span></span>
+      <strong class="score-nav-val">${val}</strong>
+    </button>`;
+  }).join('');
 }
 
 function renderPriorityFix(fix, i) {
-  const impact = impactLabel(i);
-  const section = SECTION_FOR_CATEGORY[fix.category] || 'fixes';
+  const impact = fixImpact(fix, i);
+  const section = SECTION_FOR_CATEGORY[fix.category] || 'priorities';
+  const categoryLabel = LABELS[fix.category] || (fix.category?.replace(/_/g, ' ') || 'General');
   const copy = fix.copy_paste
     ? `<button type="button" class="btn btn-primary btn-sm" data-scroll="#lab-fixes-all">Get copy-paste fix</button>`
     : '';
@@ -138,7 +181,7 @@ function renderPriorityFix(fix, i) {
     <p class="priority-problem">${escapeHtml(fix.problem)}</p>
     <p class="priority-why"><strong>Why it matters:</strong> ${escapeHtml(fix.why_it_matters)}</p>
     <div class="priority-meta">
-      <span>${escapeHtml(fix.category?.replace(/_/g, ' ') || 'General')}</span>
+      <span>${escapeHtml(categoryLabel)}</span>
       <span>~${escapeHtml(fix.effort || '10 min')}</span>
     </div>
     <div class="priority-actions">
@@ -353,17 +396,17 @@ function renderLab(data) {
   const seoIssueCount = (data.seo?.issues || []).length;
   const issueBadge = critical + (sev.high || 0) || fixes.length;
 
+  const pillars = visibilityPillars(data);
   const navItems = [
     { id: 'header', label: 'Overview' },
-    { id: 'priorities', label: 'Issues', badge: issueBadge || null },
-    { id: 'scores', label: 'Scores' },
-    { id: 'ai', label: 'AI Analysis' },
-    { id: 'seo', label: 'SEO', badge: seoIssueCount || null },
+    { id: 'priorities', label: 'Opportunities', badge: issueBadge || null },
+    { id: 'scores', label: 'Visibility' },
+    { id: 'ai', label: 'AI Visibility' },
+    { id: 'seo', label: 'Google SEO', badge: seoIssueCount || null },
     { id: 'keywords', label: 'Keywords', badge: (data.keywords?.opportunities || []).length || null },
     { id: 'content', label: 'Content' },
     { id: 'images', label: 'Images', badge: (lab.image_gallery || []).filter((i) => i.status !== 'good').length || null },
-    { id: 'schema', label: 'Structured Data' },
-    { id: 'technical', label: 'Technical', badge: (data.page_code?.issues || []).length || null },
+    { id: 'schema', label: 'Schema' },
   ];
 
   const nav = navItems
@@ -388,19 +431,21 @@ function renderLab(data) {
         <div class="cockpit-header-main">
           ${bigScoreRing(overall)}
           <div class="cockpit-header-copy">
-            <p class="cockpit-eyebrow">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${enriched}</p>
-            <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product listing')}</h2>
+            <p class="cockpit-eyebrow">Product page score · ${escapeHtml(data.platform_label || data.platform)} · HTTP ${data.status_code} ${enriched}</p>
+            <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product page')}</h2>
             <p class="cockpit-url">${escapeHtml(data.final_url)}</p>
+            <p class="cockpit-score-label">Visibility score</p>
             <p class="cockpit-status ${status.tier}">${status.label.toUpperCase()}</p>
             <p class="cockpit-summary">${escapeHtml(executiveSummary(data))}</p>
             <div class="cockpit-stats">
               <span class="stat-critical"><em>${critical}</em> Critical</span>
-              <span class="stat-improve"><em>${improvements}</em> Improvements</span>
+              <span class="stat-improve"><em>${improvements}</em> Opportunities</span>
               <span class="stat-strong"><em>${strengths}</em> Strengths</span>
             </div>
             <div class="cockpit-actions">
-              <button type="button" class="btn btn-primary btn-sm" data-scroll="#lab-priorities">View priority fixes</button>
-              <button type="button" class="btn btn-ghost btn-sm" id="cockpit-rerun">Re-run audit</button>
+              <button type="button" class="btn btn-primary btn-sm" id="cockpit-optimize" data-scroll="#lab-priorities">Optimize my listing</button>
+              <button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-priorities">View opportunities</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="cockpit-rerun">Re-analyze</button>
               <button type="button" class="btn btn-ghost btn-sm" id="cockpit-export">Export report</button>
             </div>
           </div>
@@ -409,8 +454,8 @@ function renderLab(data) {
 
       <div class="lab-shell">
         <aside class="lab-nav-wrap" id="lab-nav-wrap">
-          <nav class="lab-nav" id="lab-nav" aria-label="Audit sections">
-            <p class="lab-nav-title">Audit</p>
+          <nav class="lab-nav" id="lab-nav" aria-label="Optimizer sections">
+            <p class="lab-nav-title">Optimizer</p>
             ${nav}
           </nav>
         </aside>
@@ -418,31 +463,35 @@ function renderLab(data) {
         <div class="lab-main">
           <section class="cockpit-block priority-block" id="lab-priorities">
             <div class="block-head">
-              <h3>Priority fixes</h3>
-              <span class="block-sub">${fixes.length} actionable recommendations</span>
+              <h3>Top opportunities</h3>
+              <span class="block-sub">${fixes.length} optimization actions</span>
             </div>
-            <p class="block-lead">Fix these first for the highest impact on visibility and conversions.</p>
-            <div class="priority-list">${fixes.slice(0, 6).map(renderPriorityFix).join('') || '<p class="lab-empty">No fixes generated.</p>'}</div>
-            ${fixes.length > 6 ? `<button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-fixes-all">View all ${fixes.length} fixes</button>` : ''}
+            <p class="block-lead">Highest-impact changes to improve Google rankings, AI discovery, and conversion.</p>
+            <div class="priority-list">${fixes.slice(0, 6).map(renderPriorityFix).join('') || '<p class="lab-empty">No optimization actions generated.</p>'}</div>
+            ${fixes.length > 6 ? `<button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-fixes-all">View all ${fixes.length} actions</button>` : ''}
           </section>
 
           <section class="cockpit-block" id="lab-scores">
-            <div class="block-head"><h3>Score dashboard</h3></div>
-            <p class="block-lead">Click a category to jump to its detailed analysis.</p>
-            <div class="score-dashboard">${renderScoreDashboard(data.scores.categories, data.keywords)}</div>
+            <div class="block-head"><h3>Visibility breakdown</h3></div>
+            <p class="block-lead">SEO + GEO + ecommerce — how discoverable this product page is across search surfaces.</p>
+            <div class="score-dashboard">${renderScoreDashboard(pillars)}</div>
           </section>
 
           <section class="cockpit-block strategist-block" id="lab-ai">
-            <div class="block-head"><h3>AI listing strategist</h3></div>
-            <p class="block-lead">Expert recommendations based on your listing data.</p>
+            <div class="block-head">
+              <h3>AI visibility</h3>
+              <span class="zone-score ${scoreTier(pillarScore(pillars, 'ai_visibility') || 0)}">${pillarScore(pillars, 'ai_visibility') ?? '—'}/100</span>
+            </div>
+            <p class="block-lead">How well ChatGPT, Gemini, Perplexity, and shopping agents can understand and recommend this product.</p>
             ${renderAIStrategist(data, fixes, tm)}
           </section>
 
           <section class="detail-panel" id="lab-seo">
             <div class="panel-head">
-              <h3>SEO &amp; meta</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.seo)}">${data.scores.categories.seo}/100</span>
+              <h3>Google SEO</h3>
+              <span class="zone-score ${scoreTier(pillarScore(pillars, 'google_seo') || 0)}">${pillarScore(pillars, 'google_seo') ?? '—'}/100</span>
             </div>
+            <p class="section-lead">On-page signals for Google Search, Shopping, and Bing — titles, meta, headings, and technical health.</p>
             <div class="metric-grid">
               ${lengthMeter('Title tag', tm.title, tm.title_length || 0, tm.title_status || 'missing', tm.title_ideal || '30–60')}
               ${lengthMeter('Meta description', tm.meta_description, tm.meta_length || 0, tm.meta_status || 'missing', tm.meta_ideal || '120–155')}
@@ -451,13 +500,18 @@ function renderLab(data) {
               <p><strong>H1:</strong> ${escapeHtml(tm.h1 || '—')}</p>
               ${tm.canonical ? `<p><strong>Canonical:</strong> ${escapeHtml(tm.canonical)}</p>` : ''}
             </div>
-            <div class="issue-list">${allSeoIssues.map(issueCard).join('') || '<p class="lab-empty">No SEO issues detected.</p>'}</div>
+            <div class="tech-summary">
+              <span>${data.page_code?.html_size_kb || '—'} KB HTML</span>
+              <span>${data.page_code?.links?.internal || 0} internal links</span>
+              <span>Viewport: ${data.page_code?.viewport ? 'Yes' : 'No'}</span>
+            </div>
+            <div class="issue-list">${[...allSeoIssues, ...(data.page_code?.issues || [])].map(issueCard).join('') || '<p class="lab-empty">No Google SEO issues detected.</p>'}</div>
           </section>
 
           <section class="detail-panel" id="lab-keywords">
             <div class="panel-head">
               <h3>Keywords</h3>
-              ${data.keywords?.primary_keyword ? `<span class="zone-score good">${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
+              <span class="zone-score ${scoreTier(pillarScore(pillars, 'keywords') || 0)}">${pillarScore(pillars, 'keywords') ?? '—'}/100</span>
             </div>
             ${renderKeywords(data.keywords)}
           </section>
@@ -465,13 +519,13 @@ function renderLab(data) {
           <section class="detail-panel" id="lab-content">
             <div class="panel-head">
               <h3>Content &amp; product data</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.content_quality)}">${data.scores.categories.content_quality}/100</span>
+              <span class="zone-score ${scoreTier(pillarScore(pillars, 'content') || 0)}">${pillarScore(pillars, 'content') ?? '—'}/100</span>
             </div>
             <p class="section-lead">${escapeHtml(data.content?.analysis || '')}</p>
             <div class="fact-grid">${renderProductFacts(lab, data)}</div>
             ${lab.shopify?.tags?.length ? `<p class="lab-tags">Tags: ${lab.shopify.tags.map((t) => `<span class="kw-tag">${escapeHtml(t)}</span>`).join('')}</p>` : ''}
             <div class="readiness-strip">
-              <span>AI shopping readiness</span>
+              <span>Product attributes for AI agents</span>
               <div class="readiness-bar"><span style="width:${data.ai_shopping_readiness?.score || 0}%"></span></div>
               <strong>${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
             </div>
@@ -480,47 +534,24 @@ function renderLab(data) {
 
           <section class="detail-panel" id="lab-images">
             <div class="panel-head">
-              <h3>Image analysis</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.images)}">${data.scores.categories.images}/100</span>
+              <h3>Images</h3>
+              <span class="zone-score ${scoreTier(pillarScore(pillars, 'images') || 0)}">${pillarScore(pillars, 'images') ?? '—'}/100</span>
             </div>
             ${renderImages(lab.image_gallery, data.scores.categories.images, data.images?.summary)}
           </section>
 
           <section class="detail-panel" id="lab-schema">
             <div class="panel-head">
-              <h3>Structured data</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
+              <h3>Schema</h3>
+              <span class="zone-score ${scoreTier(pillarScore(pillars, 'schema') || 0)}">${pillarScore(pillars, 'schema') ?? '—'}/100</span>
             </div>
             ${renderSchemaPanel(data)}
           </section>
 
-          <section class="detail-panel evidence-panel-wrap" id="lab-technical">
-            <div class="panel-head">
-              <h3>Technical evidence</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.scores.categories.technical}/100</span>
-            </div>
-            <div class="tech-summary">
-              <span>${data.page_code?.html_size_kb || '—'} KB HTML</span>
-              <span>${data.page_code?.links?.internal || 0} internal links</span>
-              <span>${data.page_code?.links?.external || 0} external links</span>
-              <span>Viewport: ${data.page_code?.viewport ? 'Yes' : 'No'}</span>
-            </div>
-            <div class="issue-list">${(data.page_code?.issues || []).map(issueCard).join('')}</div>
-            <details class="evidence-panel">
-              <summary>Heading outline</summary>
-              <div class="heading-tree">${escapeHtml(data.page_code?.heading_outline || 'No headings')}</div>
-            </details>
-            <details class="evidence-panel">
-              <summary>Head markup preview</summary>
-              <div class="code-viewer">${escapeHtml(data.page_code?.head_preview || '')}</div>
-            </details>
-            ${(data.page_code?.json_ld_snippets || []).length ? `<details class="evidence-panel"><summary>Raw JSON-LD (${data.page_code.json_ld_snippets.length} blocks)</summary><div class="code-viewer">${escapeHtml(data.page_code.json_ld_snippets.join('\n\n'))}</div></details>` : ''}
-          </section>
-
           <section class="detail-panel" id="lab-fixes-all">
             <div class="panel-head">
-              <h3>Full fix queue</h3>
-              <span class="zone-score good">${fixes.length} fixes</span>
+              <h3>All optimization actions</h3>
+              <span class="zone-score good">${fixes.length} actions</span>
             </div>
             ${fixes.map(renderFixDetail).join('') || '<p class="lab-empty">No fixes generated.</p>'}
           </section>
@@ -535,15 +566,15 @@ function showScanning(step) {
   if (!el) return;
   el.hidden = false;
   const steps = [
-    'Crawling product page…',
-    'Extracting SEO & keywords…',
-    'Analyzing schema & product data…',
-    'Running image vision…',
-    'Building fix queue…',
+    'Fetching product page…',
+    'Analyzing Google SEO & keywords…',
+    'Checking AI visibility & product data…',
+    'Reviewing images & schema…',
+    'Building optimization roadmap…',
   ];
   el.innerHTML = `<div class="lab-scan">
     <div class="scan-radar"></div>
-    <p style="font-weight:700;margin:0 0 1rem;">Analyzing your listing</p>
+    <p style="font-weight:700;margin:0 0 1rem;">Optimizing your product page</p>
     <div class="scan-steps">${steps
       .map((s, i) => `<div class="scan-step ${i < step ? 'done' : i === step ? 'active' : ''}">${i < step ? '✓' : '○'} ${s}</div>`)
       .join('')}</div>
