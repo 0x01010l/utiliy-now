@@ -1,14 +1,24 @@
 const API_URL = document.body.dataset.apiUrl || 'https://utiliy-audit-api.azurewebsites.net/api';
 
 const LABELS = {
-  seo: 'SEO & Meta',
-  structured_data: 'Schema',
-  product_information: 'Product Info',
+  seo: 'SEO',
+  structured_data: 'Structured Data',
+  product_information: 'Product',
   images: 'Images',
   ai_readiness: 'AI Shopping',
   content_quality: 'Content',
   conversion_clarity: 'Conversion',
   technical: 'Technical',
+};
+
+const SECTION_FOR_CATEGORY = {
+  seo: 'seo',
+  structured_data: 'schema',
+  product_information: 'content',
+  images: 'images',
+  content_quality: 'content',
+  technical: 'technical',
+  keywords: 'keywords',
 };
 
 function escapeHtml(s) {
@@ -22,10 +32,38 @@ function scoreTier(n) {
 }
 
 function scoreColor(n) {
-  return n >= 80 ? '#059669' : n >= 60 ? '#d97706' : '#dc2626';
+  return n >= 80 ? '#34c759' : n >= 60 ? '#ff9f0a' : '#ff3b30';
 }
 
-function animateCounter(el, target, duration = 800) {
+function overallStatus(score) {
+  if (score >= 80) return { label: 'Strong listing', tier: 'good' };
+  if (score >= 60) return { label: 'Needs improvement', tier: 'warn' };
+  return { label: 'Critical issues', tier: 'bad' };
+}
+
+function keywordScore(kw) {
+  const rows = kw?.title_alignment || [];
+  if (!rows.length) return null;
+  const good = rows.filter((r) => r.status === 'good').length;
+  return Math.round((good / rows.length) * 100);
+}
+
+function executiveSummary(data) {
+  const llm = data.llm_analysis;
+  if (llm?.seo_analysis) return llm.seo_analysis;
+  if (llm?.content_analysis) return llm.content_analysis;
+  if (data.seo?.analysis) return data.seo.analysis;
+  if (data.ai_shopping_readiness?.summary) return data.ai_shopping_readiness.summary;
+  return 'Your listing has room to improve. Start with the priority fixes below for the fastest impact on visibility and conversions.';
+}
+
+function impactLabel(i) {
+  if (i < 2) return { text: 'High impact', cls: 'high' };
+  if (i < 5) return { text: 'Medium impact', cls: 'medium' };
+  return { text: 'Lower impact', cls: 'low' };
+}
+
+function animateCounter(el, target, duration = 700) {
   const start = performance.now();
   const tick = (now) => {
     const p = Math.min(1, (now - start) / duration);
@@ -36,47 +74,6 @@ function animateCounter(el, target, duration = 800) {
   requestAnimationFrame(tick);
 }
 
-function miniRing(score, label) {
-  const r = 22;
-  const c = 2 * Math.PI * r;
-  const tier = scoreTier(score);
-  const color = scoreColor(score);
-  return `<div class="lab-ring-card ${tier}" data-score="${score}">
-    <svg viewBox="0 0 56 56" class="lab-ring-svg" aria-hidden="true">
-      <circle cx="28" cy="28" r="${r}" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="5"/>
-      <circle class="ring-progress" cx="28" cy="28" r="${r}" fill="none" stroke="${color}" stroke-width="5"
-        stroke-dasharray="${c}" stroke-dashoffset="${c}" stroke-linecap="round" transform="rotate(-90 28 28)"/>
-    </svg>
-    <div class="lab-ring-label">
-      <strong class="ring-val">0</strong>
-      <span>${escapeHtml(label)}</span>
-    </div>
-  </div>`;
-}
-
-function categoryRings(categories) {
-  return Object.entries(categories || {})
-    .map(([k, v]) => miniRing(v, LABELS[k] || k))
-    .join('');
-}
-
-function statTiles(sev, total) {
-  const tiles = [
-    { key: 'critical', label: 'Critical', val: sev.critical || 0 },
-    { key: 'high', label: 'High', val: sev.high || 0 },
-    { key: 'medium', label: 'Medium', val: sev.medium || 0 },
-    { key: 'low', label: 'Low', val: sev.low || 0 },
-    { key: 'total', label: 'Total', val: total || 0 },
-  ];
-  return tiles
-    .filter((t) => t.val > 0 || t.key === 'total')
-    .map((t) => `<div class="lab-stat-tile ${t.key}">
-      <strong class="tile-val">${t.val}</strong>
-      <span class="tile-label">${t.label}</span>
-    </div>`)
-    .join('');
-}
-
 function scrollToSection(id) {
   const el = document.querySelector(id);
   if (!el) return;
@@ -85,114 +82,169 @@ function scrollToSection(id) {
 }
 
 function bigScoreRing(score) {
-  const r = 46;
+  const r = 52;
   const c = 2 * Math.PI * r;
-  const offset = c - (score / 100) * c;
   const color = scoreColor(score);
-  return `<div class="lab-score-big" data-score="${score}">
-    <svg viewBox="0 0 100 100" aria-hidden="true">
-      <circle cx="50" cy="50" r="${r}" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="7"/>
-      <circle class="hero-ring-progress" cx="50" cy="50" r="${r}" fill="none" stroke="${color}" stroke-width="7"
-        stroke-dasharray="${c}" stroke-dashoffset="${c}" stroke-linecap="round"
-        transform="rotate(-90 50 50)"/>
+  return `<div class="cockpit-score-ring" data-score="${score}">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="${r}" fill="none" stroke="rgba(0,0,0,.06)" stroke-width="8"/>
+      <circle class="hero-ring-progress" cx="60" cy="60" r="${r}" fill="none" stroke="${color}" stroke-width="8"
+        stroke-dasharray="${c}" stroke-dashoffset="${c}" stroke-linecap="round" transform="rotate(-90 60 60)"/>
     </svg>
-    <div class="score-num"><strong class="hero-score-val">0</strong><span>Overall</span></div>
+    <div class="cockpit-score-inner">
+      <strong class="hero-score-val">0</strong>
+      <span>/ 100</span>
+    </div>
   </div>`;
 }
 
-function barChart(categories) {
-  const rows = Object.entries(categories)
-    .map(([k, v]) => {
-      const tier = scoreTier(v);
-      return `<div class="bar-row">
-        <span>${LABELS[k] || k}</span>
-        <div class="bar-track"><div class="bar-fill ${tier}" style="width:${v}%"></div></div>
-        <span class="bar-val">${v}</span>
-      </div>`;
+function renderScoreDashboard(categories, kw) {
+  const rows = [
+    { key: 'seo', label: 'SEO', section: 'seo' },
+    { key: 'content_quality', label: 'Content', section: 'content' },
+    { key: '_keywords', label: 'Keywords', section: 'keywords', score: keywordScore(kw) },
+    { key: 'images', label: 'Images', section: 'images' },
+    { key: 'technical', label: 'Technical', section: 'technical' },
+    { key: 'structured_data', label: 'Structured Data', section: 'schema' },
+  ];
+  return rows
+    .map(({ key, label, section, score }) => {
+      const val = score != null ? score : categories[key];
+      if (val == null) return '';
+      const tier = scoreTier(val);
+      return `<button type="button" class="score-nav-row ${tier}" data-scroll="#lab-${section}">
+        <span class="score-nav-label">${label}</span>
+        <span class="score-nav-track"><span class="score-nav-fill" style="width:${val}%"></span></span>
+        <strong class="score-nav-val">${val}</strong>
+      </button>`;
     })
     .join('');
-  return `<div class="bar-chart">${rows}</div>`;
 }
 
-function heatmap(zones) {
-  return (zones || [])
-    .map(
-      (z) => `<div class="heat-cell ${z.status}" data-scroll="lab-${z.id}">
-        <strong>${z.score}</strong>
-        <span>${escapeHtml(z.label)}</span>
-        <div class="err-count">${z.error_count} issue${z.error_count !== 1 ? 's' : ''}</div>
-      </div>`
-    )
-    .join('');
+function renderPriorityFix(fix, i) {
+  const impact = impactLabel(i);
+  const section = SECTION_FOR_CATEGORY[fix.category] || 'fixes';
+  const copy = fix.copy_paste
+    ? `<button type="button" class="btn btn-primary btn-sm" data-scroll="#lab-fixes-all">Get copy-paste fix</button>`
+    : '';
+  return `<article class="priority-fix">
+    <div class="priority-fix-top">
+      <span class="priority-rank">${i + 1}</span>
+      <div class="priority-fix-title">
+        <h4>${escapeHtml(fix.title)}</h4>
+        <span class="impact-tag ${impact.cls}">${impact.text}</span>
+      </div>
+    </div>
+    <p class="priority-problem">${escapeHtml(fix.problem)}</p>
+    <p class="priority-why"><strong>Why it matters:</strong> ${escapeHtml(fix.why_it_matters)}</p>
+    <div class="priority-meta">
+      <span>${escapeHtml(fix.category?.replace(/_/g, ' ') || 'General')}</span>
+      <span>~${escapeHtml(fix.effort || '10 min')}</span>
+    </div>
+    <div class="priority-actions">
+      <button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-${section}">View details</button>
+      ${copy}
+    </div>
+  </article>`;
+}
+
+function renderBeforeAfter(label, current, recommended) {
+  if (!recommended || recommended === current) return '';
+  return `<div class="compare-block">
+    <p class="compare-label">${escapeHtml(label)}</p>
+    <div class="compare-col">
+      <span class="compare-tag">Current</span>
+      <p>${escapeHtml(current || '—')}</p>
+    </div>
+    <div class="compare-arrow" aria-hidden="true">↓</div>
+    <div class="compare-col recommended">
+      <span class="compare-tag">Recommended</span>
+      <p>${escapeHtml(recommended)}</p>
+    </div>
+  </div>`;
+}
+
+function renderAIStrategist(data, fixes, tm) {
+  const llm = data.llm_analysis || {};
+  const topFix = fixes[0];
+  const currentTitle = tm.title || data.meta?.title || '';
+  let recommendedTitle = '';
+  const titleFix = fixes.find((f) => f.category === 'seo' && f.copy_paste && f.copy_paste.length < 120 && !f.copy_paste.includes('<'));
+  if (titleFix) recommendedTitle = titleFix.copy_paste;
+  const intro = llm.content_analysis || llm.ai_shopping_notes || data.conversion?.analysis || '';
+  const compare = renderBeforeAfter('Product title', currentTitle, recommendedTitle);
+
+  return `
+    <p class="strategist-intro">${escapeHtml(intro || 'Here is what we would prioritize to strengthen this listing.')}</p>
+    ${compare || ''}
+    ${topFix ? `<div class="strategist-opportunity">
+      <p class="strategist-kicker">Biggest opportunity</p>
+      <h4>${escapeHtml(topFix.title)}</h4>
+      <p>${escapeHtml(topFix.problem)}</p>
+      ${topFix.copy_paste ? `<div class="copy-block"><button type="button" class="copy-btn">Copy recommendation</button><pre>${escapeHtml(topFix.copy_paste)}</pre></div>` : ''}
+    </div>` : ''}
+    ${llm.seo_analysis ? `<p class="strategist-note">${escapeHtml(llm.seo_analysis)}</p>` : ''}
+  `;
 }
 
 function issueCard(issue) {
   const sev = issue.severity || 'medium';
-  return `<div class="issue-card">
+  return `<div class="issue-row">
     <span class="issue-sev ${sev}">${sev}</span>
-    <div>${escapeHtml(issue.message)}</div>
+    <span>${escapeHtml(issue.message)}</span>
   </div>`;
 }
 
 function lengthMeter(label, text, length, status, ideal) {
   const pct = Math.min(100, (length / 70) * 100);
-  return `<div class="signal-card">
-    <label>${label}</label>
-    <div class="signal-text">${escapeHtml(text) || '<em>Not found</em>'}</div>
+  return `<div class="metric-card">
+    <div class="metric-head"><label>${label}</label><span class="status-tag ${status}">${status === 'good' ? 'Optimal' : status === 'missing' ? 'Missing' : status}</span></div>
+    <p class="metric-value">${escapeHtml(text) || '<em>Not found</em>'}</p>
     <div class="meter"><div class="meter-fill ${status}" style="width:${length ? pct : 0}%"></div></div>
     <div class="meter-labels"><span>0</span><span>${ideal}</span><span>${length} chars</span></div>
-    <span class="status-tag ${status}">${status === 'good' ? 'Optimal' : status === 'missing' ? 'Missing' : status}</span>
   </div>`;
 }
 
 function renderKeywords(kw) {
-  if (!kw) return '<p>No keyword data.</p>';
-  const cloud = (kw.top_keywords || [])
-    .map((k) => {
-      const cls = k.in_title ? 'in-title' : '';
-      return `<span class="kw-tag ${cls}" title="Score: ${k.score}">${escapeHtml(k.term)}</span>`;
-    })
-    .join('');
-
+  if (!kw) return '<p class="lab-empty">No keyword data.</p>';
   const table = (kw.title_alignment || [])
     .map(
       (r) => `<tr>
         <td>${escapeHtml(r.term)}</td>
         <td><span class="align-dot ${r.status}"></span> ${r.status}</td>
-        <td>${r.in_title ? '✓' : '—'}</td>
-        <td>${r.in_h1 ? '✓' : '—'}</td>
+        <td>${r.in_title ? 'Yes' : '—'}</td>
+        <td>${r.in_h1 ? 'Yes' : '—'}</td>
       </tr>`
     )
     .join('');
-
   const opps = (kw.opportunities || []).map((o) => `<li>${escapeHtml(o)}</li>`).join('');
-
   return `
-    <p style="color:var(--muted);font-size:.9rem;margin:0 0 1rem;">${escapeHtml(kw.summary || '')}</p>
-    <div class="kw-cloud">${cloud}</div>
-    <table class="kw-table">
-      <thead><tr><th>Keyword</th><th>Alignment</th><th>Title</th><th>H1</th></tr></thead>
+    <p class="section-lead">${escapeHtml(kw.summary || '')}</p>
+    <div class="kw-cloud">${(kw.top_keywords || []).map((k) => `<span class="kw-tag ${k.in_title ? 'in-title' : ''}">${escapeHtml(k.term)}</span>`).join('')}</div>
+    <div class="table-wrap"><table class="kw-table">
+      <thead><tr><th>Keyword</th><th>Alignment</th><th>In title</th><th>In H1</th></tr></thead>
       <tbody>${table}</tbody>
-    </table>
-    ${opps ? `<h4 style="margin:1rem 0 .5rem;font-size:.85rem;">Opportunities</h4><ul style="font-size:.88rem;color:var(--muted);">${opps}</ul>` : ''}
+    </table></div>
+    ${opps ? `<div class="opps-list"><h4>Opportunities</h4><ul>${opps}</ul></div>` : ''}
   `;
 }
 
-function renderSchema(data) {
+function renderSchemaPanel(data) {
   const checklist = (data.lab?.schema_checklist || []).map((item) => {
-    const icon = item.status === 'found' ? '✓' : item.status === 'missing' ? '✗' : '○';
-    return `<div class="schema-item ${item.status}">${icon} ${escapeHtml(item.property)}</div>`;
+    const icon = item.status === 'found' ? '✓' : item.status === 'missing' ? '✗' : '·';
+    return `<div class="schema-chip ${item.status}">${icon} ${escapeHtml(item.property)}</div>`;
   }).join('');
-
-  const snippets = (data.structured_data?.snippets || data.page_code?.json_ld_snippets || [])
-    .map((s, i) => `<div class="code-viewer"><div class="code-label">JSON-LD block ${i + 1}</div>${escapeHtml(s)}</div>`)
+  const snippets = (data.structured_data?.snippets || data.page_code?.json_ld_snippets || []);
+  const snippetBlocks = snippets
+    .map((s, i) => `<details class="evidence-panel"><summary>JSON-LD block ${i + 1}</summary><div class="code-viewer">${escapeHtml(s)}</div></details>`)
     .join('');
-
   return `
-    <p>Product schema: <strong>${data.structured_data?.has_product_schema ? 'Detected' : 'Not detected'}</strong>
-    · ${data.structured_data?.json_ld_blocks_found ?? 0} JSON-LD blocks</p>
-    <div class="schema-grid" style="margin:1rem 0;">${checklist}</div>
-    ${snippets || '<p style="color:var(--muted)">No JSON-LD snippets in page source. Use the Fixes tab for a template.</p>'}
+    <div class="schema-status">
+      <span>Product schema: <strong>${data.structured_data?.has_product_schema ? 'Detected' : 'Not detected'}</strong></span>
+      <span>${data.structured_data?.json_ld_blocks_found ?? 0} JSON-LD blocks</span>
+    </div>
+    <div class="schema-grid">${checklist}</div>
+    ${snippetBlocks || '<p class="lab-empty">No JSON-LD in page source. See priority fixes for a template.</p>'}
   `;
 }
 
@@ -205,29 +257,44 @@ function imgUrl(img) {
   return src;
 }
 
-function renderImages(gallery) {
+function imageChecks(img) {
+  const checks = [];
+  if (img.alt && img.alt.trim()) checks.push({ ok: true, text: 'Alt text present' });
+  else checks.push({ ok: false, text: 'Missing alt text' });
+  if (img.status === 'good') checks.push({ ok: true, text: 'Good quality' });
+  else if (img.status === 'warn') checks.push({ ok: false, text: 'Quality needs improvement' });
+  else if (img.status === 'bad') checks.push({ ok: false, text: 'Low quality' });
+  if (img.caption) checks.push({ ok: true, text: 'Relevant to product' });
+  return checks;
+}
+
+function renderImages(gallery, imageScore, summary) {
   if (!gallery?.length) return '<p class="lab-empty">No product images found.</p>';
-  return gallery
-    .map(
-      (img, i) => {
-        const src = imgUrl(img);
-        return `<div class="img-lab-card" data-img="${i}">
-        <div class="img-thumb">
-          <img src="${escapeHtml(src)}" alt="${escapeHtml(img.alt || 'Product image')}" loading="lazy" referrerpolicy="no-referrer" decoding="async"
-            onerror="this.classList.add('img-broken'); this.nextElementSibling?.classList.add('show');">
-          <div class="img-fallback">Preview blocked — <a href="${escapeHtml(src)}" target="_blank" rel="noopener">open image</a></div>
-          <span class="img-status ${img.status}">${img.status}</span>
-        </div>
-        <div class="img-lab-body">
-          <div class="img-row"><span class="img-label">Alt</span><span>${escapeHtml(img.alt || '— missing —')}</span></div>
-          ${img.caption ? `<div class="img-row"><span class="img-label">Vision</span><span>${escapeHtml(img.caption)}</span></div>` : ''}
-          ${img.ocr ? `<div class="img-row"><span class="img-label">OCR</span><span>${escapeHtml(img.ocr)}</span></div>` : ''}
-          ${img.fix ? `<div class="img-fix">Fix: ${escapeHtml(img.fix)}</div>` : ''}
-        </div>
-      </div>`;
-      }
-    )
-    .join('');
+  const items = gallery.map((img, i) => {
+    const src = imgUrl(img);
+    const checks = imageChecks(img);
+    return `<article class="img-audit-item">
+      <div class="img-audit-preview">
+        <img src="${escapeHtml(src)}" alt="${escapeHtml(img.alt || `Product image ${i + 1}`)}" loading="lazy" referrerpolicy="no-referrer"
+          onerror="this.classList.add('img-broken'); this.nextElementSibling?.classList.add('show');">
+        <div class="img-fallback">Preview blocked</div>
+        <span class="img-num">Image ${i + 1}</span>
+      </div>
+      <div class="img-audit-detail">
+        <ul class="img-checklist">${checks.map((c) => `<li class="${c.ok ? 'pass' : 'warn'}">${c.text}</li>`).join('')}</ul>
+        ${img.caption ? `<p class="img-caption">${escapeHtml(img.caption)}</p>` : ''}
+        ${img.fix ? `<p class="img-rec">${escapeHtml(img.fix)}</p>` : ''}
+      </div>
+    </article>`;
+  }).join('');
+  return `
+    <div class="img-audit-score">
+      <span>Image analysis</span>
+      <strong>${imageScore ?? '—'}/100</strong>
+    </div>
+    ${summary ? `<p class="section-lead">${escapeHtml(summary)}</p>` : ''}
+    <div class="img-audit-grid">${items}</div>
+  `;
 }
 
 const PRODUCT_FIELDS = [
@@ -240,32 +307,29 @@ function renderProductFacts(lab, data) {
   if (!fields) return '';
   const extracted = fields.extracted || data?.product_information?.extracted || {};
   const missingSet = new Set(fields.missing || []);
-  const keys = [...new Set([...PRODUCT_FIELDS, ...Object.keys(extracted)])];
-
-  return keys
+  return [...new Set([...PRODUCT_FIELDS, ...Object.keys(extracted)])]
     .filter((key) => PRODUCT_FIELDS.includes(key) || extracted[key])
     .map((key) => {
       const val = extracted[key];
       const missing = missingSet.has(key) && !val;
-      return `<div class="fact-card ${missing ? 'missing' : val ? 'found' : ''}">
+      return `<div class="fact-chip ${missing ? 'missing' : val ? 'found' : ''}">
         <label>${escapeHtml(key.replace(/_/g, ' '))}</label>
-        <div class="val">${missing ? 'Not found' : escapeHtml(String(val || '—'))}</div>
+        <span>${missing ? 'Not found' : escapeHtml(String(val || '—'))}</span>
       </div>`;
     })
     .join('');
 }
 
-function renderFix(fix, i) {
-  const pri = i < 2 ? 'priority-critical' : i < 5 ? 'priority-high' : 'priority-medium';
+function renderFixDetail(fix, i) {
   const steps = (fix.steps || []).map((s) => `<li>${escapeHtml(s)}</li>`).join('');
   const copy = fix.copy_paste
-    ? `<div class="copy-block"><button type="button" class="copy-btn">Copy</button>${escapeHtml(fix.copy_paste)}</div>`
+    ? `<div class="copy-block"><button type="button" class="copy-btn">Copy</button><pre>${escapeHtml(fix.copy_paste)}</pre></div>`
     : '';
-  return `<article class="fix-card ${pri}">
+  return `<article class="fix-detail">
     <h4>${i + 1}. ${escapeHtml(fix.title)}</h4>
-    <p class="fix-meta">${escapeHtml(fix.category)} · ~${fix.effort || '10 min'}</p>
-    <p><strong>Problem:</strong> ${escapeHtml(fix.problem)}</p>
-    <p><strong>Fix:</strong> ${escapeHtml(fix.why_it_matters)}</p>
+    <p class="fix-meta">${escapeHtml(fix.category)} · ~${escapeHtml(fix.effort || '10 min')}</p>
+    <p>${escapeHtml(fix.problem)}</p>
+    <p class="fix-why">${escapeHtml(fix.why_it_matters)}</p>
     ${steps ? `<ol>${steps}</ol>` : ''}
     ${copy}
   </article>`;
@@ -274,172 +338,186 @@ function renderFix(fix, i) {
 function renderLab(data) {
   const lab = data.lab || {};
   const sev = lab.severity_counts || {};
-  const zones = lab.zones || [];
   const tm = lab.title_meta || data.seo?.title_meta || {};
+  const fixes = data.fixes || [];
+  const overall = data.scores.overall;
+  const status = overallStatus(overall);
+  const critical = sev.critical || 0;
+  const improvements = (sev.high || 0) + (sev.medium || 0);
+  const strengths = (lab.zones || []).filter((z) => z.status === 'good').length;
+  const seoIssueCount = (data.seo?.issues || []).length;
+  const issueBadge = critical + (sev.high || 0) || fixes.length;
 
   const navItems = [
-    { id: 'overview', label: 'Overview', badge: data.scores.overall },
-    { id: 'seo', label: 'SEO', badge: sev.high + sev.critical || null },
+    { id: 'header', label: 'Overview' },
+    { id: 'priorities', label: 'Issues', badge: issueBadge || null },
+    { id: 'scores', label: 'Scores' },
+    { id: 'ai', label: 'AI Analysis' },
+    { id: 'seo', label: 'SEO', badge: seoIssueCount || null },
     { id: 'keywords', label: 'Keywords', badge: (data.keywords?.opportunities || []).length || null },
-    { id: 'product', label: 'Product', badge: (lab.product_fields?.missing || []).length || null },
-    { id: 'schema', label: 'Schema', badge: data.structured_data?.properties_missing?.length || null },
+    { id: 'content', label: 'Content' },
     { id: 'images', label: 'Images', badge: (lab.image_gallery || []).filter((i) => i.status !== 'good').length || null },
-    { id: 'code', label: 'Page Code', badge: (data.page_code?.issues || []).length || null },
-    { id: 'fixes', label: 'Fix Queue', badge: (data.fixes || []).length },
+    { id: 'schema', label: 'Structured Data' },
+    { id: 'technical', label: 'Technical', badge: (data.page_code?.issues || []).length || null },
   ];
 
   const nav = navItems
-    .filter((n) => n.badge !== null || n.id === 'overview')
     .map(
       (n) =>
-        `<a href="#lab-${n.id}" class="${n.id === 'overview' ? 'active' : ''}" data-nav="${n.id}">
-          ${n.label}${n.badge != null ? `<span class="nav-badge">${n.badge}</span>` : ''}
+        `<a href="#lab-${n.id}" class="${n.id === 'header' ? 'active' : ''}" data-nav="${n.id}">
+          ${n.label}${n.badge != null && n.badge > 0 ? `<span class="nav-badge">${n.badge}</span>` : ''}
         </a>`
     )
     .join('');
 
-  const allSeoIssues = [
-    ...(data.seo?.issues || []),
-    ...(zones.find((z) => z.id === 'seo')?.issues || []),
-  ];
-
-  const warningBanner = (lab.warnings || [])
-    .map((w) => `<div class="lab-warning">${escapeHtml(w)}</div>`)
-    .join('');
-
-  const shopifyBadge = data.product_information?.platform_enriched
-    ? `<span class="shopify-badge">${escapeHtml(data.product_information?.data_source || 'enriched')}</span>`
+  const allSeoIssues = [...(data.seo?.issues || [])];
+  const warnings = (lab.warnings || []).map((w) => `<div class="lab-warning">${escapeHtml(w)}</div>`).join('');
+  const enriched = data.product_information?.platform_enriched
+    ? `<span class="platform-pill">${escapeHtml(data.product_information?.data_source || 'enriched')}</span>`
     : '';
 
   return `
-    <div class="audit-lab" id="audit-lab">
-      ${warningBanner}
-      <div class="lab-hero">
-        ${bigScoreRing(data.scores.overall)}
-        <div class="lab-hero-copy">
-          <p class="lab-eyebrow">Audit report</p>
-          <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product Page')}</h2>
-          <div class="lab-url">${escapeHtml(data.final_url)}</div>
-          <span class="platform-pill">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${shopifyBadge}</span>
+    <div class="audit-cockpit" id="audit-lab">
+      ${warnings}
+      <header class="cockpit-header" id="lab-header">
+        <div class="cockpit-header-main">
+          ${bigScoreRing(overall)}
+          <div class="cockpit-header-copy">
+            <p class="cockpit-eyebrow">${escapeHtml(data.platform)} · HTTP ${data.status_code} ${enriched}</p>
+            <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product listing')}</h2>
+            <p class="cockpit-url">${escapeHtml(data.final_url)}</p>
+            <p class="cockpit-status ${status.tier}">${status.label.toUpperCase()}</p>
+            <p class="cockpit-summary">${escapeHtml(executiveSummary(data))}</p>
+            <div class="cockpit-stats">
+              <span class="stat-critical"><em>${critical}</em> Critical</span>
+              <span class="stat-improve"><em>${improvements}</em> Improvements</span>
+              <span class="stat-strong"><em>${strengths}</em> Strengths</span>
+            </div>
+            <div class="cockpit-actions">
+              <button type="button" class="btn btn-primary btn-sm" data-scroll="#lab-priorities">View priority fixes</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="cockpit-rerun">Re-run audit</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="cockpit-export">Export report</button>
+            </div>
+          </div>
         </div>
-        <div class="lab-stat-strip">${statTiles(sev, lab.total_issues)}</div>
-      </div>
+      </header>
 
       <div class="lab-shell">
         <aside class="lab-nav-wrap" id="lab-nav-wrap">
-          <nav class="lab-nav" id="lab-nav" aria-label="Report sections">
-            <p class="lab-nav-title">Report</p>
+          <nav class="lab-nav" id="lab-nav" aria-label="Audit sections">
+            <p class="lab-nav-title">Audit</p>
             ${nav}
           </nav>
         </aside>
 
         <div class="lab-main">
-          <section class="lab-section" id="lab-overview">
-            <div class="lab-section-head">
-              <h3>Overview</h3>
-              <span class="zone-score ${scoreTier(data.scores.overall)}">${lab.total_issues || 0} issues</span>
+          <section class="cockpit-block priority-block" id="lab-priorities">
+            <div class="block-head">
+              <h3>Priority fixes</h3>
+              <span class="block-sub">${fixes.length} actionable recommendations</span>
             </div>
-            <div class="lab-ring-grid">${categoryRings(data.scores.categories)}</div>
-            <div class="charts-row">
-              <div class="chart-card chart-card-bars">
-                <h4>Category breakdown</h4>
-                ${barChart(data.scores.categories)}
-              </div>
-              <div class="chart-card chart-card-heat">
-                <h4>Zone scores</h4>
-                <div class="heatmap-grid">${heatmap(zones)}</div>
-              </div>
-            </div>
-            ${data.seo?.analysis ? `<p class="lab-summary">${escapeHtml(data.seo.analysis)}</p>` : ''}
+            <p class="block-lead">Fix these first for the highest impact on visibility and conversions.</p>
+            <div class="priority-list">${fixes.slice(0, 6).map(renderPriorityFix).join('') || '<p class="lab-empty">No fixes generated.</p>'}</div>
+            ${fixes.length > 6 ? `<button type="button" class="btn btn-ghost btn-sm" data-scroll="#lab-fixes-all">View all ${fixes.length} fixes</button>` : ''}
           </section>
 
-          <section class="lab-section" id="lab-seo">
-            <div class="lab-section-head">
-              <h3>SEO & Meta</h3>
+          <section class="cockpit-block" id="lab-scores">
+            <div class="block-head"><h3>Score dashboard</h3></div>
+            <p class="block-lead">Click a category to jump to its detailed analysis.</p>
+            <div class="score-dashboard">${renderScoreDashboard(data.scores.categories, data.keywords)}</div>
+          </section>
+
+          <section class="cockpit-block strategist-block" id="lab-ai">
+            <div class="block-head"><h3>AI listing strategist</h3></div>
+            <p class="block-lead">Expert recommendations based on your listing data.</p>
+            ${renderAIStrategist(data, fixes, tm)}
+          </section>
+
+          <section class="detail-panel" id="lab-seo">
+            <div class="panel-head">
+              <h3>SEO &amp; meta</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.seo)}">${data.scores.categories.seo}/100</span>
             </div>
-            <div class="signal-cards">
+            <div class="metric-grid">
               ${lengthMeter('Title tag', tm.title, tm.title_length || 0, tm.title_status || 'missing', tm.title_ideal || '30–60')}
               ${lengthMeter('Meta description', tm.meta_description, tm.meta_length || 0, tm.meta_status || 'missing', tm.meta_ideal || '120–155')}
             </div>
-            <div style="margin-top:1rem;">
-              <strong style="font-size:.82rem;">H1:</strong>
-              <span style="font-size:.88rem;color:var(--muted);"> ${escapeHtml(tm.h1 || '—')}</span>
-              ${tm.canonical ? `<br><strong style="font-size:.82rem;">Canonical:</strong> <span style="font-size:.82rem;color:var(--muted);">${escapeHtml(tm.canonical)}</span>` : ''}
+            <div class="meta-extra">
+              <p><strong>H1:</strong> ${escapeHtml(tm.h1 || '—')}</p>
+              ${tm.canonical ? `<p><strong>Canonical:</strong> ${escapeHtml(tm.canonical)}</p>` : ''}
             </div>
-            <div class="issue-cards" style="margin-top:1rem;">${allSeoIssues.map(issueCard).join('') || '<p style="color:var(--muted)">No SEO issues detected.</p>'}</div>
+            <div class="issue-list">${allSeoIssues.map(issueCard).join('') || '<p class="lab-empty">No SEO issues detected.</p>'}</div>
           </section>
 
-          <section class="lab-section" id="lab-keywords">
-            <div class="lab-section-head">
+          <section class="detail-panel" id="lab-keywords">
+            <div class="panel-head">
               <h3>Keywords</h3>
-              ${data.keywords?.primary_keyword ? `<span class="zone-score good">Focus: ${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
+              ${data.keywords?.primary_keyword ? `<span class="zone-score good">${escapeHtml(data.keywords.primary_keyword)}</span>` : ''}
             </div>
             ${renderKeywords(data.keywords)}
           </section>
 
-          <section class="lab-section" id="lab-product">
-            <div class="lab-section-head">
-              <h3>Product Information</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.product_information)}">${data.scores.categories.product_information}/100</span>
+          <section class="detail-panel" id="lab-content">
+            <div class="panel-head">
+              <h3>Content &amp; product data</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.content_quality)}">${data.scores.categories.content_quality}/100</span>
             </div>
-            <div class="product-facts">${renderProductFacts(lab, data)}</div>
+            <p class="section-lead">${escapeHtml(data.content?.analysis || '')}</p>
+            <div class="fact-grid">${renderProductFacts(lab, data)}</div>
             ${lab.shopify?.tags?.length ? `<p class="lab-tags">Tags: ${lab.shopify.tags.map((t) => `<span class="kw-tag">${escapeHtml(t)}</span>`).join('')}</p>` : ''}
-            <div class="ai-readiness-card">
-              <div class="ai-readiness-head">
-                <span>AI shopping readiness</span>
-                <strong>${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
-              </div>
-              <div class="ai-readiness-bar"><span style="width:${data.ai_shopping_readiness?.score || 0}%"></span></div>
-              <p>${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
+            <div class="readiness-strip">
+              <span>AI shopping readiness</span>
+              <div class="readiness-bar"><span style="width:${data.ai_shopping_readiness?.score || 0}%"></span></div>
+              <strong>${data.ai_shopping_readiness?.score ?? '—'}/100</strong>
             </div>
+            <p class="section-lead">${escapeHtml(data.ai_shopping_readiness?.summary || '')}</p>
           </section>
 
-          <section class="lab-section" id="lab-schema">
-            <div class="lab-section-head">
-              <h3>Structured Data</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
-            </div>
-            ${renderSchema(data)}
-          </section>
-
-          <section class="lab-section" id="lab-images">
-            <div class="lab-section-head">
-              <h3>Images</h3>
+          <section class="detail-panel" id="lab-images">
+            <div class="panel-head">
+              <h3>Image analysis</h3>
               <span class="zone-score ${scoreTier(data.scores.categories.images)}">${data.scores.categories.images}/100</span>
             </div>
-            <p style="font-size:.88rem;color:var(--muted);margin:0 0 1rem;">${escapeHtml(data.images?.summary || '')}</p>
-            <div class="img-lab-grid">${renderImages(lab.image_gallery)}</div>
+            ${renderImages(lab.image_gallery, data.scores.categories.images, data.images?.summary)}
           </section>
 
-          <section class="lab-section" id="lab-code">
-            <div class="lab-section-head">
-              <h3>Page Code</h3>
-              <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.page_code?.html_size_kb || '—'} KB</span>
+          <section class="detail-panel" id="lab-schema">
+            <div class="panel-head">
+              <h3>Structured data</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.structured_data)}">${data.scores.categories.structured_data}/100</span>
             </div>
-            <div class="signal-cards" style="margin-bottom:1rem;">
-              <div class="signal-card">
-                <label>Links</label>
-                <div class="signal-text">${data.page_code?.links?.internal || 0} internal · ${data.page_code?.links?.external || 0} external · ${data.page_code?.links?.nofollow || 0} nofollow</div>
-              </div>
-              <div class="signal-card">
-                <label>Technical</label>
-                <div class="signal-text">Lang: ${escapeHtml(data.page_code?.lang || '—')} · Viewport: ${data.page_code?.viewport ? '✓' : '✗'} · Scripts: ${data.page_code?.script_count || 0}</div>
-              </div>
-            </div>
-            <h4 style="font-size:.82rem;margin:0 0 .5rem;">Heading outline</h4>
-            <div class="heading-tree">${escapeHtml(data.page_code?.heading_outline || 'No headings')}</div>
-            <h4 style="font-size:.82rem;margin:1rem 0 .5rem;">Head markup preview</h4>
-            <div class="code-viewer">${escapeHtml(data.page_code?.head_preview || '')}</div>
-            ${(data.page_code?.issues || []).map(issueCard).join('')}
+            ${renderSchemaPanel(data)}
           </section>
 
-          <section class="lab-section fix-queue" id="lab-fixes">
-            <div class="lab-section-head">
-              <h3>Fix Queue</h3>
-              <span class="zone-score good">${(data.fixes || []).length} actionable fixes</span>
+          <section class="detail-panel evidence-panel-wrap" id="lab-technical">
+            <div class="panel-head">
+              <h3>Technical evidence</h3>
+              <span class="zone-score ${scoreTier(data.scores.categories.technical)}">${data.scores.categories.technical}/100</span>
             </div>
-            ${(data.fixes || []).map(renderFix).join('') || '<p>No fixes generated.</p>'}
+            <div class="tech-summary">
+              <span>${data.page_code?.html_size_kb || '—'} KB HTML</span>
+              <span>${data.page_code?.links?.internal || 0} internal links</span>
+              <span>${data.page_code?.links?.external || 0} external links</span>
+              <span>Viewport: ${data.page_code?.viewport ? 'Yes' : 'No'}</span>
+            </div>
+            <div class="issue-list">${(data.page_code?.issues || []).map(issueCard).join('')}</div>
+            <details class="evidence-panel">
+              <summary>Heading outline</summary>
+              <div class="heading-tree">${escapeHtml(data.page_code?.heading_outline || 'No headings')}</div>
+            </details>
+            <details class="evidence-panel">
+              <summary>Head markup preview</summary>
+              <div class="code-viewer">${escapeHtml(data.page_code?.head_preview || '')}</div>
+            </details>
+            ${(data.page_code?.json_ld_snippets || []).length ? `<details class="evidence-panel"><summary>Raw JSON-LD (${data.page_code.json_ld_snippets.length} blocks)</summary><div class="code-viewer">${escapeHtml(data.page_code.json_ld_snippets.join('\n\n'))}</div></details>` : ''}
+          </section>
+
+          <section class="detail-panel" id="lab-fixes-all">
+            <div class="panel-head">
+              <h3>Full fix queue</h3>
+              <span class="zone-score good">${fixes.length} fixes</span>
+            </div>
+            ${fixes.map(renderFixDetail).join('') || '<p class="lab-empty">No fixes generated.</p>'}
           </section>
         </div>
       </div>
@@ -460,7 +538,7 @@ function showScanning(step) {
   ];
   el.innerHTML = `<div class="lab-scan">
     <div class="scan-radar"></div>
-    <p style="font-weight:700;margin:0 0 1rem;">Running audit lab analysis</p>
+    <p style="font-weight:700;margin:0 0 1rem;">Analyzing your listing</p>
     <div class="scan-steps">${steps
       .map((s, i) => `<div class="scan-step ${i < step ? 'done' : i === step ? 'active' : ''}">${i < step ? '✓' : '○'} ${s}</div>`)
       .join('')}</div>
@@ -482,27 +560,20 @@ function showPaywall(msg) {
 }
 
 function animateLabMetrics(root) {
-  root.querySelectorAll('.bar-fill').forEach((bar) => {
+  root.querySelectorAll('.score-nav-fill, .readiness-bar span').forEach((bar) => {
     const w = bar.style.width;
     bar.style.width = '0';
     requestAnimationFrame(() => { bar.style.width = w; });
   });
-
-  root.querySelectorAll('.ring-progress, .hero-ring-progress').forEach((ring) => {
+  root.querySelectorAll('.hero-ring-progress').forEach((ring) => {
     const card = ring.closest('[data-score]');
     const score = Number(card?.dataset.score || 0);
-    const r = ring.classList.contains('hero-ring-progress') ? 46 : 22;
+    const r = 52;
     const c = 2 * Math.PI * r;
     const offset = c - (score / 100) * c;
     requestAnimationFrame(() => { ring.style.strokeDashoffset = offset; });
-    const valEl = card?.querySelector('.ring-val, .hero-score-val');
+    const valEl = card?.querySelector('.hero-score-val');
     if (valEl) animateCounter(valEl, score);
-  });
-
-  root.querySelectorAll('.ai-readiness-bar span').forEach((bar) => {
-    const w = bar.style.width;
-    bar.style.width = '0';
-    requestAnimationFrame(() => { bar.style.width = w; });
   });
 }
 
@@ -510,6 +581,7 @@ function setupFloatingNav(root) {
   const wrap = root.querySelector('.lab-nav-wrap');
   const nav = root.querySelector('.lab-nav');
   const shell = root.querySelector('.lab-shell');
+  const header = root.querySelector('.cockpit-header');
   if (!wrap || !nav || !shell) return null;
 
   const mq = window.matchMedia('(min-width: 901px)');
@@ -525,6 +597,7 @@ function setupFloatingNav(root) {
 
     const shellRect = shell.getBoundingClientRect();
     const wrapRect = wrap.getBoundingClientRect();
+    const headerRect = header?.getBoundingClientRect();
 
     if (shellRect.bottom < headerOffset || shellRect.top > window.innerHeight) {
       nav.classList.remove('is-floating');
@@ -534,9 +607,10 @@ function setupFloatingNav(root) {
     }
 
     wrap.style.minHeight = `${nav.offsetHeight}px`;
-
-    // Stay aligned with the sidebar slot; only pin to header after scrolling past hero
-    const top = Math.max(headerOffset, wrapRect.top);
+    let top = Math.max(headerOffset, wrapRect.top);
+    if (headerRect && headerRect.bottom > headerOffset) {
+      top = Math.max(top, headerRect.bottom + 12);
+    }
 
     nav.classList.add('is-floating');
     nav.style.visibility = 'visible';
@@ -550,7 +624,6 @@ function setupFloatingNav(root) {
   const onScroll = () => requestAnimationFrame(update);
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onScroll, { passive: true });
-
   return () => {
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', onScroll);
@@ -558,37 +631,43 @@ function setupFloatingNav(root) {
 }
 
 function bindLabInteractions(root) {
+  root.querySelectorAll('[data-scroll]').forEach((el) => {
+    el.addEventListener('click', () => scrollToSection(el.dataset.scroll));
+  });
+
   root.querySelectorAll('.lab-nav a').forEach((link) => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
-      const id = link.getAttribute('href');
-      scrollToSection(id);
+      scrollToSection(link.getAttribute('href'));
       root.querySelectorAll('.lab-nav a').forEach((a) => a.classList.remove('active'));
       link.classList.add('active');
     });
   });
 
-  root.querySelectorAll('.heat-cell[data-scroll]').forEach((cell) => {
-    cell.addEventListener('click', () => {
-      scrollToSection(`#${cell.dataset.scroll}`);
-    });
-  });
-
-  root.querySelectorAll('.img-lab-card').forEach((card) => {
-    card.addEventListener('click', () => card.classList.toggle('expanded'));
-  });
-
   root.querySelectorAll('.copy-btn').forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.stopPropagation();
-      const text = btn.parentElement.textContent.replace('Copy', '').trim();
+      const fromAttr = btn.getAttribute('data-copy');
+      const text = fromAttr || (btn.parentElement.querySelector('pre')?.textContent || btn.parentElement.textContent.replace('Copy', '').replace('Copy recommendation', '').replace('Copy fix', '').trim());
       navigator.clipboard.writeText(text);
-      btn.textContent = 'Copied!';
-      setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      const orig = btn.textContent;
+      btn.textContent = 'Copied';
+      setTimeout(() => { btn.textContent = orig; }, 2000);
     });
   });
 
-  const sections = root.querySelectorAll('.lab-section');
+  root.querySelector('#cockpit-rerun')?.addEventListener('click', () => {
+    const url = document.getElementById('audit-url')?.value?.trim();
+    if (url) runAudit(url);
+    else {
+      document.getElementById('audit')?.scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('audit-url')?.focus();
+    }
+  });
+
+  root.querySelector('#cockpit-export')?.addEventListener('click', () => window.print());
+
+  const sections = root.querySelectorAll('[id^="lab-"]');
   const navLinks = root.querySelectorAll('.lab-nav a');
   const observer = new IntersectionObserver(
     (entries) => {
@@ -599,7 +678,7 @@ function bindLabInteractions(root) {
         }
       });
     },
-    { rootMargin: '-15% 0px -55% 0px' }
+    { rootMargin: '-12% 0px -60% 0px' }
   );
   sections.forEach((s) => observer.observe(s));
 
@@ -653,7 +732,7 @@ async function runAudit(url) {
     results.classList.add('lab-enter');
     bindLabInteractions(results);
 
-    document.getElementById('audit-lab')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.getElementById('lab-header')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
     document.body.classList.remove('audit-active');
     progress.hidden = true;
