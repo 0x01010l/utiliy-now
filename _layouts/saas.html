@@ -11,7 +11,7 @@
   </main>
   {% include footer-saas.html %}
   {% include auth-modals.html %}
-  <script src="{{ '/assets/js/auth.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/auth.js' | relative_url }}?v=2" defer></script>
   <script src="{{ '/assets/js/saas.js' | relative_url }}" defer></script>
   {% if page.guide_index %}
   <link rel="stylesheet" href="{{ '/assets/css/guides.css' | relative_url }}?v=2">
@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="{{ '/assets/css/optimizer-lab.css' | relative_url }}?v=9">
   <script src="{{ '/assets/js/lab-ui.js' | relative_url }}?v=7" defer></script>
   <script src="{{ '/assets/js/optimizer-lab.js' | relative_url }}?v=7" defer></script>
-  <script src="{{ '/assets/js/auditor.js' | relative_url }}?v=8" defer></script>
+  <script src="{{ '/assets/js/auditor.js' | relative_url }}?v=9" defer></script>
   {% endif %}
 </body>
 </html>

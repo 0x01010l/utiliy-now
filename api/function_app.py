@@ -362,6 +362,17 @@ async def audit(req: func.HttpRequest) -> func.HttpResponse:
     if req.method == "OPTIONS":
         return func.HttpResponse("", status_code=204, headers=_cors_headers())
 
+    auth = _get_auth(req)
+    if not auth:
+        return func.HttpResponse(
+            json.dumps({
+                "error": "Create a free account to run your product page audit.",
+                "auth_required": True,
+            }),
+            status_code=401,
+            headers=_cors_headers(),
+        )
+
     try:
         body = req.get_json()
     except ValueError:
@@ -371,11 +382,10 @@ async def audit(req: func.HttpRequest) -> func.HttpResponse:
     if not url:
         return func.HttpResponse(json.dumps({"error": "url is required"}), status_code=400, headers=_cors_headers())
 
-    auth = _get_auth(req)
     client_id = req.headers.get("X-Client-Id", "") or (body or {}).get("client_id", "") or secrets.token_hex(8)
     ip = req.headers.get("X-Forwarded-For", "").split(",")[0].strip() or "0.0.0.0"
 
-    user_id = auth["sub"] if auth else None
+    user_id = auth["sub"]
     plan = _resolve_plan(auth)
 
     allowed, reason = can_run_audit(user_id, client_id, ip, plan)

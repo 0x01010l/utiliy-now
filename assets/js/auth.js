@@ -55,9 +55,15 @@ function renderUsage(usage) {
   if (!usage) return;
   lastUsage = usage;
 
+  const user = getUser();
+  const tracker = document.getElementById('usage-tracker');
+  if (!user) {
+    if (tracker) tracker.hidden = true;
+    return;
+  }
+
   const pct = usage.limit > 0 ? Math.min(100, (usage.used / usage.limit) * 100) : 0;
   const atLimit = usage.remaining <= 0;
-  const user = getUser();
   const plan = usage.plan || user?.plan || 'free';
   const isPro = plan === 'pro';
   const showUpgrade = atLimit && !isPro;
@@ -159,8 +165,47 @@ function updateAuthUI() {
     loggedInActions.hidden = true;
     navGuest?.removeAttribute('hidden');
     navUser?.setAttribute('hidden', '');
+    document.getElementById('usage-tracker')?.setAttribute('hidden', '');
+    lastUsage = null;
   }
-  refreshUsage();
+  if (user) refreshUsage();
+}
+
+function requireAuthForAudit(url) {
+  if (getUser() && getToken()) return true;
+  if (url) sessionStorage.setItem('utiliy_pending_audit_url', url);
+  openAuth('register');
+  showToast('Create a free account to run your audit');
+  return false;
+}
+
+async function resumePendingAudit() {
+  const pending = sessionStorage.getItem('utiliy_pending_audit_url');
+  if (!pending || !getUser() || !getToken()) return;
+  sessionStorage.removeItem('utiliy_pending_audit_url');
+
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  const onHome = path === '' || path === '/' || path === '/index.html';
+  if (onHome) {
+    window.location.href = `/ai-lab/?url=${encodeURIComponent(pending)}`;
+    return;
+  }
+
+  const input = document.getElementById('audit-url');
+  if (input) input.value = pending;
+
+  if (typeof window.runOptimization === 'function') {
+    await window.runOptimization(pending);
+    return;
+  }
+
+  window.location.href = `/ai-lab/?url=${encodeURIComponent(pending)}`;
+}
+
+async function afterAuthSuccess() {
+  await refreshUsage();
+  if (sessionStorage.getItem('utiliy_checkout_after_auth') === '1') return;
+  await resumePendingAudit();
 }
 
 function showPaywall(msg) {
@@ -184,9 +229,9 @@ function showPaywall(msg) {
   if (perks) perks.hidden = false;
 
   if (!user) {
-    if (title) title.textContent = 'Upgrade to keep auditing';
+    if (title) title.textContent = 'Create a free account';
     if (msgEl) {
-      msgEl.textContent = msg || 'Your free audit is used. Create an account, then upgrade to Pro for 80 audits per month.';
+      msgEl.textContent = msg || 'Sign up for a free account to run your first product page audit.';
     }
     guestActions?.removeAttribute('hidden');
   } else if (user.plan !== 'pro') {
@@ -336,6 +381,8 @@ function initGoogleSignIn() {
       if (sessionStorage.getItem('utiliy_checkout_after_auth') === '1') {
         sessionStorage.removeItem('utiliy_checkout_after_auth');
         await startCheckout();
+      } else {
+        await afterAuthSuccess();
       }
     } catch (ex) {
       if (err) err.textContent = ex.message;
@@ -388,7 +435,6 @@ function handleUpgradeSuccess() {
 document.addEventListener('DOMContentLoaded', () => {
   updateAuthUI();
   handleUpgradeSuccess();
-  refreshUsage();
 
   document.getElementById('btn-signin')?.addEventListener('click', () => openAuth('login'));
   document.getElementById('btn-signup')?.addEventListener('click', () => openAuth('register'));
@@ -487,6 +533,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (sessionStorage.getItem('utiliy_checkout_after_auth') === '1') {
         sessionStorage.removeItem('utiliy_checkout_after_auth');
         await startCheckout();
+      } else {
+        await afterAuthSuccess();
       }
     } catch (ex) {
       if (!document.getElementById('auth-panel-verify').hidden) err.textContent = '';
@@ -566,5 +614,5 @@ document.addEventListener('DOMContentLoaded', () => {
 window.UtiliyAuth = {
   getToken, getClientId, authHeaders, startCheckout, openModal, closeModal,
   getUser, getUsage, isAtAuditLimit, showToast, openAuth, refreshUsage,
-  renderUsage, showPaywall, promptUpgrade,
+  renderUsage, showPaywall, promptUpgrade, requireAuthForAudit,
 };

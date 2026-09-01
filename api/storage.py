@@ -248,51 +248,29 @@ def ip_hash(ip: str) -> str:
 def get_usage_stats(user_id: str | None, client_id: str, ip: str, plan: str) -> dict:
     limit = plan_limit(plan)
     month = _current_month()
-    client_key = _usage_key("client", client_id)
-    ip_key = _usage_key("ip", ip_hash(ip))
-    user_key = _usage_key("user", user_id) if user_id else None
-
-    client_count = get_audit_count_for_key(client_key)
-    ip_count = get_audit_count_for_key(ip_key)
-    user_count = get_audit_count_for_key(user_key) if user_key else 0
-
-    if plan == "free":
-        used = 1 if max(client_count, ip_count, user_count) >= FREE_AUDIT_LIMIT else 0
-        remaining = max(0, FREE_AUDIT_LIMIT - used)
-    else:
-        used = user_count
-        remaining = max(0, limit - used)
+    user_count = get_audit_count_for_key(_usage_key("user", user_id)) if user_id else 0
+    used = user_count
+    remaining = max(0, limit - user_count)
 
     return {
         "plan": plan,
-        "used": used if plan == "free" else user_count,
+        "used": used,
         "limit": limit,
-        "remaining": remaining,
+        "remaining": remaining if user_id else 0,
         "period": month,
-        "tracked": {
-            "client": client_count,
-            "ip": ip_count,
-            "account": user_count,
-        },
+        "requires_auth": not bool(user_id),
     }
 
 
 def increment_audit_usage(user_id: str | None, client_id: str, ip: str, plan: str) -> dict:
-    client_key = _usage_key("client", client_id)
-    ip_key = _usage_key("ip", ip_hash(ip))
-
-    if plan == "free":
-        increment_audit_count_for_key(client_key)
-        increment_audit_count_for_key(ip_key)
-        if user_id:
-            increment_audit_count_for_key(_usage_key("user", user_id))
-    elif user_id:
+    if user_id:
         increment_audit_count_for_key(_usage_key("user", user_id))
-
     return get_usage_stats(user_id, client_id, ip, plan)
 
 
 def can_run_audit(user_id: str | None, client_id: str, ip: str, plan: str) -> tuple[bool, str]:
+    if not user_id:
+        return False, "Create a free account to run your product page audit."
     stats = get_usage_stats(user_id, client_id, ip, plan)
     if stats["remaining"] <= 0:
         if plan == "free":

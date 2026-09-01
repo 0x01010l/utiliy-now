@@ -421,6 +421,13 @@ async function runOptimization(url) {
       showPaywall(data.error || 'You have reached your optimization limit. Upgrade to continue.');
       return;
     }
+    if (res.status === 401 || data.auth_required) {
+      document.body.classList.remove('optimizer-active', 'audit-active', 'optimizer-results');
+      progress.hidden = true;
+      setSubmitLoading(false);
+      window.UtiliyAuth?.requireAuthForAudit?.(url);
+      return;
+    }
     if (!res.ok) throw new Error(data.error || 'Scan failed');
 
     if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
@@ -450,6 +457,7 @@ async function runOptimization(url) {
 }
 
 const runAudit = runOptimization;
+window.runOptimization = runOptimization;
 
 function isHomePage() {
   const path = window.location.pathname.replace(/\/$/, '') || '/';
@@ -470,6 +478,7 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
     const url = document.getElementById('audit-url').value.trim();
     if (!url) return;
+    if (!window.UtiliyAuth?.requireAuthForAudit?.(url)) return;
     if (window.UtiliyAuth?.isAtAuditLimit?.()) {
       window.UtiliyAuth.promptUpgrade();
       return;
@@ -487,6 +496,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (url) {
       const input = document.getElementById('audit-url');
       if (input) input.value = url;
+      if (!window.UtiliyAuth?.getUser?.()) {
+        window.UtiliyAuth?.requireAuthForAudit?.(url);
+        return;
+      }
       if (!window.UtiliyAuth?.isAtAuditLimit?.()) {
         runOptimization(url);
       }
