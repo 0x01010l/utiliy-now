@@ -76,7 +76,7 @@ No article outline. No word-count targets. PDP-specific evidence.
 
 ## Pricing context
 
-- **Utiliy** — Free first report; Pro at $15/mo for 80 optimizations ([pricing](/pricing/))  
+- **Utiliy** — Free first report; Pro at $24/mo for 80 optimizations ([pricing](/pricing/))  
 - **Surfer** — Content-focused plans at higher price points for teams ([surferseo.com](https://surferseo.com) — check current pricing)  
 
 Compare based on whether your priority is **articles** or **product pages**.

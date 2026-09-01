@@ -72,7 +72,7 @@ Deterministic-only audits (no AI): fractions of a cent.
 | Plan | Price | Limits |
 |------|-------|--------|
 | Free | $0 | 3 audits/mo, basic issues |
-| Pro | $15/mo | 50 audits, AI analysis, history, PDF |
+| Pro | $24/mo | 80 audits, AI analysis, history, PDF |
 | Business | $49/mo | 250 audits, multi-store, reports |
 
 **Phase 2** — Stripe Checkout + webhooks (not in Phase 1 deploy).

@@ -76,7 +76,7 @@
       goal: 'checkout_start',
       variants: [
         { id: 'control', weight: 34, label: 'Subscribe with Stripe' },
-        { id: 'price', weight: 33, label: 'Start Pro — $15/mo' },
+        { id: 'price', weight: 33, label: 'Start Pro — $24/mo' },
         { id: 'upgrade', weight: 33, label: 'Upgrade to Pro' },
       ],
       selector: '[data-checkout]',
