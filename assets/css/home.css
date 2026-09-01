@@ -325,6 +325,16 @@ body.audit-active .audit-workspace,
 body.optimizer-active .audit-workspace { margin: 0; width: 100%; }
 body.audit-active .audit-form,
 body.optimizer-active .audit-form { margin-top: 0; }
+body.optimizer-results .audit-form,
+body.optimizer-results .audit-hint { display: none; }
+body.optimizer-active {
+  padding-bottom: 0;
+}
+body.optimizer-results .saas-footer { display: none; }
+body.optimizer-results .hero-home {
+  padding: .5rem 0 0;
+  background: transparent;
+}
 body.audit-active .audit-input-row,
 body.optimizer-active .audit-input-row {
   max-width: 720px;

@@ -1,4 +1,15 @@
-/** AI Optimization Lab UI — rendered by auditor.js after discovery scan */
+/** AI Optimization Lab — professional workspace UI */
+
+function readyCount(fixes) {
+  return (fixes || []).filter((f) => f.copy_paste).length;
+}
+
+function bundleFixes(fixes) {
+  return (fixes || [])
+    .filter((f) => f.copy_paste)
+    .map((f, i) => `/* Fix ${i + 1}: ${f.title} */\n${f.copy_paste}`)
+    .join('\n\n');
+}
 
 function fixBeforeState(fix, data, tm) {
   const cat = fix.category || '';
@@ -22,96 +33,218 @@ function fixBeforeState(fix, data, tm) {
   return fix.problem || 'Current listing has a gap here';
 }
 
+function pillarIcon(key) {
+  const icons = {
+    google_seo: '◎',
+    ai_visibility: '✦',
+    content: '¶',
+    keywords: '#',
+    images: '▣',
+    schema: '{}',
+  };
+  return icons[key] || '·';
+}
+
 function renderFixQueueItem(fix, i, active) {
-  const impact = fixImpact(fix, i);
   const hasAi = Boolean(fix.copy_paste);
-  return `<button type="button" class="fix-queue-item ${active ? 'active' : ''}" data-fix-index="${i}">
-    <span class="fix-queue-num">${i + 1}</span>
-    <span class="fix-queue-body">
-      <strong>${escapeHtml(fix.title)}</strong>
-      <span class="impact-tag ${impact.cls}">${impact.text}</span>
-      ${hasAi ? '<span class="fix-queue-ai">AI fix ready</span>' : '<span class="fix-queue-ai pending">Guidance only</span>'}
+  const cat = LABELS[fix.category] || fix.category || 'General';
+  return `<button type="button" class="lab-queue-item ${active ? 'is-active' : ''} ${hasAi ? 'has-ai' : ''}" data-fix-index="${i}">
+    <span class="lab-queue-status" aria-hidden="true"></span>
+    <span class="lab-queue-text">
+      <span class="lab-queue-title">${escapeHtml(fix.title)}</span>
+      <span class="lab-queue-meta">${escapeHtml(cat)}</span>
     </span>
+    <span class="lab-queue-index">${i + 1}</span>
   </button>`;
+}
+
+function extractTagValue(html, tag) {
+  if (!html) return '';
+  if (tag === 'title') {
+    const m = html.match(/<title[^>]*>([^<]*)<\/title>/i);
+    return m ? m[1].trim() : '';
+  }
+  const m = html.match(new RegExp(`<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']`, 'i'))
+    || html.match(new RegExp(`content=["']([^"']*)["'][^>]+name=["']description["']`, 'i'));
+  return m ? m[1].trim() : '';
+}
+
+function serpPreviewForFix(fix, data, tm) {
+  const title = (fix.title || '').toLowerCase();
+  const host = (() => {
+    try { return new URL(data.final_url || '').hostname.replace(/^www\./, ''); } catch { return 'yoursite.com'; }
+  })();
+  const path = (() => {
+    try { return new URL(data.final_url || '').pathname; } catch { return '/products/...'; }
+  })();
+
+  let serpTitle = tm.title || data.meta?.title || 'Product page title';
+  let serpDesc = tm.meta_description || 'Add a compelling meta description so shoppers click from Google.';
+
+  if (fix.copy_paste) {
+    const fromFix = extractTagValue(fix.copy_paste, 'title');
+    const fromMeta = extractTagValue(fix.copy_paste, 'meta');
+    if (fromFix) serpTitle = fromFix;
+    if (fromMeta) serpDesc = fromMeta;
+  }
+
+  if (!title.includes('title') && !title.includes('meta')) return '';
+
+  return `<section class="lab-serp" aria-label="Google search preview">
+    <header class="lab-panel-head"><span>Search preview</span></header>
+    <div class="lab-serp-card">
+      <p class="lab-serp-url">${escapeHtml(host)}${escapeHtml(path)}</p>
+      <p class="lab-serp-title">${escapeHtml(serpTitle)}</p>
+      <p class="lab-serp-desc">${escapeHtml(serpDesc)}</p>
+    </div>
+  </section>`;
 }
 
 function renderFixEditor(fix, i, data, tm) {
   if (!fix) {
-    return `<div class="ai-fix-editor empty"><p>No optimization actions yet. Run diagnostics to see what we found.</p></div>`;
+    return `<div class="lab-editor lab-editor--empty">
+      <p>No fixes generated for this page. Switch to <strong>Diagnostics</strong> to review scan results.</p>
+    </div>`;
   }
+
   const impact = fixImpact(fix, i);
   const before = fixBeforeState(fix, data, tm);
-  const steps = (fix.steps || [])
-    .map((s) => `<li>${escapeHtml(s)}</li>`)
-    .join('');
-  const output = fix.copy_paste
-    ? `<div class="ai-fix-output">
-        <div class="ai-fix-output-head">
-          <span class="ai-spark">✦</span> AI-generated fix
-          <button type="button" class="btn btn-primary btn-sm copy-fix-btn">Copy fix</button>
-        </div>
-        <pre class="ai-fix-code">${escapeHtml(fix.copy_paste)}</pre>
-      </div>`
-    : `<div class="ai-fix-output ai-fix-guidance">
-        <p class="ai-fix-no-code">No copy-paste snippet for this one yet — follow the steps below or regenerate when AI is enabled.</p>
-      </div>`;
+  const cat = LABELS[fix.category] || fix.category || 'General';
+  const steps = (fix.steps || []).map((s) => `<li>${escapeHtml(s)}</li>`).join('');
 
-  return `<article class="ai-fix-editor" id="fix-editor">
-    <header class="ai-fix-editor-head">
-      <div>
-        <p class="ai-fix-kicker">Fix #${i + 1} · ${escapeHtml(LABELS[fix.category] || fix.category || 'General')}</p>
-        <h3>${escapeHtml(fix.title)}</h3>
+  const output = fix.copy_paste
+    ? `<section class="lab-code-block">
+        <header class="lab-code-head">
+          <span class="lab-code-label"><span class="lab-ai-dot"></span> AI output</span>
+          <button type="button" class="lab-btn lab-btn--primary copy-fix-btn">Copy fix</button>
+        </header>
+        <pre class="lab-code">${escapeHtml(fix.copy_paste)}</pre>
+      </section>`
+    : `<section class="lab-callout lab-callout--muted">
+        <p>No copy-paste snippet yet — follow the steps below to implement manually.</p>
+      </section>`;
+
+  return `<article class="lab-editor" id="fix-editor">
+    <header class="lab-editor-header">
+      <div class="lab-editor-heading">
+        <span class="lab-category-pill">${escapeHtml(cat)}</span>
+        <h2>${escapeHtml(fix.title)}</h2>
       </div>
-      <span class="impact-tag ${impact.cls}">${impact.text}</span>
+      <span class="lab-impact lab-impact--${impact.cls}">${impact.text}</span>
     </header>
-    <p class="ai-fix-why">${escapeHtml(fix.why_it_matters)}</p>
-    <div class="ai-compare">
-      <div class="ai-compare-col before">
-        <span class="ai-compare-label">Weakness found</span>
+
+    <section class="lab-callout">
+      <p class="lab-callout-label">Why it matters</p>
+      <p class="lab-callout-text">${escapeHtml(fix.why_it_matters)}</p>
+    </section>
+
+    ${serpPreviewForFix(fix, data, tm)}
+
+    <section class="lab-diff">
+      <div class="lab-diff-col lab-diff-col--before">
+        <span class="lab-diff-label">Current</span>
         <p>${escapeHtml(before)}</p>
       </div>
-      <div class="ai-compare-arrow" aria-hidden="true">→</div>
-      <div class="ai-compare-col after">
-        <span class="ai-compare-label">AI recommendation</span>
+      <div class="lab-diff-col lab-diff-col--after">
+        <span class="lab-diff-label">Optimized</span>
         <p>${fix.copy_paste ? 'Ready-to-paste fix below' : 'Follow implementation steps'}</p>
       </div>
-    </div>
+    </section>
+
     ${output}
-    ${steps ? `<div class="ai-fix-steps"><h4>How to apply</h4><ol>${steps}</ol></div>` : ''}
-    <div class="ai-fix-actions">
-      <button type="button" class="btn btn-ghost btn-sm mark-done-btn">Mark as done</button>
-      <span class="ai-fix-effort">~${escapeHtml(fix.effort || '10 min')}</span>
-    </div>
+
+    ${steps ? `<section class="lab-steps">
+      <header class="lab-panel-head"><span>How to apply</span></header>
+      <ol>${steps}</ol>
+    </section>` : ''}
+
+    <footer class="lab-editor-footer">
+      <button type="button" class="lab-btn lab-btn--ghost mark-done-btn">Mark as done</button>
+      <span class="lab-effort">~${escapeHtml(fix.effort || '10 min')}</span>
+    </footer>
   </article>`;
 }
 
-function renderOptimizerStatsBar(data, pillars, fixes) {
-  const ready = fixes.filter((f) => f.copy_paste).length;
-  const pillarChips = PILLARS.map(({ key, label }) => {
+function renderSidebarPillars(pillars) {
+  return PILLARS.map(({ key, label }) => {
     const v = pillarScore(pillars, key);
     if (v == null) return '';
-    return `<span class="stat-chip ${scoreTier(v)}">${label} <strong>${v}</strong></span>`;
+    const tier = scoreTier(v);
+    return `<div class="lab-pillar-row ${tier}">
+      <span class="lab-pillar-icon">${pillarIcon(key)}</span>
+      <span class="lab-pillar-name">${label}</span>
+      <span class="lab-pillar-bar"><span style="width:${v}%"></span></span>
+      <strong class="lab-pillar-val">${v}</strong>
+    </div>`;
   }).join('');
-  return `<div class="optimizer-stats-bar">
-    <div class="stats-bar-group">
-      <span class="stats-bar-label">Visibility</span>
-      <span class="stats-bar-score ${scoreTier(data.scores.overall)}">${data.scores.overall}/100</span>
+}
+
+function renderLabSidebar(data, pillars, fixes, doneCount = 0) {
+  const ready = readyCount(fixes);
+  const total = fixes.length;
+  const score = data.scores.overall;
+  const tier = scoreTier(score);
+  const queue = fixes.length
+    ? fixes.map((f, i) => renderFixQueueItem(f, i, i === 0)).join('')
+    : '<p class="lab-empty">No fixes yet</p>';
+
+  return `<aside class="lab-sidebar" aria-label="Optimization sidebar">
+    <div class="lab-sidebar-brand">
+      <span class="lab-ai-dot"></span>
+      <span>AI Lab</span>
     </div>
-    <div class="stats-bar-pillars">${pillarChips}</div>
-    <div class="stats-bar-group stats-bar-progress">
-      <span class="stats-bar-label">${ready} of ${fixes.length} AI fixes ready</span>
-      <div class="lab-progress-bar"><span style="width:${fixes.length ? Math.round((ready / fixes.length) * 100) : 0}%"></span></div>
+
+    <nav class="lab-mode-nav" role="tablist" aria-label="Lab views">
+      <button type="button" class="lab-mode-btn is-active" data-mode="lab" role="tab" aria-selected="true">
+        <span>Fixes</span>
+        <span class="lab-mode-count">${total}</span>
+      </button>
+      <button type="button" class="lab-mode-btn" data-mode="diagnostics" role="tab" aria-selected="false">
+        <span>Diagnostics</span>
+      </button>
+    </nav>
+
+    <div class="lab-score-card ${tier}">
+      <div class="lab-score-ring-wrap">
+        <svg class="lab-score-ring" viewBox="0 0 72 72" aria-hidden="true">
+          <circle cx="36" cy="36" r="30" fill="none" stroke="currentColor" stroke-opacity=".12" stroke-width="5"/>
+          <circle class="lab-score-ring-progress" cx="36" cy="36" r="30" fill="none" stroke="currentColor" stroke-width="5"
+            stroke-dasharray="188.5" stroke-dashoffset="188.5" stroke-linecap="round" transform="rotate(-90 36 36)"/>
+        </svg>
+        <span class="lab-score-val" data-score="${score}">0</span>
+      </div>
+      <div class="lab-score-meta">
+        <span class="lab-score-label">Visibility score</span>
+        <span class="lab-score-sub">${ready} of ${total} AI fixes ready</span>
+      </div>
     </div>
-  </div>`;
+
+    <div class="lab-progress-block">
+      <div class="lab-progress-head">
+        <span class="fix-progress-label"><strong>${doneCount}</strong> / ${total} complete</span>
+      </div>
+      <div class="lab-progress-bar fix-progress-bar"><span style="width:${total ? Math.round((doneCount / total) * 100) : 0}%"></span></div>
+    </div>
+
+    <div class="lab-queue-wrap">
+      <p class="lab-sidebar-section">Fix queue</p>
+      <nav class="lab-queue" aria-label="Fix queue">${queue}</nav>
+    </div>
+
+    <div class="lab-pillars-wrap">
+      <p class="lab-sidebar-section">Pillars</p>
+      <div class="lab-pillars">${renderSidebarPillars(pillars)}</div>
+    </div>
+  </aside>`;
 }
 
 function renderDiagnosticsReport(data, pillars, tm, lab, fixes) {
   const allSeoIssues = [...(data.seo?.issues || [])];
-  return `<div class="diagnostics-report">
-    <div class="diagnostics-intro">
-      <h3>Diagnostics report</h3>
-      <p>Discovery scan results — use this to understand <em>why</em> the lab suggested each fix. The lab is where you apply changes.</p>
-    </div>
+  return `<div class="lab-diagnostics">
+    <header class="lab-diagnostics-head">
+      <h2>Diagnostics</h2>
+      <p>Full scan breakdown — understand why each fix was suggested.</p>
+    </header>
     <section class="cockpit-block" id="lab-scores">
       <div class="block-head"><h3>Visibility breakdown</h3></div>
       <div class="score-dashboard">${renderScoreDashboard(pillars)}</div>
@@ -154,44 +287,38 @@ function renderOptimizerApp(data) {
   const fixes = data.fixes || [];
   const pillars = visibilityPillars(data);
   const warnings = (lab.warnings || []).map((w) => `<div class="lab-warning">${escapeHtml(w)}</div>`).join('');
-  const queue = fixes.length
-    ? fixes.map((f, i) => renderFixQueueItem(f, i, i === 0)).join('')
-    : '<p class="lab-empty">No weaknesses with fixes yet. Check diagnostics for raw signals.</p>';
 
   return `
     <div class="optimizer-app" id="optimizer-app">
       ${warnings}
-      <header class="optimizer-toolbar">
-        <div class="optimizer-toolbar-main">
-          <span class="optimizer-badge"><span class="ai-spark">✦</span> AI Optimization Lab</span>
-          <h2>${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product page')}</h2>
-          <p class="optimizer-url">${escapeHtml(data.final_url)}</p>
-        </div>
-        <div class="optimizer-toolbar-actions">
-          <div class="optimizer-score-pill ${scoreTier(data.scores.overall)}">${data.scores.overall}</div>
-          <button type="button" class="btn btn-ghost btn-sm" id="cockpit-rerun">Re-scan</button>
-          <button type="button" class="btn btn-ghost btn-sm" id="cockpit-export">Export</button>
-        </div>
-      </header>
+      <div class="lab-shell">
+        ${renderLabSidebar(data, pillars, fixes)}
 
-      <div class="optimizer-mode-tabs" role="tablist">
-        <button type="button" class="mode-tab active" data-mode="lab" role="tab" aria-selected="true">Fix with AI</button>
-        <button type="button" class="mode-tab" data-mode="diagnostics" role="tab" aria-selected="false">Diagnostics</button>
-      </div>
+        <div class="lab-main">
+          <header class="lab-topbar">
+            <div class="lab-topbar-context">
+              <h1 class="lab-product-title">${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product page')}</h1>
+              <p class="lab-product-url">${escapeHtml(data.final_url)}</p>
+            </div>
+            <div class="lab-topbar-actions">
+              <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-new-scan">New scan</button>
+              <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-copy-all" ${readyCount(fixes) ? '' : 'disabled'}>Copy all</button>
+              <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-rerun">Re-scan</button>
+              <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-export">Export</button>
+            </div>
+          </header>
 
-      <div class="optimizer-view optimizer-view-lab" data-view="lab">
-        ${renderOptimizerStatsBar(data, pillars, fixes)}
-        <p class="optimizer-lead">Select a weakness on the left. Copy the AI-generated fix on the right into your theme or CMS.</p>
-        <div class="optimizer-layout">
-          <nav class="fix-queue" aria-label="Optimization queue">${queue}</nav>
-          <div class="fix-workspace">
-            ${renderFixEditor(fixes[0], 0, data, tm)}
+          <div class="lab-canvas">
+            <div class="optimizer-view optimizer-view-lab" data-view="lab">
+              <div class="fix-workspace">
+                ${renderFixEditor(fixes[0], 0, data, tm)}
+              </div>
+            </div>
+            <div class="optimizer-view optimizer-view-diagnostics" data-view="diagnostics" hidden>
+              ${renderDiagnosticsReport(data, pillars, tm, lab, fixes)}
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="optimizer-view optimizer-view-diagnostics" data-view="diagnostics" hidden>
-        ${renderDiagnosticsReport(data, pillars, tm, lab, fixes)}
       </div>
     </div>`;
 }
@@ -201,29 +328,37 @@ function bindOptimizerInteractions(root, data) {
   const tm = data.lab?.title_meta || data.seo?.title_meta || {};
   const workspace = root.querySelector('.fix-workspace');
 
-  root.querySelectorAll('.fix-queue-item').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const i = Number(btn.dataset.fixIndex);
-      root.querySelectorAll('.fix-queue-item').forEach((b) => b.classList.remove('active'));
-      btn.classList.add('active');
-      if (workspace) workspace.innerHTML = renderFixEditor(fixes[i], i, data, tm);
-      bindCopyButtons(workspace);
-      workspace.querySelector('.mark-done-btn')?.addEventListener('click', () => {
-        btn.classList.add('done');
-        btn.querySelector('.fix-queue-ai')?.replaceWith(Object.assign(document.createElement('span'), {
-          className: 'fix-queue-ai done',
-          textContent: 'Done',
-        }));
-      });
+  function markFixDone(btn) {
+    btn.classList.add('is-done');
+    updateFixProgress(root);
+  }
+
+  function selectFix(i, btn) {
+    root.querySelectorAll('.lab-queue-item').forEach((b) => b.classList.remove('is-active'));
+    (btn || root.querySelector(`[data-fix-index="${i}"]`))?.classList.add('is-active');
+    swapFixEditor(workspace, renderFixEditor(fixes[i], i, data, tm));
+    bindEditorActions(workspace);
+  }
+
+  function bindEditorActions(scope) {
+    bindCopyButtons(scope);
+    scope?.querySelector('.mark-done-btn')?.addEventListener('click', () => {
+      const active = root.querySelector('.lab-queue-item.is-active');
+      if (active) markFixDone(active);
     });
+  }
+
+  root.querySelectorAll('.lab-queue-item').forEach((btn) => {
+    btn.addEventListener('click', () => selectFix(Number(btn.dataset.fixIndex), btn));
   });
 
-  root.querySelectorAll('.mode-tab').forEach((tab) => {
+  root.querySelectorAll('.lab-mode-btn').forEach((tab) => {
     tab.addEventListener('click', () => {
       const mode = tab.dataset.mode;
-      root.querySelectorAll('.mode-tab').forEach((t) => {
-        t.classList.toggle('active', t.dataset.mode === mode);
-        t.setAttribute('aria-selected', t.dataset.mode === mode ? 'true' : 'false');
+      root.querySelectorAll('.lab-mode-btn').forEach((t) => {
+        const on = t.dataset.mode === mode;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
       });
       root.querySelectorAll('.optimizer-view').forEach((view) => {
         view.hidden = view.dataset.view !== mode;
@@ -234,22 +369,35 @@ function bindOptimizerInteractions(root, data) {
   function bindCopyButtons(scope) {
     scope?.querySelectorAll('.copy-fix-btn, .copy-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
-        const text = btn.getAttribute('data-copy') || btn.parentElement?.querySelector('pre')?.textContent || '';
-        navigator.clipboard.writeText(text);
-        const orig = btn.textContent;
-        btn.textContent = 'Copied!';
-        setTimeout(() => { btn.textContent = orig; }, 2000);
+        const text = btn.getAttribute('data-copy') || btn.closest('section')?.querySelector('pre')?.textContent || '';
+        navigator.clipboard.writeText(text).then(() => {
+          const orig = btn.textContent;
+          btn.textContent = 'Copied';
+          showLabToast('Fix copied to clipboard');
+          setTimeout(() => { btn.textContent = orig; }, 2000);
+        });
       });
     });
   }
 
-  bindCopyButtons(workspace);
-  workspace?.querySelector('.mark-done-btn')?.addEventListener('click', () => {
-    root.querySelector('.fix-queue-item.active')?.classList.add('done');
+  bindEditorActions(workspace);
+
+  root.querySelector('#cockpit-copy-all')?.addEventListener('click', () => {
+    const bundle = bundleFixes(fixes);
+    if (!bundle) return;
+    navigator.clipboard.writeText(bundle).then(() => showLabToast(`${readyCount(fixes)} fixes copied`));
+  });
+
+  root.querySelector('#cockpit-new-scan')?.addEventListener('click', () => {
+    document.body.classList.remove('optimizer-results');
+    const input = document.getElementById('audit-url');
+    input?.focus();
+    input?.select();
+    document.getElementById('audit-form')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
   root.querySelector('#cockpit-rerun')?.addEventListener('click', () => {
-    const url = document.getElementById('audit-url')?.value?.trim();
+    const url = document.getElementById('audit-url')?.value?.trim() || data.final_url;
     if (url && typeof runAudit === 'function') runAudit(url);
   });
   root.querySelector('#cockpit-export')?.addEventListener('click', () => window.print());
@@ -262,5 +410,16 @@ function bindOptimizerInteractions(root, data) {
     });
   });
 
+  const scoreVal = root.querySelector('.lab-score-val');
+  const scoreRing = root.querySelector('.lab-score-ring-progress');
+  if (scoreVal && scoreRing) {
+    const score = Number(scoreVal.dataset.score || 0);
+    const c = 188.5;
+    const offset = c - (score / 100) * c;
+    requestAnimationFrame(() => { scoreRing.style.strokeDashoffset = offset; });
+    animateCounter(scoreVal, score, 900);
+  }
+
   animateLabMetrics(root);
+  animateLabEntrance(root);
 }

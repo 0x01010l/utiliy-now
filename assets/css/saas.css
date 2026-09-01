@@ -166,6 +166,10 @@ body.saas-body {
 /* Results */
 .audit-results { margin-top: 1.5rem; }
 .audit-results.lab-enter { animation: labFadeIn .5s ease; }
+@keyframes labFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}
 body.audit-active .container,
 body.optimizer-active .container { width: min(calc(100% - 2rem), 1280px); }
 body.audit-active .hero-visual { display: none; }

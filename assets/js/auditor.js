@@ -390,7 +390,8 @@ async function runOptimization(url) {
 
   results.hidden = true;
   results.innerHTML = '';
-  submit.disabled = true;
+  document.body.classList.remove('optimizer-results');
+  setSubmitLoading(true);
   document.body.classList.add('optimizer-active', 'audit-active');
   showScanning(0);
 
@@ -413,8 +414,9 @@ async function runOptimization(url) {
     const data = await res.json();
 
     if (res.status === 402 || data.paywall) {
-      document.body.classList.remove('optimizer-active', 'audit-active');
+      document.body.classList.remove('optimizer-active', 'audit-active', 'optimizer-results');
       progress.hidden = true;
+      setSubmitLoading(false);
       if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
       showPaywall(data.error || 'You have reached your optimization limit. Upgrade to continue.');
       return;
@@ -427,15 +429,17 @@ async function runOptimization(url) {
     results.innerHTML = renderOptimizerApp(data);
     results.hidden = false;
     results.classList.add('lab-enter');
+    document.body.classList.add('optimizer-results');
     bindOptimizerInteractions(results, data);
+    animateLabEntrance(results);
 
     document.getElementById('optimizer-app')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
-    document.body.classList.remove('optimizer-active', 'audit-active');
+    document.body.classList.remove('optimizer-active', 'audit-active', 'optimizer-results');
     progress.hidden = true;
-    alert(err.message || 'Optimization failed');
+    showLabToast(err.message || 'Optimization failed');
   } finally {
-    submit.disabled = false;
+    setSubmitLoading(false);
   }
 }
 
@@ -465,7 +469,7 @@ function showScanning(step) {
     'Building your optimization lab…',
   ];
   el.innerHTML = `<div class="lab-scan">
-    <div class="scan-radar"></div>
+    <div class="scan-pulse"></div>
     <p style="font-weight:700;margin:0 0 1rem;">Preparing your AI lab</p>
     <div class="scan-steps">${steps
       .map((s, i) => `<div class="scan-step ${i < step ? 'done' : i === step ? 'active' : ''}">${i < step ? '✓' : '○'} ${s}</div>`)
