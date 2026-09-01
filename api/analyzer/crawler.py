@@ -17,6 +17,10 @@ from .security import validate_public_url
 from .image_utils import extract_image_src, normalize_image_url
 
 USER_AGENT = "UtiliyBot/1.0 (+https://utiliy.com; product-page-auditor)"
+BROWSER_USER_AGENT = (
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+)
 MAX_BYTES = 2_500_000
 TIMEOUT = 20.0
 
@@ -39,21 +43,36 @@ class CrawlResult:
     open_graph: dict[str, str]
     og_product_hints: dict[str, str]
     visible_text: str
+    product_text: str | None
     platform: str
     errors: list[str] = field(default_factory=list)
+
+
+def is_likely_shopify_product_url(url: str) -> bool:
+    """Headless Shopify stores often omit 'shopify' in HTML served to datacenter IPs."""
+    host = urlparse(url).netloc.lower()
+    path = urlparse(url).path.lower()
+    if "amazon." in host or "etsy.com" in host:
+        return False
+    return bool(re.search(r"/products/[^/?#]+", path))
 
 
 def detect_platform(url: str, html: str) -> str:
     lower = html.lower()
     host = urlparse(url).netloc.lower()
+    path = urlparse(url).path.lower()
+    if "amazon." in host:
+        return "amazon"
     if "myshopify.com" in host or "cdn.shopify.com" in lower or "shopify" in lower:
+        return "shopify"
+    if is_likely_shopify_product_url(url):
         return "shopify"
     if "woocommerce" in lower or "wp-content" in lower:
         return "woocommerce"
+    if re.search(r"/product/[^/?#]+", path) and ("woocommerce" in lower or "wp-content" in lower):
+        return "woocommerce"
     if "etsy.com" in host:
         return "etsy"
-    if "amazon." in host:
-        return "amazon"
     if "bigcommerce" in lower:
         return "bigcommerce"
     return "generic"
@@ -65,13 +84,23 @@ async def fetch_page(url: str) -> CrawlResult:
         raise ValueError("; ".join(sec_errors))
 
     errors: list[str] = []
+    host = urlparse(normalized).netloc.lower()
+    use_browser_ua = "amazon." in host or "/products/" in urlparse(normalized).path.lower()
     async with httpx.AsyncClient(
         follow_redirects=True,
         timeout=TIMEOUT,
         headers={
-            "User-Agent": USER_AGENT,
-            "Accept": "text/html,application/xhtml+xml",
+            "User-Agent": BROWSER_USER_AGENT if use_browser_ua else USER_AGENT,
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
+            "Accept-Encoding": "gzip, deflate, br",
+            "Cache-Control": "no-cache",
+            "Pragma": "no-cache",
+            "Upgrade-Insecure-Requests": "1",
+            "Sec-Fetch-Dest": "document",
+            "Sec-Fetch-Mode": "navigate",
+            "Sec-Fetch-Site": "none",
+            "Sec-Fetch-User": "?1",
         },
     ) as client:
         response = await client.get(normalized)
@@ -121,9 +150,24 @@ async def fetch_page(url: str) -> CrawlResult:
     open_graph = {item.get("property", ""): item.get("content", "") for item in og_list if item.get("property")}
     og_product_hints = og_as_product_hints(open_graph)
 
+    platform = detect_platform(str(response.url), html)
+    product_text: str | None = None
+    if platform == "amazon":
+        from .amazon_extractor import extract_amazon_product_text
+
+        product_text = extract_amazon_product_text(html)
+    elif platform == "shopify":
+        from .headless_shopify_extractor import extract_from_next_data
+
+        next_data = extract_from_next_data(html, str(response.url))
+        if next_data and next_data.get("product_text"):
+            product_text = next_data["product_text"]
+
     for script in soup(["script", "style", "noscript"]):
         script.decompose()
     visible_text = re.sub(r"\s+", " ", soup.get_text(" ", strip=True))[:12000]
+    if product_text:
+        visible_text = product_text[:12000]
 
     return CrawlResult(
         url=normalized,
@@ -142,6 +186,7 @@ async def fetch_page(url: str) -> CrawlResult:
         open_graph=open_graph,
         og_product_hints=og_product_hints,
         visible_text=visible_text,
-        platform=detect_platform(str(response.url), html),
+        product_text=product_text,
+        platform=platform,
         errors=errors,
     )

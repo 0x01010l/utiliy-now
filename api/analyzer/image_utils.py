@@ -64,6 +64,7 @@ def _is_junk_image(url: str) -> bool:
     junk = (
         "pixel", "tracking", "spacer", "blank.", "1x1", "badge", "icon",
         "logo.svg", "payment", "trust", "sprite", "placeholder",
+        "amazon-logo", "/g/01/", "aui-", "auiclient", "_ac_us40_", "_ac_us20_",
     )
     if any(j in lower for j in junk):
         return True

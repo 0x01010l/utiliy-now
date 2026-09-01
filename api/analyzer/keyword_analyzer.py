@@ -20,10 +20,40 @@ STOPWORDS = {
     "buy", "shop", "add", "cart", "free", "shipping", "sale", "price", "new", "best",
 }
 
+AMAZON_STOPWORDS = {
+    "amazon", "amazoncom", "skip", "main", "content", "item", "keyboard", "shortcuts",
+    "search", "orders", "account", "delivering", "update", "location", "departments",
+    "loading", "videos", "reviews", "options", "compare", "similar", "shift", "alt",
+    "move", "arrows", "hello", "sign", "returns", "gift", "registry", "sell", "help",
+    "subscribe", "save", "today", "deals", "whole", "foods", "pharmacy", "music",
+    "prime", "video", "audible", "devices", "games", "toys", "automotive", "beauty",
+    "personal", "care", "books", "clothing", "shoes", "jewelry", "women", "men", "kids",
+    "baby", "home", "kitchen", "improvement", "sports", "outdoors", "tools", "pet",
+    "supplies", "grocery", "gourmet", "food", "industrial", "scientific", "handmade",
+    "collectibles", "fine", "art", "apps", "digital", "magazine", "subscriptions",
+    "movies", "tv", "musical", "instruments", "office", "products", "premium",
+    "smart", "software", "luggage", "travel", "gear", "luxury", "stores", "credit",
+    "payment", "cards", "marketplace", "reload", "balance", "currency", "converter",
+    "list", "wish", "unavailable", "image", "color", "make", "selection", "size",
+    "chart", "visit", "store", "page", "previous", "next",
+    "com", "continue", "shopping", "click", "button", "below", "conditions", "use",
+    "robot", "captcha", "automated", "sorry",
+}
 
-def _tokenize(text: str) -> list[str]:
+SHOPIFY_STOPWORDS = {
+    "gymshark", "skip", "content", "women", "men", "accessories", "trending",
+    "leggings", "products", "explore", "sign", "account", "help", "blog",
+    "stores", "refer", "student", "discount", "pause", "rotation", "emails",
+    "shipping", "orders", "checkout", "klarna", "afterpay", "sezzle", "loading",
+    "expand", "featured", "select", "department", "search", "delivering", "update",
+    "carousel", "zoom", "image", "view", "keyboard", "shortcuts",
+}
+
+
+def _tokenize(text: str, extra_stop: set[str] | None = None) -> list[str]:
+    stop = STOPWORDS | (extra_stop or set())
     words = re.findall(r"[a-z0-9][a-z0-9'-]{1,}", text.lower())
-    return [w for w in words if len(w) > 2 and w not in STOPWORDS and not w.isdigit()]
+    return [w for w in words if len(w) > 2 and w not in stop and not w.isdigit()]
 
 
 def _ngrams(words: list[str], n: int) -> list[str]:
@@ -31,10 +61,20 @@ def _ngrams(words: list[str], n: int) -> list[str]:
 
 
 def analyze_keywords(crawl: CrawlResult) -> dict[str, Any]:
-    title_words = _tokenize(crawl.title or "")
-    h1_words = _tokenize(crawl.h1s[0] if crawl.h1s else "")
-    meta_words = _tokenize(crawl.meta_description or "")
-    body_words = _tokenize(crawl.visible_text[:8000])
+    if crawl.platform == "amazon":
+        extra_stop = AMAZON_STOPWORDS
+    elif crawl.platform == "shopify":
+        extra_stop = SHOPIFY_STOPWORDS
+    else:
+        extra_stop = None
+    body_source = (crawl.product_text or crawl.visible_text)[:8000]
+    effective_title = crawl.title or ""
+    if crawl.platform in {"amazon", "shopify"} and crawl.h1s:
+        effective_title = crawl.h1s[0]
+    title_words = _tokenize(effective_title, extra_stop)
+    h1_words = _tokenize(crawl.h1s[0] if crawl.h1s else "", extra_stop)
+    meta_words = _tokenize(crawl.meta_description or "", extra_stop)
+    body_words = _tokenize(body_source, extra_stop)
 
     all_words = title_words + h1_words * 3 + meta_words * 2 + body_words
     unigrams = Counter(all_words)
@@ -55,8 +95,30 @@ def analyze_keywords(crawl: CrawlResult) -> dict[str, Any]:
         term = kw["term"]
         in_title = kw["in_title"]
         in_h1 = kw["in_h1"]
-        status = "good" if in_title and in_h1 else "warn" if in_title or in_h1 else "missing"
-        title_alignment.append({"term": term, "status": status, "in_title": in_title, "in_h1": in_h1})
+        in_body = term in body_words and kw["score"] >= 2
+        if crawl.platform == "amazon":
+            if in_title and in_h1:
+                status = "good"
+            elif in_body:
+                status = "body"
+            else:
+                status = "missing"
+        elif crawl.platform == "shopify":
+            if in_title and in_h1:
+                status = "good"
+            elif in_body:
+                status = "body"
+            else:
+                status = "missing"
+        else:
+            status = "good" if in_title and in_h1 else "warn" if in_title or in_h1 else "missing"
+        title_alignment.append({
+            "term": term,
+            "status": status,
+            "in_title": in_title,
+            "in_h1": in_h1,
+            "in_body": in_body,
+        })
 
     opportunities: list[str] = []
     if primary and primary not in meta_words:

@@ -42,6 +42,15 @@ def analyze_seo(crawl: CrawlResult) -> SeoAnalysis:
     meta = crawl.meta_description or ""
     h1_count = len(crawl.h1s)
     h1 = crawl.h1s[0] if crawl.h1s else ""
+    product_h1 = h1
+
+    if crawl.platform == "amazon":
+        # Amazon templates add nav/detail H1s; the first H1 is the product name.
+        h1_count = 1 if h1 else 0
+        if title.lower().startswith("amazon.com |"):
+            title = title.split("|", 1)[-1].strip()
+            if title.count("|") >= 1:
+                title = title.rsplit("|", 1)[0].strip()
 
     og_title = crawl.open_graph.get("og:title", "")
     og_desc = crawl.open_graph.get("og:description", "")
@@ -97,7 +106,7 @@ def analyze_seo(crawl: CrawlResult) -> SeoAnalysis:
     elif h1_count > 1:
         issues.append(SeoIssue("medium", "multiple_h1", f"Found {h1_count} H1 tags. One clear H1 is best for SEO.", "h1"))
 
-    if title and h1 and title.lower()[:30] not in h1.lower() and h1.lower()[:30] not in title.lower():
+    if title and product_h1 and title.lower()[:30] not in product_h1.lower() and product_h1.lower()[:30] not in title.lower():
         issues.append(SeoIssue("medium", "title_h1_mismatch", "Title and H1 don't align — keep them consistent for clarity.", "h1"))
 
     if not crawl.canonical:

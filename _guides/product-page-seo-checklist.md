@@ -50,3 +50,5 @@ Use this checklist before publishing or refreshing a product detail page. For an
 24. No conflicting prices between schema, cart, and visible page
 
 **Next step:** [Audit your product page](/#audit) with Utiliy for scored results and prioritized fixes.
+
+> **Updated for 2026:** See the expanded [Product page SEO checklist 2026](/guides/product-page-seo-checklist-2026/) (28 points including AI shopping & GEO).

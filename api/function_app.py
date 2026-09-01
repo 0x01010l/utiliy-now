@@ -334,8 +334,11 @@ async def image_proxy(req: func.HttpRequest) -> func.HttpResponse:
         "shopifycdn.com",
         "skims.com",
         "allbirds.com",
+        "media-amazon.com",
+        "m.media-amazon.com",
+        "images-na.ssl-images-amazon.com",
     )
-    if not any(host == a or host.endswith("." + a) for a in allowed) and "shopify" not in host:
+    if not any(host == a or host.endswith("." + a) for a in allowed) and "shopify" not in host and "amazon" not in host:
         return func.HttpResponse("Host not allowed", status_code=403)
 
     try:
