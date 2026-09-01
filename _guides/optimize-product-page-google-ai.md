@@ -1,5 +1,4 @@
 ---
-layout: saas
 title: How to Optimize a Product Page for Google and AI Search
 description: Step-by-step guide to optimizing ecommerce product detail pages for Google SEO, structured data, keywords, images, and AI shopping visibility (GEO).
 permalink: /guides/optimize-product-page-google-ai/

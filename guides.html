@@ -3,26 +3,51 @@ layout: saas
 title: Guides
 description: Ecommerce product page SEO guides, structured data tutorials, and AI shopping optimization resources from Utiliy.
 permalink: /guides/
+guide_index: true
 ---
 
-<section class="section" style="padding-top:3rem;">
+<header class="guides-index-hero">
+  <div class="guide-glow guide-glow-1" aria-hidden="true"></div>
+  <div class="guide-glow guide-glow-2" aria-hidden="true"></div>
   <div class="container">
-    <p class="eyebrow">Resources</p>
-    <h1 style="font-family:var(--serif);font-size:2.5rem;">Product page optimization guides</h1>
-    <p class="lead">Practical guides for ecommerce SEO, structured data, AI shopping, and product page optimization.</p>
+    <p class="guide-eyebrow">Resources</p>
+    <h1>Product page optimization guides</h1>
+    <p class="guides-index-lead">Practical playbooks for ecommerce SEO, structured data, AI shopping visibility, and PDP fixes — not generic content marketing.</p>
+  </div>
+</header>
 
-    <div class="guides-featured" style="margin-top:1.5rem;padding:1.25rem;border:1px solid var(--line);border-radius:14px;background:var(--surface-solid);">
-      <p class="eyebrow" style="margin-bottom:.5rem;">Featured</p>
-      <p style="margin:0 0 .75rem;font-size:.95rem;"><a href="{{ '/guides/product-page-seo-checklist-2026/' | relative_url }}" style="font-weight:600;color:var(--ink);">Product page SEO checklist 2026</a> · <a href="{{ '/utiliy-vs-surfer/' | relative_url }}" style="font-weight:600;color:var(--ink);">Utiliy vs Surfer</a></p>
-    </div>
+<div class="container">
+  <div class="guides-featured-row">
+    <a class="guides-featured-card glass-card-static" href="{{ '/guides/product-page-seo-checklist-2026/' | relative_url }}">
+      <span class="tag">Checklist</span>
+      <strong>Product page SEO checklist 2026</strong>
+      <span>28-point publish checklist covering Google SEO, schema, images, and GEO.</span>
+    </a>
+    <a class="guides-featured-card glass-card-static" href="{{ '/utiliy-vs-surfer/' | relative_url }}">
+      <span class="tag">Comparison</span>
+      <strong>Utiliy vs Surfer SEO</strong>
+      <span>When to use a content editor vs a live product page optimizer.</span>
+    </a>
+  </div>
 
-    <div class="feature-grid" style="margin-top:2rem;">
-      {% for guide in site.guides %}
-      <a class="feature-card" href="{{ guide.url | relative_url }}" style="color:inherit;">
-        <h3>{{ guide.title }}</h3>
-        <p>{{ guide.description }}</p>
-      </a>
-      {% endfor %}
+  <div class="guides-grid">
+    {% for guide in site.guides %}
+    <a class="guide-card glass-card-static" href="{{ guide.url | relative_url }}">
+      <span class="guide-card-icon" aria-hidden="true">📄</span>
+      <h3>{{ guide.title }}</h3>
+      <p>{{ guide.description }}</p>
+      <span class="guide-card-link">Read guide →</span>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<section class="guide-cta-band">
+  <div class="container guide-cta-inner glass-card-static">
+    <div class="guide-cta-copy">
+      <h2>Skip the spreadsheet</h2>
+      <p>Paste a product URL and get scored results with AI-generated fixes in under a minute.</p>
     </div>
+    <a class="btn btn-primary" href="{{ '/#audit' | relative_url }}">Open AI lab</a>
   </div>
 </section>

@@ -1,5 +1,4 @@
 ---
-layout: saas
 title: Product Page SEO Checklist 2026
 description: The 2026 ecommerce product page SEO checklist — 28 points covering Google SEO, JSON-LD schema, images, AI shopping visibility, and conversion clarity.
 permalink: /guides/product-page-seo-checklist-2026/

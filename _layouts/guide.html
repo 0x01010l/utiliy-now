@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  {% include head-saas.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/guides.css' | relative_url }}?v=1">
+</head>
+<body class="saas-body guide-page" data-api-url="{{ site.api_url }}">
+  {% include header-saas.html %}
+  <main id="main">
+    <header class="guide-hero">
+      <div class="guide-glow guide-glow-1" aria-hidden="true"></div>
+      <div class="guide-glow guide-glow-2" aria-hidden="true"></div>
+      <div class="container guide-hero-inner">
+        <a class="guide-back" href="{{ '/guides/' | relative_url }}">← All guides</a>
+        <p class="guide-eyebrow">{{ page.eyebrow | default: "Guide" }}</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}<p class="guide-lead">{{ page.description }}</p>{% endif %}
+        <div class="guide-hero-actions">
+          <a class="btn btn-primary btn-sm" href="{{ '/#audit' | relative_url }}">Run free audit</a>
+          <a class="btn btn-ghost btn-sm" href="{{ '/pricing/' | relative_url }}">Pricing</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="container guide-shell">
+      <aside class="guide-sidebar" aria-label="On this page">
+        <nav class="guide-toc glass-card-static" id="guide-toc" hidden>
+          <p class="guide-toc-label">On this page</p>
+          <ol class="guide-toc-list" id="guide-toc-list"></ol>
+        </nav>
+      </aside>
+      <article class="guide-article glass-card-static">
+        <div class="guide-prose">
+          {{ content }}
+        </div>
+      </article>
+    </div>
+
+    {% include guide-cta.html %}
+  </main>
+  {% include footer-saas.html %}
+  {% include auth-modals.html %}
+  <script src="{{ '/assets/js/auth.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/saas.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/guide-page.js' | relative_url }}?v=1" defer></script>
+</body>
+</html>

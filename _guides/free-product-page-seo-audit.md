@@ -1,5 +1,4 @@
 ---
-layout: saas
 title: Free Product Page SEO Audit for Ecommerce
 description: What a legitimate free product page SEO audit should cover — titles, schema, keywords, images, and AI visibility — and how to run one on Shopify, WooCommerce, or Amazon.
 permalink: /guides/free-product-page-seo-audit/

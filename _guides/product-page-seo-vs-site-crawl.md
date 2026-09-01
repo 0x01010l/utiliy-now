@@ -1,5 +1,4 @@
 ---
-layout: saas
 title: Product Page SEO vs Technical Site Crawls
 description: When to use Screaming Frog or site-wide SEO tools vs a single-URL product page optimizer like Utiliy — and how they work together.
 permalink: /guides/product-page-seo-vs-site-crawl/

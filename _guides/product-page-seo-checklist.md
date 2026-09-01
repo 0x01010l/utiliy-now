@@ -1,5 +1,4 @@
 ---
-layout: saas
 title: Product Page SEO Checklist
 description: A practical 24-point checklist for auditing ecommerce product pages — titles, schema, images, AI readiness, and conversion clarity.
 permalink: /guides/product-page-seo-checklist/

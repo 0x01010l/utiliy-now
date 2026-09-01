@@ -1,5 +1,5 @@
 ---
-layout: landing
+layout: guide
 title: Utiliy vs Surfer SEO for Product Pages
 subtitle: Surfer optimizes articles. Utiliy optimizes live product detail pages — schema, gallery, keywords, and AI visibility with copy-paste fixes.
 description: Compare Utiliy and Surfer SEO for ecommerce product pages. See when to use a content editor vs an AI product page optimizer for Shopify, WooCommerce, and Amazon PDPs.

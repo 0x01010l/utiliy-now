@@ -45,6 +45,11 @@ defaults:
       layout: page
   - scope:
       path: ""
+      type: guides
+    values:
+      layout: guide
+  - scope:
+      path: ""
       type: posts
     values:
       layout: post
