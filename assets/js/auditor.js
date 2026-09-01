@@ -435,6 +435,10 @@ async function runOptimization(url) {
     bindOptimizerInteractions(results, data);
     animateLabEntrance(results);
 
+    if (isLabPage()) {
+      history.replaceState({}, '', labPageUrl(data.final_url || url));
+    }
+
     document.getElementById('optimizer-app')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   } catch (err) {
     document.body.classList.remove('optimizer-active', 'audit-active', 'optimizer-results');
@@ -447,6 +451,20 @@ async function runOptimization(url) {
 
 const runAudit = runOptimization;
 
+function isHomePage() {
+  const path = window.location.pathname.replace(/\/$/, '') || '/';
+  return path === '' || path === '/' || path === '/index.html';
+}
+
+function isLabPage() {
+  return document.body.classList.contains('lab-page')
+    || window.location.pathname.replace(/\/$/, '') === '/ai-lab';
+}
+
+function labPageUrl(url) {
+  return url ? `/ai-lab/?url=${encodeURIComponent(url)}` : '/ai-lab/';
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('audit-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -456,8 +474,24 @@ document.addEventListener('DOMContentLoaded', () => {
       window.UtiliyAuth.promptUpgrade();
       return;
     }
+    if (isHomePage()) {
+      window.location.href = labPageUrl(url);
+      return;
+    }
     runOptimization(url);
   });
+
+  if (isLabPage()) {
+    const params = new URLSearchParams(window.location.search);
+    const url = params.get('url');
+    if (url) {
+      const input = document.getElementById('audit-url');
+      if (input) input.value = url;
+      if (!window.UtiliyAuth?.isAtAuditLimit?.()) {
+        runOptimization(url);
+      }
+    }
+  }
 });
 
 function showScanning(step) {

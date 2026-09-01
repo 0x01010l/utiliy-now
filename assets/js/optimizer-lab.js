@@ -100,6 +100,31 @@ function serpPreviewForFix(fix, data, tm) {
   </section>`;
 }
 
+function siteBrandFromAudit(data) {
+  const raw = data.final_url || data.url || '';
+  try {
+    const u = new URL(raw);
+    const host = u.hostname.replace(/^www\./i, '');
+    return {
+      host,
+      favicon: `https://www.google.com/s2/favicons?domain=${encodeURIComponent(u.hostname)}&sz=64`,
+    };
+  } catch {
+    return { host: 'Website', favicon: '' };
+  }
+}
+
+function renderSiteTopbar(data) {
+  const { host, favicon } = siteBrandFromAudit(data);
+  const faviconEl = favicon
+    ? `<img class="lab-site-favicon" src="${escapeHtml(favicon)}" alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer">`
+    : `<span class="lab-site-favicon lab-site-favicon--fallback" aria-hidden="true">${escapeHtml(host.charAt(0).toUpperCase())}</span>`;
+  return `<div class="lab-topbar-context lab-topbar-site">
+    ${faviconEl}
+    <h1 class="lab-product-title">${escapeHtml(host)}</h1>
+  </div>`;
+}
+
 function renderFixEditor(fix, i, data, tm) {
   if (!fix) {
     return `<div class="lab-editor lab-editor--empty">
@@ -159,7 +184,7 @@ function renderFixEditor(fix, i, data, tm) {
     </section>` : ''}
 
     <footer class="lab-editor-footer">
-      <button type="button" class="lab-btn lab-btn--ghost mark-done-btn">Mark as done</button>
+      <button type="button" class="lab-btn lab-btn--primary mark-done-btn">Mark as done</button>
       <span class="lab-effort">~${escapeHtml(fix.effort || '10 min')}</span>
     </footer>
   </article>`;
@@ -296,10 +321,7 @@ function renderOptimizerApp(data) {
 
         <div class="lab-main">
           <header class="lab-topbar">
-            <div class="lab-topbar-context">
-              <h1 class="lab-product-title">${escapeHtml(data.meta?.title || data.meta?.h1 || 'Product page')}</h1>
-              <p class="lab-product-url">${escapeHtml(data.final_url)}</p>
-            </div>
+            ${renderSiteTopbar(data)}
             <div class="lab-topbar-actions">
               <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-new-scan">New scan</button>
               <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-copy-all" ${readyCount(fixes) ? '' : 'disabled'}>Copy all</button>
@@ -390,7 +412,16 @@ function bindOptimizerInteractions(root, data) {
   });
 
   root.querySelector('#cockpit-new-scan')?.addEventListener('click', () => {
-    document.body.classList.remove('optimizer-results');
+    document.body.classList.remove('optimizer-results', 'optimizer-active', 'audit-active');
+    const results = document.getElementById('audit-results');
+    if (results) {
+      results.hidden = true;
+      results.innerHTML = '';
+    }
+    document.getElementById('audit-progress')?.setAttribute('hidden', '');
+    if (document.body.classList.contains('lab-page')) {
+      history.replaceState({}, '', '/ai-lab/');
+    }
     const input = document.getElementById('audit-url');
     input?.focus();
     input?.select();
@@ -406,7 +437,7 @@ function bindOptimizerInteractions(root, data) {
   root.querySelector('#cockpit-embed-badge')?.addEventListener('click', () => {
     const score = data.scores?.overall ?? data.visibility?.overall ?? 0;
     const url = data.final_url || data.url || '';
-    const snippet = `<a class="utiliy-badge" data-utiliy-score="${score}" data-utiliy-url="${escapeHtml(url)}" href="https://utiliy.com/?ref=badge" target="_blank" rel="noopener noreferrer">
+    const snippet = `<a class="utiliy-badge" data-utiliy-score="${score}" data-utiliy-url="${escapeHtml(url)}" href="https://utiliy.com/ai-lab/?ref=badge" target="_blank" rel="noopener noreferrer">
   <span class="utiliy-badge-score">${score}</span>
   <span><span class="utiliy-badge-label">AI shopping readiness</span><br><span class="utiliy-badge-brand">Verified by Utiliy</span></span>
 </a>`;

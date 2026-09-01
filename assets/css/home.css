@@ -303,6 +303,8 @@ body.audit-active .section-how,
 body.audit-active .section-report,
 body.audit-active .section-audience,
 body.audit-active .section-faq,
+body.audit-active .section-compare,
+body.audit-active .section-seo-topics,
 body.audit-active .cta-band,
 body.optimizer-active .hero-marketing,
 body.optimizer-active .hero-visual-wrap,
@@ -314,6 +316,8 @@ body.optimizer-active .section-how,
 body.optimizer-active .section-report,
 body.optimizer-active .section-audience,
 body.optimizer-active .section-faq,
+body.optimizer-active .section-compare,
+body.optimizer-active .section-seo-topics,
 body.optimizer-active .cta-band { display: none; }
 body.audit-active .hero-home,
 body.optimizer-active .hero-home {
@@ -334,6 +338,15 @@ body.optimizer-active {
   padding-bottom: 0;
 }
 body.optimizer-results .saas-footer { display: none; }
+body.optimizer-results .section-compare,
+body.optimizer-results .section-seo-topics,
+body.optimizer-results .section-glass,
+body.optimizer-results .section-how,
+body.optimizer-results .section-report,
+body.optimizer-results .section-audience,
+body.optimizer-results .section-faq,
+body.optimizer-results .cta-band,
+body.optimizer-results .glass-stats { display: none; }
 body.optimizer-results .hero-home {
   padding: .5rem 0 0;
   background: var(--lab-bg);
@@ -401,16 +414,80 @@ body.optimizer-active #audit-results { margin-top: .75rem; width: 100%; }
   .seo-topics-grid { grid-template-columns: 1fr; }
 }
 
+/* AI Lab dedicated page */
+body.lab-page {
+  background: var(--bg);
+}
+.hero-lab {
+  padding: 2.5rem 0 3rem;
+  min-height: calc(100vh - 4.5rem);
+  display: flex;
+  align-items: center;
+}
+.hero-lab .container {
+  width: min(calc(100% - 1.5rem), 720px);
+}
+.hero-lab-intro {
+  text-align: center;
+  margin-bottom: 1.75rem;
+}
+.hero-lab-intro h1 {
+  margin: .35rem 0 .75rem;
+  font-size: clamp(1.65rem, 3vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -.03em;
+  line-height: 1.15;
+}
+.hero-lab-lead {
+  margin: 0 auto;
+  max-width: 34rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+body.lab-page.optimizer-results .hero-lab-intro { display: none; }
+body.lab-page.optimizer-results .hero-lab {
+  min-height: 0;
+  padding: .5rem 0 0;
+  align-items: flex-start;
+}
+body.lab-page.optimizer-results .hero-lab .container {
+  width: min(calc(100% - 1.5rem), 1440px);
+}
+body.lab-page.optimizer-results .saas-footer { display: none; }
+body.lab-page.optimizer-results,
+body.lab-page.optimizer-active {
+  background: #f8f7fc !important;
+}
+
 /* Compare tools section (replaces old LSI details) */
 .section-compare {
   padding: 4rem 0;
   background: linear-gradient(180deg, var(--bg) 0%, #fff 100%);
+}
+.section-compare .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.section-compare .section-title.center,
+.section-compare .section-lead.center,
+.section-compare .eyebrow.center {
+  width: 100%;
+  text-align: center;
+}
+.section-compare .section-lead.center {
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 .compare-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 2rem;
+  width: 100%;
+  max-width: 1100px;
 }
 .compare-card {
   padding: 1.5rem;
@@ -425,7 +502,7 @@ body.optimizer-active #audit-results { margin-top: .75rem; width: 100%; }
   text-transform: uppercase;
   letter-spacing: .08em;
   color: #7c3aed;
-  background: rgba(0, 113, 227, .08);
+  background: rgba(124, 58, 237, .08);
   padding: .2rem .5rem;
   border-radius: 5px;
   width: fit-content;

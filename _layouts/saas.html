@@ -3,7 +3,7 @@
 <head>
   {% include head-saas.html %}
 </head>
-<body class="saas-body{% if page.home %} home-page{% endif %}" data-api-url="{{ site.api_url }}">
+<body class="saas-body{% if page.home %} home-page{% endif %}{% if page.lab_page %} lab-page{% endif %}" data-api-url="{{ site.api_url }}">
   {% include header-saas.html %}
   <main id="main">
     {% include seo-accessibility-context.html %}
@@ -16,19 +16,21 @@
   {% if page.guide_index %}
   <link rel="stylesheet" href="{{ '/assets/css/guides.css' | relative_url }}?v=2">
   {% endif %}
+  {% if page.home or page.lab_page %}
+  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v=3">
+  {% endif %}
   {% if page.home %}
-  <link rel="stylesheet" href="{{ '/assets/css/home.css' | relative_url }}?v=2">
   <script src="{{ '/assets/js/home-interactive.js' | relative_url }}" defer></script>
   {% endif %}
   {% if page.home or page.ab_test %}
   <script src="{{ '/assets/js/ab-test.js' | relative_url }}?v=1" defer></script>
   {% endif %}
   {% if page.auditor %}
-  <link rel="stylesheet" href="{{ '/assets/css/audit-lab.css' | relative_url }}?v=7">
-  <link rel="stylesheet" href="{{ '/assets/css/optimizer-lab.css' | relative_url }}?v=7">
-  <script src="{{ '/assets/js/lab-ui.js' | relative_url }}?v=6" defer></script>
-  <script src="{{ '/assets/js/optimizer-lab.js' | relative_url }}?v=6" defer></script>
-  <script src="{{ '/assets/js/auditor.js' | relative_url }}?v=7" defer></script>
+  <link rel="stylesheet" href="{{ '/assets/css/audit-lab.css' | relative_url }}?v=8">
+  <link rel="stylesheet" href="{{ '/assets/css/optimizer-lab.css' | relative_url }}?v=8">
+  <script src="{{ '/assets/js/lab-ui.js' | relative_url }}?v=7" defer></script>
+  <script src="{{ '/assets/js/optimizer-lab.js' | relative_url }}?v=7" defer></script>
+  <script src="{{ '/assets/js/auditor.js' | relative_url }}?v=8" defer></script>
   {% endif %}
 </body>
 </html>
