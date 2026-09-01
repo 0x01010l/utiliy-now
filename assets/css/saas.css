@@ -1,22 +1,22 @@
 :root {
-  --bg: #f5f5f7;
-  --surface: rgba(255, 255, 255, 0.72);
+  --bg: #f8f7fc;
+  --surface: rgba(255, 255, 255, 0.82);
   --surface-solid: #ffffff;
-  --surface-2: rgba(255, 255, 255, 0.5);
-  --ink: #1d1d1f;
-  --muted: #6e6e73;
+  --surface-2: rgba(255, 255, 255, 0.6);
+  --ink: #18181b;
+  --muted: #52525b;
   --line: rgba(0, 0, 0, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.6);
-  --accent: #1d1d1f;
-  --accent-hover: #333336;
-  --accent-soft: rgba(0, 0, 0, 0.04);
-  --accent-line: rgba(0, 0, 0, 0.1);
-  --good: #34c759;
-  --warn: #ff9f0a;
-  --bad: #ff3b30;
+  --glass-border: rgba(255, 255, 255, 0.85);
+  --accent: #7c3aed;
+  --accent-hover: #6d28d9;
+  --accent-soft: rgba(124, 58, 237, 0.08);
+  --accent-line: rgba(124, 58, 237, 0.18);
+  --good: #16a34a;
+  --warn: #d97706;
+  --bad: #dc2626;
   --radius: 14px;
-  --shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
-  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow: 0 2px 16px rgba(24, 24, 27, 0.06);
+  --glass-shadow: 0 8px 32px rgba(124, 58, 237, 0.08);
   --font: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", system-ui, sans-serif;
   --max: 1080px;
   --blur: blur(20px) saturate(180%);
@@ -38,7 +38,7 @@ body.saas-body {
 /* Header */
 .saas-header {
   position: sticky; top: 0; z-index: 100;
-  background: rgba(245, 245, 247, 0.72);
+  background: rgba(248, 247, 252, 0.88);
   backdrop-filter: var(--blur);
   border-bottom: 1px solid var(--line);
 }
@@ -97,7 +97,7 @@ body.saas-body {
 }
 .usage-tracker-text { white-space: nowrap; line-height: 1; }
 .usage-tracker-bar span {
-  display: block; height: 100%; background: linear-gradient(90deg, #0071e3, #34c759);
+  display: block; height: 100%; background: linear-gradient(90deg, #7c3aed, #a78bfa);
   border-radius: 99px; transition: width .4s ease;
 }
 .usage-tracker.at-limit .usage-tracker-bar span { background: var(--bad); }
@@ -110,8 +110,8 @@ body.saas-body {
   border: none; cursor: pointer; text-decoration: none; transition: .15s;
   font-size: .875rem; letter-spacing: -.01em;
 }
-.btn-primary { background: #0071e3; color: #fff; padding: .7rem 1.15rem; }
-.btn-primary:hover { background: #0077ed; color: #fff; }
+.btn-primary { background: var(--accent); color: #fff; padding: .7rem 1.15rem; }
+.btn-primary:hover { background: var(--accent-hover); color: #fff; }
 .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
 .btn-ghost {
   background: var(--surface); color: var(--ink);
@@ -328,9 +328,9 @@ body.audit-active .hero { padding-bottom: 1.5rem; }
 .prose-wrap { max-width: 42rem; }
 .prose-wrap h2 { font-size: 1.25rem; font-weight: 700; margin: 2rem 0 .75rem; letter-spacing: -.02em; }
 .prose-wrap p, .prose-wrap li { color: var(--muted); line-height: 1.65; font-size: .95rem; }
-.prose-wrap a { color: #0071e3; }
+.prose-wrap a { color: var(--accent); }
 .contact-card { padding: 2rem; }
-.contact-email { font-size: 1.15rem; font-weight: 600; color: #0071e3; text-decoration: none; }
+.contact-email { font-size: 1.15rem; font-weight: 600; color: var(--accent); text-decoration: none; }
 .contact-card .muted { font-size: .88rem; }
 
 @media (max-width: 900px) {
@@ -348,14 +348,15 @@ body.audit-active .hero { padding-bottom: 1.5rem; }
   border-radius: var(--radius); padding: 1.25rem; margin-bottom: 1rem;
 }
 .copy-block {
-  position: relative; background: #18181b; color: #e4e4e7;
+  position: relative; background: #f8f7fc; color: #27272a;
+  border: 1px solid var(--line);
   border-radius: 8px; padding: 1rem; font-family: ui-monospace, monospace;
   font-size: .78rem; overflow-x: auto; margin-top: .75rem; white-space: pre-wrap;
 }
 .copy-btn {
   position: absolute; top: .5rem; right: .5rem;
-  background: rgba(255,255,255,.1); color: #fff;
-  border: none; border-radius: 6px; padding: .3rem .6rem;
+  background: var(--accent-soft); color: var(--accent);
+  border: 1px solid var(--accent-line); border-radius: 6px; padding: .3rem .6rem;
   font-size: .72rem; cursor: pointer;
 }
 

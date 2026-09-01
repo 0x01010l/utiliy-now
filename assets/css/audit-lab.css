@@ -635,8 +635,9 @@
 
 /* Code */
 .code-viewer {
-  background: #1d1d1f;
-  color: #f5f5f7;
+  background: #f8f7fc;
+  color: #27272a;
+  border: 1px solid var(--line);
   border-radius: 8px;
   padding: .85rem;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
@@ -671,9 +672,10 @@
   position: relative;
   margin-top: .65rem;
   padding: .75rem;
-  background: #1d1d1f;
+  background: #f8f7fc;
+  color: #27272a;
+  border: 1px solid var(--line);
   border-radius: 8px;
-  color: #f5f5f7;
 }
 .copy-block pre {
   margin: .5rem 0 0;
@@ -1025,7 +1027,7 @@ body.audit-active .hero-home .container { width: min(calc(100% - 2rem), 1280px);
 .ai-fix-output {
   border-radius: 12px;
   overflow: hidden;
-  border: 1px solid #2d2d2f;
+  border: 1px solid var(--line);
   margin-bottom: 1rem;
 }
 .ai-fix-output-head {
@@ -1034,16 +1036,16 @@ body.audit-active .hero-home .container { width: min(calc(100% - 2rem), 1280px);
   align-items: center;
   gap: .5rem;
   padding: .65rem .85rem;
-  background: #2d2d2f;
-  color: #f5f5f7;
+  background: #f4f3f8;
+  color: var(--ink);
   font-size: .78rem;
   font-weight: 600;
 }
 .ai-fix-code {
   margin: 0;
   padding: 1rem;
-  background: #1d1d1f;
-  color: #f5f5f7;
+  background: #fafafa;
+  color: #27272a;
   font-family: ui-monospace, Menlo, monospace;
   font-size: .74rem;
   line-height: 1.55;

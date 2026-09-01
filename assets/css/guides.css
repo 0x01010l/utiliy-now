@@ -27,7 +27,7 @@
 }
 .guide-glow-1 {
   width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(0,113,227,.16), transparent 70%);
+  background: radial-gradient(circle, rgba(124,58,237,.14), transparent 70%);
   top: -120px; right: -80px;
 }
 .guide-glow-2 {
@@ -48,14 +48,14 @@
   text-decoration: none;
   margin-bottom: 1rem;
 }
-.guide-back:hover { color: #0071e3; }
+.guide-back:hover { color: #7c3aed; }
 .guide-eyebrow {
   margin: 0 0 .5rem;
   font-size: .68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .1em;
-  color: #0071e3;
+  color: #7c3aed;
 }
 .guide-hero h1 {
   margin: 0 0 .85rem;
@@ -119,8 +119,8 @@
 }
 .guide-toc-list a:hover { color: var(--ink); }
 .guide-toc-list a.is-active {
-  color: #0071e3;
-  border-left-color: #0071e3;
+  color: #7c3aed;
+  border-left-color: #7c3aed;
   font-weight: 600;
 }
 .guide-toc-list .toc-h3 a {
@@ -162,7 +162,7 @@
 .guide-prose p { margin: 0 0 1rem; color: var(--muted); }
 .guide-prose strong { color: var(--ink); font-weight: 600; }
 .guide-prose a {
-  color: #0071e3;
+  color: #7c3aed;
   font-weight: 500;
   text-decoration: none;
 }
@@ -173,7 +173,7 @@
   color: var(--muted);
 }
 .guide-prose li { margin-bottom: .4rem; }
-.guide-prose li::marker { color: #0071e3; }
+.guide-prose li::marker { color: #7c3aed; }
 
 .guide-prose table {
   width: 100%;
@@ -205,7 +205,7 @@
 .guide-prose blockquote {
   margin: 1.25rem 0;
   padding: 1rem 1.15rem;
-  border-left: 3px solid #0071e3;
+  border-left: 3px solid #7c3aed;
   background: rgba(0, 113, 227, .05);
   border-radius: 0 10px 10px 0;
   font-size: .9rem;
@@ -229,8 +229,9 @@
 .guide-prose pre {
   margin: 1rem 0 1.25rem;
   padding: 1rem 1.1rem;
-  background: #1d1d1f;
-  color: #f5f5f7;
+  background: #f8f7fc;
+  color: #27272a;
+  border: 1px solid var(--line);
   border-radius: 12px;
   overflow-x: auto;
   font-size: .8rem;
@@ -351,7 +352,7 @@
   font-size: 1rem;
   margin-bottom: .85rem;
   background: rgba(0, 113, 227, .1);
-  color: #0071e3;
+  color: #7c3aed;
 }
 .guide-card h3 {
   margin: 0 0 .5rem;
@@ -370,7 +371,7 @@
   margin-top: 1rem;
   font-size: .78rem;
   font-weight: 600;
-  color: #0071e3;
+  color: #7c3aed;
 }
 
 @media (max-width: 900px) {
