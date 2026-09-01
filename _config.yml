@@ -1,9 +1,18 @@
 title: Utiliy
-description: AI Product Page Optimizer — improve product visibility across Google Search, AI discovery (ChatGPT, Gemini, Perplexity), and on-page conversion.
+description: AI product page optimizer for ecommerce — audit Shopify, WooCommerce, and Amazon PDPs for Google SEO, schema markup, keywords, images, and AI shopping visibility. Copy-paste fixes in the AI lab.
 url: https://utiliy.com
 baseurl: ""
 lang: en
 timezone: UTC
+
+# jekyll-seo-tag
+twitter:
+  card: summary_large_image
+  username: utiliy
+social:
+  name: Utiliy
+  links:
+    - https://utiliy.com
 
 theme: null
 future: false

@@ -1,8 +1,8 @@
 ---
 layout: landing
-title: WooCommerce Product Page SEO
+title: WooCommerce Product Page SEO Tool & AI Optimizer
 subtitle: Audit WooCommerce product pages for plugin conflicts, missing schema, thin content, and technical SEO issues.
-description: WooCommerce product page SEO auditor. Check titles, schema, images, and AI readiness on any WooCommerce product URL.
+description: WooCommerce product page SEO checker and AI optimizer. Audit titles, Product schema, images, keywords, and AI shopping readiness on any product URL.
 permalink: /woocommerce-product-page-seo/
 ---
 

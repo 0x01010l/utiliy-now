@@ -1,0 +1,117 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#organization",
+      "name": "{{ site.company.name }}",
+      "legalName": "{{ site.company.legal_name }}",
+      "url": "{{ site.url }}",
+      "email": "{{ site.company.email }}",
+      "foundingDate": "{{ site.company.founded }}",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.url }}{{ site.logo }}"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}",
+      "name": "Utiliy",
+      "description": {{ site.description | jsonify }},
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "{{ site.url }}/#application",
+      "name": "Utiliy AI Product Page Optimizer",
+      "url": "{{ site.url }}/",
+      "applicationCategory": "BusinessApplication",
+      "applicationSubCategory": "SEO Software",
+      "operatingSystem": "Web",
+      "browserRequirements": "Requires JavaScript",
+      "description": "AI-powered product page optimization tool for ecommerce. Audits Google SEO, schema markup, keywords, images, and AI shopping visibility on Shopify, WooCommerce, Amazon, and headless product detail pages.",
+      "featureList": [
+        "AI product page optimization",
+        "Product page SEO audit",
+        "Shopify product page SEO checker",
+        "WooCommerce product SEO analysis",
+        "Amazon listing optimization",
+        "Product schema JSON-LD validation",
+        "Meta title and description optimizer",
+        "AI shopping and GEO visibility scoring",
+        "Image alt text and gallery audit",
+        "Copy-paste SEO fix snippets"
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Free",
+          "price": "0",
+          "priceCurrency": "USD",
+          "description": "One full product page optimization report"
+        },
+        {
+          "@type": "Offer",
+          "name": "Pro",
+          "price": "15",
+          "priceCurrency": "USD",
+          "description": "80 product page optimizations per month"
+        }
+      ],
+      "provider": { "@id": "{{ site.url }}/#organization" }
+    }
+    {% if page.home %}
+    ,{
+      "@type": "FAQPage",
+      "@id": "{{ site.url }}/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is an AI product page optimizer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An AI product page optimizer analyzes a single ecommerce product detail page (PDP) for SEO, structured data, keywords, images, and AI shopping visibility, then suggests prioritized fixes with ready-to-paste copy for your theme or CMS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Utiliy work on Shopify product pages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Utiliy supports Shopify, headless Shopify storefronts, WooCommerce, Amazon, and any public product URL with HTML or JSON-LD product data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How is this different from a generic SEO audit tool?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Utiliy focuses on one high-intent product page at a time — scoring six visibility pillars (Google SEO, AI visibility, content, keywords, images, schema) and opening an AI lab with copy-paste fixes instead of a static PDF report."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What stores does Utiliy support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Any public product page URL. Enhanced extractors cover Shopify, headless commerce, WooCommerce, Amazon, and standard JSON-LD markup."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the free product page audit work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You get one complete optimization report free, tracked per account and IP. Paste a product URL, run the scan, and open the AI lab to copy fixes."
+          }
+        }
+      ]
+    }
+    {% endif %}
+  ]
+}
+</script>

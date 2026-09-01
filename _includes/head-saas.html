@@ -1,6 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% seo %}
+<meta name="theme-color" content="#09090b">
 <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,19 +12,4 @@
 <meta name="google-client-id" content="{{ site.google_client_id }}">
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "SoftwareApplication",
-  "name": "Utiliy",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "url": "{{ site.url }}",
-  "description": "{{ site.description | escape }}",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-</script>
+{% include seo-structured-data.html %}

@@ -1,8 +1,8 @@
 ---
 layout: landing
-title: AI Shopping Readiness
+title: AI Shopping Readiness & GEO Product Page Audit
 subtitle: Can an AI shopping assistant confidently understand and recommend this product? Score missing facts, ambiguous specs, and schema gaps.
-description: Test if your product page is ready for AI shopping and agentic commerce. Score clarity for ChatGPT, Perplexity, Google AI Mode, and shopping agents.
+description: AI shopping readiness checker and GEO optimization tool for product pages. Score how ChatGPT, Gemini, Perplexity, and shopping agents interpret your listing.
 permalink: /ai-shopping-readiness/
 ---
 

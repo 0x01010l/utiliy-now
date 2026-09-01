@@ -355,7 +355,49 @@ body.optimizer-active #audit-results { margin-top: .75rem; width: 100%; }
   .cta-inner { flex-direction: column; text-align: center; }
 }
 
-/* Reveal on scroll */
+/* SEO topics — visible long-tail coverage, stays under ~15% of page copy */
+.section-seo-topics {
+  padding: 4rem 0;
+  background: linear-gradient(180deg, #fff 0%, var(--bg) 100%);
+}
+.seo-topics-inner { max-width: 960px; margin-inline: auto; }
+.seo-topics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.75rem;
+}
+.seo-topic-card { padding: 1.35rem 1.4rem; }
+.seo-topic-card h3 {
+  margin: 0 0 .5rem;
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.seo-topic-card p {
+  margin: 0;
+  font-size: .86rem;
+  color: var(--muted);
+  line-height: 1.55;
+}
+.seo-topic-card strong { color: var(--ink); font-weight: 600; }
+.seo-topics-links {
+  margin-top: 1.5rem;
+  font-size: .82rem;
+  color: var(--muted);
+}
+.seo-topics-links a {
+  color: #0071e3;
+  text-decoration: none;
+  font-weight: 500;
+}
+.seo-topics-links a:hover { text-decoration: underline; }
+.seo-topics-links span { margin: 0 .35rem; opacity: .5; }
+
+@media (max-width: 900px) {
+  .seo-topics-grid { grid-template-columns: 1fr; }
+}
+
 .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 

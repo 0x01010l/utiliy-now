@@ -1,8 +1,8 @@
 ---
 layout: landing
-title: Product Page Auditor
-subtitle: Score any ecommerce product URL for SEO, schema, AI shopping readiness, and conversion gaps — then get a prioritized fix list.
-description: Free product page auditor for ecommerce stores. Analyze Shopify, WooCommerce, and custom storefront product pages in seconds.
+title: AI Product Page Optimizer & SEO Auditor
+subtitle: Score any ecommerce product URL for Google SEO, schema markup, AI shopping readiness, and conversion gaps — then fix issues in the AI lab.
+description: Free AI product page optimizer and SEO auditor for Shopify, WooCommerce, and Amazon. Analyze product detail pages and get copy-paste fixes in seconds.
 permalink: /product-page-auditor/
 ---
 

@@ -1,8 +1,8 @@
 ---
 layout: landing
-title: Shopify Product Page SEO
+title: Shopify Product Page SEO Checker & AI Optimizer
 subtitle: Audit Shopify PDPs for theme SEO issues, thin descriptions, missing schema, and AI shopping gaps — without installing another app.
-description: Shopify product page SEO checker and auditor. Analyze any Shopify product URL for SEO, JSON-LD, and conversion clarity.
+description: Shopify product page SEO tool and AI listing optimizer. Check titles, meta, JSON-LD schema, keywords, and AI visibility on any Shopify product URL.
 permalink: /shopify-product-page-seo/
 ---
 

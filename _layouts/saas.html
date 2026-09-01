@@ -5,7 +5,10 @@
 </head>
 <body class="saas-body{% if page.home %} home-page{% endif %}" data-api-url="{{ site.api_url }}">
   {% include header-saas.html %}
-  <main id="main">{{ content }}</main>
+  <main id="main">
+    {% include seo-accessibility-context.html %}
+    {{ content }}
+  </main>
   {% include footer-saas.html %}
   {% include auth-modals.html %}
   <script src="{{ '/assets/js/auth.js' | relative_url }}" defer></script>
