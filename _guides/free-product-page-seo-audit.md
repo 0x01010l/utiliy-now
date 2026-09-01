@@ -25,7 +25,7 @@ If a tool only returns a single number with no evidence, skip it.
 
 | Free tier | Pro tier |
 |-----------|----------|
-| One full report per account | 80 optimizations / month |
+| One full report per account | 80 optimizations / month ($24/mo) |
 | All six visibility pillars | Same depth, higher volume |
 | AI lab with copy-paste fixes | AI vision on all gallery images |
 | No credit card | Priority processing |

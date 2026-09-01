@@ -19,6 +19,9 @@ description: Utiliy is an AI product page auditor operated by Fix Figures LLC. L
     <p>Utiliy is an AI-powered audit platform for ecommerce product pages. Paste any public product URL and receive a full diagnostic report covering SEO, structured data, keywords, image quality, page code, and a prioritized fix queue with ready-to-ship HTML and JSON-LD snippets.</p>
     <p>We built Utiliy because most SEO tools stop at a score. Operators need to know <em>what's wrong</em>, <em>why it matters</em>, and <em>exactly how to fix it</em> — especially on headless stores where product data lives in JSON-LD instead of theme files.</p>
 
+    <h2>Pricing</h2>
+    <p>Every account includes <strong>one free full product page audit</strong>. <strong>Utiliy Pro</strong> is <strong>$24/month</strong> for 80 audits per month with AI vision, content analysis, and priority processing. See <a href="/pricing/">pricing</a> for plan details.</p>
+
     <h2>Who it's for</h2>
     <ul>
       <li><strong>Shopify & DTC brands</strong> — audit PDPs before launches and seasonal campaigns</li>

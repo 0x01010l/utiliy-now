@@ -31,6 +31,10 @@ Unlike site-wide crawlers built for enterprise SEO teams, this auditor is built 
 <p>No. We detect Shopify, WooCommerce, Etsy, Amazon, and generic storefronts. Platform-specific hints are included when detected.</p>
 </details>
 <details>
+<summary>How much does Pro cost?</summary>
+<p>Utiliy Pro is $24/month and includes 80 full product page audits per month with AI analysis and copy-paste fixes in the lab.</p>
+</details>
+<details>
 <summary>How is the score calculated?</summary>
 <p>Scores are weighted and deterministic. AI adds qualitative recommendations but does not randomly assign the core score.</p>
 </details>
