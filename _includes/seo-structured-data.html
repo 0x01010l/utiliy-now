@@ -13,7 +13,39 @@
       "logo": {
         "@type": "ImageObject",
         "url": "{{ site.url }}{{ site.logo }}"
-      }
+      },
+      "brand": {
+        "@type": "Brand",
+        "name": "Utiliy",
+        "url": "{{ site.url }}"
+      },
+      "sameAs": [
+        "{{ site.url }}/",
+        "{{ site.url }}/about/",
+        "{{ site.url }}/contact/"
+      ],
+      "knowsAbout": [
+        {
+          "@type": "Thing",
+          "name": "Search engine optimization",
+          "sameAs": "https://en.wikipedia.org/wiki/Search_engine_optimization"
+        },
+        {
+          "@type": "Thing",
+          "name": "Electronic commerce",
+          "sameAs": "https://en.wikipedia.org/wiki/E-commerce"
+        },
+        {
+          "@type": "Thing",
+          "name": "Structured data",
+          "sameAs": "https://en.wikipedia.org/wiki/JSON-LD"
+        },
+        {
+          "@type": "Thing",
+          "name": "Generative artificial intelligence",
+          "sameAs": "https://en.wikipedia.org/wiki/Generative_artificial_intelligence"
+        }
+      ]
     },
     {
       "@type": "WebSite",
@@ -23,6 +55,49 @@
       "description": {{ site.description | jsonify }},
       "publisher": { "@id": "{{ site.url }}/#organization" },
       "inLanguage": "en-US"
+    },
+    {
+      "@type": "Service",
+      "@id": "{{ site.url }}/#service",
+      "name": "AI Product Page Optimization",
+      "description": "Automated SEO and AI visibility audits for ecommerce product detail pages with copy-paste fixes.",
+      "url": "{{ site.url }}/",
+      "provider": { "@id": "{{ site.url }}/#organization" },
+      "serviceType": "Product page SEO audit and AI listing optimization",
+      "areaServed": { "@type": "Place", "name": "Worldwide" },
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Ecommerce merchants, SEO teams, and agencies"
+      },
+      "isRelatedTo": [
+        {
+          "@type": "Organization",
+          "name": "Shopify",
+          "url": "https://www.shopify.com",
+          "sameAs": [
+            "https://www.shopify.com",
+            "https://en.wikipedia.org/wiki/Shopify"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "name": "WooCommerce",
+          "url": "https://woocommerce.com",
+          "sameAs": "https://en.wikipedia.org/wiki/WooCommerce"
+        },
+        {
+          "@type": "Organization",
+          "name": "Amazon",
+          "url": "https://www.amazon.com",
+          "sameAs": "https://en.wikipedia.org/wiki/Amazon_(company)"
+        },
+        {
+          "@type": "Organization",
+          "name": "Google",
+          "url": "https://www.google.com",
+          "sameAs": "https://en.wikipedia.org/wiki/Google"
+        }
+      ]
     },
     {
       "@type": "WebApplication",
@@ -62,7 +137,113 @@
           "description": "80 product page optimizations per month"
         }
       ],
-      "provider": { "@id": "{{ site.url }}/#organization" }
+      "provider": { "@id": "{{ site.url }}/#organization" },
+      "maintainer": { "@id": "{{ site.url }}/#organization" },
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "about": [
+        {
+          "@type": "Thing",
+          "name": "Product detail page",
+          "sameAs": "https://en.wikipedia.org/wiki/Product_(business)"
+        },
+        {
+          "@type": "Thing",
+          "name": "Schema.org Product",
+          "url": "https://schema.org/Product",
+          "sameAs": "https://schema.org/Product"
+        },
+        {
+          "@type": "Organization",
+          "name": "Shopify",
+          "sameAs": "https://en.wikipedia.org/wiki/Shopify"
+        },
+        {
+          "@type": "Organization",
+          "name": "WooCommerce",
+          "sameAs": "https://en.wikipedia.org/wiki/WooCommerce"
+        },
+        {
+          "@type": "Organization",
+          "name": "Amazon",
+          "sameAs": "https://en.wikipedia.org/wiki/Amazon_(company)"
+        }
+      ],
+      "isBasedOn": [
+        {
+          "@type": "CreativeWork",
+          "name": "Schema.org vocabulary",
+          "url": "https://schema.org/",
+          "sameAs": "https://en.wikipedia.org/wiki/Schema.org"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "JSON-LD",
+          "url": "https://json-ld.org/",
+          "sameAs": "https://en.wikipedia.org/wiki/JSON-LD"
+        },
+        {
+          "@type": "CreativeWork",
+          "name": "Google Search documentation — Product structured data",
+          "url": "https://developers.google.com/search/docs/appearance/structured-data/product"
+        }
+      ],
+      "citation": [
+        {
+          "@type": "SoftwareApplication",
+          "name": "Azure OpenAI Service",
+          "url": "https://learn.microsoft.com/azure/ai-services/openai/",
+          "applicationCategory": "DeveloperApplication",
+          "provider": {
+            "@type": "Organization",
+            "name": "Microsoft",
+            "url": "https://www.microsoft.com",
+            "sameAs": [
+              "https://www.microsoft.com",
+              "https://en.wikipedia.org/wiki/Microsoft"
+            ]
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Azure AI Vision",
+          "url": "https://learn.microsoft.com/azure/ai-services/computer-vision/",
+          "applicationCategory": "DeveloperApplication",
+          "provider": {
+            "@type": "Organization",
+            "name": "Microsoft",
+            "sameAs": "https://en.wikipedia.org/wiki/Microsoft"
+          }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "Azure Functions",
+          "url": "https://learn.microsoft.com/azure/azure-functions/",
+          "applicationCategory": "DeveloperApplication",
+          "provider": {
+            "@type": "Organization",
+            "name": "Microsoft",
+            "sameAs": "https://en.wikipedia.org/wiki/Microsoft_Azure"
+          }
+        },
+        {
+          "@type": "Organization",
+          "name": "OpenAI",
+          "url": "https://openai.com",
+          "sameAs": [
+            "https://openai.com",
+            "https://en.wikipedia.org/wiki/OpenAI"
+          ]
+        },
+        {
+          "@type": "Organization",
+          "name": "Stripe",
+          "url": "https://stripe.com",
+          "sameAs": [
+            "https://stripe.com",
+            "https://en.wikipedia.org/wiki/Stripe_(company)"
+          ]
+        }
+      ]
     }
     {% if page.home %}
     ,{

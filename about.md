@@ -27,6 +27,17 @@ description: Utiliy is an AI product page auditor operated by Fix Figures LLC. L
       <li><strong>Headless commerce</strong> — extract product data from JSON-LD and CDN galleries on custom storefronts</li>
     </ul>
 
+    <h2>Technology &amp; standards</h2>
+    <p>Utiliy is built on open web standards and production infrastructure we pay for — not affiliate links or scraped data:</p>
+    <ul>
+      <li><strong>AI analysis</strong> — <a href="https://learn.microsoft.com/azure/ai-services/openai/" rel="noopener noreferrer">Azure OpenAI Service</a> (Microsoft) for optimization copy and qualitative audits</li>
+      <li><strong>Image analysis</strong> — <a href="https://learn.microsoft.com/azure/ai-services/computer-vision/" rel="noopener noreferrer">Azure AI Vision</a> for product gallery captions and alt-text gaps</li>
+      <li><strong>Hosting &amp; data</strong> — <a href="https://azure.microsoft.com/products/functions" rel="noopener noreferrer">Azure Functions</a> and Azure Table Storage</li>
+      <li><strong>Payments</strong> — <a href="https://stripe.com" rel="noopener noreferrer">Stripe</a> (we never store card numbers)</li>
+      <li><strong>Structured data</strong> — audits align with <a href="https://schema.org/Product" rel="noopener noreferrer">Schema.org Product</a> and <a href="https://developers.google.com/search/docs/appearance/structured-data/product" rel="noopener noreferrer">Google product markup guidance</a></li>
+      <li><strong>Platforms analyzed</strong> — public product pages on <a href="https://www.shopify.com" rel="noopener noreferrer">Shopify</a>, <a href="https://woocommerce.com" rel="noopener noreferrer">WooCommerce</a>, <a href="https://www.amazon.com" rel="noopener noreferrer">Amazon</a>, and headless storefronts using JSON-LD</li>
+    </ul>
+
     <h2>Operated by</h2>
     <p><strong>Utiliy</strong> is a brand name operated by <strong>Fix Figures LLC</strong>.</p>
     <p>
