@@ -51,20 +51,27 @@ function authHeaders() {
   return h;
 }
 
-function renderUsage(usage) {
-  if (!usage) return;
-  lastUsage = usage;
-
-  const user = getUser();
+function setUsageTrackerVisible(visible) {
   const tracker = document.getElementById('usage-tracker');
-  if (!user) {
-    if (tracker) tracker.hidden = true;
+  const upgradeBtn = document.getElementById('header-upgrade');
+  if (tracker) tracker.hidden = !visible;
+  if (!visible && upgradeBtn) upgradeBtn.hidden = true;
+}
+
+function renderUsage(usage) {
+  const user = getUser();
+  const token = getToken();
+  if (!usage || !user || !token) {
+    lastUsage = null;
+    setUsageTrackerVisible(false);
     return;
   }
 
+  lastUsage = usage;
+
   const pct = usage.limit > 0 ? Math.min(100, (usage.used / usage.limit) * 100) : 0;
   const atLimit = usage.remaining <= 0;
-  const plan = usage.plan || user?.plan || 'free';
+  const plan = usage.plan || user.plan || 'free';
   const isPro = plan === 'pro';
   const showUpgrade = atLimit && !isPro;
 
@@ -80,8 +87,7 @@ function renderUsage(usage) {
   if (barFill) barFill.style.width = `${pct}%`;
   if (trackerText) trackerText.textContent = `${usage.used} / ${usage.limit}`;
   if (upgradeBtn) {
-    if (showUpgrade) upgradeBtn.removeAttribute('hidden');
-    else upgradeBtn.setAttribute('hidden', '');
+    upgradeBtn.hidden = !showUpgrade;
   }
 
   if (user) {
@@ -110,9 +116,14 @@ function promptUpgrade(msg) {
 }
 
 async function refreshUsage() {
+  if (!getUser() || !getToken()) {
+    lastUsage = null;
+    setUsageTrackerVisible(false);
+    return null;
+  }
   try {
     const res = await fetch(`${API}/usage`, { headers: authHeaders() });
-    if (!res.ok) return;
+    if (!res.ok) return null;
     const usage = await res.json();
     renderUsage(usage);
     return usage;
@@ -165,10 +176,10 @@ function updateAuthUI() {
     loggedInActions.hidden = true;
     navGuest?.removeAttribute('hidden');
     navUser?.setAttribute('hidden', '');
-    document.getElementById('usage-tracker')?.setAttribute('hidden', '');
     lastUsage = null;
+    setUsageTrackerVisible(false);
   }
-  if (user) refreshUsage();
+  if (user && getToken()) refreshUsage();
 }
 
 function requireAuthForAudit(url) {
