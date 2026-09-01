@@ -29,6 +29,8 @@ plugins:
 logo: /assets/img/utiliy-logo.svg
 api_url: https://utiliy-audit-api.azurewebsites.net/api
 google_client_id: "1045087131327-7j37s03u3h13rb45phtp2llks8595ap8.apps.googleusercontent.com"
+# Optional: GA4 measurement ID for A/B test + conversion events (e.g. G-XXXXXXXXXX)
+google_analytics: ""
 
 company:
   name: Utiliy

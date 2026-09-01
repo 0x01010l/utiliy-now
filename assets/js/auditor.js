@@ -425,6 +425,8 @@ async function runOptimization(url) {
 
     if (data.usage) window.UtiliyAuth?.renderUsage(data.usage);
 
+    window.UtiliyAB?.trackConversion('audit_complete', { score: data.scores?.overall });
+
     progress.hidden = true;
     results.innerHTML = renderOptimizerApp(data);
     results.hidden = false;

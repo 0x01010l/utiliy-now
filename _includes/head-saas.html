@@ -12,4 +12,13 @@
 <meta name="google-client-id" content="{{ site.google_client_id }}">
 {% endif %}
 <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="{{ '/feed.xml' | relative_url }}">
+{% if site.google_analytics and site.google_analytics != "" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}', { anonymize_ip: true });
+</script>
+{% endif %}
 {% include seo-structured-data.html %}
