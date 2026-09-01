@@ -1,0 +1,680 @@
+{
+  "title": "Utiliy Product Page Index",
+  "edition": "Q1 2026",
+  "generated_at": "2026-09-01T12:55:47Z",
+  "methodology_url": "https://utiliy.com/pdp-index/methodology/",
+  "spec_url": "https://utiliy.com/spec/uprs/",
+  "uprs_version": "1.0.0",
+  "aggregate": {
+    "sample_size": 16,
+    "error_count": 4,
+    "overall_avg": 57.9,
+    "google_seo_avg": 66.9,
+    "ai_visibility_avg": 59.6,
+    "content_avg": 69.1,
+    "keywords_avg": 25.8,
+    "images_avg": 54.6,
+    "schema_avg": 69.2,
+    "product_jsonld_rate_pct": 75.0,
+    "by_retailer": {
+      "Amazon": {
+        "count": 6,
+        "overall": 60.3,
+        "ai_visibility": 60.7,
+        "schema": 79.7,
+        "google_seo": 73.0,
+        "jsonld_rate": 100.0
+      },
+      "Etsy": {
+        "count": 2,
+        "overall": 27.0,
+        "ai_visibility": 35.0,
+        "schema": 15.0,
+        "google_seo": 38.0,
+        "jsonld_rate": 0.0
+      },
+      "eBay": {
+        "count": 2,
+        "overall": 25.0,
+        "ai_visibility": 35.0,
+        "schema": 15.0,
+        "google_seo": 32.0,
+        "jsonld_rate": 0.0
+      },
+      "Shopify DTC": {
+        "count": 6,
+        "overall": 76.8,
+        "ai_visibility": 74.8,
+        "schema": 95.0,
+        "google_seo": 82.0,
+        "jsonld_rate": 100.0
+      }
+    },
+    "top_uprs_rules": [
+      {
+        "id": "U-CNT-020",
+        "count": 16
+      },
+      {
+        "id": "U-SEO-050",
+        "count": 15
+      },
+      {
+        "id": "U-SEO-030",
+        "count": 13
+      },
+      {
+        "id": "U-CNT-010",
+        "count": 13
+      },
+      {
+        "id": "U-SEO-011",
+        "count": 12
+      },
+      {
+        "id": "U-SEO-020",
+        "count": 11
+      },
+      {
+        "id": "U-SEO-040",
+        "count": 10
+      },
+      {
+        "id": "U-SCH-030",
+        "count": 6
+      },
+      {
+        "id": "U-TEC-010",
+        "count": 4
+      },
+      {
+        "id": "U-SEO-001",
+        "count": 4
+      }
+    ]
+  },
+  "samples": [
+    {
+      "url": "https://www.amazon.com/Apple-AirPods-Pro-2nd-Generation/dp/B0CHWRXH8B",
+      "retailer": "Amazon",
+      "category": "Electronics",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "amazon",
+      "title": "Amazon.com",
+      "overall": 69,
+      "google_seo": 72,
+      "ai_visibility": 80,
+      "content": 80,
+      "keywords": 0,
+      "images": 88,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 9,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-SEO-040",
+        "U-CNT-020",
+        "U-SCH-030"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "thin_content",
+        "missing_canonical"
+      ]
+    },
+    {
+      "url": "https://www.amazon.com/Kindle-Paperwhite-11th-generation/dp/B08KTZ8249",
+      "retailer": "Amazon",
+      "category": "Electronics",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "amazon",
+      "title": "Amazon.com",
+      "overall": 69,
+      "google_seo": 72,
+      "ai_visibility": 76,
+      "content": 76,
+      "keywords": 12,
+      "images": 88,
+      "schema": 93,
+      "has_product_jsonld": true,
+      "issue_count": 11,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SCH-030",
+        "U-CNT-010"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "thin_content",
+        "missing_returns"
+      ]
+    },
+    {
+      "url": "https://www.amazon.com/Instant-Pot-Duo-Evo-Plus/dp/B07W55DDFB",
+      "retailer": "Amazon",
+      "category": "Home",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "amazon",
+      "title": "Amazon.com",
+      "overall": 49,
+      "google_seo": 72,
+      "ai_visibility": 50,
+      "content": 71,
+      "keywords": 0,
+      "images": 20,
+      "schema": 71,
+      "has_product_jsonld": true,
+      "issue_count": 13,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SCH-030"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "thin_content",
+        "missing_brand"
+      ]
+    },
+    {
+      "url": "https://www.amazon.com/Nike-Mens-Dri-FIT-Training/dp/B0B3X8XQZQ",
+      "retailer": "Amazon",
+      "category": "Apparel",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "amazon",
+      "title": "Amazon.com",
+      "overall": 77,
+      "google_seo": 78,
+      "ai_visibility": 58,
+      "content": 71,
+      "keywords": 100,
+      "images": 75,
+      "schema": 77,
+      "has_product_jsonld": true,
+      "issue_count": 10,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SCH-030"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "missing_brand",
+        "missing_returns"
+      ]
+    },
+    {
+      "url": "https://www.amazon.com/LEGO-Icons-Bouquet-Building-Set/dp/B0CGY4RV8F",
+      "retailer": "Amazon",
+      "category": "Toys",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "amazon",
+      "title": "Amazon.com",
+      "overall": 49,
+      "google_seo": 72,
+      "ai_visibility": 50,
+      "content": 71,
+      "keywords": 0,
+      "images": 20,
+      "schema": 71,
+      "has_product_jsonld": true,
+      "issue_count": 13,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SCH-030"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "thin_content",
+        "missing_brand"
+      ]
+    },
+    {
+      "url": "https://www.amazon.com/Samsung-65-Inch-Class-QLED/dp/B0CV6421BW",
+      "retailer": "Amazon",
+      "category": "Electronics",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "amazon",
+      "title": "Amazon.com",
+      "overall": 49,
+      "google_seo": 72,
+      "ai_visibility": 50,
+      "content": 71,
+      "keywords": 0,
+      "images": 20,
+      "schema": 71,
+      "has_product_jsonld": true,
+      "issue_count": 13,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SCH-030"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "thin_content",
+        "missing_brand"
+      ]
+    },
+    {
+      "url": "https://www.bestbuy.com/site/apple-airpods-pro-2nd-generation/6447382.p",
+      "retailer": "Best Buy",
+      "category": "Electronics",
+      "status": "error",
+      "error": "audit_failed"
+    },
+    {
+      "url": "https://www.bestbuy.com/site/sony-wh-1000xm5-wireless-noise-canceling-over-the-ear-headphones/6505727.p",
+      "retailer": "Best Buy",
+      "category": "Electronics",
+      "status": "error",
+      "error": "audit_failed"
+    },
+    {
+      "url": "https://www.bestbuy.com/site/lg-65-class-c3-series-oled-4k-uhd-smart-webos-tv/6534567.p",
+      "retailer": "Best Buy",
+      "category": "Electronics",
+      "status": "error",
+      "error": "audit_failed"
+    },
+    {
+      "url": "https://www.bestbuy.com/site/dyson-v15-detect-absolute-cordless-vacuum/6456789.p",
+      "retailer": "Best Buy",
+      "category": "Home",
+      "status": "error",
+      "error": "audit_failed"
+    },
+    {
+      "url": "https://www.etsy.com/listing/772989228/personalized-leather-wallet-for-men",
+      "retailer": "Etsy",
+      "category": "Accessories",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "etsy",
+      "title": "etsy.com",
+      "overall": 27,
+      "google_seo": 38,
+      "ai_visibility": 35,
+      "content": 45,
+      "keywords": 0,
+      "images": 20,
+      "schema": 15,
+      "has_product_jsonld": false,
+      "issue_count": 22,
+      "uprs_rules_triggered": [
+        "U-TEC-010",
+        "U-SEO-001",
+        "U-SCH-001",
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-TEC-002",
+        "U-SEO-040"
+      ],
+      "top_issues": [
+        "storefront_bot_block",
+        "http_error",
+        "missing_product_schema",
+        "title_too_short",
+        "missing_meta_description"
+      ]
+    },
+    {
+      "url": "https://www.etsy.com/listing/1289624124/custom-pet-portrait-digital",
+      "retailer": "Etsy",
+      "category": "Art",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "etsy",
+      "title": "etsy.com",
+      "overall": 27,
+      "google_seo": 38,
+      "ai_visibility": 35,
+      "content": 45,
+      "keywords": 0,
+      "images": 20,
+      "schema": 15,
+      "has_product_jsonld": false,
+      "issue_count": 22,
+      "uprs_rules_triggered": [
+        "U-TEC-010",
+        "U-SEO-001",
+        "U-SCH-001",
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-TEC-002",
+        "U-SEO-040"
+      ],
+      "top_issues": [
+        "storefront_bot_block",
+        "http_error",
+        "missing_product_schema",
+        "title_too_short",
+        "missing_meta_description"
+      ]
+    },
+    {
+      "url": "https://www.ebay.com/itm/166964928012",
+      "retailer": "eBay",
+      "category": "Electronics",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "ebay",
+      "title": "Error Page | eBay",
+      "overall": 25,
+      "google_seo": 32,
+      "ai_visibility": 35,
+      "content": 45,
+      "keywords": 0,
+      "images": 20,
+      "schema": 15,
+      "has_product_jsonld": false,
+      "issue_count": 22,
+      "uprs_rules_triggered": [
+        "U-TEC-010",
+        "U-SEO-001",
+        "U-SCH-001",
+        "U-TEC-001",
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SEO-050"
+      ],
+      "top_issues": [
+        "storefront_bot_block",
+        "http_error",
+        "missing_product_schema",
+        "noindex",
+        "title_too_short"
+      ]
+    },
+    {
+      "url": "https://www.ebay.com/itm/256123456789",
+      "retailer": "eBay",
+      "category": "Collectibles",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "ebay",
+      "title": "Error Page | eBay",
+      "overall": 25,
+      "google_seo": 32,
+      "ai_visibility": 35,
+      "content": 45,
+      "keywords": 0,
+      "images": 20,
+      "schema": 15,
+      "has_product_jsonld": false,
+      "issue_count": 22,
+      "uprs_rules_triggered": [
+        "U-TEC-010",
+        "U-SEO-001",
+        "U-SCH-001",
+        "U-TEC-001",
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-SEO-040",
+        "U-SEO-050"
+      ],
+      "top_issues": [
+        "storefront_bot_block",
+        "http_error",
+        "missing_product_schema",
+        "noindex",
+        "title_too_short"
+      ]
+    },
+    {
+      "url": "https://www.allbirds.com/products/mens-tree-runners",
+      "retailer": "Shopify DTC",
+      "category": "Apparel",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "shopify",
+      "title": "Allbirds: Sustainable Men\u2019s Shoes, Wear-All-Day Comfort",
+      "overall": 79,
+      "google_seo": 88,
+      "ai_visibility": 81,
+      "content": 82,
+      "keywords": 38,
+      "images": 88,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 10,
+      "uprs_rules_triggered": [
+        "U-SEO-050",
+        "U-CNT-020",
+        "U-CNT-030",
+        "U-SEO-031"
+      ],
+      "top_issues": [
+        "thin_content",
+        "missing_returns",
+        "shopify_collection_redirect",
+        "title_h1_mismatch",
+        "missing_og_title"
+      ]
+    },
+    {
+      "url": "https://www.gymshark.com/products/gymshark-crest-joggers-black-ss22",
+      "retailer": "Shopify DTC",
+      "category": "Apparel",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "shopify",
+      "title": "Gymshark Crest Joggers - Black | Gymshark",
+      "overall": 75,
+      "google_seo": 92,
+      "ai_visibility": 81,
+      "content": 82,
+      "keywords": 62,
+      "images": 43,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 12,
+      "uprs_rules_triggered": [
+        "U-SCH-010",
+        "U-SCH-011",
+        "U-CNT-020",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-IMG-001"
+      ],
+      "top_issues": [
+        "missing_offers",
+        "missing_offer",
+        "missing_shipping",
+        "missing_returns",
+        "missing_og_title"
+      ]
+    },
+    {
+      "url": "https://www.brooklinen.com/products/classic-core-sheet-set",
+      "retailer": "Shopify DTC",
+      "category": "Home",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "shopify",
+      "title": "Classic Percale Sheet Set | Cooling Cotton Sheets | Brooklinen",
+      "overall": 80,
+      "google_seo": 84,
+      "ai_visibility": 81,
+      "content": 82,
+      "keywords": 50,
+      "images": 88,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 7,
+      "uprs_rules_triggered": [
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-020"
+      ],
+      "top_issues": [
+        "missing_h1",
+        "thin_content",
+        "missing_returns",
+        "meta_too_long",
+        "missing_og_title"
+      ]
+    },
+    {
+      "url": "https://colourpop.com/products/lippie-stix",
+      "retailer": "Shopify DTC",
+      "category": "Beauty",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "shopify",
+      "title": "ColourPop\u00ae Cosmetics",
+      "overall": 71,
+      "google_seo": 80,
+      "ai_visibility": 62,
+      "content": 80,
+      "keywords": 25,
+      "images": 88,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 12,
+      "uprs_rules_triggered": [
+        "U-SEO-011",
+        "U-SEO-030",
+        "U-SEO-050",
+        "U-CNT-010",
+        "U-CNT-020",
+        "U-CNT-030"
+      ],
+      "top_issues": [
+        "title_too_short",
+        "missing_h1",
+        "thin_content",
+        "missing_sku",
+        "missing_returns"
+      ]
+    },
+    {
+      "url": "https://www.glossier.com/products/boy-brow",
+      "retailer": "Shopify DTC",
+      "category": "Beauty",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "shopify",
+      "title": "Boy Brow | Tinted Brow Gel \u2013 Glossier",
+      "overall": 77,
+      "google_seo": 90,
+      "ai_visibility": 80,
+      "content": 80,
+      "keywords": 25,
+      "images": 88,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 10,
+      "uprs_rules_triggered": [
+        "U-SEO-050",
+        "U-CNT-020",
+        "U-CNT-010"
+      ],
+      "top_issues": [
+        "thin_content",
+        "missing_shipping",
+        "missing_returns",
+        "missing_og_title",
+        "missing_og_image"
+      ]
+    },
+    {
+      "url": "https://www.rothys.com/products/the-point",
+      "retailer": "Shopify DTC",
+      "category": "Apparel",
+      "status": "ok",
+      "error": "audit_failed",
+      "platform": "shopify",
+      "title": "The Point",
+      "overall": 79,
+      "google_seo": 58,
+      "ai_visibility": 64,
+      "content": 80,
+      "keywords": 100,
+      "images": 88,
+      "schema": 95,
+      "has_product_jsonld": true,
+      "issue_count": 17,
+      "uprs_rules_triggered": [
+        "U-TEC-001",
+        "U-SEO-011",
+        "U-SEO-020",
+        "U-SEO-030",
+        "U-SEO-060",
+        "U-SEO-050",
+        "U-SCH-010",
+        "U-SCH-011",
+        "U-CNT-010",
+        "U-CNT-020"
+      ],
+      "top_issues": [
+        "noindex",
+        "title_too_short",
+        "missing_meta_description",
+        "missing_h1",
+        "missing_alt_text"
+      ]
+    }
+  ]
+}

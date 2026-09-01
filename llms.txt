@@ -1,0 +1,37 @@
+# Utiliy
+
+> AI product page optimizer for ecommerce — audits live Shopify, WooCommerce, Amazon, and marketplace PDPs for Google SEO, schema, keywords, images, and AI shopping visibility.
+
+Utiliy is operated by Fix Figures LLC. The public site includes an AI optimization lab, open research benchmarks, and the Utiliy Product Readiness Specification (UPRS).
+
+## Product
+
+- [AI Product Page Optimizer](https://utiliy.com/): Paste a product URL for a free six-pillar audit and copy-paste fixes
+- [Pricing](https://utiliy.com/pricing/): Free tier plus Pro at $15/month
+
+## Research & standards
+
+- [Utiliy Product Page Index (Q1 2026)](https://utiliy.com/pdp-index/): Live PDP benchmark across Amazon, Best Buy, eBay, Etsy, and Shopify DTC
+- [PDP Index methodology](https://utiliy.com/pdp-index/methodology/): Sample selection, scoring model, limitations
+- [UPRS specification](https://utiliy.com/spec/uprs/): Open rule IDs for product page readiness audits
+- [PDP readiness badge embed](https://utiliy.com/embed/badge/): Embed verified audit scores on merchant sites
+
+## Guides
+
+- [Optimize product pages for Google & AI search](https://utiliy.com/guides/optimize-product-page-google-ai/)
+- [Free product page SEO audit](https://utiliy.com/guides/free-product-page-seo-audit/)
+- [Product page SEO checklist 2026](https://utiliy.com/guides/product-page-seo-checklist-2026/)
+- [PDP SEO vs site crawls](https://utiliy.com/guides/product-page-seo-vs-site-crawl/)
+- [Utiliy vs Surfer SEO](https://utiliy.com/utiliy-vs-surfer/)
+
+## Data downloads
+
+- [PDP Index report (JSON)](https://utiliy.com/assets/data/pdp-index/report.json)
+- [PDP Index report (CSV)](https://utiliy.com/assets/data/pdp-index/report.csv)
+- [UPRS machine spec (JSON)](https://utiliy.com/assets/data/pdp-index/uprs.json)
+
+## Company
+
+- [About](https://utiliy.com/about/)
+- [Contact](https://utiliy.com/contact/)
+- [Privacy](https://utiliy.com/privacy/)

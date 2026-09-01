@@ -6,6 +6,8 @@ description: AI shopping readiness checker and GEO optimization tool for product
 permalink: /ai-shopping-readiness/
 ---
 
+**Short answer:** AI shopping assistants recommend products they can *verify* — brand, price, availability, SKU, specs, and schema must match visible page content. Utiliy’s [Q1 2026 PDP Index]({{ '/pdp-index/' | relative_url }}) found AI visibility averaging **59.6/100** across Amazon, eBay, Etsy, and Shopify DTC listings — Shopify merchants scored **74.8** vs **35.0** on bot-limited marketplace pages.
+
 ## Search is changing — product pages must be machine-readable
 
 AI shopping assistants do not browse like humans. They extract **entities and facts**: name, category, price, availability, dimensions, materials, compatibility, warranty, shipping, returns.

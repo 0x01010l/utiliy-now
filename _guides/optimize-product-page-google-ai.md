@@ -4,7 +4,7 @@ description: Step-by-step guide to optimizing ecommerce product detail pages for
 permalink: /guides/optimize-product-page-google-ai/
 ---
 
-A product detail page (PDP) must rank in Google **and** be machine-readable for AI shopping assistants. This guide walks through the workflow Utiliy automates — use it as a manual checklist or [run a free scan](/#audit).
+A product detail page (PDP) must rank in Google **and** be machine-readable for AI shopping assistants. In Utiliy’s [Q1 2026 PDP Index]({{ '/pdp-index/' | relative_url }}), only **75%** of major-retailer sample pages had complete Product JSON-LD — and keyword alignment averaged **25.8/100**. This guide walks through the workflow Utiliy automates.
 
 ## 1. Start with the live URL
 

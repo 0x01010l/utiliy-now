@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  {% include head-saas.html %}
+  <link rel="stylesheet" href="{{ '/assets/css/research.css' | relative_url }}?v=1">
+  {% if page.pdp_index %}
+  {% include pdp-index-dataset-schema.html %}
+  {% endif %}
+</head>
+<body class="saas-body research-page" data-api-url="{{ site.api_url }}">
+  {% include header-saas.html %}
+  <main id="main">
+    <header class="research-hero">
+      <div class="research-glow research-glow-1" aria-hidden="true"></div>
+      <div class="container research-hero-inner">
+        {% if page.research_back %}
+        <a class="research-back" href="{{ page.research_back | relative_url }}">{{ page.research_back_label | default: "← Back" }}</a>
+        {% endif %}
+        <p class="research-eyebrow">{{ page.eyebrow | default: "Research" }}</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.description %}<p class="research-lead">{{ page.description }}</p>{% endif %}
+        {% if page.hero_actions %}
+        <div class="research-hero-actions">{{ page.hero_actions }}</div>
+        {% endif %}
+      </div>
+    </header>
+    <div class="container research-body">
+      <article class="research-article glass-card-static">
+        <div class="research-prose">
+          {{ content }}
+        </div>
+      </article>
+    </div>
+  </main>
+  {% include footer-saas.html %}
+  {% include auth-modals.html %}
+  <script src="{{ '/assets/js/auth.js' | relative_url }}" defer></script>
+  <script src="{{ '/assets/js/saas.js' | relative_url }}" defer></script>
+  {% if page.pdp_index %}
+  <script src="{{ '/assets/js/pdp-index.js' | relative_url }}?v=1" defer></script>
+  {% endif %}
+  {% if page.embed_badge %}
+  <script src="{{ '/assets/js/embed-badge.js' | relative_url }}?v=1" defer></script>
+  {% endif %}
+</body>
+</html>

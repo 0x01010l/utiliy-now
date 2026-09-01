@@ -1,0 +1,113 @@
+---
+layout: research
+title: Utiliy Product Page Index
+description: "Q1 2026 benchmark: live PDP scores across Amazon, Best Buy, eBay, Etsy, and Shopify DTC — sourced from Utiliy audits, not surveys."
+permalink: /pdp-index/
+eyebrow: Primary research
+pdp_index: true
+research_back: /
+research_back_label: "← Utiliy home"
+---
+
+{% assign idx = site.data.pdp_index %}
+{% assign agg = idx.aggregate %}
+
+<p class="pdp-citation-box" id="pdp-index-answer">
+  <strong>Answer:</strong> In Utiliy’s {{ idx.edition }} sample of <strong>{{ idx.samples | size }} public product pages</strong>
+  ({{ agg.sample_size }} fully scored, {{ agg.error_count }} blocked or timed out),
+  the mean overall PDP readiness score was <strong>{{ agg.overall_avg }}/100</strong>,
+  with AI visibility averaging <strong>{{ agg.ai_visibility_avg }}/100</strong>
+  and Product JSON-LD present on <strong>{{ agg.product_jsonld_rate_pct }}%</strong> of scored pages.
+  Shopify DTC merchants outperformed major marketplaces on AI visibility in this cohort.
+</p>
+
+<p><em>Generated {{ idx.generated_at | date: "%B %d, %Y" }} UTC · UPRS {{ idx.uprs_version }} ·
+<a href="{{ '/pdp-index/methodology/' | relative_url }}">Methodology</a> ·
+<a href="{{ '/spec/uprs/' | relative_url }}">UPRS spec</a></em></p>
+
+<div class="pdp-stats-grid" aria-label="Index headline statistics">
+  <div class="pdp-stat-card"><strong>{{ agg.overall_avg }}</strong><span>Overall avg / 100</span></div>
+  <div class="pdp-stat-card"><strong>{{ agg.ai_visibility_avg }}</strong><span>AI visibility avg</span></div>
+  <div class="pdp-stat-card"><strong>{{ agg.schema_avg }}</strong><span>Schema avg</span></div>
+  <div class="pdp-stat-card"><strong>{{ agg.google_seo_avg }}</strong><span>Google SEO avg</span></div>
+  <div class="pdp-stat-card"><strong>{{ agg.product_jsonld_rate_pct }}%</strong><span>Product JSON-LD rate</span></div>
+  <div class="pdp-stat-card"><strong>{{ agg.sample_size }}</strong><span>Pages scored</span></div>
+</div>
+
+## By retailer
+
+<div class="pdp-retailer-grid">
+{% for retailer in agg.by_retailer %}
+  {% assign r = agg.by_retailer[retailer] %}
+  <div class="pdp-retailer-card">
+    <h3>{{ retailer }} <span style="font-weight:400;color:var(--muted)">(n={{ r.count }})</span></h3>
+    <dl>
+      <dt>Overall</dt><dd>{{ r.overall }}</dd>
+      <dt>AI visibility</dt><dd>{{ r.ai_visibility }}</dd>
+      <dt>Schema</dt><dd>{{ r.schema }}</dd>
+      <dt>Google SEO</dt><dd>{{ r.google_seo }}</dd>
+      <dt>JSON-LD rate</dt><dd>{{ r.jsonld_rate }}%</dd>
+    </dl>
+  </div>
+{% endfor %}
+</div>
+
+## Key findings
+
+- **Shopify DTC leads AI visibility** in this sample — independent merchants with full Product JSON-LD and visible specs score higher than marketplace listings that gate product HTML.
+- **Amazon listings score well on schema** when ASIN data is extractable, but **Google SEO and keyword alignment lag** (generic page titles like “Amazon.com” reduce extractable signals).
+- **Best Buy, eBay, and Etsy** frequently **block or degrade automated access** — a material gap for merchants benchmarking against “leading retailer” PDPs with third-party tools.
+- **Keyword pillar scores are universally low** on marketplace PDPs (avg {{ agg.keywords_avg }}/100) because title/H1 alignment with body copy is weak or bot-walled.
+- **Top UPRS failures:** {% for rule in agg.top_uprs_rules limit:3 %}`{{ rule.id }}` ({{ rule.count }} pages){% unless forloop.last %}, {% endunless %}{% endfor %} — missing decision evidence and thin content dominate.
+
+## Full sample table
+
+<div class="pdp-table-wrap">
+  <table class="pdp-table" id="pdp-sample-table">
+    <thead>
+      <tr>
+        <th>Retailer</th>
+        <th>Category</th>
+        <th>Overall</th>
+        <th>AI</th>
+        <th>Schema</th>
+        <th>SEO</th>
+        <th>JSON-LD</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in idx.samples %}
+      <tr data-status="{{ row.status }}">
+        <td>{{ row.retailer }}</td>
+        <td>{{ row.category }}</td>
+        {% if row.status == 'ok' %}
+        <td class="pdp-score {% if row.overall >= 70 %}pdp-score--good{% elsif row.overall >= 45 %}pdp-score--warn{% else %}pdp-score--bad{% endif %}">{{ row.overall }}</td>
+        <td class="pdp-score">{{ row.ai_visibility }}</td>
+        <td class="pdp-score">{{ row.schema }}</td>
+        <td class="pdp-score">{{ row.google_seo }}</td>
+        <td>{% if row.has_product_jsonld %}Yes{% else %}No{% endif %}</td>
+        <td><a href="{{ row.url }}" rel="noopener noreferrer">{{ row.url | truncate: 48 }}</a></td>
+        {% else %}
+        <td colspan="5"><span class="pdp-status-badge">{{ row.error | default: "blocked" }}</span></td>
+        <td><a href="{{ row.url }}" rel="noopener noreferrer">{{ row.url | truncate: 48 }}</a></td>
+        {% endif %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+## Download & cite
+
+<div class="pdp-downloads">
+  <a class="btn btn-primary btn-sm" href="{{ '/assets/data/pdp-index/report.json' | relative_url }}" download>Download JSON</a>
+  <a class="btn btn-ghost btn-sm" href="{{ '/assets/data/pdp-index/report.csv' | relative_url }}" download>Download CSV</a>
+  <a class="btn btn-ghost btn-sm" href="{{ '/pdp-index/methodology/' | relative_url }}">Read methodology</a>
+</div>
+
+**Suggested citation:** Fix Figures LLC. *Utiliy Product Page Index {{ idx.edition }}.* {{ site.url }}/pdp-index/ (accessed {{ 'now' | date: '%Y-%m-%d' }}).
+
+## Audit your PDP
+
+Compare your product page against this benchmark — [run a free Utiliy audit]({{ '/#audit' | relative_url }}) or embed your score with the [readiness badge]({{ '/embed/badge/' | relative_url }}).

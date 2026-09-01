@@ -304,6 +304,7 @@ function renderOptimizerApp(data) {
               <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-new-scan">New scan</button>
               <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-copy-all" ${readyCount(fixes) ? '' : 'disabled'}>Copy all</button>
               <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-rerun">Re-scan</button>
+              <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-embed-badge">Embed badge</button>
               <button type="button" class="lab-btn lab-btn--ghost" id="cockpit-export">Export</button>
             </div>
           </header>
@@ -401,6 +402,20 @@ function bindOptimizerInteractions(root, data) {
     if (url && typeof runAudit === 'function') runAudit(url);
   });
   root.querySelector('#cockpit-export')?.addEventListener('click', () => window.print());
+
+  root.querySelector('#cockpit-embed-badge')?.addEventListener('click', () => {
+    const score = data.scores?.overall ?? data.visibility?.overall ?? 0;
+    const url = data.final_url || data.url || '';
+    const snippet = `<a class="utiliy-badge" data-utiliy-score="${score}" data-utiliy-url="${escapeHtml(url)}" href="https://utiliy.com/?ref=badge" target="_blank" rel="noopener noreferrer">
+  <span class="utiliy-badge-score">${score}</span>
+  <span><span class="utiliy-badge-label">AI shopping readiness</span><br><span class="utiliy-badge-brand">Verified by Utiliy</span></span>
+</a>`;
+    navigator.clipboard.writeText(snippet).then(() => {
+      if (window.LabUI?.toast) window.LabUI.toast('Embed code copied — paste on your storefront', 'success');
+    }).catch(() => {
+      window.open(`/embed/badge/?score=${score}&url=${encodeURIComponent(url)}`, '_blank');
+    });
+  });
 
   root.querySelectorAll('.score-nav-row').forEach((row) => {
     row.addEventListener('click', () => {

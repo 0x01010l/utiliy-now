@@ -1,0 +1,50 @@
+{% assign idx = site.data.pdp_index %}
+{% if idx %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "@id": "{{ site.url }}/pdp-index/#dataset",
+  "name": "Utiliy Product Page Index {{ idx.edition }}",
+  "description": "Anonymized aggregate scores from live product detail page audits across major ecommerce retailers, measured with the Utiliy Product Readiness Specification (UPRS).",
+  "url": "{{ site.url }}/pdp-index/",
+  "identifier": "utiliy-pdp-index-{{ idx.edition | downcase | replace: ' ', '-' }}",
+  "version": "{{ idx.uprs_version }}",
+  "datePublished": "{{ idx.generated_at }}",
+  "dateModified": "{{ idx.generated_at }}",
+  "creator": {
+    "@type": "Organization",
+    "name": "{{ site.company.legal_name }}",
+    "url": "{{ site.url }}"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Utiliy",
+    "url": "{{ site.url }}"
+  },
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "isAccessibleForFree": true,
+  "distribution": [
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "application/json",
+      "contentUrl": "{{ site.url }}/assets/data/pdp-index/report.json"
+    },
+    {
+      "@type": "DataDownload",
+      "encodingFormat": "text/csv",
+      "contentUrl": "{{ site.url }}/assets/data/pdp-index/report.csv"
+    }
+  ],
+  "variableMeasured": [
+    "Overall PDP readiness score",
+    "Google SEO pillar score",
+    "AI visibility pillar score",
+    "Schema pillar score",
+    "Product JSON-LD presence"
+  ],
+  "measurementTechnique": "Automated HTTP fetch and deterministic analysis per UPRS {{ idx.uprs_version }} (no generative scoring in index batch).",
+  "size": "{{ idx.aggregate.sample_size }} audited URLs ({{ idx.samples | size }} attempted)"
+}
+</script>
+{% endif %}

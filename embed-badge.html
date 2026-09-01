@@ -1,0 +1,54 @@
+---
+layout: research
+title: PDP Readiness Badge
+description: Embed your Utiliy AI shopping readiness score on your storefront — real scores only, links back to your audit.
+permalink: /embed/badge/
+eyebrow: Embed
+embed_badge: true
+research_back: /pdp-index/
+research_back_label: "← PDP Index"
+---
+
+After you [run a Utiliy audit]({{ '/#audit' | relative_url }}), embed your verified score on your product page, press kit, or About page. The badge only displays scores you provide — we do not fabricate ratings.
+
+## Preview
+
+<div class="embed-preview" id="embed-preview"></div>
+
+## Generate embed code
+
+<div class="embed-form">
+  <label>
+    Overall score (0–100)
+    <input type="number" id="embed-score" min="0" max="100" value="78" placeholder="78">
+  </label>
+  <label>
+    Product page URL (optional)
+    <input type="url" id="embed-url" placeholder="https://yourstore.com/products/example">
+  </label>
+  <label>
+    Label
+    <input type="text" id="embed-label" value="AI shopping readiness" maxlength="60">
+  </label>
+  <button type="button" class="btn btn-primary btn-sm" id="embed-copy">Copy embed code</button>
+</div>
+
+<textarea class="embed-code" id="embed-code" readonly aria-label="Embed code"></textarea>
+
+## Guidelines
+
+- Only embed scores from a **real Utiliy audit** of the same URL.
+- Minimum recommended score to display: **70/100** (you may show any score honestly).
+- Badge links to Utiliy for verification context — not a Google review snippet.
+- Do not modify the score attribute to misrepresent your audit.
+
+## Script embed (recommended)
+
+```html
+<script src="https://utiliy.com/assets/js/utiliy-badge.js" defer></script>
+<a class="utiliy-badge" data-utiliy-score="78" data-utiliy-url="https://yourstore.com/products/example" href="https://utiliy.com/?ref=badge">
+  ...
+</a>
+```
+
+Or use the generator above for a self-contained HTML snippet.
