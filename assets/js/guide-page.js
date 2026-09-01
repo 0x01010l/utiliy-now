@@ -43,6 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = link.getAttribute('href').slice(1);
       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       history.replaceState(null, '', `#${id}`);
+      if (window.matchMedia('(max-width: 900px)').matches) {
+        document.querySelector('.guide-toc-list')?.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     });
   });
 });

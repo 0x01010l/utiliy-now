@@ -2,6 +2,7 @@
 
 .hero-home {
   position: relative;
+  overflow-x: clip;
   overflow: hidden;
   padding: 4.5rem 0 3.5rem;
   background: var(--bg);
@@ -361,7 +362,7 @@ body.optimizer-active #audit-results { margin-top: .75rem; width: 100%; }
 
 @media (max-width: 900px) {
   .hero-home-grid { grid-template-columns: 1fr; }
-  .hero-visual-wrap { min-height: 280px; margin-top: 1rem; }
+  .hero-visual-wrap { min-height: 280px; margin-top: 1rem; overflow: hidden; }
   .float-card-2 { right: 0; }
   .float-card-3 { left: 0; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
@@ -369,6 +370,21 @@ body.optimizer-active #audit-results { margin-top: .75rem; width: 100%; }
   .steps-grid, .audience-grid { grid-template-columns: 1fr; }
   .report-split { grid-template-columns: 1fr; }
   .cta-inner { flex-direction: column; text-align: center; }
+  .compare-grid, .compare-guides-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero-home { padding: 2rem 0 1rem; }
+  .hero-home h1 { font-size: clamp(1.65rem, 7vw, 2.25rem); }
+  .hero-trust { flex-wrap: wrap; justify-content: center; gap: .35rem; }
+  .stats-grid { grid-template-columns: 1fr; }
+  .hero-lab {
+    min-height: auto;
+    padding: 1.5rem 0 2rem;
+    align-items: flex-start;
+  }
+  .hero-lab-intro h1 { font-size: 1.5rem; }
+  body.lab-page.optimizer-results .hero-lab { padding-top: .35rem; }
 }
 
 /* SEO topics — visible long-tail coverage, stays under ~15% of page copy */

@@ -458,7 +458,8 @@ body.optimizer-results .container {
   align-items: center;
   justify-content: center;
   gap: .35rem;
-  padding: .45rem .75rem;
+  padding: .5rem .8rem;
+  min-height: 38px;
   border-radius: 8px;
   border: 1px solid var(--lab-border);
   background: var(--lab-surface-2);
@@ -821,17 +822,20 @@ body.optimizer-results .scan-pulse::before { border-top-color: var(--lab-accent)
 }
 
 /* Mobile */
-@media (max-width: 960px) {
+@media (max-width: 900px) {
   .lab-shell {
     grid-template-columns: 1fr;
     min-height: auto;
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
   }
   .lab-sidebar {
     max-height: none;
     border-right: none;
     border-bottom: 1px solid var(--lab-border);
   }
-  .lab-queue-wrap { max-height: 220px; }
+  .lab-queue-wrap { max-height: min(40vh, 280px); }
   .lab-pillars-wrap { display: none; }
   .lab-topbar {
     flex-direction: column;
@@ -839,11 +843,48 @@ body.optimizer-results .scan-pulse::before { border-top-color: var(--lab-accent)
     padding: .75rem 1rem;
     gap: .65rem;
   }
-  .lab-topbar-actions { width: 100%; flex-wrap: wrap; }
+  .lab-topbar-actions {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    gap: .5rem;
+    padding-bottom: .2rem;
+    scrollbar-width: none;
+  }
+  .lab-topbar-actions::-webkit-scrollbar { display: none; }
+  .lab-topbar-actions .lab-btn {
+    flex: 0 0 auto;
+    min-height: 40px;
+    padding: .55rem .8rem;
+    font-size: .8rem;
+  }
   .lab-product-title,
   .lab-product-url { max-width: 100%; white-space: normal; }
   .lab-diff { grid-template-columns: 1fr; }
-  .lab-canvas { padding: 1rem; }
+  .lab-canvas { padding: .85rem; }
+  .lab-site-favicon { width: 28px; height: 28px; }
+  .lab-editor-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .65rem;
+  }
+  .lab-editor-footer .mark-done-btn { width: 100%; min-height: 44px; }
+  .optimizer-view-diagnostics .lab-diagnostics {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+  body.optimizer-active .container,
+  body.optimizer-results .container,
+  body.lab-page.optimizer-results .hero-lab .container {
+    width: min(calc(100% - 1rem), 1440px);
+  }
+  .lab-mode-btn { min-height: 40px; }
+  .lab-queue-item { min-height: 44px; }
 }
 
 @media print {

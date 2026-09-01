@@ -23,7 +23,12 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
 body.saas-body {
   margin: 0;
   font-family: var(--font);
@@ -31,7 +36,9 @@ body.saas-body {
   background: var(--bg);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
 }
+body.nav-open { overflow: hidden; }
 .container { width: min(calc(100% - 2.5rem), var(--max)); margin-inline: auto; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
 
@@ -59,7 +66,14 @@ body.saas-body {
 .nav-auth-mobile { display: none; }
 .nav-toggle {
   display: none; background: none; border: none; cursor: pointer;
-  padding: .35rem; margin-left: auto; margin-right: .25rem;
+  min-width: 44px; min-height: 44px;
+  padding: .6rem; margin-left: auto; margin-right: .25rem;
+  border-radius: 8px;
+  -webkit-tap-highlight-color: transparent;
+}
+.nav-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 .nav-toggle-bar {
   display: block; width: 20px; height: 2px; background: var(--ink);
@@ -110,7 +124,7 @@ body.saas-body {
   border: none; cursor: pointer; text-decoration: none; transition: .15s;
   font-size: .875rem; letter-spacing: -.01em;
 }
-.btn-primary { background: var(--accent); color: #fff; padding: .7rem 1.15rem; }
+.btn-primary { background: var(--accent); color: #fff; padding: .7rem 1.15rem; min-height: 44px; }
 .btn-primary:hover { background: var(--accent-hover); color: #fff; }
 .btn-primary:disabled { opacity: .5; cursor: not-allowed; }
 .btn-ghost {
@@ -118,7 +132,7 @@ body.saas-body {
   padding: .55rem .95rem; border: 1px solid var(--line);
 }
 .btn-ghost:hover { background: var(--surface-2); }
-.btn-sm { padding: .45rem .8rem; font-size: .8125rem; }
+.btn-sm { padding: .5rem .85rem; font-size: .8125rem; min-height: 40px; }
 
 /* Hero */
 .hero {
@@ -152,7 +166,7 @@ body.saas-body {
   padding: .4rem;
   box-shadow: var(--shadow);
 }
-.audit-input-row:focus-within { border-color: rgba(0,113,227,.35); box-shadow: 0 0 0 4px rgba(0,113,227,.1); }
+.audit-input-row:focus-within { border-color: rgba(124, 58, 237, .35); box-shadow: 0 0 0 4px rgba(124, 58, 237, .1); }
 .audit-input-row input {
   flex: 1; min-width: 200px; border: none; outline: none;
   padding: .85rem 1rem; font-size: .95rem; background: transparent;
@@ -362,6 +376,7 @@ body.audit-active .hero { padding-bottom: 1.5rem; }
 
 @media (max-width: 900px) {
   .hero-grid, .category-grid, .feature-grid, .pricing-grid, .footer-grid { grid-template-columns: 1fr; }
+  .mock-heat { grid-template-columns: repeat(2, 1fr); }
   .nav-toggle { display: block; }
   .guest-actions { display: none !important; }
   .logged-in-actions { display: none !important; }
@@ -370,14 +385,49 @@ body.audit-active .hero { padding-bottom: 1.5rem; }
     flex-direction: column; align-items: stretch; gap: 0;
     background: var(--bg); border-bottom: 1px solid var(--line);
     padding: .75rem 1.25rem 1rem; box-shadow: var(--shadow);
+    max-height: calc(100dvh - 4.5rem);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
   .nav.is-open { display: flex; }
-  .nav a { padding: .65rem 0; border-bottom: 1px solid var(--line); }
+  .nav a {
+    padding: .85rem 0;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--line);
+  }
   .nav-auth-mobile {
     display: flex; gap: .5rem; padding-top: .75rem;
   }
+  .nav-auth-mobile .btn { flex: 1; }
   .saas-header .container { position: relative; }
   .header-row { flex-wrap: wrap; }
   .header-row .usage-tracker { order: 3; width: 100%; justify-content: center; margin: 0; }
   .header-row .nav { margin-left: 0; margin-right: 0; }
+  .footer-grid a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: .15rem 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .container { width: min(calc(100% - 1.25rem), var(--max)); }
+  .audit-input-row {
+    flex-direction: column;
+    align-items: stretch;
+    padding: .5rem;
+  }
+  .audit-input-row input {
+    min-width: 0;
+    width: 100%;
+    font-size: 16px;
+  }
+  .audit-input-row .btn-primary { width: 100%; }
+  .hero { padding: 3rem 0 2rem; }
+  .page-hero { padding: 2.5rem 0 1.5rem; }
+  .section { padding: 3rem 0; }
+  .saas-footer { padding: 2rem 0 1.5rem; margin-top: 2.5rem; }
 }

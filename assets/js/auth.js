@@ -406,6 +406,37 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.getElementById('nav-toggle');
     const open = nav.classList.toggle('is-open');
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.classList.toggle('nav-open', open);
+    if (!open && !document.querySelector('.modal-overlay:not([hidden])')) {
+      document.body.style.overflow = '';
+    } else if (open) {
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  document.querySelectorAll('#site-nav a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const nav = document.getElementById('site-nav');
+      const btn = document.getElementById('nav-toggle');
+      nav?.classList.remove('is-open');
+      btn?.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('nav-open');
+      if (!document.querySelector('.modal-overlay:not([hidden])')) {
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const nav = document.getElementById('site-nav');
+    if (!nav?.classList.contains('is-open')) return;
+    nav.classList.remove('is-open');
+    document.getElementById('nav-toggle')?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('nav-open');
+    if (!document.querySelector('.modal-overlay:not([hidden])')) {
+      document.body.style.overflow = '';
+    }
   });
 
   document.getElementById('btn-signout')?.addEventListener('click', () => {

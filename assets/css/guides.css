@@ -376,8 +376,41 @@
 
 @media (max-width: 900px) {
   .guide-shell { grid-template-columns: 1fr; }
-  .guide-sidebar { display: none; }
-  .guide-article { padding: 1.5rem 1.35rem; }
+  .guide-sidebar {
+    display: block;
+    position: static;
+    margin-bottom: 1rem;
+  }
+  .guide-toc {
+    position: static;
+    top: auto;
+  }
+  .guide-toc-list {
+    max-height: 11rem;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .guide-toc-list a {
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    padding-top: .45rem;
+    padding-bottom: .45rem;
+  }
+  .guide-article { padding: 1.35rem 1.15rem; }
+  .guide-hero-actions { width: 100%; }
+  .guide-hero-actions .btn { flex: 1; min-width: 0; }
   .guides-featured-row,
   .guides-grid { grid-template-columns: 1fr; }
+  .guide-prose table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+  }
+  .guide-cta-inner {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
 }

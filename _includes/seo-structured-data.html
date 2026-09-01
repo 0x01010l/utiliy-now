@@ -103,7 +103,7 @@
       "@type": "WebApplication",
       "@id": "{{ site.url }}/#application",
       "name": "Utiliy AI Product Page Optimizer",
-      "url": "{{ site.url }}/",
+      "url": "{{ site.url }}/ai-lab/",
       "applicationCategory": "BusinessApplication",
       "applicationSubCategory": "SEO Software",
       "operatingSystem": "Web",
@@ -317,6 +317,18 @@
       ]
     }
     {% endif %}
+    {% unless page.home %}
+    ,{
+      "@type": "WebPage",
+      "@id": "{{ site.url }}{{ page.url }}#webpage",
+      "url": "{{ site.url }}{{ page.url }}",
+      "name": {{ page.title | default: site.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "inLanguage": "en-US"
+    }
+    {% endunless %}
   ]
 }
 </script>

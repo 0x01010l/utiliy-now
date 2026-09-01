@@ -1,0 +1,51 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "{{ site.url }}{{ page.url }}#article",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page.description | default: site.description | jsonify }},
+      "url": "{{ site.url }}{{ page.url }}",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ site.url }}{{ page.url }}#webpage"
+      },
+      "author": { "@id": "{{ site.url }}/#organization" },
+      "publisher": { "@id": "{{ site.url }}/#organization" },
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "about": {
+        "@type": "Thing",
+        "name": "Product page SEO",
+        "sameAs": "https://en.wikipedia.org/wiki/Search_engine_optimization"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "{{ site.url }}{{ page.url }}#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ site.url }}/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guides",
+          "item": "{{ site.url }}/guides/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": {{ page.title | jsonify }},
+          "item": "{{ site.url }}{{ page.url }}"
+        }
+      ]
+    }
+  ]
+}
+</script>

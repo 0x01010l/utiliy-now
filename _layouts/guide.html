@@ -2,7 +2,8 @@
 <html lang="{{ site.lang }}">
 <head>
   {% include head-saas.html %}
-  <link rel="stylesheet" href="{{ '/assets/css/guides.css' | relative_url }}?v=1">
+  <link rel="stylesheet" href="{{ '/assets/css/guides.css' | relative_url }}?v=2">
+  {% include guide-structured-data.html %}
 </head>
 <body class="saas-body guide-page" data-api-url="{{ site.api_url }}">
   {% include header-saas.html %}
@@ -16,7 +17,7 @@
         <h1>{{ page.title }}</h1>
         {% if page.description %}<p class="guide-lead">{{ page.description }}</p>{% endif %}
         <div class="guide-hero-actions">
-          <a class="btn btn-primary btn-sm" href="{{ '/#audit' | relative_url }}">Run free audit</a>
+          <a class="btn btn-primary btn-sm" href="{{ '/ai-lab/' | relative_url }}">Run free audit</a>
           <a class="btn btn-ghost btn-sm" href="{{ '/pricing/' | relative_url }}">Pricing</a>
         </div>
       </div>
