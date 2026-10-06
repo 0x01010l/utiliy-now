@@ -122,7 +122,7 @@ ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006i">
+<link rel="stylesheet" href="/assets/site.css?v=20261006j">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -186,13 +186,15 @@ ${body}
 <aside class="drawer" data-drawer aria-label="Cart">
   <header><h2>Cart</h2><button class="icon-btn" type="button" data-close-cart>Close</button></header>
   <div class="lines" data-cart-lines></div>
-  <div class="total" data-cart-total>$0.00</div>
-  <p class="muted">Shipping to the United States is included.</p>
+  <div class="total" data-cart-total hidden>$0.00</div>
+  <p class="muted" data-cart-go hidden>Shipping to the United States is included.</p>
   <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
-  <a class="btn-line" href="/shop/" data-cart-go hidden>Keep shopping</a>
+  <a class="btn-line" href="/cart/" data-cart-go hidden>Review cart</a>
+  <button class="btn-line" type="button" data-close-cart data-cart-go hidden>Keep shopping</button>
+  <a class="btn-line" href="/shop/" data-cart-empty>Continue shopping</a>
 </aside>
 <script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutEndpoint)};</script>
-<script src="/assets/site.js?v=20261006d" defer></script>
+<script src="/assets/site.js?v=20261006j" defer></script>
 </body>
 </html>`;
 }
@@ -355,7 +357,7 @@ function card(product) {
       <span class="price">${priceRange(product)}</span>
       ${variants.length > 1
         ? `<a class="btn" href="/products/${product.slug}/">Choose</a>`
-        : `<button class="btn" type="button" data-add data-quiet data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
+        : `<button class="btn" type="button" data-add data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
     </div>
   </article>`;
 }

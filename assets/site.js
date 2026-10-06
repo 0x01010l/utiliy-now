@@ -25,10 +25,13 @@
     var ship = "";
     if (item.minDays) {
       var days = item.minDays === item.maxDays ? item.minDays + " days" : item.minDays + "–" + item.maxDays + " days";
-      ship = '<div class="muted">' + (item.shipsFrom === "US" ? "US warehouse" : "Supplier") + " · " + days + "</div>";
+      ship = '<div class="muted">Leaves ' + (item.shipsFrom === "US" ? "a US warehouse" : "the supplier") + " in " + days + "</div>";
     }
-    return '<article class="line"><img alt="" src="' + item.image + '"><div><strong>' + item.name +
-      '</strong><div class="muted">' + item.label + "</div>" + ship + qty +
+    var name = item.slug
+      ? '<a href="/products/' + item.slug + '/"><strong>' + item.name + "</strong></a>"
+      : "<strong>" + item.name + "</strong>";
+    return '<article class="line"><img alt="" src="' + item.image + '"><div>' + name +
+      '<div class="muted">' + item.label + "</div>" + ship + qty +
       '<button type="button" data-remove="' + item.sku + '">Remove</button></div><div>' +
       money(item.price * item.qty) + "</div></article>";
   }
@@ -36,11 +39,16 @@
   function paint() {
     var items = read();
     document.querySelectorAll("[data-cart-count]").forEach(function (el) {
-      el.textContent = String(count(items));
+      var n = count(items);
+      el.textContent = String(n);
+      el.hidden = n === 0;
     });
     var lines = document.querySelector("[data-cart-lines]");
     if (lines) lines.innerHTML = items.length ? items.map(function (item) { return line(item, false); }).join("") : '<p class="empty">Your cart is empty.</p>';
-    document.querySelectorAll("[data-cart-total]").forEach(function (el) { el.textContent = money(total(items)); });
+    document.querySelectorAll("[data-cart-total]").forEach(function (el) {
+      el.textContent = money(total(items));
+      el.hidden = !items.length;
+    });
     var page = document.querySelector("[data-cart-page]");
     if (page) {
       page.innerHTML = items.length
@@ -50,13 +58,13 @@
     var summary = document.querySelector("[data-summary]");
     if (summary) {
       summary.innerHTML = items.length
-        ? items.map(function (item) {
-          return "<p><strong>" + item.name + "</strong><br><span class=\"muted\">" + item.label + " × " + item.qty + " · " + money(item.price * item.qty) + "</span></p>";
-        }).join("") + "<p>Shipping <strong>$0.00</strong></p><p class=\"total\">" + money(total(items)) + "</p>"
-        : '<p class="empty">Nothing to pay yet.</p>';
+        ? '<p class="total">' + money(total(items)) + "</p>"
+        : '<p class="empty">Nothing to pay yet. <a href="/shop/">Continue shopping</a>.</p>';
     }
     document.querySelectorAll("[data-cart-go]").forEach(function (el) { el.hidden = !items.length; });
+    document.querySelectorAll("[data-cart-empty]").forEach(function (el) { el.hidden = !!items.length; });
     document.querySelectorAll("[data-pay-all]").forEach(function (el) {
+      el.hidden = !items.length;
       el.disabled = !items.length;
       el.textContent = items.length ? "Pay " + money(total(items)) + " with Stripe" : "Pay with Stripe";
     });
@@ -98,6 +106,7 @@
     if (event.target.closest("[data-close-cart]")) { closeDrawer(); return; }
     if (event.target.closest("[data-menu]")) {
       document.querySelector(".site-header")?.classList.toggle("nav-open");
+      pinHeader();
       return;
     }
     var remove = event.target.closest("[data-remove]");
@@ -157,7 +166,12 @@
     history.replaceState(null, "", url);
   });
 
+  function onCatalog() {
+    var path = location.pathname;
+    return path === "/" || path === "/shop/" || path.endsWith("/shop/index.html");
+  }
   function filterCards(q) {
+    if (!onCatalog()) return;
     var shown = 0;
     document.querySelectorAll("[data-product-card]").forEach(function (card) {
       var hide = q.length > 0 && card.getAttribute("data-product-card").indexOf(q) === -1;
@@ -167,13 +181,19 @@
     var empty = document.querySelector("[data-search-empty]");
     if (empty) empty.hidden = q.length === 0 || shown > 0;
   }
+  function pinHeader() {
+    var header = document.querySelector(".site-header");
+    if (header) document.documentElement.style.setProperty("--header-h", header.offsetHeight + "px");
+  }
   var search = document.querySelector("[data-search]");
-  if (search) search.addEventListener("input", function () { filterCards(search.value.trim().toLowerCase()); });
+  if (search && onCatalog()) search.addEventListener("input", function () { filterCards(search.value.trim().toLowerCase()); });
   var params = new URLSearchParams(location.search);
-  if (params.get("q") && search) {
+  if (params.get("q") && search && onCatalog()) {
     search.value = params.get("q");
     filterCards(params.get("q").trim().toLowerCase());
   }
+  pinHeader();
+  window.addEventListener("resize", pinHeader);
   if (params.get("sku")) {
     var preset = document.querySelector('input[data-sku="' + CSS.escape(params.get("sku")) + '"]');
     if (preset) preset.checked = true;
