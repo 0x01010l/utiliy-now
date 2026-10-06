@@ -122,7 +122,7 @@ ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006g">
+<link rel="stylesheet" href="/assets/site.css?v=20261006h">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -185,7 +185,9 @@ ${body}
   <header><h2>Cart</h2><button class="icon-btn" type="button" data-close-cart>Close</button></header>
   <div class="lines" data-cart-lines></div>
   <div class="total" data-cart-total>$0.00</div>
+  <p class="muted">Shipping to the United States is included.</p>
   <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
+  <a class="btn-line" href="/shop/" data-cart-go hidden>Keep shopping</a>
 </aside>
 <script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutEndpoint)};</script>
 <script src="/assets/site.js?v=20261006d" defer></script>
@@ -509,61 +511,47 @@ function rangeBoard(product, selectedSku) {
     const on = variant.sku === selectedSku;
     return `<a class="range${on ? " is-on" : ""}" href="${variantPath(product, variant.sku)}"><span style="width:${width}%"><b>${esc(variant.label)}</b></span><em>${money(variant.price)}</em></a>`;
   }).join("");
-  return `<section class="ranges" id="sizes"><div class="wrap"><p class="kicker">${esc(name)}</p><h2>Pick the measurement</h2><div class="range-list">${rows}</div></div></section>`;
+  return `<section class="ranges" id="sizes"><div class="wrap"><p class="kicker">Options</p><h2>${esc(name)}</h2><div class="range-list">${rows}</div></div></section>`;
+}
+
+function displayMeasure(headline) {
+  const measured = /\d/.test(headline);
+  const html = esc(headline).replace(/ (in|mm|cm|kg|lb)$/i, " <span>$1</span>");
+  return `<p class="story-num${measured ? "" : " story-sentence"}">${html}</p>`;
 }
 
 function storyBlock(product, specs) {
-  const long = product.headline.length > 18 ? " story-num-long" : "";
-  const chips = specs.filter((spec) => spec.deciding).slice(0, 3).map((spec) => `<li><b>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</b><span>${esc(spec.name)}</span></li>`).join("");
-  const beats = product.faqs.map((faq, index) => {
-    const file = index === 0 ? "place.jpg" : index === 1 ? "detail.jpg" : "";
-    const figure = file
-      ? `<figure><img src="/assets/explainers/${product.slug}/${file}" alt="${esc(product.name + (index === 0 ? ", shown in place" : ", detail"))}" width="1024" height="1024"><figcaption>Scene from the product photo. Use the measurements written on this page.</figcaption></figure>`
-      : "";
-    return `<article class="beat">${figure}<div class="beat-body"><p class="beat-index">0${index + 1}</p><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></div></article>`;
-  }).join("");
-  const tiles = specs.map((spec, index) => {
-    const lead = spec.deciding && specs.findIndex((item) => item.deciding) === index;
-    return `<article class="tile${lead ? " tile-lead" : ""}"><span>${esc(spec.name)}</span><strong>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</strong></article>`;
-  }).join("");
+  const note = "Illustration based on the product photo. Use the measurements written on this page.";
   return `<section class="story" id="measure">
     <div class="wrap story-grid">
       <div>
         <p class="kicker">The measurement</p>
-        <p class="story-num${long}">${esc(product.headline).replace(/ in$/i, " <span>in</span>")}</p>
+        ${displayMeasure(product.headline)}
         <p class="story-fit">${esc(product.fit)}</p>
       </div>
       <figure class="story-still">
         <img src="/assets/explainers/${product.slug}/place.jpg" alt="${esc(product.name + ", shown in place")}" width="1024" height="1024">
-        <ul class="chips">${chips}</ul>
+        <figcaption>${note}</figcaption>
       </figure>
     </div>
   </section>
   ${plateBlock(product, specs)}
-  <section class="section" id="explained">
-    <div class="wrap">
-      <p class="kicker">In the words on this page</p>
-      <h2>What decides the fit</h2>
-      <div class="beats">${beats}</div>
-    </div>
-  </section>
-  <section class="section" id="specs">
-    <div class="wrap">
-      <p class="kicker">Published specs</p>
-      <h2>Every number we have</h2>
-      <div class="bento">${tiles}</div>
+  <section class="section">
+    <div class="wrap detail-row">
+      <img src="/assets/explainers/${product.slug}/detail.jpg" alt="${esc(product.name + ", detail")}" width="1024" height="1024">
+      <p>${note}</p>
     </div>
   </section>`;
 }
 
 function plateBlock(product, specs) {
-  const rows = specs.map((spec) => `<li><span>${esc(spec.name)}</span><strong>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</strong></li>`).join("");
+  const deciding = specs.filter((spec) => spec.deciding);
+  const rows = (deciding.length ? deciding : specs).map((spec) => `<li><span>${esc(spec.name)}</span><strong>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</strong></li>`).join("");
   return `<section class="plate-wrap" id="fit"><div class="wrap plate">
     <div class="plate-art">${diagram(plates[product.slug], specs)}</div>
     <div>
-      <p class="kicker">How to read it</p>
-      <h2>The fit</h2>
-      <p>${esc(product.summary)}</p>
+      <p class="kicker">The fit</p>
+      <h2>${esc(product.headline)}</h2>
       <ul class="plate-list">${rows}</ul>
     </div>
   </div></section>`;
@@ -576,8 +564,7 @@ function productPage(product, selectedSku) {
   const canonicalPath = many && selectedSku ? variantPath(product, selected.sku) : `/products/${product.slug}/`;
   const shared = specsOf(product, selected).sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
   const specRows = shared.map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
-  const sizePills = many ? `<div><span class="size-label">Choose size</span><div class="size-row">${variants.map((variant) => `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}" href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a>`).join("")}</div></div><hr class="hair">` : "";
-  const compare = many ? `<section><h2>Sizes</h2><table class="compare"><thead><tr><th>Option</th><th>Measurement</th><th>Price</th></tr></thead><tbody>${variants.map((variant) => `<tr class="${variant.sku === selected.sku ? "deciding" : ""}"><td><a href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a></td><td>${esc(sizeOf(variant))}</td><td>${money(variant.price)}</td></tr>`).join("")}</tbody></table></section>` : "";
+  const sizePills = many ? `<div><span class="size-label">Choose size</span><div class="size-row">${variants.map((variant) => `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}" href="${variantPath(product, variant.sku)}"><b>${esc(variant.label)}</b><span class="size-price">${money(variant.price)}</span></a>`).join("")}</div><p class="size-help">This size: ${esc(sizeOf(selected))}. <a href="#sizes">Compare sizes</a></p></div>` : "";
   const photos = product.images.filter((src) => !src.includes("57_147cecee"));
   const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
   const gallery = photos.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
@@ -594,53 +581,53 @@ function productPage(product, selectedSku) {
     </div>
     <div class="buybox">
       <h1>${esc(product.name)}</h1>
-      <p class="figure">${esc(product.headline)} · ${esc(product.fit)}</p>
+      <p class="buy-measure">${esc(product.headline)}</p>
       <p class="price-lg" data-live-price>${money(selected.price)}</p>
-      <p>${esc(product.summary)}</p>
-      <hr class="hair">
+      <p class="buy-fit">${esc(product.fit)}</p>
       ${sizePills}
-      <form>
-        <div class="buy-row">
-          <div class="qty">
-            <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
-            <input data-qty value="1" inputmode="numeric" aria-label="Quantity" readonly>
-            <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
-          </div>
-          <button class="btn" type="button" data-add ${buyAttrs}>Add to cart</button>
+      <div class="buy-actions">
+        <div class="qty">
+          <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
+          <input data-qty value="1" inputmode="numeric" aria-label="Quantity" readonly>
+          <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
         </div>
-      </form>
+        <button class="btn" type="button" data-add ${buyAttrs}>Add to cart</button>
+        <button class="btn-line" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
+      </div>
       <p class="ship-note">${esc(shipText(product))} <a href="/shipping/">Shipping details</a>.</p>
-      <button class="btn-line" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
+      <p class="reassure"><a href="/returns/">30-day returns</a>${related ? ` · <a href="#also">More in ${esc(product.category)}</a>` : ""}</p>
+      <p>${esc(product.summary)}</p>
     </div>
   </div>
   <nav class="pdp-nav" aria-label="On this page">
     <div class="wrap">
       <a href="#measure">Measurement</a>
       <a href="#fit">Fit</a>
-      <a href="#explained">Explainers</a>
       <a href="#specs">Specs</a>
       ${many ? `<a href="#sizes">Sizes</a>` : ""}
       <a href="#answers">Answers</a>
+      ${related ? `<a href="#also">More</a>` : ""}
     </div>
   </nav>
   ${storyBlock(product, shared)}
   ${rangeBoard(product, selected.sku)}
   <div class="wrap landing">
-    <section><h2>Measurements</h2><table>${specRows}</table></section>
-    ${compare}
+    <section id="specs"><h2>Measurements</h2><table>${specRows}</table></section>
   </div>
   <div class="wrap landing pdp-tail">
     ${gallery ? `<section><h2>Product photos</h2><div class="photo-row">${gallery}</div></section>` : ""}
     <section><h2>Shipping and returns</h2><p>${esc(shipText(product))}</p><p>${esc(returnsSentence)}</p></section>
     <section id="answers"><h2>Fitment answers</h2>${faqs}</section>
   </div>
-  <div class="wrap buybar">
-    <div><strong>${esc(product.name)}</strong><span>${esc(product.headline)}</span></div>
-    <span class="price">${money(selected.price)}</span>
-    <button class="btn" type="button" data-add data-quiet ${buyAttrs}>Add</button>
+  <div class="buybar">
+    <div class="buybar-inner">
+      <div class="buybar-copy"><strong>${esc(product.name)}</strong><span>${esc(product.headline)}${many ? ` · ${esc(selected.label)}` : ""}</span></div>
+      <span class="price">${money(selected.price)}</span>
+      <button class="btn" type="button" data-add ${buyAttrs}>Add</button>
+    </div>
   </div>
 </main>
-${related ? `<section class="section pdp-tail"><div class="wrap"><div class="section-head"><h2>More in ${esc(product.category)}</h2><a href="/category/${catSlug(product.category)}/">View category</a></div><div class="grid">${related}</div></div></section>` : ""}`;
+${related ? `<section class="section pdp-tail" id="also"><div class="wrap"><div class="section-head"><h2>More in ${esc(product.category)}</h2><a href="/category/${catSlug(product.category)}/">View category</a></div><div class="grid">${related}</div></div></section>` : ""}`;
   return shell({
     title: `${many && selectedSku ? `${product.name}, ${selected.label}` : product.name} — ${product.headline} · Utiliy`,
     description,
