@@ -122,7 +122,7 @@ ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006h">
+<link rel="stylesheet" href="/assets/site.css?v=20261006i">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -135,7 +135,6 @@ ${json || ""}
     <a class="logo" href="/">Utiliy</a>
     <nav class="nav-row" aria-label="Primary">
       <a href="/shop/"${current === "/shop/" ? ' aria-current="page"' : ""}>Shop</a>
-      ${catNav}
       <a href="/fitment/">Fitment</a>
     </nav>
     <form class="search" action="/shop/" method="get" role="search">
@@ -144,6 +143,9 @@ ${json || ""}
     <div class="header-actions">
       <button class="icon-btn" type="button" data-open-cart>Cart <span class="cart-count" data-cart-count>0</span></button>
     </div>
+  </div>
+  <div class="wrap rooms-wrap">
+    <nav class="rooms" aria-label="Rooms">${catNav}</nav>
   </div>
 </header>
 ${body}
@@ -641,12 +643,7 @@ ${related ? `<section class="section pdp-tail" id="also"><div class="wrap"><div 
 
 const products = catalog.products;
 
-const hero = products[0];
-const styleCards = categories.map((cat) => {
-  const sample = products.find((product) => catSlug(product.category) === cat.slug);
-  const image = sample ? esc(sample.image) : "";
-  return `<a class="style-card" href="/category/${cat.slug}/" style="background-image:url('${image}')"><span>${esc(cat.name)}</span></a>`;
-}).join("");
+const styleCards = categories.map((cat) => `<a class="style-card" href="/category/${cat.slug}/"><img src="/assets/covers/${cat.slug}.jpg" alt=""><span>${esc(cat.name)}</span></a>`).join("");
 const homeBody = `<main id="main">
   <section class="hero">
     <div class="hero-grid">
@@ -662,33 +659,35 @@ const homeBody = `<main id="main">
           <div><strong>30</strong><span>Day returns</span></div>
         </div>
       </div>
-      <a class="hero-visual" href="/products/${hero.slug}/"><img src="${esc(hero.image)}" alt="${esc(hero.name)}" width="640" height="640" referrerpolicy="no-referrer"></a>
+      <a class="hero-visual" href="/shop/"><img src="/assets/covers/home.jpg" alt="Black and white photograph of a fitted corner shelf" width="1536" height="1024"></a>
     </div>
   </section>
   <section class="section"><div class="wrap">
-    <h2 class="section-title">New arrivals</h2>
-    <div class="grid">${products.slice(0, 4).map(card).join("")}</div>
-  </div></section>
-  <hr class="rule wrap">
-  <section class="section"><div class="wrap">
-    <h2 class="section-title">Top picks</h2>
-    <div class="grid">${products.slice(4).map(card).join("")}</div>
+    <h2 class="section-title">Ten tools</h2>
+    <div class="grid">${products.map(card).join("")}</div>
     <p class="empty" data-search-empty hidden>No product matches that search.</p>
-    <div class="center-link"><a class="btn-line" href="/shop/">View All</a></div>
   </div></section>
   <section class="section"><div class="wrap">
     <div class="style-panel">
-      <h2 class="section-title">Browse by room</h2>
+      <h2 class="section-title">Rooms</h2>
       <div class="style-grid">${styleCards}</div>
     </div>
   </div></section>
 </main>`;
 
-const shopBody = `<main id="main" class="section"><div class="wrap">
-  <h1 class="section-title">Shop</h1>
-  <div class="grid">${products.map(card).join("")}</div>
-  <p class="empty" data-search-empty hidden>No product matches that search.</p>
-</div></main>`;
+const shopBody = `<main id="main">
+  <section class="page-cover">
+    <img src="/assets/covers/home.jpg" alt="">
+    <div class="wrap">
+      <p class="kicker">Shop</p>
+      <h1 class="cover-title">Ten tools, sold by the measurement.</h1>
+    </div>
+  </section>
+  <section class="section"><div class="wrap">
+    <div class="grid">${products.map(card).join("")}</div>
+    <p class="empty" data-search-empty hidden>No product matches that search.</p>
+  </div></section>
+</main>`;
 
 const fitmentItems = products.flatMap((product) => product.faqs.map((faq) => ({ ...faq, slug: product.slug, name: product.name, headline: product.headline })));
 const fitmentBody = `<main id="main" class="section"><div class="wrap prose">
@@ -753,15 +752,22 @@ const cart = shell({
   description: "Review every item, then pay for the whole cart in one Stripe checkout.",
   canonical: `${site}/cart/`,
   robots: "noindex,follow",
-  body: `<main id="main" class="section"><div class="wrap layout">
-    <div><h1 class="page-title">Cart</h1><div data-cart-page></div></div>
-    <aside class="summary">
-      <h2>Summary</h2>
-      <p class="total" data-cart-total>$0.00</p>
-      <p class="muted">Shipping to the US is included.</p>
-      <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
-    </aside>
-  </div></main>`,
+  body: `<main id="main">
+    <section class="page-cover">
+      <img src="/assets/covers/checkout.jpg" alt="">
+      <div class="wrap"><h1 class="page-title">Cart</h1><p>Review every item, then pay once.</p></div>
+    </section>
+    <section class="section"><div class="wrap layout">
+      <div data-cart-page></div>
+      <aside class="summary">
+        <h2>Summary</h2>
+        <p class="total" data-cart-total>$0.00</p>
+        <p class="muted">Shipping to the United States is included.</p>
+        <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
+        <p class="reassure"><a href="/shop/">Keep shopping</a></p>
+      </aside>
+    </div></section>
+  </main>`,
   current: ""
 });
 const checkout = shell({
@@ -769,16 +775,23 @@ const checkout = shell({
   description: "Pay for every item in the Utiliy cart with one Stripe checkout. Shipping to the United States is included.",
   canonical: `${site}/checkout/`,
   robots: "noindex,follow",
-  body: `<main id="main" class="section"><div class="wrap layout">
-    <div><h1 class="page-title">Checkout</h1><div data-cart-page></div></div>
-    <aside class="summary">
-      <h2>Order summary</h2>
-      <div data-summary></div>
-      <button class="btn" type="button" data-pay-all>Pay with Stripe</button>
-      <p class="muted">One payment covers every product and quantity in this cart.</p>
-      <p class="error" data-pay-error hidden></p>
-    </aside>
-  </div></main>`,
+  body: `<main id="main">
+    <section class="page-cover">
+      <img src="/assets/covers/checkout.jpg" alt="">
+      <div class="wrap"><h1 class="page-title">Checkout</h1><p>One payment for the whole cart. Shipping to the United States is included.</p></div>
+    </section>
+    <section class="section"><div class="wrap layout">
+      <div data-cart-page></div>
+      <aside class="summary">
+        <h2>Order summary</h2>
+        <div data-summary></div>
+        <button class="btn" type="button" data-pay-all>Pay with Stripe</button>
+        <p class="muted">One payment covers every product and quantity in this cart.</p>
+        <p class="reassure"><a href="/returns/">30-day returns</a></p>
+        <p class="error" data-pay-error hidden></p>
+      </aside>
+    </div></section>
+  </main>`,
   current: ""
 });
 const thanks = shell({
@@ -1049,12 +1062,19 @@ for (const cat of categories) {
       }
     }),
     body: `${crumbs([["Home", "/"], [cat.name, `/category/${cat.slug}/`]])}
-<main id="main" class="section"><div class="wrap">
-  <p class="kicker">Category</p>
-  <div class="section-head"><h1 class="page-title">${esc(cat.name)}</h1></div>
-  <p class="lede" style="color:var(--muted)">${esc(cat.blurb)}</p>
-  <div class="grid">${items.map(card).join("") || '<p class="empty">Nothing in this category yet.</p>'}</div>
-</div></main>`
+<main id="main">
+  <section class="page-cover">
+    <img src="/assets/covers/${cat.slug}.jpg" alt="">
+    <div class="wrap">
+      <p class="kicker">Room</p>
+      <h1 class="page-title">${esc(cat.name)}</h1>
+      <p>${esc(cat.blurb)}</p>
+    </div>
+  </section>
+  <section class="section"><div class="wrap">
+    <div class="grid">${items.map(card).join("") || '<p class="empty">Nothing in this category yet.</p>'}</div>
+  </div></section>
+</main>`
   }));
 }
 const privacy = textPage(
@@ -1101,6 +1121,7 @@ for (const file of ["site.css", "site.js", "favicon.svg"]) {
   await cp(path.join(root, "assets", file), path.join(dist, "assets", file));
 }
 await cp(path.join(root, "assets/explainers"), path.join(dist, "assets/explainers"), { recursive: true }).catch(() => {});
+await cp(path.join(root, "assets/covers"), path.join(dist, "assets/covers"), { recursive: true }).catch(() => {});
 await writeFile(path.join(dist, "CNAME"), "utiliy.com\n");
 await writeFile(path.join(dist, "robots.txt"), robots);
 await writeFile(path.join(dist, "sitemap.xml"), sitemap);

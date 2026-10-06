@@ -151,10 +151,58 @@ button.menu-btn { display: none; }
   padding: 32px 16px;
 }
 .hero-visual img {
-  width: min(520px, 100%);
-  max-height: 560px;
-  object-fit: contain;
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 28px;
+  filter: grayscale(1) contrast(1.05);
 }
+.rooms-wrap { padding-bottom: 14px; }
+.rooms { display: flex; gap: 4px; overflow: auto; }
+.rooms a {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  color: rgba(0, 0, 0, 0.62);
+  white-space: nowrap;
+}
+.rooms a:hover, .rooms a[aria-current="page"] { background: var(--panel); color: #000; }
+.page-cover {
+  position: relative;
+  min-height: 320px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #111;
+  color: #fff;
+}
+.page-cover img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
+}
+.page-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.72));
+}
+.page-cover .wrap { position: relative; z-index: 1; padding: 48px 0; }
+.page-cover .kicker, .page-cover h1, .page-cover p { color: #fff; }
+.cover-title {
+  font-family: var(--display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  font-size: clamp(40px, 5vw, 64px);
+  margin: 0;
+  text-transform: none;
+}
+.page-cover p { max-width: 36ch; margin: 8px 0 0; }
+.page-cover .page-title { margin: 0; }
 
 .section { padding: 64px 0; }
 .section-title {
@@ -188,7 +236,13 @@ button.menu-btn { display: none; }
 }
 .card:hover img { transform: scale(1.08); }
 .card h3 { margin: 0; font-size: 20px; font-weight: 700; letter-spacing: 0; text-transform: none; font-family: var(--sans); }
-.card .spec { color: var(--muted); font-size: 14px; margin: 4px 0 8px; }
+.card .spec {
+  font-family: var(--display);
+  color: #000;
+  font-size: 18px;
+  letter-spacing: -0.03em;
+  margin: 4px 0 8px;
+}
 .card .price { font-weight: 700; font-size: 24px; letter-spacing: -0.03em; }
 .card-row { display: flex; align-items: center; justify-content: space-between; width: 100%; gap: 8px; }
 .card .btn, .card .btn-line { padding: 10px 18px; font-size: 14px; }
@@ -205,24 +259,35 @@ button.menu-btn { display: none; }
   gap: 20px;
 }
 .style-card {
-  border-radius: 20px;
-  background: #fff center/cover no-repeat;
-  display: flex;
-  align-items: flex-start;
-  padding: 24px;
-  min-height: 190px;
   position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-height: 280px;
+  border-radius: 20px;
   overflow: hidden;
+  padding: 20px;
+  background: #111;
+}
+.style-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.05);
 }
 .style-card::before {
   content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,255,255,0.15) 55%);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 42%, rgba(0, 0, 0, 0.72));
 }
 .style-card span {
   position: relative;
+  z-index: 1;
+  color: #fff;
   font-family: var(--display);
-  font-size: 36px;
+  font-size: 32px;
   text-transform: uppercase;
   letter-spacing: -0.03em;
 }
@@ -311,7 +376,7 @@ hr.hair { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
   gap: 24px;
   align-items: center;
 }
-.detail-row img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 20px; background: var(--mat); }
+.detail-row img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 20px; background: var(--mat); filter: grayscale(1) contrast(1.05); }
 .detail-row p { color: var(--muted); margin: 0; max-width: 42ch; }
 .buy-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .buy-row .btn { flex: 1; min-width: 180px; }
@@ -420,7 +485,7 @@ tr.deciding th, tr.deciding td { font-weight: 700; color: #000; }
 .story-sentence { font-size: clamp(36px, 4vw, 52px); }
 .story-fit { font-size: 18px; color: var(--muted); margin: 0; max-width: 28ch; }
 .story-still { margin: 0; }
-.story-still img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 28px; background: #fff; }
+.story-still img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 28px; background: #fff; filter: grayscale(1) contrast(1.05); }
 .story-still figcaption { margin-top: 10px; color: var(--muted); font-size: 13px; }
 .chips {
   position: absolute;
