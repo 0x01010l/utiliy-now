@@ -117,12 +117,8 @@ function shell({ title, description, canonical, json, body, current, image, robo
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#ffffff">
 ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006j">
+<link rel="stylesheet" href="/assets/site.css?v=20261006k">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -647,33 +643,22 @@ const products = catalog.products;
 
 const styleCards = categories.map((cat) => `<a class="style-card" href="/category/${cat.slug}/"><img src="/assets/covers/${cat.slug}.jpg" alt=""><span>${esc(cat.name)}</span></a>`).join("");
 const homeBody = `<main id="main">
-  <section class="hero">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <h1>Find the size that actually fits.</h1>
-        <p class="lede">Every product leads with the span, gap, load, corner, or leg that decides the fit. If the maker did not publish a number, the page says so.</p>
-        <div class="hero-actions"><a class="btn" href="/shop/">Shop Now</a></div>
-        <div class="stats">
-          <div><strong>10</strong><span>Fitment tools</span></div>
-          <i></i>
-          <div><strong>$0</strong><span>US shipping</span></div>
-          <i></i>
-          <div><strong>30</strong><span>Day returns</span></div>
-        </div>
-      </div>
-      <a class="hero-visual" href="/shop/"><img src="/assets/covers/home.jpg" alt="Black and white photograph of a fitted corner shelf" width="1536" height="1024"></a>
+  <section class="hero-stage">
+    <img src="/assets/covers/home.jpg" alt="Black and white photograph of a fitted corner shelf" width="1536" height="1024">
+    <div class="wrap">
+      <h1>Find the size that actually fits.</h1>
+      <p>Every product leads with the span, gap, load, corner, or leg that decides the fit. If the maker did not publish a number, the page says so.</p>
+      <a class="btn" href="/shop/">Shop now</a>
     </div>
   </section>
+  <section class="section"><div class="wrap">
+    <h2 class="section-title">Rooms</h2>
+    <div class="style-grid">${styleCards}</div>
+  </div></section>
   <section class="section"><div class="wrap">
     <h2 class="section-title">Ten tools</h2>
     <div class="grid">${products.map(card).join("")}</div>
     <p class="empty" data-search-empty hidden>No product matches that search.</p>
-  </div></section>
-  <section class="section"><div class="wrap">
-    <div class="style-panel">
-      <h2 class="section-title">Rooms</h2>
-      <div class="style-grid">${styleCards}</div>
-    </div>
   </div></section>
 </main>`;
 

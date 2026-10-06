@@ -14,14 +14,14 @@ if (!endpoint || !key) {
 const mono = " Strictly black and white. Grayscale only. No color, no tint, no warmth. White, black, and gray only. Editorial photograph, soft gray light. No text, no letters, no numbers, no logos, no watermark.";
 
 const covers = [
-  ["home.jpg", "1536x1024", "A quiet white-tile shower corner with a stainless wire shelf, lots of pale gray space, premium home catalog."],
-  ["bathroom.jpg", "1024x1024", "A stainless corner shelf on smooth white tile, seen from the side, empty of brands."],
-  ["kitchen.jpg", "1024x1024", "An open white kitchen drawer with simple bamboo dividers, shot from above."],
-  ["closet.jpg", "1024x1024", "A slim metal closet rod between two pale walls, a few light garments hanging."],
-  ["furniture.jpg", "1024x1024", "The bottom of a wooden chair leg standing on a hardwood floor."],
-  ["cable.jpg", "1024x1024", "A slim cord cover running along a white baseboard on a pale floor."],
-  ["door.jpg", "1024x1024", "The bottom of a white door with a dark brush sweep meeting a light carpet."],
-  ["checkout.jpg", "1536x1024", "A plain sealed parcel on a white table, no labels, no tape printing, quiet studio light."]
+  ["home.jpg", "1536x1024", "Black and white architectural photograph, camera low and close, of a stainless corner shower shelf on glossy white subway tile. Hard window light, long sharp shadows, the wire grid filling most of the frame, empty shelves, no labeled bottles, gallery print, tack-sharp metal."],
+  ["bathroom.jpg", "1024x1024", "Black and white close photograph of a two-tier stainless corner wire shelf on white tile, adhesive mounts visible, graphic geometry, hard sidelight, no product labels, museum catalog quality."],
+  ["kitchen.jpg", "1024x1024", "Black and white overhead photograph of an open white kitchen drawer with exactly four bamboo dividers and simple utensils, strong graphic contrast, crisp edges, still-life lighting."],
+  ["closet.jpg", "1024x1024", "Black and white photograph of one slim metal closet rod in a tall pale closet, a single white shirt on a hanger, vast empty wall, precise and quiet."],
+  ["furniture.jpg", "1024x1024", "Black and white macro photograph of a wooden chair leg on a clear square slider over hardwood, raking light, rich grain, sharp focus, no logos."],
+  ["cable.jpg", "1024x1024", "Black and white architectural photograph of a slim white cable cover running along a white baseboard, one clean leading line through a bright empty room."],
+  ["door.jpg", "1024x1024", "Black and white close photograph of the bottom of a white door, a dark brush sweep touching a pale floor, graphic horizontal bands, sharp focus."],
+  ["checkout.jpg", "1536x1024", "Black and white still life of a matte parcel on white stone, hard side light, one sculptural shadow, no tape printing, no labels, gallery lighting."]
 ];
 
 async function post(url, options) {
@@ -57,7 +57,7 @@ async function cover(file, size, prompt) {
       prompt: prompt + mono,
       n: 1,
       size,
-      quality: "medium",
+      quality: "high",
       output_format: "jpeg",
       output_compression: 75
     })
