@@ -1,0 +1,8 @@
+name = "utiliy-checkout"
+main = "src/index.js"
+compatibility_date = "2026-10-06"
+workers_dev = true
+
+[[kv_namespaces]]
+binding = "TOKENS"
+id = "d9715dfe1a474c82b14fb5907e18a931"

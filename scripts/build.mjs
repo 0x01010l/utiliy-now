@@ -10,6 +10,21 @@ const links = await readFile(path.join(root, "catalog/stripe-links.json"), "utf8
   .catch(() => ({}));
 
 const site = catalog.merchant.url;
+const checkoutEndpoint = await readFile(path.join(root, "catalog/checkout.json"), "utf8")
+  .then((text) => JSON.parse(text).url || "")
+  .catch(() => "");
+
+const categories = [
+  { slug: "bathroom", name: "Bathroom", blurb: "Corner shelves with a published size, angle, and load." },
+  { slug: "kitchen", name: "Kitchen", blurb: "Drawer widths and under-sink racks." },
+  { slug: "closet", name: "Closet", blurb: "Rod spans, tension loads, and closet lights." },
+  { slug: "furniture", name: "Furniture", blurb: "Hardwood sliders and screw-in anchors." },
+  { slug: "cable", name: "Cable", blurb: "Raceways with an inner channel you can match." },
+  { slug: "door", name: "Door", blurb: "Sweeps sized to the gap under the door." }
+];
+function catSlug(name) {
+  return String(name).toLowerCase();
+}
 
 function money(cents) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -60,12 +75,9 @@ function jsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
-function shell({ title, description, canonical, json, body, current }) {
-  const nav = [
-    ["Shop", "/shop/"],
-    ["Fitment", "/fitment/"],
-    ["Shipping", "/shipping/"]
-  ].map(([label, href]) => `<a href="${href}"${current === href ? ' aria-current="page"' : ""}>${label}</a>`).join("");
+function shell({ title, description, canonical, json, body, current, robots = "index,follow,max-image-preview:large,max-snippet:-1" }) {
+  const catNav = categories.map((cat) => `<a href="/category/${cat.slug}/"${current === `/category/${cat.slug}/` ? ' aria-current="page"' : ""}>${esc(cat.name)}</a>`).join("");
+  const footerCats = categories.map((cat) => `<li><a href="/category/${cat.slug}/">${esc(cat.name)}</a></li>`).join("");
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +86,7 @@ function shell({ title, description, canonical, json, body, current }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${canonical}">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta name="robots" content="${robots}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
@@ -82,10 +94,10 @@ function shell({ title, description, canonical, json, body, current }) {
 <meta property="og:site_name" content="Utiliy">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#f3efe7">
+<meta name="theme-color" content="#0b1730">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,560;1,9..144,560&family=IBM+Plex+Mono:wght@400;500&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css">
 ${jsonLd(orgGraph())}
@@ -93,34 +105,58 @@ ${json || ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="announce">Shipping to the United States is included · one Stripe checkout for the whole cart</div>
 <header class="site-header">
-  <div class="wrap">
-    <a class="mark" href="/">util<i>i</i>y</a>
-    <nav class="nav" aria-label="Primary">${nav}</nav>
+  <div class="wrap header-row">
+    <a class="logo" href="/"><span class="logo-mark">U</span> utiliy</a>
+    <form class="search" action="/shop/" method="get" role="search">
+      <input data-search name="q" type="search" placeholder="Search a span, gap, or room" aria-label="Search products">
+    </form>
     <div class="header-actions">
-      <a class="btn-line" href="/fitment/">Find a fit</a>
+      <a class="btn-ghost" href="/fitment/">Fitment</a>
+      <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu">Menu</button>
       <button class="icon-btn" type="button" data-open-cart>Cart <span class="cart-count" data-cart-count>0</span></button>
     </div>
+  </div>
+  <div class="wrap nav-row">
+    <a href="/shop/"${current === "/shop/" ? ' aria-current="page"' : ""}>Shop</a>
+    ${catNav}
+    <a href="/faq/"${current === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a>
   </div>
 </header>
 ${body}
 <footer class="site-footer">
-  <div class="wrap">
+  <div class="wrap footer-grid">
     <div>
       <strong>Utiliy</strong>
-      <p>Home tools sold by the measurement. Orders are paid on Stripe. Fulfillment ids live in the agent catalog.</p>
+      <p>Home tools sold by the measurement. Pay once for the whole cart. Shipping to a US address is included.</p>
     </div>
     <div>
-      <a href="/shipping/">Shipping</a> ·
-      <a href="/returns/">Returns</a> ·
-      <a href="/privacy/">Privacy</a> ·
-      <a href="/terms/">Terms</a> ·
-      <a href="/about/">About</a> ·
-      <a href="/llms.txt">llms.txt</a> ·
-      <a href="/catalog.json">catalog.json</a> ·
-      <a href="/feeds/products.json">agent feed</a>
+      <h3>Shop</h3>
+      <ul>${footerCats}</ul>
+    </div>
+    <div>
+      <h3>Help</h3>
+      <ul>
+        <li><a href="/faq/">FAQ</a></li>
+        <li><a href="/fitment/">Fitment</a></li>
+        <li><a href="/shipping/">Shipping</a></li>
+        <li><a href="/returns/">Returns</a></li>
+        <li><a href="/contact/">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Store</h3>
+      <ul>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/privacy/">Privacy</a></li>
+        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/llms.txt">llms.txt</a></li>
+        <li><a href="/feeds/products.json">Product feed</a></li>
+      </ul>
     </div>
   </div>
+  <div class="wrap legal">© 2026 Utiliy · support@utiliy.com · United States only</div>
 </footer>
 <div class="drawer-back" data-drawer-back data-close-cart></div>
 <aside class="drawer" data-drawer aria-label="Cart">
@@ -129,6 +165,7 @@ ${body}
   <div class="total" data-cart-total>$0.00</div>
   <a class="btn" href="/checkout/">Checkout</a>
 </aside>
+<script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutEndpoint)};</script>
 <script src="/assets/site.js" defer></script>
 </body>
 </html>`;
@@ -233,17 +270,20 @@ function crumbs(items) {
 
 function card(product) {
   const variants = variantsOf(product);
+  const first = variants[0];
   const hay = [product.name, product.category, product.headline, product.fit, product.summary, ...variants.map((v) => v.label)].join(" ").toLowerCase();
-  return `<a class="card" data-product-card="${esc(hay)}" href="/products/${product.slug}/">
-    <div class="shot"><img src="${esc(product.image)}" alt="${esc(product.name)}" width="800" height="800" referrerpolicy="no-referrer"></div>
+  return `<article class="card" data-product-card="${esc(hay)}">
+    <a class="shot" href="/products/${product.slug}/"><img src="${esc(product.image)}" alt="${esc(product.name)}" width="800" height="800" referrerpolicy="no-referrer"></a>
     <div class="body">
-      <div class="cat">${esc(product.category)}</div>
-      <h3>${esc(product.name)}</h3>
-      <div class="spec">${esc(product.headline)}</div>
-      <div class="muted">${esc(product.fit)}</div>
-      <div class="price">${priceRange(product)}</div>
+      <a class="pill" href="/category/${catSlug(product.category)}/">${esc(product.category)}</a>
+      <a href="/products/${product.slug}/"><h3>${esc(product.name)}</h3></a>
+      <p class="spec">${esc(product.headline)} · ${esc(product.fit)}</p>
+      <div class="card-row">
+        <span class="price">${priceRange(product)}</span>
+        <button class="btn" type="button" data-add data-quiet data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}">Add</button>
+      </div>
     </div>
-  </a>`;
+  </article>`;
 }
 
 function productPage(product) {
@@ -257,33 +297,39 @@ function productPage(product) {
   const thumbs = product.images.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
   const faqs = product.faqs.map((faq) => `<details><summary>${esc(faq.q)}</summary><p>${esc(faq.a)}</p></details>`).join("");
   const description = `${product.name}: ${product.headline}. ${product.summary} ${money(first.price)}. ${shipText(product)}`;
-  const body = `${crumbs([["Home", "/"], [product.category, "/shop/"], [product.name, `/products/${product.slug}/`]])}
+  const related = products.filter((item) => item.category === product.category && item.slug !== product.slug).map(card).join("");
+  const body = `${crumbs([["Home", "/"], [product.category, `/category/${catSlug(product.category)}/`], [product.name, `/products/${product.slug}/`]])}
 <main id="main" class="wrap pdp">
   <div class="gallery">
     <div class="hero-shot"><img data-hero-img src="${esc(product.image)}" alt="${esc(product.name + ", " + product.headline)}" width="900" height="900" referrerpolicy="no-referrer"></div>
     <div class="thumbs">${thumbs}</div>
   </div>
-  <div class="buy">
-    <p class="kicker">${esc(product.category)}</p>
+  <div class="buybox">
+    <p class="kicker"><a href="/category/${catSlug(product.category)}/">${esc(product.category)}</a></p>
     <h1>${esc(product.name)}</h1>
-    <p class="giant" data-live-headline>${esc(product.headline)}</p>
-    <p class="fitline">${esc(product.fit)}</p>
+    <p class="measure" data-live-headline>${esc(product.headline)}</p>
+    <p>${esc(product.fit)}</p>
     <p>${esc(product.summary)}</p>
     <form>
       <div class="variant-list" role="radiogroup" aria-label="Size">${variantHtml}</div>
       <div class="buy-row">
-        <label class="muted">Qty <input class="qty" data-qty type="number" min="1" value="1"></label>
+        <div class="qty">
+          <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
+          <input data-qty value="1" inputmode="numeric" aria-label="Quantity" readonly>
+          <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
+        </div>
         <button class="btn" type="button" data-add data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}">Add to cart</button>
-        <button class="btn-line" type="button" data-buy>Pay with Stripe</button>
-        <span class="price" data-live-price>${money(first.price)}</span>
+        <button class="btn-ghost" type="button" data-add data-go-checkout data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}">Buy now</button>
       </div>
     </form>
+    <p class="price" data-live-price>${money(first.price)}</p>
     <p class="ship-note">${esc(shipText(product))} <a href="/shipping/">Shipping details</a>.</p>
     <h2>Measurements</h2>
     <table>${specRows}</table>
-    <section class="faq"><h2>Fitment answers</h2>${faqs}</section>
+    <section><h2>Fitment answers</h2>${faqs}</section>
   </div>
-</main>`;
+</main>
+${related ? `<section class="section"><div class="wrap"><div class="section-head"><h2>More in ${esc(product.category)}</h2><a href="/category/${catSlug(product.category)}/">View category</a></div><div class="grid">${related}</div></div></section>` : ""}`;
   return shell({
     title: `${product.name} — ${product.headline} · Utiliy`,
     description,
@@ -296,24 +342,42 @@ function productPage(product) {
 
 const products = catalog.products;
 
+const hero = products[0];
 const homeBody = `<main id="main">
   <section class="hero"><div class="wrap">
-    <p class="kicker">United States · shipping included</p>
-    <h1>Buy the size, not the slogan.</h1>
-    <p class="lede">Utiliy lists the measurement a shopping agent needs: the span, the gap, the load, the corner, the leg. If the maker did not publish a number, the page says so.</p>
-    <div class="hero-row"><a class="btn" href="/shop/">Shop the ten</a><a class="btn-line" href="/fitment/">Ask a fitment question</a></div>
-    <div class="measure-row">${products.slice(0, 5).map((p) => `<a class="measure" href="/products/${p.slug}/"><strong>${esc(p.headline)}</strong><span>${esc(p.name)}</span></a>`).join("")}</div>
-    <div class="measure-row">${products.slice(5).map((p) => `<a class="measure" href="/products/${p.slug}/"><strong>${esc(p.headline)}</strong><span>${esc(p.name)}</span></a>`).join("")}</div>
+    <div class="hero-panel">
+      <div>
+        <p class="kicker">United States · shipping included</p>
+        <h1>Buy the size, not the slogan.</h1>
+        <p class="lede">Every product leads with the span, gap, load, corner, or leg that decides the fit. If the maker did not publish a number, the page says so.</p>
+        <div class="hero-actions"><a class="btn" href="/shop/">Shop all</a><a class="btn-line" href="/fitment/">Check a fit</a></div>
+      </div>
+      <a class="hero-card" href="/products/${hero.slug}/">
+        <img src="${esc(hero.image)}" alt="${esc(hero.name)}" width="640" height="640" referrerpolicy="no-referrer">
+        <p>${esc(hero.name)} <span>${esc(hero.headline)} · ${priceRange(hero)}</span></p>
+      </a>
+    </div>
   </div></section>
   <section class="section"><div class="wrap">
-    <div class="section-head"><h2>In the shop</h2><a href="/shop/">All products</a></div>
+    <div class="section-head"><h2>Shop by room</h2><a href="/shop/">All products</a></div>
+    <div class="cats">${categories.map((cat) => `<a class="cat-card" href="/category/${cat.slug}/"><span class="swatch"></span><b>${esc(cat.name)}</b><span>${esc(cat.blurb)}</span></a>`).join("")}</div>
+  </div></section>
+  <section class="section"><div class="wrap">
+    <div class="section-head"><h2>In the shop</h2><a href="/shop/">View all</a></div>
     <div class="grid">${products.map(card).join("")}</div>
+  </div></section>
+  <section class="section"><div class="wrap trust">
+    <article><strong>One checkout</strong><span>Every item in the cart is one Stripe payment.</span></article>
+    <article><strong>US shipping included</strong><span>The price on the card is the price you pay.</span></article>
+    <article><strong>Published measurements</strong><span>Span, gap, load, and corner are on the page.</span></article>
+    <article><strong>30-day returns</strong><span>Unused items can come back after delivery.</span></article>
   </div></section>
 </main>`;
 
 const shopBody = `<main id="main" class="section"><div class="wrap">
   <p class="kicker">Catalog</p>
-  <div class="section-head"><h2>Ten fitment tools</h2><input class="search" data-search type="search" placeholder="Search a span, gap, or room" aria-label="Search products"></div>
+  <div class="section-head"><h2 class="page-title">Shop</h2></div>
+  <div class="cats" style="margin-bottom:18px">${categories.map((cat) => `<a class="cat-card" href="/category/${cat.slug}/"><b>${esc(cat.name)}</b><span>${products.filter((p) => catSlug(p.category) === cat.slug).length} products</span></a>`).join("")}</div>
   <div class="grid">${products.map(card).join("")}</div>
 </div></main>`;
 
@@ -377,26 +441,63 @@ const about = textPage(
 
 const cart = shell({
   title: "Cart · Utiliy",
-  description: "Review the Utiliy cart before paying on Stripe.",
+  description: "Review every item, then pay for the whole cart in one Stripe checkout.",
   canonical: `${site}/cart/`,
-  body: `<main id="main" class="section cart-page"><div class="wrap"><h1>Cart</h1><div data-cart-page></div><p class="total" data-cart-total>$0.00</p><a class="btn" href="/checkout/">Checkout</a></div></main>`,
+  robots: "noindex,follow",
+  body: `<main id="main" class="section"><div class="wrap layout">
+    <div><h1 class="page-title">Cart</h1><div data-cart-page></div></div>
+    <aside class="summary">
+      <h2>Summary</h2>
+      <p class="total" data-cart-total>$0.00</p>
+      <p class="muted">Shipping to the US is included.</p>
+      <a class="btn" href="/checkout/">Checkout</a>
+    </aside>
+  </div></main>`,
   current: ""
 });
 const checkout = shell({
   title: "Checkout · Utiliy",
-  description: "Pay for a Utiliy order with Stripe. Shipping to the United States is included.",
+  description: "Pay for every item in the Utiliy cart with one Stripe checkout. Shipping to the United States is included.",
   canonical: `${site}/checkout/`,
-  body: `<main id="main" class="section checkout"><div class="wrap"><p class="kicker">Stripe</p><h1>Checkout</h1><p class="total" data-cart-total>$0.00</p><div data-checkout></div></div></main>`,
+  robots: "noindex,follow",
+  body: `<main id="main" class="section"><div class="wrap layout">
+    <div><h1 class="page-title">Checkout</h1><div data-cart-page></div></div>
+    <aside class="summary">
+      <h2>Order summary</h2>
+      <div data-summary></div>
+      <button class="btn" type="button" data-pay-all>Pay with Stripe</button>
+      <p class="muted">One payment covers every product and quantity in this cart.</p>
+      <p class="error" data-pay-error hidden></p>
+    </aside>
+  </div></main>`,
   current: ""
 });
 const thanks = shell({
   title: "Order received · Utiliy",
   description: "Stripe confirmed the next step. Keep the receipt Stripe emails you.",
   canonical: `${site}/order/thanks/`,
+  robots: "noindex,follow",
   body: `<main id="main" class="section"><div class="wrap prose"><p class="kicker">Paid</p><h1>Stripe has the order.</h1><p>The receipt is in your email. The measurement you bought is the one on the product page. If a size is wrong against that page, write to support@utiliy.com within 30 days.</p><p><a class="btn" href="/shop/">Back to the shop</a></p></div></main>`,
   current: ""
 });
 
+const contact = textPage(
+  "Contact",
+  "Write to Utiliy at support@utiliy.com about an order, a measurement, or a return.",
+  `${site}/contact/`,
+  "/contact/",
+  `<p class="kicker">Support</p><h1>Contact</h1>
+  <p>Email <a href="mailto:support@utiliy.com">support@utiliy.com</a>. Include the email you used at Stripe, the product name, and the measurement on the page.</p>
+  <p>Orders ship only to the United States. Payment questions go to the receipt Stripe sent you.</p>`
+);
+
+const faqItems = [
+  ["Can I pay for several products at once?", "Yes. Add every item to the cart, then use Checkout. Stripe charges one payment for the whole cart."],
+  ["Is shipping included?", "Yes. Every price includes shipping to a United States address. Utiliy does not ship elsewhere."],
+  ["How long does delivery take?", "US-warehouse goods leave in 4 to 12 days. Supplier-shipped goods leave in 11 to 15 days. The product page states the window."],
+  ["What if the size does not match the page?", "Write to support@utiliy.com within 30 days. If the item is a different measurement than the product page states, Utiliy pays the return."],
+  ["What if a measurement is missing?", "If the maker did not publish a number, the page says so. Do not guess a width, a load, or a lumen rating that is not on the page."]
+];
 function agentProduct(product) {
   const variants = variantsOf(product).map(withPay);
   return {
@@ -510,11 +611,14 @@ const urls = [
   "/",
   "/shop/",
   "/fitment/",
+  "/faq/",
+  "/contact/",
   "/shipping/",
   "/returns/",
   "/privacy/",
   "/terms/",
   "/about/",
+  ...categories.map((cat) => `/category/${cat.slug}/`),
   ...products.map((p) => `/products/${p.slug}/`)
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -579,6 +683,54 @@ await mkdir(path.join(dist, "returns"), { recursive: true });
 await writeFile(path.join(dist, "returns/index.html"), returns);
 await mkdir(path.join(dist, "about"), { recursive: true });
 await writeFile(path.join(dist, "about/index.html"), about);
+await page("contact", contact);
+await page("faq", shell({
+  title: "FAQ · Utiliy",
+  description: "Answers about checkout, shipping, returns, and measurements at Utiliy.",
+  canonical: `${site}/faq/`,
+  current: "/faq/",
+  json: jsonLd({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqItems.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a }
+    }))
+  }),
+  body: `<main id="main" class="section"><div class="wrap prose"><p class="kicker">Help</p><h1>FAQ</h1>${faqItems.map(([q, a]) => `<div class="question"><strong>${esc(q)}</strong><span>${esc(a)}</span></div>`).join("")}</div></main>`
+}));
+for (const cat of categories) {
+  const items = products.filter((product) => catSlug(product.category) === cat.slug);
+  await page(`category/${cat.slug}`, shell({
+    title: `${cat.name} · Utiliy`,
+    description: `${cat.blurb} ${items.map((product) => product.name).join(", ")}.`,
+    canonical: `${site}/category/${cat.slug}/`,
+    current: `/category/${cat.slug}/`,
+    json: jsonLd({
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      name: cat.name,
+      description: cat.blurb,
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: items.map((product, i) => ({
+          "@type": "ListItem",
+          position: i + 1,
+          url: `${site}/products/${product.slug}/`,
+          name: product.name
+        }))
+      }
+    }),
+    body: `${crumbs([["Home", "/"], [cat.name, `/category/${cat.slug}/`]])}
+<main id="main" class="section"><div class="wrap">
+  <p class="kicker">Category</p>
+  <div class="section-head"><h1 class="page-title">${esc(cat.name)}</h1></div>
+  <p class="lede" style="color:var(--muted)">${esc(cat.blurb)}</p>
+  <div class="grid">${items.map(card).join("") || '<p class="empty">Nothing in this category yet.</p>'}</div>
+</div></main>`
+  }));
+}
 const privacy = textPage(
   "Privacy",
   "Utiliy collects the name, email, phone, and shipping address Stripe needs to complete a US order. We do not sell that information.",
