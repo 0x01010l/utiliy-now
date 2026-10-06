@@ -119,38 +119,38 @@ function shell({ title, description, canonical, json, body, current, image, robo
 ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006c">
+<link rel="stylesheet" href="/assets/site.css?v=20261006f">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="announce">Shipping to the United States is included · one Stripe checkout for the whole cart</div>
+<div class="announce">Shipping to the United States is included. One Stripe checkout for the whole cart.</div>
 <header class="site-header">
   <div class="wrap header-row">
-    <a class="logo" href="/"><span class="logo-mark">U</span> utiliy</a>
+    <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu">Menu</button>
+    <a class="logo" href="/">Utiliy</a>
+    <nav class="nav-row" aria-label="Primary">
+      <a href="/shop/"${current === "/shop/" ? ' aria-current="page"' : ""}>Shop</a>
+      ${catNav}
+      <a href="/fitment/">Fitment</a>
+    </nav>
     <form class="search" action="/shop/" method="get" role="search">
-      <input data-search name="q" type="search" placeholder="Search a span, gap, or room" aria-label="Search products">
+      <input data-search name="q" type="search" placeholder="Search for products..." aria-label="Search products">
     </form>
     <div class="header-actions">
-      <a class="btn-ghost" href="/fitment/">Fitment</a>
-      <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu">Menu</button>
       <button class="icon-btn" type="button" data-open-cart>Cart <span class="cart-count" data-cart-count>0</span></button>
     </div>
-  </div>
-  <div class="wrap nav-row">
-    <a href="/shop/"${current === "/shop/" ? ' aria-current="page"' : ""}>Shop</a>
-    ${catNav}
-    <a href="/faq/"${current === "/faq/" ? ' aria-current="page"' : ""}>FAQ</a>
   </div>
 </header>
 ${body}
 <footer class="site-footer">
   <div class="wrap footer-grid">
     <div>
-      <strong>Utiliy</strong>
+      <p class="footer-brand">Utiliy</p>
       <p>Home tools sold by the measurement. Pay once for the whole cart. Shipping to a US address is included.</p>
     </div>
     <div>
@@ -188,7 +188,7 @@ ${body}
   <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
 </aside>
 <script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutEndpoint)};</script>
-<script src="/assets/site.js?v=20261006c" defer></script>
+<script src="/assets/site.js?v=20261006d" defer></script>
 </body>
 </html>`;
 }
@@ -344,17 +344,14 @@ function card(product) {
   const first = variants[0];
   const hay = [product.name, product.category, product.headline, product.fit, product.summary, ...variants.map((v) => v.label)].join(" ").toLowerCase();
   return `<article class="card" data-product-card="${esc(hay)}">
-    <a class="shot" href="/products/${product.slug}/"><img src="${esc(product.image)}" alt="${esc(product.name)}" width="800" height="800" referrerpolicy="no-referrer"></a>
-    <div class="body">
-      <a class="pill" href="/category/${catSlug(product.category)}/">${esc(product.category)}</a>
-      <a href="/products/${product.slug}/"><h3>${esc(product.name)}</h3></a>
-      <p class="spec">${esc(product.headline)} · ${esc(product.fit)}</p>
-      <div class="card-row">
-        <span class="price">${priceRange(product)}</span>
-        ${variants.length > 1
-          ? `<a class="btn" href="/products/${product.slug}/">Choose</a>`
-          : `<button class="btn" type="button" data-add data-quiet data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
-      </div>
+    <a class="shot" href="/products/${product.slug}/"><img src="${esc(product.image)}" alt="${esc(product.name)}" width="600" height="600" referrerpolicy="no-referrer"></a>
+    <a href="/products/${product.slug}/"><h3>${esc(product.name)}</h3></a>
+    <p class="spec">${esc(product.headline)}</p>
+    <div class="card-row">
+      <span class="price">${priceRange(product)}</span>
+      ${variants.length > 1
+        ? `<a class="btn" href="/products/${product.slug}/">Choose</a>`
+        : `<button class="btn" type="button" data-add data-quiet data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
     </div>
   </article>`;
 }
@@ -366,6 +363,7 @@ function productPage(product, selectedSku) {
   const canonicalPath = many && selectedSku ? variantPath(product, selected.sku) : `/products/${product.slug}/`;
   const shared = [...(product.specs || product.sharedSpecs || [])].sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
   const specRows = shared.map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
+  const sizePills = many ? `<div><span class="size-label">Choose size</span><div class="size-row">${variants.map((variant) => `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}" href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a>`).join("")}</div></div><hr class="hair">` : "";
   const compare = many ? `<section><h2>Sizes</h2><table class="compare"><thead><tr><th>Option</th><th>Measurement</th><th>Price</th></tr></thead><tbody>${variants.map((variant) => `<tr class="${variant.sku === selected.sku ? "deciding" : ""}"><td><a href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a></td><td>${esc(sizeOf(variant))}</td><td>${money(variant.price)}</td></tr>`).join("")}</tbody></table></section>` : "";
   const thumbs = product.images.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
   const gallery = product.images.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
@@ -381,12 +379,12 @@ function productPage(product, selectedSku) {
       <div class="thumbs">${thumbs}</div>
     </div>
     <div class="buybox">
-      <p class="kicker"><a href="/category/${catSlug(product.category)}/">${esc(product.category)}</a></p>
       <h1>${esc(product.name)}</h1>
-      <p class="figure">${esc(product.headline)}</p>
-      <p>${esc(product.fit)}</p>
+      <p class="figure">${esc(product.headline)} · ${esc(product.fit)}</p>
       <p class="price-lg" data-live-price>${money(selected.price)}</p>
-      ${many ? `<p class="ship-note">Selected: <a href="${variantPath(product, selected.sku)}">${esc(selected.label)}</a></p>` : ""}
+      <p>${esc(product.summary)}</p>
+      <hr class="hair">
+      ${sizePills}
       <form>
         <div class="buy-row">
           <div class="qty">
@@ -395,11 +393,10 @@ function productPage(product, selectedSku) {
             <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
           </div>
           <button class="btn" type="button" data-add ${buyAttrs}>Add to cart</button>
-          <button class="btn-ghost" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
         </div>
       </form>
-      <p>${esc(product.summary)}</p>
       <p class="ship-note">${esc(shipText(product))} <a href="/shipping/">Shipping details</a>.</p>
+      <button class="btn-line" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
     </div>
   </div>
   <div class="wrap landing">
@@ -432,42 +429,50 @@ ${related ? `<section class="section pdp-tail"><div class="wrap"><div class="sec
 const products = catalog.products;
 
 const hero = products[0];
+const styleCards = categories.map((cat) => {
+  const sample = products.find((product) => catSlug(product.category) === cat.slug);
+  const image = sample ? esc(sample.image) : "";
+  return `<a class="style-card" href="/category/${cat.slug}/" style="background-image:url('${image}')"><span>${esc(cat.name)}</span></a>`;
+}).join("");
 const homeBody = `<main id="main">
-  <section class="hero"><div class="wrap">
-    <div class="hero-panel">
-      <div>
-        <p class="kicker">United States · shipping included</p>
-        <h1>Buy the size, not the slogan.</h1>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1>Find the size that actually fits.</h1>
         <p class="lede">Every product leads with the span, gap, load, corner, or leg that decides the fit. If the maker did not publish a number, the page says so.</p>
-        <div class="hero-actions"><a class="btn" href="/shop/">Shop all</a><a class="btn-line" href="/fitment/">Check a fit</a></div>
+        <div class="hero-actions"><a class="btn" href="/shop/">Shop Now</a></div>
+        <div class="stats">
+          <div><strong>10</strong><span>Fitment tools</span></div>
+          <i></i>
+          <div><strong>$0</strong><span>US shipping</span></div>
+          <i></i>
+          <div><strong>30</strong><span>Day returns</span></div>
+        </div>
       </div>
-      <a class="hero-card" href="/products/${hero.slug}/">
-        <img src="${esc(hero.image)}" alt="${esc(hero.name)}" width="640" height="640" referrerpolicy="no-referrer">
-        <p>${esc(hero.name)} <span>${esc(hero.headline)} · ${priceRange(hero)}</span></p>
-      </a>
+      <a class="hero-visual" href="/products/${hero.slug}/"><img src="${esc(hero.image)}" alt="${esc(hero.name)}" width="640" height="640" referrerpolicy="no-referrer"></a>
     </div>
-  </div></section>
+  </section>
   <section class="section"><div class="wrap">
-    <div class="section-head"><h2>Shop by room</h2><a href="/shop/">All products</a></div>
-    <div class="cats">${categories.map((cat) => `<a class="cat-card" href="/category/${cat.slug}/"><span class="swatch"></span><b>${esc(cat.name)}</b><span>${esc(cat.blurb)}</span></a>`).join("")}</div>
+    <h2 class="section-title">New arrivals</h2>
+    <div class="grid">${products.slice(0, 4).map(card).join("")}</div>
   </div></section>
+  <hr class="rule wrap">
   <section class="section"><div class="wrap">
-    <div class="section-head"><h2>In the shop</h2><a href="/shop/">View all</a></div>
-    <div class="grid">${products.map(card).join("")}</div>
+    <h2 class="section-title">Top picks</h2>
+    <div class="grid">${products.slice(4).map(card).join("")}</div>
     <p class="empty" data-search-empty hidden>No product matches that search.</p>
+    <div class="center-link"><a class="btn-line" href="/shop/">View All</a></div>
   </div></section>
-  <section class="section"><div class="wrap trust">
-    <article><strong>One checkout</strong><span>Every item in the cart is one Stripe payment.</span></article>
-    <article><strong>US shipping included</strong><span>The price on the card is the price you pay.</span></article>
-    <article><strong>Published measurements</strong><span>The page states the number the maker published, and says when they did not.</span></article>
-    <article><strong>30-day returns</strong><span>Unused items can come back after delivery.</span></article>
+  <section class="section"><div class="wrap">
+    <div class="style-panel">
+      <h2 class="section-title">Browse by room</h2>
+      <div class="style-grid">${styleCards}</div>
+    </div>
   </div></section>
 </main>`;
 
 const shopBody = `<main id="main" class="section"><div class="wrap">
-  <p class="kicker">Catalog</p>
-  <div class="section-head"><h2 class="page-title">Shop</h2></div>
-  <div class="cats" style="margin-bottom:18px">${categories.map((cat) => `<a class="cat-card" href="/category/${cat.slug}/"><b>${esc(cat.name)}</b><span>${products.filter((p) => catSlug(p.category) === cat.slug).length} products</span></a>`).join("")}</div>
+  <h1 class="section-title">Shop</h1>
   <div class="grid">${products.map(card).join("")}</div>
   <p class="empty" data-search-empty hidden>No product matches that search.</p>
 </div></main>`;
