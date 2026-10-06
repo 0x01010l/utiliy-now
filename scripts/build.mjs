@@ -122,7 +122,7 @@ ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=clash-display@500,600,700&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006f">
+<link rel="stylesheet" href="/assets/site.css?v=20261006g">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -356,17 +356,231 @@ function card(product) {
   </article>`;
 }
 
+const plates = {
+  "corner-shower-caddy": "corner",
+  "bamboo-drawer-organizer": "drawer",
+  "under-sink-organizer": "unknown",
+  "cable-raceway": "channel",
+  "door-draft-stopper": "gap",
+  "tension-rod": "tension",
+  "furniture-sliders": "caps",
+  "furniture-anchors": "strap",
+  "closet-rod": "rod",
+  "closet-motion-light": "puck"
+};
+
+function specValue(specs, name) {
+  const spec = specs.find((item) => item.name === name);
+  if (!spec) return "";
+  return `${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`;
+}
+
+function diagram(kind, specs) {
+  const t = (name) => esc(specValue(specs, name));
+  const open = (label) => `<svg viewBox="0 0 720 520" role="img" aria-label="${esc(label)}">`;
+  const close = "</svg>";
+  if (kind === "corner") {
+    return `${open(`Square corner shelf, ${specValue(specs, "Shelf size")}, ${specValue(specs, "Corner angle")}`)}
+      <rect x="64" y="36" width="20" height="448" rx="4" fill="#111"/>
+      <rect x="64" y="464" width="560" height="20" rx="4" fill="#111"/>
+      <rect x="96" y="150" width="54" height="28" rx="6" fill="#e7e5e4" stroke="#111" stroke-width="2"/>
+      <rect x="96" y="390" width="54" height="28" rx="6" fill="#e7e5e4" stroke="#111" stroke-width="2"/>
+      <g fill="none" stroke="#111" stroke-width="3" stroke-linejoin="round">
+        <path d="M108 214 H360 Q390 214 390 244 V464"/>
+        <path d="M108 252 H330 Q356 252 356 278 V464"/>
+        <path d="M140 214 V464 M190 214 V464 M240 220 V464 M290 236 V464"/>
+      </g>
+      <text x="120" y="118" fill="#111" font-family="system-ui,sans-serif" font-size="44" font-weight="700">${t("Corner angle")}</text>
+      <text x="430" y="250" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="650">${t("Shelf size")}</text>
+      <text x="430" y="292" fill="#111" font-family="system-ui,sans-serif" font-size="22">${t("Load")}</text>
+      ${close}`;
+  }
+  if (kind === "drawer") {
+    return `${open(`Drawer dividers for ${specValue(specs, "Drawer interior width")}`)}
+      <rect x="70" y="90" width="580" height="340" rx="18" fill="#fff" stroke="#111" stroke-width="8"/>
+      <g fill="#d8c4a4" stroke="#111" stroke-width="3">
+        <rect x="150" y="120" width="28" height="280" rx="6"/>
+        <rect x="280" y="120" width="28" height="280" rx="6"/>
+        <rect x="410" y="120" width="28" height="280" rx="6"/>
+        <rect x="540" y="120" width="28" height="280" rx="6"/>
+      </g>
+      <path d="M98 160 h40 M98 360 h40 M612 160 h-28 M612 360 h-28" fill="none" stroke="#111" stroke-width="3"/>
+      <text x="90" y="64" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">${t("Drawer interior width")}</text>
+      <text x="430" y="64" fill="#111" font-family="system-ui,sans-serif" font-size="22">${t("Pieces")} pieces</text>
+      ${close}`;
+  }
+  if (kind === "unknown") {
+    return `${open("Under-sink organizer. Width and height are not stated by the maker.")}
+      <rect x="80" y="40" width="560" height="440" rx="16" fill="none" stroke="#111" stroke-width="8"/>
+      <circle cx="210" cy="150" r="36" fill="none" stroke="#111" stroke-width="6"/>
+      <path d="M210 186 v70 h80" fill="none" stroke="#111" stroke-width="6"/>
+      <rect x="360" y="210" width="200" height="70" rx="10" fill="none" stroke="#111" stroke-width="4"/>
+      <rect x="380" y="300" width="160" height="70" rx="10" fill="none" stroke="#111" stroke-width="4"/>
+      <path d="M120 430 H600" fill="none" stroke="#111" stroke-width="3" stroke-dasharray="8 8"/>
+      <text x="180" y="414" fill="#111" font-family="system-ui,sans-serif" font-size="26" font-weight="700">Width: ${t("Published width")}</text>
+      <text x="180" y="80" fill="#111" font-family="system-ui,sans-serif" font-size="22">Height: ${t("Published height")}</text>
+      ${close}`;
+  }
+  if (kind === "channel") {
+    return `${open(`Cord channel, outside ${specValue(specs, "Outside width")} by ${specValue(specs, "Outside height")}, inside ${specValue(specs, "Inside height")}`)}
+      <path d="M150 120 h420 v220 a40 40 0 0 1 -40 40 h-340 a40 40 0 0 1 -40 -40 z" fill="#fff" stroke="#111" stroke-width="10"/>
+      <path d="M210 150 h300 v150 a24 24 0 0 1 -24 24 h-252 a24 24 0 0 1 -24 -24 z" fill="#f2f0f1" stroke="#111" stroke-width="4"/>
+      <text x="150" y="96" fill="#111" font-family="system-ui,sans-serif" font-size="26" font-weight="700">${t("Outside width")} wide</text>
+      <text x="150" y="450" fill="#111" font-family="system-ui,sans-serif" font-size="26" font-weight="700">${t("Inside height")} inside</text>
+      <text x="150" y="490" fill="#111" font-family="system-ui,sans-serif" font-size="22">${t("Outside height")} outside height</text>
+      ${close}`;
+  }
+  if (kind === "gap") {
+    return `${open(`Door sweep covering gaps up to ${specValue(specs, "Gap covered")}`)}
+      <rect x="120" y="30" width="480" height="300" rx="8" fill="#fff" stroke="#111" stroke-width="8"/>
+      <rect x="60" y="400" width="600" height="16" rx="4" fill="#111"/>
+      <g stroke="#111" stroke-width="3">
+        <path d="M150 330 v70 M190 330 v78 M230 330 v66 M270 330 v80 M310 330 v72 M350 330 v78 M390 330 v64 M430 330 v76 M470 330 v70 M510 330 v80 M550 330 v68"/>
+      </g>
+      <text x="140" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">Gap ${t("Gap covered")}</text>
+      <text x="140" y="78" fill="#111" font-family="system-ui,sans-serif" font-size="22">Length ${t("Length")}</text>
+      ${close}`;
+  }
+  if (kind === "tension") {
+    return `${open(`Tension rod, load ${specValue(specs, "Load")}, diameter ${specValue(specs, "Diameter")}`)}
+      <rect x="40" y="80" width="28" height="360" rx="4" fill="#111"/>
+      <rect x="652" y="80" width="28" height="360" rx="4" fill="#111"/>
+      <rect x="68" y="230" width="36" height="28" rx="8" fill="#e7e5e4" stroke="#111"/>
+      <rect x="616" y="230" width="36" height="28" rx="8" fill="#e7e5e4" stroke="#111"/>
+      <rect x="100" y="238" width="520" height="12" rx="6" fill="#111"/>
+      <text x="100" y="180" fill="#111" font-family="system-ui,sans-serif" font-size="32" font-weight="700">${t("Load")}</text>
+      <text x="100" y="320" fill="#111" font-family="system-ui,sans-serif" font-size="24">Diameter ${t("Diameter")}</text>
+      <text x="100" y="360" fill="#111" font-family="system-ui,sans-serif" font-size="22">${t("Mount")}</text>
+      ${close}`;
+  }
+  if (kind === "caps") {
+    return `${open(`Hardwood leg caps, ${specValue(specs, "Floor")}. ${specValue(specs, "Not for")}`)}
+      <rect x="250" y="70" width="180" height="250" fill="#fff" stroke="#111" stroke-width="8"/>
+      <rect x="230" y="320" width="220" height="36" rx="6" fill="#e7e5e4" stroke="#111" stroke-width="4"/>
+      <path d="M80 400 H640" stroke="#c4a574" stroke-width="10"/>
+      <text x="80" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">${t("Floor")}</text>
+      <text x="300" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="24">Not for ${t("Not for")}</text>
+      ${close}`;
+  }
+  if (kind === "strap") {
+    return `${open("Screw-in furniture anchor. Not adhesive.")}
+      <rect x="60" y="40" width="24" height="440" fill="#111"/>
+      <rect x="220" y="120" width="420" height="280" rx="12" fill="#fff" stroke="#111" stroke-width="8"/>
+      <path d="M84 200 H250" stroke="#111" stroke-width="8"/>
+      <circle cx="84" cy="200" r="10" fill="#fff" stroke="#111" stroke-width="4"/>
+      <circle cx="250" cy="200" r="10" fill="#fff" stroke="#111" stroke-width="4"/>
+      <text x="240" y="460" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">${t("Mount")}</text>
+      <text x="240" y="80" fill="#111" font-family="system-ui,sans-serif" font-size="22">${t("Sets in the pack")} sets · ${t("Tools")}</text>
+      ${close}`;
+  }
+  if (kind === "rod") {
+    return `${open(`Closet rod end ${specValue(specs, "End diameter")}. Load: ${specValue(specs, "Load rating")}`)}
+      <rect x="40" y="160" width="24" height="200" fill="#111"/>
+      <rect x="656" y="160" width="24" height="200" fill="#111"/>
+      <rect x="90" y="236" width="540" height="22" rx="11" fill="#c8c8c8" stroke="#111" stroke-width="4"/>
+      <circle cx="110" cy="247" r="28" fill="#fff" stroke="#111" stroke-width="6"/>
+      <circle cx="610" cy="247" r="28" fill="#fff" stroke="#111" stroke-width="6"/>
+      <text x="90" y="140" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">End ${t("End diameter")}</text>
+      <text x="90" y="420" fill="#111" font-family="system-ui,sans-serif" font-size="26">Load: ${t("Load rating")}</text>
+      ${close}`;
+  }
+  return `${open(`Closet light ${specValue(specs, "Diameter")} by ${specValue(specs, "Height")}`)}
+    <circle cx="230" cy="230" r="120" fill="#fff" stroke="#111" stroke-width="8"/>
+    <circle cx="230" cy="230" r="18" fill="#111"/>
+    <path d="M380 120 a150 150 0 0 1 0 220" fill="none" stroke="#111" stroke-width="3" stroke-dasharray="6 8"/>
+    <rect x="430" y="300" width="200" height="42" rx="21" fill="#111"/>
+    <text x="80" y="420" fill="#111" font-family="system-ui,sans-serif" font-size="26" font-weight="700">${t("Diameter")} across · ${t("Height")} tall</text>
+    <text x="80" y="462" fill="#111" font-family="system-ui,sans-serif" font-size="22">Sensor ${t("Sensor range")} · Lumens: ${t("Lumens")}</text>
+    ${close}`;
+}
+
+function rangeBoard(product, selectedSku) {
+  const variants = variantsOf(product).map(withPay);
+  if (variants.length < 2) return "";
+  const maxOf = (variant) => {
+    const raw = variant.decidingSpec?.value || variant.label || "";
+    const nums = String(raw).match(/[\d.]+/g)?.map(Number).filter((n) => Number.isFinite(n)) || [];
+    return nums.length ? Math.max(...nums) : 1;
+  };
+  const top = Math.max(...variants.map(maxOf));
+  const name = variants[0].decidingSpec?.name || "Option";
+  const rows = variants.map((variant) => {
+    const width = Math.max(34, Math.round((maxOf(variant) / top) * 100));
+    const on = variant.sku === selectedSku;
+    return `<a class="range${on ? " is-on" : ""}" href="${variantPath(product, variant.sku)}"><span style="width:${width}%"><b>${esc(variant.label)}</b></span><em>${money(variant.price)}</em></a>`;
+  }).join("");
+  return `<section class="ranges" id="sizes"><div class="wrap"><p class="kicker">${esc(name)}</p><h2>Pick the measurement</h2><div class="range-list">${rows}</div></div></section>`;
+}
+
+function storyBlock(product, specs) {
+  const long = product.headline.length > 18 ? " story-num-long" : "";
+  const chips = specs.filter((spec) => spec.deciding).slice(0, 3).map((spec) => `<li><b>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</b><span>${esc(spec.name)}</span></li>`).join("");
+  const beats = product.faqs.map((faq, index) => {
+    const file = index === 0 ? "place.jpg" : index === 1 ? "detail.jpg" : "";
+    const figure = file
+      ? `<figure><img src="/assets/explainers/${product.slug}/${file}" alt="${esc(product.name + (index === 0 ? ", shown in place" : ", detail"))}" width="1024" height="1024"><figcaption>Scene from the product photo. Use the measurements written on this page.</figcaption></figure>`
+      : "";
+    return `<article class="beat">${figure}<div class="beat-body"><p class="beat-index">0${index + 1}</p><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></div></article>`;
+  }).join("");
+  const tiles = specs.map((spec, index) => {
+    const lead = spec.deciding && specs.findIndex((item) => item.deciding) === index;
+    return `<article class="tile${lead ? " tile-lead" : ""}"><span>${esc(spec.name)}</span><strong>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</strong></article>`;
+  }).join("");
+  return `<section class="story" id="measure">
+    <div class="wrap story-grid">
+      <div>
+        <p class="kicker">The measurement</p>
+        <p class="story-num${long}">${esc(product.headline).replace(/ in$/i, " <span>in</span>")}</p>
+        <p class="story-fit">${esc(product.fit)}</p>
+      </div>
+      <figure class="story-still">
+        <img src="/assets/explainers/${product.slug}/place.jpg" alt="${esc(product.name + ", shown in place")}" width="1024" height="1024">
+        <ul class="chips">${chips}</ul>
+      </figure>
+    </div>
+  </section>
+  ${plateBlock(product, specs)}
+  <section class="section" id="explained">
+    <div class="wrap">
+      <p class="kicker">In the words on this page</p>
+      <h2>What decides the fit</h2>
+      <div class="beats">${beats}</div>
+    </div>
+  </section>
+  <section class="section" id="specs">
+    <div class="wrap">
+      <p class="kicker">Published specs</p>
+      <h2>Every number we have</h2>
+      <div class="bento">${tiles}</div>
+    </div>
+  </section>`;
+}
+
+function plateBlock(product, specs) {
+  const rows = specs.map((spec) => `<li><span>${esc(spec.name)}</span><strong>${esc(spec.value)}${spec.unitText ? ` ${esc(spec.unitText)}` : ""}</strong></li>`).join("");
+  return `<section class="plate-wrap" id="fit"><div class="wrap plate">
+    <div class="plate-art">${diagram(plates[product.slug], specs)}</div>
+    <div>
+      <p class="kicker">How to read it</p>
+      <h2>The fit</h2>
+      <p>${esc(product.summary)}</p>
+      <ul class="plate-list">${rows}</ul>
+    </div>
+  </div></section>`;
+}
+
 function productPage(product, selectedSku) {
   const variants = variantsOf(product).map(withPay);
   const selected = variants.find((variant) => variant.sku === selectedSku) || variants[0];
   const many = variants.length > 1;
   const canonicalPath = many && selectedSku ? variantPath(product, selected.sku) : `/products/${product.slug}/`;
-  const shared = [...(product.specs || product.sharedSpecs || [])].sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
+  const shared = specsOf(product, selected).sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
   const specRows = shared.map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
   const sizePills = many ? `<div><span class="size-label">Choose size</span><div class="size-row">${variants.map((variant) => `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}" href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a>`).join("")}</div></div><hr class="hair">` : "";
   const compare = many ? `<section><h2>Sizes</h2><table class="compare"><thead><tr><th>Option</th><th>Measurement</th><th>Price</th></tr></thead><tbody>${variants.map((variant) => `<tr class="${variant.sku === selected.sku ? "deciding" : ""}"><td><a href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a></td><td>${esc(sizeOf(variant))}</td><td>${money(variant.price)}</td></tr>`).join("")}</tbody></table></section>` : "";
-  const thumbs = product.images.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
-  const gallery = product.images.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
+  const photos = product.images.filter((src) => !src.includes("57_147cecee"));
+  const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
+  const gallery = photos.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
   const faqs = product.faqs.map((faq) => `<article class="question"><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></article>`).join("");
   const buyAttrs = `data-sku="${esc(selected.sku)}" data-price="${selected.price}" data-label="${esc(selected.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}"`;
   const description = `${product.name}: ${product.headline}. ${product.summary} ${money(selected.price)}. ${shipText(product)}`;
@@ -399,14 +613,26 @@ function productPage(product, selectedSku) {
       <button class="btn-line" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
     </div>
   </div>
+  <nav class="pdp-nav" aria-label="On this page">
+    <div class="wrap">
+      <a href="#measure">Measurement</a>
+      <a href="#fit">Fit</a>
+      <a href="#explained">Explainers</a>
+      <a href="#specs">Specs</a>
+      ${many ? `<a href="#sizes">Sizes</a>` : ""}
+      <a href="#answers">Answers</a>
+    </div>
+  </nav>
+  ${storyBlock(product, shared)}
+  ${rangeBoard(product, selected.sku)}
   <div class="wrap landing">
     <section><h2>Measurements</h2><table>${specRows}</table></section>
     ${compare}
   </div>
   <div class="wrap landing pdp-tail">
-    ${gallery ? `<section><h2>Photos</h2><div class="photo-row">${gallery}</div></section>` : ""}
+    ${gallery ? `<section><h2>Product photos</h2><div class="photo-row">${gallery}</div></section>` : ""}
     <section><h2>Shipping and returns</h2><p>${esc(shipText(product))}</p><p>${esc(returnsSentence)}</p></section>
-    <section><h2>Fitment answers</h2>${faqs}</section>
+    <section id="answers"><h2>Fitment answers</h2>${faqs}</section>
   </div>
   <div class="wrap buybar">
     <div><strong>${esc(product.name)}</strong><span>${esc(product.headline)}</span></div>
@@ -887,6 +1113,7 @@ await mkdir(path.join(dist, "assets"), { recursive: true });
 for (const file of ["site.css", "site.js", "favicon.svg"]) {
   await cp(path.join(root, "assets", file), path.join(dist, "assets", file));
 }
+await cp(path.join(root, "assets/explainers"), path.join(dist, "assets/explainers"), { recursive: true }).catch(() => {});
 await writeFile(path.join(dist, "CNAME"), "utiliy.com\n");
 await writeFile(path.join(dist, "robots.txt"), robots);
 await writeFile(path.join(dist, "sitemap.xml"), sitemap);
