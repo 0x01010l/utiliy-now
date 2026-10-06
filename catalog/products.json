@@ -1,0 +1,459 @@
+{
+  "merchant": {
+    "name": "Utiliy",
+    "legalName": "Utiliy",
+    "url": "https://utiliy.com",
+    "email": "support@utiliy.com",
+    "country": "US",
+    "currency": "USD",
+    "tagline": "Home tools sold by the measurement.",
+    "description": "Utiliy sells fitment-first home tools. Every product page states the span, gap, load, or surface an agent needs in order to recommend it."
+  },
+  "products": [
+    {
+      "slug": "corner-shower-caddy",
+      "sku": "UTY-CADDY",
+      "name": "Corner shower caddy",
+      "category": "Bathroom",
+      "price": 3400,
+      "image": "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_3316e9df-84d2-4724-bbc3-65e347103fbd.png?v=1705374206",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_3316e9df-84d2-4724-bbc3-65e347103fbd.png?v=1705374206",
+        "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_147cecee-37a2-4892-b672-9c93beae26eb.jpg?v=1705374206",
+        "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_400bdaf5-3351-46e4-b410-b0440fdde1fa.png?v=1705374205",
+        "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_19ebd66f-7a74-4730-8c6f-fcd500e5b513.png?v=1705374205"
+      ],
+      "shipsFrom": "US",
+      "minDays": 4,
+      "maxDays": 6,
+      "headline": "10.5 × 10.5 in",
+      "fit": "90° corner only · 30 lb · no drill",
+      "summary": "A SUS304 stainless corner shelf for a square shower corner. It is 10.5 by 10.5 inches, holds up to 30 pounds, and sticks to smooth tile, glass, marble, solid metal, or smooth wood. It does not fit a rounded corner.",
+      "specs": [
+        {"name": "Shelf size", "value": "10.5 × 10.5", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Corner angle", "value": "90", "unitText": "degrees", "unitCode": "DD", "deciding": true},
+        {"name": "Load", "value": "30", "unitText": "lb", "unitCode": "LBR", "deciding": true},
+        {"name": "Mount", "value": "Adhesive, no drill"},
+        {"name": "Material", "value": "SUS304 stainless steel"},
+        {"name": "Wall surfaces", "value": "Ceramic tile, glass, marble, solid metal, smooth wood"},
+        {"name": "Will not fit", "value": "Rounded corners, uneven walls, rough walls"}
+      ],
+      "faqs": [
+        {"q": "Will this shower caddy fit a rounded corner?", "a": "No. It fits a 90 degree right-angle corner only."},
+        {"q": "How much weight can the corner shower caddy hold?", "a": "Up to 30 pounds. Do not press down on a bottle while it sits on the shelf."},
+        {"q": "What walls does the adhesive shower caddy stick to?", "a": "Ceramic tile, glass, marble, solid metal, and smooth wood. It is not for uneven or rough surfaces."},
+        {"q": "How big is the corner shower shelf?", "a": "10.5 inches by 10.5 inches."}
+      ],
+      "autods": {
+        "productId": "65a98b552a3fcdfcc33902ce",
+        "idOnSite": "7873439334552",
+        "variationId": "43187096682648",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "The Perfect Part Inc",
+        "warehouse": "US"
+      }
+    },
+    {
+      "slug": "bamboo-drawer-organizer",
+      "sku": "UTY-DRAWER-4",
+      "name": "Bamboo drawer organizer, 4 pack",
+      "category": "Kitchen",
+      "price": 5400,
+      "image": "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/Capture_612016fa-60cd-4abc-bc21-d2a40d664a3e.png?v=1756201044",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/Capture_612016fa-60cd-4abc-bc21-d2a40d664a3e.png?v=1756201044",
+        "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/Sf0929ccbb71c48b1a71edd23d354df4bm.webp?v=1756201044",
+        "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/S9ead2611ffdb4a5ba783ad79e472bf46M.webp?v=1756201044",
+        "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/Sb8df1c7c9e1b4bda92da1dada18082b6U.webp?v=1756201044"
+      ],
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 9,
+      "headline": "17–22 in drawers",
+      "fit": "4 spring-loaded bamboo dividers",
+      "summary": "Four adjustable bamboo drawer dividers for drawers whose interior width is 17 to 22 inches. Spring-loaded, with foam ends, and no tools.",
+      "specs": [
+        {"name": "Drawer interior width", "value": "17–22", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Pieces", "value": "4"},
+        {"name": "Material", "value": "Bamboo"},
+        {"name": "Mechanism", "value": "Spring-loaded, foam ends"},
+        {"name": "Tools", "value": "None"}
+      ],
+      "faqs": [
+        {"q": "What drawer width do these bamboo dividers fit?", "a": "Drawers with an interior width of 17 to 22 inches."},
+        {"q": "How many dividers are in the set?", "a": "Four. This is the small 4-piece set."},
+        {"q": "Do the drawer dividers need screws?", "a": "No. They spring into the drawer and the ends are padded."}
+      ],
+      "autods": {
+        "productId": "68c922e603d9964319164b98",
+        "idOnSite": "8994475311340",
+        "variationId": "46761769271532",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Nexa Wood",
+        "warehouse": "US",
+        "supplierOption": "S-4PCS"
+      }
+    },
+    {
+      "slug": "under-sink-organizer",
+      "sku": "UTY-SINK",
+      "name": "Sliding under-sink organizer",
+      "category": "Kitchen",
+      "price": 3900,
+      "image": "https://ae01.alicdn.com/kf/Sed83100fa749479999c19ec4a9919706N.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/Sed83100fa749479999c19ec4a9919706N.jpg",
+        "https://ae01.alicdn.com/kf/S288ad6ea380549ecb99717ce61d89eeep.jpg",
+        "https://ae01.alicdn.com/kf/Sed83100fa749479999c19ec4a9919706N.jpg",
+        "https://ae01.alicdn.com/kf/S707a935b8646463badbdcaf9744bcad12.jpg"
+      ],
+      "shipsFrom": "US",
+      "minDays": 12,
+      "maxDays": 12,
+      "headline": "2-tier pull-out",
+      "fit": "4 hooks · ABS baskets · iron frame",
+      "summary": "A two-tier sliding organizer for the cabinet under a kitchen or bath sink. Baskets are ABS, the frame is painted iron, and four hooks hang on the side. The maker does not publish the basket width or height, so measure the clear opening beside the pipes before you rely on a fit.",
+      "specs": [
+        {"name": "Tiers", "value": "2", "deciding": true},
+        {"name": "Motion", "value": "Sliding pull-out"},
+        {"name": "Hooks", "value": "4"},
+        {"name": "Basket material", "value": "ABS plastic"},
+        {"name": "Frame", "value": "Painted iron tubes"},
+        {"name": "Published width", "value": "Not stated by the maker", "deciding": true},
+        {"name": "Published height", "value": "Not stated by the maker"}
+      ],
+      "faqs": [
+        {"q": "What width is the under-sink organizer?", "a": "The maker does not publish a width or height. Measure the clear opening under the sink, beside the P-trap, before you treat this as a fit."},
+        {"q": "Does the under-sink rack slide out?", "a": "Yes. It is a two-tier pull-out with four side hooks."},
+        {"q": "What is the under-sink organizer made of?", "a": "ABS baskets on a painted iron frame."}
+      ],
+      "autods": {
+        "productId": "69779cf25302600001b485f7",
+        "idOnSite": "1005010555566734",
+        "variationId": "1005010555566734_200006152",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "Nordicbox Organizers Store",
+        "warehouse": "US",
+        "supplierOption": "black-B"
+      }
+    },
+    {
+      "slug": "cable-raceway",
+      "name": "Self-adhesive cable raceway",
+      "category": "Cable",
+      "image": "https://ae01.alicdn.com/kf/S34b4af6f6ee74ab2a623c180dabc3ba15.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/S34b4af6f6ee74ab2a623c180dabc3ba15.jpg",
+        "https://ae01.alicdn.com/kf/S3b29e0d6e368404bb8c82eaabc8124df6.jpg",
+        "https://ae01.alicdn.com/kf/S2405822c81c543ecbc398641f3c37bfbX.jpg",
+        "https://ae01.alicdn.com/kf/Sddbd36c7a5b442b1b19b941e5eb27a64K.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 13,
+      "maxDays": 13,
+      "headline": "7 mm inside height",
+      "fit": "14 mm wide · one 7 mm cable",
+      "summary": "A white self-adhesive PVC cord cover. The channel is 14 mm wide on the outside and 7 mm high inside, which the maker says will pass a 7 mm cable, about two USB cables or one HDMI cable. Length is a separate choice: 4 m, 6 m, or 8 m.",
+      "sharedSpecs": [
+        {"name": "Outside width", "value": "14", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Outside height", "value": "10", "unitText": "mm", "unitCode": "MMT"},
+        {"name": "Inside height", "value": "7", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Cable that passes", "value": "7 mm diameter, about 2 USB cables or 1 HDMI"},
+        {"name": "Material", "value": "Flexible PVC"},
+        {"name": "Color", "value": "White"},
+        {"name": "Mount", "value": "Self-adhesive"}
+      ],
+      "faqs": [
+        {"q": "What size cable fits this raceway?", "a": "The inside height is 7 mm. The maker says it passes a 7 mm cable, about two USB cables or one HDMI cable."},
+        {"q": "How wide is the cord cover?", "a": "14 mm outside width, 10 mm outside height, 7 mm inside height."},
+        {"q": "What lengths does the cable raceway come in?", "a": "4 meters (157 inches), 6 meters (236 inches), and 8 meters (315 inches)."}
+      ],
+      "variants": [
+        {"sku": "UTY-RACE-4M", "label": "4 m / 157 in", "price": 2400, "decidingSpec": {"name": "Length", "value": "4", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_201442812", "supplierOption": "4m"}},
+        {"sku": "UTY-RACE-6M", "label": "6 m / 236 in", "price": 3000, "decidingSpec": {"name": "Length", "value": "6", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_201725818", "supplierOption": "6m"}},
+        {"sku": "UTY-RACE-8M", "label": "8 m / 315 in", "price": 3600, "decidingSpec": {"name": "Length", "value": "8", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_7171025", "supplierOption": "8m"}}
+      ],
+      "autods": {
+        "productId": "69e653353998540001b089b9",
+        "idOnSite": "3256809902833684",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "Stone's Store",
+        "warehouse": "CN"
+      }
+    },
+    {
+      "slug": "door-draft-stopper",
+      "name": "Brush door sweep",
+      "category": "Door",
+      "image": "https://ae01.alicdn.com/kf/S87fd5de0178649989a8ed2772a20f538m.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/S87fd5de0178649989a8ed2772a20f538m.jpg",
+        "https://ae01.alicdn.com/kf/Sf37405113eef4e2c85b3361a70d03bbeD.jpg",
+        "https://ae01.alicdn.com/kf/S9375f98a1ef8429cbc0b8418dbcbf7c4f.jpg",
+        "https://ae01.alicdn.com/kf/Sd32318c558a146aab8984a12f268bf19Y.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 13,
+      "maxDays": 13,
+      "headline": "Gaps up to 1.2 in",
+      "fit": "39.37 in long · cut to the door",
+      "summary": "An adhesive TPE door sweep with a brush. It is 39.37 inches long and can be cut to the door. The maker says it covers under-door gaps up to 1.2 inches. Choose a 25 mm or 53 mm thickness. It is meant for carpet, uneven floors, and painted floors.",
+      "sharedSpecs": [
+        {"name": "Gap covered", "value": "1.2", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Length", "value": "39.37", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Length in metric", "value": "100", "unitText": "cm", "unitCode": "CMT"},
+        {"name": "Cut to fit", "value": "Yes, trim to the door width"},
+        {"name": "Material", "value": "TPE rubber with a brush"},
+        {"name": "Mount", "value": "Adhesive, sticks to the bottom of the door"},
+        {"name": "Floors", "value": "Carpet, uneven floors, painted floors"}
+      ],
+      "faqs": [
+        {"q": "What under-door gap does this sweep cover?", "a": "Gaps up to 1.2 inches, which is 3 centimeters."},
+        {"q": "How long is the door sweep?", "a": "39.37 inches (100 cm). Cut it to the width of the door."},
+        {"q": "What is the difference between the 25 mm and 53 mm door sweeps?", "a": "Thickness. Both are 39.37 inches long. The maker states the same 1.2 inch gap coverage for the product."}
+      ],
+      "variants": [
+        {"sku": "UTY-SWEEP-25", "label": "25 mm thick, black", "price": 1900, "decidingSpec": {"name": "Thickness", "value": "25", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "3256806622111237_193_200025003_202765815", "supplierOption": "25mm black"}},
+        {"sku": "UTY-SWEEP-53", "label": "53 mm thick, black", "price": 2600, "decidingSpec": {"name": "Thickness", "value": "53", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "3256806622111237_193_200025003_100016941", "supplierOption": "53mm black"}}
+      ],
+      "autods": {
+        "productId": "69dba3f083c6270001efdabc",
+        "idOnSite": "3256806622111237",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "Hose Harmony Boutique Store",
+        "warehouse": "CN"
+      }
+    },
+    {
+      "slug": "tension-rod",
+      "name": "Spring tension rod",
+      "category": "Closet",
+      "image": "https://ae01.alicdn.com/kf/Sdb23c56153ce4664a1d19ca27523923bq.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/Sdb23c56153ce4664a1d19ca27523923bq.jpg",
+        "https://ae01.alicdn.com/kf/Sddf364ad67a7426a91ff70f526fa1d23f.jpg",
+        "https://ae01.alicdn.com/kf/S58d1f8bf701740febf0594cd6a1a9466y.jpg",
+        "https://ae01.alicdn.com/kf/S0934f28fb176466fb64e68c1891c3013u.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 15,
+      "maxDays": 15,
+      "headline": "Rated 1.5 kg",
+      "fit": "1.3 cm diameter · no drill",
+      "summary": "A metal spring tension rod with plastic ends. The diameter is about 1.3 cm and the stated load is 1.5 kg (3.3 lb). Pick the span that matches the opening. It is for a light curtain or a shower curtain, not a heavy blackout drape.",
+      "sharedSpecs": [
+        {"name": "Load", "value": "1.5", "unitText": "kg", "unitCode": "KGM", "deciding": true},
+        {"name": "Load in pounds", "value": "3.3", "unitText": "lb", "unitCode": "LBR"},
+        {"name": "Diameter", "value": "1.3", "unitText": "cm", "unitCode": "CMT", "deciding": true},
+        {"name": "Material", "value": "Metal tube, plastic ends"},
+        {"name": "Mount", "value": "Spring tension, no screws"}
+      ],
+      "faqs": [
+        {"q": "How much weight can this tension rod hold?", "a": "1.5 kilograms, about 3.3 pounds. It is not a heavy-duty closet rod."},
+        {"q": "How thick is the tension rod?", "a": "About 1.3 centimeters in diameter."},
+        {"q": "Which tension rod length should I buy?", "a": "Measure the opening and pick the span that contains it: 11.8–19.7 in, 21.7–35.4 in, or 23.6–43.3 in."}
+      ],
+      "variants": [
+        {"sku": "UTY-ROD-30", "label": "11.8–19.7 in (30–50 cm)", "price": 1800, "decidingSpec": {"name": "Span", "value": "11.8–19.7", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_175", "supplierOption": "30-50CM"}},
+        {"sku": "UTY-ROD-55", "label": "21.7–35.4 in (55–90 cm)", "price": 2400, "decidingSpec": {"name": "Span", "value": "21.7–35.4", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_10", "supplierOption": "55-90CM"}},
+        {"sku": "UTY-ROD-60", "label": "23.6–43.3 in (60–110 cm)", "price": 3200, "decidingSpec": {"name": "Span", "value": "23.6–43.3", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_691", "supplierOption": "60-110CM"}}
+      ],
+      "autods": {
+        "productId": "6730eaa203c61b5bd54b2a74",
+        "idOnSite": "1005005621095538",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "CHUKE Store",
+        "warehouse": "CN"
+      }
+    },
+    {
+      "slug": "furniture-sliders",
+      "name": "Hardwood furniture sliders",
+      "category": "Furniture",
+      "image": "https://ae01.alicdn.com/kf/Sf8354c0f53284296a13894ebdbacbd02J.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/Sf8354c0f53284296a13894ebdbacbd02J.jpg",
+        "https://ae01.alicdn.com/kf/Sef433d64af2d46659fad490b4b1a65f5i.jpg",
+        "https://ae01.alicdn.com/kf/Sa59e106204264cc4a1ce80194e2cc5fee.jpg",
+        "https://ae01.alicdn.com/kf/S69caecc08a684f328152c3876f4837ce0.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 12,
+      "maxDays": 12,
+      "headline": "Hardwood legs",
+      "fit": "Square silicone caps · 24 pieces",
+      "summary": "Twenty-four square silicone caps for chair and furniture legs on hardwood. They are not a carpet slider. Measure the leg and pick the range: 19–25 mm, 26–36 mm, or 37–49 mm.",
+      "sharedSpecs": [
+        {"name": "Floor", "value": "Hardwood", "deciding": true},
+        {"name": "Pieces", "value": "24"},
+        {"name": "Shape", "value": "Square"},
+        {"name": "Material", "value": "Silicone"},
+        {"name": "Color", "value": "Transparent"},
+        {"name": "Not for", "value": "Carpet"}
+      ],
+      "faqs": [
+        {"q": "Do these furniture sliders work on carpet?", "a": "No. They are silicone leg caps for hardwood floors."},
+        {"q": "What leg size fits the small sliders?", "a": "19 to 25 millimeters."},
+        {"q": "What leg size fits the large and extra-large sliders?", "a": "Large fits 26 to 36 mm. Extra-large fits 37 to 49 mm. Each set has 24 caps."}
+      ],
+      "variants": [
+        {"sku": "UTY-SLIDE-S", "label": "19–25 mm", "price": 1600, "decidingSpec": {"name": "Leg size", "value": "19–25", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_100014064_202924816", "supplierOption": "S 19-25 mm"}},
+        {"sku": "UTY-SLIDE-L", "label": "26–36 mm", "price": 1800, "decidingSpec": {"name": "Leg size", "value": "26–36", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_361385_202924816", "supplierOption": "L 26-36 mm"}},
+        {"sku": "UTY-SLIDE-XL", "label": "37–49 mm", "price": 2200, "decidingSpec": {"name": "Leg size", "value": "37–49", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_100014065_202924816", "supplierOption": "XL 37-49 mm"}}
+      ],
+      "autods": {
+        "productId": "67102ef375928e778a36ffa0",
+        "idOnSite": "1005006417602410",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "HomeWhimsy Store",
+        "warehouse": "CN"
+      }
+    },
+    {
+      "slug": "furniture-anchors",
+      "sku": "UTY-ANCHOR-6",
+      "name": "Screw-in furniture anchors, 6 sets",
+      "category": "Furniture",
+      "price": 2400,
+      "image": "https://ae01.alicdn.com/kf/S3cb3cede62d44a0fa7e1fea87f3e83d9b.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/S3cb3cede62d44a0fa7e1fea87f3e83d9b.jpg",
+        "https://ae01.alicdn.com/kf/Sd570098923db4ffca9e2d1f0d4e765d5b.jpg",
+        "https://ae01.alicdn.com/kf/S895eebb6790442caab51c096c9ae56daR.jpg",
+        "https://ae01.alicdn.com/kf/Sb266644801e54eff988db4dca593f339P.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 11,
+      "maxDays": 11,
+      "headline": "Screws into the wall",
+      "fit": "6 metal strap sets · drill required",
+      "summary": "Six sets of metal anti-tip straps that screw into the furniture and the wall. They are not adhesive pads. Installation uses a screwdriver and a drill. The straps are detachable. Use them on dressers, bookcases, and cabinets.",
+      "specs": [
+        {"name": "Mount", "value": "Screws into the wall and the furniture", "deciding": true},
+        {"name": "Not this mount", "value": "Adhesive"},
+        {"name": "Sets in the pack", "value": "6"},
+        {"name": "Material", "value": "Stainless steel straps"},
+        {"name": "Tools", "value": "Screwdriver and drill"},
+        {"name": "Install direction", "value": "Vertical or horizontal"},
+        {"name": "Detachable", "value": "Yes"},
+        {"name": "Use on", "value": "Dressers, bookcases, cabinets, wardrobes"}
+      ],
+      "faqs": [
+        {"q": "Are these furniture anchors adhesive?", "a": "No. They screw into the wall and the furniture. You need a drill and a screwdriver."},
+        {"q": "How many anti-tip straps are in the pack?", "a": "Six sets."},
+        {"q": "Can I take the furniture anchor off later?", "a": "Yes. The strap is detachable."}
+      ],
+      "autods": {
+        "productId": "689e69567fe46b4fb850a8cd",
+        "idOnSite": "1005009362017875",
+        "variationId": "1005009362017875_175",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "ZealousDream Store",
+        "warehouse": "CN",
+        "supplierOption": "6 Sets"
+      }
+    },
+    {
+      "slug": "closet-rod",
+      "name": "Adjustable closet rod",
+      "category": "Closet",
+      "image": "https://ae01.alicdn.com/kf/Sc6dedfb1a62e4f81a2ac1e0a47c6b2cfW.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/Sc6dedfb1a62e4f81a2ac1e0a47c6b2cfW.jpg",
+        "https://ae01.alicdn.com/kf/S9a8ab93fd133400a8c16aaeb9336cbc6W.jpg",
+        "https://ae01.alicdn.com/kf/S41e8d8eae48549b3b920d0bf40aed3514.jpg",
+        "https://ae01.alicdn.com/kf/S32315b06136b413991483076e68be91et.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 13,
+      "maxDays": 13,
+      "headline": "Span is the choice",
+      "fit": "1.77 in end caps · stainless steel",
+      "summary": "A stainless steel telescopic closet rod with rubber ends. The round end is 1.77 inches across. Choose the span that covers the opening, from 13.8–21.7 inches up to 43.3–66.9 inches. The maker does not publish a load rating, so this page does not invent one.",
+      "sharedSpecs": [
+        {"name": "End diameter", "value": "1.77", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "End diameter in metric", "value": "4.5", "unitText": "cm", "unitCode": "CMT"},
+        {"name": "Material", "value": "Stainless steel and rubber"},
+        {"name": "Load rating", "value": "Not published by the maker", "deciding": true},
+        {"name": "Mount", "value": "Adjust the length, then secure the ends"}
+      ],
+      "faqs": [
+        {"q": "How much weight can this closet rod hold?", "a": "The maker does not publish a load rating. This page does not guess one."},
+        {"q": "How wide are the ends of the closet rod?", "a": "The round head at each end is 4.5 cm, which is 1.77 inches."},
+        {"q": "Which closet rod span should I order?", "a": "Measure the opening in inches and pick the only range that contains that number."}
+      ],
+      "variants": [
+        {"sku": "UTY-CLOSET-35", "label": "13.8–21.7 in (35–55 cm)", "price": 2800, "decidingSpec": {"name": "Span", "value": "13.8–21.7", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_193", "supplierOption": "35-55 cm"}},
+        {"sku": "UTY-CLOSET-50", "label": "19.7–31.5 in (50–80 cm)", "price": 3800, "decidingSpec": {"name": "Span", "value": "19.7–31.5", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_175", "supplierOption": "50-80 cm"}},
+        {"sku": "UTY-CLOSET-70", "label": "27.6–43.3 in (70–110 cm)", "price": 6200, "decidingSpec": {"name": "Span", "value": "27.6–43.3", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_10", "supplierOption": "70-110 cm"}},
+        {"sku": "UTY-CLOSET-90", "label": "35.4–55.1 in (90–140 cm)", "price": 7400, "decidingSpec": {"name": "Span", "value": "35.4–55.1", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_691", "supplierOption": "90-140 cm"}},
+        {"sku": "UTY-CLOSET-110", "label": "43.3–66.9 in (110–170 cm)", "price": 6600, "decidingSpec": {"name": "Span", "value": "43.3–66.9", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_173", "supplierOption": "110-170 cm"}}
+      ],
+      "autods": {
+        "productId": "8729b8b3a545efacc608574b",
+        "idOnSite": "3256807316709513",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "Kawaii Homedecor Store",
+        "warehouse": "CN"
+      }
+    },
+    {
+      "slug": "closet-motion-light",
+      "sku": "UTY-LIGHT",
+      "name": "Rechargeable closet motion light",
+      "category": "Closet",
+      "price": 1600,
+      "image": "https://ae01.alicdn.com/kf/S830e97f7e53342d3a81fb38ae39c71c4K.jpg",
+      "images": [
+        "https://ae01.alicdn.com/kf/S830e97f7e53342d3a81fb38ae39c71c4K.jpg",
+        "https://ae01.alicdn.com/kf/S5c9c93ecdcb74468850a11c45b58276bt.jpg",
+        "https://ae01.alicdn.com/kf/S6e8f072fc00346e0bc2c8c997d8b5257L.jpg",
+        "https://ae01.alicdn.com/kf/S86f2029fc9b6422c96a851a2d3cb51dab.jpg"
+      ],
+      "shipsFrom": "CN",
+      "minDays": 13,
+      "maxDays": 13,
+      "headline": "86 mm wide",
+      "fit": "18 mm tall · 0.6 W · 3–6 m sensor",
+      "summary": "A round rechargeable motion light for a closet, cabinet, or hallway. It is 86 mm across and 18 mm tall, draws 0.6 watts, and uses 8 LEDs. The sensor reads about 3 to 6 meters across 120 degrees and turns off after about 25 seconds. It charges by USB and mounts with a magnet. The maker does not publish one lumen number, so this page does not invent one.",
+      "specs": [
+        {"name": "Diameter", "value": "86", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Height", "value": "18", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Power", "value": "0.6", "unitText": "W", "unitCode": "WTT"},
+        {"name": "LEDs", "value": "8"},
+        {"name": "Sensor range", "value": "3–6", "unitText": "m", "unitCode": "MTR", "deciding": true},
+        {"name": "Sensor angle", "value": "120", "unitText": "degrees", "unitCode": "DD"},
+        {"name": "Off delay", "value": "25", "unitText": "s", "unitCode": "SEC"},
+        {"name": "Battery", "value": "400 mAh, USB rechargeable"},
+        {"name": "Mount", "value": "Built-in magnet"},
+        {"name": "Light color", "value": "White and warm white"},
+        {"name": "Lumens", "value": "Not published as a single rating"}
+      ],
+      "faqs": [
+        {"q": "How big is the closet motion light?", "a": "86 millimeters in diameter and 18 millimeters tall."},
+        {"q": "How far does the motion sensor reach?", "a": "About 3 to 6 meters, across 120 degrees, and it is meant to turn on in the dark."},
+        {"q": "How many lumens is the closet light?", "a": "The maker does not publish a single lumen rating. The stated power is 0.6 watts from 8 LEDs."},
+        {"q": "How does the closet light charge and mount?", "a": "USB rechargeable, 400 mAh battery, and a built-in magnet. It turns off about 25 seconds after motion stops."}
+      ],
+      "autods": {
+        "productId": "695c35569d060300011f56be",
+        "idOnSite": "3256806803511525",
+        "variationId": "3256806803511525_200013901",
+        "site": "aliexpress",
+        "buySiteId": 2,
+        "supplier": "Shop1103751404 Store",
+        "warehouse": "CN",
+        "supplierOption": "2 Light Colors"
+      }
+    }
+  ]
+}

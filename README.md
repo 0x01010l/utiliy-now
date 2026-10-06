@@ -1,20 +1,9 @@
-# Utiliy — AI Product Page Auditor
+# Utiliy
 
-SEO-first SaaS for auditing ecommerce product pages.
-
-- **Site:** https://utiliy.com (GitHub Pages)
-- **API:** https://utiliy-audit-api.azurewebsites.net/api
-- **Docs:** [docs/DELIVERABLES.md](docs/DELIVERABLES.md)
-
-## Local dev
+Measurement-first shop for [utiliy.com](https://utiliy.com). Product pages, FAQ schema, `llms.txt`, and `/feeds/products.json` publish the span, gap, load, or surface. Stripe Payment Links take the order. Supplier ids for AutoDS fulfillment are in `/feeds/fulfillment.json`.
 
 ```bash
-bundle install
-bundle exec jekyll serve
+node scripts/build.mjs
 ```
 
-## API deploy
-
-```bash
-cd api && zip -r ../api-deploy.zip . && az functionapp deployment source config-zip -g utiliy-prod -n utiliy-audit-api --src ../api-deploy.zip --build-remote true
-```
+GitHub Pages publishes the `dist` folder from `.github/workflows/pages.yml`.
