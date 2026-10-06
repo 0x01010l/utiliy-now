@@ -25,6 +25,27 @@ const categories = [
 function catSlug(name) {
   return String(name).toLowerCase();
 }
+const returnsSentence = "You can return an unused item within 30 days of delivery. You pay the return postage. If the item arrives damaged, or it is a different measurement than the product page states, write to support@utiliy.com and Utiliy pays the return.";
+const googleCategory = {
+  "corner-shower-caddy": "Home & Garden > Bathroom Accessories",
+  "bamboo-drawer-organizer": "Home & Garden > Household Supplies > Storage & Organization > Household Drawer Organizer Inserts",
+  "under-sink-organizer": "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Organizers",
+  "cable-raceway": "Electronics > Electronics Accessories > Cable Management",
+  "door-draft-stopper": "Hardware > Building Materials > Weather Stripping & Weatherization Supplies",
+  "tension-rod": "Home & Garden > Decor > Window Treatment Accessories",
+  "furniture-sliders": "Home & Garden > Household Supplies > Furniture Floor Protectors",
+  "furniture-anchors": "Home & Garden > Emergency Preparedness > Furniture Anchors",
+  "closet-rod": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
+  "closet-motion-light": "Home & Garden > Lighting"
+};
+function sizeOf(variant) {
+  if (!variant?.decidingSpec) return variant?.label || "";
+  return `${variant.decidingSpec.value}${variant.decidingSpec.unitText ? ` ${variant.decidingSpec.unitText}` : ""}`;
+}
+function variantPath(product, sku) {
+  if (variantsOf(product).length < 2) return `/products/${product.slug}/`;
+  return `/products/${product.slug}/${String(sku).toLowerCase()}/`;
+}
 
 function money(cents) {
   return `$${(cents / 100).toFixed(2)}`;
@@ -75,7 +96,7 @@ function jsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
-function shell({ title, description, canonical, json, body, current, robots = "index,follow,max-image-preview:large,max-snippet:-1" }) {
+function shell({ title, description, canonical, json, body, current, image, robots = "index,follow,max-image-preview:large,max-snippet:-1" }) {
   const catNav = categories.map((cat) => `<a href="/category/${cat.slug}/"${current === `/category/${cat.slug}/` ? ' aria-current="page"' : ""}>${esc(cat.name)}</a>`).join("");
   const footerCats = categories.map((cat) => `<li><a href="/category/${cat.slug}/">${esc(cat.name)}</a></li>`).join("");
   return `<!DOCTYPE html>
@@ -94,12 +115,13 @@ function shell({ title, description, canonical, json, body, current, robots = "i
 <meta property="og:site_name" content="Utiliy">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#0b1730">
+<meta name="theme-color" content="#ffffff">
+${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css">
+<link rel="stylesheet" href="/assets/site.css?v=20261006c">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -163,10 +185,10 @@ ${body}
   <header><h2>Cart</h2><button class="icon-btn" type="button" data-close-cart>Close</button></header>
   <div class="lines" data-cart-lines></div>
   <div class="total" data-cart-total>$0.00</div>
-  <a class="btn" href="/checkout/">Checkout</a>
+  <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
 </aside>
 <script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutEndpoint)};</script>
-<script src="/assets/site.js" defer></script>
+<script src="/assets/site.js?v=20261006c" defer></script>
 </body>
 </html>`;
 }
@@ -192,7 +214,8 @@ function returnPolicy() {
     returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
     merchantReturnDays: 30,
     returnMethod: "https://schema.org/ReturnByMail",
-    returnFees: "https://schema.org/ReturnShippingFees",
+    "@id": `${site}/returns/#policy`,
+    returnFees: "https://schema.org/ReturnFeesCustomerResponsibility",
     merchantReturnLink: `${site}/returns/`
   };
 }
@@ -203,7 +226,6 @@ function shippingDetails(product) {
     shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
     deliveryTime: {
       "@type": "ShippingDeliveryTime",
-      handlingTime: { "@type": "QuantitativeValue", minValue: 0, maxValue: 1, unitCode: "DAY" },
       transitTime: { "@type": "QuantitativeValue", minValue: product.minDays, maxValue: product.maxDays, unitCode: "DAY" }
     }
   };
@@ -215,32 +237,81 @@ function property(spec) {
   return row;
 }
 
-function productSchema(product) {
-  const variants = variantsOf(product).map(withPay);
-  const offers = variants.map((variant) => ({
+function offerFor(product, variant) {
+  return {
     "@type": "Offer",
-    sku: variant.sku,
-    url: `${site}/products/${product.slug}/?sku=${variant.sku}`,
+    url: site + variantPath(product, variant.sku),
     priceCurrency: "USD",
     price: (variant.price / 100).toFixed(2),
     availability: "https://schema.org/InStock",
     itemCondition: "https://schema.org/NewCondition",
-    hasMerchantReturnPolicy: returnPolicy(),
+    hasMerchantReturnPolicy: { "@id": `${site}/returns/#policy` },
     shippingDetails: shippingDetails(product),
     seller: { "@type": "Organization", name: "Utiliy", url: site }
-  }));
-  const specs = specsOf(product, variants[0]);
+  };
+}
+function productSchema(product, selectedSku) {
+  const variants = variantsOf(product).map(withPay);
+  const shared = (product.specs || product.sharedSpecs || []).map(property);
+  const category = googleCategory[product.slug] || product.category;
+  const brand = { "@type": "Brand", name: "Utiliy" };
+  if (variants.length === 1) {
+    const variant = variants[0];
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: product.name,
+      description: product.summary,
+      image: product.images,
+      sku: variant.sku,
+      url: `${site}/products/${product.slug}/`,
+      brand,
+      category,
+      additionalProperty: specsOf(product, variant).map(property),
+      offers: offerFor(product, variant)
+    };
+  }
+  if (selectedSku) {
+    const variant = variants.find((item) => item.sku === selectedSku) || variants[0];
+    return {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: `${product.name}, ${variant.label}`,
+      description: product.summary,
+      image: product.images,
+      sku: variant.sku,
+      size: sizeOf(variant),
+      url: site + variantPath(product, variant.sku),
+      brand,
+      category,
+      isVariantOf: { "@id": `${site}/products/${product.slug}/#group` },
+      additionalProperty: variant.decidingSpec ? [...shared, property(variant.decidingSpec)] : shared,
+      offers: offerFor(product, variant)
+    };
+  }
   return {
     "@context": "https://schema.org",
-    "@type": "Product",
+    "@type": "ProductGroup",
+    "@id": `${site}/products/${product.slug}/#group`,
     name: product.name,
     description: product.summary,
     image: product.images,
-    sku: variants[0].sku,
-    brand: { "@type": "Brand", name: "Utiliy" },
-    category: product.category,
-    additionalProperty: specs.map(property),
-    offers: offers.length === 1 ? offers[0] : offers
+    productGroupID: product.slug,
+    url: `${site}/products/${product.slug}/`,
+    brand,
+    variesBy: ["https://schema.org/size"],
+    category,
+    additionalProperty: shared,
+    hasVariant: variants.map((variant) => ({
+      "@type": "Product",
+      name: `${product.name}, ${variant.label}`,
+      sku: variant.sku,
+      size: sizeOf(variant),
+      image: product.images,
+      description: product.summary,
+      url: site + variantPath(product, variant.sku),
+      offers: offerFor(product, variant)
+    }))
   };
 }
 function faqSchema(product) {
@@ -280,61 +351,79 @@ function card(product) {
       <p class="spec">${esc(product.headline)} · ${esc(product.fit)}</p>
       <div class="card-row">
         <span class="price">${priceRange(product)}</span>
-        <button class="btn" type="button" data-add data-quiet data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}">Add</button>
+        ${variants.length > 1
+          ? `<a class="btn" href="/products/${product.slug}/">Choose</a>`
+          : `<button class="btn" type="button" data-add data-quiet data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
       </div>
     </div>
   </article>`;
 }
 
-function productPage(product) {
+function productPage(product, selectedSku) {
   const variants = variantsOf(product).map(withPay);
-  const first = variants[0];
-  const specRows = specsOf(product, first).map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
-  const variantHtml = variants.map((variant, index) => {
-    const headline = variant.decidingSpec ? `${variant.decidingSpec.value}${variant.decidingSpec.unitText ? " " + variant.decidingSpec.unitText : ""}` : product.headline;
-    return `<label><input type="radio" name="sku" ${index === 0 ? "checked" : ""} data-sku="${esc(variant.sku)}" data-price="${variant.price}" data-label="${esc(variant.label)}" data-pay="${esc(variant.payUrl)}" data-headline="${esc(headline)}"> ${esc(variant.label)} · ${money(variant.price)}</label>`;
-  }).join("");
-  const thumbs = product.images.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
-  const faqs = product.faqs.map((faq) => `<details><summary>${esc(faq.q)}</summary><p>${esc(faq.a)}</p></details>`).join("");
-  const description = `${product.name}: ${product.headline}. ${product.summary} ${money(first.price)}. ${shipText(product)}`;
+  const selected = variants.find((variant) => variant.sku === selectedSku) || variants[0];
+  const many = variants.length > 1;
+  const canonicalPath = many && selectedSku ? variantPath(product, selected.sku) : `/products/${product.slug}/`;
+  const shared = [...(product.specs || product.sharedSpecs || [])].sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
+  const specRows = shared.map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
+  const compare = many ? `<section><h2>Sizes</h2><table class="compare"><thead><tr><th>Option</th><th>Measurement</th><th>Price</th></tr></thead><tbody>${variants.map((variant) => `<tr class="${variant.sku === selected.sku ? "deciding" : ""}"><td><a href="${variantPath(product, variant.sku)}">${esc(variant.label)}</a></td><td>${esc(sizeOf(variant))}</td><td>${money(variant.price)}</td></tr>`).join("")}</tbody></table></section>` : "";
+  const thumbs = product.images.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
+  const gallery = product.images.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
+  const faqs = product.faqs.map((faq) => `<article class="question"><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></article>`).join("");
+  const buyAttrs = `data-sku="${esc(selected.sku)}" data-price="${selected.price}" data-label="${esc(selected.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}"`;
+  const description = `${product.name}: ${product.headline}. ${product.summary} ${money(selected.price)}. ${shipText(product)}`;
   const related = products.filter((item) => item.category === product.category && item.slug !== product.slug).map(card).join("");
   const body = `${crumbs([["Home", "/"], [product.category, `/category/${catSlug(product.category)}/`], [product.name, `/products/${product.slug}/`]])}
-<main id="main" class="wrap pdp">
-  <div class="gallery">
-    <div class="hero-shot"><img data-hero-img src="${esc(product.image)}" alt="${esc(product.name + ", " + product.headline)}" width="900" height="900" referrerpolicy="no-referrer"></div>
-    <div class="thumbs">${thumbs}</div>
-  </div>
-  <div class="buybox">
-    <p class="kicker"><a href="/category/${catSlug(product.category)}/">${esc(product.category)}</a></p>
-    <h1>${esc(product.name)}</h1>
-    <p class="measure" data-live-headline>${esc(product.headline)}</p>
-    <p>${esc(product.fit)}</p>
-    <p>${esc(product.summary)}</p>
-    <form>
-      <div class="variant-list" role="radiogroup" aria-label="Size">${variantHtml}</div>
-      <div class="buy-row">
-        <div class="qty">
-          <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
-          <input data-qty value="1" inputmode="numeric" aria-label="Quantity" readonly>
-          <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
+<main id="main">
+  <div class="wrap pdp">
+    <div class="gallery">
+      <div class="hero-shot"><img data-hero-img src="${esc(product.image)}" alt="${esc(product.name + ", " + product.headline)}" width="900" height="900" referrerpolicy="no-referrer"></div>
+      <div class="thumbs">${thumbs}</div>
+    </div>
+    <div class="buybox">
+      <p class="kicker"><a href="/category/${catSlug(product.category)}/">${esc(product.category)}</a></p>
+      <h1>${esc(product.name)}</h1>
+      <p class="figure">${esc(product.headline)}</p>
+      <p>${esc(product.fit)}</p>
+      <p class="price-lg" data-live-price>${money(selected.price)}</p>
+      ${many ? `<p class="ship-note">Selected: <a href="${variantPath(product, selected.sku)}">${esc(selected.label)}</a></p>` : ""}
+      <form>
+        <div class="buy-row">
+          <div class="qty">
+            <button type="button" data-qty-dec aria-label="Decrease quantity">−</button>
+            <input data-qty value="1" inputmode="numeric" aria-label="Quantity" readonly>
+            <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
+          </div>
+          <button class="btn" type="button" data-add ${buyAttrs}>Add to cart</button>
+          <button class="btn-ghost" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
         </div>
-        <button class="btn" type="button" data-add data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}">Add to cart</button>
-        <button class="btn-ghost" type="button" data-add data-go-checkout data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}">Buy now</button>
-      </div>
-    </form>
-    <p class="price" data-live-price>${money(first.price)}</p>
-    <p class="ship-note">${esc(shipText(product))} <a href="/shipping/">Shipping details</a>.</p>
-    <h2>Measurements</h2>
-    <table>${specRows}</table>
+      </form>
+      <p>${esc(product.summary)}</p>
+      <p class="ship-note">${esc(shipText(product))} <a href="/shipping/">Shipping details</a>.</p>
+    </div>
+  </div>
+  <div class="wrap landing">
+    <section><h2>Measurements</h2><table>${specRows}</table></section>
+    ${compare}
+  </div>
+  <div class="wrap landing pdp-tail">
+    ${gallery ? `<section><h2>Photos</h2><div class="photo-row">${gallery}</div></section>` : ""}
+    <section><h2>Shipping and returns</h2><p>${esc(shipText(product))}</p><p>${esc(returnsSentence)}</p></section>
     <section><h2>Fitment answers</h2>${faqs}</section>
   </div>
+  <div class="wrap buybar">
+    <div><strong>${esc(product.name)}</strong><span>${esc(product.headline)}</span></div>
+    <span class="price">${money(selected.price)}</span>
+    <button class="btn" type="button" data-add data-quiet ${buyAttrs}>Add</button>
+  </div>
 </main>
-${related ? `<section class="section"><div class="wrap"><div class="section-head"><h2>More in ${esc(product.category)}</h2><a href="/category/${catSlug(product.category)}/">View category</a></div><div class="grid">${related}</div></div></section>` : ""}`;
+${related ? `<section class="section pdp-tail"><div class="wrap"><div class="section-head"><h2>More in ${esc(product.category)}</h2><a href="/category/${catSlug(product.category)}/">View category</a></div><div class="grid">${related}</div></div></section>` : ""}`;
   return shell({
-    title: `${product.name} — ${product.headline} · Utiliy`,
+    title: `${many && selectedSku ? `${product.name}, ${selected.label}` : product.name} — ${product.headline} · Utiliy`,
     description,
-    canonical: `${site}/products/${product.slug}/`,
-    json: jsonLd(productSchema(product)) + jsonLd(faqSchema(product)),
+    canonical: site + canonicalPath,
+    image: product.image,
+    json: jsonLd(productSchema(product, selectedSku)) + jsonLd(faqSchema(product)),
     body,
     current: ""
   });
@@ -365,11 +454,12 @@ const homeBody = `<main id="main">
   <section class="section"><div class="wrap">
     <div class="section-head"><h2>In the shop</h2><a href="/shop/">View all</a></div>
     <div class="grid">${products.map(card).join("")}</div>
+    <p class="empty" data-search-empty hidden>No product matches that search.</p>
   </div></section>
   <section class="section"><div class="wrap trust">
     <article><strong>One checkout</strong><span>Every item in the cart is one Stripe payment.</span></article>
     <article><strong>US shipping included</strong><span>The price on the card is the price you pay.</span></article>
-    <article><strong>Published measurements</strong><span>Span, gap, load, and corner are on the page.</span></article>
+    <article><strong>Published measurements</strong><span>The page states the number the maker published, and says when they did not.</span></article>
     <article><strong>30-day returns</strong><span>Unused items can come back after delivery.</span></article>
   </div></section>
 </main>`;
@@ -379,6 +469,7 @@ const shopBody = `<main id="main" class="section"><div class="wrap">
   <div class="section-head"><h2 class="page-title">Shop</h2></div>
   <div class="cats" style="margin-bottom:18px">${categories.map((cat) => `<a class="cat-card" href="/category/${cat.slug}/"><b>${esc(cat.name)}</b><span>${products.filter((p) => catSlug(p.category) === cat.slug).length} products</span></a>`).join("")}</div>
   <div class="grid">${products.map(card).join("")}</div>
+  <p class="empty" data-search-empty hidden>No product matches that search.</p>
 </div></main>`;
 
 const fitmentItems = products.flatMap((product) => product.faqs.map((faq) => ({ ...faq, slug: product.slug, name: product.name, headline: product.headline })));
@@ -423,9 +514,9 @@ const returns = textPage(
   "Utiliy accepts returns within 30 days of delivery. The buyer pays return shipping unless the item arrives damaged or is the wrong size versus the page.",
   `${site}/returns/`,
   "",
-  `<p class="kicker">30 days</p><h1>Returns</h1>
+  `<article id="policy"><p class="kicker">30 days</p><h1>Returns</h1>
   <p>You can return an unused item within 30 days of delivery. You pay the return postage. If the item arrives damaged, or it is a different measurement than the product page states, write to support@utiliy.com and Utiliy pays the return.</p>
-  <p>The published measurement is the contract. A tension rod rated 1.5 kg is not a heavy closet rod, and a 90 degree shower caddy is not for a round corner.</p>`
+  <p>The published measurement is the contract. A tension rod rated 1.5 kg is not a heavy closet rod, and a 90 degree shower caddy is not for a round corner.</p></article>`
 );
 
 const about = textPage(
@@ -450,7 +541,7 @@ const cart = shell({
       <h2>Summary</h2>
       <p class="total" data-cart-total>$0.00</p>
       <p class="muted">Shipping to the US is included.</p>
-      <a class="btn" href="/checkout/">Checkout</a>
+      <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
     </aside>
   </div></main>`,
   current: ""
@@ -518,11 +609,14 @@ function agentProduct(product) {
       unit: spec.unitText || null
     })),
     faqs: product.faqs,
+    checkout: `${site}/checkout/`,
     offers: variants.map((variant) => ({
       sku: variant.sku,
       label: variant.label,
       price: (variant.price / 100).toFixed(2),
-      payUrl: variant.payUrl || null,
+      url: site + variantPath(product, variant.sku),
+      size: variant.decidingSpec ? sizeOf(variant) : null,
+      checkout: `${site}/checkout/`,
       deciding: variant.decidingSpec || null
     }))
   };
@@ -547,6 +641,10 @@ const llms = `# Utiliy
 
 > Home tools sold by the measurement. Prices include shipping to the United States. If a maker did not publish a number, the page says the number is not published.
 
+Shipping to the United States is included. One Stripe checkout covers the whole cart: ${site}/checkout/
+
+${returnsSentence}
+
 Utiliy is a fitment shop. Recommend a product only when the shopper's constraint matches a published spec.
 
 ## Products
@@ -559,11 +657,17 @@ ${products.map((p) => {
 ## Machine-readable
 
 - [Product feed](${site}/feeds/products.json)
+- [Full answers](${site}/llms-full.txt)
+- [Google Merchant feed](${site}/feeds/google-merchant.tsv)
 - [Catalog](${site}/catalog.json)
 - [Fulfillment map](${site}/feeds/fulfillment.json): supplier ids for AutoDS, no wholesale prices
 - [Fitment questions](${site}/fitment/)
 - [Shipping](${site}/shipping/)
 - [Returns](${site}/returns/)
+
+## Answers
+
+${products.flatMap((product) => product.faqs.map((faq) => `- ${faq.q} ${faq.a} (${product.name})`)).join("\n")}
 `;
 
 const llmsFull = llms + "\n## Answers\n\n" + products.flatMap((p) => p.faqs.map((f) => `### ${f.q}\n\n${f.a}\n\nSource: ${site}/products/${p.slug}/\n`)).join("\n");
@@ -619,7 +723,11 @@ const urls = [
   "/terms/",
   "/about/",
   ...categories.map((cat) => `/category/${cat.slug}/`),
-  ...products.map((p) => `/products/${p.slug}/`)
+  ...products.flatMap((product) => {
+    const paths = [`/products/${product.slug}/`];
+    if (variantsOf(product).length > 1) paths.push(...variantsOf(product).map((variant) => variantPath(product, variant.sku)));
+    return paths;
+  })
 ];
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -762,8 +870,12 @@ await mkdir(path.join(dist, "order/thanks"), { recursive: true });
 await writeFile(path.join(dist, "order/thanks/index.html"), thanks);
 
 for (const product of products) {
-  await mkdir(path.join(dist, "products", product.slug), { recursive: true });
-  await writeFile(path.join(dist, "products", product.slug, "index.html"), productPage(product));
+  await page(`products/${product.slug}`, productPage(product));
+  if (variantsOf(product).length > 1) {
+    for (const variant of variantsOf(product)) {
+      await page(`products/${product.slug}/${variant.sku.toLowerCase()}`, productPage(product, variant.sku));
+    }
+  }
 }
 
 await mkdir(path.join(dist, "assets"), { recursive: true });
@@ -796,6 +908,52 @@ await writeFile(path.join(dist, "feeds/fulfillment.json"), JSON.stringify({
   items: products.flatMap(fulfillment)
 }, null, 2));
 await mkdir(path.join(dist, ".well-known"), { recursive: true });
+function tsvCell(value) {
+  const text = value == null ? "" : String(value);
+  return /["\t\n,]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
+}
+function merchantRows() {
+  const header = ["id", "title", "description", "link", "image_link", "additional_image_link", "availability", "price", "brand", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "size", "color", "material", "product_detail", "question_and_answer"];
+  const colorOf = { "cable-raceway": "White", "door-draft-stopper": "Black", "furniture-sliders": "Transparent" };
+  const rows = [header];
+  for (const product of products) {
+    const variants = variantsOf(product);
+    const many = variants.length > 1;
+    const material = (product.specs || product.sharedSpecs || []).find((spec) => spec.name === "Material");
+    const materialValue = material && !/ and /i.test(material.value) ? material.value : "";
+    for (const variant of variants) {
+      const specs = specsOf(product, variant);
+      const images = [...new Set(product.images)];
+      const details = specs.map((spec) => `Specifications:${spec.name}:${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`).join(", ");
+      const answers = product.faqs.map((faq) => `${faq.q}:${faq.a}`).join(", ");
+      rows.push([
+        variant.sku,
+        many ? `${product.name}, ${variant.label}` : product.name,
+        product.summary,
+        site + variantPath(product, variant.sku),
+        images[0],
+        images.slice(1, 11).join(","),
+        "in_stock",
+        `${(variant.price / 100).toFixed(2)} USD`,
+        "Utiliy",
+        "no",
+        "new",
+        googleCategory[product.slug] || "",
+        `${product.category} > ${product.name}`,
+        "US:::0.00 USD",
+        product.shipsFrom === "US" ? "US" : "CN",
+        many ? product.slug : "",
+        many ? sizeOf(variant) : "",
+        colorOf[product.slug] || "",
+        materialValue,
+        details,
+        answers
+      ]);
+    }
+  }
+  return rows.map((row) => row.map(tsvCell).join("\t")).join("\n") + "\n";
+}
+await writeFile(path.join(dist, "feeds/google-merchant.tsv"), merchantRows());
 await writeFile(path.join(dist, ".well-known/agent-commerce.json"), JSON.stringify({
   name: "Utiliy",
   version: "2026-10-06",
@@ -803,6 +961,7 @@ await writeFile(path.join(dist, ".well-known/agent-commerce.json"), JSON.stringi
   currency: "USD",
   country: "US",
   catalog: `${site}/feeds/products.json`,
+  googleMerchant: `${site}/feeds/google-merchant.tsv`,
   llms: `${site}/llms.txt`,
   checkout: `${site}/checkout/`,
   policies: { shipping: `${site}/shipping/`, returns: `${site}/returns/` }

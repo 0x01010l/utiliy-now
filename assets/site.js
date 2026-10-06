@@ -22,8 +22,13 @@
     var qty = controls
       ? '<div class="stepper"><button type="button" data-dec="' + item.sku + '" aria-label="Decrease">−</button><input value="' + item.qty + '" readonly><button type="button" data-inc="' + item.sku + '" aria-label="Increase">+</button></div>'
       : '<div class="muted">Qty ' + item.qty + "</div>";
+    var ship = "";
+    if (item.minDays) {
+      var days = item.minDays === item.maxDays ? item.minDays + " days" : item.minDays + "–" + item.maxDays + " days";
+      ship = '<div class="muted">' + (item.shipsFrom === "US" ? "US warehouse" : "Supplier") + " · " + days + "</div>";
+    }
     return '<article class="line"><img alt="" src="' + item.image + '"><div><strong>' + item.name +
-      '</strong><div class="muted">' + item.label + "</div>" + qty +
+      '</strong><div class="muted">' + item.label + "</div>" + ship + qty +
       '<button type="button" data-remove="' + item.sku + '">Remove</button></div><div>' +
       money(item.price * item.qty) + "</div></article>";
   }
@@ -46,10 +51,15 @@
     if (summary) {
       summary.innerHTML = items.length
         ? items.map(function (item) {
-          return "<p><strong>" + item.name + "</strong><br><span class=\"muted\">" + item.label + " × " + item.qty + "</span></p>";
+          return "<p><strong>" + item.name + "</strong><br><span class=\"muted\">" + item.label + " × " + item.qty + " · " + money(item.price * item.qty) + "</span></p>";
         }).join("") + "<p>Shipping <strong>$0.00</strong></p><p class=\"total\">" + money(total(items)) + "</p>"
         : '<p class="empty">Nothing to pay yet.</p>';
     }
+    document.querySelectorAll("[data-cart-go]").forEach(function (el) { el.hidden = !items.length; });
+    document.querySelectorAll("[data-pay-all]").forEach(function (el) {
+      el.disabled = !items.length;
+      el.textContent = items.length ? "Pay " + money(total(items)) + " with Stripe" : "Pay with Stripe";
+    });
   }
 
   function add(data, qty) {
@@ -58,7 +68,8 @@
     if (found) found.qty = Math.min(10, found.qty + qty);
     else items.push({
       sku: data.sku, name: data.name, label: data.label, price: Number(data.price),
-      image: data.image, slug: data.slug, qty: qty
+      image: data.image, slug: data.slug, qty: qty,
+      shipsFrom: data.shipsFrom || "", minDays: Number(data.minDays) || 0, maxDays: Number(data.maxDays) || 0
     });
     write(items);
   }
@@ -120,7 +131,10 @@
         label: source.getAttribute("data-label"),
         price: source.getAttribute("data-price"),
         image: addBtn.getAttribute("data-image") || source.getAttribute("data-image"),
-        slug: addBtn.getAttribute("data-slug") || source.getAttribute("data-slug")
+        slug: addBtn.getAttribute("data-slug") || source.getAttribute("data-slug"),
+        shipsFrom: addBtn.getAttribute("data-ships") || "",
+        minDays: addBtn.getAttribute("data-min") || "",
+        maxDays: addBtn.getAttribute("data-max") || ""
       }, qty);
       if (!addBtn.hasAttribute("data-quiet")) openDrawer();
       if (addBtn.hasAttribute("data-go-checkout")) location.href = "/checkout/";
@@ -133,17 +147,25 @@
     if (!input) return;
     var price = document.querySelector("[data-live-price]");
     if (price) price.textContent = money(Number(input.getAttribute("data-price")));
-    var headline = document.querySelector("[data-live-headline]");
-    if (headline && input.getAttribute("data-headline")) headline.textContent = input.getAttribute("data-headline");
+    var chosen = document.querySelector("[data-live-option]");
+    if (chosen) chosen.textContent = input.getAttribute("data-label") || "";
+    document.querySelectorAll("[data-add]").forEach(function (button) {
+      button.setAttribute("data-sku-live", input.getAttribute("data-sku"));
+    });
     var url = new URL(location.href);
     url.searchParams.set("sku", input.getAttribute("data-sku"));
     history.replaceState(null, "", url);
   });
 
   function filterCards(q) {
+    var shown = 0;
     document.querySelectorAll("[data-product-card]").forEach(function (card) {
-      card.hidden = q.length > 0 && card.getAttribute("data-product-card").indexOf(q) === -1;
+      var hide = q.length > 0 && card.getAttribute("data-product-card").indexOf(q) === -1;
+      card.hidden = hide;
+      if (!hide) shown += 1;
     });
+    var empty = document.querySelector("[data-search-empty]");
+    if (empty) empty.hidden = q.length === 0 || shown > 0;
   }
   var search = document.querySelector("[data-search]");
   if (search) search.addEventListener("input", function () { filterCards(search.value.trim().toLowerCase()); });
@@ -160,7 +182,10 @@
   document.querySelectorAll("[data-thumb]").forEach(function (button) {
     button.addEventListener("click", function () {
       var img = document.querySelector("[data-hero-img]");
-      if (img) img.src = button.getAttribute("data-thumb");
+      if (img) {
+        img.src = button.getAttribute("data-thumb");
+        img.alt = button.getAttribute("data-alt") || img.alt;
+      }
       document.querySelectorAll("[data-thumb]").forEach(function (el) { el.removeAttribute("aria-current"); });
       button.setAttribute("aria-current", "true");
     });
@@ -190,11 +215,13 @@
       location.href = data.url;
     } catch (err) {
       button.disabled = false;
-      button.textContent = "Pay with Stripe";
+      paint();
       if (error) { error.hidden = false; error.textContent = err.message || "Checkout failed."; }
     }
   }
 
-  if (location.pathname.indexOf("/order/thanks") === 0) localStorage.removeItem(KEY);
+  if (location.pathname.indexOf("/order/thanks") === 0 && new URLSearchParams(location.search).get("session_id")) {
+    localStorage.removeItem(KEY);
+  }
   paint();
 })();
