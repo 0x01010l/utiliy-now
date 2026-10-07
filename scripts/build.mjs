@@ -118,7 +118,7 @@ function shell({ title, description, canonical, json, body, current, image, robo
 <meta name="theme-color" content="#ffffff">
 ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261006k">
+<link rel="stylesheet" href="/assets/site.css?v=20261007a">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -341,19 +341,23 @@ function crumbs(items) {
     });
 }
 
+function displayImage(product) {
+  return `/assets/product-images/${product.slug}.jpg`;
+}
+
 function card(product) {
   const variants = variantsOf(product);
   const first = variants[0];
   const hay = [product.name, product.category, product.headline, product.fit, product.summary, ...variants.map((v) => v.label)].join(" ").toLowerCase();
   return `<article class="card" data-product-card="${esc(hay)}">
-    <a class="shot" href="/products/${product.slug}/"><img src="${esc(product.image)}" alt="${esc(product.name)}" width="600" height="600" referrerpolicy="no-referrer"></a>
+    <a class="shot" href="/products/${product.slug}/"><img src="${displayImage(product)}" alt="${esc(product.name)}" width="1024" height="1024"></a>
     <a href="/products/${product.slug}/"><h3>${esc(product.name)}</h3></a>
     <p class="spec">${esc(product.headline)}</p>
     <div class="card-row">
       <span class="price">${priceRange(product)}</span>
       ${variants.length > 1
         ? `<a class="btn" href="/products/${product.slug}/">Choose</a>`
-        : `<button class="btn" type="button" data-add data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
+        : `<button class="btn" type="button" data-add data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${displayImage(product)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
     </div>
   </article>`;
 }
@@ -569,14 +573,14 @@ function productPage(product, selectedSku) {
   const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
   const gallery = photos.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
   const faqs = product.faqs.map((faq) => `<article class="question"><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></article>`).join("");
-  const buyAttrs = `data-sku="${esc(selected.sku)}" data-price="${selected.price}" data-label="${esc(selected.label)}" data-name="${esc(product.name)}" data-image="${esc(product.image)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}"`;
+  const buyAttrs = `data-sku="${esc(selected.sku)}" data-price="${selected.price}" data-label="${esc(selected.label)}" data-name="${esc(product.name)}" data-image="${displayImage(product)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}"`;
   const description = `${product.name}: ${product.headline}. ${product.summary} ${money(selected.price)}. ${shipText(product)}`;
   const related = products.filter((item) => item.category === product.category && item.slug !== product.slug).map(card).join("");
   const body = `${crumbs([["Home", "/"], [product.category, `/category/${catSlug(product.category)}/`], [product.name, `/products/${product.slug}/`]])}
 <main id="main">
   <div class="wrap pdp">
     <div class="gallery">
-      <div class="hero-shot"><img data-hero-img src="${esc(product.image)}" alt="${esc(product.name + ", " + product.headline)}" width="900" height="900" referrerpolicy="no-referrer"></div>
+      <div class="hero-shot"><img data-hero-img src="${displayImage(product)}" alt="${esc(product.name + ", " + product.headline)}" width="1024" height="1024"></div>
       <div class="thumbs">${thumbs}</div>
     </div>
     <div class="buybox">
@@ -632,7 +636,7 @@ ${related ? `<section class="section pdp-tail" id="also"><div class="wrap"><div 
     title: `${many && selectedSku ? `${product.name}, ${selected.label}` : product.name} — ${product.headline} · Utiliy`,
     description,
     canonical: site + canonicalPath,
-    image: product.image,
+    image: `${site}${displayImage(product)}`,
     json: jsonLd(productSchema(product, selectedSku)) + jsonLd(faqSchema(product)),
     body,
     current: ""
@@ -644,7 +648,7 @@ const products = catalog.products;
 const styleCards = categories.map((cat) => `<a class="style-card" href="/category/${cat.slug}/"><img src="/assets/covers/${cat.slug}.jpg" alt=""><span>${esc(cat.name)}</span></a>`).join("");
 const homeBody = `<main id="main">
   <section class="hero-stage">
-    <img src="/assets/covers/home.jpg" alt="Black and white photograph of a fitted corner shelf" width="1536" height="1024">
+    <img src="/assets/covers/home.jpg" alt="Abstract black and white architectural forms" width="1536" height="1024">
     <div class="wrap">
       <h1>Find the size that actually fits.</h1>
       <p>Every product leads with the span, gap, load, corner, or leg that decides the fit. If the maker did not publish a number, the page says so.</p>
@@ -1109,6 +1113,7 @@ for (const file of ["site.css", "site.js", "favicon.svg"]) {
 }
 await cp(path.join(root, "assets/explainers"), path.join(dist, "assets/explainers"), { recursive: true }).catch(() => {});
 await cp(path.join(root, "assets/covers"), path.join(dist, "assets/covers"), { recursive: true }).catch(() => {});
+await cp(path.join(root, "assets/product-images"), path.join(dist, "assets/product-images"), { recursive: true }).catch(() => {});
 await writeFile(path.join(dist, "CNAME"), "utiliy.com\n");
 await writeFile(path.join(dist, "robots.txt"), robots);
 await writeFile(path.join(dist, "sitemap.xml"), sitemap);
