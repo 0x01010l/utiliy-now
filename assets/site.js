@@ -145,8 +145,12 @@
         minDays: addBtn.getAttribute("data-min") || "",
         maxDays: addBtn.getAttribute("data-max") || ""
       }, qty);
-      if (!addBtn.hasAttribute("data-quiet")) openDrawer();
-      if (addBtn.hasAttribute("data-go-checkout")) location.href = "/checkout/";
+      if (addBtn.hasAttribute("data-go-checkout")) {
+        closeDrawer();
+        pay(addBtn);
+      } else if (!addBtn.hasAttribute("data-quiet")) {
+        openDrawer();
+      }
     }
     if (event.target.closest("[data-pay-all]")) pay(event.target.closest("[data-pay-all]"));
   });
@@ -270,4 +274,6 @@
 
   showOrderStatus();
   paint();
+  var autoCheckout = document.querySelector("[data-auto-checkout]");
+  if (autoCheckout && read().length) pay(autoCheckout);
 })();

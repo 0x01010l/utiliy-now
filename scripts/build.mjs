@@ -184,8 +184,7 @@ ${body}
   <div class="lines" data-cart-lines></div>
   <div class="total" data-cart-total hidden>$0.00</div>
   <p class="muted" data-cart-go hidden>Shipping to the United States is included.</p>
-  <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
-  <a class="btn-line" href="/cart/" data-cart-go hidden>Review cart</a>
+  <button class="btn" type="button" data-pay-all hidden>Checkout</button>
   <button class="btn-line" type="button" data-close-cart data-cart-go hidden>Keep shopping</button>
   <a class="btn-line" href="/shop/" data-cart-empty>Continue shopping</a>
 </aside>
@@ -754,7 +753,7 @@ const cart = shell({
         <h2>Summary</h2>
         <p class="total" data-cart-total>$0.00</p>
         <p class="muted">Shipping to the United States is included.</p>
-        <a class="btn" href="/checkout/" data-cart-go hidden>Checkout</a>
+        <button class="btn" type="button" data-pay-all hidden>Checkout</button>
         <p class="reassure"><a href="/shop/">Keep shopping</a></p>
       </aside>
     </div></section>
@@ -776,7 +775,7 @@ const checkout = shell({
       <aside class="summary">
         <h2>Order summary</h2>
         <div data-summary></div>
-        <button class="btn" type="button" data-pay-all>Continue to secure checkout</button>
+        <button class="btn" type="button" data-pay-all data-auto-checkout>Opening secure checkout…</button>
         <p class="muted">WooCommerce confirms every price and records the paid order for fulfillment.</p>
         <p class="reassure"><a href="/returns/">30-day returns</a></p>
         <p class="error" data-pay-error hidden></p>
