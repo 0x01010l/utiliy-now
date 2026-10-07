@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless catalog, Stripe checkout, and order status API for utiliy.com.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -274,11 +274,35 @@ final class Utiliy_Commerce {
             body.woocommerce-checkout .entry-title{margin:0;font-size:36px;font-weight:600;letter-spacing:-.045em;line-height:1.08}
             body.woocommerce-checkout .col-full{max-width:1180px;padding-inline:24px}
             body.woocommerce-checkout .entry-content{font-size:15px}
-            body.woocommerce-checkout .wc-block-components-sidebar-layout{max-width:1180px;margin-inline:auto;gap:48px}
-            body.woocommerce-checkout .wc-block-checkout__main{padding-right:0}
-            body.woocommerce-checkout .wc-block-checkout__sidebar{padding:24px;background:var(--utiliy-panel);border-radius:6px}
+            body.woocommerce-checkout .wc-block-components-sidebar-layout{
+                display:grid!important;
+                grid-template-columns:minmax(0,1.65fr) minmax(340px,.9fr);
+                align-items:stretch!important;
+                max-width:1180px;
+                margin-inline:auto;
+                gap:48px
+            }
+            body.woocommerce-checkout .wc-block-checkout__main{
+                grid-column:1;
+                width:auto!important;
+                max-width:none!important;
+                padding-right:0!important
+            }
+            body.woocommerce-checkout .wc-block-checkout__sidebar{
+                grid-column:2;
+                grid-row:1;
+                align-self:stretch!important;
+                width:auto!important;
+                max-width:none!important;
+                height:100%;
+                margin:0!important;
+                padding:24px;
+                background:var(--utiliy-panel);
+                border-radius:6px;
+                box-sizing:border-box
+            }
             body.woocommerce-checkout .wc-block-components-order-summary{border:0}
-            body.woocommerce-checkout .wc-block-components-order-summary-item__image>img{background:#fff;border-radius:4px;object-fit:contain;filter:grayscale(1) contrast(1.03)}
+            body.woocommerce-checkout .wc-block-components-order-summary-item__image>img{background:#fff;border-radius:4px;object-fit:contain;filter:none}
             body.woocommerce-checkout .wc-block-components-title,
             body.woocommerce-checkout .wc-block-components-checkout-step__heading{font-family:inherit;letter-spacing:-.025em}
             body.woocommerce-checkout .wc-block-components-checkout-step{margin-bottom:32px}
@@ -296,7 +320,11 @@ final class Utiliy_Commerce {
             body.woocommerce-checkout .wc-block-components-text-input input{border-radius:4px!important;border-color:rgba(0,0,0,.24)!important;box-shadow:none!important}
             body.woocommerce-checkout a{color:#000;text-underline-offset:3px}
             @media(max-width:782px){body.admin-bar.woocommerce-checkout .site-header{top:46px}}
-            @media(max-width:700px){
+            @media(max-width:800px){
+                body.woocommerce-checkout .wc-block-components-sidebar-layout{grid-template-columns:1fr;gap:28px}
+                body.woocommerce-checkout .wc-block-checkout__main,
+                body.woocommerce-checkout .wc-block-checkout__sidebar{grid-column:1}
+                body.woocommerce-checkout .wc-block-checkout__sidebar{grid-row:auto;height:auto}
                 body.woocommerce-checkout .col-full{padding-inline:16px}
                 body.woocommerce-checkout .entry-header{padding:36px 0 18px}
                 body.woocommerce-checkout .entry-title{font-size:30px}
