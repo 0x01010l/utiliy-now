@@ -127,9 +127,9 @@ ${json || ""}
 <div class="announce">Shipping to the United States is included. One secure checkout for the whole cart.</div>
 <header class="site-header">
   <div class="wrap header-row">
-    <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu">Menu</button>
     <a class="logo" href="/">Utiliy</a>
-    <nav class="nav-row" aria-label="Primary">
+    <button class="icon-btn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="primary-menu">Menu</button>
+    <nav class="nav-row" id="primary-menu" aria-label="Primary">
       <a href="/shop/"${current === "/shop/" ? ' aria-current="page"' : ""}>Shop</a>
       <a href="/fitment/">Fitment</a>
     </nav>
@@ -153,7 +153,7 @@ ${body}
     </div>
     <div>
       <h3>Shop</h3>
-      <ul>${footerCats}</ul>
+      <ul><li><a href="/shop/">Shop all</a></li>${footerCats}</ul>
     </div>
     <div>
       <h3>Help</h3>
