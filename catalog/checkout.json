@@ -1,3 +1,4 @@
 {
-  "url": "https://utiliy-checkout.utiliy.workers.dev"
+  "url": "https://commerce.utiliy.com/wp-json/utiliy/v1/checkout-session",
+  "apiBase": "https://commerce.utiliy.com/wp-json/utiliy/v1"
 }

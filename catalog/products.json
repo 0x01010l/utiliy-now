@@ -51,7 +51,10 @@
         "site": "private_suppliers",
         "buySiteId": 27,
         "supplier": "The Perfect Part Inc",
-        "warehouse": "US"
+        "warehouse": "US",
+        "cost": 1231,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-07"
       }
     },
     {
@@ -93,7 +96,10 @@
         "buySiteId": 27,
         "supplier": "Nexa Wood",
         "warehouse": "US",
-        "supplierOption": "S-4PCS"
+        "supplierOption": "S-4PCS",
+        "cost": 3199,
+        "shippingCost": 350,
+        "costCheckedAt": "2026-10-07"
       }
     },
     {
@@ -137,7 +143,10 @@
         "buySiteId": 2,
         "supplier": "Nordicbox Organizers Store",
         "warehouse": "US",
-        "supplierOption": "black-B"
+        "supplierOption": "black-B",
+        "cost": 1976,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-07"
       }
     },
     {
@@ -172,9 +181,9 @@
         {"q": "What lengths does the cable raceway come in?", "a": "4 meters (157 inches), 6 meters (236 inches), and 8 meters (315 inches)."}
       ],
       "variants": [
-        {"sku": "UTY-RACE-4M", "label": "4 m / 157 in", "price": 2400, "decidingSpec": {"name": "Length", "value": "4", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_201442812", "supplierOption": "4m"}},
-        {"sku": "UTY-RACE-6M", "label": "6 m / 236 in", "price": 3000, "decidingSpec": {"name": "Length", "value": "6", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_201725818", "supplierOption": "6m"}},
-        {"sku": "UTY-RACE-8M", "label": "8 m / 315 in", "price": 3600, "decidingSpec": {"name": "Length", "value": "8", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_7171025", "supplierOption": "8m"}}
+        {"sku": "UTY-RACE-4M", "label": "4 m / 157 in", "price": 2400, "decidingSpec": {"name": "Length", "value": "4", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_201442812", "supplierOption": "4m", "cost": 873, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-RACE-6M", "label": "6 m / 236 in", "price": 3000, "decidingSpec": {"name": "Length", "value": "6", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_201725818", "supplierOption": "6m", "cost": 1336, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-RACE-8M", "label": "8 m / 315 in", "price": 3600, "decidingSpec": {"name": "Length", "value": "8", "unitText": "m", "unitCode": "MTR"}, "autods": {"variationId": "3256809902833684_1254_7171025", "supplierOption": "8m", "cost": 1663, "shippingCost": 199, "costCheckedAt": "2026-10-07"}}
       ],
       "autods": {
         "productId": "69e653353998540001b089b9",
@@ -217,8 +226,8 @@
         {"q": "What is the difference between the 25 mm and 53 mm door sweeps?", "a": "Thickness. Both are 39.37 inches long. The maker states the same 1.2 inch gap coverage for the product."}
       ],
       "variants": [
-        {"sku": "UTY-SWEEP-25", "label": "25 mm thick, black", "price": 1900, "decidingSpec": {"name": "Thickness", "value": "25", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "3256806622111237_193_200025003_202765815", "supplierOption": "25mm black"}},
-        {"sku": "UTY-SWEEP-53", "label": "53 mm thick, black", "price": 2600, "decidingSpec": {"name": "Thickness", "value": "53", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "3256806622111237_193_200025003_100016941", "supplierOption": "53mm black"}}
+        {"sku": "UTY-SWEEP-25", "label": "25 mm thick, black", "price": 1900, "decidingSpec": {"name": "Thickness", "value": "25", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "3256806622111237_193_200025003_202765815", "supplierOption": "25mm black", "cost": 601, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-SWEEP-53", "label": "53 mm thick, black", "price": 2600, "decidingSpec": {"name": "Thickness", "value": "53", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "3256806622111237_193_200025003_100016941", "supplierOption": "53mm black", "cost": 1092, "shippingCost": 199, "costCheckedAt": "2026-10-07"}}
       ],
       "autods": {
         "productId": "69dba3f083c6270001efdabc",
@@ -259,9 +268,9 @@
         {"q": "Which tension rod length should I buy?", "a": "Measure the opening and pick the span that contains it: 11.8–19.7 in, 21.7–35.4 in, or 23.6–43.3 in."}
       ],
       "variants": [
-        {"sku": "UTY-ROD-30", "label": "11.8–19.7 in (30–50 cm)", "price": 1800, "decidingSpec": {"name": "Span", "value": "11.8–19.7", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_175", "supplierOption": "30-50CM"}},
-        {"sku": "UTY-ROD-55", "label": "21.7–35.4 in (55–90 cm)", "price": 2400, "decidingSpec": {"name": "Span", "value": "21.7–35.4", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_10", "supplierOption": "55-90CM"}},
-        {"sku": "UTY-ROD-60", "label": "23.6–43.3 in (60–110 cm)", "price": 3200, "decidingSpec": {"name": "Span", "value": "23.6–43.3", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_691", "supplierOption": "60-110CM"}}
+        {"sku": "UTY-ROD-30", "label": "11.8–19.7 in (30–50 cm)", "price": 1800, "decidingSpec": {"name": "Span", "value": "11.8–19.7", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_175", "supplierOption": "30-50CM", "cost": 312, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-ROD-55", "label": "21.7–35.4 in (55–90 cm)", "price": 2400, "decidingSpec": {"name": "Span", "value": "21.7–35.4", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_10", "supplierOption": "55-90CM", "cost": 415, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-ROD-60", "label": "23.6–43.3 in (60–110 cm)", "price": 3200, "decidingSpec": {"name": "Span", "value": "23.6–43.3", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "1005005621095538_691", "supplierOption": "60-110CM", "cost": 1685, "shippingCost": 199, "costCheckedAt": "2026-10-07"}}
       ],
       "autods": {
         "productId": "6730eaa203c61b5bd54b2a74",
@@ -303,9 +312,9 @@
         {"q": "What leg size fits the large and extra-large sliders?", "a": "Large fits 26 to 36 mm. Extra-large fits 37 to 49 mm. Each set has 24 caps."}
       ],
       "variants": [
-        {"sku": "UTY-SLIDE-S", "label": "19–25 mm", "price": 1600, "decidingSpec": {"name": "Leg size", "value": "19–25", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_100014064_202924816", "supplierOption": "S 19-25 mm"}},
-        {"sku": "UTY-SLIDE-L", "label": "26–36 mm", "price": 1800, "decidingSpec": {"name": "Leg size", "value": "26–36", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_361385_202924816", "supplierOption": "L 26-36 mm"}},
-        {"sku": "UTY-SLIDE-XL", "label": "37–49 mm", "price": 2200, "decidingSpec": {"name": "Leg size", "value": "37–49", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_100014065_202924816", "supplierOption": "XL 37-49 mm"}}
+        {"sku": "UTY-SLIDE-S", "label": "19–25 mm", "price": 1600, "decidingSpec": {"name": "Leg size", "value": "19–25", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_100014064_202924816", "supplierOption": "S 19-25 mm", "cost": 710, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-SLIDE-L", "label": "26–36 mm", "price": 1800, "decidingSpec": {"name": "Leg size", "value": "26–36", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_361385_202924816", "supplierOption": "L 26-36 mm", "cost": 905, "shippingCost": 199, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-SLIDE-XL", "label": "37–49 mm", "price": 2200, "decidingSpec": {"name": "Leg size", "value": "37–49", "unitText": "mm", "unitCode": "MMT"}, "autods": {"variationId": "1005006417602410_618_100014065_202924816", "supplierOption": "XL 37-49 mm", "cost": 1206, "shippingCost": 199, "costCheckedAt": "2026-10-07"}}
       ],
       "autods": {
         "productId": "67102ef375928e778a36ffa0",
@@ -358,7 +367,10 @@
         "buySiteId": 2,
         "supplier": "ZealousDream Store",
         "warehouse": "CN",
-        "supplierOption": "6 Sets"
+        "supplierOption": "6 Sets",
+        "cost": 702,
+        "shippingCost": 199,
+        "costCheckedAt": "2026-10-07"
       }
     },
     {
@@ -391,11 +403,11 @@
         {"q": "Which closet rod span should I order?", "a": "Measure the opening in inches and pick the only range that contains that number."}
       ],
       "variants": [
-        {"sku": "UTY-CLOSET-35", "label": "13.8–21.7 in (35–55 cm)", "price": 2800, "decidingSpec": {"name": "Span", "value": "13.8–21.7", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_193", "supplierOption": "35-55 cm"}},
-        {"sku": "UTY-CLOSET-50", "label": "19.7–31.5 in (50–80 cm)", "price": 3800, "decidingSpec": {"name": "Span", "value": "19.7–31.5", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_175", "supplierOption": "50-80 cm"}},
-        {"sku": "UTY-CLOSET-70", "label": "27.6–43.3 in (70–110 cm)", "price": 6200, "decidingSpec": {"name": "Span", "value": "27.6–43.3", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_10", "supplierOption": "70-110 cm"}},
-        {"sku": "UTY-CLOSET-90", "label": "35.4–55.1 in (90–140 cm)", "price": 7400, "decidingSpec": {"name": "Span", "value": "35.4–55.1", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_691", "supplierOption": "90-140 cm"}},
-        {"sku": "UTY-CLOSET-110", "label": "43.3–66.9 in (110–170 cm)", "price": 6600, "decidingSpec": {"name": "Span", "value": "43.3–66.9", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_173", "supplierOption": "110-170 cm"}}
+        {"sku": "UTY-CLOSET-35", "label": "13.8–21.7 in (35–55 cm)", "price": 2800, "decidingSpec": {"name": "Span", "value": "13.8–21.7", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_193", "supplierOption": "35-55 cm", "cost": 1321, "shippingCost": 0, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-CLOSET-50", "label": "19.7–31.5 in (50–80 cm)", "price": 3800, "decidingSpec": {"name": "Span", "value": "19.7–31.5", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_175", "supplierOption": "50-80 cm", "cost": 1819, "shippingCost": 0, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-CLOSET-70", "label": "27.6–43.3 in (70–110 cm)", "price": 6200, "decidingSpec": {"name": "Span", "value": "27.6–43.3", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_10", "supplierOption": "70-110 cm", "cost": 3786, "shippingCost": 0, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-CLOSET-90", "label": "35.4–55.1 in (90–140 cm)", "price": 7400, "decidingSpec": {"name": "Span", "value": "35.4–55.1", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_691", "supplierOption": "90-140 cm", "cost": 4615, "shippingCost": 0, "costCheckedAt": "2026-10-07"}},
+        {"sku": "UTY-CLOSET-110", "label": "43.3–66.9 in (110–170 cm)", "price": 6600, "decidingSpec": {"name": "Span", "value": "43.3–66.9", "unitText": "in", "unitCode": "INH"}, "autods": {"variationId": "3256807316709513_173", "supplierOption": "110-170 cm", "cost": 4053, "shippingCost": 0, "costCheckedAt": "2026-10-07"}}
       ],
       "autods": {
         "productId": "8729b8b3a545efacc608574b",
@@ -452,7 +464,10 @@
         "buySiteId": 2,
         "supplier": "Shop1103751404 Store",
         "warehouse": "CN",
-        "supplierOption": "2 Light Colors"
+        "supplierOption": "2 Light Colors",
+        "cost": 319,
+        "shippingCost": 199,
+        "costCheckedAt": "2026-10-07"
       }
     }
   ]

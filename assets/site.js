@@ -66,7 +66,7 @@
     document.querySelectorAll("[data-pay-all]").forEach(function (el) {
       el.hidden = !items.length;
       el.disabled = !items.length;
-      el.textContent = items.length ? "Pay " + money(total(items)) + " with Stripe" : "Pay with Stripe";
+      el.textContent = items.length ? "Continue with " + money(total(items)) : "Continue to secure checkout";
     });
   }
 
@@ -223,7 +223,7 @@
       return;
     }
     button.disabled = true;
-    button.textContent = "Opening Stripe…";
+    button.textContent = "Opening secure checkout…";
     try {
       var res = await fetch(window.UTILIY_CHECKOUT, {
         method: "POST",
@@ -231,7 +231,7 @@
         body: JSON.stringify({ items: items.map(function (item) { return { sku: item.sku, qty: item.qty }; }) })
       });
       var data = await res.json();
-      if (!res.ok || !data.url) throw new Error(data.error || "Stripe did not start checkout.");
+      if (!res.ok || !data.url) throw new Error(data.message || data.error || "Checkout could not be started.");
       location.href = data.url;
     } catch (err) {
       button.disabled = false;
@@ -240,8 +240,34 @@
     }
   }
 
-  if (location.pathname.indexOf("/order/thanks") === 0 && new URLSearchParams(location.search).get("session_id")) {
-    localStorage.removeItem(KEY);
+  async function showOrderStatus() {
+    var target = document.querySelector("[data-order-status]");
+    if (!target || !window.UTILIY_COMMERCE) return;
+    var query = new URLSearchParams(location.search);
+    var orderId = query.get("order_id");
+    var key = query.get("key");
+    if (!orderId || !key) {
+      target.innerHTML = '<p class="kicker">Order</p><h1>Order link incomplete.</h1><p>Check your payment receipt or contact support@utiliy.com.</p>';
+      return;
+    }
+    try {
+      var response = await fetch(window.UTILIY_COMMERCE + "/orders/" + encodeURIComponent(orderId) + "?key=" + encodeURIComponent(key));
+      var order = await response.json();
+      if (!response.ok) throw new Error(order.message || "Order status is unavailable.");
+      if (order.paid) {
+        localStorage.removeItem(KEY);
+        target.innerHTML = '<p class="kicker">Paid</p><h1>Order received.</h1><p>Your order number is ' +
+          String(order.orderId) + '. A receipt is on its way to your email.</p><p><a class="btn" href="/shop/">Back to the shop</a></p>';
+      } else {
+        target.innerHTML = '<p class="kicker">Processing</p><h1>Payment is still confirming.</h1><p>Refresh this page shortly. Do not submit a second payment.</p>';
+      }
+      paint();
+    } catch (error) {
+      target.innerHTML = '<p class="kicker">Order</p><h1>Status temporarily unavailable.</h1><p>' +
+        String(error.message || "Contact support@utiliy.com.") + '</p>';
+    }
   }
+
+  showOrderStatus();
   paint();
 })();

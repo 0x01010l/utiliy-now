@@ -420,6 +420,23 @@ tr.deciding th, tr.deciding td { font-weight: 700; color: #000; }
 .total { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
 .error { color: #b42318; font-size: 14px; }
 .empty { color: var(--muted); }
+.checkout-form { display: grid; gap: 16px; }
+.checkout-form h2 { margin: 4px 0 18px; font-size: 20px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
+.form-grid label { display: grid; gap: 6px; font-size: 13px; font-weight: 500; }
+.form-grid input {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  border-radius: 4px;
+  background: #fff;
+  padding: 11px 12px;
+  outline: none;
+}
+.form-grid input:focus { border-color: #000; box-shadow: 0 0 0 1px #000; }
+.form-grid input:read-only { background: #eee; color: var(--muted); }
+.form-wide { grid-column: 1 / -1; }
+.checkout-form .btn { width: 100%; min-height: 42px; }
+.payment-panel[hidden] { display: none; }
 
 .drawer-back { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 60; opacity: 0; pointer-events: none; }
 .drawer-back.open { opacity: 1; pointer-events: auto; }
@@ -645,6 +662,8 @@ body:has(.buybar) { padding-bottom: 92px; }
 
 @media (max-width: 980px) {
   .hero-grid, .pdp, .layout, .footer-grid, .trust, .gallery, .story-grid, .plate, .detail-row { grid-template-columns: 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-wide { grid-column: auto; }
   .beats, .bento { grid-template-columns: 1fr; }
   .tile-lead { grid-column: auto; grid-row: auto; min-height: 180px; }
   .grid { grid-template-columns: 1fr 1fr; }

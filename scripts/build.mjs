@@ -10,9 +10,9 @@ const links = await readFile(path.join(root, "catalog/stripe-links.json"), "utf8
   .catch(() => ({}));
 
 const site = catalog.merchant.url;
-const checkoutEndpoint = await readFile(path.join(root, "catalog/checkout.json"), "utf8")
-  .then((text) => JSON.parse(text).url || "")
-  .catch(() => "");
+const checkoutConfig = await readFile(path.join(root, "catalog/checkout.json"), "utf8")
+  .then((text) => JSON.parse(text))
+  .catch(() => ({}));
 
 const categories = [
   { slug: "bathroom", name: "Bathroom", blurb: "Corner shelves with a published size, angle, and load." },
@@ -118,13 +118,13 @@ function shell({ title, description, canonical, json, body, current, image, robo
 <meta name="theme-color" content="#ffffff">
 ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261007a">
+<link rel="stylesheet" href="/assets/site.css?v=20261007b">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-<div class="announce">Shipping to the United States is included. One Stripe checkout for the whole cart.</div>
+<div class="announce">Shipping to the United States is included. One secure checkout for the whole cart.</div>
 <header class="site-header">
   <div class="wrap header-row">
     <button class="icon-btn menu-btn" type="button" data-menu aria-label="Menu">Menu</button>
@@ -189,8 +189,8 @@ ${body}
   <button class="btn-line" type="button" data-close-cart data-cart-go hidden>Keep shopping</button>
   <a class="btn-line" href="/shop/" data-cart-empty>Continue shopping</a>
 </aside>
-<script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutEndpoint)};</script>
-<script src="/assets/site.js?v=20261006j" defer></script>
+<script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutConfig.url || "")};window.UTILIY_COMMERCE=${JSON.stringify(checkoutConfig.apiBase || "")};</script>
+<script src="/assets/site.js?v=20261007k" defer></script>
 </body>
 </html>`;
 }
@@ -704,7 +704,7 @@ const shipping = textPage(
   `${site}/shipping/`,
   "/shipping/",
   `<p class="kicker">Delivery</p><h1>Shipping is in the price.</h1>
-  <p>Every price on Utiliy includes shipping to a United States address. Stripe collects that address at payment.</p>
+  <p>Every price on Utiliy includes shipping to a United States address. WooCommerce collects that address at checkout.</p>
   <ul>
     <li>Corner shower caddy: US warehouse, 4 to 6 days.</li>
     <li>Bamboo drawer organizer: US warehouse, 6 to 9 days.</li>
@@ -734,13 +734,13 @@ const about = textPage(
   "",
   `<p class="kicker">The shop</p><h1>A store an agent can read.</h1>
   <p>Utiliy sells ten home tools. Each page leads with the number that decides the fit, in the heading, in a table, in FAQ schema, and in a JSON catalog at /catalog.json and /feeds/products.json.</p>
-  <p>Supply comes from AutoDS suppliers. The account has no marketplace store connected yet, so orders are paid here on Stripe and fulfilled against the supplier ids in /feeds/fulfillment.json. Wholesale cost is not published.</p>
+  <p>Orders are recorded in a private WooCommerce dashboard and paid through its official Stripe gateway. Supplier references are attached to each order for fulfillment. Wholesale cost is not published.</p>
   <p>Contact support@utiliy.com.</p>`
 );
 
 const cart = shell({
   title: "Cart · Utiliy",
-  description: "Review every item, then pay for the whole cart in one Stripe checkout.",
+  description: "Review every item, then continue to one secure WooCommerce checkout.",
   canonical: `${site}/cart/`,
   robots: "noindex,follow",
   body: `<main id="main">
@@ -763,7 +763,7 @@ const cart = shell({
 });
 const checkout = shell({
   title: "Checkout · Utiliy",
-  description: "Pay for every item in the Utiliy cart with one Stripe checkout. Shipping to the United States is included.",
+  description: "Continue to the secure Utiliy WooCommerce checkout. Shipping to the United States is included.",
   canonical: `${site}/checkout/`,
   robots: "noindex,follow",
   body: `<main id="main">
@@ -776,8 +776,8 @@ const checkout = shell({
       <aside class="summary">
         <h2>Order summary</h2>
         <div data-summary></div>
-        <button class="btn" type="button" data-pay-all>Pay with Stripe</button>
-        <p class="muted">One payment covers every product and quantity in this cart.</p>
+        <button class="btn" type="button" data-pay-all>Continue to secure checkout</button>
+        <p class="muted">WooCommerce confirms every price and records the paid order for fulfillment.</p>
         <p class="reassure"><a href="/returns/">30-day returns</a></p>
         <p class="error" data-pay-error hidden></p>
       </aside>
@@ -787,10 +787,10 @@ const checkout = shell({
 });
 const thanks = shell({
   title: "Order received · Utiliy",
-  description: "Stripe confirmed the next step. Keep the receipt Stripe emails you.",
+  description: "Check the status of a Utiliy order.",
   canonical: `${site}/order/thanks/`,
   robots: "noindex,follow",
-  body: `<main id="main" class="section"><div class="wrap prose"><p class="kicker">Paid</p><h1>Stripe has the order.</h1><p>The receipt is in your email. The measurement you bought is the one on the product page. If a size is wrong against that page, write to support@utiliy.com within 30 days.</p><p><a class="btn" href="/shop/">Back to the shop</a></p></div></main>`,
+  body: `<main id="main" class="section"><div class="wrap prose" data-order-status><p class="kicker">Order</p><h1>Confirming your payment…</h1><p>Please keep this page open while the payment is confirmed.</p></div></main>`,
   current: ""
 });
 
@@ -800,12 +800,12 @@ const contact = textPage(
   `${site}/contact/`,
   "/contact/",
   `<p class="kicker">Support</p><h1>Contact</h1>
-  <p>Email <a href="mailto:support@utiliy.com">support@utiliy.com</a>. Include the email you used at Stripe, the product name, and the measurement on the page.</p>
-  <p>Orders ship only to the United States. Payment questions go to the receipt Stripe sent you.</p>`
+  <p>Email <a href="mailto:support@utiliy.com">support@utiliy.com</a>. Include your order number, the product name, and the measurement on the page.</p>
+  <p>Orders ship only to the United States. Keep the WooCommerce order receipt sent to your email.</p>`
 );
 
 const faqItems = [
-  ["Can I pay for several products at once?", "Yes. Add every item to the cart, then use Checkout. Stripe charges one payment for the whole cart."],
+  ["Can I pay for several products at once?", "Yes. Add every item to the cart, then use Checkout. WooCommerce processes one payment for the whole cart."],
   ["Is shipping included?", "Yes. Every price includes shipping to a United States address. Utiliy does not ship elsewhere."],
   ["How long does delivery take?", "US-warehouse goods leave in 4 to 12 days. Supplier-shipped goods leave in 11 to 15 days. The product page states the window."],
   ["What if the size does not match the page?", "Write to support@utiliy.com within 30 days. If the item is a different measurement than the product page states, Utiliy pays the return."],
@@ -863,7 +863,7 @@ const llms = `# Utiliy
 
 > Home tools sold by the measurement. Prices include shipping to the United States. If a maker did not publish a number, the page says the number is not published.
 
-Shipping to the United States is included. One Stripe checkout covers the whole cart: ${site}/checkout/
+Shipping to the United States is included. One secure WooCommerce checkout covers the whole cart: ${site}/checkout/
 
 ${returnsSentence}
 
@@ -1070,11 +1070,11 @@ for (const cat of categories) {
 }
 const privacy = textPage(
   "Privacy",
-  "Utiliy collects the name, email, phone, and shipping address Stripe needs to complete a US order. We do not sell that information.",
+  "Utiliy collects the name, email, phone, and shipping address WooCommerce and Stripe need to complete a US order. We do not sell that information.",
   `${site}/privacy/`,
   "",
   `<p class="kicker">Privacy</p><h1>What the order collects</h1>
-  <p>Payment happens on Stripe. Stripe receives your card, email, phone, and United States shipping address. Utiliy uses that information to fulfill the order and to handle a return.</p>
+  <p>Checkout runs on WooCommerce using its official Stripe gateway. Stripe receives your card details; WooCommerce stores the contact and United States shipping details needed to fulfill the order and handle returns.</p>
   <p>The shop itself stores the cart in your browser until you pay. It does not run an account system. Write to support@utiliy.com to ask about an order.</p>`
 );
 const terms = textPage(
