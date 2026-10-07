@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless catalog, Stripe checkout, and order status API for utiliy.com.
- * Version: 1.1.1
+ * Version: 1.2.0
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -256,7 +256,7 @@ final class Utiliy_Commerce {
         }
         echo '<style>
             :root{--utiliy-ink:#000;--utiliy-muted:rgba(0,0,0,.6);--utiliy-line:rgba(0,0,0,.1);--utiliy-panel:#f5f5f7}
-            body.woocommerce-checkout{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;background:#fff;color:var(--utiliy-ink)}
+            body.woocommerce-checkout{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;background:#f8f8f8;color:var(--utiliy-ink)}
             .utiliy-checkout-banner{background:#000;color:#fff;text-align:center;font-size:12px;line-height:1.4;padding:8px 16px}
             body.woocommerce-checkout .site-search,
             body.woocommerce-checkout .storefront-primary-navigation,
@@ -264,29 +264,35 @@ final class Utiliy_Commerce {
             body.woocommerce-checkout .site-footer{display:none!important}
             body.woocommerce-checkout .site-header{position:sticky;top:0;z-index:20;background:#fff;margin:0;padding:0;border:0;border-bottom:1px solid var(--utiliy-line)}
             body.admin-bar.woocommerce-checkout .site-header{top:32px}
-            body.woocommerce-checkout .site-header .col-full{display:flex;align-items:center;min-height:64px}
+            body.woocommerce-checkout .site-header .col-full{display:flex;align-items:center;justify-content:space-between;min-height:84px}
+            body.woocommerce-checkout .site-header .col-full:after{content:"Secure checkout";color:var(--utiliy-muted);font-size:13px;font-weight:500}
             body.woocommerce-checkout .site-branding{width:auto!important;margin:0!important}
-            body.woocommerce-checkout .site-title{margin:0;font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1}
+            body.woocommerce-checkout .site-title{margin:0;font-size:28px;font-weight:650;letter-spacing:-.045em;line-height:1}
             body.woocommerce-checkout .site-title a{color:#000;text-decoration:none}
             body.woocommerce-checkout .content-area{width:100%;float:none;margin:0}
-            body.woocommerce-checkout .site-main{margin:0}
-            body.woocommerce-checkout .entry-header{text-align:left;padding:52px 0 24px}
-            body.woocommerce-checkout .entry-title{margin:0;font-size:36px;font-weight:600;letter-spacing:-.045em;line-height:1.08}
-            body.woocommerce-checkout .col-full{max-width:1180px;padding-inline:24px}
-            body.woocommerce-checkout .entry-content{font-size:15px}
+            body.woocommerce-checkout .site-main{margin:0;padding-bottom:88px}
+            body.woocommerce-checkout .entry-header{text-align:left;padding:64px 0 32px}
+            body.woocommerce-checkout .entry-header:after{content:"Complete your order securely. US shipping is already included.";display:block;margin-top:12px;color:var(--utiliy-muted);font-size:16px}
+            body.woocommerce-checkout .entry-title{margin:0;font-size:52px;font-weight:650;letter-spacing:-.055em;line-height:1}
+            body.woocommerce-checkout .col-full{max-width:1280px;padding-inline:32px}
+            body.woocommerce-checkout .entry-content{font-size:16px}
             body.woocommerce-checkout .wc-block-components-sidebar-layout{
                 display:grid!important;
-                grid-template-columns:minmax(0,1.65fr) minmax(340px,.9fr);
+                grid-template-columns:minmax(0,1.55fr) minmax(400px,.95fr);
                 align-items:stretch!important;
-                max-width:1180px;
+                max-width:1280px;
                 margin-inline:auto;
-                gap:48px
+                gap:32px
             }
             body.woocommerce-checkout .wc-block-checkout__main{
                 grid-column:1;
                 width:auto!important;
                 max-width:none!important;
-                padding-right:0!important
+                padding:40px!important;
+                background:#fff;
+                border:1px solid var(--utiliy-line);
+                border-radius:8px;
+                box-sizing:border-box
             }
             body.woocommerce-checkout .wc-block-checkout__sidebar{
                 grid-column:2;
@@ -296,28 +302,34 @@ final class Utiliy_Commerce {
                 max-width:none!important;
                 height:100%;
                 margin:0!important;
-                padding:24px;
+                padding:32px;
                 background:var(--utiliy-panel);
-                border-radius:6px;
+                border:1px solid var(--utiliy-line);
+                border-radius:8px;
                 box-sizing:border-box
             }
             body.woocommerce-checkout .wc-block-components-order-summary{border:0}
-            body.woocommerce-checkout .wc-block-components-order-summary-item__image>img{background:#fff;border-radius:4px;object-fit:contain;filter:none}
+            body.woocommerce-checkout .wc-block-components-order-summary-item__image{width:72px!important}
+            body.woocommerce-checkout .wc-block-components-order-summary-item__image>img{width:72px!important;height:72px!important;background:#fff;border-radius:6px;object-fit:contain;filter:none}
+            body.woocommerce-checkout .wp-block-woocommerce-checkout-order-summary-block>.wc-block-components-checkout-step__heading{margin-bottom:20px}
+            body.woocommerce-checkout .wp-block-woocommerce-checkout-order-summary-block .wc-block-components-title{font-size:24px;font-weight:600}
             body.woocommerce-checkout .wc-block-components-title,
             body.woocommerce-checkout .wc-block-components-checkout-step__heading{font-family:inherit;letter-spacing:-.025em}
-            body.woocommerce-checkout .wc-block-components-checkout-step{margin-bottom:32px}
+            body.woocommerce-checkout .wc-block-components-checkout-step{margin-bottom:38px}
+            body.woocommerce-checkout .wc-block-components-checkout-step__heading h2{font-size:24px;font-weight:600;letter-spacing:-.035em}
             body.woocommerce-checkout .wc-block-components-checkout-step__container{padding-left:0}
             body.woocommerce-checkout .wc-block-components-checkout-step__description,
             body.woocommerce-checkout .wc-block-components-formatted-money-amount{color:var(--utiliy-muted)}
             body.woocommerce-checkout button,
             body.woocommerce-checkout .button,
             body.woocommerce-checkout .wc-block-components-button{border-radius:4px!important;font-family:inherit;font-weight:500;text-transform:none}
-            body.woocommerce-checkout .wc-block-components-button:not(.is-link){min-height:46px;background:#000!important;color:#fff!important;border:1px solid #000!important;box-shadow:none!important}
+            body.woocommerce-checkout .wc-block-components-button:not(.is-link){min-height:54px;background:#000!important;color:#fff!important;border:1px solid #000!important;box-shadow:none!important;font-size:15px!important}
             body.woocommerce-checkout .wc-block-components-button:not(.is-link):hover{background:#262626!important}
             body.woocommerce-checkout input,
             body.woocommerce-checkout select,
             body.woocommerce-checkout textarea,
-            body.woocommerce-checkout .wc-block-components-text-input input{border-radius:4px!important;border-color:rgba(0,0,0,.24)!important;box-shadow:none!important}
+            body.woocommerce-checkout .wc-block-components-text-input input{min-height:54px;border-radius:4px!important;border-color:rgba(0,0,0,.24)!important;box-shadow:none!important;background:#fff!important}
+            body.woocommerce-checkout .wc-block-components-radio-control{background:#fff;border-radius:6px}
             body.woocommerce-checkout a{color:#000;text-underline-offset:3px}
             @media(max-width:782px){body.admin-bar.woocommerce-checkout .site-header{top:46px}}
             @media(max-width:800px){
@@ -326,9 +338,13 @@ final class Utiliy_Commerce {
                 body.woocommerce-checkout .wc-block-checkout__sidebar{grid-column:1}
                 body.woocommerce-checkout .wc-block-checkout__sidebar{grid-row:auto;height:auto}
                 body.woocommerce-checkout .col-full{padding-inline:16px}
-                body.woocommerce-checkout .entry-header{padding:36px 0 18px}
-                body.woocommerce-checkout .entry-title{font-size:30px}
-                body.woocommerce-checkout .wc-block-checkout__sidebar{padding:18px}
+                body.woocommerce-checkout .site-header .col-full{min-height:72px}
+                body.woocommerce-checkout .site-title{font-size:24px}
+                body.woocommerce-checkout .entry-header{padding:42px 0 24px}
+                body.woocommerce-checkout .entry-title{font-size:40px}
+                body.woocommerce-checkout .entry-header:after{font-size:14px}
+                body.woocommerce-checkout .wc-block-checkout__main{padding:24px!important}
+                body.woocommerce-checkout .wc-block-checkout__sidebar{padding:22px}
             }
         </style>';
     }
