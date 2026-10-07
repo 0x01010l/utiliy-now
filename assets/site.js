@@ -104,18 +104,6 @@
   document.addEventListener("click", function (event) {
     if (event.target.closest("[data-open-cart]")) { openDrawer(); return; }
     if (event.target.closest("[data-close-cart]")) { closeDrawer(); return; }
-    var menuButton = event.target.closest("[data-menu]");
-    if (menuButton) {
-      var header = document.querySelector(".site-header");
-      var isOpen = header?.classList.toggle("nav-open") || false;
-      menuButton.setAttribute("aria-expanded", String(isOpen));
-      pinHeader();
-      return;
-    }
-    if (!event.target.closest(".nav-row")) {
-      document.querySelector(".site-header")?.classList.remove("nav-open");
-      document.querySelector("[data-menu]")?.setAttribute("aria-expanded", "false");
-    }
     var remove = event.target.closest("[data-remove]");
     if (remove) { change(remove.getAttribute("data-remove"), -99); return; }
     var inc = event.target.closest("[data-inc]");
@@ -205,11 +193,6 @@
   }
   pinHeader();
   window.addEventListener("resize", pinHeader);
-  document.addEventListener("keydown", function (event) {
-    if (event.key !== "Escape") return;
-    document.querySelector(".site-header")?.classList.remove("nav-open");
-    document.querySelector("[data-menu]")?.setAttribute("aria-expanded", "false");
-  });
   if (params.get("sku")) {
     var preset = document.querySelector('input[data-sku="' + CSS.escape(params.get("sku")) + '"]');
     if (preset) preset.checked = true;

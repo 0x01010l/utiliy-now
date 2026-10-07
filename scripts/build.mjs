@@ -118,7 +118,7 @@ function shell({ title, description, canonical, json, body, current, image, robo
 <meta name="theme-color" content="#ffffff">
 ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261007m">
+<link rel="stylesheet" href="/assets/site.css?v=20261007n">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -128,7 +128,6 @@ ${json || ""}
 <header class="site-header">
   <div class="wrap header-row">
     <a class="logo" href="/">Utiliy</a>
-    <button class="icon-btn menu-btn" type="button" data-menu aria-expanded="false" aria-controls="primary-menu">Menu</button>
     <nav class="nav-row" id="primary-menu" aria-label="Shop by room">${catNav}</nav>
     <form class="search" action="/shop/" method="get" role="search">
       <input data-search name="q" type="search" placeholder="Search for products..." aria-label="Search products">
@@ -183,7 +182,7 @@ ${body}
   <a class="btn-line" href="/shop/" data-cart-empty>Continue shopping</a>
 </aside>
 <script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutConfig.url || "")};window.UTILIY_COMMERCE=${JSON.stringify(checkoutConfig.apiBase || "")};</script>
-<script src="/assets/site.js?v=20261007m" defer></script>
+<script src="/assets/site.js?v=20261007n" defer></script>
 </body>
 </html>`;
 }
