@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless catalog, Stripe checkout, and order status API for utiliy.com.
- * Version: 1.2.1
+ * Version: 1.2.2
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -39,6 +39,8 @@ final class Utiliy_Commerce {
         add_filter('woocommerce_get_return_url', [self::class, 'return_url'], 10, 2);
         add_filter('home_url', [self::class, 'checkout_home_url'], 10, 4);
         add_action('wp_body_open', [self::class, 'checkout_banner'], 5);
+        add_action('wp_head', [self::class, 'favicon'], 1);
+        add_action('login_head', [self::class, 'favicon']);
         add_action('wp_head', [self::class, 'checkout_styles']);
         add_filter('wp_robots', static function (array $robots): array {
             $robots['noindex'] = true;
@@ -248,6 +250,10 @@ final class Utiliy_Commerce {
         if (function_exists('is_checkout') && is_checkout()) {
             echo '<div class="utiliy-checkout-banner">Shipping to the United States is included. Secure checkout.</div>';
         }
+    }
+
+    public static function favicon(): void {
+        echo '<link rel="icon" href="https://utiliy.com/assets/favicon.svg" type="image/svg+xml">';
     }
 
     public static function checkout_styles(): void {
