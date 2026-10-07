@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless catalog, Stripe checkout, and order status API for utiliy.com.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -37,6 +37,8 @@ final class Utiliy_Commerce {
         add_action('woocommerce_check_cart_items', [self::class, 'validate_cart_margins']);
         add_action('woocommerce_checkout_create_order_line_item', [self::class, 'copy_supplier_to_order'], 10, 4);
         add_filter('woocommerce_get_return_url', [self::class, 'return_url'], 10, 2);
+        add_filter('home_url', [self::class, 'checkout_home_url'], 10, 4);
+        add_action('wp_body_open', [self::class, 'checkout_banner'], 5);
         add_action('wp_head', [self::class, 'checkout_styles']);
         add_filter('wp_robots', static function (array $robots): array {
             $robots['noindex'] = true;
@@ -235,28 +237,71 @@ final class Utiliy_Commerce {
         ], 'https://utiliy.com/order/thanks/');
     }
 
+    public static function checkout_home_url(string $url, string $path, ?string $scheme, ?int $blog_id): string {
+        if (!is_admin() && function_exists('is_checkout') && is_checkout() && ($path === '' || $path === '/')) {
+            return 'https://utiliy.com/';
+        }
+        return $url;
+    }
+
+    public static function checkout_banner(): void {
+        if (function_exists('is_checkout') && is_checkout()) {
+            echo '<div class="utiliy-checkout-banner">Shipping to the United States is included. Secure checkout.</div>';
+        }
+    }
+
     public static function checkout_styles(): void {
         if (!function_exists('is_checkout') || !is_checkout()) {
             return;
         }
         echo '<style>
-            body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Helvetica Neue",Arial,sans-serif;background:#fff;color:#000}
+            :root{--utiliy-ink:#000;--utiliy-muted:rgba(0,0,0,.6);--utiliy-line:rgba(0,0,0,.1);--utiliy-panel:#f5f5f7}
+            body.woocommerce-checkout{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue",Arial,sans-serif;background:#fff;color:var(--utiliy-ink)}
+            .utiliy-checkout-banner{background:#000;color:#fff;text-align:center;font-size:12px;line-height:1.4;padding:8px 16px}
             body.woocommerce-checkout .site-search,
             body.woocommerce-checkout .storefront-primary-navigation,
             body.woocommerce-checkout .woocommerce-breadcrumb,
             body.woocommerce-checkout .site-footer{display:none!important}
-            body.woocommerce-checkout .site-header{max-width:1100px;margin:0 auto;padding:28px 20px 18px;border-bottom:1px solid rgba(0,0,0,.1)}
+            body.woocommerce-checkout .site-header{position:sticky;top:0;z-index:20;background:#fff;margin:0;padding:0;border:0;border-bottom:1px solid var(--utiliy-line)}
+            body.admin-bar.woocommerce-checkout .site-header{top:32px}
+            body.woocommerce-checkout .site-header .col-full{display:flex;align-items:center;min-height:64px}
             body.woocommerce-checkout .site-branding{width:auto!important;margin:0!important}
-            body.woocommerce-checkout .site-title{font-size:22px;font-weight:600;letter-spacing:-.03em}
+            body.woocommerce-checkout .site-title{margin:0;font-size:18px;font-weight:600;letter-spacing:-.02em;line-height:1}
+            body.woocommerce-checkout .site-title a{color:#000;text-decoration:none}
             body.woocommerce-checkout .content-area{width:100%;float:none;margin:0}
             body.woocommerce-checkout .site-main{margin:0}
-            body.woocommerce-checkout .entry-header{text-align:left;padding:48px 0 20px}
-            body.woocommerce-checkout .entry-title{font-size:32px;font-weight:600;letter-spacing:-.04em}
-            body.woocommerce-checkout .col-full{max-width:1100px;padding-inline:20px}
-            .wc-block-components-sidebar-layout{max-width:1100px;margin-inline:auto}
-            button,.button,.wc-block-components-button{border-radius:4px!important}
-            .wc-block-components-button:not(.is-link){background:#000!important;color:#fff!important}
-            input,select,textarea,.wc-block-components-text-input input{border-radius:4px!important}
+            body.woocommerce-checkout .entry-header{text-align:left;padding:52px 0 24px}
+            body.woocommerce-checkout .entry-title{margin:0;font-size:36px;font-weight:600;letter-spacing:-.045em;line-height:1.08}
+            body.woocommerce-checkout .col-full{max-width:1180px;padding-inline:24px}
+            body.woocommerce-checkout .entry-content{font-size:15px}
+            body.woocommerce-checkout .wc-block-components-sidebar-layout{max-width:1180px;margin-inline:auto;gap:48px}
+            body.woocommerce-checkout .wc-block-checkout__main{padding-right:0}
+            body.woocommerce-checkout .wc-block-checkout__sidebar{padding:24px;background:var(--utiliy-panel);border-radius:6px}
+            body.woocommerce-checkout .wc-block-components-order-summary{border:0}
+            body.woocommerce-checkout .wc-block-components-order-summary-item__image>img{background:#fff;border-radius:4px;object-fit:contain;filter:grayscale(1) contrast(1.03)}
+            body.woocommerce-checkout .wc-block-components-title,
+            body.woocommerce-checkout .wc-block-components-checkout-step__heading{font-family:inherit;letter-spacing:-.025em}
+            body.woocommerce-checkout .wc-block-components-checkout-step{margin-bottom:32px}
+            body.woocommerce-checkout .wc-block-components-checkout-step__container{padding-left:0}
+            body.woocommerce-checkout .wc-block-components-checkout-step__description,
+            body.woocommerce-checkout .wc-block-components-formatted-money-amount{color:var(--utiliy-muted)}
+            body.woocommerce-checkout button,
+            body.woocommerce-checkout .button,
+            body.woocommerce-checkout .wc-block-components-button{border-radius:4px!important;font-family:inherit;font-weight:500;text-transform:none}
+            body.woocommerce-checkout .wc-block-components-button:not(.is-link){min-height:46px;background:#000!important;color:#fff!important;border:1px solid #000!important;box-shadow:none!important}
+            body.woocommerce-checkout .wc-block-components-button:not(.is-link):hover{background:#262626!important}
+            body.woocommerce-checkout input,
+            body.woocommerce-checkout select,
+            body.woocommerce-checkout textarea,
+            body.woocommerce-checkout .wc-block-components-text-input input{border-radius:4px!important;border-color:rgba(0,0,0,.24)!important;box-shadow:none!important}
+            body.woocommerce-checkout a{color:#000;text-underline-offset:3px}
+            @media(max-width:782px){body.admin-bar.woocommerce-checkout .site-header{top:46px}}
+            @media(max-width:700px){
+                body.woocommerce-checkout .col-full{padding-inline:16px}
+                body.woocommerce-checkout .entry-header{padding:36px 0 18px}
+                body.woocommerce-checkout .entry-title{font-size:30px}
+                body.woocommerce-checkout .wc-block-checkout__sidebar{padding:18px}
+            }
         </style>';
     }
 
@@ -780,6 +825,7 @@ final class Utiliy_Commerce {
             self::set_supplier_meta($product, $record['autods'] ?? []);
             self::assert_margin($sku, (int) $record['price'], $product);
             $product->save();
+            self::sync_product_image($product, $record);
             return;
         }
 
@@ -798,6 +844,7 @@ final class Utiliy_Commerce {
         $attribute->set_variation(true);
         $parent->set_attributes([$attribute]);
         $parent_id = $parent->save();
+        self::sync_product_image($parent, $record);
 
         foreach ($variants as $variant_record) {
             $sku = (string) $variant_record['sku'];
@@ -820,6 +867,30 @@ final class Utiliy_Commerce {
             $variation->save();
         }
         WC_Product_Variable::sync($parent_id);
+    }
+
+    private static function sync_product_image(WC_Product $product, array $record): void {
+        $url = esc_url_raw((string) ($record['image'] ?? ''));
+        if (!$url || !$product->get_id()) {
+            return;
+        }
+        if ($product->get_image_id() && $product->get_meta('_utiliy_image_source') === $url) {
+            return;
+        }
+
+        require_once ABSPATH . 'wp-admin/includes/file.php';
+        require_once ABSPATH . 'wp-admin/includes/media.php';
+        require_once ABSPATH . 'wp-admin/includes/image.php';
+        $attachment_id = media_sideload_image($url, $product->get_id(), (string) $record['name'], 'id');
+        if (is_wp_error($attachment_id)) {
+            \WP_CLI::warning('Could not import image for ' . (string) $record['slug'] . ': ' . $attachment_id->get_error_message());
+            return;
+        }
+
+        update_post_meta((int) $attachment_id, '_wp_attachment_image_alt', sanitize_text_field((string) $record['name']));
+        $product->set_image_id((int) $attachment_id);
+        $product->update_meta_data('_utiliy_image_source', $url);
+        $product->save();
     }
 
     private static function set_common_product_fields(WC_Product $product, array $record, int $category_id): void {

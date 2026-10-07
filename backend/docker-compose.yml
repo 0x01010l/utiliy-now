@@ -86,6 +86,7 @@ services:
     volumes:
       - wordpress_data:/var/www/html
       - ./wp-content/plugins/utiliy-commerce:/var/www/html/wp-content/plugins/utiliy-commerce:ro
+      - ../catalog:/data:ro
     networks:
       - internal
 
