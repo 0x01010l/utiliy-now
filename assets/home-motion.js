@@ -149,6 +149,10 @@ if (!root) {
   } else {
     motionIntro();
     motionInteractions();
-    window.addEventListener("load", gsapStory, { once: true });
+    if (document.readyState === "complete") {
+      gsapStory();
+    } else {
+      window.addEventListener("load", gsapStory, { once: true });
+    }
   }
 }
