@@ -966,13 +966,17 @@ final class Utiliy_Commerce {
     private static function retire_removed_products(array $expected_skus, array $expected_slugs): void {
         $expected_skus = array_flip(array_filter($expected_skus));
         $expected_slugs = array_flip(array_filter($expected_slugs));
-        $products = wc_get_products([
-            'status' => ['publish', 'draft', 'private'],
-            'limit' => -1,
-            'return' => 'objects',
+        $product_ids = get_posts([
+            'post_type' => ['product', 'product_variation'],
+            'post_status' => ['publish', 'draft', 'private'],
+            'posts_per_page' => -1,
+            'fields' => 'ids',
+            'meta_key' => '_utiliy_managed',
+            'meta_value' => 'yes',
         ]);
-        foreach ($products as $product) {
-            if ($product->get_meta('_utiliy_managed') !== 'yes') {
+        foreach ($product_ids as $product_id) {
+            $product = wc_get_product((int) $product_id);
+            if (!$product) {
                 continue;
             }
             if ($product->is_type('variable')) {
