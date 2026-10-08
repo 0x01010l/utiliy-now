@@ -10,6 +10,13 @@ const site = catalog.merchant.url;
 const checkoutConfig = await readFile(path.join(root, "catalog/checkout.json"), "utf8")
   .then((text) => JSON.parse(text))
   .catch(() => ({}));
+const indexNowConfig = JSON.parse(await readFile(path.join(root, "catalog/indexnow.json"), "utf8"));
+const buildDate = new Date().toISOString().slice(0, 10);
+const catalogUpdated = catalog.products.flatMap((product) => [
+  product.stockCheckedAt,
+  product.autods?.costCheckedAt,
+  ...(product.variants || []).flatMap((variant) => [variant.stockCheckedAt, variant.autods?.costCheckedAt])
+]).filter(Boolean).sort().at(-1) || buildDate;
 
 const categories = [
   { slug: "bathroom", name: "Bathroom", blurb: "Corner shelves with a published size, angle, and load.", guide: "Measure the corner angle and available wall width. Adhesive shelves need a smooth, non-porous surface." },
@@ -78,6 +85,13 @@ function availabilityOf(product, variant) {
   const fresh = Number.isFinite(timestamp) && timestamp >= Date.now() - 30 * 24 * 60 * 60 * 1000;
   return { available: Boolean(available) && fresh, checkedAt, fresh };
 }
+function productUpdated(product) {
+  const dates = variantsOf(product).map((variant) => availabilityOf(product, variant).checkedAt).filter(Boolean).sort();
+  return dates.at(-1) || catalogUpdated;
+}
+function productImages(product) {
+  return [`${site}${displayImage(product)}`, ...product.images];
+}
 function specsOf(product, variant) {
   const base = product.specs || product.sharedSpecs || [];
   return variant.decidingSpec ? [...base, variant.decidingSpec] : base;
@@ -100,31 +114,44 @@ function jsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
-function shell({ title, description, canonical, json, body, current, image, scripts = "", robots = "index,follow,max-image-preview:large,max-snippet:-1" }) {
+function shell({
+  title, description, canonical, json, body, current, image, imageAlt = "",
+  ogType = "website", head = "", scripts = "", modified = buildDate,
+  robots = "index,follow,max-image-preview:large,max-snippet:-1"
+}) {
   const catNav = categories.map((cat) => `<a href="/category/${cat.slug}/"${current === `/category/${cat.slug}/` ? ' aria-current="page"' : ""}>${esc(cat.name)}</a>`).join("");
   const footerCats = categories.map((cat) => `<li><a href="/category/${cat.slug}/">${esc(cat.name)}</a></li>`).join("");
   return `<!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${canonical}">
+<link rel="alternate" hreflang="en-US" href="${canonical}">
+<link rel="alternate" hreflang="x-default" href="${canonical}">
+<link rel="alternate" type="application/json" title="Utiliy product feed" href="/feeds/products.json">
 <meta name="robots" content="${robots}">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:type" content="website">
+<meta property="og:type" content="${ogType}">
 <meta property="og:site_name" content="Utiliy">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${esc(title)}">
+<meta name="twitter:description" content="${esc(description)}">
 <meta name="theme-color" content="#ffffff">
-${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
+${image ? `<meta property="og:image" content="${esc(image)}">
+<meta name="twitter:image" content="${esc(image)}">
+<meta property="og:image:alt" content="${esc(imageAlt || title)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261008a">
+<link rel="stylesheet" href="/assets/site.css?v=20261008b">
 ${jsonLd(orgGraph())}
+${jsonLd(webPageGraph({ title, description, canonical, image, modified }))}
 ${json || ""}
+${head}
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -176,7 +203,7 @@ ${body}
   <div class="wrap legal">© 2026 Utiliy · support@utiliy.com · United States only</div>
 </footer>
 <div class="drawer-back" data-drawer-back data-close-cart></div>
-<aside class="drawer" data-drawer aria-label="Cart">
+<aside class="drawer" data-drawer aria-label="Cart" data-nosnippet>
   <header><h2>Cart</h2><button class="icon-btn" type="button" data-close-cart>Close</button></header>
   <div class="lines" data-cart-lines></div>
   <div class="total" data-cart-total hidden>$0.00</div>
@@ -195,14 +222,48 @@ ${scripts}
 function orgGraph() {
   return {
     "@context": "https://schema.org",
-    "@type": "OnlineStore",
-    name: "Utiliy",
-    url: site,
-    description: catalog.merchant.description,
-    email: catalog.merchant.email,
-    areaServed: "US",
-    currenciesAccepted: "USD",
-    paymentAccepted: "Credit card via Stripe"
+    "@graph": [
+      {
+        "@type": "OnlineStore",
+        "@id": `${site}/#store`,
+        name: "Utiliy",
+        legalName: catalog.merchant.legalName,
+        url: site,
+        logo: { "@type": "ImageObject", url: `${site}/assets/favicon.svg` },
+        description: catalog.merchant.description,
+        email: catalog.merchant.email,
+        areaServed: { "@type": "Country", name: "United States" },
+        currenciesAccepted: "USD",
+        paymentAccepted: "Credit card via Stripe",
+        hasMerchantReturnPolicy: returnPolicy(),
+        hasShippingService: shippingService()
+      },
+      {
+        "@type": "WebSite",
+        "@id": `${site}/#website`,
+        url: `${site}/`,
+        name: "Utiliy",
+        description: catalog.merchant.description,
+        inLanguage: "en-US",
+        publisher: { "@id": `${site}/#store` }
+      }
+    ]
+  };
+}
+
+function webPageGraph({ title, description, canonical, image, modified }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${canonical}#webpage`,
+    url: canonical,
+    name: title,
+    description,
+    inLanguage: "en-US",
+    dateModified: modified,
+    isPartOf: { "@id": `${site}/#website` },
+    about: { "@id": `${site}/#store` },
+    ...(image ? { primaryImageOfPage: { "@type": "ImageObject", url: image } } : {})
   };
 }
 
@@ -211,11 +272,31 @@ function returnPolicy() {
     "@type": "MerchantReturnPolicy",
     applicableCountry: "US",
     returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+    returnPolicyCountry: "US",
     merchantReturnDays: 30,
     returnMethod: "https://schema.org/ReturnByMail",
     "@id": `${site}/returns/#policy`,
     returnFees: "https://schema.org/ReturnFeesCustomerResponsibility",
+    refundType: "https://schema.org/FullRefund",
     merchantReturnLink: `${site}/returns/`
+  };
+}
+function shippingService() {
+  return {
+    "@type": "ShippingService",
+    "@id": `${site}/shipping/#policy`,
+    name: "Free United States shipping",
+    description: "Shipping is included in every product price. Utiliy ships only to United States addresses.",
+    fulfillmentType: "https://schema.org/FulfillmentTypeDelivery",
+    shippingConditions: {
+      "@type": "ShippingConditions",
+      shippingDestination: { "@type": "DefinedRegion", addressCountry: "US" },
+      shippingRate: { "@type": "MonetaryAmount", value: "0", currency: "USD" },
+      transitTime: {
+        "@type": "ServicePeriod",
+        duration: { "@type": "QuantitativeValue", minValue: 4, maxValue: 15, unitCode: "DAY" }
+      }
+    }
   };
 }
 function shippingDetails(product) {
@@ -248,7 +329,7 @@ function offerFor(product, variant) {
     itemCondition: "https://schema.org/NewCondition",
     hasMerchantReturnPolicy: { "@id": `${site}/returns/#policy` },
     shippingDetails: shippingDetails(product),
-    seller: { "@type": "Organization", name: "Utiliy", url: site }
+    seller: { "@id": `${site}/#store` }
   };
 }
 function productSchema(product, selectedSku) {
@@ -261,11 +342,15 @@ function productSchema(product, selectedSku) {
     return {
       "@context": "https://schema.org",
       "@type": "Product",
+      "@id": `${site}/products/${product.slug}/#product`,
       name: product.name,
       description: product.summary,
-      image: product.images,
+      image: productImages(product),
       sku: variant.sku,
       url: `${site}/products/${product.slug}/`,
+      mainEntityOfPage: { "@id": `${site}/products/${product.slug}/#webpage` },
+      dateModified: productUpdated(product),
+      inLanguage: "en-US",
       brand,
       category,
       additionalProperty: specsOf(product, variant).map(property),
@@ -277,15 +362,20 @@ function productSchema(product, selectedSku) {
     return {
       "@context": "https://schema.org",
       "@type": "Product",
+      "@id": `${site}${variantPath(product, variant.sku)}#product`,
       name: `${product.name}, ${variant.label}`,
       description: product.summary,
-      image: product.images,
+      image: productImages(product),
       sku: variant.sku,
       size: sizeOf(variant),
       url: site + variantPath(product, variant.sku),
+      mainEntityOfPage: { "@id": `${site}${variantPath(product, variant.sku)}#webpage` },
+      dateModified: productUpdated(product),
+      inLanguage: "en-US",
       brand,
       category,
       isVariantOf: { "@id": `${site}/products/${product.slug}/#group` },
+      inProductGroupWithID: product.slug,
       additionalProperty: variant.decidingSpec ? [...shared, property(variant.decidingSpec)] : shared,
       offers: offerFor(product, variant)
     };
@@ -296,21 +386,28 @@ function productSchema(product, selectedSku) {
     "@id": `${site}/products/${product.slug}/#group`,
     name: product.name,
     description: product.summary,
-    image: product.images,
+    image: productImages(product),
     productGroupID: product.slug,
     url: `${site}/products/${product.slug}/`,
+    mainEntityOfPage: { "@id": `${site}/products/${product.slug}/#webpage` },
+    dateModified: productUpdated(product),
+    inLanguage: "en-US",
     brand,
     variesBy: ["https://schema.org/size"],
     category,
     additionalProperty: shared,
     hasVariant: variants.map((variant) => ({
       "@type": "Product",
+      "@id": `${site}${variantPath(product, variant.sku)}#product`,
       name: `${product.name}, ${variant.label}`,
       sku: variant.sku,
       size: sizeOf(variant),
-      image: product.images,
+      image: productImages(product),
       description: product.summary,
       url: site + variantPath(product, variant.sku),
+      isVariantOf: { "@id": `${site}/products/${product.slug}/#group` },
+      inProductGroupWithID: product.slug,
+      brand,
       offers: offerFor(product, variant)
     }))
   };
@@ -351,7 +448,7 @@ function card(product) {
   const firstAvailable = availabilityOf(product, first).available;
   const hay = [product.name, product.category, product.headline, product.fit, product.summary, ...variants.map((v) => v.label)].join(" ").toLowerCase();
   return `<article class="card" data-product-card="${esc(hay)}">
-    <a class="shot" href="/products/${product.slug}/"><img src="${displayImage(product)}" alt="${esc(product.name)}" width="1024" height="1024"></a>
+    <a class="shot" href="/products/${product.slug}/" aria-label="View ${esc(product.name)} specifications and fit"><img src="${displayImage(product)}" alt="${esc(product.name + ", " + product.headline)}" width="1024" height="1024" loading="lazy" decoding="async"></a>
     <a href="/products/${product.slug}/"><h3>${esc(product.name)}</h3></a>
     <p class="spec">${esc(product.headline)}</p>
     <div class="card-row">
@@ -574,13 +671,18 @@ function productPage(product, selectedSku) {
   const shared = specsOf(product, selected).sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
   const specRows = shared.map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
   const selectedAvailable = availabilityOf(product, selected).available;
+  const reviewedAt = availabilityOf(product, selected).checkedAt || productUpdated(product);
+  const decidingFacts = shared.filter((spec) => spec.deciding).slice(0, 4);
+  const fitProof = decidingFacts.length
+    ? `<ul class="fit-proof" aria-label="Deciding fit specifications">${decidingFacts.map((spec) => `<li><span>${esc(spec.name)}</span><strong>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</strong></li>`).join("")}</ul>`
+    : "";
   const sizePills = many ? `<div><span class="size-label" id="size-label">Choose size</span><div class="size-row" role="list" aria-labelledby="size-label">${variants.map((variant) => {
     const available = availabilityOf(product, variant).available;
     return `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}${available ? "" : " is-paused"}" href="${variantPath(product, variant.sku)}"${variant.sku === selected.sku ? ' aria-current="true"' : ""}><b>${esc(variant.label)}</b><span class="size-price">${money(variant.price)}</span>${available ? "" : "<small>Reviewing stock</small>"}</a>`;
   }).join("")}</div><p class="size-help">This size: ${esc(sizeOf(selected))}. <a href="#sizes">Compare sizes</a></p></div>` : "";
   const photos = product.images.filter((src) => !src.includes("57_147cecee"));
-  const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" aria-label="View ${esc(product.name)} image ${i + 1}" aria-pressed="${i === 0 ? "true" : "false"}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
-  const gallery = photos.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
+  const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" aria-label="View ${esc(product.name)} image ${i + 1}" aria-pressed="${i === 0 ? "true" : "false"}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>`).join("");
+  const gallery = photos.slice(1).map((src, index) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name + " product view " + (index + 2))}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure>`).join("");
   const faqs = product.faqs.map((faq) => `<article class="question"><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></article>`).join("");
   const buyAttrs = `data-sku="${esc(selected.sku)}" data-price="${selected.price}" data-label="${esc(selected.label)}" data-name="${esc(product.name)}" data-image="${displayImage(product)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}"`;
   const description = `${product.name}: ${product.headline}. ${product.summary} ${money(selected.price)}. ${shipText(product)}`;
@@ -589,7 +691,7 @@ function productPage(product, selectedSku) {
 <main id="main">
   <div class="wrap pdp">
     <div class="gallery">
-      <div class="hero-shot"><img data-hero-img src="${displayImage(product)}" alt="${esc(product.name + ", " + product.headline)}" width="1024" height="1024"></div>
+      <div class="hero-shot"><img data-hero-img src="${displayImage(product)}" alt="${esc(product.name + ", " + product.headline)}" width="1024" height="1024" fetchpriority="high" decoding="async"></div>
       <div class="thumbs">${thumbs}</div>
     </div>
     <div class="buybox">
@@ -597,6 +699,7 @@ function productPage(product, selectedSku) {
       <p class="buy-measure">${esc(product.headline)}</p>
       <p class="price-lg" data-live-price>${money(selected.price)}</p>
       <p class="buy-fit">${esc(product.fit)}</p>
+      ${fitProof}
       ${sizePills}
       <div class="buy-actions">
         <div class="qty">
@@ -620,18 +723,28 @@ function productPage(product, selectedSku) {
       <a href="#specs">Specs</a>
       ${many ? `<a href="#sizes">Sizes</a>` : ""}
       <a href="#answers">Answers</a>
+      <a href="#evidence">Evidence</a>
       ${related ? `<a href="#also">More</a>` : ""}
     </div>
   </nav>
   ${storyBlock(product, shared)}
   ${rangeBoard(product, selected.sku)}
   <div class="wrap landing">
-    <section id="specs"><h2>Measurements</h2><table>${specRows}</table></section>
+    <section id="specs"><h2>Measurements</h2><p class="seo-summary">${esc(product.name)} is listed for ${esc(product.fit.toLowerCase())}. Compare every deciding measurement below with your space before ordering.</p><table>${specRows}</table></section>
   </div>
   <div class="wrap landing pdp-tail">
     ${gallery ? `<section><h2>Product photos</h2><div class="photo-row">${gallery}</div></section>` : ""}
     <section><h2>Shipping and returns</h2><p>${esc(shipText(product))}</p><p>${esc(returnsSentence)}</p></section>
     <section id="answers"><h2>Fitment answers</h2>${faqs}</section>
+    <section id="evidence" class="evidence"><h2>Product data and verification</h2>
+      <p>Utiliy transcribes published maker or supplier specifications into consistent units and does not fill in measurements that were not supplied.</p>
+      <dl>
+        <div><dt>SKU</dt><dd>${esc(selected.sku)}</dd></div>
+        <div><dt>Data reviewed</dt><dd><time datetime="${esc(reviewedAt)}">${esc(reviewedAt)}</time></dd></div>
+        <div><dt>Availability</dt><dd>${selectedAvailable ? "Available after current supplier-data checks" : "Paused for review"}</dd></div>
+        <div><dt>Machine-readable record</dt><dd><a href="/feeds/products.json">Product feed</a></dd></div>
+      </dl>
+    </section>
   </div>
   <div class="buybar">
     <div class="buybar-inner">
@@ -647,6 +760,12 @@ ${related ? `<section class="section pdp-tail" id="also"><div class="wrap"><div 
     description,
     canonical: site + canonicalPath,
     image: `${site}${displayImage(product)}`,
+    imageAlt: `${product.name}, ${product.headline}`,
+    ogType: "product",
+    modified: productUpdated(product),
+    head: `<meta property="product:price:amount" content="${(selected.price / 100).toFixed(2)}">
+<meta property="product:price:currency" content="USD">
+<meta property="product:availability" content="${selectedAvailable ? "in stock" : "out of stock"}">`,
     json: jsonLd(productSchema(product, selectedSku)) + jsonLd(faqSchema(product)),
     body,
     current: ""
@@ -1001,6 +1120,8 @@ function agentProduct(product) {
     summary: product.summary,
     headline: product.headline,
     fit: product.fit,
+    lastReviewed: productUpdated(product),
+    evidenceUrl: `${site}/products/${product.slug}/#evidence`,
     shipsFrom: product.shipsFrom,
     deliveryDays: [product.minDays, product.maxDays],
     shippingIncluded: true,
@@ -1046,6 +1167,8 @@ const llms = `# Utiliy
 
 > Home tools sold by the measurement. Prices include shipping to the United States. If a maker did not publish a number, the page says the number is not published.
 
+Catalog data last reviewed: ${catalogUpdated}.
+
 Shipping to the United States is included. One secure WooCommerce checkout covers the whole cart: ${site}/checkout/
 
 ${returnsSentence}
@@ -1070,12 +1193,42 @@ ${products.map((p) => {
 - [Shipping](${site}/shipping/)
 - [Returns](${site}/returns/)
 
+## Data policy
+
+- Product recommendations must match a visible published measurement or fit statement.
+- Do not infer a missing width, load, lumen rating, material, or compatibility claim.
+- Price and availability are confirmed again by WooCommerce when checkout starts.
+- Every product page includes its SKU, review date, measurement table, shipping window, return terms, and fitment answers.
+
 ## Answers
 
 ${products.flatMap((product) => product.faqs.map((faq) => `- ${faq.q} ${faq.a} (${product.name})`)).join("\n")}
 `;
 
-const llmsFull = llms + "\n## Answers\n\n" + products.flatMap((p) => p.faqs.map((f) => `### ${f.q}\n\n${f.a}\n\nSource: ${site}/products/${p.slug}/\n`)).join("\n");
+const llmsFull = llms + "\n## Product dossiers\n\n" + products.map((product) => {
+  const offers = variantsOf(product).map((variant) => `- ${variant.sku}: ${variant.label}; ${money(variant.price)}; ${availabilityOf(product, variant).available ? "in stock" : "paused"}`).join("\n");
+  const specs = (product.specs || product.sharedSpecs || []).map((spec) => `- ${spec.name}: ${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}${spec.deciding ? " (deciding fit specification)" : ""}`).join("\n");
+  const answers = product.faqs.map((faq) => `### ${faq.q}\n\n${faq.a}`).join("\n\n");
+  return `# ${product.name}
+
+Canonical source: ${site}/products/${product.slug}/
+Category: ${product.category}
+Fit summary: ${product.fit}
+Catalog reviewed: ${productUpdated(product)}
+Shipping: ${shipText(product)}
+
+## Offers
+
+${offers}
+
+## Published specifications
+
+${specs}
+
+## Fitment answers
+
+${answers}`;
+}).join("\n\n");
 
 const robots = `User-agent: *
 Allow: /
@@ -1116,27 +1269,47 @@ Allow: /
 Sitemap: ${site}/sitemap.xml
 `;
 
-const urls = [
-  "/",
-  "/shop/",
-  "/fitment/",
-  "/faq/",
-  "/contact/",
-  "/shipping/",
-  "/returns/",
-  "/privacy/",
-  "/terms/",
-  "/about/",
-  ...categories.map((cat) => `/category/${cat.slug}/`),
+const staticPaths = ["/", "/shop/", "/fitment/", "/faq/", "/contact/", "/shipping/", "/returns/", "/privacy/", "/terms/", "/about/"];
+const urlRecords = [
+  ...staticPaths.map((path) => ({
+    path,
+    lastmod: buildDate,
+    image: path === "/" ? { loc: `${site}/assets/covers/home.jpg`, title: "Utiliy measured home utility products" } : null
+  })),
+  ...categories.map((category) => ({
+    path: `/category/${category.slug}/`,
+    lastmod: buildDate,
+    image: { loc: `${site}/assets/covers/${category.slug}.jpg`, title: `${category.name} home utility products` }
+  })),
   ...products.flatMap((product) => {
     const paths = [`/products/${product.slug}/`];
     if (variantsOf(product).length > 1) paths.push(...variantsOf(product).map((variant) => variantPath(product, variant.sku)));
-    return paths;
+    return paths.map((path) => ({
+      path,
+      lastmod: productUpdated(product),
+      image: {
+        loc: `${site}${displayImage(product)}`,
+        title: `${product.name}, ${product.headline}`,
+        caption: product.summary
+      }
+    }));
   })
 ];
+const urls = urlRecords.map((record) => record.path);
+function xml(value) {
+  return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
+}
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.map((u) => `  <url><loc>${site}${u}</loc></url>`).join("\n")}
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+${urlRecords.map((record) => `  <url>
+    <loc>${xml(site + record.path)}</loc>
+    <lastmod>${record.lastmod}</lastmod>${record.image ? `
+    <image:image>
+      <image:loc>${xml(record.image.loc)}</image:loc>
+      <image:title>${xml(record.image.title)}</image:title>${record.image.caption ? `
+      <image:caption>${xml(record.image.caption)}</image:caption>` : ""}
+    </image:image>` : ""}
+  </url>`).join("\n")}
 </urlset>
 `;
 
@@ -1150,12 +1323,17 @@ async function page(rel, html) {
 }
 
 await page(".", shell({
-  title: "Utiliy — home tools sold by the measurement",
-  description: "Utiliy sells ten fitment-first home tools. Each page states the span, gap, load, corner, or leg size, and says when the maker did not publish a number.",
+  title: "Utiliy | Home Utility Products Measured to Fit",
+  description: "Shop fitment-first home utility products with published spans, gaps, loads, angles, and sizes. Free US shipping and one secure checkout.",
   canonical: site + "/",
+  image: `${site}/assets/covers/home.jpg`,
+  imageAlt: "Black and white architectural forms representing measured home utility",
+  modified: buildDate,
+  head: `<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>`,
   json: jsonLd({
     "@context": "https://schema.org",
     "@type": "ItemList",
+    "@id": `${site}/#products`,
     name: "Utiliy shop",
     itemListElement: products.map((p, i) => ({
       "@type": "ListItem",
@@ -1305,6 +1483,7 @@ await cp(path.join(root, "assets/explainers"), path.join(dist, "assets/explainer
 await cp(path.join(root, "assets/covers"), path.join(dist, "assets/covers"), { recursive: true }).catch(() => {});
 await cp(path.join(root, "assets/product-images"), path.join(dist, "assets/product-images"), { recursive: true }).catch(() => {});
 await writeFile(path.join(dist, "CNAME"), "utiliy.com\n");
+await writeFile(path.join(dist, `${indexNowConfig.key}.txt`), `${indexNowConfig.key}\n`);
 await writeFile(path.join(dist, "robots.txt"), robots);
 await writeFile(path.join(dist, "sitemap.xml"), sitemap);
 await writeFile(path.join(dist, "llms.txt"), llms);
@@ -1319,7 +1498,7 @@ await writeFile(path.join(dist, "404.html"), shell({
 
 const feed = {
   merchant: catalog.merchant,
-  updated: "2026-10-06",
+  updated: catalogUpdated,
   products: products.map(agentProduct)
 };
 await mkdir(path.join(dist, "feeds"), { recursive: true });
@@ -1345,7 +1524,7 @@ function merchantRows() {
     const materialValue = material && !/ and /i.test(material.value) ? material.value : "";
     for (const variant of variants) {
       const specs = specsOf(product, variant);
-      const images = [...new Set(product.images)];
+      const images = [...new Set([`${site}${displayImage(product)}`, ...product.images])];
       const details = specs.map((spec) => `Specifications:${spec.name}:${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`).join(", ");
       const answers = product.faqs.map((faq) => `${faq.q}:${faq.a}`).join(", ");
       rows.push([
@@ -1378,7 +1557,7 @@ function merchantRows() {
 await writeFile(path.join(dist, "feeds/google-merchant.tsv"), merchantRows());
 await writeFile(path.join(dist, ".well-known/agent-commerce.json"), JSON.stringify({
   name: "Utiliy",
-  version: "2026-10-06",
+  version: catalogUpdated,
   website: site,
   currency: "USD",
   country: "US",

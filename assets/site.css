@@ -372,6 +372,18 @@ hr.hair { border: 0; border-top: 1px solid var(--line); margin: 20px 0; }
   margin: 0 0 8px;
 }
 .buy-fit { color: var(--muted); margin: 0 0 14px; }
+.fit-proof {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 0 18px;
+  padding: 1px;
+  list-style: none;
+  background: var(--line);
+}
+.fit-proof li { display: grid; gap: 3px; padding: 10px 12px; background: #fff; }
+.fit-proof span { color: var(--muted); font-size: 11px; }
+.fit-proof strong { font-size: 13px; }
 .buy-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .buy-actions .btn { flex: 1; min-width: 160px; }
 .buy-actions .btn-line { width: auto; margin: 0; }
@@ -431,6 +443,12 @@ tr.deciding th, tr.deciding td { font-weight: 700; color: #000; }
 .photo-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .photo-mat { margin: 0; background: var(--mat); border-radius: 6px; overflow: hidden; }
 .photo-mat img { width: 100%; aspect-ratio: 1; object-fit: contain; }
+.seo-summary { max-width: 68ch; color: var(--muted); }
+.evidence dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin: 20px 0 0; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.evidence dl div { padding: 14px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.evidence dt { color: var(--muted); font-size: 12px; }
+.evidence dd { margin: 3px 0 0; font-weight: 600; }
+.evidence a { text-decoration: underline; text-underline-offset: 3px; }
 .prose { max-width: 72ch; }
 .prose h1 { font-size: 28px; font-weight: 600; }
 .kicker { color: var(--muted); font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
@@ -737,6 +755,7 @@ body:has(.buybar) { padding-bottom: 92px; }
   .buy-trust span { text-align: left; }
   .line { grid-template-columns: 60px minmax(0, 1fr) auto; gap: 10px; }
   .line img { width: 60px; height: 60px; }
+  .fit-proof, .evidence dl { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -1048,6 +1067,11 @@ body:has(.buybar) { padding-bottom: 92px; }
 }
 .utility-orbit .btn { position: relative; z-index: 2; }
 .orbit-dot { fill: #000; stroke: none; }
+.utility-manifesto, .utility-rooms-section, .utility-products, .utility-orbit,
+.pdp-tail, #also {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
 
 @media (max-width: 980px) {
   .utility-hero { min-height: auto; }
