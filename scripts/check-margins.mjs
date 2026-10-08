@@ -6,6 +6,7 @@ const stripeRate = 0.029;
 const stripeFixed = 30;
 const rows = [];
 let failed = false;
+const maxAgeMs = 30 * 24 * 60 * 60 * 1000;
 
 for (const product of catalog.products) {
   const variants = product.variants?.length
@@ -23,7 +24,11 @@ for (const product of catalog.products) {
     const fee = Math.round(price * stripeRate + stripeFixed);
     const profit = price - cost - shipping - fee;
     const margin = profit / price;
-    const valid = Number.isFinite(cost) && Number.isFinite(shipping) && price >= minimum;
+    const checkedAt = variant.stockCheckedAt || product.stockCheckedAt || variant.autods.costCheckedAt;
+    const checkedTime = Date.parse(`${checkedAt}T23:59:59Z`);
+    const fresh = Number.isFinite(checkedTime) && checkedTime >= Date.now() - maxAgeMs;
+    const available = variant.available ?? product.available ?? true;
+    const valid = Number.isFinite(cost) && Number.isFinite(shipping) && price >= minimum && fresh;
     failed ||= !valid;
     rows.push({
       sku: variant.sku,
@@ -31,6 +36,8 @@ for (const product of catalog.products) {
       landed: `$${((cost + shipping) / 100).toFixed(2)}`,
       minimum: `$${(minimum / 100).toFixed(2)}`,
       margin: `${(margin * 100).toFixed(1)}%`,
+      checked: checkedAt || "MISSING",
+      stock: available ? "LISTED" : "PAUSED",
       result: valid ? "PASS" : "FAIL"
     });
   }
@@ -38,6 +45,6 @@ for (const product of catalog.products) {
 
 console.table(rows);
 if (failed) {
-  console.error("A SKU is missing cost data or falls below the 30% post-Stripe margin floor.");
+  console.error("A SKU has stale/missing supplier data or falls below the 30% post-Stripe margin floor.");
   process.exitCode = 1;
 }

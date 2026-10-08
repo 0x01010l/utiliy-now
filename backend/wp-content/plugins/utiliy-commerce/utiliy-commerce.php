@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Utiliy Commerce
- * Description: Headless catalog, Stripe checkout, and order status API for utiliy.com.
+ * Description: Headless WooCommerce cart handoff, catalog sync, fulfillment, and order status for utiliy.com.
  * Version: 1.3.0
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
@@ -11,7 +11,6 @@ defined('ABSPATH') || exit;
 
 final class Utiliy_Commerce {
     private const NS = 'utiliy/v1';
-    private const OPTION = 'utiliy_commerce_settings';
     private const ORIGINS = [
         'https://utiliy.com',
         'https://www.utiliy.com',
@@ -33,6 +32,7 @@ final class Utiliy_Commerce {
         add_filter('rest_pre_serve_request', [self::class, 'cors'], 10, 4);
         add_action('add_meta_boxes', [self::class, 'order_meta_boxes']);
         add_action('admin_post_utiliy_mark_supplier_ordered', [self::class, 'mark_supplier_ordered']);
+        add_action('admin_post_utiliy_mark_shipped', [self::class, 'mark_shipped']);
         add_action('template_redirect', [self::class, 'load_checkout_cart']);
         add_action('woocommerce_check_cart_items', [self::class, 'validate_cart_margins']);
         add_action('woocommerce_checkout_create_order_line_item', [self::class, 'copy_supplier_to_order'], 10, 4);
@@ -45,6 +45,7 @@ final class Utiliy_Commerce {
         add_filter('pre_wp_mail', [self::class, 'send_mail_with_azure'], 10, 2);
         add_filter('woocommerce_email_from_name', static fn (): string => 'Utiliy');
         add_filter('woocommerce_email_from_address', static fn (): string => 'hello@utiliy.com');
+        add_action('woocommerce_email_order_meta', [self::class, 'email_tracking'], 20, 4);
         add_filter('wp_robots', static function (array $robots): array {
             $robots['noindex'] = true;
             $robots['nofollow'] = true;
@@ -119,12 +120,12 @@ final class Utiliy_Commerce {
 
     private static function public_product(WC_Product $product): array {
         $price = (int) round((float) $product->get_price() * 100);
-        $minimum = (int) $product->get_meta('_utiliy_minimum_price');
         return [
             'sku' => $product->get_sku(),
             'price' => $price,
-            'available' => $minimum > 0 && $price >= $minimum && $product->is_in_stock() && $product->is_purchasable(),
+            'available' => self::product_guard_error($product) === '' && $product->is_in_stock() && $product->is_purchasable(),
             'stockQuantity' => $product->managing_stock() ? $product->get_stock_quantity() : null,
+            'stockCheckedAt' => (string) $product->get_meta('_utiliy_stock_checked_at'),
         ];
     }
 
@@ -140,19 +141,29 @@ final class Utiliy_Commerce {
             return new WP_Error('invalid_cart', 'The cart is empty or too large.', ['status' => 400]);
         }
 
-        $cart = [];
+        $merged = [];
         foreach ($items as $item) {
             $sku = sanitize_text_field($item['sku'] ?? '');
             $quantity = max(1, min(10, (int) ($item['qty'] ?? 1)));
+            if (!$sku) {
+                return new WP_Error('invalid_item', 'A cart item is invalid.', ['status' => 400]);
+            }
+            $merged[$sku] = ($merged[$sku] ?? 0) + $quantity;
+            if ($merged[$sku] > 10) {
+                return new WP_Error('quantity_limit', 'A maximum of 10 units per item is allowed.', ['status' => 400]);
+            }
+        }
+
+        $cart = [];
+        foreach ($merged as $sku => $quantity) {
             $product_id = $sku ? wc_get_product_id_by_sku($sku) : 0;
             $product = $product_id ? wc_get_product($product_id) : false;
             if (!$product || !$product->is_purchasable() || !$product->is_in_stock() || !$product->has_enough_stock($quantity)) {
-                return new WP_Error('unavailable', 'One of those products is unavailable.', ['status' => 400]);
+                return new WP_Error('unavailable', $sku . ' is currently unavailable.', ['status' => 409]);
             }
-            $minimum = (int) $product->get_meta('_utiliy_minimum_price');
-            $selling = (int) round((float) $product->get_price() * 100);
-            if (!$minimum || $selling < $minimum) {
-                return new WP_Error('margin_guard', 'A product is paused for a supplier cost review.', ['status' => 409]);
+            $guard_error = self::product_guard_error($product);
+            if ($guard_error) {
+                return new WP_Error('product_paused', $guard_error, ['status' => 409]);
             }
             $cart[] = ['product_id' => $product_id, 'quantity' => $quantity];
         }
@@ -181,23 +192,51 @@ final class Utiliy_Commerce {
         if (function_exists('wc_load_cart') && !WC()->cart) {
             wc_load_cart();
         }
-        WC()->cart->empty_cart();
+        $validated = [];
         foreach ($cart as $line) {
             $product = wc_get_product((int) $line['product_id']);
-            if (!$product) {
-                continue;
+            $quantity = (int) ($line['quantity'] ?? 0);
+            if (
+                !$product ||
+                $quantity < 1 ||
+                $quantity > 10 ||
+                !$product->is_purchasable() ||
+                !$product->is_in_stock() ||
+                !$product->has_enough_stock($quantity) ||
+                self::product_guard_error($product)
+            ) {
+                wp_die(
+                    'An item changed or became unavailable. Return to utiliy.com and review your cart.',
+                    'Checkout unavailable',
+                    ['response' => 409]
+                );
             }
+            $validated[] = ['product' => $product, 'quantity' => $quantity];
+        }
+
+        WC()->cart->empty_cart();
+        foreach ($validated as $line) {
+            $product = $line['product'];
             if ($product->is_type('variation')) {
-                WC()->cart->add_to_cart(
+                $added = WC()->cart->add_to_cart(
                     $product->get_parent_id(),
-                    (int) $line['quantity'],
+                    $line['quantity'],
                     $product->get_id(),
                     $product->get_variation_attributes()
                 );
             } else {
-                WC()->cart->add_to_cart($product->get_id(), (int) $line['quantity']);
+                $added = WC()->cart->add_to_cart($product->get_id(), $line['quantity']);
+            }
+            if (!$added) {
+                WC()->cart->empty_cart();
+                wp_die(
+                    'The cart could not be prepared. Return to utiliy.com and try again.',
+                    'Checkout unavailable',
+                    ['response' => 409]
+                );
             }
         }
+        WC()->cart->calculate_totals();
         wp_safe_redirect(wc_get_checkout_url());
         exit;
     }
@@ -211,10 +250,9 @@ final class Utiliy_Commerce {
             if (!$product instanceof WC_Product) {
                 continue;
             }
-            $minimum = (int) $product->get_meta('_utiliy_minimum_price');
-            $selling = (int) round((float) $product->get_price() * 100);
-            if (!$minimum || $selling < $minimum) {
-                wc_add_notice('An item is temporarily unavailable while its supplier cost is reviewed.', 'error');
+            $guard_error = self::product_guard_error($product);
+            if ($guard_error) {
+                wc_add_notice($guard_error, 'error');
                 return;
             }
         }
@@ -417,6 +455,21 @@ final class Utiliy_Commerce {
         return $addresses;
     }
 
+    public static function email_tracking(WC_Order $order, bool $sent_to_admin, bool $plain_text, $email): void {
+        $tracking_url = esc_url((string) $order->get_meta('_utiliy_tracking_url'));
+        if (!$tracking_url) {
+            return;
+        }
+        $carrier = (string) $order->get_meta('_utiliy_tracking_carrier');
+        $number = (string) $order->get_meta('_utiliy_tracking_number');
+        if ($plain_text) {
+            echo "\nTracking: " . $carrier . ' ' . $number . "\n" . $tracking_url . "\n";
+            return;
+        }
+        echo '<h2>Track your shipment</h2><p>' . esc_html($carrier . ' ' . $number) .
+            '<br><a href="' . $tracking_url . '">View tracking</a></p>';
+    }
+
     public static function checkout_styles(): void {
         if (!function_exists('is_checkout') || !is_checkout()) {
             return;
@@ -522,209 +575,6 @@ final class Utiliy_Commerce {
         </style>';
     }
 
-    public static function checkout(WP_REST_Request $request) {
-        self::require_woocommerce();
-        $rate_error = self::rate_limit();
-        if ($rate_error) {
-            return $rate_error;
-        }
-
-        $settings = self::settings();
-        if (empty($settings['stripe_secret_key']) || empty($settings['stripe_publishable_key'])) {
-            return new WP_Error('not_configured', 'Checkout is not configured.', ['status' => 503]);
-        }
-
-        $payload = $request->get_json_params();
-        $items = isset($payload['items']) && is_array($payload['items']) ? $payload['items'] : [];
-        $customer = isset($payload['customer']) && is_array($payload['customer']) ? $payload['customer'] : [];
-        $validation = self::validate_customer($customer);
-        if (is_wp_error($validation)) {
-            return $validation;
-        }
-        if (!$items || count($items) > 20) {
-            return new WP_Error('invalid_cart', 'The cart is empty or too large.', ['status' => 400]);
-        }
-
-        $merged = [];
-        foreach ($items as $item) {
-            $sku = sanitize_text_field($item['sku'] ?? '');
-            $quantity = max(1, min(10, (int) ($item['qty'] ?? 1)));
-            if (!$sku) {
-                return new WP_Error('invalid_item', 'A cart item is invalid.', ['status' => 400]);
-            }
-            $merged[$sku] = min(10, ($merged[$sku] ?? 0) + $quantity);
-        }
-
-        try {
-            $order = wc_create_order(['status' => 'pending', 'created_via' => 'utiliy-headless']);
-            foreach ($merged as $sku => $quantity) {
-                $product_id = wc_get_product_id_by_sku($sku);
-                $product = $product_id ? wc_get_product($product_id) : false;
-                if (!$product || !$product->is_purchasable() || !$product->is_in_stock()) {
-                    throw new Exception('One of those products is unavailable: ' . $sku);
-                }
-                if (!$product->has_enough_stock($quantity)) {
-                    throw new Exception('The requested quantity is unavailable: ' . $sku);
-                }
-                $minimum = (int) $product->get_meta('_utiliy_minimum_price');
-                $selling = (int) round((float) $product->get_price() * 100);
-                if (!$minimum || $selling < $minimum) {
-                    throw new Exception('A product is paused for a supplier cost review: ' . $sku);
-                }
-                $item_id = $order->add_product($product, $quantity);
-                $line = $order->get_item($item_id);
-                foreach (self::supplier_data($product) as $key => $value) {
-                    if ($value !== '') {
-                        $line->add_meta_data('_utiliy_' . $key, $value, true);
-                    }
-                }
-                $line->save();
-            }
-
-            $address = self::address($customer);
-            $order->set_address($address, 'billing');
-            $order->set_address($address, 'shipping');
-            $shipping = new WC_Order_Item_Shipping();
-            $shipping->set_method_title('Shipping included');
-            $shipping->set_method_id('utiliy_included');
-            $shipping->set_total(0);
-            $order->add_item($shipping);
-            $order->set_currency('USD');
-            $order->set_payment_method('stripe');
-            $order->set_payment_method_title('Stripe');
-            $order->calculate_totals();
-            $order->save();
-
-            $intent = self::create_payment_intent($order, $settings);
-            if (is_wp_error($intent)) {
-                $order->update_status('failed', 'Stripe could not create a payment.');
-                return $intent;
-            }
-
-            $order->update_meta_data('_utiliy_stripe_payment_intent', $intent['id']);
-            $order->save();
-            return new WP_REST_Response([
-                'orderId' => $order->get_id(),
-                'orderKey' => $order->get_order_key(),
-                'clientSecret' => $intent['client_secret'],
-                'publishableKey' => $settings['stripe_publishable_key'],
-                'amount' => (int) round((float) $order->get_total() * 100),
-                'currency' => strtolower($order->get_currency()),
-            ], 201);
-        } catch (Throwable $error) {
-            if (isset($order) && $order instanceof WC_Order) {
-                $order->update_status('failed', $error->getMessage());
-            }
-            return new WP_Error('checkout_failed', $error->getMessage(), ['status' => 400]);
-        }
-    }
-
-    private static function create_payment_intent(WC_Order $order, array $settings) {
-        $address = $order->get_address('shipping');
-        $body = [
-            'amount' => (int) round((float) $order->get_total() * 100),
-            'currency' => strtolower($order->get_currency()),
-            'automatic_payment_methods[enabled]' => 'true',
-            'receipt_email' => $order->get_billing_email(),
-            'description' => 'Utiliy order ' . $order->get_order_number(),
-            'metadata[woo_order_id]' => $order->get_id(),
-            'metadata[woo_order_key]' => $order->get_order_key(),
-            'shipping[name]' => trim($address['first_name'] . ' ' . $address['last_name']),
-            'shipping[phone]' => $order->get_billing_phone(),
-            'shipping[address][line1]' => $address['address_1'],
-            'shipping[address][line2]' => $address['address_2'],
-            'shipping[address][city]' => $address['city'],
-            'shipping[address][state]' => $address['state'],
-            'shipping[address][postal_code]' => $address['postcode'],
-            'shipping[address][country]' => 'US',
-        ];
-
-        $response = wp_remote_post('https://api.stripe.com/v1/payment_intents', [
-            'timeout' => 30,
-            'headers' => [
-                'Authorization' => 'Bearer ' . $settings['stripe_secret_key'],
-                'Idempotency-Key' => 'utiliy-order-' . $order->get_id(),
-            ],
-            'body' => $body,
-        ]);
-        if (is_wp_error($response)) {
-            return new WP_Error('stripe_unavailable', 'Stripe is temporarily unavailable.', ['status' => 502]);
-        }
-
-        $data = json_decode(wp_remote_retrieve_body($response), true);
-        if (wp_remote_retrieve_response_code($response) >= 300 || empty($data['id']) || empty($data['client_secret'])) {
-            $message = $data['error']['message'] ?? 'Stripe could not start the payment.';
-            return new WP_Error('stripe_error', $message, ['status' => 502]);
-        }
-        return $data;
-    }
-
-    public static function stripe_webhook(WP_REST_Request $request) {
-        self::require_woocommerce();
-        $settings = self::settings();
-        $secret = $settings['stripe_webhook_secret'] ?? '';
-        $payload = $request->get_body();
-        $signature = $request->get_header('stripe-signature');
-        if (!$secret || !self::valid_stripe_signature($payload, $signature, $secret)) {
-            return new WP_Error('invalid_signature', 'Invalid Stripe signature.', ['status' => 400]);
-        }
-
-        $event = json_decode($payload, true);
-        if (empty($event['id']) || empty($event['type']) || empty($event['data']['object'])) {
-            return new WP_Error('invalid_event', 'Invalid Stripe event.', ['status' => 400]);
-        }
-        if (get_transient('utiliy_stripe_' . md5($event['id']))) {
-            return new WP_REST_Response(['received' => true, 'duplicate' => true], 200);
-        }
-
-        $object = $event['data']['object'];
-        $intent_id = str_starts_with($event['type'], 'payment_intent.')
-            ? ($object['id'] ?? '')
-            : ($object['payment_intent'] ?? '');
-        $order = $intent_id ? self::order_by_intent($intent_id) : false;
-        if ($order) {
-            $event_meta = '_utiliy_stripe_event_' . md5($event['id']);
-            if (!$order->get_meta($event_meta)) {
-                self::apply_stripe_event($order, $event['type'], $object);
-                $order->update_meta_data($event_meta, gmdate('c'));
-                $order->save();
-            }
-        }
-
-        set_transient('utiliy_stripe_' . md5($event['id']), 1, WEEK_IN_SECONDS);
-        return new WP_REST_Response(['received' => true], 200);
-    }
-
-    private static function apply_stripe_event(WC_Order $order, string $type, array $object): void {
-        if ($type === 'payment_intent.succeeded') {
-            $expected = (int) round((float) $order->get_total() * 100);
-            if ((int) ($object['amount_received'] ?? 0) !== $expected) {
-                $order->add_order_note('Stripe payment amount did not match the WooCommerce order.');
-                return;
-            }
-            if (!$order->is_paid()) {
-                $order->payment_complete($object['id']);
-                $order->add_order_note('Paid through Utiliy headless Stripe checkout.');
-            }
-        } elseif ($type === 'payment_intent.payment_failed' && $order->has_status('pending')) {
-            $message = $object['last_payment_error']['message'] ?? 'Stripe payment failed.';
-            $order->update_status('failed', $message);
-        } elseif ($type === 'charge.refunded') {
-            $refunded = ((int) ($object['amount_refunded'] ?? 0)) / 100;
-            $already = (float) $order->get_total_refunded();
-            $difference = round($refunded - $already, 2);
-            if ($difference > 0) {
-                wc_create_refund([
-                    'order_id' => $order->get_id(),
-                    'amount' => $difference,
-                    'reason' => 'Stripe refund',
-                    'refund_payment' => false,
-                    'restock_items' => false,
-                ]);
-            }
-        }
-    }
-
     public static function order_status(WP_REST_Request $request) {
         self::require_woocommerce();
         $order = wc_get_order((int) $request['id']);
@@ -738,172 +588,13 @@ final class Utiliy_Commerce {
             'paid' => $order->is_paid(),
             'total' => (int) round((float) $order->get_total() * 100),
             'currency' => $order->get_currency(),
+            'fulfillmentStatus' => (string) $order->get_meta('_utiliy_fulfillment_status'),
+            'trackingUrl' => esc_url_raw((string) $order->get_meta('_utiliy_tracking_url')),
         ], 200);
-    }
-
-    public static function import_stripe_session(WP_REST_Request $request) {
-        self::require_woocommerce();
-        $settings = self::settings();
-        $provided = (string) $request->get_header('x-utiliy-bridge');
-        if (empty($settings['bridge_secret']) || !$provided || !hash_equals($settings['bridge_secret'], $provided)) {
-            return new WP_Error('forbidden', 'Forbidden.', ['status' => 403]);
-        }
-
-        $payload = $request->get_json_params();
-        $session_id = sanitize_text_field($payload['sessionId'] ?? '');
-        $items = isset($payload['items']) && is_array($payload['items']) ? $payload['items'] : [];
-        $customer = isset($payload['customer']) && is_array($payload['customer']) ? $payload['customer'] : [];
-        $amount_total = (int) ($payload['amountTotal'] ?? 0);
-        if (!str_starts_with($session_id, 'cs_') || !$items || $amount_total <= 0) {
-            return new WP_Error('invalid_session', 'Invalid checkout session.', ['status' => 400]);
-        }
-
-        $existing = wc_get_orders([
-            'limit' => 1,
-            'meta_key' => '_utiliy_stripe_checkout_session',
-            'meta_value' => $session_id,
-            'return' => 'objects',
-        ]);
-        if ($existing) {
-            return self::imported_order_response($existing[0]);
-        }
-
-        $validation = self::validate_customer($customer);
-        if (is_wp_error($validation)) {
-            return $validation;
-        }
-
-        try {
-            $order = wc_create_order(['status' => 'pending', 'created_via' => 'utiliy-stripe-checkout']);
-            foreach ($items as $item) {
-                $sku = sanitize_text_field($item['sku'] ?? '');
-                $quantity = max(1, min(10, (int) ($item['qty'] ?? 1)));
-                $product_id = wc_get_product_id_by_sku($sku);
-                $product = $product_id ? wc_get_product($product_id) : false;
-                if (!$product || !$product->is_purchasable()) {
-                    throw new Exception('Unknown or unavailable SKU: ' . $sku);
-                }
-                $minimum = (int) $product->get_meta('_utiliy_minimum_price');
-                $selling = (int) round((float) $product->get_price() * 100);
-                if (!$minimum || $selling < $minimum) {
-                    throw new Exception('Supplier cost review required for: ' . $sku);
-                }
-                $item_id = $order->add_product($product, $quantity);
-                $line = $order->get_item($item_id);
-                foreach (self::supplier_data($product) as $key => $value) {
-                    if ($value !== '') {
-                        $line->add_meta_data('_utiliy_' . $key, $value, true);
-                    }
-                }
-                $line->save();
-            }
-
-            $address = self::address($customer);
-            $order->set_address($address, 'billing');
-            $order->set_address($address, 'shipping');
-            $shipping = new WC_Order_Item_Shipping();
-            $shipping->set_method_title('Shipping included');
-            $shipping->set_method_id('utiliy_included');
-            $shipping->set_total(0);
-            $order->add_item($shipping);
-            $order->set_currency('USD');
-            $order->set_payment_method('stripe_checkout');
-            $order->set_payment_method_title('Stripe Checkout');
-            $order->update_meta_data('_utiliy_stripe_checkout_session', $session_id);
-            $order->calculate_totals();
-
-            $calculated = (int) round((float) $order->get_total() * 100);
-            if ($calculated !== $amount_total) {
-                throw new Exception('Stripe and WooCommerce totals do not match.');
-            }
-            $order->save();
-            $order->payment_complete($session_id);
-            $order->add_order_note('Imported from a verified paid Stripe Checkout Session.');
-            $order->save();
-            return self::imported_order_response($order);
-        } catch (Throwable $error) {
-            if (isset($order) && $order instanceof WC_Order) {
-                $order->update_status('failed', $error->getMessage());
-            }
-            return new WP_Error('order_import_failed', $error->getMessage(), ['status' => 400]);
-        }
-    }
-
-    private static function imported_order_response(WC_Order $order): WP_REST_Response {
-        return new WP_REST_Response([
-            'orderId' => $order->get_id(),
-            'orderKey' => $order->get_order_key(),
-            'status' => $order->get_status(),
-        ], 200);
-    }
-
-    private static function validate_customer(array $customer) {
-        $required = ['firstName', 'lastName', 'email', 'phone', 'address1', 'city', 'state', 'postcode'];
-        foreach ($required as $field) {
-            if (empty(trim((string) ($customer[$field] ?? '')))) {
-                return new WP_Error('missing_address', 'Complete every required address field.', ['status' => 400]);
-            }
-        }
-        if (!is_email($customer['email'])) {
-            return new WP_Error('invalid_email', 'Enter a valid email address.', ['status' => 400]);
-        }
-        if (strtoupper((string) ($customer['country'] ?? 'US')) !== 'US') {
-            return new WP_Error('unsupported_country', 'Utiliy currently ships only to the United States.', ['status' => 400]);
-        }
-        return true;
-    }
-
-    private static function address(array $customer): array {
-        return [
-            'first_name' => sanitize_text_field($customer['firstName']),
-            'last_name' => sanitize_text_field($customer['lastName']),
-            'company' => sanitize_text_field($customer['company'] ?? ''),
-            'email' => sanitize_email($customer['email']),
-            'phone' => sanitize_text_field($customer['phone']),
-            'address_1' => sanitize_text_field($customer['address1']),
-            'address_2' => sanitize_text_field($customer['address2'] ?? ''),
-            'city' => sanitize_text_field($customer['city']),
-            'state' => strtoupper(sanitize_text_field($customer['state'])),
-            'postcode' => sanitize_text_field($customer['postcode']),
-            'country' => 'US',
-        ];
-    }
-
-    private static function valid_stripe_signature(string $payload, string $header, string $secret): bool {
-        $timestamp = 0;
-        $signatures = [];
-        foreach (explode(',', $header) as $part) {
-            [$key, $value] = array_pad(explode('=', trim($part), 2), 2, '');
-            if ($key === 't') {
-                $timestamp = (int) $value;
-            } elseif ($key === 'v1') {
-                $signatures[] = $value;
-            }
-        }
-        if (!$timestamp || abs(time() - $timestamp) > 300 || !$signatures) {
-            return false;
-        }
-        $expected = hash_hmac('sha256', $timestamp . '.' . $payload, $secret);
-        foreach ($signatures as $signature) {
-            if (hash_equals($expected, $signature)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private static function order_by_intent(string $intent_id) {
-        $orders = wc_get_orders([
-            'limit' => 1,
-            'meta_key' => '_utiliy_stripe_payment_intent',
-            'meta_value' => sanitize_text_field($intent_id),
-            'return' => 'objects',
-        ]);
-        return $orders ? $orders[0] : false;
     }
 
     private static function rate_limit() {
-        $ip = sanitize_text_field($_SERVER['REMOTE_ADDR'] ?? 'unknown');
+        $ip = self::client_ip();
         $key = 'utiliy_checkout_' . md5($ip);
         $count = (int) get_transient($key);
         if ($count >= 20) {
@@ -911,6 +602,47 @@ final class Utiliy_Commerce {
         }
         set_transient($key, $count + 1, 10 * MINUTE_IN_SECONDS);
         return null;
+    }
+
+    private static function client_ip(): string {
+        $remote = sanitize_text_field((string) ($_SERVER['REMOTE_ADDR'] ?? ''));
+        $trusted_proxy = $remote === '127.0.0.1' || $remote === '::1' || !filter_var(
+            $remote,
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+        );
+        if ($trusted_proxy) {
+            $forwarded = explode(',', (string) ($_SERVER['HTTP_X_FORWARDED_FOR'] ?? ''));
+            foreach ($forwarded as $candidate) {
+                $candidate = trim($candidate);
+                if (filter_var($candidate, FILTER_VALIDATE_IP)) {
+                    return $candidate;
+                }
+            }
+        }
+        return filter_var($remote, FILTER_VALIDATE_IP) ? $remote : 'unknown';
+    }
+
+    private static function product_guard_error(WC_Product $product): string {
+        $data = self::supplier_data($product);
+        if (($data['available'] ?? '') !== 'yes') {
+            return $product->get_sku() . ' is paused until supplier availability is confirmed.';
+        }
+        $checked_at = (string) ($data['stock_checked_at'] ?? $data['cost_checked_at'] ?? '');
+        if (!self::date_is_fresh($checked_at, 30)) {
+            return $product->get_sku() . ' is paused for a supplier stock and cost review.';
+        }
+        $minimum = (int) ($data['minimum_price'] ?? 0);
+        $selling = (int) round((float) $product->get_price() * 100);
+        if (!$minimum || $selling < $minimum) {
+            return $product->get_sku() . ' is paused because its price no longer meets the margin floor.';
+        }
+        return '';
+    }
+
+    private static function date_is_fresh(string $date, int $days): bool {
+        $timestamp = strtotime($date . ' 23:59:59 UTC');
+        return $timestamp !== false && $timestamp >= time() - ($days * DAY_IN_SECONDS);
     }
 
     private static function supplier_data(WC_Product $product): array {
@@ -928,6 +660,8 @@ final class Utiliy_Commerce {
             'supplier_cost' => $read('supplier_cost'),
             'shipping_cost' => $read('shipping_cost'),
             'cost_checked_at' => $read('cost_checked_at'),
+            'stock_checked_at' => $read('stock_checked_at'),
+            'available' => $read('available'),
             'minimum_price' => $read('minimum_price'),
         ];
     }
@@ -987,6 +721,18 @@ final class Utiliy_Commerce {
             );
             echo '<p><a class="button button-primary" href="' . esc_url($url) . '">Mark supplier orders placed</a></p>';
         }
+        if ($status === 'Ordered from supplier') {
+            echo '<hr><h3>Mark shipped</h3>';
+            echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '">';
+            echo '<input type="hidden" name="action" value="utiliy_mark_shipped">';
+            echo '<input type="hidden" name="order_id" value="' . esc_attr((string) $order->get_id()) . '">';
+            wp_nonce_field('utiliy_mark_shipped_' . $order->get_id());
+            echo '<p><label>Carrier<br><input class="regular-text" required name="carrier" placeholder="USPS, UPS, FedEx"></label></p>';
+            echo '<p><label>Tracking number<br><input class="regular-text" required name="tracking_number"></label></p>';
+            echo '<p><label>Tracking URL<br><input class="large-text" type="url" required name="tracking_url" placeholder="https://..."></label></p>';
+            echo '<p><button class="button button-primary" type="submit">Mark shipped and email customer</button></p>';
+            echo '</form>';
+        }
     }
 
     public static function mark_supplier_ordered(): void {
@@ -1005,6 +751,38 @@ final class Utiliy_Commerce {
         exit;
     }
 
+    public static function mark_shipped(): void {
+        $order_id = absint($_POST['order_id'] ?? 0);
+        check_admin_referer('utiliy_mark_shipped_' . $order_id);
+        if (!current_user_can('manage_woocommerce')) {
+            wp_die('You cannot edit this order.');
+        }
+        $order = wc_get_order($order_id);
+        if (!$order) {
+            wp_die('Order not found.');
+        }
+        $carrier = sanitize_text_field(wp_unslash($_POST['carrier'] ?? ''));
+        $tracking_number = sanitize_text_field(wp_unslash($_POST['tracking_number'] ?? ''));
+        $tracking_url = esc_url_raw(wp_unslash($_POST['tracking_url'] ?? ''));
+        if (!$carrier || !$tracking_number || !$tracking_url) {
+            wp_die('Carrier, tracking number, and tracking URL are required.');
+        }
+        $order->update_meta_data('_utiliy_fulfillment_status', 'Shipped');
+        $order->update_meta_data('_utiliy_tracking_carrier', $carrier);
+        $order->update_meta_data('_utiliy_tracking_number', $tracking_number);
+        $order->update_meta_data('_utiliy_tracking_url', $tracking_url);
+        $order->add_order_note(sprintf(
+            'Shipped via %s. Tracking: %s (%s)',
+            $carrier,
+            $tracking_number,
+            $tracking_url
+        ));
+        $order->save();
+        $order->update_status('completed', 'Supplier shipment confirmed; customer completion email triggered.', true);
+        wp_safe_redirect(wp_get_referer() ?: admin_url('admin.php?page=wc-orders&action=edit&id=' . $order_id));
+        exit;
+    }
+
     public static function cli_sync_catalog(array $args): void {
         self::require_woocommerce();
         $file = $args[0] ?? '';
@@ -1017,10 +795,21 @@ final class Utiliy_Commerce {
         }
 
         $count = 0;
+        $expected_skus = [];
+        $expected_slugs = [];
         foreach ($catalog['products'] as $record) {
             self::sync_product($record);
+            $expected_slugs[] = (string) $record['slug'];
+            if (!empty($record['variants']) && is_array($record['variants'])) {
+                foreach ($record['variants'] as $variant) {
+                    $expected_skus[] = (string) $variant['sku'];
+                }
+            } else {
+                $expected_skus[] = (string) $record['sku'];
+            }
             $count++;
         }
+        self::retire_removed_products($expected_skus, $expected_slugs);
         \WP_CLI::success('Synchronized ' . $count . ' catalog products.');
     }
 
@@ -1039,8 +828,12 @@ final class Utiliy_Commerce {
             $product->set_sku($sku);
             $product->set_regular_price(wc_format_decimal(((int) $record['price']) / 100, 2));
             $product->set_price(wc_format_decimal(((int) $record['price']) / 100, 2));
-            self::set_supplier_meta($product, $record['autods'] ?? []);
+            self::set_supplier_meta($product, array_merge($record['autods'] ?? [], [
+                'available' => $record['available'] ?? true,
+                'stockCheckedAt' => $record['stockCheckedAt'] ?? ($record['autods']['costCheckedAt'] ?? ''),
+            ]));
             self::assert_margin($sku, (int) $record['price'], $product);
+            self::apply_stock_guard($product);
             $product->save();
             self::sync_product_image($product, $record);
             return;
@@ -1052,7 +845,10 @@ final class Utiliy_Commerce {
             \WP_CLI::error('Slug has the wrong product type: ' . $record['slug']);
         }
         self::set_common_product_fields($parent, $record, $category_id);
-        self::set_supplier_meta($parent, $record['autods'] ?? []);
+        self::set_supplier_meta($parent, array_merge($record['autods'] ?? [], [
+            'available' => $record['available'] ?? true,
+            'stockCheckedAt' => $record['stockCheckedAt'] ?? ($record['autods']['costCheckedAt'] ?? ''),
+        ]));
 
         $attribute = new WC_Product_Attribute();
         $attribute->set_name('Option');
@@ -1075,12 +871,20 @@ final class Utiliy_Commerce {
             $variation->set_sku($sku);
             $variation->set_regular_price(wc_format_decimal(((int) $variant_record['price']) / 100, 2));
             $variation->set_price(wc_format_decimal(((int) $variant_record['price']) / 100, 2));
-            $variation->set_stock_status('instock');
             $variation->set_manage_stock(false);
+            $variation->set_virtual(false);
             $variation->set_attributes(['option' => (string) $variant_record['label']]);
-            $supplier = array_merge($record['autods'] ?? [], $variant_record['autods'] ?? []);
+            $variation->update_meta_data('_utiliy_managed', 'yes');
+            $supplier = array_merge($record['autods'] ?? [], $variant_record['autods'] ?? [], [
+                'available' => $variant_record['available'] ?? ($record['available'] ?? true),
+                'stockCheckedAt' => $variant_record['stockCheckedAt']
+                    ?? ($variant_record['autods']['costCheckedAt']
+                    ?? ($record['stockCheckedAt']
+                    ?? ($record['autods']['costCheckedAt'] ?? ''))),
+            ]);
             self::set_supplier_meta($variation, $supplier);
             self::assert_margin($sku, (int) $variant_record['price'], $variation);
+            self::apply_stock_guard($variation);
             $variation->save();
         }
         WC_Product_Variable::sync($parent_id);
@@ -1117,9 +921,11 @@ final class Utiliy_Commerce {
         $product->set_short_description(wp_kses_post((string) ($record['fit'] ?? '')));
         $product->set_status('publish');
         $product->set_catalog_visibility('visible');
-        $product->set_stock_status('instock');
         $product->set_manage_stock(false);
+        $product->set_virtual(false);
+        $product->set_downloadable(false);
         $product->set_category_ids([$category_id]);
+        $product->update_meta_data('_utiliy_managed', 'yes');
     }
 
     private static function set_supplier_meta(WC_Product $product, array $supplier): void {
@@ -1142,10 +948,47 @@ final class Utiliy_Commerce {
             'supplier_cost' => (int) ($supplier['cost'] ?? 0),
             'shipping_cost' => (int) ($supplier['shippingCost'] ?? 0),
             'cost_checked_at' => (string) ($supplier['costCheckedAt'] ?? ''),
+            'stock_checked_at' => (string) ($supplier['stockCheckedAt'] ?? ($supplier['costCheckedAt'] ?? '')),
+            'available' => !isset($supplier['available']) || filter_var($supplier['available'], FILTER_VALIDATE_BOOLEAN) ? 'yes' : 'no',
         ];
         $meta['minimum_price'] = self::minimum_price($meta['supplier_cost'], $meta['shipping_cost']);
         foreach ($meta as $key => $value) {
             $product->update_meta_data('_utiliy_' . $key, $value);
+        }
+    }
+
+    private static function apply_stock_guard(WC_Product $product): void {
+        $available = $product->get_meta('_utiliy_available') === 'yes';
+        $checked_at = (string) $product->get_meta('_utiliy_stock_checked_at');
+        $product->set_stock_status($available && self::date_is_fresh($checked_at, 30) ? 'instock' : 'outofstock');
+    }
+
+    private static function retire_removed_products(array $expected_skus, array $expected_slugs): void {
+        $expected_skus = array_flip(array_filter($expected_skus));
+        $expected_slugs = array_flip(array_filter($expected_slugs));
+        $products = wc_get_products([
+            'status' => ['publish', 'draft', 'private'],
+            'limit' => -1,
+            'return' => 'objects',
+        ]);
+        foreach ($products as $product) {
+            if ($product->get_meta('_utiliy_managed') !== 'yes') {
+                continue;
+            }
+            if ($product->is_type('variable')) {
+                if (!isset($expected_slugs[$product->get_slug()])) {
+                    $product->set_status('draft');
+                    $product->set_stock_status('outofstock');
+                    $product->save();
+                }
+                continue;
+            }
+            $sku = $product->get_sku();
+            if ($sku && !isset($expected_skus[$sku])) {
+                $product->set_status('draft');
+                $product->set_stock_status('outofstock');
+                $product->save();
+            }
         }
     }
 
@@ -1193,83 +1036,6 @@ final class Utiliy_Commerce {
         }
     }
 
-    private static function settings(): array {
-        return wp_parse_args((array) get_option(self::OPTION, []), [
-            'stripe_publishable_key' => '',
-            'stripe_secret_key' => '',
-            'stripe_webhook_secret' => '',
-            'bridge_secret' => '',
-        ]);
-    }
-
-    public static function admin_menu(): void {
-        add_submenu_page(
-            'woocommerce',
-            'Utiliy Commerce',
-            'Utiliy Commerce',
-            'manage_woocommerce',
-            'utiliy-commerce',
-            [self::class, 'settings_page']
-        );
-    }
-
-    public static function register_settings(): void {
-        register_setting('utiliy_commerce', self::OPTION, [
-            'type' => 'array',
-            'sanitize_callback' => [self::class, 'sanitize_settings'],
-        ]);
-    }
-
-    public static function sanitize_settings(array $input): array {
-        $current = self::settings();
-        $output = [
-            'stripe_publishable_key' => sanitize_text_field($input['stripe_publishable_key'] ?? ''),
-            'stripe_secret_key' => trim((string) ($input['stripe_secret_key'] ?? '')),
-            'stripe_webhook_secret' => trim((string) ($input['stripe_webhook_secret'] ?? '')),
-            'bridge_secret' => trim((string) ($input['bridge_secret'] ?? '')),
-        ];
-        foreach (['stripe_secret_key', 'stripe_webhook_secret', 'bridge_secret'] as $secret) {
-            if ($output[$secret] === '') {
-                $output[$secret] = $current[$secret];
-            }
-        }
-        return $output;
-    }
-
-    public static function settings_page(): void {
-        if (!current_user_can('manage_woocommerce')) {
-            return;
-        }
-        $settings = self::settings();
-        ?>
-        <div class="wrap">
-            <h1>Utiliy Commerce</h1>
-            <p>Stripe webhook URL: <code><?php echo esc_html(rest_url(self::NS . '/stripe/webhook')); ?></code></p>
-            <form method="post" action="options.php">
-                <?php settings_fields('utiliy_commerce'); ?>
-                <table class="form-table" role="presentation">
-                    <tr>
-                        <th><label for="utiliy-pk">Stripe publishable key</label></th>
-                        <td><input class="regular-text" id="utiliy-pk" name="<?php echo esc_attr(self::OPTION); ?>[stripe_publishable_key]" value="<?php echo esc_attr($settings['stripe_publishable_key']); ?>" autocomplete="off"></td>
-                    </tr>
-                    <tr>
-                        <th><label for="utiliy-sk">Stripe secret key</label></th>
-                        <td><input class="regular-text" type="password" id="utiliy-sk" name="<?php echo esc_attr(self::OPTION); ?>[stripe_secret_key]" value="" placeholder="Leave blank to keep the saved key" autocomplete="new-password"></td>
-                    </tr>
-                    <tr>
-                        <th><label for="utiliy-wh">Stripe webhook secret</label></th>
-                        <td><input class="regular-text" type="password" id="utiliy-wh" name="<?php echo esc_attr(self::OPTION); ?>[stripe_webhook_secret]" value="" placeholder="Leave blank to keep the saved secret" autocomplete="new-password"></td>
-                    </tr>
-                    <tr>
-                        <th><label for="utiliy-bridge">Checkout bridge secret</label></th>
-                        <td><input class="regular-text" type="password" id="utiliy-bridge" name="<?php echo esc_attr(self::OPTION); ?>[bridge_secret]" value="" placeholder="Managed during deployment" autocomplete="new-password"></td>
-                    </tr>
-                </table>
-                <?php submit_button(); ?>
-            </form>
-        </div>
-        <?php
-    }
 }
 
 Utiliy_Commerce::boot();

@@ -41,6 +41,29 @@ wp option update woocommerce_calc_taxes no
 wp option update woocommerce_coming_soon no
 wp option update woocommerce_store_pages_only no
 wp eval 'WC_Install::create_pages();'
+wp eval '
+$zone_id = 0;
+foreach (WC_Shipping_Zones::get_zones() as $zone_data) {
+    if (($zone_data["zone_name"] ?? "") === "United States") {
+        $zone_id = (int) $zone_data["zone_id"];
+        break;
+    }
+}
+$zone = new WC_Shipping_Zone($zone_id);
+if (!$zone_id) {
+    $zone->set_zone_name("United States");
+    $zone->add_location("US", "country");
+    $zone->save();
+}
+$has_free = false;
+foreach ($zone->get_shipping_methods(true) as $method) {
+    $has_free = $has_free || $method->id === "free_shipping";
+}
+if (!$has_free) {
+    $zone->add_shipping_method("free_shipping");
+}
+'
+wp utiliy sync-catalog /data/products.json
 wp rewrite flush --hard
 
 echo "WordPress and WooCommerce are configured."

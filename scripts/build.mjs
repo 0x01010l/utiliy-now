@@ -5,9 +5,6 @@ import { fileURLToPath } from "node:url";
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const dist = path.join(root, "dist");
 const catalog = JSON.parse(await readFile(path.join(root, "catalog/products.json"), "utf8"));
-const links = await readFile(path.join(root, "catalog/stripe-links.json"), "utf8")
-  .then((text) => JSON.parse(text))
-  .catch(() => ({}));
 
 const site = catalog.merchant.url;
 const checkoutConfig = await readFile(path.join(root, "catalog/checkout.json"), "utf8")
@@ -15,12 +12,12 @@ const checkoutConfig = await readFile(path.join(root, "catalog/checkout.json"), 
   .catch(() => ({}));
 
 const categories = [
-  { slug: "bathroom", name: "Bathroom", blurb: "Corner shelves with a published size, angle, and load." },
-  { slug: "kitchen", name: "Kitchen", blurb: "Drawer widths and under-sink racks." },
-  { slug: "closet", name: "Closet", blurb: "Rod spans, tension loads, and closet lights." },
-  { slug: "furniture", name: "Furniture", blurb: "Hardwood sliders and screw-in anchors." },
-  { slug: "cable", name: "Cable", blurb: "Raceways with an inner channel you can match." },
-  { slug: "door", name: "Door", blurb: "Sweeps sized to the gap under the door." }
+  { slug: "bathroom", name: "Bathroom", blurb: "Corner shelves with a published size, angle, and load.", guide: "Measure the corner angle and available wall width. Adhesive shelves need a smooth, non-porous surface." },
+  { slug: "kitchen", name: "Kitchen", blurb: "Drawer widths and under-sink racks.", guide: "Measure the inside of the drawer or cabinet—not its outside edge—and leave room for pipes and hinges." },
+  { slug: "closet", name: "Closet", blurb: "Rod spans, tension loads, and closet lights.", guide: "Match the clear inside span, expected load, and mounting surface before choosing a rod or light." },
+  { slug: "furniture", name: "Furniture", blurb: "Hardwood sliders and screw-in anchors.", guide: "Check the furniture-leg shape, floor material, and whether the frame can safely accept a screw." },
+  { slug: "cable", name: "Cable", blurb: "Raceways with an inner channel you can match.", guide: "Measure the thickest cable bundle and compare it with the published inner channel—not the outer raceway size." },
+  { slug: "door", name: "Door", blurb: "Sweeps sized to the gap under the door.", guide: "Measure the door width and the largest floor gap along its full swing before choosing a sweep." }
 ];
 function catSlug(name) {
   return String(name).toLowerCase();
@@ -67,12 +64,19 @@ function variantsOf(product) {
     autods: {
       variationId: product.autods.variationId,
       supplierOption: product.autods.supplierOption || ""
-    },
-    payUrl: links[product.sku] || ""
+    }
   }];
 }
-function withPay(variant) {
-  return { ...variant, payUrl: links[variant.sku] || variant.payUrl || "" };
+function supplierOf(product, variant) {
+  return { ...(product.autods || {}), ...(variant?.autods || {}) };
+}
+function availabilityOf(product, variant) {
+  const supplier = supplierOf(product, variant);
+  const available = variant?.available ?? product.available ?? true;
+  const checkedAt = variant?.stockCheckedAt ?? product.stockCheckedAt ?? supplier.costCheckedAt ?? "";
+  const timestamp = Date.parse(`${checkedAt}T23:59:59Z`);
+  const fresh = Number.isFinite(timestamp) && timestamp >= Date.now() - 30 * 24 * 60 * 60 * 1000;
+  return { available: Boolean(available) && fresh, checkedAt, fresh };
 }
 function specsOf(product, variant) {
   const base = product.specs || product.sharedSpecs || [];
@@ -237,7 +241,9 @@ function offerFor(product, variant) {
     url: site + variantPath(product, variant.sku),
     priceCurrency: "USD",
     price: (variant.price / 100).toFixed(2),
-    availability: "https://schema.org/InStock",
+    availability: availabilityOf(product, variant).available
+      ? "https://schema.org/InStock"
+      : "https://schema.org/OutOfStock",
     itemCondition: "https://schema.org/NewCondition",
     hasMerchantReturnPolicy: { "@id": `${site}/returns/#policy` },
     shippingDetails: shippingDetails(product),
@@ -245,7 +251,7 @@ function offerFor(product, variant) {
   };
 }
 function productSchema(product, selectedSku) {
-  const variants = variantsOf(product).map(withPay);
+  const variants = variantsOf(product);
   const shared = (product.specs || product.sharedSpecs || []).map(property);
   const category = googleCategory[product.slug] || product.category;
   const brand = { "@type": "Brand", name: "Utiliy" };
@@ -340,6 +346,8 @@ function displayImage(product) {
 function card(product) {
   const variants = variantsOf(product);
   const first = variants[0];
+  const available = variants.some((variant) => availabilityOf(product, variant).available);
+  const firstAvailable = availabilityOf(product, first).available;
   const hay = [product.name, product.category, product.headline, product.fit, product.summary, ...variants.map((v) => v.label)].join(" ").toLowerCase();
   return `<article class="card" data-product-card="${esc(hay)}">
     <a class="shot" href="/products/${product.slug}/"><img src="${displayImage(product)}" alt="${esc(product.name)}" width="1024" height="1024"></a>
@@ -347,9 +355,13 @@ function card(product) {
     <p class="spec">${esc(product.headline)}</p>
     <div class="card-row">
       <span class="price">${priceRange(product)}</span>
-      ${variants.length > 1
+      ${!available
+        ? '<span class="stock-note">Availability review</span>'
+        : variants.length > 1
         ? `<a class="btn" href="/products/${product.slug}/">Choose</a>`
-        : `<button class="btn" type="button" data-add data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${displayImage(product)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`}
+        : firstAvailable
+        ? `<button class="btn" type="button" data-add data-sku="${esc(first.sku)}" data-price="${first.price}" data-label="${esc(first.label)}" data-name="${esc(product.name)}" data-image="${displayImage(product)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}">Add</button>`
+        : '<span class="stock-note">Availability review</span>'}
     </div>
   </article>`;
 }
@@ -493,7 +505,7 @@ function diagram(kind, specs) {
 }
 
 function rangeBoard(product, selectedSku) {
-  const variants = variantsOf(product).map(withPay);
+  const variants = variantsOf(product);
   if (variants.length < 2) return "";
   const maxOf = (variant) => {
     const raw = variant.decidingSpec?.value || variant.label || "";
@@ -554,15 +566,19 @@ function plateBlock(product, specs) {
 }
 
 function productPage(product, selectedSku) {
-  const variants = variantsOf(product).map(withPay);
+  const variants = variantsOf(product);
   const selected = variants.find((variant) => variant.sku === selectedSku) || variants[0];
   const many = variants.length > 1;
   const canonicalPath = many && selectedSku ? variantPath(product, selected.sku) : `/products/${product.slug}/`;
   const shared = specsOf(product, selected).sort((a, b) => Number(b.deciding === true) - Number(a.deciding === true));
   const specRows = shared.map((spec) => `<tr class="${spec.deciding ? "deciding" : ""}"><th scope="row">${esc(spec.name)}</th><td>${esc(spec.value)}${spec.unitText ? " " + esc(spec.unitText) : ""}</td></tr>`).join("");
-  const sizePills = many ? `<div><span class="size-label">Choose size</span><div class="size-row">${variants.map((variant) => `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}" href="${variantPath(product, variant.sku)}"><b>${esc(variant.label)}</b><span class="size-price">${money(variant.price)}</span></a>`).join("")}</div><p class="size-help">This size: ${esc(sizeOf(selected))}. <a href="#sizes">Compare sizes</a></p></div>` : "";
+  const selectedAvailable = availabilityOf(product, selected).available;
+  const sizePills = many ? `<div><span class="size-label" id="size-label">Choose size</span><div class="size-row" role="list" aria-labelledby="size-label">${variants.map((variant) => {
+    const available = availabilityOf(product, variant).available;
+    return `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}${available ? "" : " is-paused"}" href="${variantPath(product, variant.sku)}"${variant.sku === selected.sku ? ' aria-current="true"' : ""}><b>${esc(variant.label)}</b><span class="size-price">${money(variant.price)}</span>${available ? "" : "<small>Reviewing stock</small>"}</a>`;
+  }).join("")}</div><p class="size-help">This size: ${esc(sizeOf(selected))}. <a href="#sizes">Compare sizes</a></p></div>` : "";
   const photos = product.images.filter((src) => !src.includes("57_147cecee"));
-  const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
+  const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" aria-label="View ${esc(product.name)} image ${i + 1}" aria-pressed="${i === 0 ? "true" : "false"}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" referrerpolicy="no-referrer"></button>`).join("");
   const gallery = photos.slice(1).map((src) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name)}" referrerpolicy="no-referrer"></figure>`).join("");
   const faqs = product.faqs.map((faq) => `<article class="question"><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></article>`).join("");
   const buyAttrs = `data-sku="${esc(selected.sku)}" data-price="${selected.price}" data-label="${esc(selected.label)}" data-name="${esc(product.name)}" data-image="${displayImage(product)}" data-slug="${esc(product.slug)}" data-ships="${esc(product.shipsFrom)}" data-min="${product.minDays}" data-max="${product.maxDays}"`;
@@ -587,11 +603,12 @@ function productPage(product, selectedSku) {
           <input data-qty value="1" inputmode="numeric" aria-label="Quantity" readonly>
           <button type="button" data-qty-inc aria-label="Increase quantity">+</button>
         </div>
-        <button class="btn" type="button" data-add ${buyAttrs}>Add to cart</button>
-        <button class="btn-line" type="button" data-add data-go-checkout ${buyAttrs}>Buy now</button>
+        <button class="btn" type="button"${selectedAvailable ? ` data-add ${buyAttrs}` : " disabled"}>${selectedAvailable ? "Add to cart" : "Availability review"}</button>
+        <button class="btn-line" type="button"${selectedAvailable ? ` data-add data-go-checkout ${buyAttrs}` : " disabled"}>${selectedAvailable ? "Buy now" : "Unavailable"}</button>
       </div>
       <p class="ship-note">${esc(shipText(product))} <a href="/shipping/">Shipping details</a>.</p>
-      <p class="reassure"><a href="/returns/">30-day returns</a>${related ? ` · <a href="#also">More in ${esc(product.category)}</a>` : ""}</p>
+      <div class="buy-trust" aria-label="Purchase assurances"><span>Secure Stripe payment</span><span>US shipping included</span><span><a href="/returns/">30-day returns</a></span></div>
+      <p class="reassure">${related ? `<a href="#also">More in ${esc(product.category)}</a>` : ""}</p>
       <p>${esc(product.summary)}</p>
     </div>
   </div>
@@ -619,7 +636,7 @@ function productPage(product, selectedSku) {
     <div class="buybar-inner">
       <div class="buybar-copy"><strong>${esc(product.name)}</strong><span>${esc(product.headline)}${many ? ` · ${esc(selected.label)}` : ""}</span></div>
       <span class="price">${money(selected.price)}</span>
-      <button class="btn" type="button" data-add ${buyAttrs}>Add</button>
+      <button class="btn" type="button"${selectedAvailable ? ` data-add ${buyAttrs}` : " disabled"}>${selectedAvailable ? "Add" : "Unavailable"}</button>
     </div>
   </div>
 </main>
@@ -659,7 +676,7 @@ const homeBody = `<main id="main">
 </main>`;
 
 const shopBody = `<main id="main">
-  <section class="page-cover">
+  <section class="page-cover category-cover">
     <img src="/assets/covers/home.jpg" alt="">
     <div class="wrap">
       <p class="kicker">Shop</p>
@@ -804,7 +821,7 @@ const faqItems = [
   ["What if a measurement is missing?", "If the maker did not publish a number, the page says so. Do not guess a width, a load, or a lumen rating that is not on the page."]
 ];
 function agentProduct(product) {
-  const variants = variantsOf(product).map(withPay);
+  const variants = variantsOf(product);
   return {
     url: `${site}/products/${product.slug}/`,
     name: product.name,
@@ -831,13 +848,15 @@ function agentProduct(product) {
       url: site + variantPath(product, variant.sku),
       size: variant.decidingSpec ? sizeOf(variant) : null,
       checkout: `${site}/checkout/`,
+      availability: availabilityOf(product, variant).available ? "in_stock" : "out_of_stock",
+      stockCheckedAt: availabilityOf(product, variant).checkedAt || null,
       deciding: variant.decidingSpec || null
     }))
   };
 }
 
 function fulfillment(product) {
-  return variantsOf(product).map(withPay).map((variant) => ({
+  return variantsOf(product).map((variant) => ({
     sku: variant.sku,
     name: product.name,
     option: variant.label,
@@ -1056,6 +1075,10 @@ for (const cat of categories) {
   </section>
   <section class="section"><div class="wrap">
     <div class="grid">${items.map(card).join("") || '<p class="empty">Nothing in this category yet.</p>'}</div>
+    <div class="category-guide">
+      <div><p class="kicker">Before you choose</p><h2>Measure first.</h2><p>${esc(cat.guide)}</p></div>
+      <div><p class="kicker">Need another room?</p><div class="category-links">${categories.filter((other) => other.slug !== cat.slug).map((other) => `<a href="/category/${other.slug}/">${esc(other.name)}</a>`).join("")}</div></div>
+    </div>
   </div></section>
 </main>`
   }));
@@ -1157,7 +1180,7 @@ function merchantRows() {
         site + variantPath(product, variant.sku),
         images[0],
         images.slice(1, 11).join(","),
-        "in_stock",
+        availabilityOf(product, variant).available ? "in_stock" : "out_of_stock",
         `${(variant.price / 100).toFixed(2)} USD`,
         "Utiliy",
         "no",

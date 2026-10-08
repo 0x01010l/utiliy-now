@@ -20,17 +20,17 @@
   }
   function line(item, controls) {
     var qty = controls
-      ? '<div class="stepper"><button type="button" data-dec="' + item.sku + '" aria-label="Decrease">−</button><input value="' + item.qty + '" readonly><button type="button" data-inc="' + item.sku + '" aria-label="Increase">+</button></div>'
+      ? '<div class="stepper"><button type="button" data-dec="' + item.sku + '" aria-label="Decrease ' + item.name + ' quantity">−</button><input value="' + item.qty + '" aria-label="' + item.name + ' quantity" readonly><button type="button" data-inc="' + item.sku + '" aria-label="Increase ' + item.name + ' quantity">+</button></div>'
       : '<div class="muted">Qty ' + item.qty + "</div>";
     var ship = "";
     if (item.minDays) {
       var days = item.minDays === item.maxDays ? item.minDays + " days" : item.minDays + "–" + item.maxDays + " days";
-      ship = '<div class="muted">Leaves ' + (item.shipsFrom === "US" ? "a US warehouse" : "the supplier") + " in " + days + "</div>";
+      ship = '<div class="muted">Estimated delivery: ' + days + " from " + (item.shipsFrom === "US" ? "a US warehouse" : "the supplier") + "</div>";
     }
     var name = item.slug
       ? '<a href="/products/' + item.slug + '/"><strong>' + item.name + "</strong></a>"
       : "<strong>" + item.name + "</strong>";
-    return '<article class="line"><img alt="" src="' + item.image + '"><div>' + name +
+    return '<article class="line"><img alt="' + item.name + '" src="' + item.image + '"><div>' + name +
       '<div class="muted">' + item.label + "</div>" + ship + qty +
       '<button type="button" data-remove="' + item.sku + '">Remove</button></div><div>' +
       money(item.price * item.qty) + "</div></article>";
@@ -44,7 +44,7 @@
       el.hidden = n === 0;
     });
     var lines = document.querySelector("[data-cart-lines]");
-    if (lines) lines.innerHTML = items.length ? items.map(function (item) { return line(item, false); }).join("") : '<p class="empty">Your cart is empty.</p>';
+    if (lines) lines.innerHTML = items.length ? items.map(function (item) { return line(item, true); }).join("") : '<p class="empty">Your cart is empty.</p>';
     document.querySelectorAll("[data-cart-total]").forEach(function (el) {
       el.textContent = money(total(items));
       el.hidden = !items.length;
@@ -205,8 +205,12 @@
         img.src = button.getAttribute("data-thumb");
         img.alt = button.getAttribute("data-alt") || img.alt;
       }
-      document.querySelectorAll("[data-thumb]").forEach(function (el) { el.removeAttribute("aria-current"); });
+      document.querySelectorAll("[data-thumb]").forEach(function (el) {
+        el.removeAttribute("aria-current");
+        el.setAttribute("aria-pressed", "false");
+      });
       button.setAttribute("aria-current", "true");
+      button.setAttribute("aria-pressed", "true");
     });
   });
 
@@ -253,10 +257,20 @@
       var response = await fetch(window.UTILIY_COMMERCE + "/orders/" + encodeURIComponent(orderId) + "?key=" + encodeURIComponent(key));
       var order = await response.json();
       if (!response.ok) throw new Error(order.message || "Order status is unavailable.");
-      if (order.paid) {
+      if (["failed", "cancelled"].includes(order.status)) {
+        target.innerHTML = '<p class="kicker">Payment not completed</p><h1>This order was ' +
+          String(order.status) + '.</h1><p>No second payment will be taken automatically. Return to the cart to try again or contact support@utiliy.com.</p><p><a class="btn" href="/cart/">Return to cart</a></p>';
+      } else if (order.status === "refunded") {
         localStorage.removeItem(KEY);
+        target.innerHTML = '<p class="kicker">Refunded</p><h1>Your order was refunded.</h1><p>The bank may take several business days to post the refund. Contact support@utiliy.com if you need help.</p>';
+      } else if (order.paid) {
+        localStorage.removeItem(KEY);
+        var tracking = order.trackingUrl
+          ? '<p><a class="btn-line" href="' + String(order.trackingUrl) + '" rel="noopener">Track shipment</a></p>'
+          : "";
         target.innerHTML = '<p class="kicker">Paid</p><h1>Order received.</h1><p>Your order number is ' +
-          String(order.orderId) + '. A receipt is on its way to your email.</p><p><a class="btn" href="/shop/">Back to the shop</a></p>';
+          String(order.orderId) + '. Your confirmation email has been queued.</p>' + tracking +
+          '<p><a class="btn" href="/shop/">Back to the shop</a></p>';
       } else {
         target.innerHTML = '<p class="kicker">Processing</p><h1>Payment is still confirming.</h1><p>Refresh this page shortly. Do not submit a second payment.</p>';
       }

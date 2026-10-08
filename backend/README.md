@@ -41,33 +41,38 @@ run the included Caddy service directly on ports 80 and 443.
 
 ## WordPress setup
 
-1. Open `https://commerce.utiliy.com/wp-admin/install.php`.
-2. Install and activate WooCommerce.
-3. Activate **Utiliy Commerce**.
-4. In WooCommerce settings, use USD, sell only to the United States, and
-   disable taxes until the merchant's tax obligations are configured.
-5. Open **WooCommerce → Utiliy Commerce** and save the live Stripe
-   publishable key, secret key, and webhook signing secret.
-6. In Stripe, register:
-   `https://commerce.utiliy.com/wp-json/utiliy/v1/stripe/webhook`
-   for `payment_intent.succeeded`, `payment_intent.payment_failed`, and
-   `charge.refunded`.
+Run the idempotent configuration script after the containers are healthy:
+
+```sh
+./scripts/configure-wordpress.sh
+```
+
+It installs WooCommerce, the official WooCommerce Stripe gateway, Redis,
+Storefront, the Utiliy plugin, the US-only free-shipping zone, and the current
+catalog. Connect Stripe through **WooCommerce → Settings → Payments → Stripe**.
+The Utiliy plugin never stores separate Stripe API keys and never creates
+PaymentIntents directly.
 
 ## Public API
 
 - `GET /wp-json/utiliy/v1/catalog`
-- `POST /wp-json/utiliy/v1/checkout`
+- `POST /wp-json/utiliy/v1/checkout-session`
 - `GET /wp-json/utiliy/v1/orders/{id}?key={order_key}`
-- `POST /wp-json/utiliy/v1/stripe/webhook`
 
-The browser never supplies an authoritative price. Checkout resolves every
-SKU against WooCommerce and calculates the order total server-side.
+The checkout-session endpoint resolves every SKU, price, current supplier
+review date, margin floor, and stock state in WooCommerce. It returns a
+single-use cart URL that transfers the customer into the standard WooCommerce
+checkout. Browser prices are never authoritative.
 
 ## Fulfillment
 
 Paid orders include a **Utiliy manual fulfillment** panel in WooCommerce with
 the supplier, exact option, variation ID, current landed-cost snapshot, and
 supplier link. Mark the order after placing it with the supplier.
+
+After the supplier ships, enter its carrier, tracking number, and tracking URL
+in the same panel. Marking the order shipped completes it and triggers the
+WooCommerce customer email through Azure Communication Services.
 
 AutoDS is optional. It can be activated later when an order for an AutoDS
 private-supplier product makes the subscription worthwhile. AliExpress items
@@ -80,7 +85,13 @@ docker compose ps
 docker compose logs --tail=200 wordpress
 docker compose pull
 docker compose up -d
+./scripts/configure-wordpress.sh
 ```
 
+The last command is required after every catalog or plugin deployment. It is
+safe to rerun: it refreshes every SKU, pauses stale/unavailable products,
+drafts removed managed SKUs, and preserves existing orders.
+
 Back up the MariaDB volume and WordPress uploads before upgrades. Never commit
-`.env`, WordPress application passwords, Stripe keys, or AutoDS credentials.
+`.env`, WordPress application passwords, ACS keys, Stripe keys, or AutoDS
+credentials.
