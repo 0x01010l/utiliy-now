@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless catalog, Stripe checkout, and order status API for utiliy.com.
- * Version: 1.2.2
+ * Version: 1.3.0
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -42,6 +42,9 @@ final class Utiliy_Commerce {
         add_action('wp_head', [self::class, 'favicon'], 1);
         add_action('login_head', [self::class, 'favicon']);
         add_action('wp_head', [self::class, 'checkout_styles']);
+        add_filter('pre_wp_mail', [self::class, 'send_mail_with_azure'], 10, 2);
+        add_filter('woocommerce_email_from_name', static fn (): string => 'Utiliy');
+        add_filter('woocommerce_email_from_address', static fn (): string => 'hello@utiliy.com');
         add_filter('wp_robots', static function (array $robots): array {
             $robots['noindex'] = true;
             $robots['nofollow'] = true;
@@ -254,6 +257,164 @@ final class Utiliy_Commerce {
 
     public static function favicon(): void {
         echo '<link rel="icon" href="https://utiliy.com/assets/favicon.svg" type="image/svg+xml">';
+    }
+
+    public static function send_mail_with_azure($short_circuit, array $attributes) {
+        $endpoint = rtrim((string) getenv('ACS_EMAIL_ENDPOINT'), '/');
+        $access_key = (string) getenv('ACS_EMAIL_ACCESS_KEY');
+        $sender = sanitize_email((string) getenv('ACS_EMAIL_SENDER'));
+        if (!$endpoint || !$access_key || !$sender) {
+            return $short_circuit;
+        }
+
+        $to = self::email_addresses($attributes['to'] ?? []);
+        if (!$to) {
+            return false;
+        }
+
+        $headers = $attributes['headers'] ?? [];
+        if (is_string($headers)) {
+            $headers = preg_split('/\r?\n/', $headers) ?: [];
+        }
+        $is_html = false;
+        $cc = [];
+        $bcc = [];
+        $reply_to = [];
+        foreach ((array) $headers as $header) {
+            if (!is_string($header) || strpos($header, ':') === false) {
+                continue;
+            }
+            [$name, $value] = array_map('trim', explode(':', $header, 2));
+            if (strcasecmp($name, 'Content-Type') === 0 && stripos($value, 'text/html') !== false) {
+                $is_html = true;
+            } elseif (strcasecmp($name, 'Cc') === 0) {
+                $cc = array_merge($cc, self::email_addresses($value));
+            } elseif (strcasecmp($name, 'Bcc') === 0) {
+                $bcc = array_merge($bcc, self::email_addresses($value));
+            } elseif (strcasecmp($name, 'Reply-To') === 0) {
+                $reply_to = array_merge($reply_to, self::email_addresses($value));
+            }
+        }
+
+        $message = (string) ($attributes['message'] ?? '');
+        $content = [
+            'subject' => wp_strip_all_tags((string) ($attributes['subject'] ?? '')),
+            'plainText' => trim(preg_replace('/\s+/', ' ', wp_strip_all_tags($message))),
+        ];
+        if ($is_html || stripos($message, '<html') !== false || stripos($message, '<body') !== false) {
+            $content['html'] = $message;
+        }
+
+        $recipients = ['to' => $to];
+        if ($cc) {
+            $recipients['cc'] = $cc;
+        }
+        if ($bcc) {
+            $recipients['bcc'] = $bcc;
+        }
+        $payload = [
+            'senderAddress' => $sender,
+            'recipients' => $recipients,
+            'content' => $content,
+            'userEngagementTrackingDisabled' => true,
+        ];
+        if ($reply_to) {
+            $payload['replyTo'] = $reply_to;
+        }
+
+        $attachments = [];
+        foreach ((array) ($attributes['attachments'] ?? []) as $attachment) {
+            if (!is_string($attachment) || !is_readable($attachment) || filesize($attachment) > 10 * MB_IN_BYTES) {
+                continue;
+            }
+            $attachments[] = [
+                'name' => basename($attachment),
+                'contentType' => function_exists('mime_content_type') ? mime_content_type($attachment) : 'application/octet-stream',
+                'contentInBase64' => base64_encode((string) file_get_contents($attachment)),
+            ];
+        }
+        if ($attachments) {
+            $payload['attachments'] = $attachments;
+        }
+
+        $body = wp_json_encode($payload);
+        $url = $endpoint . '/emails:send?api-version=2025-09-01';
+        $parts = wp_parse_url($url);
+        $host = (string) ($parts['host'] ?? '');
+        $path_and_query = (string) ($parts['path'] ?? '/') . '?' . (string) ($parts['query'] ?? '');
+        $date = gmdate('D, d M Y H:i:s') . ' GMT';
+        $content_hash = base64_encode(hash('sha256', $body, true));
+        $decoded_key = base64_decode($access_key, true);
+        if (!$host || $decoded_key === false) {
+            error_log('[Utiliy ACS email] Invalid endpoint or access key.');
+            return $short_circuit;
+        }
+        $string_to_sign = "POST\n{$path_and_query}\n{$date};{$host};{$content_hash}";
+        $signature = base64_encode(hash_hmac('sha256', $string_to_sign, $decoded_key, true));
+        $authorization = 'HMAC-SHA256 SignedHeaders=x-ms-date;host;x-ms-content-sha256&Signature=' . $signature;
+
+        $response = wp_remote_post($url, [
+            'timeout' => 20,
+            'headers' => [
+                'Authorization' => $authorization,
+                'Content-Type' => 'application/json',
+                'x-ms-date' => $date,
+                'x-ms-content-sha256' => $content_hash,
+            ],
+            'body' => $body,
+        ]);
+        if (is_wp_error($response)) {
+            update_option('utiliy_acs_email_last_send', [
+                'status' => 'failed',
+                'sent_at' => time(),
+                'error' => $response->get_error_message(),
+            ], false);
+            error_log('[Utiliy ACS email] ' . $response->get_error_message());
+            return $short_circuit;
+        }
+        $status = wp_remote_retrieve_response_code($response);
+        if ($status !== 202) {
+            update_option('utiliy_acs_email_last_send', [
+                'status' => 'failed',
+                'sent_at' => time(),
+                'http_status' => $status,
+            ], false);
+            error_log('[Utiliy ACS email] Azure rejected a message with HTTP ' . $status . '.');
+            return $short_circuit;
+        }
+        update_option('utiliy_acs_email_last_send', [
+            'status' => 'accepted',
+            'sent_at' => time(),
+            'operation' => wp_remote_retrieve_header($response, 'operation-location'),
+        ], false);
+        return true;
+    }
+
+    private static function email_addresses($value): array {
+        $values = is_array($value) ? $value : explode(',', (string) $value);
+        $addresses = [];
+        foreach ($values as $entry) {
+            $entry = trim((string) $entry);
+            if (!$entry) {
+                continue;
+            }
+            $display_name = '';
+            $email = $entry;
+            if (preg_match('/^(.*?)<([^>]+)>$/', $entry, $matches)) {
+                $display_name = trim($matches[1], " \t\n\r\0\x0B\"");
+                $email = trim($matches[2]);
+            }
+            $email = sanitize_email($email);
+            if (!$email) {
+                continue;
+            }
+            $address = ['address' => $email];
+            if ($display_name !== '') {
+                $address['displayName'] = sanitize_text_field($display_name);
+            }
+            $addresses[] = $address;
+        }
+        return $addresses;
     }
 
     public static function checkout_styles(): void {
