@@ -100,7 +100,7 @@ function jsonLd(data) {
   return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 }
 
-function shell({ title, description, canonical, json, body, current, image, robots = "index,follow,max-image-preview:large,max-snippet:-1" }) {
+function shell({ title, description, canonical, json, body, current, image, scripts = "", robots = "index,follow,max-image-preview:large,max-snippet:-1" }) {
   const catNav = categories.map((cat) => `<a href="/category/${cat.slug}/"${current === `/category/${cat.slug}/` ? ' aria-current="page"' : ""}>${esc(cat.name)}</a>`).join("");
   const footerCats = categories.map((cat) => `<li><a href="/category/${cat.slug}/">${esc(cat.name)}</a></li>`).join("");
   return `<!DOCTYPE html>
@@ -122,7 +122,7 @@ function shell({ title, description, canonical, json, body, current, image, robo
 <meta name="theme-color" content="#ffffff">
 ${image ? `<meta property="og:image" content="${esc(image)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="/assets/site.css?v=20261007n">
+<link rel="stylesheet" href="/assets/site.css?v=20261008a">
 ${jsonLd(orgGraph())}
 ${json || ""}
 </head>
@@ -186,7 +186,8 @@ ${body}
   <a class="btn-line" href="/shop/" data-cart-empty>Continue shopping</a>
 </aside>
 <script>window.UTILIY_CHECKOUT=${JSON.stringify(checkoutConfig.url || "")};window.UTILIY_COMMERCE=${JSON.stringify(checkoutConfig.apiBase || "")};</script>
-<script src="/assets/site.js?v=20261007n" defer></script>
+<script src="/assets/site.js?v=20261008a" defer></script>
+${scripts}
 </body>
 </html>`;
 }
@@ -654,25 +655,196 @@ ${related ? `<section class="section pdp-tail" id="also"><div class="wrap"><div 
 
 const products = catalog.products;
 
-const styleCards = categories.map((cat) => `<a class="style-card" href="/category/${cat.slug}/"><img src="/assets/covers/${cat.slug}.jpg" alt=""><span>${esc(cat.name)}</span></a>`).join("");
-const homeBody = `<main id="main">
-  <section class="hero-stage">
-    <img src="/assets/covers/home.jpg" alt="Abstract black and white architectural forms" width="1536" height="1024">
-    <div class="wrap">
-      <h1>Find the size that actually fits.</h1>
-      <p>Every product leads with the span, gap, load, corner, or leg that decides the fit. If the maker did not publish a number, the page says so.</p>
-      <a class="btn" href="/shop/">Shop now</a>
+function roomIcon(slug) {
+  const icons = {
+    bathroom: '<path d="M24 76h72V38H58v38M18 76h84M38 38V22h20v16M34 88h4m42 0h4"/><circle cx="77" cy="54" r="8"/>',
+    kitchen: '<rect x="18" y="30" width="84" height="58" rx="2"/><path d="M18 58h84M48 30v58M75 30v58M30 43h8m22 0h8m20 0h8M30 71h8m22 0h8m20 0h8"/>',
+    closet: '<path d="M20 94V24h80v70M28 40h64M60 40v54M36 54v27m48-27v27"/><path d="M29 54h14l-7 9zM77 54h14l-7 9z"/>',
+    furniture: '<path d="M20 56h80v26H20zM28 82v16m64-16v16M28 56V38h64v18M38 38V24h44v14"/><circle cx="31" cy="101" r="3"/><circle cx="89" cy="101" r="3"/>',
+    cable: '<path d="M14 40h52c18 0 18 30 36 30h4M14 54h46c12 0 12 30 30 30h16"/><rect x="12" y="32" width="10" height="30" rx="2"/><path d="M106 62v16m-5-16h10"/>',
+    door: '<path d="M28 104V16h64v88M38 104V26h44v78"/><circle cx="72" cy="66" r="3"/><path d="M16 104h88M38 88h44M42 94h36"/>'
+  };
+  return `<svg viewBox="0 0 120 120" aria-hidden="true" focusable="false">${icons[slug]}</svg>`;
+}
+
+const utilityRooms = categories.map((cat, index) => `<a class="utility-room" href="/category/${cat.slug}/" data-motion-card>
+  <span class="utility-room-no">0${index + 1}</span>
+  ${roomIcon(cat.slug)}
+  <span class="utility-room-name">${esc(cat.name)}</span>
+  <span class="utility-room-arrow" aria-hidden="true">↗</span>
+</a>`).join("");
+
+const homeBody = `<main id="main" class="motion-home">
+  <section class="utility-hero" data-utility-hero>
+    <div class="utility-grid" aria-hidden="true"></div>
+    <div class="wrap utility-hero-inner">
+      <div class="utility-hero-copy">
+        <p class="utility-eyebrow" data-motion-eyebrow>Utility / made visible</p>
+        <h1 aria-label="Make the everyday fit">
+          <span class="hero-word"><span>Make</span></span>
+          <span class="hero-word"><span>the everyday</span></span>
+          <span class="hero-word hero-word-outline"><span>fit.</span></span>
+        </h1>
+        <div class="utility-hero-foot">
+          <p>Home tools should solve a precise problem. We publish the span, gap, load, angle, and surface before you buy.</p>
+          <div class="utility-actions">
+            <a class="btn utility-magnetic" href="/shop/">Explore the tools <span aria-hidden="true">↗</span></a>
+            <a class="utility-text-link" href="#how-it-works">See how it works <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="utility-machine" aria-label="An animated line drawing of useful objects fitting into a home">
+        <svg viewBox="0 0 760 660" role="img" aria-labelledby="utility-machine-title">
+          <title id="utility-machine-title">A house outline containing a shelf, drawer, rod, cable channel, and door sweep</title>
+          <g class="machine-grid">
+            <path d="M20 110H740M20 220H740M20 330H740M20 440H740M20 550H740"/>
+            <path d="M130 20V640M250 20V640M370 20V640M490 20V640M610 20V640"/>
+          </g>
+          <g class="machine-house" fill="none">
+            <path class="draw-line house-line" d="M112 588V214L380 70l268 144v374"/>
+            <path class="draw-line house-line" d="M76 588H684"/>
+            <path class="draw-line" d="M152 250H350V430H152z"/>
+            <path class="draw-line" d="M410 250H608V430H410z"/>
+            <path class="draw-line" d="M358 588V386h92v202"/>
+          </g>
+          <g class="utility-object object-shelf" data-object="shelf">
+            <path d="M174 296h150v20H174zM188 316v38m122-38v38M198 330h102"/>
+            <path class="measure-line" d="M174 278h150m-150-7v14m150-14v14"/>
+            <text x="222" y="269">10.5 IN</text>
+          </g>
+          <g class="utility-object object-rod" data-object="rod">
+            <path d="M432 294h154M432 286v16m154-16v16M446 320c24 26 104 26 128 0"/>
+            <circle cx="432" cy="294" r="8"/><circle cx="586" cy="294" r="8"/>
+            <text x="480" y="278">SPAN</text>
+          </g>
+          <g class="utility-object object-drawer" data-object="drawer">
+            <rect x="170" y="374" width="160" height="42" rx="2"/>
+            <path d="M214 374v42m42-42v42m-65-21h118"/>
+            <circle cx="250" cy="395" r="3"/>
+          </g>
+          <g class="utility-object object-cable" data-object="cable">
+            <path d="M432 370h118q34 0 34 34v80"/>
+            <path d="M432 380h108q34 0 34 34v70"/>
+            <circle cx="574" cy="500" r="10"/>
+          </g>
+          <g class="utility-object object-door" data-object="door">
+            <path d="M370 566h68M374 574h60M382 582h44"/>
+          </g>
+          <g class="machine-scan">
+            <path d="M88 182H672"/>
+            <rect x="88" y="177" width="584" height="10" rx="5"/>
+          </g>
+          <g class="machine-crosshair">
+            <circle cx="380" cy="330" r="244"/><circle cx="380" cy="330" r="8"/>
+            <path d="M380 62v52M380 546v52M112 330h52M596 330h52"/>
+          </g>
+        </svg>
+        <span class="machine-label label-a">01 / measure</span>
+        <span class="machine-label label-b">02 / match</span>
+        <span class="machine-label label-c">03 / use</span>
+      </div>
+      <div class="utility-scroll" aria-hidden="true"><span></span><small>Scroll to assemble</small></div>
     </div>
   </section>
-  <section class="section"><div class="wrap">
-    <h2 class="section-title">Rooms</h2>
-    <div class="style-grid">${styleCards}</div>
-  </div></section>
-  <section class="section"><div class="wrap">
-    <h2 class="section-title">Ten tools</h2>
-    <div class="grid">${products.map(card).join("")}</div>
-    <p class="empty" data-search-empty hidden>No product matches that search.</p>
-  </div></section>
+
+  <div class="utility-ticker" aria-hidden="true">
+    <div data-ticker>MEASURE · MATCH · USE · SHELF · DRAWER · ROD · CABLE · DOOR · LIGHT · MEASURE · MATCH · USE · SHELF · DRAWER · ROD · CABLE · DOOR · LIGHT ·</div>
+  </div>
+
+  <section class="utility-story" id="how-it-works">
+    <div class="utility-story-stage">
+      <div class="wrap utility-story-grid">
+        <div class="story-intro">
+          <p class="utility-eyebrow">How Utiliy works</p>
+          <h2>From an awkward space to an exact fit.</h2>
+          <p>Scroll through the logic behind every product page.</p>
+        </div>
+        <div class="story-visual" aria-hidden="true">
+          <svg viewBox="0 0 700 700">
+            <rect class="story-frame" x="100" y="100" width="500" height="500" rx="4"/>
+            <path class="story-blueprint" d="M100 250h190V100M410 100v190h190M100 430h160v170M440 600V400h160"/>
+            <g class="story-measure">
+              <path d="M150 340h400M150 326v28M550 326v28"/>
+              <path d="M150 340l18-9v18zM550 340l-18-9v18z"/>
+              <text x="298" y="320">42 IN CLEAR SPAN</text>
+            </g>
+            <g class="story-match">
+              <rect x="180" y="378" width="110" height="110"/><rect x="305" y="378" width="110" height="110"/><rect x="430" y="378" width="90" height="110"/>
+              <path d="M180 505h340"/>
+            </g>
+            <g class="story-use">
+              <path d="M195 210h300M210 210v72m270-72v72"/>
+              <circle cx="230" cy="230" r="12"/><circle cx="460" cy="230" r="12"/>
+              <path d="M255 258h180"/>
+            </g>
+            <circle class="story-pulse" cx="350" cy="350" r="28"/>
+          </svg>
+          <div class="story-index"><span data-story-index>01</span><i></i><span>03</span></div>
+        </div>
+        <div class="story-steps">
+          <article class="story-step is-active" data-story-step="0">
+            <span>01</span><h3>Measure the constraint.</h3>
+            <p>Start with the number that decides the fit: clear span, floor gap, inner channel, corner angle, or safe load.</p>
+          </article>
+          <article class="story-step" data-story-step="1">
+            <span>02</span><h3>Match only what fits.</h3>
+            <p>Compare your number against the maker’s published specification. Missing data stays missing—we do not invent it.</p>
+          </article>
+          <article class="story-step" data-story-step="2">
+            <span>03</span><h3>Use the space better.</h3>
+            <p>One small utility clicks into place: a shelf, a rod, a drawer organizer, a cable channel, or a sealed door gap.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="utility-manifesto">
+    <div class="wrap">
+      <p class="utility-eyebrow">A useful house is a system</p>
+      <div class="manifesto-lines" aria-label="Less guessing. More fitting. Better living.">
+        <div data-reveal-line><span>Less guessing.</span><i class="shape shape-circle"></i></div>
+        <div data-reveal-line><i class="shape shape-line"></i><span>More fitting.</span></div>
+        <div data-reveal-line><span>Better living.</span><i class="shape shape-square"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="utility-rooms-section">
+    <div class="wrap">
+      <div class="utility-section-head" data-motion-reveal>
+        <div><p class="utility-eyebrow">Shop by room</p><h2>Six spaces. Ten precise fixes.</h2></div>
+        <p>Every room contains a friction point. Start where yours lives.</p>
+      </div>
+      <div class="utility-room-grid">${utilityRooms}</div>
+    </div>
+  </section>
+
+  <section class="utility-products">
+    <div class="wrap">
+      <div class="utility-section-head" data-motion-reveal>
+        <div><p class="utility-eyebrow">The current set</p><h2>Tools with numbers attached.</h2></div>
+        <a class="utility-text-link" href="/shop/">View all products ↗</a>
+      </div>
+      <div class="grid utility-product-grid">${products.slice(0, 4).map(card).join("")}</div>
+    </div>
+  </section>
+
+  <section class="utility-orbit">
+    <div class="wrap utility-orbit-inner">
+      <svg viewBox="0 0 800 420" aria-hidden="true">
+        <ellipse cx="400" cy="210" rx="340" ry="150"/>
+        <ellipse cx="400" cy="210" rx="250" ry="105"/>
+        <circle class="orbit-dot orbit-dot-a" cx="60" cy="210" r="10"/>
+        <circle class="orbit-dot orbit-dot-b" cx="650" cy="125" r="8"/>
+      </svg>
+      <div>
+        <p class="utility-eyebrow">Start with the measurement</p>
+        <h2>Find the thing<br>that actually fits.</h2>
+        <a class="btn utility-magnetic" href="/shop/">Shop Utiliy <span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
 </main>`;
 
 const shopBody = `<main id="main">
@@ -993,7 +1165,10 @@ await page(".", shell({
     }))
   }),
   body: homeBody,
-  current: "/"
+  current: "/",
+  scripts: `<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js" defer></script>
+<script type="module" src="/assets/home-motion.js?v=20261008a"></script>`
 }));
 await page("shop", shell({
   title: "Shop · Utiliy",
@@ -1123,7 +1298,7 @@ for (const product of products) {
 }
 
 await mkdir(path.join(dist, "assets"), { recursive: true });
-for (const file of ["site.css", "site.js", "favicon.svg"]) {
+for (const file of ["site.css", "site.js", "home-motion.js", "favicon.svg"]) {
   await cp(path.join(root, "assets", file), path.join(dist, "assets", file));
 }
 await cp(path.join(root, "assets/explainers"), path.join(dist, "assets/explainers"), { recursive: true }).catch(() => {});
