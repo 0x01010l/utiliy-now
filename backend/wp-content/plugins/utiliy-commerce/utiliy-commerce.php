@@ -1002,8 +1002,12 @@ final class Utiliy_Commerce {
         }
         $stripe_percentage = 0.029;
         $stripe_fixed_cents = 30;
-        $target_margin = 0.30;
-        return (int) ceil(($cost + $shipping + $stripe_fixed_cents) / (1 - $target_margin - $stripe_percentage));
+        $target_margin = 0.15;
+        $max_landed_ratio = 0.78;
+        $landed = $cost + $shipping;
+        $margin_minimum = (int) ceil(($landed + $stripe_fixed_cents) / (1 - $target_margin - $stripe_percentage));
+        $ratio_minimum = (int) ceil($landed / $max_landed_ratio);
+        return max($margin_minimum, $ratio_minimum);
     }
 
     private static function assert_margin(string $sku, int $selling_price, WC_Product $product): void {
