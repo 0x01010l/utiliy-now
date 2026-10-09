@@ -40,7 +40,16 @@ const googleCategory = {
   "furniture-sliders": "Home & Garden > Household Supplies > Furniture Floor Protectors",
   "furniture-anchors": "Home & Garden > Emergency Preparedness > Furniture Anchors",
   "closet-rod": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
-  "closet-motion-light": "Home & Garden > Lighting"
+  "closet-motion-light": "Home & Garden > Lighting",
+  "adjustable-bed-frame-casters": "Home & Garden > Furniture > Bedroom Furniture Accessories",
+  "kerf-door-seal-81-white": "Hardware > Building Materials > Weather Stripping & Weatherization Supplies",
+  "extra-wide-door-sweep-36-white": "Hardware > Building Materials > Weather Stripping & Weatherization Supplies",
+  "fixed-mount-wire-shelf-clips": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
+  "heavy-duty-closet-pole-sockets": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
+  "kv-rp-0495-bn-shelf-rod-bracket": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
+  "korky-100bp-two-inch-toilet-flapper": "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Toilet & Bidet Accessories",
+  "broan-qt20000-charcoal-filter": "Home & Garden > Household Appliance Accessories > Range Hood Accessories",
+  "five-pound-flour-keeper": "Home & Garden > Kitchen & Dining > Food Storage"
 };
 function sizeOf(variant) {
   if (!variant?.decidingSpec) return variant?.label || "";
@@ -95,6 +104,14 @@ function productImages(product) {
 function specsOf(product, variant) {
   const base = product.specs || product.sharedSpecs || [];
   return variant.decidingSpec ? [...base, variant.decidingSpec] : base;
+}
+function identifiersOf(product, variant = {}) {
+  const gtin12 = variant.gtin12 || product.gtin12;
+  const mpn = variant.mpn || product.mpn;
+  return {
+    ...(gtin12 ? { gtin12 } : {}),
+    ...(mpn ? { mpn } : {})
+  };
 }
 function priceRange(product) {
   const prices = variantsOf(product).map((v) => v.price);
@@ -336,7 +353,7 @@ function productSchema(product, selectedSku) {
   const variants = variantsOf(product);
   const shared = (product.specs || product.sharedSpecs || []).map(property);
   const category = googleCategory[product.slug] || product.category;
-  const brand = { "@type": "Brand", name: "Utiliy" };
+  const brand = product.brand ? { "@type": "Brand", name: product.brand } : null;
   if (variants.length === 1) {
     const variant = variants[0];
     return {
@@ -351,7 +368,8 @@ function productSchema(product, selectedSku) {
       mainEntityOfPage: { "@id": `${site}/products/${product.slug}/#webpage` },
       dateModified: productUpdated(product),
       inLanguage: "en-US",
-      brand,
+      ...(brand ? { brand } : {}),
+      ...identifiersOf(product, variant),
       category,
       additionalProperty: specsOf(product, variant).map(property),
       offers: offerFor(product, variant)
@@ -372,7 +390,8 @@ function productSchema(product, selectedSku) {
       mainEntityOfPage: { "@id": `${site}${variantPath(product, variant.sku)}#webpage` },
       dateModified: productUpdated(product),
       inLanguage: "en-US",
-      brand,
+      ...(brand ? { brand } : {}),
+      ...identifiersOf(product, variant),
       category,
       isVariantOf: { "@id": `${site}/products/${product.slug}/#group` },
       inProductGroupWithID: product.slug,
@@ -392,7 +411,7 @@ function productSchema(product, selectedSku) {
     mainEntityOfPage: { "@id": `${site}/products/${product.slug}/#webpage` },
     dateModified: productUpdated(product),
     inLanguage: "en-US",
-    brand,
+    ...(brand ? { brand } : {}),
     variesBy: ["https://schema.org/size"],
     category,
     additionalProperty: shared,
@@ -407,7 +426,8 @@ function productSchema(product, selectedSku) {
       url: site + variantPath(product, variant.sku),
       isVariantOf: { "@id": `${site}/products/${product.slug}/#group` },
       inProductGroupWithID: product.slug,
-      brand,
+      ...(brand ? { brand } : {}),
+      ...identifiersOf(product, variant),
       offers: offerFor(product, variant)
     }))
   };
@@ -474,7 +494,16 @@ const plates = {
   "furniture-sliders": "caps",
   "furniture-anchors": "strap",
   "closet-rod": "rod",
-  "closet-motion-light": "puck"
+  "closet-motion-light": "puck",
+  "adjustable-bed-frame-casters": "caster",
+  "kerf-door-seal-81-white": "kerf",
+  "extra-wide-door-sweep-36-white": "wide-sweep",
+  "fixed-mount-wire-shelf-clips": "shelf-clip",
+  "heavy-duty-closet-pole-sockets": "pole-socket",
+  "kv-rp-0495-bn-shelf-rod-bracket": "shelf-bracket",
+  "korky-100bp-two-inch-toilet-flapper": "flapper",
+  "broan-qt20000-charcoal-filter": "filter",
+  "five-pound-flour-keeper": "keeper"
 };
 
 function specValue(specs, name) {
@@ -590,6 +619,77 @@ function diagram(kind, specs) {
       <circle cx="610" cy="247" r="28" fill="#fff" stroke="#111" stroke-width="6"/>
       <text x="90" y="140" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">End ${t("End diameter")}</text>
       <text x="90" y="420" fill="#111" font-family="system-ui,sans-serif" font-size="26">Load: ${t("Load rating")}</text>
+      ${close}`;
+  }
+  if (kind === "caster") {
+    return `${open(`Bed caster with ${specValue(specs, "Friction stem")} stem and ${specValue(specs, "Wheel diameter")} wheel`)}
+      <path d="M350 48v190" stroke="#111" stroke-width="28"/><rect x="290" y="210" width="120" height="76" rx="14" fill="#fff" stroke="#111" stroke-width="8"/>
+      <circle cx="350" cy="370" r="94" fill="#fff" stroke="#111" stroke-width="14"/><circle cx="350" cy="370" r="28" fill="#111"/>
+      <path d="M454 230h110v42H454z" fill="#111"/>
+      <text x="50" y="72" fill="#111" font-family="system-ui,sans-serif" font-size="27" font-weight="700">Stem ${t("Friction stem")}</text>
+      <text x="50" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="25">${t("Wheel diameter")} wheel · ${t("Load per caster")} each</text>
+      ${close}`;
+  }
+  if (kind === "kerf") {
+    return `${open(`Press-in kerf seal, ${specValue(specs, "Kerf cross-section")}, for gaps up to ${specValue(specs, "Maximum gap")}`)}
+      <path d="M120 56v408h128" fill="none" stroke="#111" stroke-width="28"/><path d="M134 230h118" stroke="#111" stroke-width="8"/>
+      <path d="M252 178c82 0 120 48 120 112s-38 112-120 112z" fill="#e7e5e4" stroke="#111" stroke-width="6"/>
+      <rect x="470" y="70" width="150" height="380" fill="#fff" stroke="#111" stroke-width="10"/>
+      <text x="50" y="500" fill="#111" font-family="system-ui,sans-serif" font-size="25" font-weight="700">Kerf ${t("Kerf cross-section")} · gap ≤ ${t("Maximum gap")}</text>
+      ${close}`;
+  }
+  if (kind === "wide-sweep") {
+    return `${open(`Door sweep for a ${specValue(specs, "Door width")} door and gap up to ${specValue(specs, "Maximum bottom gap")}`)}
+      <rect x="100" y="40" width="500" height="300" fill="#fff" stroke="#111" stroke-width="10"/>
+      <rect x="100" y="330" width="500" height="48" fill="#e7e5e4" stroke="#111" stroke-width="6"/>
+      <path d="M120 378l20 82m30-82 20 82m30-82 20 82m30-82 20 82m30-82 20 82m30-82 20 82m30-82 20 82m30-82 20 82" stroke="#111" stroke-width="5"/>
+      <text x="100" y="500" fill="#111" font-family="system-ui,sans-serif" font-size="25" font-weight="700">${t("Door width")} long · seals ≤ ${t("Maximum bottom gap")}</text>
+      ${close}`;
+  }
+  if (kind === "shelf-clip") {
+    return `${open(`Fixed-mount shelf clips spaced every ${specValue(specs, "Clip spacing")}`)}
+      <path d="M70 100v350" stroke="#111" stroke-width="20"/><path d="M80 300h560" stroke="#111" stroke-width="12"/>
+      <g fill="#fff" stroke="#111" stroke-width="6"><path d="M130 270q30-34 60 0v64h-60z"/><path d="M330 270q30-34 60 0v64h-60z"/><path d="M530 270q30-34 60 0v64h-60z"/></g>
+      <text x="120" y="120" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">${t("Closet system")}</text>
+      <text x="120" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="25">Clips every ${t("Clip spacing")} · ${t("Clips")} clips</text>
+      ${close}`;
+  }
+  if (kind === "pole-socket") {
+    return `${open(`Closet-pole sockets for ${specValue(specs, "Accepted pole diameter")} poles`)}
+      <circle cx="210" cy="260" r="116" fill="#fff" stroke="#111" stroke-width="14"/><circle cx="210" cy="260" r="66" fill="#e7e5e4" stroke="#111" stroke-width="6"/>
+      <path d="M420 144h180v232H420z" fill="#fff" stroke="#111" stroke-width="14"/><path d="M454 144v92h112v-92" fill="#e7e5e4" stroke="#111" stroke-width="6"/>
+      <text x="82" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="25" font-weight="700">${t("Accepted pole diameter")} poles · open + closed</text>
+      ${close}`;
+  }
+  if (kind === "shelf-bracket") {
+    return `${open(`Shelf-and-rod bracket for ${specValue(specs, "Shelf depth range")} shelves`)}
+      <path d="M90 80v360M90 100h520M90 410h240L90 190" fill="none" stroke="#111" stroke-width="18" stroke-linejoin="round"/>
+      <circle cx="360" cy="410" r="54" fill="#fff" stroke="#111" stroke-width="14"/><path d="M360 356v-74" stroke="#111" stroke-width="14"/>
+      <text x="140" y="160" fill="#111" font-family="system-ui,sans-serif" font-size="28" font-weight="700">${t("Shelf depth range")} shelf</text>
+      <text x="140" y="500" fill="#111" font-family="system-ui,sans-serif" font-size="23">Pole ${t("Accepted pole diameters")} · stud mount</text>
+      ${close}`;
+  }
+  if (kind === "flapper") {
+    return `${open(`Toilet flapper for a ${specValue(specs, "Flush-valve opening")} flush valve`)}
+      <circle cx="320" cy="300" r="120" fill="#e7e5e4" stroke="#111" stroke-width="14"/><circle cx="320" cy="300" r="54" fill="#fff" stroke="#111" stroke-width="8"/>
+      <path d="M210 220l-90-92m400 0-90 92M404 204l122-116" fill="none" stroke="#111" stroke-width="12"/>
+      <circle cx="534" cy="78" r="12" fill="#111"/>
+      <text x="84" y="470" fill="#111" font-family="system-ui,sans-serif" font-size="26" font-weight="700">${t("Flush-valve opening")} valve · ${t("Supported flush volumes")} GPF</text>
+      ${close}`;
+  }
+  if (kind === "filter") {
+    return `${open(`Charcoal filter measuring ${specValue(specs, "Filter dimensions")}`)}
+      <rect x="100" y="82" width="520" height="350" rx="8" fill="#e7e5e4" stroke="#111" stroke-width="14"/>
+      <path d="M140 120l440 274M140 394l440-274M220 90v334m160-334v334m160-334v334" stroke="#111" stroke-width="3" opacity=".55"/>
+      <text x="100" y="482" fill="#111" font-family="system-ui,sans-serif" font-size="25" font-weight="700">${t("Filter dimensions")} · ${t("Vent mode")}</text>
+      ${close}`;
+  }
+  if (kind === "keeper") {
+    return `${open(`Flour keeper rated for ${specValue(specs, "Manufacturer-rated flour capacity")}`)}
+      <rect x="200" y="76" width="320" height="380" rx="30" fill="#fff" stroke="#111" stroke-width="12"/>
+      <rect x="180" y="52" width="360" height="70" rx="16" fill="#e7e5e4" stroke="#111" stroke-width="10"/>
+      <path d="M220 330h280" stroke="#111" stroke-width="7" stroke-dasharray="12 10"/>
+      <text x="70" y="500" fill="#111" font-family="system-ui,sans-serif" font-size="25" font-weight="700">${t("Manufacturer-rated flour capacity")} flour · ${t("Container volume")} · ${t("Exterior dimensions")}</text>
       ${close}`;
   }
   return `${open(`Closet light ${specValue(specs, "Diameter")} by ${specValue(specs, "Height")}`)}
@@ -932,7 +1032,7 @@ const homeBody = `<main id="main" class="motion-home">
   <section class="utility-rooms-section">
     <div class="wrap">
       <div class="utility-section-head" data-motion-reveal>
-        <div><p class="utility-eyebrow">Shop by room</p><h2>Six spaces. Ten precise fixes.</h2></div>
+        <div><p class="utility-eyebrow">Shop by room</p><h2>Six spaces. ${products.length} precise fixes.</h2></div>
         <p>Every room contains a friction point. Start where yours lives.</p>
       </div>
       <div class="utility-room-grid">${utilityRooms}</div>
@@ -971,7 +1071,7 @@ const shopBody = `<main id="main">
     <img src="/assets/covers/home.jpg" alt="">
     <div class="wrap">
       <p class="kicker">Shop</p>
-      <h1 class="cover-title">Ten tools, sold by the measurement.</h1>
+      <h1 class="cover-title">${products.length} tools, sold by the measurement.</h1>
     </div>
   </section>
   <section class="section"><div class="wrap">
@@ -1000,21 +1100,13 @@ function textPage(title, description, canonical, current, inner) {
 
 const shipping = textPage(
   "Shipping",
-  "Utiliy ships to the United States. The price includes shipping. US-warehouse goods leave in 4 to 12 days. Supplier-shipped goods leave in 11 to 15 days.",
+  "Utiliy ships to the United States. Every product page states its current supplier delivery estimate, and the listed price includes shipping.",
   `${site}/shipping/`,
   "/shipping/",
   `<p class="kicker">Delivery</p><h1>Shipping is in the price.</h1>
   <p>Every price on Utiliy includes shipping to a United States address. WooCommerce collects that address at checkout.</p>
-  <ul>
-    <li>Corner shower caddy: US warehouse, 4 to 6 days.</li>
-    <li>Bamboo drawer organizer: US warehouse, 6 to 9 days.</li>
-    <li>Under-sink organizer: US warehouse, 12 days.</li>
-    <li>Furniture anchors: about 11 days.</li>
-    <li>Furniture sliders: about 12 days.</li>
-    <li>Cable raceway, door sweep, closet rod, and closet light: about 13 days.</li>
-    <li>Tension rod: about 15 days.</li>
-  </ul>
-  <p>Those windows are the supplier transit times published in AutoDS on October 6, 2026. Utiliy does not ship outside the United States.</p>`
+  <ul>${products.map((product) => `<li><a href="/products/${product.slug}/">${esc(product.name)}</a>: ${esc(shipText(product))}</li>`).join("")}</ul>
+  <p>Delivery estimates and supplier data were last reviewed ${esc(catalogUpdated)}. Utiliy does not ship outside the United States.</p>`
 );
 
 const returns = textPage(
@@ -1033,7 +1125,7 @@ const about = textPage(
   `${site}/about/`,
   "",
   `<p class="kicker">The shop</p><h1>A store an agent can read.</h1>
-  <p>Utiliy sells ten home tools. Each page leads with the number that decides the fit, in the heading, in a table, in FAQ schema, and in a JSON catalog at /catalog.json and /feeds/products.json.</p>
+  <p>Utiliy sells ${products.length} home tools. Each page leads with the number that decides the fit, in the heading, in a table, in FAQ schema, and in a JSON catalog at /catalog.json and /feeds/products.json.</p>
   <p>Orders are recorded in a private WooCommerce dashboard and paid through its official Stripe gateway. Supplier references are attached to each order for fulfillment. Wholesale cost is not published.</p>
   <p>Contact support@utiliy.com.</p>`
 );
@@ -1107,7 +1199,7 @@ const contact = textPage(
 const faqItems = [
   ["Can I pay for several products at once?", "Yes. Add every item to the cart, then use Checkout. WooCommerce processes one payment for the whole cart."],
   ["Is shipping included?", "Yes. Every price includes shipping to a United States address. Utiliy does not ship elsewhere."],
-  ["How long does delivery take?", "US-warehouse goods leave in 4 to 12 days. Supplier-shipped goods leave in 11 to 15 days. The product page states the window."],
+  ["How long does delivery take?", "Each product page states the current supplier delivery estimate. Shipping to a United States address is included in the listed price."],
   ["What if the size does not match the page?", "Write to support@utiliy.com within 30 days. If the item is a different measurement than the product page states, Utiliy pays the return."],
   ["What if a measurement is missing?", "If the maker did not publish a number, the page says so. Do not guess a width, a load, or a lumen rating that is not on the page."]
 ];
@@ -1116,6 +1208,9 @@ function agentProduct(product) {
   return {
     url: `${site}/products/${product.slug}/`,
     name: product.name,
+    brand: product.brand || null,
+    gtin12: product.gtin12 || null,
+    mpn: product.mpn || null,
     category: product.category,
     summary: product.summary,
     headline: product.headline,
@@ -1136,6 +1231,8 @@ function agentProduct(product) {
     checkout: `${site}/checkout/`,
     offers: variants.map((variant) => ({
       sku: variant.sku,
+      gtin12: variant.gtin12 || product.gtin12 || null,
+      mpn: variant.mpn || product.mpn || null,
       label: variant.label,
       price: (variant.price / 100).toFixed(2),
       url: site + variantPath(product, variant.sku),
@@ -1514,7 +1611,7 @@ function tsvCell(value) {
   return /["\t\n,]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 }
 function merchantRows() {
-  const header = ["id", "title", "description", "link", "image_link", "additional_image_link", "availability", "price", "brand", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "size", "color", "material", "product_detail", "question_and_answer"];
+  const header = ["id", "title", "description", "link", "image_link", "additional_image_link", "availability", "price", "brand", "gtin", "mpn", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "size", "color", "material", "product_detail", "question_and_answer"];
   const colorOf = { "cable-raceway": "White", "door-draft-stopper": "Black", "furniture-sliders": "Transparent" };
   const rows = [header];
   for (const product of products) {
@@ -1524,7 +1621,7 @@ function merchantRows() {
     const materialValue = material && !/ and /i.test(material.value) ? material.value : "";
     for (const variant of variants) {
       const specs = specsOf(product, variant);
-      const images = [...new Set([`${site}${displayImage(product)}`, ...product.images])];
+      const images = [...new Set([product.image, ...product.images, `${site}${displayImage(product)}`])];
       const details = specs.map((spec) => `Specifications:${spec.name}:${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`).join(", ");
       const answers = product.faqs.map((faq) => `${faq.q}:${faq.a}`).join(", ");
       rows.push([
@@ -1536,8 +1633,10 @@ function merchantRows() {
         images.slice(1, 11).join(","),
         availabilityOf(product, variant).available ? "in_stock" : "out_of_stock",
         `${(variant.price / 100).toFixed(2)} USD`,
-        "Utiliy",
-        "no",
+        product.brand || "",
+        variant.gtin12 || product.gtin12 || "",
+        variant.mpn || product.mpn || "",
+        variant.gtin12 || product.gtin12 || (product.brand && (variant.mpn || product.mpn)) ? "yes" : "no",
         "new",
         googleCategory[product.slug] || "",
         `${product.category} > ${product.name}`,

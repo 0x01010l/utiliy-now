@@ -34,7 +34,25 @@ const jobs = [
   ["closet-rod", "place.jpg", "Show this exact stainless closet rod with round ends fixed between two closet walls. A few light garments may hang. No weight labels."],
   ["closet-rod", "detail.jpg", "Close-up of the round end of this exact closet rod against the closet wall."],
   ["closet-motion-light", "place.jpg", "Show this exact small round puck light stuck by its magnet inside a closet, glowing softly. No icons, no wifi mark, no printed graphics."],
-  ["closet-motion-light", "detail.jpg", "Close-up of this exact thin round light, showing how flat it is against a closet shelf. No icons, no wifi mark, no printed graphics."]
+  ["closet-motion-light", "detail.jpg", "Close-up of this exact thin round light, showing how flat it is against a closet shelf. No icons, no wifi mark, no printed graphics."],
+  ["adjustable-bed-frame-casters", "place.jpg", "Install these exact Shepherd 9532 casters on the two visible corners of a plain metal bed frame. Show the raised under-bed clearance and both wheel brakes."],
+  ["adjustable-bed-frame-casters", "detail.jpg", "Close-up of one exact Shepherd 9532 caster installed in a bed-frame socket, showing the friction stem, height adjustment, soft wheel, and foot brake."],
+  ["kerf-door-seal-81-white", "place.jpg", "Show this exact white Frost King DS7W/25 seal pressed into the kerf around a white exterior door jamb. Keep the sealing face visible where it meets the closed door."],
+  ["kerf-door-seal-81-white", "detail.jpg", "Macro close-up of this exact white seal's press-in fin seated inside a matching door-frame kerf and its foam face touching the door."],
+  ["extra-wide-door-sweep-36-white", "place.jpg", "Mount this exact white Frost King A82/36W sweep across the bottom interior face of a 36-inch white door, with the flexible blade closing a large floor gap."],
+  ["extra-wide-door-sweep-36-white", "detail.jpg", "Close-up of the exact white aluminum carrier and extra-wide flexible vinyl blade meeting a smooth threshold."],
+  ["fixed-mount-wire-shelf-clips", "place.jpg", "Show these exact ClosetMaid 7561 clips correctly fastening a white fixed-mount wire shelf to a painted closet wall."],
+  ["fixed-mount-wire-shelf-clips", "detail.jpg", "Close-up of one exact ClosetMaid 7561 clip around the rear wire of a shelf with its fastener seated in the wall."],
+  ["heavy-duty-closet-pole-sockets", "place.jpg", "Install the exact brushed-nickel open and closed Knape & Vogt sockets on opposite closet walls with a matching round pole between them."],
+  ["heavy-duty-closet-pole-sockets", "detail.jpg", "Close-up of the exact open-lip brushed-nickel socket holding a correctly sized round closet pole."],
+  ["kv-rp-0495-bn-shelf-rod-bracket", "place.jpg", "Install this exact brushed-nickel Slide-Thru bracket into a wall stud beneath a 12-inch closet shelf, supporting a matching round closet pole with hangers passing the center support."],
+  ["kv-rp-0495-bn-shelf-rod-bracket", "detail.jpg", "Close-up of this exact bracket's snap-in Slide-Thru pole hook and shelf-support geometry, correctly installed."],
+  ["korky-100bp-two-inch-toilet-flapper", "place.jpg", "Install this exact red Korky 100BP flapper inside a clean white toilet tank on a standard two-inch flush valve, with its chain connected."],
+  ["korky-100bp-two-inch-toilet-flapper", "detail.jpg", "Close-up of this exact red Korky flapper seated over a two-inch flush-valve opening, showing the adjustment control and chain."],
+  ["broan-qt20000-charcoal-filter", "place.jpg", "Show this exact Broan BPQTF charcoal filter being fitted into the underside of a compatible non-ducted range hood. Keep the filter rectangular and unchanged."],
+  ["broan-qt20000-charcoal-filter", "detail.jpg", "Close-up of this exact charcoal filter's frame, dark media, and thickness beside the compatible range-hood filter slot."],
+  ["five-pound-flour-keeper", "place.jpg", "Place this exact Progressive DKS-100 flour keeper in a bright pantry, filled with flour to a realistic level and closed with its fitted lid."],
+  ["five-pound-flour-keeper", "detail.jpg", "Close-up of this exact flour keeper's lid seal and included leveling edge, with no labels or invented accessories."]
 ];
 
 async function one(slug, file, prompt) {
