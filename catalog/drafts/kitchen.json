@@ -1,0 +1,666 @@
+{
+  "products": [
+    {
+      "slug": "insinkerator-standard-sink-flange",
+      "name": "InSinkErator standard garbage-disposal sink flange",
+      "brand": "InSinkErator",
+      "category": "Kitchen",
+      "image": "https://images.thdstatic.com/productImages/a8e8db21-12c9-4c8b-8c21-d44e378260de/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-64_1000.jpg",
+      "images": [
+        "https://images.thdstatic.com/productImages/a8e8db21-12c9-4c8b-8c21-d44e378260de/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/12a1fa78-0b60-497f-83a4-38a83bc5a5c9/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-1d_1000.jpg",
+        "https://images.thdstatic.com/productImages/1aa4c627-f425-48dd-9472-abbd0e5a369f/svn/matte-black-insinkerator-garbage-disposal-parts-flg-mtblk-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/54595c8f-6d2b-4d5b-90d8-3d2987492607/svn/brushed-stainless-steel-insinkerator-garbage-disposal-parts-flg-ssb-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/abdeac78-824e-4e2a-a1fe-8f695be35064/svn/white-insinkerator-garbage-disposal-parts-flg-wh-64_1000.jpg"
+      ],
+      "available": true,
+      "stockCheckedAt": "2026-10-09",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "4.5 × 1.75 in standard flange",
+      "fit": "InSinkErator disposals · 4 exact finishes · not extended",
+      "summary": "A genuine InSinkErator standard sink flange for connecting an InSinkErator garbage disposal to a kitchen-sink drain. Choose the exact finish SKU: oil-rubbed bronze, matte black, brushed stainless steel, or white. Each flange measures 4.5 inches across by 1.75 inches deep. Before ordering, confirm the disposal brand and measure the sink thickness or existing mounting assembly; a thick farmhouse sink may require an extended flange instead.",
+      "sharedSpecs": [
+        {
+          "name": "Flange dimensions",
+          "value": "4.5 × 1.75",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Disposal compatibility",
+          "value": "InSinkErator-manufactured garbage disposals",
+          "deciding": true
+        },
+        {
+          "name": "Flange type",
+          "value": "Standard, not extended",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Stainless steel"
+        },
+        {
+          "name": "Pack quantity",
+          "value": "1 flange"
+        },
+        {
+          "name": "Baffle included",
+          "value": "No"
+        },
+        {
+          "name": "Stopper included",
+          "value": "No"
+        },
+        {
+          "name": "Check before ordering",
+          "value": "Disposal brand, sink thickness, existing mounting assembly and exact finish"
+        },
+        {
+          "name": "Not for",
+          "value": "Thick sinks requiring an extended flange or unverified non-InSinkErator disposals"
+        }
+      ],
+      "exclusions": [
+        "Do not use when the sink thickness or existing mount requires an extended flange.",
+        "Do not claim compatibility with another disposal brand without model-specific confirmation.",
+        "The baffle, stopper and disposal are not included.",
+        "Do not clean the decorative finish with abrasive solutions."
+      ],
+      "faqs": [
+        {
+          "q": "Will this flange fit every kitchen sink?",
+          "a": "No. It is a standard 4.5 by 1.75 inch flange. Measure the sink thickness and existing mounting assembly; a thick farmhouse sink may require an extended InSinkErator flange."
+        },
+        {
+          "q": "Does this fit every garbage disposal brand?",
+          "a": "It is specified for InSinkErator-manufactured garbage disposals. Brand alone should not be extended to another disposer without confirmed mounting compatibility."
+        },
+        {
+          "q": "What is included?",
+          "a": "One standard decorative flange in the selected finish. The baffle, stopper and garbage disposal are not included."
+        },
+        {
+          "q": "Are matte black and oil-rubbed bronze the same finish?",
+          "a": "No. Matte black is a flat black finish. Oil-rubbed bronze is a deep brown finish with copper-toned distressed edges. Select the exact SKU."
+        },
+        {
+          "q": "How do I choose between brushed stainless and white?",
+          "a": "Match the flange to the sink or faucet finish. FLG-SSB is brushed stainless steel; FLG-WH is bright semi-gloss white."
+        }
+      ],
+      "variants": [
+        {
+          "sku": "UTY-ISE-FLG-ORB",
+          "label": "Oil-rubbed bronze",
+          "price": 3199,
+          "available": true,
+          "stockCheckedAt": "2026-10-09",
+          "minDays": 3,
+          "maxDays": 3,
+          "mpn": "FLG-ORB",
+          "gtin12": "050375009474",
+          "image": "https://images.thdstatic.com/productImages/a8e8db21-12c9-4c8b-8c21-d44e378260de/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-64_1000.jpg",
+          "decidingSpec": {
+            "name": "Finish",
+            "value": "Oil-rubbed bronze"
+          },
+          "autods": {
+            "productId": "68ffbc3568543c0001fc1966",
+            "idOnSite": "202828905",
+            "variationId": "202828913",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "stockQuantity": 50,
+            "minDays": 3,
+            "maxDays": 3,
+            "cost": 2439,
+            "shippingCost": 0,
+            "costCheckedAt": "2026-10-09"
+          }
+        },
+        {
+          "sku": "UTY-ISE-FLG-MTBLK",
+          "label": "Matte black",
+          "price": 3599,
+          "available": true,
+          "stockCheckedAt": "2026-10-09",
+          "minDays": 3,
+          "maxDays": 3,
+          "mpn": "FLG-MTBLK",
+          "gtin12": "050375009511",
+          "image": "https://images.thdstatic.com/productImages/1aa4c627-f425-48dd-9472-abbd0e5a369f/svn/matte-black-insinkerator-garbage-disposal-parts-flg-mtblk-64_1000.jpg",
+          "decidingSpec": {
+            "name": "Finish",
+            "value": "Matte black"
+          },
+          "autods": {
+            "productId": "68ffbc3568543c0001fc1966",
+            "idOnSite": "202828905",
+            "variationId": "202828911",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "stockQuantity": 206,
+            "minDays": 3,
+            "maxDays": 3,
+            "cost": 2801,
+            "shippingCost": 0,
+            "costCheckedAt": "2026-10-09"
+          }
+        },
+        {
+          "sku": "UTY-ISE-FLG-SSB",
+          "label": "Brushed stainless steel",
+          "price": 3199,
+          "available": true,
+          "stockCheckedAt": "2026-10-09",
+          "minDays": 5,
+          "maxDays": 5,
+          "mpn": "FLG-SSB",
+          "gtin12": "050375007753",
+          "image": "https://images.thdstatic.com/productImages/54595c8f-6d2b-4d5b-90d8-3d2987492607/svn/brushed-stainless-steel-insinkerator-garbage-disposal-parts-flg-ssb-64_1000.jpg",
+          "decidingSpec": {
+            "name": "Finish",
+            "value": "Brushed stainless steel"
+          },
+          "autods": {
+            "productId": "68ffbc3568543c0001fc1966",
+            "idOnSite": "202828905",
+            "variationId": "202828907",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "stockQuantity": 5,
+            "minDays": 5,
+            "maxDays": 5,
+            "cost": 2443,
+            "shippingCost": 0,
+            "costCheckedAt": "2026-10-09"
+          }
+        },
+        {
+          "sku": "UTY-ISE-FLG-WH",
+          "label": "White",
+          "price": 3399,
+          "available": true,
+          "stockCheckedAt": "2026-10-09",
+          "minDays": 3,
+          "maxDays": 3,
+          "mpn": "FLG-WH",
+          "gtin12": "050375000754",
+          "image": "https://images.thdstatic.com/productImages/abdeac78-824e-4e2a-a1fe-8f695be35064/svn/white-insinkerator-garbage-disposal-parts-flg-wh-64_1000.jpg",
+          "decidingSpec": {
+            "name": "Finish",
+            "value": "Bright semi-gloss white"
+          },
+          "autods": {
+            "productId": "68ffbc3568543c0001fc1966",
+            "idOnSite": "202828905",
+            "variationId": "100055547",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "stockQuantity": 33,
+            "minDays": 3,
+            "maxDays": 3,
+            "cost": 2605,
+            "shippingCost": 0,
+            "costCheckedAt": "2026-10-09"
+          }
+        }
+      ],
+      "autods": {
+        "site": "the home depot",
+        "supplier": "homedepot",
+        "warehouse": "US"
+      }
+    },
+    {
+      "slug": "insinkerator-qcb-am-evolution-baffle",
+      "sku": "UTY-ISE-QCBAM",
+      "name": "Evolution antimicrobial Quiet Collar sink baffle",
+      "brand": "InSinkErator",
+      "mpn": "QCB-AM",
+      "gtin12": "050375008217",
+      "category": "Kitchen",
+      "price": 1698,
+      "image": "https://m.media-amazon.com/images/I/51teftXs7rL._AC_SL1280_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/51teftXs7rL._AC_SL1280_.jpg",
+        "https://m.media-amazon.com/images/I/51TSoom2UPL._AC_SL1280_.jpg"
+      ],
+      "available": true,
+      "stockCheckedAt": "2026-10-09",
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 6,
+      "headline": "Evolution series, not Badger",
+      "fit": "QCB-AM · removable antimicrobial baffle · no tools",
+      "summary": "A genuine InSinkErator QCB-AM removable Quiet Collar sink baffle for compatible Evolution-series garbage disposals. It reduces disposal noise and upward splash, and its antimicrobial material helps inhibit odor-causing bacteria. Select by the QCB-AM part number and disposal series rather than by a seller's nominal diameter; it is not the baffle for Badger disposals.",
+      "specs": [
+        {
+          "name": "Part number",
+          "value": "QCB-AM",
+          "deciding": true
+        },
+        {
+          "name": "Legacy reference",
+          "value": "77960A"
+        },
+        {
+          "name": "Primary compatibility",
+          "value": "InSinkErator Evolution-series disposals",
+          "deciding": true
+        },
+        {
+          "name": "Not for",
+          "value": "InSinkErator Badger disposals",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Black antimicrobial rubber"
+        },
+        {
+          "name": "Functions",
+          "value": "Reduces noise and upward food or water splash"
+        },
+        {
+          "name": "Installation",
+          "value": "Removable, press-in, no tools"
+        },
+        {
+          "name": "Fit method",
+          "value": "Match QCB-AM and the disposal series; do not select by nominal diameter alone"
+        }
+      ],
+      "exclusions": [
+        "Not for Badger-series garbage disposals.",
+        "Do not market as universal.",
+        "Do not promise fit from a nominal diameter alone because sellers measure different points of the baffle."
+      ],
+      "faqs": [
+        {
+          "q": "Does QCB-AM fit an InSinkErator Badger disposal?",
+          "a": "No. QCB-AM is sold for compatible Evolution-series disposals and is explicitly not the Badger baffle."
+        },
+        {
+          "q": "Why do published baffle diameters differ?",
+          "a": "Retailers measure different edges or grooves. Confirm the QCB-AM part number and disposal series instead of relying on one nominal diameter."
+        },
+        {
+          "q": "Does installation require tools?",
+          "a": "No. Remove the old baffle and press QCB-AM into the sink opening until its retaining groove engages."
+        },
+        {
+          "q": "What does the antimicrobial feature do?",
+          "a": "It helps inhibit the growth of odor-causing bacteria. It does not replace regular removal and cleaning."
+        }
+      ],
+      "autods": {
+        "productId": "4ecd92cc22b9fa9c76a0a0cf",
+        "idOnSite": "B09V2DC8ZN",
+        "variationId": "B09V2DC8ZN",
+        "site": "amazon",
+        "supplier": "AM Incorporated",
+        "warehouse": "US",
+        "stockStatus": "in_stock",
+        "minDays": 6,
+        "maxDays": 6,
+        "cost": 749,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "moen-150259-pulldown-hose-kit",
+      "sku": "UTY-MOEN-150259",
+      "name": "Moen 150259 pulldown kitchen-faucet hose kit",
+      "brand": "Moen",
+      "mpn": "150259",
+      "gtin12": "026508218631",
+      "category": "Kitchen",
+      "price": 3999,
+      "image": "https://m.media-amazon.com/images/I/716dwTAjXDL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/716dwTAjXDL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71kYM-w8mcL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/814gUfVZpFL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61g7J8bkVbL._AC_SL1024_.jpg",
+        "https://m.media-amazon.com/images/I/71wyrbAR7jL._AC_SL1500_.jpg"
+      ],
+      "available": true,
+      "stockCheckedAt": "2026-10-09",
+      "shipsFrom": "US",
+      "minDays": 5,
+      "maxDays": 5,
+      "headline": "68 in pulldown hose",
+      "fit": "Moen 150259 kit · hose component 187108 · model check required",
+      "summary": "A genuine Moen 150259 replacement hose service kit for select Moen pulldown kitchen faucets. The hose is 68 inches long and the kit includes the washer and connection adapters. The replacement hose may be marked 187108 while the service-kit box is marked 150259. Pulldown and pullout Moen hoses are not interchangeable, so confirm the faucet model and quick-connect arrangement before ordering.",
+      "specs": [
+        {
+          "name": "Service-kit number",
+          "value": "150259",
+          "deciding": true
+        },
+        {
+          "name": "Included hose component",
+          "value": "187108",
+          "deciding": true
+        },
+        {
+          "name": "Hose length",
+          "value": "68",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Faucet type",
+          "value": "Select Moen pulldown kitchen faucets",
+          "deciding": true
+        },
+        {
+          "name": "Documented applications",
+          "value": "Select Arbor pulldown and Weymouth S53004-series faucets"
+        },
+        {
+          "name": "Included",
+          "value": "Replacement hose, rubber washer and hose adapters"
+        },
+        {
+          "name": "Not this part",
+          "value": "Moen 137028 pullout-faucet hose"
+        }
+      ],
+      "exclusions": [
+        "Not for Moen pullout faucets that require hose kit 137028.",
+        "Do not infer fit from the Moen brand alone.",
+        "Confirm the faucet model and both hose-end connections before ordering."
+      ],
+      "faqs": [
+        {
+          "q": "Does Moen 150259 fit every Moen kitchen faucet?",
+          "a": "No. It is for select pulldown kitchen faucets. Confirm the faucet model and quick-connect arrangement."
+        },
+        {
+          "q": "Why is the hose marked 187108?",
+          "a": "187108 is the replacement hose component included in the 150259 service kit. The outer kit or box may show 150259."
+        },
+        {
+          "q": "How long is the hose?",
+          "a": "The published hose length is 68 inches."
+        },
+        {
+          "q": "Can it replace Moen hose 137028?",
+          "a": "No. 137028 is a different pullout-hose family with different documented connections and fitment."
+        }
+      ],
+      "autods": {
+        "productId": "f112f89adf5ec2abe88d9739",
+        "idOnSite": "B0052TVX7I",
+        "variationId": "B0052TVX7I",
+        "site": "amazon",
+        "supplier": "Amazon.com",
+        "warehouse": "US",
+        "stockStatus": "in_stock",
+        "minDays": 5,
+        "maxDays": 5,
+        "cost": 2269,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "lg-aap73631702-refrigerator-door-bin",
+      "sku": "UTY-LG-AAP73631702",
+      "name": "LG AAP73631702 refrigerator door bin",
+      "brand": "LG",
+      "mpn": "AAP73631702",
+      "gtin12": "708088523168",
+      "category": "Kitchen",
+      "price": 4295,
+      "image": "https://m.media-amazon.com/images/I/41vHzS55rYL._AC_SL1010_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/41vHzS55rYL._AC_SL1010_.jpg"
+      ],
+      "available": true,
+      "stockCheckedAt": "2026-10-09",
+      "shipsFrom": "US",
+      "minDays": 5,
+      "maxDays": 5,
+      "headline": "Upper-left LG door bin",
+      "fit": "AAP73631702 · model-specific clips · approximately 15.4 in long",
+      "summary": "A genuine LG AAP73631702 refrigerator door bin for the upper or middle position on the left door of specific LG and Kenmore refrigerators. It is a white ABS snap-in bin with a clear front. Similar LG bins can share nearly identical dimensions while using different clip geometry, so match the appliance model and AAP73631702 part number rather than purchasing by appearance alone.",
+      "specs": [
+        {
+          "name": "Manufacturer part number",
+          "value": "AAP73631702",
+          "deciding": true
+        },
+        {
+          "name": "Door position",
+          "value": "Upper or middle position on the left refrigerator door",
+          "deciding": true
+        },
+        {
+          "name": "Published part dimensions",
+          "value": "Approximately 15.4 × 6.3 × 5.65",
+          "unitText": "in",
+          "unitCode": "INH"
+        },
+        {
+          "name": "Attachment",
+          "value": "Model-specific snap-on clips",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "White ABS with clear front panel"
+        },
+        {
+          "name": "LG model families",
+          "value": "LFX28968, LFXS27566S, LMXS27626 and LMXS27676D",
+          "deciding": true
+        },
+        {
+          "name": "Additional documented fits",
+          "value": "Selected Kenmore 72493, 72495 and 73052–73065 series models"
+        },
+        {
+          "name": "Not interchangeable with",
+          "value": "AAP73631703, AAP73631602 or AAP73631802"
+        }
+      ],
+      "exclusions": [
+        "Do not select by visual similarity or dimensions alone.",
+        "Not AAP73631703, AAP73631602 or AAP73631802.",
+        "Exclude any refrigerator model not present in an LG or reliable parts fit list unless fit is separately confirmed."
+      ],
+      "faqs": [
+        {
+          "q": "How do I know whether AAP73631702 fits my refrigerator?",
+          "a": "Find the complete refrigerator model number on its rating label and verify it against an AAP73631702 fit list. Do not rely on the LG brand or bin appearance alone."
+        },
+        {
+          "q": "Where does this bin install?",
+          "a": "It is documented for the upper or middle position on the left refrigerator door of compatible models."
+        },
+        {
+          "q": "Can I match the old bin by dimensions?",
+          "a": "Use dimensions only as a secondary check. Similar bins can have different clip spacing and part numbers."
+        },
+        {
+          "q": "Is this an aftermarket bin?",
+          "a": "No. The sourced product is identified as genuine LG OEM AAP73631702."
+        }
+      ],
+      "autods": {
+        "productId": "b4ccaa779655e387de6e8077",
+        "idOnSite": "B00HN8WRX0",
+        "variationId": "B00HN8WRX0",
+        "site": "amazon",
+        "supplier": "Part Supply House",
+        "warehouse": "US",
+        "stockQuantity": 2,
+        "minDays": 5,
+        "maxDays": 5,
+        "cost": 2795,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "kohler-k-9110-bn-dishwasher-air-gap",
+      "sku": "UTY-KOHLER-K9110BN",
+      "name": "Kohler dishwasher air gap, vibrant brushed nickel",
+      "brand": "Kohler",
+      "mpn": "K-9110-BN",
+      "gtin12": "650531317124",
+      "category": "Kitchen",
+      "price": 4599,
+      "image": "https://images.thdstatic.com/productImages/f8ba5a02-b584-4865-ad10-5ffcba94d9cc/svn/vibrant-brushed-nickel-kohler-dishwasher-air-gaps-k-9110-bn-64_1000.jpg",
+      "images": [
+        "https://images.thdstatic.com/productImages/f8ba5a02-b584-4865-ad10-5ffcba94d9cc/svn/vibrant-brushed-nickel-kohler-dishwasher-air-gaps-k-9110-bn-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/bac41c5e-bce1-4131-af14-05da5b4a69a8/svn/vibrant-brushed-nickel-kohler-dishwasher-air-gaps-k-9110-bn-e1_1000.jpg"
+      ],
+      "available": true,
+      "stockCheckedAt": "2026-10-09",
+      "shipsFrom": "US",
+      "minDays": 4,
+      "maxDays": 4,
+      "headline": "1–1.1875 in mounting hole",
+      "fit": "2 in max deck · 5/8 in inlet · 7/8 in outlet",
+      "summary": "A complete Kohler K-9110-BN dishwasher air-gap body and solid-brass cover in Vibrant Brushed Nickel. It mounts through a 1 to 1.1875 inch sink-deck hole, supports a deck up to 2 inches thick, and uses a 5/8 inch dishwasher inlet with a 7/8 inch outlet to the disposal or sink drain. This is the body-and-cover kit, not a decorative cap alone and not the Vibrant Stainless variant.",
+      "specs": [
+        {
+          "name": "Model",
+          "value": "K-9110-BN",
+          "deciding": true
+        },
+        {
+          "name": "Mounting-hole diameter",
+          "value": "1–1.1875",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Maximum deck thickness",
+          "value": "2",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Dishwasher inlet",
+          "value": "5/8",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Outlet to disposal or sink",
+          "value": "7/8",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Product height",
+          "value": "8.75",
+          "unitText": "in",
+          "unitCode": "INH"
+        },
+        {
+          "name": "Finish",
+          "value": "Vibrant Brushed Nickel",
+          "deciding": true
+        },
+        {
+          "name": "Included",
+          "value": "Durable plastic air-gap body and solid-brass cover"
+        },
+        {
+          "name": "Not this variant",
+          "value": "K-9110-VS Vibrant Stainless"
+        }
+      ],
+      "exclusions": [
+        "Not for mounting holes larger than 1.1875 inches or decks thicker than 2 inches.",
+        "Do not substitute K-9110-VS Vibrant Stainless for this brushed-nickel SKU.",
+        "Do not list as a cover-only product; the body and cover are included.",
+        "Confirm the 5/8-inch inlet and 7/8-inch outlet hose sizes before installation."
+      ],
+      "faqs": [
+        {
+          "q": "Does K-9110-BN include the air-gap body?",
+          "a": "Yes. It includes the plastic valve body and solid-brass Vibrant Brushed Nickel cover."
+        },
+        {
+          "q": "What mounting hole does it require?",
+          "a": "A hole from 1 inch through 1.1875 inches in diameter, through a deck no thicker than 2 inches."
+        },
+        {
+          "q": "What hose connections does it use?",
+          "a": "A 5/8-inch dishwasher inlet and a 7/8-inch outlet to the disposal or sink drain."
+        },
+        {
+          "q": "Is Vibrant Brushed Nickel the same as Vibrant Stainless?",
+          "a": "No. K-9110-BN is Vibrant Brushed Nickel. K-9110-VS is a separate finish variant."
+        }
+      ],
+      "autods": {
+        "productId": "68be30fbc87dda2dcffa7202",
+        "idOnSite": "100626485",
+        "variationId": "100626485",
+        "site": "the home depot",
+        "supplier": "homedepot",
+        "warehouse": "US",
+        "stockQuantity": 16,
+        "minDays": 4,
+        "maxDays": 4,
+        "cost": 3551,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "slug": "insinkerator-standard-sink-flange",
+      "packshot": "Using only the supplied source images as identity reference, create a pure white-background catalog packshot of the exact four InSinkErator standard flanges FLG-ORB, FLG-MTBLK, FLG-SSB and FLG-WH arranged separately in one orderly row. Preserve each exact shape, 4.5 by 1.75 inch proportions, material and finish. No stopper, baffle, disposal, packaging, labels, text, logos added by the image model, invented parts or altered colors.",
+      "place": "Using the exact sourced InSinkErator standard flange geometry, show one selected flange correctly installed at a kitchen-sink drain above an InSinkErator garbage disposal, with the under-sink mounting context visible and realistic. Show a standard-thickness sink, not a farmhouse or thick sink. No text, arrows, labels, floating parts, invented hardware or unverified brand substitutions.",
+      "detail": "Create a source-faithful close-up showing the decisive fit points of the exact standard InSinkErator flange: the 4.5-inch top rim, 1.75-inch depth and the sink-to-disposal mounting interface. Keep the selected finish exact and show why a thick sink may need a different extended flange without adding comparison text, dimensions, arrows or invented components."
+    },
+    {
+      "slug": "insinkerator-qcb-am-evolution-baffle",
+      "packshot": "Using only the supplied source images, create a pure white-background packshot of one exact black InSinkErator QCB-AM antimicrobial Quiet Collar sink baffle. Preserve its molded rubber shape, retaining groove and proportions. No disposal, sink, packaging, text, labels, logos added by the image model, invented ridges or extra parts.",
+      "place": "Show the exact QCB-AM baffle correctly pressed into the sink opening above a compatible InSinkErator Evolution-series disposal in a clean residential kitchen. The baffle must sit naturally in the flange and remain removable. Do not show a Badger disposal, tools, text, arrows, labels or invented mounting hardware.",
+      "detail": "Create a tight source-faithful installation close-up of the exact QCB-AM retaining groove engaging the sink-flange opening, emphasizing the removable splash-control geometry that decides fit. No measurements, text, arrows, labels, altered profile or invented parts."
+    },
+    {
+      "slug": "moen-150259-pulldown-hose-kit",
+      "packshot": "Using only the supplied source images, create a pure white-background packshot of the exact genuine Moen 150259 service kit with its gray 68-inch hose, rubber washer and supplied hose adapters neatly separated. Preserve the exact hose ends and connector geometry. No faucet, packaging, text, labels, logos added by the image model, invented adapters or altered connectors.",
+      "place": "Show the exact Moen 150259 hose correctly installed under a compatible Moen pulldown kitchen faucet, routed naturally through the faucet body with the documented quick-connect arrangement visible. Keep the installation realistic and uncluttered. No pullout-faucet substitution, text, arrows, labels or invented plumbing parts.",
+      "detail": "Create a source-faithful macro close-up of both exact Moen 150259 hose-end connections and the included washer and adapters, with enough surrounding faucet hardware to evaluate connector fit. No dimensions, text, arrows, labels, connector changes or invented parts."
+    },
+    {
+      "slug": "lg-aap73631702-refrigerator-door-bin",
+      "packshot": "Using only the supplied source image, create a pure white-background packshot of one exact genuine LG AAP73631702 refrigerator door bin. Preserve the white ABS body, clear front panel, exact clip geometry, rim profile and proportions. No refrigerator, food, packaging, text, labels, logos added by the image model, altered clips or invented features.",
+      "place": "Show the exact LG AAP73631702 bin snapped into its documented upper-left or middle-left door position inside a compatible LG French-door refrigerator. Use realistic scale and leave neighboring bins visible only for installation context. No right-door placement, food labels, text, arrows or invented refrigerator geometry.",
+      "detail": "Create a tight source-faithful close-up of the exact AAP73631702 rear and side snap-in clips engaging the compatible left refrigerator door rails, emphasizing the clip geometry that distinguishes similar-looking LG bins. No measurements, text, arrows, labels, modified clips or invented hardware."
+    },
+    {
+      "slug": "kohler-k-9110-bn-dishwasher-air-gap",
+      "packshot": "Using only the supplied source images, create a pure white-background packshot of the exact complete Kohler K-9110-BN dishwasher air gap with Vibrant Brushed Nickel solid-brass cover and plastic valve body. Preserve the exact finish, body shape and inlet and outlet geometry. No sink, hoses, packaging, text, labels, logos added by the image model, invented fittings or alternate finish.",
+      "place": "Show the exact Kohler K-9110-BN installed through a kitchen sink deck with the Vibrant Brushed Nickel cover above the deck and the full air-gap body below, connected to a 5/8-inch dishwasher hose and 7/8-inch disposal or drain hose. No cover-only depiction, text, arrows, labels, leaks or invented adapters.",
+      "detail": "Create a source-faithful split-level close-up of the exact K-9110-BN mounting through the sink deck, clearly showing the deck opening, clamping area, 5/8-inch inlet and 7/8-inch outlet geometry. Preserve the brushed-nickel cover and exact body. No dimensions, text, arrows, labels or invented hardware."
+    }
+  ]
+}

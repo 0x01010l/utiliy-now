@@ -19,12 +19,12 @@ const catalogUpdated = catalog.products.flatMap((product) => [
 ]).filter(Boolean).sort().at(-1) || buildDate;
 
 const categories = [
-  { slug: "bathroom", name: "Bathroom", blurb: "Corner shelves with a published size, angle, and load.", guide: "Measure the corner angle and available wall width. Adhesive shelves need a smooth, non-porous surface." },
-  { slug: "kitchen", name: "Kitchen", blurb: "Drawer widths and under-sink racks.", guide: "Measure the inside of the drawer or cabinet—not its outside edge—and leave room for pipes and hinges." },
-  { slug: "closet", name: "Closet", blurb: "Rod spans, tension loads, and closet lights.", guide: "Match the clear inside span, expected load, and mounting surface before choosing a rod or light." },
-  { slug: "furniture", name: "Furniture", blurb: "Hardwood sliders and screw-in anchors.", guide: "Check the furniture-leg shape, floor material, and whether the frame can safely accept a screw." },
-  { slug: "cable", name: "Cable", blurb: "Raceways with an inner channel you can match.", guide: "Measure the thickest cable bundle and compare it with the published inner channel—not the outer raceway size." },
-  { slug: "door", name: "Door", blurb: "Sweeps sized to the gap under the door.", guide: "Measure the door width and the largest floor gap along its full swing before choosing a sweep." }
+  { slug: "bathroom", name: "Bathroom", blurb: "Fixture parts matched by model, opening, airflow, and exact dimensions.", guide: "Identify the fixture model first, then verify valve size, mounting holes, airflow, or replacement-part number. Appearance alone is not a fit test." },
+  { slug: "kitchen", name: "Kitchen", blurb: "Sink, faucet, appliance, and storage parts with explicit compatibility rules.", guide: "Match the manufacturer part number or connection geometry, then verify hole size, hose diameter, cabinet clearance, or appliance model." },
+  { slug: "closet", name: "Closet", blurb: "System-specific brackets, standards, rods, baskets, and supports.", guide: "Identify the closet system and measure shelf depth, track geometry, pole diameter, bay width, support spacing, and expected load before choosing hardware." },
+  { slug: "furniture", name: "Furniture", blurb: "Repair and motion hardware selected by load, dimensions, and mounting pattern.", guide: "Measure the original caster, spring, hinge, or mounting plate and verify load direction, force rating, hole spacing, and required clearance." },
+  { slug: "cable", name: "Cable", blurb: "Adapters and panel cables classified by connector direction and signal limits.", guide: "Name the source port and display or device port in order. Then verify active versus passive conversion, protocol version, resolution, refresh rate, and cable clearance." },
+  { slug: "door", name: "Door", blurb: "Closers, tracks, ramps, spline, and weather hardware sized to the opening.", guide: "Measure the opening, panel thickness, track length, threshold rise, groove width, swing, and available wall or ceiling clearance before choosing door hardware." }
 ];
 function catSlug(name) {
   return String(name).toLowerCase();
@@ -103,7 +103,8 @@ function productImages(product) {
 }
 function specsOf(product, variant) {
   const base = product.specs || product.sharedSpecs || [];
-  return variant.decidingSpec ? [...base, variant.decidingSpec] : base;
+  const variantSpecs = variant?.specs || [];
+  return variant?.decidingSpec ? [...base, ...variantSpecs, variant.decidingSpec] : [...base, ...variantSpecs];
 }
 function identifiersOf(product, variant = {}) {
   const gtin12 = variant.gtin12 || product.gtin12;
@@ -352,7 +353,7 @@ function offerFor(product, variant) {
 function productSchema(product, selectedSku) {
   const variants = variantsOf(product);
   const shared = (product.specs || product.sharedSpecs || []).map(property);
-  const category = googleCategory[product.slug] || product.category;
+  const category = product.googleCategory || googleCategory[product.slug] || product.category;
   const brand = product.brand ? { "@type": "Brand", name: product.brand } : null;
   if (variants.length === 1) {
     const variant = variants[0];
@@ -1246,18 +1247,21 @@ function agentProduct(product) {
 }
 
 function fulfillment(product) {
-  return variantsOf(product).map((variant) => ({
-    sku: variant.sku,
-    name: product.name,
-    option: variant.label,
-    autodsProductId: product.autods.productId,
-    supplierProductId: product.autods.idOnSite,
-    variationId: variant.autods.variationId,
-    buySiteId: product.autods.buySiteId,
-    supplier: product.autods.supplier,
-    warehouse: product.autods.warehouse,
-    supplierOption: variant.autods.supplierOption || ""
-  }));
+  return variantsOf(product).map((variant) => {
+    const supplier = supplierOf(product, variant);
+    return {
+      sku: variant.sku,
+      name: product.name,
+      option: variant.label,
+      autodsProductId: supplier.productId,
+      supplierProductId: supplier.idOnSite,
+      variationId: supplier.variationId,
+      buySiteId: supplier.buySiteId,
+      supplier: supplier.supplier,
+      warehouse: supplier.warehouse,
+      supplierOption: supplier.supplierOption || ""
+    };
+  });
 }
 
 const llms = `# Utiliy
@@ -1638,7 +1642,7 @@ function merchantRows() {
         variant.mpn || product.mpn || "",
         variant.gtin12 || product.gtin12 || (product.brand && (variant.mpn || product.mpn)) ? "yes" : "no",
         "new",
-        googleCategory[product.slug] || "",
+        product.googleCategory || googleCategory[product.slug] || "",
         `${product.category} > ${product.name}`,
         "US:::0.00 USD",
         product.shipsFrom === "US" ? "US" : "CN",

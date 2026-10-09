@@ -1,5 +1,5 @@
 import { mkdir, writeFile } from "node:fs/promises";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -33,6 +33,15 @@ const instructions = {
   "broan-qt20000-charcoal-filter": "Show one exact rectangular Broan-NuTone BPQTF charcoal range-hood filter, front and slight edge view, preserving its dark filter media and frame.",
   "five-pound-flour-keeper": "Show one exact Progressive Prepworks DKS-100 five-pound flour keeper with its fitted lid and included leveler, empty, closed, and upright."
 };
+
+const generatedPromptPath = path.join(root, "catalog/image-prompts.json");
+if (existsSync(generatedPromptPath)) {
+  const generatedPrompts = JSON.parse(readFileSync(generatedPromptPath, "utf8"));
+  Object.assign(
+    instructions,
+    Object.fromEntries(Object.entries(generatedPrompts).map(([slug, prompts]) => [slug, prompts.packshot]))
+  );
+}
 
 const exact = " Preserve the product's real construction, proportions, number of parts, materials, color, and included hardware from the reference. Do not redesign it, add features, invent accessories, or add/remove tiers. A centered premium ecommerce packshot on pure white (#ffffff), all edges fully visible with generous even margin, soft grounded shadow, even studio light, high detail, natural material texture. No room scene, props, hands, packaging, text, letters, numbers, dimensions, logos, badges, borders, collage, watermark, or color cast.";
 

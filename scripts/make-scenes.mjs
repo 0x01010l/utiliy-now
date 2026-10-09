@@ -55,6 +55,14 @@ const jobs = [
   ["five-pound-flour-keeper", "detail.jpg", "Close-up of this exact flour keeper's lid seal and included leveling edge, with no labels or invented accessories."]
 ];
 
+const generatedPromptPath = path.join(root, "catalog/image-prompts.json");
+if (existsSync(generatedPromptPath)) {
+  const generatedPrompts = JSON.parse(readFileSync(generatedPromptPath, "utf8"));
+  for (const [slug, prompts] of Object.entries(generatedPrompts)) {
+    jobs.push([slug, "place.jpg", prompts.place], [slug, "detail.jpg", prompts.detail]);
+  }
+}
+
 async function one(slug, file, prompt) {
   const outDir = path.join(root, "assets/explainers", slug);
   const out = path.join(outDir, file);
@@ -98,7 +106,8 @@ async function one(slug, file, prompt) {
   throw new Error(`${slug} ${file} gave up ${last.slice(0, 200)}`);
 }
 
-const queue = jobs.slice();
+const requested = new Set(process.argv.slice(2));
+const queue = jobs.filter(([slug]) => requested.size === 0 || requested.has(slug));
 const workers = Array.from({ length: 2 }, async () => {
   while (queue.length) {
     const job = queue.shift();

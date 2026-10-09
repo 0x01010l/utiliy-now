@@ -1,0 +1,338 @@
+{
+  "products": [
+    {
+      "slug": "american-standard-022650-slip-on-tub-spout",
+      "sku": "UTY-AS-0226500020A",
+      "name": "5/8-inch slip-on tub diverter spout, chrome",
+      "brand": "American Standard",
+      "mpn": "022650-0020A",
+      "gtin12": "012611111280",
+      "category": "Bathroom",
+      "price": 2799,
+      "image": "https://images.thdstatic.com/productImages/2754e9b9-3467-4a6e-8a73-2090815eecfe/svn/chrome-american-standard-tub-spouts-022650-0020a-64_1000.jpg",
+      "images": [
+        "https://images.thdstatic.com/productImages/2754e9b9-3467-4a6e-8a73-2090815eecfe/svn/chrome-american-standard-tub-spouts-022650-0020a-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/f0727b42-6c19-48be-bb84-aa97c05335a7/svn/chrome-american-standard-tub-spouts-022650-0020a-c3_1000.jpg",
+        "https://images.thdstatic.com/productImages/088919eb-bb6e-453b-8fae-5b97d21c4c33/svn/chrome-american-standard-tub-spouts-022650-0020a-fa_1000.jpg",
+        "https://images.thdstatic.com/productImages/e0bd2b96-f268-42fb-b163-16777882bda5/svn/chrome-american-standard-tub-spouts-022650-0020a-76_1000.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 9,
+      "maxDays": 9,
+      "headline": "5/8 in OD slip-on",
+      "fit": "5.688 in projection · pull-up diverter · chrome",
+      "summary": "One genuine American Standard 022650-0020A polished-chrome tub spout with a pull-up shower diverter. It slips onto 5/8-inch outside-diameter copper tubing and projects 5.688 inches from the finished wall. It is not a threaded IPS or NPT spout, so confirm the bare tube diameter and projection before ordering.",
+      "specs": [
+        {"name": "Connection", "value": "Slip-on over copper tube", "deciding": true},
+        {"name": "Required tube outside diameter", "value": "5/8", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Nominal copper tube size", "value": "1/2", "unitText": "in", "unitCode": "INH"},
+        {"name": "Projection from finished wall", "value": "5.688", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Spout-to-diverter height", "value": "2.875", "unitText": "in", "unitCode": "INH"},
+        {"name": "Diverter", "value": "Pull-up tub-to-shower diverter"},
+        {"name": "Material", "value": "Brass"},
+        {"name": "Finish", "value": "Polished chrome", "deciding": true},
+        {"name": "Documented trim family", "value": "American Standard Colony Soft 2- and 3-handle bath/shower trim"},
+        {"name": "Pack quantity", "value": "1 spout"},
+        {"name": "Not for", "value": "Threaded IPS or NPT nipples, 3/4-inch copper tube, or non-chrome finish matching", "deciding": true}
+      ],
+      "faqs": [
+        {"q": "Will this tub spout screw onto a threaded nipple?", "a": "No. Model 022650-0020A is a slip-on spout for smooth 5/8-inch outside-diameter copper tubing."},
+        {"q": "Does a 1/2-inch copper pipe measure 1/2 inch across?", "a": "No. Standard nominal 1/2-inch copper tubing has a 5/8-inch outside diameter, which is the dimension this spout fits."},
+        {"q": "How far does the spout project from the wall?", "a": "The published projection is 5.688 inches, or 144 millimeters, from the finished wall."},
+        {"q": "Does this spout divert water to a shower head?", "a": "Yes. It has a pull-up diverter on the nose."},
+        {"q": "Is this the brushed-nickel version?", "a": "No. MPN 022650-0020A is polished chrome."}
+      ],
+      "autods": {
+        "productId": "696dbb932dad4f00017e8722",
+        "idOnSite": "205490886",
+        "variationId": "205490886",
+        "site": "the home depot",
+        "buySiteId": 5,
+        "supplier": "homedepot",
+        "warehouse": "US",
+        "inStock": true,
+        "inStockQty": 699,
+        "cost": 2080,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "kohler-pennington-k2196-single-hole-white",
+      "sku": "UTY-KOHLER-K219610",
+      "name": "Pennington 20-1/4-inch drop-in sink, white, single hole",
+      "brand": "KOHLER",
+      "mpn": "K-2196-1-0",
+      "gtin12": "040688573861",
+      "category": "Bathroom",
+      "price": 9270,
+      "image": "https://m.media-amazon.com/images/I/41Ou3nrWp9L._AC_SL1000_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/41Ou3nrWp9L._AC_SL1000_.jpg",
+        "https://m.media-amazon.com/images/I/31OHnIHbZHL._AC_.jpg",
+        "https://m.media-amazon.com/images/I/21Qzd7HI8WL._AC_.jpg",
+        "https://m.media-amazon.com/images/I/31LEE3KOvPL._AC_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 5,
+      "maxDays": 5,
+      "headline": "20-1/4 × 17-1/2 in",
+      "fit": "Template 1002970-7 · single faucet hole · white",
+      "summary": "One genuine white KOHLER Pennington K-2196-1-0 oval drop-in bathroom sink with a single faucet hole and overflow. Its outside footprint is 20-1/4 by 17-1/2 inches, but countertop fit must be established with the included KOHLER 1002970-7 cutout template rather than the nominal outside dimensions. This is not the 4-inch centerset, 8-inch widespread, biscuit, or almond variant.",
+      "specs": [
+        {"name": "Installation", "value": "Drop-in / self-rimming", "deciding": true},
+        {"name": "Exterior dimensions", "value": "20-1/4 × 17-1/2 × 8-1/2", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Basin dimensions", "value": "16 × 11 × 7", "unitText": "in", "unitCode": "INH"},
+        {"name": "Water depth", "value": "4", "unitText": "in", "unitCode": "INH"},
+        {"name": "Cutout method", "value": "Use current KOHLER template 1002970-7; do not cut from nominal dimensions", "deciding": true},
+        {"name": "Faucet holes", "value": "1", "deciding": true},
+        {"name": "Faucet-hole diameter", "value": "1-3/8", "unitText": "in", "unitCode": "INH"},
+        {"name": "Drain-hole diameter", "value": "1-3/4", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Overflow", "value": "Yes"},
+        {"name": "Material", "value": "Vitreous china"},
+        {"name": "Shape", "value": "Oval"},
+        {"name": "Color", "value": "White", "deciding": true},
+        {"name": "Included", "value": "Sink and cutout template"},
+        {"name": "Not included", "value": "Faucet and drain assembly"},
+        {"name": "Not this variant", "value": "K-2196-4 centerset, K-2196-8 widespread, biscuit, almond, black, dune or ice-grey sink", "deciding": true}
+      ],
+      "faqs": [
+        {"q": "Will this replace any oval sink that is about 20 inches wide?", "a": "Not necessarily. Compare the existing countertop opening with the current KOHLER 1002970-7 template; outside dimensions alone do not establish fit."},
+        {"q": "What faucet drilling does K-2196-1-0 have?", "a": "One 1-3/8-inch faucet hole. It is not drilled for a 4-inch centerset or an 8-inch widespread faucet."},
+        {"q": "Does this sink have an overflow?", "a": "Yes. This exact white single-hole variant includes an overflow passage."},
+        {"q": "What size drain does it accept?", "a": "The published drain-hole diameter is 1-3/4 inches. The drain assembly is not included."},
+        {"q": "Is the countertop cutout 20-1/4 by 17-1/2 inches?", "a": "No. Those are nominal exterior dimensions. Use the included KOHLER cutout template."}
+      ],
+      "autods": {
+        "productId": "331a09cc945e290431708c47",
+        "idOnSite": "B000MYG4JU",
+        "variationId": "B000MYG4JU",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "Jeff's Store",
+        "warehouse": "US",
+        "supplierOption": "White",
+        "inStock": true,
+        "inStockQty": 1,
+        "cost": 7185,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "kohler-1188998-canister-flush-valve",
+      "sku": "UTY-KOHLER-1188998",
+      "name": "Cimarron 2-inch canister flush-valve kit",
+      "brand": "KOHLER",
+      "mpn": "1188998",
+      "gtin12": "885612120458",
+      "category": "Bathroom",
+      "price": 2999,
+      "image": "https://m.media-amazon.com/images/I/71WtTtvryfL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/71WtTtvryfL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61Z+G4C6pDL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/31b0TXF8l5L._AC_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 6,
+      "headline": "K-4369 and K-4418 tanks",
+      "fit": "3 in canister · 2 in outlet · gasket included",
+      "summary": "One genuine KOHLER 1188998 complete canister flush-valve kit for Cimarron toilet tanks K-4369 and K-4418. The assembly uses a 3-inch canister over a 2-inch outlet and includes the tank-to-bowl gasket. Confirm the tank number molded or stamped inside the rear tank wall; the toilet collection name or bowl number alone does not establish fit.",
+      "specs": [
+        {"name": "Documented tank models", "value": "KOHLER K-4369 and K-4418", "deciding": true},
+        {"name": "Canister diameter", "value": "3", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Outlet size", "value": "2", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Mechanism", "value": "Canister flush valve"},
+        {"name": "Included", "value": "Complete canister assembly and tank-to-bowl gasket"},
+        {"name": "Replacement part numbers", "value": "1089671, 1096384, 1113628 and 1362492"},
+        {"name": "Tank identification location", "value": "Inside rear wall of toilet tank", "deciding": true},
+        {"name": "Pack quantity", "value": "1 kit"},
+        {"name": "Not for", "value": "Unlisted KOHLER tanks, flapper-style valves, 3-inch outlets, or seal-only repair when only GP1059291 is needed", "deciding": true}
+      ],
+      "faqs": [
+        {"q": "Will KOHLER 1188998 fit every Cimarron toilet?", "a": "No. The documented tank models are K-4369 and K-4418. Read the number inside the rear tank wall before ordering."},
+        {"q": "Is this a two-inch or three-inch flush valve?", "a": "It has a 3-inch canister and a 2-inch outlet. Both measurements matter."},
+        {"q": "Does the kit include the tank-to-bowl gasket?", "a": "Yes. This is the complete canister assembly with the gasket."},
+        {"q": "Can I identify fit from the bowl model?", "a": "No. Use the tank model number, because bowls and tanks can be paired or replaced separately."},
+        {"q": "Do I need this kit if only the canister seal leaks?", "a": "Possibly not. For a seal-only repair, compare your toilet with KOHLER GP1059291 before replacing the complete valve."}
+      ],
+      "autods": {
+        "productId": "4c922ffab343a196fc076933",
+        "idOnSite": "B00CXRZH1U",
+        "variationId": "B00CXRZH1U",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "Amazon.com",
+        "warehouse": "US",
+        "supplierOption": "Pack of 1",
+        "inStock": true,
+        "inStockQty": 1000000,
+        "stockNote": "AutoDS uses 1000000 as an availability sentinel; treat as in stock, not literal unit count.",
+        "cost": 2055,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "revent-rvs50-roomside-bath-fan",
+      "sku": "UTY-REVENT-RVS50",
+      "name": "RVS50 room-side bathroom exhaust fan",
+      "brand": "ReVent",
+      "mpn": "RVS50",
+      "gtin12": "855448008305",
+      "category": "Bathroom",
+      "price": 7999,
+      "image": "https://images.thdstatic.com/productImages/4065588b-8c28-43e7-bc0f-dcf3d5524c06/svn/white-revent-bath-fans-rvs50-64_1000.jpg",
+      "images": [
+        "https://images.thdstatic.com/productImages/4065588b-8c28-43e7-bc0f-dcf3d5524c06/svn/white-revent-bath-fans-rvs50-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/aa29ab05-6232-44e2-9c2a-19f550ccd8cb/svn/white-revent-bath-fans-rvs50-e1_1000.jpg",
+        "https://images.thdstatic.com/productImages/f87271a7-8f86-4c18-b9c4-dbeb77b0bba1/svn/white-revent-bath-fans-rvs50-40_1000.jpg",
+        "https://images.thdstatic.com/productImages/7d00160b-06da-4517-8cee-9ef3355650f9/svn/white-revent-bath-fans-rvs50-a0_1000.jpg",
+        "https://images.thdstatic.com/productImages/4f06a47d-d6ce-4c58-859d-8c7e8f3fd7f6/svn/white-revent-bath-fans-rvs50-1f_1000.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 3,
+      "headline": "7-1/4 × 7-1/2 in opening",
+      "fit": "4-3/8 in deep · 4 in duct · 50 CFM",
+      "summary": "One ReVent RVS50 room-side bathroom exhaust fan for a measured 7-1/4 by 7-1/2-inch ceiling or wall opening with at least 4-3/8 inches of housing depth and a 4-inch exhaust duct. It moves 50 CFM for bathrooms up to about 50 square feet and uses a 9-3/4-inch square shield. This exact variant is not the lower-cost RVP50ES or the larger RVS110.",
+      "specs": [
+        {"name": "Required opening", "value": "7-1/4 × 7-1/2", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Housing dimensions", "value": "7-1/4 × 7-1/2 × 4-3/8", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Shield dimensions", "value": "9-3/4 × 9-3/4", "unitText": "in", "unitCode": "INH"},
+        {"name": "Duct diameter", "value": "4", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Airflow", "value": "50", "unitText": "CFM", "deciding": true},
+        {"name": "Maximum room size", "value": "50", "unitText": "sq ft", "deciding": true},
+        {"name": "Sound level", "value": "1.0", "unitText": "sones"},
+        {"name": "Voltage", "value": "120", "unitText": "V", "unitCode": "VLT"},
+        {"name": "Fan power", "value": "5.5", "unitText": "W", "unitCode": "WTT"},
+        {"name": "Installation", "value": "Room-side ceiling or wall installation; no attic access required"},
+        {"name": "Over-tub or shower condition", "value": "Install on a GFCI-protected circuit"},
+        {"name": "Certifications", "value": "ENERGY STAR, HVI and ETL"},
+        {"name": "Not this model", "value": "RVP50ES, RVS110, lighted RVL50 or humidity-sensing RVSH50", "deciding": true},
+        {"name": "Not for", "value": "Openings or cavities smaller than the stated housing, or direct 3-inch duct connection without an approved transition", "deciding": true}
+      ],
+      "faqs": [
+        {"q": "What ceiling opening does the ReVent RVS50 need?", "a": "Measure for a 7-1/4 by 7-1/2-inch opening and at least 4-3/8 inches of housing depth."},
+        {"q": "Is the 9-3/4-inch shield the fan housing size?", "a": "No. The shield is 9-3/4 inches square; the housing and opening are smaller at 7-1/4 by 7-1/2 inches."},
+        {"q": "What duct size fits the RVS50?", "a": "It is specified for a 4-inch exhaust duct."},
+        {"q": "Does this fan require attic access?", "a": "No. Its SheetLock system supports installation from the room side."},
+        {"q": "Can it ventilate a 100-square-foot bathroom?", "a": "No. This exact variant is rated at 50 CFM for rooms up to about 50 square feet; choose a correctly sized larger model."},
+        {"q": "Can it be installed over a bathtub or shower?", "a": "Yes, only when installed according to the instructions on a GFCI-protected circuit."}
+      ],
+      "autods": {
+        "productId": "658a60f45135b2cba04edacb",
+        "idOnSite": "307868409",
+        "variationId": "307868329",
+        "site": "the home depot",
+        "buySiteId": 5,
+        "supplier": "homedepot",
+        "warehouse": "US",
+        "supplierOption": "50 CFM / RVS50",
+        "inStock": true,
+        "inStockQty": 8,
+        "mappingNote": "AutoDS groups this exact 307868329 RVS50 variation under the 307868409 fan-family parent.",
+        "cost": 5661,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "fluidmaster-6100-two-inch-tank-gasket",
+      "sku": "UTY-FLUIDMASTER-6100",
+      "name": "Universal 2-inch tank-to-bowl gasket",
+      "brand": "Fluidmaster",
+      "mpn": "6100",
+      "gtin12": "039961061003",
+      "category": "Bathroom",
+      "price": 849,
+      "image": "https://m.media-amazon.com/images/I/71oLCOmcV-L._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/71oLCOmcV-L._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71UneSuouvL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71K5IsVeFzL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71w09foHlCL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/41HWiPBn96L._AC_.jpg",
+        "https://m.media-amazon.com/images/I/71qqI93pJjL._AC_SL1500_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 1,
+      "headline": "2 in flush valves",
+      "fit": "Close-coupled toilets · round or hex nut · not Gerber",
+      "summary": "One Fluidmaster 6100 sponge-rubber tank-to-bowl gasket for most close-coupled toilets with a 2-inch flush valve and a round or hex-shaped flush-valve nut. The word universal does not include 3-inch flush valves or Gerber toilets, and this package contains the gasket only, without tank bolts or other mounting hardware.",
+      "specs": [
+        {"name": "Flush-valve size", "value": "2", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Toilet construction", "value": "Close-coupled two-piece toilet", "deciding": true},
+        {"name": "Compatible flush-valve nut shapes", "value": "Round or hex-shaped", "deciding": true},
+        {"name": "Material", "value": "Sponge rubber"},
+        {"name": "Product dimensions", "value": "4.75 × 1.38 × 6.75", "unitText": "in", "unitCode": "INH"},
+        {"name": "Pack quantity", "value": "1 gasket"},
+        {"name": "Hardware included", "value": "No", "deciding": true},
+        {"name": "Warranty", "value": "1 year"},
+        {"name": "Not for", "value": "Gerber toilets, 3-inch flush valves, one-piece toilets, or installations requiring included bolts", "deciding": true}
+      ],
+      "faqs": [
+        {"q": "Does Fluidmaster 6100 fit a 3-inch flush valve?", "a": "No. Model 6100 is for 2-inch flush-valve toilets."},
+        {"q": "Does universal mean it fits Gerber toilets?", "a": "No. Fluidmaster explicitly excludes Gerber toilets from this gasket's fit."},
+        {"q": "Are tank bolts included?", "a": "No. This package contains one gasket only; mounting hardware is sold separately."},
+        {"q": "What toilet style does it fit?", "a": "It fits most close-coupled two-piece toilets with a 2-inch flush valve and a round or hex-shaped flush-valve nut."},
+        {"q": "How do I verify the flush-valve size?", "a": "Turn off the water, separate the tank only if safe to do so, and identify the valve outlet or existing gasket size. Do not choose from brand name alone."}
+      ],
+      "autods": {
+        "productId": "9b93af4bf139d9399a81ce3a",
+        "idOnSite": "B000DZGNIU",
+        "variationId": "B000DZGNIU",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "Jeff's Store",
+        "warehouse": "US",
+        "inStock": true,
+        "inStockQty": 1000000,
+        "stockNote": "AutoDS uses 1000000 as an availability sentinel; treat as in stock, not literal unit count.",
+        "cost": 578,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "slug": "american-standard-022650-slip-on-tub-spout",
+      "packshot": "Use the exact American Standard 022650-0020A reference product. Preserve the polished-chrome brass body, curved profile, circular wall end, underside slip-on set-screw area and pull-up diverter exactly. Create a clean three-quarter white-background ecommerce packshot with a soft natural shadow. No text, labels, packaging, extra hardware, alternate finish or invented features.",
+      "place": "Use the exact reference construction and polished-chrome finish. Show the American Standard 022650-0020A installed on a smooth 5/8-inch outside-diameter copper stub-out at a realistic bathtub wall, with the spout flush to the finished tile and the pull-up diverter visible. Keep the product shape exact. No text, people, water claims, extra fixtures or invented adapters.",
+      "detail": "Use the exact reference spout. Create a close-up fit scene showing the circular slip-on inlet aligned with a smooth copper tube and a simple visual measurement relationship for 5/8-inch outside diameter and wall projection, using a ruler or caliper without readable text. Preserve the real set-screw location and construction. No labels, numbers, arrows, cutaways or invented parts."
+    },
+    {
+      "slug": "kohler-pennington-k2196-single-hole-white",
+      "packshot": "Use the exact KOHLER Pennington K-2196-1-0 reference sink. Preserve the white vitreous-china oval self-rimming form, single faucet hole, overflow opening, rim proportions and basin depth. Create a clean elevated three-quarter white-background ecommerce packshot with a soft shadow. No faucet, drain, text, packaging, alternate drilling, alternate color or invented accessories.",
+      "place": "Use the exact white single-hole K-2196-1-0 reference sink installed as a drop-in basin in a realistic neutral bathroom countertop. Keep the raised rim, oval proportions, single faucet hole and overflow exact; leave the faucet and drain absent so the sellable product remains clear. No text, people, alternate color, extra holes or invented claims.",
+      "detail": "Use the exact reference sink and create a close-up installation-fit scene centered on the self-rimming edge and countertop cutout relationship, with the supplied paper-template concept and a ruler visible but no readable writing. Also keep the one faucet hole and overflow visually unambiguous. No dimensions rendered as text, no extra holes and no invented hardware."
+    },
+    {
+      "slug": "kohler-1188998-canister-flush-valve",
+      "packshot": "Use the exact KOHLER 1188998 reference assembly. Preserve the black and white 3-inch canister, 2-inch outlet base, chain, seals, tabs and included tank-to-bowl gasket exactly. Create a white-background ecommerce packshot with all included components arranged naturally and a soft shadow. No text, packaging, toilet tank, alternate valve or invented components.",
+      "place": "Use the exact KOHLER 1188998 reference construction installed inside a clean open KOHLER-style two-piece toilet tank, with the canister vertical and the outlet seated correctly. The scene should communicate model-specific replacement without showing or implying another valve type. No text, people, branding alterations, flapper mechanism or invented parts.",
+      "detail": "Use the exact reference assembly. Create a close-up compatibility scene that clearly contrasts the larger canister body with the narrower outlet base and shows the tank-model stamping area on the inside rear wall in soft focus, without readable text. Preserve all real seals, chain and connection geometry. No labels, numbers, arrows or invented claims."
+    },
+    {
+      "slug": "revent-rvs50-roomside-bath-fan",
+      "packshot": "Use the exact ReVent RVS50 reference product, not RVP50ES, RVS110, RVL50 or RVSH50. Preserve the white 9-3/4-inch square shield, metal 7-1/4 by 7-1/2-inch housing, 4-inch duct collar and room-side SheetLock construction. Create a white-background ecommerce packshot showing shield and housing accurately. No text, packaging, light, sensor or invented components.",
+      "place": "Use the exact ReVent RVS50 reference fan installed from the room side in a realistic bathroom ceiling. Show the white square shield seated flat and a small adjacent unfinished cutaway area revealing the correctly proportioned housing and 4-inch duct, without altering the product. No text, people, attic scene, light, humidity sensor or performance claims.",
+      "detail": "Use the exact RVS50 reference construction. Create a close-up fit scene with the metal housing aligned to a measured rectangular ceiling opening and the 4-inch round duct collar visible; include a ruler or tape measure without readable text to communicate opening and depth checks. No numeric overlays, arrows, alternate model parts or invented features."
+    },
+    {
+      "slug": "fluidmaster-6100-two-inch-tank-gasket",
+      "packshot": "Use the exact Fluidmaster 6100 reference gasket. Preserve the red sponge-rubber ring profile, stepped contours, center opening, thickness and single-piece construction. Create a clean white-background ecommerce packshot with a soft shadow. No text, packaging, bolts, nuts, extra gaskets, alternate color or invented hardware.",
+      "place": "Use the exact Fluidmaster 6100 red sponge-rubber gasket positioned correctly between a close-coupled toilet tank and bowl around a 2-inch flush-valve outlet. Show the tank slightly lifted so the gasket location is visible while keeping the installation realistic. No text, people, Gerber branding, 3-inch valve, bolts included in the product or invented parts.",
+      "detail": "Use the exact reference gasket. Create a close-up fit comparison showing its center opening aligned with a 2-inch flush-valve outlet and a round or hex-shaped valve nut nearby, with a caliper or ruler present but no readable text. Preserve the real sponge-rubber profile. No labels, numbers, arrows, 3-inch fit implication or included-hardware claim."
+    }
+  ]
+}

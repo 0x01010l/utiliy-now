@@ -1,0 +1,604 @@
+{
+  "products": [
+    {
+      "slug": "closetmaid-shelftrack-shelf-brackets",
+      "name": "ClosetMaid ShelfTrack locking shelf bracket",
+      "brand": "ClosetMaid",
+      "category": "Closet",
+      "image": "https://images.thdstatic.com/productImages/2a3c119a-a612-467c-883c-c872cfb4af03/svn/white-closetmaid-shelf-brackets-52853-64_1000.jpg",
+      "images": [
+        "https://images.thdstatic.com/productImages/2a3c119a-a612-467c-883c-c872cfb4af03/svn/white-closetmaid-shelf-brackets-52853-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/2e338096-8de7-4e77-910e-10ec8e204f8d/svn/white-closetmaid-shelf-brackets-52853-e1_1000.jpg",
+        "https://images.thdstatic.com/productImages/d9ca5482-2fa0-4af7-9b67-ded24e63c403/svn/white-closetmaid-shelf-brackets-2855-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/eff8b05d-dc60-4a43-a0e1-9bfe62b3435f/svn/white-closetmaid-shelf-brackets-2855-e1_1000.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 3,
+      "headline": "12 or 20 in ShelfTrack shelves",
+      "fit": "12.5 or 21.75 in bracket · double-notch lock · white steel",
+      "summary": "A genuine ClosetMaid locking bracket for the adjustable ShelfTrack hang-track and vertical-standard system. Choose by the wire shelf's nominal depth: the 12-inch shelf uses the 12.5-inch 2853/52853 bracket, while the 20-inch shelf uses the 21.75-inch 2855 bracket. Physical bracket length is longer than nominal shelf depth, so agents should decide from shelf depth and system family rather than overall length alone.",
+      "sharedSpecs": [
+        {"name": "Closet system", "value": "ClosetMaid ShelfTrack adjustable system", "deciding": true},
+        {"name": "Shelf material", "value": "ClosetMaid ventilated wire shelving", "deciding": true},
+        {"name": "Bracket geometry", "value": "Double-notch locking track bracket"},
+        {"name": "Material", "value": "Steel with white epoxy finish"},
+        {"name": "Package quantity", "value": "1 bracket"},
+        {"name": "Not included", "value": "Hang track, vertical standard and wire shelf"},
+        {"name": "Not for", "value": "ClosetMaid Fixed Mount or unrelated single-slot and twin-slot standards"}
+      ],
+      "faqs": [
+        {"q": "Which ClosetMaid ShelfTrack bracket depth do I need?", "a": "Measure the nominal wire-shelf depth. Choose 2853 for a 12-inch shelf or 2855 for a 20-inch shelf."},
+        {"q": "Why is the 12-inch bracket physically 12.5 inches long?", "a": "Twelve inches describes the compatible shelf depth. The formed locking bracket measures 12.5 inches overall."},
+        {"q": "Why is the 20-inch bracket almost 22 inches long?", "a": "Twenty inches describes the compatible shelf depth. The exact 2855 bracket measures 21.75 inches overall."},
+        {"q": "Do these brackets fit ClosetMaid Fixed Mount shelving?", "a": "No. Both variants insert into ClosetMaid ShelfTrack vertical standards."},
+        {"q": "Are the 16-inch and 20-inch ShelfTrack brackets interchangeable?", "a": "No. Match the bracket variant to the nominal wire-shelf depth."}
+      ],
+      "variants": [
+        {
+          "sku": "UTY-CM-2853",
+          "label": "12 in shelf / 12.5 in bracket",
+          "mpn": "52853",
+          "manufacturerModel": "2853 / 285300",
+          "gtin12": "075381028530",
+          "price": 899,
+          "image": "https://images.thdstatic.com/productImages/2a3c119a-a612-467c-883c-c872cfb4af03/svn/white-closetmaid-shelf-brackets-52853-64_1000.jpg",
+          "decidingSpec": {"name": "Nominal shelf depth", "value": "12", "unitText": "in", "unitCode": "INH"},
+          "specs": [
+            {"name": "Physical bracket length", "value": "12.5", "unitText": "in", "unitCode": "INH", "deciding": true}
+          ],
+          "retail": {
+            "price": 899,
+            "marketLow": 705,
+            "marketHigh": 1069,
+            "sources": [
+              "https://brownfieldcoop.com/p/91153c68-ca63-4785-88c7-0ca5eb64cf89/6576698",
+              "https://www.toolboxsupply.com/products/closetmaid-285300-shelftrack-wire-shelving-bracket-white-12"
+            ]
+          },
+          "economics": {
+            "retailPrice": 899,
+            "supplierCost": 648,
+            "shippingCost": 0,
+            "deliveredCost": 648,
+            "stripeFee": 56,
+            "netAfterStripe": 195,
+            "landedRatioBps": 7208,
+            "netMarginBps": 2169
+          },
+          "autods": {
+            "productId": "6585aeb2c108f62adca871ee",
+            "idOnSite": "100040392",
+            "variationId": "100040392",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "inStock": true,
+            "stockQuantity": 5187,
+            "cost": 648,
+            "shippingCost": 0,
+            "minDays": 3,
+            "maxDays": 3,
+            "costCheckedAt": "2026-10-09"
+          }
+        },
+        {
+          "sku": "UTY-CM-2855",
+          "label": "20 in shelf / 21.75 in bracket",
+          "mpn": "2855",
+          "manufacturerModel": "285500",
+          "gtin12": "075381028554",
+          "price": 1749,
+          "image": "https://images.thdstatic.com/productImages/d9ca5482-2fa0-4af7-9b67-ded24e63c403/svn/white-closetmaid-shelf-brackets-2855-64_1000.jpg",
+          "decidingSpec": {"name": "Nominal shelf depth", "value": "20", "unitText": "in", "unitCode": "INH"},
+          "specs": [
+            {"name": "Physical bracket length", "value": "21.75", "unitText": "in", "unitCode": "INH", "deciding": true}
+          ],
+          "retail": {
+            "price": 1749,
+            "marketLow": 994,
+            "marketHigh": 1761,
+            "sources": [
+              "https://hardwareandtools.com/products/closetmaid-shelftrack-285500-wire-shelving-bracket-20-in-l-3-1-2-in-h-steel",
+              "https://www.walmart.com/ip/CLOSETMAID-285500-2855-Shelf-Track-Bracket-1-White/708994492"
+            ]
+          },
+          "economics": {
+            "retailPrice": 1749,
+            "supplierCost": 1298,
+            "shippingCost": 0,
+            "deliveredCost": 1298,
+            "stripeFee": 81,
+            "netAfterStripe": 370,
+            "landedRatioBps": 7421,
+            "netMarginBps": 2115
+          },
+          "autods": {
+            "productId": "65afc351e2cfbceb469455b1",
+            "idOnSite": "100134099",
+            "variationId": "100134099",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "inStock": true,
+            "stockQuantity": 1191,
+            "cost": 1298,
+            "shippingCost": 0,
+            "minDays": 2,
+            "maxDays": 2,
+            "costCheckedAt": "2026-10-09"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "closetmaid-2817-shoe-shelf-brackets",
+      "sku": "UTY-CM-2817",
+      "name": "ShelfTrack shoe-shelf brackets, 2 pack",
+      "brand": "ClosetMaid",
+      "mpn": "2817",
+      "gtin12": "075381028172",
+      "category": "Closet",
+      "price": 1399,
+      "image": "https://m.media-amazon.com/images/I/31xyEuZecDL._AC_SL1000_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/31xyEuZecDL._AC_SL1000_.jpg",
+        "https://m.media-amazon.com/images/I/41WFozHdnYL._AC_SL1000_.jpg",
+        "https://m.media-amazon.com/images/I/612MJFWII5L._AC_SL1000_.jpg",
+        "https://m.media-amazon.com/images/I/61bDYahVbzL._AC_SL1207_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 2,
+      "headline": "12 in SuperSlide shelf",
+      "fit": "ShelfTrack standards · inverted shelf · not CloseMesh",
+      "summary": "Two ClosetMaid 2817 white steel brackets that turn a 12-inch-deep SuperSlide wire shelf into an angled shoe shelf. The brackets insert into ShelfTrack vertical standards without tools; install the wire shelf inverted with its front lip facing up as the shoe stop. This exact bracket is not compatible with CloseMesh shelving.",
+      "specs": [
+        {"name": "Closet system", "value": "ClosetMaid ShelfTrack", "deciding": true},
+        {"name": "Compatible shelf", "value": "12-inch-deep ClosetMaid SuperSlide wire shelf", "deciding": true},
+        {"name": "Shelf orientation", "value": "Inverted with front lip facing up", "deciding": true},
+        {"name": "Brackets", "value": "2"},
+        {"name": "Bracket dimensions", "value": "4.5 × 0.5 × 3", "unitText": "in", "unitCode": "INH"},
+        {"name": "Material", "value": "Epoxy-coated steel"},
+        {"name": "Tools", "value": "None for bracket attachment"},
+        {"name": "Not included", "value": "Wire shelf and ShelfTrack standards"},
+        {"name": "Not for", "value": "CloseMesh shelving, Fixed Mount standards or shelves deeper than 12 inches"}
+      ],
+      "faqs": [
+        {"q": "Do ClosetMaid 2817 brackets fit CloseMesh shelving?", "a": "No. They are specified for 12-inch ClosetMaid SuperSlide wire shelving and ShelfTrack standards."},
+        {"q": "How is the wire shelf oriented for shoes?", "a": "Invert the shelf so its front lip points upward and stops shoes from sliding off."},
+        {"q": "How many shoe-shelf brackets are included?", "a": "Two brackets."},
+        {"q": "Are the ShelfTrack standards and wire shelf included?", "a": "No. This package contains only the two shoe brackets."}
+      ],
+      "retail": {
+        "price": 1399,
+        "marketLow": 866,
+        "marketHigh": 1798,
+        "sources": [
+          "https://www.homebyames.com/en-us/ho/closetmaid/closets-accessories/specialty-storage-accessories/shoe-storage/281700.html",
+          "https://holtbuilderssupply.com/p/shelftrack-shoe-shelf-brackets-model-white-075381028172",
+          "https://www.homedepot.com/p/ClosetMaid-ShelfTrack-3-in-H-Shoe-Shelf-Brackets-for-Wire-Shelving-2-Pack-2817/100139820"
+        ]
+      },
+      "economics": {
+        "retailPrice": 1399,
+        "supplierCost": 991,
+        "shippingCost": 0,
+        "deliveredCost": 991,
+        "stripeFee": 71,
+        "netAfterStripe": 337,
+        "landedRatioBps": 7084,
+        "netMarginBps": 2409
+      },
+      "autods": {
+        "productId": "485dbcd287a28ed71665edaf",
+        "idOnSite": "B001QVDUYK",
+        "variationId": "B001QVDUYK",
+        "site": "amazon",
+        "supplier": "Jeff's Store",
+        "warehouse": "US",
+        "inStock": true,
+        "cost": 991,
+        "shippingCost": 0,
+        "minDays": 2,
+        "maxDays": 2,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "closetmaid-shelftrack-vertical-standards",
+      "name": "ClosetMaid ShelfTrack vertical standard",
+      "brand": "ClosetMaid",
+      "category": "Closet",
+      "image": "https://images.thdstatic.com/productImages/fafc5193-9c0e-497f-a9ec-034649e0f101/svn/white-closetmaid-closet-hardware-2800-64_1000.jpg",
+      "images": [
+        "https://images.thdstatic.com/productImages/fafc5193-9c0e-497f-a9ec-034649e0f101/svn/white-closetmaid-closet-hardware-2800-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/ff8993e8-a0d0-43e7-8a6b-038c3ff4c12b/svn/white-closetmaid-closet-hardware-2800-e1_1000.jpg",
+        "https://images.thdstatic.com/productImages/ba65f2f3-dd51-4b8c-989b-ed51cac45f96/svn/white-closetmaid-closet-hardware-2801-64_1000.jpg",
+        "https://images.thdstatic.com/productImages/aba707a0-a06a-4271-b0cb-2b709e0b660d/svn/white-closetmaid-closet-hardware-2801-e1_1000.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 4,
+      "headline": "12 or 30 in vertical standard",
+      "fit": "1.25 in slot pitch · 24 in maximum spacing · ShelfTrack",
+      "summary": "A white steel ClosetMaid ShelfTrack double-slot vertical standard in 12-inch or 30-inch length. Both variants use 1.25-inch vertical adjustment increments, snap into a ShelfTrack hang track or mount to a suitable wall surface, and must be placed no more than 24 inches apart and no more than 4 inches from a shelf end.",
+      "sharedSpecs": [
+        {"name": "Closet system", "value": "ClosetMaid ShelfTrack", "deciding": true},
+        {"name": "Slot pitch", "value": "1.25", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Maximum standard spacing", "value": "24", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Maximum shelf-end setback", "value": "4", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Cross-section", "value": "1 × 0.625", "unitText": "in", "unitCode": "INH"},
+        {"name": "Material", "value": "Steel with white epoxy finish"},
+        {"name": "Mounting", "value": "ShelfTrack hang track or correctly fastened to studs, concrete or drywall"},
+        {"name": "Not included", "value": "Hang track, shelf brackets and wall fasteners"},
+        {"name": "Not for", "value": "ClosetMaid Fixed Mount hardware or unverified generic bracket geometries"}
+      ],
+      "faqs": [
+        {"q": "What is the vertical slot spacing on ClosetMaid ShelfTrack standards?", "a": "The adjustment pitch is 1.25 inches."},
+        {"q": "How far apart can ShelfTrack standards be installed?", "a": "No more than 24 inches apart and no more than 4 inches from each shelf end."},
+        {"q": "Can a ShelfTrack standard mount without a hang track?", "a": "Yes, when it is fastened correctly for the wall surface. Hardware is not included."},
+        {"q": "Do these standards accept ClosetMaid Fixed Mount hardware?", "a": "No. They are part of the adjustable ShelfTrack system."},
+        {"q": "Which standard length should I choose?", "a": "Choose 12 inches for a short single-level adjustment zone or 30 inches when the shelf layout needs a taller vertical adjustment range."}
+      ],
+      "variants": [
+        {
+          "sku": "UTY-CM-2800",
+          "label": "12 in standard",
+          "mpn": "2800",
+          "manufacturerModel": "280000",
+          "gtin12": "075381028004",
+          "price": 899,
+          "image": "https://images.thdstatic.com/productImages/fafc5193-9c0e-497f-a9ec-034649e0f101/svn/white-closetmaid-closet-hardware-2800-64_1000.jpg",
+          "decidingSpec": {"name": "Standard length", "value": "12", "unitText": "in", "unitCode": "INH"},
+          "retail": {
+            "price": 899,
+            "marketLow": 598,
+            "marketHigh": 1079,
+            "sources": [
+              "https://www.amazon.com/ClosetMaid-2800-ShelfTrack-12-Inch-Standard/dp/B00002N83Q",
+              "https://www.walmart.com/ip/ClosetMaid-2800-ShelfTrack-12-Inch-Standard-White/411837245"
+            ]
+          },
+          "economics": {
+            "retailPrice": 899,
+            "supplierCost": 598,
+            "shippingCost": 0,
+            "deliveredCost": 598,
+            "stripeFee": 56,
+            "netAfterStripe": 245,
+            "landedRatioBps": 6652,
+            "netMarginBps": 2725
+          },
+          "autods": {
+            "productId": "658e1e3e457ccd71b1f8b8b3",
+            "idOnSite": "100078647",
+            "variationId": "100078647",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "inStock": true,
+            "stockQuantity": 481,
+            "cost": 598,
+            "shippingCost": 0,
+            "minDays": 4,
+            "maxDays": 4,
+            "costCheckedAt": "2026-10-09"
+          }
+        },
+        {
+          "sku": "UTY-CM-2801",
+          "label": "30 in standard",
+          "mpn": "2801",
+          "manufacturerModel": "280100",
+          "gtin12": "075381028011",
+          "price": 1199,
+          "image": "https://images.thdstatic.com/productImages/ba65f2f3-dd51-4b8c-989b-ed51cac45f96/svn/white-closetmaid-closet-hardware-2801-64_1000.jpg",
+          "decidingSpec": {"name": "Standard length", "value": "30", "unitText": "in", "unitCode": "INH"},
+          "retail": {
+            "price": 1199,
+            "marketLow": 731,
+            "marketHigh": 1406,
+            "sources": [
+              "https://www.fergusonhome.com/closetmaid-st-30-s/s1719142",
+              "https://www.toolboxsupply.com/products/closetmaid-280100-shelftrack-heavy-duty-standard-bracket-system-white-30"
+            ]
+          },
+          "economics": {
+            "retailPrice": 1199,
+            "supplierCost": 898,
+            "shippingCost": 0,
+            "deliveredCost": 898,
+            "stripeFee": 65,
+            "netAfterStripe": 236,
+            "landedRatioBps": 7490,
+            "netMarginBps": 1968
+          },
+          "autods": {
+            "productId": "68a89e31e0183ffb9cb664e3",
+            "idOnSite": "100028761",
+            "variationId": "100028761",
+            "site": "the home depot",
+            "supplier": "homedepot",
+            "warehouse": "US",
+            "inStock": true,
+            "stockQuantity": 222,
+            "cost": 898,
+            "shippingCost": 0,
+            "minDays": 3,
+            "maxDays": 3,
+            "costCheckedAt": "2026-10-09"
+          }
+        }
+      ]
+    },
+    {
+      "slug": "kv-cd-0017-brz-pole-end-caps",
+      "sku": "UTY-KV-CD0017BRZ",
+      "name": "Closet-Pro HD pole end caps, bronze pair",
+      "brand": "Knape & Vogt",
+      "mpn": "CD-0017-BRZ",
+      "gtin12": "077355001747",
+      "category": "Closet",
+      "price": 1299,
+      "image": "https://m.media-amazon.com/images/I/6190fp8rG-L._AC_SL1200_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/6190fp8rG-L._AC_SL1200_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 2,
+      "headline": "For 1-5/16 in closet poles",
+      "fit": "1 open + 1 closed cap · hidden set screws · bronze",
+      "summary": "One bronze pair of Knape & Vogt Closet-Pro HD CD-0017-BRZ decorative end caps for exposed 1-5/16-inch round closet-pole ends. The pair contains one open cap and one closed cap, and hidden set screws retain the caps to help keep hangers from sliding off. These are pole-end finish caps, not load-bearing wall sockets.",
+      "specs": [
+        {"name": "Accepted pole diameter", "value": "1-5/16", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Open end caps", "value": "1"},
+        {"name": "Closed end caps", "value": "1"},
+        {"name": "Package quantity", "value": "1 pair", "deciding": true},
+        {"name": "Retention", "value": "Hidden set screws"},
+        {"name": "Finish", "value": "Bronze"},
+        {"name": "Hardware", "value": "Included"},
+        {"name": "Purpose", "value": "Finish exposed pole ends and help retain hangers"},
+        {"name": "Not for", "value": "3/4-inch, 1-inch or 1-1/4-inch poles"},
+        {"name": "Not this product", "value": "Wall-mounted pole socket or load-bearing flange"}
+      ],
+      "faqs": [
+        {"q": "What closet-pole diameter fits CD-0017-BRZ end caps?", "a": "They fit a 1-5/16-inch round closet pole."},
+        {"q": "Will these fit a 1-1/4-inch closet pole?", "a": "No. This exact model is specified for a 1-5/16-inch pole."},
+        {"q": "How many end caps are included?", "a": "One pair: one open cap and one closed cap."},
+        {"q": "Are these load-bearing pole sockets?", "a": "No. They are decorative caps for exposed pole ends."},
+        {"q": "How do the end caps stay attached?", "a": "Hidden set screws secure them to the pole ends."}
+      ],
+      "retail": {
+        "price": 1299,
+        "marketLow": 1054,
+        "marketHigh": 1321,
+        "sources": [
+          "https://www.wurthmachinery.com/End-Cap-for-1-5-16-Closet-Poles-Bronze.html",
+          "https://www.dkhardware.com/knape-vogt-cd-0017-brz-kv-closet-pro-hd-end-cap-pair-bronze-product-5732129.html"
+        ]
+      },
+      "economics": {
+        "retailPrice": 1299,
+        "supplierCost": 949,
+        "shippingCost": 0,
+        "deliveredCost": 949,
+        "stripeFee": 68,
+        "netAfterStripe": 282,
+        "landedRatioBps": 7306,
+        "netMarginBps": 2171
+      },
+      "autods": {
+        "productId": "ef3d836eeffaf880fed9a19f",
+        "idOnSite": "B00DI2O65W",
+        "variationId": "B00DI2O65W",
+        "site": "amazon",
+        "supplier": "Amazon.com",
+        "warehouse": "US",
+        "inStock": true,
+        "cost": 949,
+        "shippingCost": 0,
+        "minDays": 2,
+        "maxDays": 2,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "kv-closet-culture-basket-surround",
+      "sku": "UTY-KV-0335SRNDCN",
+      "name": "Closet Culture pull-out basket surround",
+      "brand": "Knape & Vogt",
+      "mpn": "0335-SRND-CN",
+      "gtin12": "029274398811",
+      "category": "Closet",
+      "price": 6499,
+      "image": "https://m.media-amazon.com/images/I/81C9+yPyuiL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/81C9+yPyuiL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71-ChbbmGfL._AC_SL1254_.jpg",
+        "https://m.media-amazon.com/images/I/71onSdZ77BL._AC_SL1254_.jpg",
+        "https://m.media-amazon.com/images/I/71BY5pV1O2L._AC_SL1254_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 6,
+      "headline": "23.75 × 16.63 in assembled",
+      "fit": "Closet Culture 0335-BSKT only · roller slides · basket not included",
+      "summary": "One Knape & Vogt Closet Culture 0335-SRND-CN steel surround kit that converts the matching 0335-BSKT wire-mesh basket into a pull-out. The assembled surround is approximately 23.75 inches wide, 16.63 inches deep and 2.88 inches high. It includes roller slides, two brackets and fascia screws, but not the mesh basket or optional wood fascia.",
+      "specs": [
+        {"name": "Closet system", "value": "Knape & Vogt Closet Culture", "deciding": true},
+        {"name": "Compatible mesh basket", "value": "0335-BSKT", "deciding": true},
+        {"name": "Assembled dimensions", "value": "23.75 × 16.63 × 2.88", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Motion", "value": "Integrated roller-slide pull-out"},
+        {"name": "Material", "value": "Steel"},
+        {"name": "Finish", "value": "Champagne nickel powder coat"},
+        {"name": "Included", "value": "Basket surround, roller slides, 2 brackets and fascia mounting screws"},
+        {"name": "Not included", "value": "0335-BSKT mesh basket and optional wood fascia"},
+        {"name": "Not for", "value": "ClosetMaid ShelfTrack, SuiteSymphony or generic cabinet baskets"}
+      ],
+      "faqs": [
+        {"q": "Is the wire basket included with 0335-SRND-CN?", "a": "No. The compatible Closet Culture 0335-BSKT mesh basket is sold separately."},
+        {"q": "Which basket fits this pull-out surround?", "a": "Only the matching Knape & Vogt Closet Culture 0335-BSKT basket is verified."},
+        {"q": "What are the assembled dimensions?", "a": "Approximately 23.75 inches wide, 16.63 inches deep and 2.88 inches high."},
+        {"q": "Are the roller slides included?", "a": "Yes. The surround, integrated roller slides, two brackets and fascia screws are included."},
+        {"q": "Will it fit a generic 24-inch cabinet basket?", "a": "Do not assume so. The hardware is designed specifically for the Closet Culture system and 0335-BSKT basket."}
+      ],
+      "retail": {
+        "price": 6499,
+        "marketLow": 4977,
+        "marketHigh": 7999,
+        "sources": [
+          "https://www.idealtruevalue.com/closet-culture-basket-surround-kit-champagne-nickel-finish-includes.aspx",
+          "https://www.woodworkerexpress.com/closet-culture-mesh-basket-surround-kit-champagne-nickel-knape-and-vogt-0335-srnd-cn.html",
+          "https://www.strasser-hardware.com/products/closet-basket-surr-kit%7C244984.html"
+        ]
+      },
+      "economics": {
+        "retailPrice": 6499,
+        "supplierCost": 5008,
+        "shippingCost": 0,
+        "deliveredCost": 5008,
+        "stripeFee": 218,
+        "netAfterStripe": 1273,
+        "landedRatioBps": 7706,
+        "netMarginBps": 1959
+      },
+      "autods": {
+        "productId": "ca0de005e510523a95c87b2c",
+        "idOnSite": "B07CPB5RSQ",
+        "variationId": "B07CPB5RSQ",
+        "site": "amazon",
+        "supplier": "Amazon.com",
+        "warehouse": "US",
+        "inStock": true,
+        "stockQuantity": 2,
+        "cost": 5008,
+        "shippingCost": 0,
+        "minDays": 6,
+        "maxDays": 6,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "closetmaid-5629-superslide-supports",
+      "sku": "UTY-CM-5629-10",
+      "name": "SuperSlide hanging-bar supports, 10 pack",
+      "brand": "ClosetMaid",
+      "mpn": "5629",
+      "category": "Closet",
+      "price": 3799,
+      "image": "https://m.media-amazon.com/images/I/5184tb2k+wL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/5184tb2k+wL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/81cJCCICzRL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/41rZGwgM1qL._AC_SL1182_.jpg",
+        "https://m.media-amazon.com/images/I/51o1JP8EMwL._AC_SL1500_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 4,
+      "maxDays": 4,
+      "headline": "One every 36 in, 10 pack",
+      "fit": "12 or 16 in SuperSlide shelf · 3/4 in hang bar · white resin",
+      "summary": "Ten white ClosetMaid 5629 supports that snap onto 12-inch or 16-inch SuperSlide wire shelving and suspend the matching 3/4-inch SuperSlide hang bar without interrupting hanger travel. Install one support at each rod end and every 36 inches between. The shelf may use Fixed Mount or ShelfTrack wall hardware, but the shelf geometry itself must be SuperSlide.",
+      "specs": [
+        {"name": "Compatible shelf family", "value": "ClosetMaid SuperSlide", "deciding": true},
+        {"name": "Compatible shelf depths", "value": "12 or 16", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Compatible hang bar diameter", "value": "3/4", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Maximum spacing", "value": "36", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "End placement", "value": "One support at each end of shelf and hang bar"},
+        {"name": "Supports in package", "value": "10", "deciding": true},
+        {"name": "Support dimensions", "value": "5.75 × 3.87 × 0.87", "unitText": "in", "unitCode": "INH"},
+        {"name": "Material", "value": "White resin"},
+        {"name": "Attachment", "value": "Snaps onto SuperSlide wire shelf; no separate tools or fasteners"},
+        {"name": "Wall-mount systems", "value": "SuperSlide shelf may be installed with Fixed Mount or ShelfTrack hardware"},
+        {"name": "Not included", "value": "SuperSlide shelf and hang bar"},
+        {"name": "Not for", "value": "CloseMesh, generic wire shelving or closet poles larger than 3/4 inch"}
+      ],
+      "faqs": [
+        {"q": "How far apart should ClosetMaid 5629 supports be?", "a": "Use one at each end of the shelf and hang bar and one every 36 inches between."},
+        {"q": "Which shelves accept the 5629 support?", "a": "ClosetMaid 12-inch and 16-inch SuperSlide wire shelving."},
+        {"q": "Does 5629 fit a 1-1/4-inch closet pole?", "a": "No. It supports the matching 3/4-inch SuperSlide hang bar."},
+        {"q": "Can it work in both Fixed Mount and ShelfTrack closets?", "a": "Yes, if the shelf is SuperSlide. Fixed Mount or ShelfTrack describes the wall-mount method, not a different support shape."},
+        {"q": "How many supports are in this exact supplier SKU?", "a": "Ten. This page is mapped to the exact B0929GCMDG ten-pack, not the single-support 562900 offer."}
+      ],
+      "retail": {
+        "price": 3799,
+        "marketLow": 2899,
+        "marketHigh": 4549,
+        "sources": [
+          "https://www.amazon.com/5629-75-Hanging-Rod-Support/dp/B0929GCMDG",
+          "https://www.retailmarket.net/products/closetmaid-5629-support-for-superslide-hanging-bar-white-10-pack/"
+        ]
+      },
+      "economics": {
+        "retailPrice": 3799,
+        "supplierCost": 2870,
+        "shippingCost": 0,
+        "deliveredCost": 2870,
+        "stripeFee": 140,
+        "netAfterStripe": 789,
+        "landedRatioBps": 7555,
+        "netMarginBps": 2077
+      },
+      "autods": {
+        "productId": "0589f6871258f0ce5f17a770",
+        "idOnSite": "B0929GCMDG",
+        "variationId": "B0929GCMDG",
+        "site": "amazon",
+        "supplier": "Mountaineer Wholesaling",
+        "warehouse": "US",
+        "inStock": true,
+        "cost": 2870,
+        "shippingCost": 0,
+        "minDays": 4,
+        "maxDays": 4,
+        "costCheckedAt": "2026-10-09"
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "slug": "closetmaid-shelftrack-shelf-brackets",
+      "packshot": "Photorealistic catalog packshot using the supplied source images as strict product reference: exactly two separate white epoxy-coated steel ClosetMaid ShelfTrack locking brackets, one exact 2853/52853 12.5-inch bracket and one exact 2855 21.75-inch bracket, side by side on seamless neutral white, preserve their different lengths, double-notch track geometry, wire-shelf locking tabs, finish and proportions, no shelf, no standards, no hardware, no extra objects, no labels, no logos added, no text, no invented features.",
+      "place": "Photorealistic installed closet scene using the exact referenced products: a ClosetMaid ShelfTrack wall with one 12-inch-deep ventilated wire shelf correctly seated on exact 2853 brackets and a separate 20-inch-deep ventilated wire shelf correctly seated on exact 2855 brackets, visible ClosetMaid hang track and matching double-slot standards, bracket lengths visibly match shelf depths, ordinary folded clothing for scale without obscuring hardware, no unsupported load claim, no text, no callouts, no invented parts.",
+      "detail": "Macro compatibility close-up showing an exact white ClosetMaid ShelfTrack bracket double notch fully inserted into the matching double-slot vertical standard and its locking tab engaging the front wire of a ventilated shelf; include the shelf edge and bracket profile so nominal shelf depth versus longer bracket geometry is visually clear, preserve exact source geometry, no measurements printed, no arrows, no text, no invented hardware."
+    },
+    {
+      "slug": "closetmaid-2817-shoe-shelf-brackets",
+      "packshot": "Photorealistic catalog packshot using supplied source images as strict reference: exactly two ClosetMaid 2817 white epoxy-coated steel shoe-shelf brackets, identical 4.5 by 0.5 by 3 inch parts, isolated on seamless neutral white, preserve exact hooks, bends, finish and two-count package contents, no shelf, no standards, no screws, no shoes, no packaging text, no invented pieces.",
+      "place": "Photorealistic installed ClosetMaid ShelfTrack shoe shelf: exactly two 2817 brackets inserted into matching ShelfTrack standards, supporting one 12-inch-deep SuperSlide wire shelf inverted at the correct angle with its front lip facing upward as the shoe stop, several ordinary shoes resting naturally, full bracket engagement visible, not CloseMesh shelving, no extra brackets, no text, no labels, no invented hardware.",
+      "detail": "Macro decisive-fit close-up of an exact 2817 bracket inserted into a ClosetMaid ShelfTrack standard and clipped to the inverted 12-inch SuperSlide shelf, clearly showing the open-wire geometry and upward-facing shelf lip; preserve exact source shape and finish, no CloseMesh grid, no arrows, no dimensions, no text, no invented components."
+    },
+    {
+      "slug": "closetmaid-shelftrack-vertical-standards",
+      "packshot": "Photorealistic catalog packshot using supplied source images as strict reference: exactly two white epoxy-coated steel ClosetMaid ShelfTrack double-slot vertical standards, one exact 2800 12-inch length and one exact 2801 30-inch length, aligned at one end on seamless neutral white so the length difference and identical 1-inch-wide double-slot profile are clear, no brackets, no hang track, no screws, no packaging, no text, no invented slots.",
+      "place": "Photorealistic installed adjustable closet wall with exact ClosetMaid ShelfTrack hardware: a short 12-inch 2800 standard serving a compact single shelf zone and a separate 30-inch 2801 standard serving a taller multi-position zone, both correctly attached to a horizontal ShelfTrack hang track, matching brackets and ventilated shelves installed, standards visibly within realistic support spacing, no unsupported load depiction, no text, no callouts, no invented hardware.",
+      "detail": "Macro compatibility close-up of an exact ClosetMaid ShelfTrack double-slot standard hanging securely from the matching hang track with a correct double-notch ShelfTrack bracket inserted, show repeated 1.25-inch adjustment pattern through geometry only, preserve exact white steel profile and slot shape, no ruler, no printed dimensions, no arrows, no text, no generic twin-slot substitution."
+    },
+    {
+      "slug": "kv-cd-0017-brz-pole-end-caps",
+      "packshot": "Photorealistic catalog packshot using the supplied source image as strict reference: exactly one pair of Knape & Vogt Closet-Pro HD CD-0017-BRZ bronze decorative pole end caps, one open cap and one closed cap, with their included hidden set-screw hardware only, isolated on seamless neutral white, preserve exact bronze finish, round 1-5/16-inch fit geometry and source proportions, no pole, no wall sockets, no packaging text, no invented pieces.",
+      "place": "Photorealistic installed open-ended Closet-Pro HD round closet pole exactly 1-5/16 inches in diameter, bronze CD-0017-BRZ open and closed caps secured on the two exposed ends with matching finish, hangers retained naturally between the ends, caps clearly decorative and not supporting the pole from a wall, no text, no labels, no invented flanges or load claim.",
+      "detail": "Macro decisive-fit close-up of one exact bronze CD-0017-BRZ end cap seated concentrically over the exposed end of a 1-5/16-inch round pole, hidden set screw location subtly visible and cap-to-pole fit clear, preserve exact product geometry and finish, no wall mounting, no ruler, no arrows, no text, no invented seam."
+    },
+    {
+      "slug": "kv-closet-culture-basket-surround",
+      "packshot": "Photorealistic catalog packshot using supplied source images as strict reference: one exact Knape & Vogt Closet Culture 0335-SRND-CN champagne-nickel steel basket surround kit laid out with its integrated roller slides, exactly two brackets and fascia mounting screws, isolated on seamless neutral white, do not include the 0335-BSKT mesh basket or wood fascia, preserve exact 23.75-inch-wide frame geometry, finish and component count, no text, no invented parts.",
+      "place": "Photorealistic installed Closet Culture modular closet bay using the exact 0335-SRND-CN surround correctly paired with a separate matching 0335-BSKT wire-mesh basket, assembly mounted level in the correct Closet Culture system and partially pulled out on roller slides, champagne-nickel finish visible, optional wood fascia absent, no generic cabinet slides, no text, no labels, no invented components.",
+      "detail": "Macro decisive-compatibility close-up of the exact 0335-SRND-CN roller-slide surround attached to the matching 0335-BSKT basket and its Closet Culture mounting bracket, show the proprietary interfaces and 23.75-inch-class bay geometry through the hardware itself, preserve exact source finish and proportions, no ruler, no arrows, no text, no generic basket substitution."
+    },
+    {
+      "slug": "closetmaid-5629-superslide-supports",
+      "packshot": "Photorealistic catalog packshot using supplied source images as strict reference: exactly ten identical white resin ClosetMaid 5629 SuperSlide hanging-bar supports arranged in two neat rows on seamless neutral white, preserve exact 5.75 by 3.87 by 0.87 inch J-shaped snap-on geometry, no wire shelf, no rod, no fasteners, no packaging text, no extra supports, no invented features.",
+      "place": "Photorealistic installed ClosetMaid SuperSlide closet run with exact white 5629 supports snapped onto a 12-inch or 16-inch SuperSlide wire shelf and carrying the matching 3/4-inch round hang bar, one support near each visible end and intermediate supports spaced consistently along the run, hangers slide past the supports naturally, wall mounting may be ShelfTrack but shelf geometry must remain SuperSlide, no text, no dimensions printed, no invented load claim.",
+      "detail": "Macro decisive-fit close-up of one exact 5629 white resin support snapped over the correct SuperSlide shelf wires while cradling the 3/4-inch SuperSlide hang bar, clearly show uninterrupted hanger path and proprietary shelf-wire engagement, preserve exact source geometry, no CloseMesh grid, no larger closet pole, no arrows, no text, no invented fasteners."
+    }
+  ]
+}

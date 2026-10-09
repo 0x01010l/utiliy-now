@@ -1,0 +1,327 @@
+{
+  "products": [
+    {
+      "slug": "vevor-gd60fd-leveling-casters",
+      "sku": "UTY-VEVOR-GD60FD-4",
+      "name": "2-inch leveling casters, 58 × 58 mm plate, 4 pack",
+      "brand": "VEVOR",
+      "mpn": "GD-60FD",
+      "category": "Furniture",
+      "price": 3411,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDJJLBSDJPBS4QUJMHV0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1753233619",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDJJLBSDJPBS4QUJMHV0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1753233619"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "58 × 58 mm hole centers",
+      "fit": "2 in wheel · 3.22 in installed · 275 lb each",
+      "summary": "Four VEVOR GD-60FD leveling casters for a workbench, cabinet, machine base, or heavy furniture frame with a 73 × 73 mm mounting area and 58 × 58 mm bolt-hole centers. Each 2-inch caster is rated for 275 pounds, installs 3.22 inches high, swivels for movement, and lowers onto a vibration-damping leveling foot for stationary support.",
+      "specs": [
+        {"name": "Mounting plate", "value": "73 × 73", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Bolt-hole centers", "value": "58 × 58", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Mounting-hole diameter", "value": "7 or 8.5", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Wheel diameter", "value": "2", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Wheel width", "value": "0.98", "unitText": "in", "unitCode": "INH"},
+        {"name": "Installation height", "value": "3.22", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Leveling travel", "value": "0.39", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Load per caster", "value": "275", "unitText": "lb", "unitCode": "LBR", "deciding": true},
+        {"name": "Maximum set load", "value": "1100", "unitText": "lb", "unitCode": "LBR"},
+        {"name": "Pack quantity", "value": "4"},
+        {"name": "Wheel material", "value": "Nylon"},
+        {"name": "Leveling mechanism", "value": "Hand-adjusted retractable foot with vibration-damping pad"},
+        {"name": "Not for", "value": "Stem sockets, office-chair bases, or mounting surfaces smaller than the stated plate"}
+      ],
+      "faqs": [
+        {"q": "Will these casters match my existing bolt holes?", "a": "Only if the mounting surface accepts a 73 × 73 mm plate with hole centers measuring 58 × 58 mm. Measure center to center before ordering."},
+        {"q": "Is the 1,100-pound rating for each wheel?", "a": "No. Each caster is rated for 275 pounds; 1,100 pounds is the maximum evenly distributed rating for all four."},
+        {"q": "How tall are the casters after installation?", "a": "The stated installation height is 3.22 inches."},
+        {"q": "How do the leveling feet work?", "a": "Move the furniture on the swivel wheels, then use the handles to lower the feet and level the frame over a range of about 0.39 inch."},
+        {"q": "Are these stem-mounted casters?", "a": "No. They require a flat mounting surface and four fasteners through each square plate."}
+      ],
+      "autods": {
+        "productId": "6a262c651606ae9d640f620c",
+        "idOnSite": "8144659939520",
+        "variationId": "48618759291072",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "supplierOption": "2 inch, 4 pack",
+        "warehouse": "US",
+        "stock": 247,
+        "cost": 2607,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "vevor-cc-pbjl-4-plate-casters",
+      "sku": "UTY-VEVOR-CCPBJL4-4",
+      "name": "4-inch locking plate casters, 74 × 45 mm holes, 4 pack",
+      "brand": "VEVOR",
+      "mpn": "CC-PBJL-4",
+      "category": "Furniture",
+      "price": 2899,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FPBJLCSJAZ4J3LNWL1V0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1769476501",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FPBJLCSJAZ4J3LNWL1V0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1769476501"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "74 × 45 mm bolt pattern",
+      "fit": "4 in wheel · 5.11 in installed · 350 lb each",
+      "summary": "Four VEVOR CC-PBJL-4 locking swivel plate casters for furniture, carts, cabinets, and workbenches whose mounting surface accepts a 94 × 64 mm plate with 74 × 45 mm hole centers. Each PVC wheel is 4 inches in diameter, installs 5.11 inches high, and carries up to 350 pounds when correctly fastened.",
+      "specs": [
+        {"name": "Mounting plate", "value": "94 × 64", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Bolt-hole centers", "value": "74 × 45", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Mounting holes", "value": "4 slotted holes, 9 mm", "deciding": true},
+        {"name": "Included fasteners", "value": "16 M8 screws, nuts, flat washers and spring washers"},
+        {"name": "Wheel diameter", "value": "4", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Wheel width", "value": "1.25", "unitText": "in", "unitCode": "INH"},
+        {"name": "Axle diameter", "value": "0.39", "unitText": "in", "unitCode": "INH"},
+        {"name": "Installation height", "value": "5.11", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Load per caster", "value": "350", "unitText": "lb", "unitCode": "LBR", "deciding": true},
+        {"name": "Maximum set load", "value": "1400", "unitText": "lb", "unitCode": "LBR"},
+        {"name": "Pack quantity", "value": "4"},
+        {"name": "Motion and brake", "value": "360-degree swivel with A/B locking brake"},
+        {"name": "Wheel material", "value": "Non-marking PVC"},
+        {"name": "Not for", "value": "Stem sockets or furniture legs too narrow for the 94 × 64 mm plate"}
+      ],
+      "faqs": [
+        {"q": "What bolt pattern do these 4-inch casters use?", "a": "The four slotted mounting holes have 74 × 45 mm center spacing on a 94 × 64 mm plate."},
+        {"q": "How much weight does each caster support?", "a": "Up to 350 pounds per caster when mounted correctly. The four-caster set rating is 1,400 pounds with an evenly distributed load."},
+        {"q": "How much height will the casters add?", "a": "The stated installation height is 5.11 inches."},
+        {"q": "Do all four wheels swivel and lock?", "a": "Yes. All four swivel through 360 degrees and include A/B brakes."},
+        {"q": "Are mounting bolts included?", "a": "Yes. The package includes M8 screws, nuts, flat washers, spring washers, two wrenches, and four casters."}
+      ],
+      "autods": {
+        "productId": "6a262b036005c34d9f86d1ad",
+        "idOnSite": "8439214899392",
+        "variationId": "48618864836800",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "supplierOption": "4 inch, 4 pack",
+        "warehouse": "US",
+        "stock": 821,
+        "cost": 2252,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "yormtoir-low-profile-repair-casters",
+      "sku": "UTY-YORMTOIR-LZ000-4",
+      "name": "0.9-inch low-profile fixed repair casters, 4 pack",
+      "brand": "YORMTOIR",
+      "mpn": "LZ000",
+      "category": "Furniture",
+      "price": 999,
+      "image": "https://m.media-amazon.com/images/I/71iMzVK6trL._SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/71iMzVK6trL._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71kpj3M5y9L._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71ZYeOkktpL._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61Tgdg55PeL._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/615yOhfKkML._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71bUKpZ-I2L._SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71oPAjxXe8L._SL1500_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 4,
+      "maxDays": 4,
+      "headline": "1 in installed height",
+      "fit": "0.9 in fixed wheel · 30 lb each · 4 pack",
+      "summary": "Four YORMTOIR LZ000 low-profile fixed casters for supporting a sagging wooden door or lightweight cabinet, drawer unit, coffee table, or under-bed bin without adding the height of a conventional caster. Each rigid nylon wheel is 0.9 inch in diameter, installs about 1 inch high, and supports up to 30 pounds.",
+      "specs": [
+        {"name": "Wheel diameter", "value": "0.9", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Wheel width", "value": "0.7", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Installation height", "value": "1", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Bracket size", "value": "2.95 × 0.9", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Mounting-hole spacing", "value": "1.26 × 0.33", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Mounting-hole diameter", "value": "0.157", "unitText": "in", "unitCode": "INH"},
+        {"name": "Load per caster", "value": "30", "unitText": "lb", "unitCode": "LBR", "deciding": true},
+        {"name": "Maximum set load", "value": "120", "unitText": "lb", "unitCode": "LBR"},
+        {"name": "Caster motion", "value": "Rigid fixed direction; does not swivel", "deciding": true},
+        {"name": "Mounting positions", "value": "Side, vertical or bottom"},
+        {"name": "Material", "value": "Nylon wheel and steel bracket"},
+        {"name": "Included", "value": "4 casters and 16 screws"},
+        {"name": "Not for", "value": "Carpet, uneven floors, outdoor use, water exposure, or loads over 120 lb per set"}
+      ],
+      "faqs": [
+        {"q": "How much height does each repair caster add?", "a": "The stated installation height is approximately 1 inch."},
+        {"q": "Will these wheels swivel?", "a": "No. They are rigid, one-direction fixed casters intended to support movement along a straight path."},
+        {"q": "Can these support a sagging bedroom door?", "a": "Yes, when the door construction accepts the bracket and the load at the wheel does not exceed 30 pounds. Confirm floor clearance through the full swing."},
+        {"q": "Can I install the casters on the side of furniture?", "a": "Yes. The supplied bracket can be mounted on a side, vertically, or on the bottom when the structure provides solid screw support."},
+        {"q": "Do these work on carpet?", "a": "No. They are specified for smooth, even indoor flooring rather than carpet or uneven surfaces."}
+      ],
+      "autods": {
+        "productId": "2c574e24e468c2bde5c1d533",
+        "idOnSite": "B0F26SPLXZ",
+        "variationId": "B0F26SPLXZ",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "Meimao SJ",
+        "supplierOption": "4 casters",
+        "warehouse": "US",
+        "stockStatus": "in_stock",
+        "cost": 699,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "souldershop-three-inch-recliner-springs",
+      "sku": "UTY-SOULDERSHOP-031A-2",
+      "name": "3-inch short-neck recliner tension springs, 2 pack",
+      "brand": "Souldershop",
+      "mpn": "031a",
+      "category": "Furniture",
+      "price": 1299,
+      "image": "https://m.media-amazon.com/images/I/61AF-9x89WL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/61AF-9x89WL._AC_SL1500_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 2,
+      "headline": "2.82 in inside-hook length",
+      "fit": "3 in overall · 2 mm wire · short-neck hooks",
+      "summary": "Two Souldershop 031a galvanized recliner mechanism tension springs measuring 3 inches overall and 2.82 inches from the inside of one hook to the inside of the other. Match the 11/16-inch coil diameter, 18-turn body, 2 mm wire, short-neck hooks, and 45-degree hook deflection to the removed spring before ordering.",
+      "specs": [
+        {"name": "Overall length", "value": "3", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Inside-hook length", "value": "2.82", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Coil diameter", "value": "11/16", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Coil-body length", "value": "1-12/19", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Wire diameter", "value": "2", "unitText": "mm", "unitCode": "MMT", "deciding": true},
+        {"name": "Coil turns", "value": "18", "deciding": true},
+        {"name": "Hook style", "value": "Short neck with 45-degree deflection", "deciding": true},
+        {"name": "Material", "value": "Galvanized high-carbon steel"},
+        {"name": "Pack quantity", "value": "2"},
+        {"name": "Installation instructions", "value": "Not included"},
+        {"name": "Not for", "value": "Long-neck hooks or mechanisms with different length, coil diameter, turns, wire diameter, or hook angle"}
+      ],
+      "faqs": [
+        {"q": "Is the 3-inch measurement taken between the hooks?", "a": "No. Three inches is the overall length. The inside-hook-to-inside-hook measurement is 2.82 inches."},
+        {"q": "Will these springs fit any recliner brand?", "a": "No. Furniture brand does not establish fit. Match the removed spring's full geometry, including hook style, wire diameter, coil diameter, turns, and both length measurements."},
+        {"q": "Are these long-neck or short-neck springs?", "a": "They are short-neck springs with approximately 45-degree hook deflection."},
+        {"q": "How many springs are included?", "a": "Two matching Souldershop 031a springs."},
+        {"q": "Are installation instructions included?", "a": "No. Installation instructions are not included, and a tensioned furniture mechanism should be serviced cautiously."}
+      ],
+      "autods": {
+        "productId": "dec6e2e1b7e529c41ecafaf6",
+        "idOnSite": "B0CZDYWJRD",
+        "variationId": "B0CZDYWJRD",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "Souldershop",
+        "supplierOption": "3 inch, 2 pack",
+        "warehouse": "US",
+        "stock": 19,
+        "cost": 999,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "keileoho-150n-lift-top-hinges",
+      "sku": "UTY-KEILEOHO-150N-PAIR",
+      "name": "150 N lift-top table hinge pair, 9.52-inch rise",
+      "brand": "KEILEOHO",
+      "category": "Furniture",
+      "price": 2599,
+      "image": "https://m.media-amazon.com/images/I/61YkY2fsGTL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/61YkY2fsGTL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61SzdL7xu5L._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61hkoYRctjL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61eK5MLaZ7L._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/81j3CPM0u+L._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/7105i-hDGNL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71hvQav3QhL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71ER+DR79oL._AC_SL1500_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "minDays": 6,
+      "maxDays": 6,
+      "headline": "150 N · 9.52 in lift",
+      "fit": "left + right pair · 125° · 100 lb conservative load",
+      "summary": "One left-and-right pair of KEILEOHO gas-supported lift-top table hinges for a coffee table, storage top, desk, or cabinet project. The mechanism provides a 9.52-inch rise, uses 150 N supports, and opens to approximately 125 degrees. Treat 100 pounds as the conservative supported-load claim and verify the folded envelope, mounting structure, and screw depth before installation.",
+      "specs": [
+        {"name": "Support force", "value": "150", "unitText": "N", "unitCode": "NEW", "deciding": true},
+        {"name": "Lift height", "value": "9.52", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Lift height in metric", "value": "242", "unitText": "mm", "unitCode": "MMT"},
+        {"name": "Opening angle", "value": "125", "unitText": "degrees", "unitCode": "DD", "deciding": true},
+        {"name": "Conservative supported load", "value": "100", "unitText": "lb", "unitCode": "LBR", "deciding": true},
+        {"name": "Mechanism size", "value": "9.5 × 7", "unitText": "in", "unitCode": "INH", "deciding": true},
+        {"name": "Steel section thicknesses", "value": "2.5 and 4", "unitText": "mm", "unitCode": "MMT"},
+        {"name": "Mounting holes", "value": "18"},
+        {"name": "Mounting screws", "value": "20 M5 screws included"},
+        {"name": "Pack quantity", "value": "2 mechanisms: one left and one right"},
+        {"name": "Material", "value": "Heavy-duty black steel"},
+        {"name": "Not for", "value": "Single-side installation, unsupported particleboard edges, or applications requiring an unconditional 220 lb rating"}
+      ],
+      "faqs": [
+        {"q": "Does the package contain one hinge or a pair?", "a": "It contains one left mechanism and one right mechanism, plus 20 M5 mounting screws."},
+        {"q": "How high does the tabletop rise?", "a": "The stated lift height is 9.52 inches, or 242 millimeters."},
+        {"q": "What force are the gas supports?", "a": "The supplied mechanism is specified at 150 N."},
+        {"q": "Can the pair safely support 220 pounds?", "a": "Do not publish or design around 220 pounds as an unconditional rating. The source contains conflicting load language, so this draft uses 100 pounds as the conservative supported-load claim."},
+        {"q": "What should I measure before installation?", "a": "Check the 9.5 × 7 inch mechanism envelope, 9.52-inch travel path, closed clearance, panel thickness, framing strength, and safe screw penetration."},
+        {"q": "Can I install only one side?", "a": "No. This product is prepared as a matched left-and-right pair for balanced support."}
+      ],
+      "autods": {
+        "productId": "e1e2ec42f80a1b43bad2f5af",
+        "idOnSite": "B086WYS84V",
+        "variationId": "B086WYS84V",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "KEILEOHO",
+        "supplierOption": "150 N, left and right pair",
+        "warehouse": "US",
+        "stockStatus": "in_stock",
+        "cost": 1959,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "slug": "vevor-gd60fd-leveling-casters",
+      "packshot": "Studio product photograph on a pure white seamless background of the exact VEVOR GD-60FD set: exactly four matching 2-inch black nylon swivel leveling casters, square steel top plates, silver aluminum bodies, orange hand-adjustment handles, and black retractable leveling feet. Arrange all four clearly as one retail set with no packaging, no text, no labels, no logos added, no extra hardware, and no invented features.",
+      "place": "Realistic installation photograph of the exact four VEVOR GD-60FD leveling casters mounted by their square plates under the four corners of a heavy wooden workshop bench on a concrete floor, all four casters visibly identical, two leveling feet lowered to stabilize the bench and the others naturally visible, accurate 2-inch wheel scale and 3.22-inch installed height, no text, no labels, no callouts, no invented parts.",
+      "detail": "Macro product close-up of one exact VEVOR GD-60FD caster mounted beneath a sturdy furniture frame, clearly showing the 73 mm square top plate, four-hole mounting geometry, 2-inch wheel, orange adjustment handle, and lowered vibration-damping foot; include a neutral physical ruler and caliper in the scene to visually communicate plate and wheel scale without readable numbers or graphic overlays, no text, no labels, no invented load claim."
+    },
+    {
+      "slug": "vevor-cc-pbjl-4-plate-casters",
+      "packshot": "Studio product photograph on a pure white seamless background of exactly four matching VEVOR CC-PBJL-4 orange-and-black 4-inch swivel plate casters with A/B brakes, plus only the supplied mounting hardware grouped neatly: 16 M8 screws, nuts, flat washers, spring washers, and two wrenches. Preserve the exact real caster design, wheel count, plate shape, PVC wheels, and pack quantity; no packaging, no text, no labels, no extra parts, no invented features.",
+      "place": "Realistic installation photograph showing the exact set of four VEVOR CC-PBJL-4 casters mounted under the four corners of a substantial mobile workbench, orange 4-inch PVC wheels and locking brake mechanisms visible at true scale, workbench resting on a smooth workshop floor, mounting plates fully supported by the wooden frame, no text, no labels, no graphic overlays, no invented hardware.",
+      "detail": "Close-up underside view of one exact VEVOR CC-PBJL-4 caster installed with M8 hardware, emphasizing the rectangular 94 × 64 mm plate, four slotted holes in a 74 × 45 mm pattern, 4-inch wheel, 5.11-inch installed profile, swivel race and brake; a plain caliper and ruler may be present for physical scale but without readable annotations, no text, no labels, no invented dimensions or load graphics."
+    },
+    {
+      "slug": "yormtoir-low-profile-repair-casters",
+      "packshot": "Studio product photograph on a pure white seamless background of the exact YORMTOIR LZ000 product: exactly four identical black 0.9-inch nylon rigid fixed casters with elongated steel side brackets and exactly 16 matching screws arranged beside them. Preserve the real low-profile shape, fixed wheel direction, bracket proportions and four-pack count; no packaging, no text, no labels, no swivel housings, no extra parts, no invented features.",
+      "place": "Realistic home repair photograph of one exact YORMTOIR LZ000 low-profile fixed caster correctly side-mounted near the lower edge of a slightly sagging solid wooden interior door so its small black nylon wheel supports the door on a smooth hardwood floor; show the other three identical casters and unused screws nearby as the remainder of the exact four-pack, realistic 1-inch installed height, no text, no labels, no invented claims.",
+      "detail": "Macro close-up of one exact YORMTOIR LZ000 rigid caster and steel bracket at the edge of a lightweight wooden cabinet, showing the 0.9-inch wheel, 0.7-inch wheel width, elongated bracket, four mounting holes and fixed one-direction geometry; include a plain ruler and caliper for visual scale without readable text or digital overlays, no carpet, no swivel mechanism, no invented load badge."
+    },
+    {
+      "slug": "souldershop-three-inch-recliner-springs",
+      "packshot": "Studio macro product photograph on a pure white seamless background of exactly two identical Souldershop 031a galvanized short-neck recliner tension springs, each preserving the real 3-inch overall length, 18-turn coil body, 11/16-inch coil diameter, 2 mm wire, and opposing short hooks with 45-degree deflection. No packaging, no text, no labels, no furniture brands, no additional springs, no invented hook geometry.",
+      "place": "Realistic underside furniture-repair photograph showing one exact Souldershop 031a 3-inch short-neck tension spring installed between two matching attachment points in a manual recliner mechanism, with the second identical spring from the two-pack lying safely uninstalled nearby for comparison; mechanism unloaded and secured, galvanized spring geometry clearly visible, no text, no labels, no OEM branding, no invented compatibility claims.",
+      "detail": "Extreme close-up of one exact Souldershop 031a spring beside a neutral physical caliper and ruler, visually emphasizing overall length versus inside-hook length, 11/16-inch coil diameter, 18 turns, 2 mm wire and short-neck 45-degree hook geometry; preserve the actual galvanized finish and proportions, no readable measurement text, no graphic arrows, no labels, no invented force rating."
+    },
+    {
+      "slug": "keileoho-150n-lift-top-hinges",
+      "packshot": "Studio product photograph on a pure white seamless background of the exact KEILEOHO lift-top hardware set: exactly one left and one right black steel folding lift mechanism with their attached 150 N supports, plus exactly 20 matching M5 mounting screws arranged neatly. Preserve the real linkage geometry, handed pair, black finish and product proportions; no tabletop, no packaging, no text, no labels, no extra hinges, no invented features.",
+      "place": "Realistic living-room installation photograph of the exact KEILEOHO left-and-right hinge pair correctly installed inside a wooden lift-top coffee table, tabletop raised smoothly about 9.52 inches with both mechanisms parallel and visible, modest everyday objects on the top with total load clearly conservative, realistic screw placement and structural framing, no text, no labels, no unsupported particleboard mounting, no invented components.",
+      "detail": "Detailed side close-up of one installed KEILEOHO 150 N mechanism while the matching opposite mechanism remains visible in the background, showing the black steel linkage, gas support, mounting holes, folded envelope and raised travel geometry; include a neutral physical ruler for scale without readable annotations, no force arrows, no load badge, no text, no labels, no invented 220-pound claim."
+    }
+  ]
+}

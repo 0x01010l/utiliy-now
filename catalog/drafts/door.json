@@ -1,0 +1,681 @@
+{
+  "products": [
+    {
+      "slug": "standard-duty-storm-door-closer-black",
+      "sku": "UTY-WRIGHT-V1020BL",
+      "name": "Standard-duty storm-door closer, black",
+      "brand": "Wright Products",
+      "mpn": "V1020BL",
+      "category": "Door",
+      "price": 1431,
+      "image": "https://m.media-amazon.com/images/I/61Jqm6lS8HL._AC_SL1500_.jpg",
+      "images": [
+        "https://m.media-amazon.com/images/I/61Jqm6lS8HL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/71FUH-8ZMHL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/61qqg+oowHL._AC_SL1500_.jpg",
+        "https://m.media-amazon.com/images/I/619Iw1F+WuL._AC_SL1500_.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "stockQuantity": 1000000,
+      "minDays": 4,
+      "maxDays": 4,
+      "headline": "Standard duty · 12-5/8 in",
+      "fit": "Outswinging light-to-medium storm doors · black · 90°",
+      "summary": "One genuine Wright Products V1020BL black pneumatic closer for an outswinging light-to-medium storm, screen, home or security door. The closer is 12-5/8 inches long unextended, opens to 90 degrees, and has adjustable closing speed and seasonal latching adjustment. Use two standard-duty closers or a specified heavy-duty closer on a heavier full-view door.",
+      "specs": [
+        {
+          "name": "Duty class",
+          "value": "Standard duty for light-to-medium doors",
+          "deciding": true
+        },
+        {
+          "name": "Door swing",
+          "value": "Outswinging",
+          "deciding": true
+        },
+        {
+          "name": "Unextended length",
+          "value": "12-5/8",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Opening",
+          "value": "90",
+          "unitText": "degrees",
+          "unitCode": "DD"
+        },
+        {
+          "name": "Closing speed",
+          "value": "Adjustable"
+        },
+        {
+          "name": "Latching",
+          "value": "Seasonal adjustment for screen or glass inserts"
+        },
+        {
+          "name": "Finish",
+          "value": "Black"
+        },
+        {
+          "name": "Included",
+          "value": "Closer and installation hardware"
+        },
+        {
+          "name": "Not for",
+          "value": "Inswinging doors, commercial hydraulic-closer applications, or a heavy full-view door using one standard closer"
+        }
+      ],
+      "exclusions": [
+        "Not the Wright Products V150 heavy-duty closer.",
+        "Not for an inswinging door.",
+        "Do not specify one unit for a heavy full-view storm door.",
+        "Verify the existing bracket layout before treating it as a hole-for-hole replacement."
+      ],
+      "faqs": [
+        {
+          "q": "Will the V1020BL close a heavy full-view storm door?",
+          "a": "Not as the recommended single-closer setup. Use two standard-duty closers or the specified heavy-duty closer for a heavier full-view door."
+        },
+        {
+          "q": "Does this closer fit an inswinging door?",
+          "a": "No. V1020BL is designed for outswinging storm, screen, home and security doors."
+        },
+        {
+          "q": "Is the closing speed adjustable?",
+          "a": "Yes. The pneumatic closer has an end adjustment for closing speed and force."
+        },
+        {
+          "q": "What should I compare before replacing an existing closer?",
+          "a": "Confirm the door swings outward, is in the light-to-medium class, and that the existing jamb and door bracket locations can accept the included hardware."
+        }
+      ],
+      "autods": {
+        "productId": "d595aeba8ebfa4c8bd102cff",
+        "idOnSite": "B0009YDHHU",
+        "variationId": "B0009YDHHU",
+        "site": "amazon",
+        "buySiteId": 1,
+        "supplier": "Amazon.com",
+        "warehouse": "US",
+        "stockQuantity": 1000000,
+        "cost": 1048,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "one-inch-rubber-threshold-ramp",
+      "sku": "UTY-THRESHOLD-1IN",
+      "name": "One-inch rubber threshold ramp",
+      "category": "Door",
+      "price": 3499,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FXBLYPDGB1445XG06OV0_2Fgoods_img-v3_2Fcurb-ramp-m100-1.2_0bcb1871-663a-474d-b8db-61bfa36ecdfc.jpg?v=1784710996",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FXBLYPDGB1445XG06OV0_2Fgoods_img-v3_2Fcurb-ramp-m100-1.2_0bcb1871-663a-474d-b8db-61bfa36ecdfc.jpg?v=1784710996",
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/curb-ramp-f1w_b718a0c5-f9be-444f-833c-810c94482cdd.jpg?v=1784710998",
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/curb-ramp-f2w_799b1485-2111-4ef9-9623-74ca27e1bf85.jpg?v=1784710997",
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/curb-ramp-f3w_f54123a2-4b9b-44d5-b3c2-cbebfea8aadc.jpg?v=1784710999"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "stockQuantity": 440,
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "Exactly 1 in rise",
+      "fit": "44.5 × 9.5 in · beveled rubber · one cable channel",
+      "summary": "One unbranded recycled-rubber threshold ramp for a measured 1-inch rise. It is 44.5 inches wide, provides a 9.5-inch approach, has beveled edges and a textured surface, and includes one underside channel for a cable. Measure the actual vertical transition; this is not a substitute for an accessibility-code or slope assessment.",
+      "specs": [
+        {
+          "name": "Threshold rise",
+          "value": "1",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Overall width",
+          "value": "44.5",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Approach depth",
+          "value": "9.5",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Dimensions",
+          "value": "44.5 × 9.5 × 1",
+          "unitText": "in",
+          "unitCode": "INH"
+        },
+        {
+          "name": "Material",
+          "value": "Recycled natural rubber"
+        },
+        {
+          "name": "Surface",
+          "value": "Textured, with beveled approach edges"
+        },
+        {
+          "name": "Underside channels",
+          "value": "1"
+        },
+        {
+          "name": "Stated load capacity",
+          "value": "33069",
+          "unitText": "lb",
+          "unitCode": "LBR"
+        },
+        {
+          "name": "Not for",
+          "value": "Transitions materially above or below 1 inch"
+        }
+      ],
+      "exclusions": [
+        "Not an ADA-compliance determination.",
+        "Not for a threshold whose measured rise is materially different from 1 inch.",
+        "Confirm the 44.5-inch width and 9.5-inch approach fit the doorway and landing.",
+        "Permanent mounting requires suitable fasteners and substrate."
+      ],
+      "faqs": [
+        {
+          "q": "What threshold height does this ramp fit?",
+          "a": "A measured vertical transition of approximately 1 inch."
+        },
+        {
+          "q": "How much clear width does the ramp provide?",
+          "a": "The ramp is 44.5 inches wide and 9.5 inches deep."
+        },
+        {
+          "q": "Can a cable pass underneath it?",
+          "a": "Yes. The underside has one reserved cable channel."
+        },
+        {
+          "q": "Does buying this ramp make the doorway ADA compliant?",
+          "a": "No. Compliance depends on the complete installed slope, landing, clear width, fastening and local requirements."
+        }
+      ],
+      "autods": {
+        "productId": "6a262c4a6005c34d9f86de4b",
+        "idOnSite": "8438763684032",
+        "variationId": "48648978202816",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "warehouse": "US",
+        "supplierOption": "1 inch H",
+        "stockQuantity": 440,
+        "cost": 2513,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "four-foot-bypass-door-hardware",
+      "sku": "UTY-BYPASS-YMXTXC404B",
+      "name": "Four-foot dual-track bypass-door hardware",
+      "mpn": "YMXT-XC40-4B",
+      "category": "Door",
+      "price": 6390,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM4FTSUG8DUV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2_131453b3-0f2a-4699-9ee5-eef9fd138c34.jpg?v=1784285602",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM4FTSUG8DUV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2_131453b3-0f2a-4699-9ee5-eef9fd138c34.jpg?v=1784285602"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "stockQuantity": 174,
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "Two 24.5 in doors",
+      "fit": "1-3/8–1-3/4 in thick · dual track · 150 lb",
+      "summary": "One unbranded YMXT-XC40-4B four-foot dual-track bypass kit for two overlapping 24.5-inch door panels. It accepts panels from 1-3/8 to 1-3/4 inches thick and supports up to 150 pounds. The aluminum track, four wheel assemblies, two finger pulls, floor guide, stopper and installation hardware are included; door panels are not.",
+      "specs": [
+        {
+          "name": "Track type",
+          "value": "Dual track",
+          "deciding": true
+        },
+        {
+          "name": "Track length",
+          "value": "47.99",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Compatible door width",
+          "value": "24.5 × 2",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Compatible door thickness",
+          "value": "1-3/8–1-3/4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Maximum supported weight",
+          "value": "150",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Track material",
+          "value": "Aluminum alloy"
+        },
+        {
+          "name": "Included",
+          "value": "Track, 4 wheel assemblies, floor guide, stopper, 2 finger pulls, wrench and installation screws"
+        },
+        {
+          "name": "Not included",
+          "value": "Door panels"
+        }
+      ],
+      "exclusions": [
+        "Not for one 48-inch-wide panel.",
+        "Not for panels thinner than 1-3/8 inch or thicker than 1-3/4 inch.",
+        "Not the single-track variant.",
+        "Door panels and structural framing are not included."
+      ],
+      "faqs": [
+        {
+          "q": "What door widths fit this bypass kit?",
+          "a": "Two overlapping panels measuring approximately 24.5 inches wide each."
+        },
+        {
+          "q": "What door thickness fits?",
+          "a": "Panels from 1-3/8 through 1-3/4 inches thick."
+        },
+        {
+          "q": "Is this a single-track kit?",
+          "a": "No. This exact four-foot variant uses a dual track."
+        },
+        {
+          "q": "Are the closet doors included?",
+          "a": "No. The package contains the track and installation hardware, not the door panels."
+        }
+      ],
+      "autods": {
+        "productId": "6a262c1f6005c34d9f86dc60",
+        "idOnSite": "8439381262528",
+        "variationId": "47267791798464",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "warehouse": "US",
+        "supplierOption": "Dual Track, 4 ft",
+        "stockQuantity": 174,
+        "cost": 4686,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "pocket-door-track-24-to-30-inch",
+      "sku": "UTY-POCKET-YMXTXC395",
+      "name": "Pocket-door track for 24–30 in doors",
+      "mpn": "YMXT-XC39-5",
+      "category": "Door",
+      "price": 5490,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM5FTD3SJQDV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2.jpg?v=1784286097",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM5FTD3SJQDV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2.jpg?v=1784286097"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "stockQuantity": 304,
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "24–30 in door panels",
+      "fit": "1–1-3/4 in thick · 56.73 in track · 220 lb",
+      "summary": "One unbranded YMXT-XC39-5 single-track pocket-door hardware kit for a 24-to-30-inch-wide panel from 1 to 1-3/4 inches thick. The 56.73-inch aluminum track and three-wheel hanger system support a door up to 220 pounds. Measure the panel, wall cavity and finished opening before ordering; the door slab and pocket framing are not included.",
+      "specs": [
+        {
+          "name": "Track type",
+          "value": "Single pocket-door track",
+          "deciding": true
+        },
+        {
+          "name": "Track length",
+          "value": "56.73",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Compatible door width",
+          "value": "24–30",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Compatible door thickness",
+          "value": "1–1-3/4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Maximum door weight",
+          "value": "220",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Track material",
+          "value": "Aluminum alloy"
+        },
+        {
+          "name": "Included",
+          "value": "Track, 2 three-wheel assemblies, 2 stops, floor knob, wrench and installation screws"
+        },
+        {
+          "name": "Not included",
+          "value": "Door slab and pocket wall framing"
+        }
+      ],
+      "exclusions": [
+        "Not for a door wider than 30 inches.",
+        "Not for a panel thicker than 1-3/4 inches.",
+        "Not bypass or bifold hardware.",
+        "The wall cavity, structural header, door slab and finish trim are not included."
+      ],
+      "faqs": [
+        {
+          "q": "Will this track fit a 32-inch pocket door?",
+          "a": "No. The published door-panel range is 24 through 30 inches."
+        },
+        {
+          "q": "What door thickness fits?",
+          "a": "A panel from 1 inch through 1-3/4 inches thick."
+        },
+        {
+          "q": "How much door weight can the kit support?",
+          "a": "Up to 220 pounds when correctly installed into suitable structure."
+        },
+        {
+          "q": "Does the kit include the door or pocket frame?",
+          "a": "No. It includes the track and moving hardware only."
+        }
+      ],
+      "autods": {
+        "productId": "6a262b9e6005c34d9f86d8b1",
+        "idOnSite": "8439381164224",
+        "variationId": "47267791700160",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "warehouse": "US",
+        "supplierOption": "Single Track, 5 ft",
+        "stockQuantity": 304,
+        "cost": 4165,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "screen-spline-0125-inch-100-foot",
+      "sku": "UTY-SPLINE-0125-100",
+      "name": "Hollow screen spline, 0.125 in × 100 ft",
+      "category": "Door",
+      "price": 999,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDPSWYT100FT0HXU8DV0_2Fgoods_img-v2_2Fscreen-spline-m100-1.2.jpg?v=1784285000",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDPSWYT100FT0HXU8DV0_2Fgoods_img-v2_2Fscreen-spline-m100-1.2.jpg?v=1784285000",
+        "https://d2qc09rl1gfuof.cloudfront.net/product/DPSWYT100FT0HXU8D/screen-spline-a100-1.4-pt.jpg",
+        "https://d2qc09rl1gfuof.cloudfront.net/product/DPSWYT100FT0HXU8D/screen-spline-a100-2.2-pt.jpg",
+        "https://d2qc09rl1gfuof.cloudfront.net/product/DPSWYT100FT0HXU8D/screen-spline-a100-2.3-pt.jpg"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "stockQuantity": 64,
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "Exactly 0.125 in",
+      "fit": "100 ft · hollow serrated PVC · matching screen channels",
+      "summary": "One 100-foot roll of unbranded black PVC screen-retainer spline with an exact 0.125-inch diameter and a hollow serrated profile. Use it only when the bare frame channel and the removed spline call for this diameter. It can retain screen mesh in matching aluminum or wood window, patio-screen, balcony-screen or pet-screen frames; a brand name alone does not establish fit.",
+      "specs": [
+        {
+          "name": "Spline diameter",
+          "value": "0.125",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Spline diameter metric",
+          "value": "3.2",
+          "unitText": "mm",
+          "unitCode": "MMT"
+        },
+        {
+          "name": "Length",
+          "value": "100",
+          "unitText": "ft",
+          "unitCode": "FOT",
+          "deciding": true
+        },
+        {
+          "name": "Profile",
+          "value": "Hollow, round and serrated",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Black PVC"
+        },
+        {
+          "name": "Compatible frames",
+          "value": "Screen-door and window frames with a matching channel"
+        },
+        {
+          "name": "Not included",
+          "value": "Screen mesh and spline roller"
+        },
+        {
+          "name": "Not for",
+          "value": "Channels requiring 0.140, 0.175, 0.220 inch or another profile"
+        }
+      ],
+      "exclusions": [
+        "Not interchangeable with 0.140-, 0.175- or 0.220-inch spline.",
+        "Not compatible based on screen-door brand alone.",
+        "Screen mesh and installation roller are not included.",
+        "Measure the old spline and the bare channel before ordering."
+      ],
+      "faqs": [
+        {
+          "q": "How do I know whether 0.125-inch spline fits?",
+          "a": "Measure the removed spline and the bare frame channel. Order this roll only when the required diameter is 0.125 inch."
+        },
+        {
+          "q": "Can it be used on a patio screen door?",
+          "a": "Yes, when that door's screen-retainer channel requires a 0.125-inch hollow round spline."
+        },
+        {
+          "q": "Is the spline solid?",
+          "a": "No. It has a hollow serrated PVC profile for flexibility and grip."
+        },
+        {
+          "q": "Are mesh and a spline roller included?",
+          "a": "No. The package is one 100-foot roll of spline only."
+        }
+      ],
+      "autods": {
+        "productId": "6a262b4d6005c34d9f86d62e",
+        "idOnSite": "8530760564928",
+        "variationId": "48005351899328",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "warehouse": "US",
+        "supplierOption": "0.125 inch",
+        "stockQuantity": 64,
+        "cost": 686,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    },
+    {
+      "slug": "eight-foot-j-hanger-barn-door-kit",
+      "sku": "UTY-BARN-004244M",
+      "name": "Eight-foot J-hanger barn-door kit",
+      "mpn": "004-2.44M",
+      "category": "Door",
+      "price": 6850,
+      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FGCYMWJTJHS8FCZEIRV0_2Fgoods_img-v2_2Fbarn-door-hardware-kit-m100-1.2.jpg?v=1784282403",
+      "images": [
+        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FGCYMWJTJHS8FCZEIRV0_2Fgoods_img-v2_2Fbarn-door-hardware-kit-m100-1.2.jpg?v=1784282403"
+      ],
+      "available": true,
+      "shipsFrom": "US",
+      "stockQuantity": 142,
+      "minDays": 6,
+      "maxDays": 8,
+      "headline": "3.7–4.3 ft door",
+      "fit": "1.3–1.8 in thick · J hangers · 330 lb",
+      "summary": "One unbranded 004-2.44M eight-foot black steel barn-door hardware kit for a single 3.7-to-4.3-foot-wide panel from 1.3 to 1.8 inches thick. The two-piece track and J-shaped hangers are rated for a door up to 330 pounds. Door slab and load-bearing wall structure are not included.",
+      "specs": [
+        {
+          "name": "Track length",
+          "value": "8",
+          "unitText": "ft",
+          "unitCode": "FOT",
+          "deciding": true
+        },
+        {
+          "name": "Track construction",
+          "value": "Two 4-foot sections"
+        },
+        {
+          "name": "Hanger shape",
+          "value": "J-type",
+          "deciding": true
+        },
+        {
+          "name": "Compatible door width",
+          "value": "3.7–4.3",
+          "unitText": "ft",
+          "unitCode": "FOT",
+          "deciding": true
+        },
+        {
+          "name": "Compatible door thickness",
+          "value": "1.3–1.8",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Maximum door weight",
+          "value": "330",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Black powder-coated carbon steel"
+        },
+        {
+          "name": "Included",
+          "value": "Track, 2 J hangers, anti-jump hardware, 2 door stops, floor guide, spacers, fasteners and installation tool"
+        },
+        {
+          "name": "Not included",
+          "value": "Door slab and structural wall reinforcement"
+        }
+      ],
+      "exclusions": [
+        "Not the I-hanger or double-door variant.",
+        "Not for panels narrower than 3.7 feet or wider than 4.3 feet.",
+        "Not for panels thinner than 1.3 inches or thicker than 1.8 inches.",
+        "The wall and header must safely support the complete moving load."
+      ],
+      "faqs": [
+        {
+          "q": "What door width fits this kit?",
+          "a": "One panel from 3.7 through 4.3 feet wide."
+        },
+        {
+          "q": "What door thickness fits?",
+          "a": "A panel from 1.3 through 1.8 inches thick."
+        },
+        {
+          "q": "Is this the double-door kit?",
+          "a": "No. This exact eight-foot J-hanger kit is for one door."
+        },
+        {
+          "q": "Does the package include the door slab?",
+          "a": "No. It contains the track and mounting hardware only."
+        }
+      ],
+      "autods": {
+        "productId": "6a262aff6005c34d9f86d15e",
+        "idOnSite": "8439212966080",
+        "variationId": "48630687039680",
+        "site": "private_suppliers",
+        "buySiteId": 27,
+        "supplier": "Jackson Qin",
+        "warehouse": "US",
+        "supplierOption": "J-Type, 8 ft",
+        "stockQuantity": 142,
+        "cost": 5034,
+        "shippingCost": 0,
+        "costCheckedAt": "2026-10-09"
+      }
+    }
+  ],
+  "prompts": [
+    {
+      "slug": "standard-duty-storm-door-closer-black",
+      "packshot": "Photorealistic white seamless-background packshot of the exact Wright Products V1020BL black pneumatic closer and only its real included mounting hardware, preserving the exact black cylinder, rod, brackets, pins, hold-open washer and fasteners visible in the source product; orderly complete kit, no extra parts, no text, no dimension labels, no invented hardware.",
+      "place": "Photorealistic installation scene of the exact black standard-duty pneumatic closer mounted horizontally near the top on the interior side of an outswinging light-to-medium black-framed storm door, real bracket geometry and 90-degree operating path, screen insert visible, no second closer, no text, no invented hardware.",
+      "detail": "Photorealistic decisive-fit close-up of the exact black pneumatic closer fully retracted beside a physical measuring reference showing its real 12-5/8-inch unextended body-and-rod arrangement, adjustment screw and seasonal two-position latching connection clearly visible, no readable text, no floating labels, no extra hardware."
+    },
+    {
+      "slug": "one-inch-rubber-threshold-ramp",
+      "packshot": "Photorealistic white seamless-background packshot of the exact one-piece black recycled-rubber threshold ramp, preserving the real 44.5 by 9.5 by 1 inch proportions, beveled sides, textured top, underside grid, one cable channel and actual mounting holes; no accessories beyond the real fasteners, no text, no invented features.",
+      "place": "Photorealistic real-world doorway installation with the exact black one-inch-rise rubber ramp spanning a 44.5-inch opening and meeting an actual one-inch threshold, wheelchair caster approaching on the 9.5-inch slope, cable routed only through the real underside channel, no text, no accessibility claims, no invented hardware.",
+      "detail": "Photorealistic low-angle close-up across the exact ramp profile with a physical gauge demonstrating the one-inch vertical rise and 9.5-inch approach depth, beveled edge, traction texture and single underside cable channel visible, no readable text or overlaid dimensions, no invented construction."
+    },
+    {
+      "slug": "four-foot-bypass-door-hardware",
+      "packshot": "Photorealistic white seamless-background packshot of the exact YMXT-XC40-4B four-foot aluminum dual-track bypass kit, showing the real 47.99-inch dual track, four three-wheel assemblies, two finger pulls, floor guide, stopper, wrench and actual screw kit only; no door slabs, no text, no invented pieces.",
+      "place": "Photorealistic installed closet scene using the exact four-foot dual-track kit with two overlapping 24.5-inch door panels, each visibly within the real 1-3/8 to 1-3/4 inch thickness range, correct bypass overlap and floor guide, track carrying no more than the real 150-pound class, no text, no extra hardware.",
+      "detail": "Photorealistic decisive-fit close-up at the top of the exact dual track showing both panel paths, real three-wheel hanger geometry and a caliper-style physical comparison of a 1-3/8 to 1-3/4 inch panel edge, no readable numbers, no overlays, no invented rollers or brackets."
+    },
+    {
+      "slug": "pocket-door-track-24-to-30-inch",
+      "packshot": "Photorealistic white seamless-background packshot of the exact YMXT-XC39-5 pocket-door kit, preserving the real 56.73-inch single aluminum track, two three-wheel assemblies, two stops, floor knob, wrench and actual installation screws only; no door slab, no wall framing, no text, no invented hardware.",
+      "place": "Photorealistic correct installation scene with the exact single track mounted in an open pocket-door frame above one 24-to-30-inch-wide panel, real three-wheel hanger arrangement, panel thickness within 1 to 1-3/4 inches, wall cavity exposed only enough to show fit, no text, no invented framing connectors or hardware.",
+      "detail": "Photorealistic close-up of the exact pocket-door track cross-section and real three-wheel hanger attached to the top of a correctly sized panel, physical measuring references demonstrating the 56.73-inch track and 1 to 1-3/4 inch panel-thickness decision without readable labels, no invented parts."
+    },
+    {
+      "slug": "screen-spline-0125-inch-100-foot",
+      "packshot": "Photorealistic white seamless-background packshot of the exact 100-foot coil of black 0.125-inch hollow serrated PVC screen spline, preserving the real round coil, surface texture and cut end revealing the hollow profile; spline only, no roller, no mesh, no packaging text, no invented accessories.",
+      "place": "Photorealistic installation scene showing the exact black 0.125-inch hollow spline being pressed with a standard spline roller into a correctly matching aluminum patio-screen-door channel over real insect mesh, proper corner progression and taut screen, no text, no invented channel geometry.",
+      "detail": "Extreme photorealistic macro close-up of the exact 0.125-inch hollow serrated round spline beside the bare matching screen-frame channel and removed original spline, physical caliper jaws indicating diameter without readable numbers, hollow core and serrations sharp, no text or invented profile."
+    },
+    {
+      "slug": "eight-foot-j-hanger-barn-door-kit",
+      "packshot": "Photorealistic white seamless-background packshot of the exact 004-2.44M black carbon-steel barn-door hardware kit, preserving two real four-foot track sections, two J-shaped hangers, anti-jump blocks, two stops, floor guide, spacers, fasteners and installation tool only; no door slab, no text, no invented hardware.",
+      "place": "Photorealistic installed interior scene with the exact two-section eight-foot black track and two J hangers carrying one 3.7-to-4.3-foot-wide barn-door panel that is 1.3-to-1.8 inches thick, correct wall spacers, stops, anti-jump blocks and floor guide visible, no second door, no text, no invented hardware.",
+      "detail": "Photorealistic decisive-clearance close-up of the exact J hanger over the real black track and the attached door edge, physical gauges demonstrating the 1.3-to-1.8-inch panel thickness and required overhead hardware clearance without readable labels, anti-jump block and stop visible, no invented components."
+    }
+  ]
+}
