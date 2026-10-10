@@ -23,7 +23,7 @@
         "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_400bdaf5-3351-46e4-b410-b0440fdde1fa.png?v=1705374205",
         "https://cdn.shopify.com/s/files/1/0628/2221/9928/files/57_19ebd66f-7a74-4730-8c6f-fcd500e5b513.png?v=1705374205"
       ],
-      "available": false,
+      "available": true,
       "shipsFrom": "US",
       "minDays": 4,
       "maxDays": 6,
@@ -97,7 +97,7 @@
         "warehouse": "US",
         "cost": 1231,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-07"
+        "costCheckedAt": "2026-10-10"
       }
     },
     {
@@ -113,7 +113,7 @@
         "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/S9ead2611ffdb4a5ba783ad79e472bf46M.webp?v=1756201044",
         "https://cdn.shopify.com/s/files/1/0771/9718/1164/files/Sb8df1c7c9e1b4bda92da1dada18082b6U.webp?v=1756201044"
       ],
-      "available": false,
+      "available": true,
       "shipsFrom": "US",
       "minDays": 6,
       "maxDays": 9,
@@ -170,7 +170,7 @@
         "supplierOption": "S-4PCS",
         "cost": 3199,
         "shippingCost": 350,
-        "costCheckedAt": "2026-10-07"
+        "costCheckedAt": "2026-10-10"
       }
     },
     {
@@ -187,10 +187,10 @@
         "https://ae01.alicdn.com/kf/Sed83100fa749479999c19ec4a9919706N.jpg",
         "https://ae01.alicdn.com/kf/S707a935b8646463badbdcaf9744bcad12.jpg"
       ],
-      "available": false,
+      "available": true,
       "shipsFrom": "US",
-      "minDays": 12,
-      "maxDays": 12,
+      "minDays": 11,
+      "maxDays": 11,
       "headline": "2-tier pull-out",
       "fit": "4 hooks · ABS baskets · iron frame",
       "summary": "A two-tier sliding organizer for the cabinet under a kitchen or bath sink. Baskets are ABS, the frame is painted iron, and four hooks hang on the side. The maker does not publish the basket width or height, so measure the clear opening beside the pipes before you rely on a fit.",
@@ -249,9 +249,9 @@
         "supplier": "Nordicbox Organizers Store",
         "warehouse": "US",
         "supplierOption": "black-B",
-        "cost": 1976,
+        "cost": 2020,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-07"
+        "costCheckedAt": "2026-10-10"
       }
     },
     {
