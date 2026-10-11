@@ -15,7 +15,12 @@ const buildDate = new Date().toISOString().slice(0, 10);
 const catalogUpdated = catalog.products.flatMap((product) => [
   product.stockCheckedAt,
   product.autods?.costCheckedAt,
-  ...(product.variants || []).flatMap((variant) => [variant.stockCheckedAt, variant.autods?.costCheckedAt])
+  product.cj?.costCheckedAt,
+  ...(product.variants || []).flatMap((variant) => [
+    variant.stockCheckedAt,
+    variant.autods?.costCheckedAt,
+    variant.cj?.costCheckedAt
+  ])
 ]).filter(Boolean).sort().at(-1) || buildDate;
 
 const categories = [
@@ -77,14 +82,17 @@ function variantsOf(product) {
     label: product.fit,
     price: product.price,
     decidingSpec: null,
-    autods: {
-      variationId: product.autods.variationId,
-      supplierOption: product.autods.supplierOption || ""
+    supplier: {
+      variationId: (product.cj || product.autods)?.vid || (product.cj || product.autods)?.variationId,
+      supplierOption: (product.cj || product.autods)?.supplierOption || ""
     }
   }];
 }
 function supplierOf(product, variant) {
-  return { ...(product.autods || {}), ...(variant?.autods || {}) };
+  return {
+    ...(product.cj || product.autods || {}),
+    ...(variant?.cj || variant?.autods || variant?.supplier || {})
+  };
 }
 function availabilityOf(product, variant) {
   const supplier = supplierOf(product, variant);
@@ -1212,7 +1220,10 @@ function agentProduct(product) {
     brand: product.brand || null,
     gtin12: product.gtin12 || null,
     mpn: product.mpn || null,
+    identifierExists: product.identifierExists !== false &&
+      Boolean(product.gtin12 || (product.brand && product.mpn)),
     category: product.category,
+    googleProductCategory: product.googleCategory || googleCategory[product.slug] || null,
     summary: product.summary,
     headline: product.headline,
     fit: product.fit,
@@ -1234,6 +1245,12 @@ function agentProduct(product) {
       sku: variant.sku,
       gtin12: variant.gtin12 || product.gtin12 || null,
       mpn: variant.mpn || product.mpn || null,
+      identifierExists: product.identifierExists !== false &&
+        Boolean(
+          variant.gtin12 ||
+          product.gtin12 ||
+          (product.brand && (variant.mpn || product.mpn))
+        ),
       label: variant.label,
       price: (variant.price / 100).toFixed(2),
       url: site + variantPath(product, variant.sku),
@@ -1254,8 +1271,8 @@ function fulfillment(product) {
       name: product.name,
       option: variant.label,
       autodsProductId: supplier.productId,
-      supplierProductId: supplier.idOnSite,
-      variationId: supplier.variationId,
+      supplierProductId: supplier.pid || supplier.idOnSite,
+      variationId: supplier.vid || supplier.variationId,
       buySiteId: supplier.buySiteId,
       supplier: supplier.supplier,
       warehouse: supplier.warehouse,
@@ -1621,11 +1638,12 @@ function merchantRows() {
   for (const product of products) {
     const variants = variantsOf(product);
     const many = variants.length > 1;
-    const material = (product.specs || product.sharedSpecs || []).find((spec) => spec.name === "Material");
-    const materialValue = material && !/ and /i.test(material.value) ? material.value : "";
     for (const variant of variants) {
       const specs = specsOf(product, variant);
-      const images = [...new Set([product.image, ...product.images, `${site}${displayImage(product)}`])];
+      const material = specs.find((spec) => spec.name === "Material");
+      const materialValue = material && !/ and /i.test(material.value) ? material.value : "";
+      const color = specs.find((spec) => ["Color", "Finish"].includes(spec.name));
+      const images = [...new Set([`${site}${displayImage(product)}`, ...product.images])];
       const details = specs.map((spec) => `Specifications:${spec.name}:${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`).join(", ");
       const answers = product.faqs.map((faq) => `${faq.q}:${faq.a}`).join(", ");
       rows.push([
@@ -1640,7 +1658,11 @@ function merchantRows() {
         product.brand || "",
         variant.gtin12 || product.gtin12 || "",
         variant.mpn || product.mpn || "",
-        variant.gtin12 || product.gtin12 || (product.brand && (variant.mpn || product.mpn)) ? "yes" : "no",
+        product.identifierExists === false
+          ? "no"
+          : variant.gtin12 || product.gtin12 || (product.brand && (variant.mpn || product.mpn))
+            ? "yes"
+            : "no",
         "new",
         product.googleCategory || googleCategory[product.slug] || "",
         `${product.category} > ${product.name}`,
@@ -1648,7 +1670,7 @@ function merchantRows() {
         product.shipsFrom === "US" ? "US" : "CN",
         many ? product.slug : "",
         many ? sizeOf(variant) : "",
-        colorOf[product.slug] || "",
+        colorOf[product.slug] || color?.value || "",
         materialValue,
         details,
         answers

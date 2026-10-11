@@ -1,666 +1,787 @@
 {
   "products": [
     {
-      "slug": "insinkerator-standard-sink-flange",
-      "name": "InSinkErator standard garbage-disposal sink flange",
-      "brand": "InSinkErator",
+      "slug": "eighteen-inch-undermount-workstation-sink",
+      "sku": "UTY-CJ-KIT-5237761",
+      "name": "18 Inch Undermount Workstation Sink",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Kitchen",
-      "image": "https://images.thdstatic.com/productImages/a8e8db21-12c9-4c8b-8c21-d44e378260de/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-64_1000.jpg",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "price": 17999,
+      "image": "https://cf.cjdropshipping.com/doba-import/8f8d6a07bd0b44649f24d2ba3bd6e334.jpg",
       "images": [
-        "https://images.thdstatic.com/productImages/a8e8db21-12c9-4c8b-8c21-d44e378260de/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-64_1000.jpg",
-        "https://images.thdstatic.com/productImages/12a1fa78-0b60-497f-83a4-38a83bc5a5c9/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-1d_1000.jpg",
-        "https://images.thdstatic.com/productImages/1aa4c627-f425-48dd-9472-abbd0e5a369f/svn/matte-black-insinkerator-garbage-disposal-parts-flg-mtblk-64_1000.jpg",
-        "https://images.thdstatic.com/productImages/54595c8f-6d2b-4d5b-90d8-3d2987492607/svn/brushed-stainless-steel-insinkerator-garbage-disposal-parts-flg-ssb-64_1000.jpg",
-        "https://images.thdstatic.com/productImages/abdeac78-824e-4e2a-a1fe-8f695be35064/svn/white-insinkerator-garbage-disposal-parts-flg-wh-64_1000.jpg"
+        "https://utiliy.com/assets/explainers/eighteen-inch-undermount-workstation-sink/place.jpg",
+        "https://utiliy.com/assets/explainers/eighteen-inch-undermount-workstation-sink/detail.jpg"
       ],
       "available": true,
-      "stockCheckedAt": "2026-10-09",
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
       "minDays": 3,
       "maxDays": 5,
-      "headline": "4.5 × 1.75 in standard flange",
-      "fit": "InSinkErator disposals · 4 exact finishes · not extended",
-      "summary": "A genuine InSinkErator standard sink flange for connecting an InSinkErator garbage disposal to a kitchen-sink drain. Choose the exact finish SKU: oil-rubbed bronze, matte black, brushed stainless steel, or white. Each flange measures 4.5 inches across by 1.75 inches deep. Before ordering, confirm the disposal brand and measure the sink thickness or existing mounting assembly; a thick farmhouse sink may require an extended flange instead.",
-      "sharedSpecs": [
+      "headline": "18 in x 18 in • Undermount • Single bowl",
+      "fit": "Overall dimensions: 18 in x 18 in · Mounting: Undermount · Bowl: Single bowl",
+      "summary": "18 Inch Undermount Workstation Sink ships from verified US inventory. FASTER DRAINING DESIGN: The undermount kitchen sink has X-shaped drain grooves on the bottom that slope gently towards the drain for quick drainage and prevent water from pooling, keeping the work area clean. The sink also has a bottom grid that shields the deep sink surface from scratches and allows water to flow beneath for optimal drainage when rinsing items.. 3 mm THICKER MATERIAL FOR EXTRA DURABILITY: The single bowl kitchen sink is made of SUS304 premium stainless steel that is easy to clean, and durable with resistance to stains, scratches, and corrosion. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
         {
-          "name": "Flange dimensions",
-          "value": "4.5 × 1.75",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Overall dimensions",
+          "value": "18 in x 18 in",
           "deciding": true
         },
         {
-          "name": "Disposal compatibility",
-          "value": "InSinkErator-manufactured garbage disposals",
+          "name": "Mounting",
+          "value": "Undermount",
           "deciding": true
         },
         {
-          "name": "Flange type",
-          "value": "Standard, not extended",
+          "name": "Bowl",
+          "value": "Single bowl",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "S304 stainless steel"
+        },
+        {
+          "name": "Gauge",
+          "value": "3 mm construction"
+        },
+        {
+          "name": "Workstation ledge",
+          "value": "Yes"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 18 Inch Undermount Workstation Sink will fit?",
+          "a": "Check these deciding details against the installation: Overall dimensions: 18 in x 18 in · Mounting: Undermount · Bowl: Single bowl. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
+      ],
+      "cj": {
+        "pid": "2096573170645237761",
+        "vid": "2096573171119194114",
+        "sku": "CJFU31323220001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 9708,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096573170645237761.html"
+      }
+    },
+    {
+      "slug": "twenty-seven-inch-undermount-workstation-sink",
+      "sku": "UTY-CJ-KIT-7137665",
+      "name": "27 Inch Undermount Workstation Sink",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Kitchen",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "price": 15399,
+      "image": "https://cf.cjdropshipping.com/doba-import/cf2a703d48a44ac383f304ca25ad3791.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/twenty-seven-inch-undermount-workstation-sink/place.jpg",
+        "https://utiliy.com/assets/explainers/twenty-seven-inch-undermount-workstation-sink/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "27 in x 19 in • Undermount • Single bowl",
+      "fit": "Overall dimensions: 27 in x 19 in · Mounting: Undermount · Bowl: Single bowl",
+      "summary": "27 Inch Undermount Workstation Sink ships from verified US inventory. FASTER DRAINING DESIGN: The undermount kitchen sink has X-shaped drain grooves on the bottom that slope gently towards the drain for quick drainage and prevent water from pooling, keeping the work area clean. The sink also has a bottom grid that shields the deep sink surface from scratches and allows water to flow beneath for optimal drainage when rinsing items.. 3 mm THICKER MATERIAL FOR EXTRA DURABILITY: The single bowl kitchen sink is made of SUS304 premium stainless steel that is easy to clean, and durable with resistance to stains, scratches, and corrosion. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Overall dimensions",
+          "value": "27 in x 19 in",
+          "deciding": true
+        },
+        {
+          "name": "Mounting",
+          "value": "Undermount",
+          "deciding": true
+        },
+        {
+          "name": "Bowl",
+          "value": "Single bowl",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "S304 stainless steel"
+        },
+        {
+          "name": "Gauge",
+          "value": "3 mm construction"
+        },
+        {
+          "name": "Workstation ledge",
+          "value": "Yes"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 27 Inch Undermount Workstation Sink will fit?",
+          "a": "Check these deciding details against the installation: Overall dimensions: 27 in x 19 in · Mounting: Undermount · Bowl: Single bowl. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
+      ],
+      "cj": {
+        "pid": "2096571530257137665",
+        "vid": "2096571530475241473",
+        "sku": "CJFU31322980001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 11903,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096571530257137665.html"
+      }
+    },
+    {
+      "slug": "thirty-three-inch-top-mount-workstation-sink",
+      "sku": "UTY-CJ-KIT-9641089",
+      "name": "33 Inch Top Mount Workstation Sink",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Kitchen",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "price": 18999,
+      "image": "https://cf.cjdropshipping.com/doba-import/38e1fa832da4482fb6041e5815d0e819.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/thirty-three-inch-top-mount-workstation-sink/place.jpg",
+        "https://utiliy.com/assets/explainers/thirty-three-inch-top-mount-workstation-sink/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "33x22x9 • Top mount / drop-in • Single bowl",
+      "fit": "Overall dimensions: 33x22x9 · Mounting: Top mount / drop-in · Bowl: Single bowl",
+      "summary": "33 Inch Top Mount Workstation Sink ships from verified US inventory. Introducing our Stainless Steel 201 Single Basin Hotel Kitchen Sink, designed to meet the demanding needs of commercial kitchens and hotel environments. With dimensions of 33 inches in length, 22 inches in width, and 9 inches in depth, this robust and durable sink offers ample space for all your washing and preparation tasks. Crafted from high-quality 201 stainless steel, it provides exceptional resistance to corrosion, stains, and scratches, ensuring long-lasting performance and a professional appearance. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Overall dimensions",
+          "value": "33x22x9",
+          "deciding": true
+        },
+        {
+          "name": "Mounting",
+          "value": "Top mount / drop-in",
+          "deciding": true
+        },
+        {
+          "name": "Bowl",
+          "value": "Single bowl",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "201 stainless steel"
+        },
+        {
+          "name": "Gauge",
+          "value": "18"
+        },
+        {
+          "name": "Workstation ledge",
+          "value": "Yes"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 33 Inch Top Mount Workstation Sink will fit?",
+          "a": "Check these deciding details against the installation: Overall dimensions: 33x22x9 · Mounting: Top mount / drop-in · Bowl: Single bowl. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
+      ],
+      "cj": {
+        "pid": "2096587500199641089",
+        "vid": "2096587500400967681",
+        "sku": "CJSD31325250001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 14518,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096587500199641089.html"
+      }
+    },
+    {
+      "slug": "three-in-one-led-kitchen-faucet-glass-rinser",
+      "sku": "UTY-CJ-KIT-8426370",
+      "name": "3 In One LED Kitchen Faucet Glass Rinser",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Kitchen",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 10699,
+      "image": "https://cf.cjdropshipping.com/17740512/d755c874-33fa-438f-ba84-04faad559db6.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/three-in-one-led-kitchen-faucet-glass-rinser/place.jpg",
+        "https://utiliy.com/assets/explainers/three-in-one-led-kitchen-faucet-glass-rinser/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 53,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "3-in-1 faucet and press-type glass rinser • Deck mount • Brushed nickel",
+      "fit": "Configuration: 3-in-1 faucet and press-type glass rinser · Mounting: Deck mount · Finish: Brushed nickel · Temperature display: Three-color LED",
+      "summary": "3 In One LED Kitchen Faucet Glass Rinser ships from verified US inventory. Product Name:3-in-1 Kitchen Faucet with 3-Color LED Temperature Display, Press-Type Glass Rinser, High-Arc Pull-Down Sprayer, 3 Spray Modes, Brushed Nickel Finish for Modern Kitchen Sink. Assembly Length (inches):Not Applicable. Assembly Width (inches):Not Applicable. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Configuration",
+          "value": "3-in-1 faucet and press-type glass rinser",
+          "deciding": true
+        },
+        {
+          "name": "Mounting",
+          "value": "Deck mount",
+          "deciding": true
+        },
+        {
+          "name": "Finish",
+          "value": "Brushed nickel",
+          "deciding": true
+        },
+        {
+          "name": "Sprayer",
+          "value": "Pull-down, 3 spray modes"
+        },
+        {
+          "name": "Temperature display",
+          "value": "Three-color LED",
           "deciding": true
         },
         {
           "name": "Material",
           "value": "Stainless steel"
-        },
-        {
-          "name": "Pack quantity",
-          "value": "1 flange"
-        },
-        {
-          "name": "Baffle included",
-          "value": "No"
-        },
-        {
-          "name": "Stopper included",
-          "value": "No"
-        },
-        {
-          "name": "Check before ordering",
-          "value": "Disposal brand, sink thickness, existing mounting assembly and exact finish"
-        },
-        {
-          "name": "Not for",
-          "value": "Thick sinks requiring an extended flange or unverified non-InSinkErator disposals"
         }
       ],
       "exclusions": [
-        "Do not use when the sink thickness or existing mount requires an extended flange.",
-        "Do not claim compatibility with another disposal brand without model-specific confirmation.",
-        "The baffle, stopper and disposal are not included.",
-        "Do not clean the decorative finish with abrasive solutions."
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
       ],
       "faqs": [
         {
-          "q": "Will this flange fit every kitchen sink?",
-          "a": "No. It is a standard 4.5 by 1.75 inch flange. Measure the sink thickness and existing mounting assembly; a thick farmhouse sink may require an extended InSinkErator flange."
+          "q": "How do I confirm the 3 In One LED Kitchen Faucet Glass Rinser will fit?",
+          "a": "Check these deciding details against the installation: Configuration: 3-in-1 faucet and press-type glass rinser · Mounting: Deck mount · Finish: Brushed nickel · Temperature display: Three-color LED. Do not order from the product photo alone."
         },
         {
-          "q": "Does this fit every garbage disposal brand?",
-          "a": "It is specified for InSinkErator-manufactured garbage disposals. Brand alone should not be extended to another disposer without confirmed mounting compatibility."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 53 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What is included?",
-          "a": "One standard decorative flange in the selected finish. The baffle, stopper and garbage disposal are not included."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "Are matte black and oil-rubbed bronze the same finish?",
-          "a": "No. Matte black is a flat black finish. Oil-rubbed bronze is a deep brown finish with copper-toned distressed edges. Select the exact SKU."
-        },
-        {
-          "q": "How do I choose between brushed stainless and white?",
-          "a": "Match the flange to the sink or faucet finish. FLG-SSB is brushed stainless steel; FLG-WH is bright semi-gloss white."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
         }
       ],
-      "variants": [
-        {
-          "sku": "UTY-ISE-FLG-ORB",
-          "label": "Oil-rubbed bronze",
-          "price": 3199,
-          "available": true,
-          "stockCheckedAt": "2026-10-09",
-          "minDays": 3,
-          "maxDays": 3,
-          "mpn": "FLG-ORB",
-          "gtin12": "050375009474",
-          "image": "https://images.thdstatic.com/productImages/a8e8db21-12c9-4c8b-8c21-d44e378260de/svn/oil-rubbed-bronze-insinkerator-garbage-disposal-parts-flg-orb-64_1000.jpg",
-          "decidingSpec": {
-            "name": "Finish",
-            "value": "Oil-rubbed bronze"
-          },
-          "autods": {
-            "productId": "68ffbc3568543c0001fc1966",
-            "idOnSite": "202828905",
-            "variationId": "202828913",
-            "site": "the home depot",
-            "supplier": "homedepot",
-            "warehouse": "US",
-            "stockQuantity": 50,
-            "minDays": 3,
-            "maxDays": 3,
-            "cost": 2439,
-            "shippingCost": 0,
-            "costCheckedAt": "2026-10-09"
-          }
-        },
-        {
-          "sku": "UTY-ISE-FLG-MTBLK",
-          "label": "Matte black",
-          "price": 3599,
-          "available": true,
-          "stockCheckedAt": "2026-10-09",
-          "minDays": 3,
-          "maxDays": 3,
-          "mpn": "FLG-MTBLK",
-          "gtin12": "050375009511",
-          "image": "https://images.thdstatic.com/productImages/1aa4c627-f425-48dd-9472-abbd0e5a369f/svn/matte-black-insinkerator-garbage-disposal-parts-flg-mtblk-64_1000.jpg",
-          "decidingSpec": {
-            "name": "Finish",
-            "value": "Matte black"
-          },
-          "autods": {
-            "productId": "68ffbc3568543c0001fc1966",
-            "idOnSite": "202828905",
-            "variationId": "202828911",
-            "site": "the home depot",
-            "supplier": "homedepot",
-            "warehouse": "US",
-            "stockQuantity": 206,
-            "minDays": 3,
-            "maxDays": 3,
-            "cost": 2801,
-            "shippingCost": 0,
-            "costCheckedAt": "2026-10-09"
-          }
-        },
-        {
-          "sku": "UTY-ISE-FLG-SSB",
-          "label": "Brushed stainless steel",
-          "price": 3199,
-          "available": true,
-          "stockCheckedAt": "2026-10-09",
-          "minDays": 5,
-          "maxDays": 5,
-          "mpn": "FLG-SSB",
-          "gtin12": "050375007753",
-          "image": "https://images.thdstatic.com/productImages/54595c8f-6d2b-4d5b-90d8-3d2987492607/svn/brushed-stainless-steel-insinkerator-garbage-disposal-parts-flg-ssb-64_1000.jpg",
-          "decidingSpec": {
-            "name": "Finish",
-            "value": "Brushed stainless steel"
-          },
-          "autods": {
-            "productId": "68ffbc3568543c0001fc1966",
-            "idOnSite": "202828905",
-            "variationId": "202828907",
-            "site": "the home depot",
-            "supplier": "homedepot",
-            "warehouse": "US",
-            "stockQuantity": 5,
-            "minDays": 5,
-            "maxDays": 5,
-            "cost": 2443,
-            "shippingCost": 0,
-            "costCheckedAt": "2026-10-09"
-          }
-        },
-        {
-          "sku": "UTY-ISE-FLG-WH",
-          "label": "White",
-          "price": 3399,
-          "available": true,
-          "stockCheckedAt": "2026-10-09",
-          "minDays": 3,
-          "maxDays": 3,
-          "mpn": "FLG-WH",
-          "gtin12": "050375000754",
-          "image": "https://images.thdstatic.com/productImages/abdeac78-824e-4e2a-a1fe-8f695be35064/svn/white-insinkerator-garbage-disposal-parts-flg-wh-64_1000.jpg",
-          "decidingSpec": {
-            "name": "Finish",
-            "value": "Bright semi-gloss white"
-          },
-          "autods": {
-            "productId": "68ffbc3568543c0001fc1966",
-            "idOnSite": "202828905",
-            "variationId": "100055547",
-            "site": "the home depot",
-            "supplier": "homedepot",
-            "warehouse": "US",
-            "stockQuantity": 33,
-            "minDays": 3,
-            "maxDays": 3,
-            "cost": 2605,
-            "shippingCost": 0,
-            "costCheckedAt": "2026-10-09"
-          }
-        }
-      ],
-      "autods": {
-        "site": "the home depot",
-        "supplier": "homedepot",
-        "warehouse": "US"
+      "cj": {
+        "pid": "2035225224618426370",
+        "vid": "2035225224782004225",
+        "sku": "CJFU27977320001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 53,
+        "cjStockQuantity": 53,
+        "cost": 8236,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #98",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2035225224618426370.html"
       }
     },
     {
-      "slug": "insinkerator-qcb-am-evolution-baffle",
-      "sku": "UTY-ISE-QCBAM",
-      "name": "Evolution antimicrobial Quiet Collar sink baffle",
-      "brand": "InSinkErator",
-      "mpn": "QCB-AM",
-      "gtin12": "050375008217",
+      "slug": "wall-mount-pot-filler-faucet-folding-arm",
+      "sku": "UTY-CJ-KIT-6864769",
+      "name": "Wall Mount Pot Filler Faucet Folding Arm",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Kitchen",
-      "price": 1698,
-      "image": "https://m.media-amazon.com/images/I/51teftXs7rL._AC_SL1280_.jpg",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 16999,
+      "image": "https://cf.cjdropshipping.com/doba-import/eb680b35bd9f45f3b3cc1d9b3c3f3982.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/51teftXs7rL._AC_SL1280_.jpg",
-        "https://m.media-amazon.com/images/I/51TSoom2UPL._AC_SL1280_.jpg"
+        "https://utiliy.com/assets/explainers/wall-mount-pot-filler-faucet-folding-arm/place.jpg",
+        "https://utiliy.com/assets/explainers/wall-mount-pot-filler-faucet-folding-arm/detail.jpg"
       ],
       "available": true,
-      "stockCheckedAt": "2026-10-09",
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 6,
-      "maxDays": 6,
-      "headline": "Evolution series, not Badger",
-      "fit": "QCB-AM · removable antimicrobial baffle · no tools",
-      "summary": "A genuine InSinkErator QCB-AM removable Quiet Collar sink baffle for compatible Evolution-series garbage disposals. It reduces disposal noise and upward splash, and its antimicrobial material helps inhibit odor-causing bacteria. Select by the QCB-AM part number and disposal series rather than by a seller's nominal diameter; it is not the baffle for Badger disposals.",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "Wall mount • Folding dual-joint swing arm • Dual",
+      "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: Verify against installation drawing",
+      "summary": "Wall Mount Pot Filler Faucet Folding Arm ships from verified US inventory. The pot filler faucet features a free-swivel arm design, making it easier to fill any pot on the stovetop and for easier cleaning.. The double handles can well control the water flow, facilitate operation, and prevent dripping.. the surface is specially treated to prevent corrosion and fingerprints.. Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Part number",
-          "value": "QCB-AM",
+          "name": "Mounting",
+          "value": "Wall mount",
           "deciding": true
         },
         {
-          "name": "Legacy reference",
-          "value": "77960A"
-        },
-        {
-          "name": "Primary compatibility",
-          "value": "InSinkErator Evolution-series disposals",
-          "deciding": true
-        },
-        {
-          "name": "Not for",
-          "value": "InSinkErator Badger disposals",
+          "name": "Arm",
+          "value": "Folding dual-joint swing arm",
           "deciding": true
         },
         {
           "name": "Material",
-          "value": "Black antimicrobial rubber"
+          "value": "Brass"
         },
         {
-          "name": "Functions",
-          "value": "Reduces noise and upward food or water splash"
+          "name": "Shutoffs",
+          "value": "Dual",
+          "deciding": true
         },
         {
-          "name": "Installation",
-          "value": "Removable, press-in, no tools"
+          "name": "Reach",
+          "value": "Verify against installation drawing",
+          "deciding": true
         },
         {
-          "name": "Fit method",
-          "value": "Match QCB-AM and the disposal series; do not select by nominal diameter alone"
+          "name": "Use",
+          "value": "Cold-water pot-filling line"
         }
       ],
       "exclusions": [
-        "Not for Badger-series garbage disposals.",
-        "Do not market as universal.",
-        "Do not promise fit from a nominal diameter alone because sellers measure different points of the baffle."
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
       ],
       "faqs": [
         {
-          "q": "Does QCB-AM fit an InSinkErator Badger disposal?",
-          "a": "No. QCB-AM is sold for compatible Evolution-series disposals and is explicitly not the Badger baffle."
+          "q": "How do I confirm the Wall Mount Pot Filler Faucet Folding Arm will fit?",
+          "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: Verify against installation drawing. Do not order from the product photo alone."
         },
         {
-          "q": "Why do published baffle diameters differ?",
-          "a": "Retailers measure different edges or grooves. Confirm the QCB-AM part number and disposal series instead of relying on one nominal diameter."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "Does installation require tools?",
-          "a": "No. Remove the old baffle and press QCB-AM into the sink opening until its retaining groove engages."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "What does the antimicrobial feature do?",
-          "a": "It helps inhibit the growth of odor-causing bacteria. It does not replace regular removal and cleaning."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
         }
       ],
-      "autods": {
-        "productId": "4ecd92cc22b9fa9c76a0a0cf",
-        "idOnSite": "B09V2DC8ZN",
-        "variationId": "B09V2DC8ZN",
-        "site": "amazon",
-        "supplier": "AM Incorporated",
+      "cj": {
+        "pid": "2096918699256864769",
+        "vid": "2096918699407859714",
+        "sku": "CJLY31365150001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stockStatus": "in_stock",
-        "minDays": 6,
-        "maxDays": 6,
-        "cost": 749,
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 11981,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096918699256864769.html"
       }
     },
     {
-      "slug": "moen-150259-pulldown-hose-kit",
-      "sku": "UTY-MOEN-150259",
-      "name": "Moen 150259 pulldown kitchen-faucet hose kit",
-      "brand": "Moen",
-      "mpn": "150259",
-      "gtin12": "026508218631",
+      "slug": "brass-folding-pot-filler-faucet",
+      "sku": "UTY-CJ-KIT-0423937",
+      "name": "Brass Folding Pot Filler Faucet",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Kitchen",
-      "price": 3999,
-      "image": "https://m.media-amazon.com/images/I/716dwTAjXDL._AC_SL1500_.jpg",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 15999,
+      "image": "https://cf.cjdropshipping.com/doba-import/d2c150520a9a4075ab48593600b91e54.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/716dwTAjXDL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71kYM-w8mcL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/814gUfVZpFL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61g7J8bkVbL._AC_SL1024_.jpg",
-        "https://m.media-amazon.com/images/I/71wyrbAR7jL._AC_SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/brass-folding-pot-filler-faucet/place.jpg",
+        "https://utiliy.com/assets/explainers/brass-folding-pot-filler-faucet/detail.jpg"
       ],
       "available": true,
-      "stockCheckedAt": "2026-10-09",
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 5,
+      "minDays": 3,
       "maxDays": 5,
-      "headline": "68 in pulldown hose",
-      "fit": "Moen 150259 kit · hose component 187108 · model check required",
-      "summary": "A genuine Moen 150259 replacement hose service kit for select Moen pulldown kitchen faucets. The hose is 68 inches long and the kit includes the washer and connection adapters. The replacement hose may be marked 187108 while the service-kit box is marked 150259. Pulldown and pullout Moen hoses are not interchangeable, so confirm the faucet model and quick-connect arrangement before ordering.",
+      "headline": "Wall mount • Folding dual-joint swing arm • Dual",
+      "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: 9.84x 7.87",
+      "summary": "Brass Folding Pot Filler Faucet ships from verified US inventory. Wall Mount Pot Filler Kitchen Faucet offers the most aesthetic and hygienic faucet available. Dual shut-off on the Pot Filler faucet allows you to turn the water off at either the wall or the spout, controlling the water flow at the point of use. Dual swing joints allow the pot filler to easily fold away when not in use and with the simple on and off with a quarter turn of the handle.. Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Service-kit number",
-          "value": "150259",
+          "name": "Mounting",
+          "value": "Wall mount",
           "deciding": true
         },
         {
-          "name": "Included hose component",
-          "value": "187108",
-          "deciding": true
-        },
-        {
-          "name": "Hose length",
-          "value": "68",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Faucet type",
-          "value": "Select Moen pulldown kitchen faucets",
-          "deciding": true
-        },
-        {
-          "name": "Documented applications",
-          "value": "Select Arbor pulldown and Weymouth S53004-series faucets"
-        },
-        {
-          "name": "Included",
-          "value": "Replacement hose, rubber washer and hose adapters"
-        },
-        {
-          "name": "Not this part",
-          "value": "Moen 137028 pullout-faucet hose"
-        }
-      ],
-      "exclusions": [
-        "Not for Moen pullout faucets that require hose kit 137028.",
-        "Do not infer fit from the Moen brand alone.",
-        "Confirm the faucet model and both hose-end connections before ordering."
-      ],
-      "faqs": [
-        {
-          "q": "Does Moen 150259 fit every Moen kitchen faucet?",
-          "a": "No. It is for select pulldown kitchen faucets. Confirm the faucet model and quick-connect arrangement."
-        },
-        {
-          "q": "Why is the hose marked 187108?",
-          "a": "187108 is the replacement hose component included in the 150259 service kit. The outer kit or box may show 150259."
-        },
-        {
-          "q": "How long is the hose?",
-          "a": "The published hose length is 68 inches."
-        },
-        {
-          "q": "Can it replace Moen hose 137028?",
-          "a": "No. 137028 is a different pullout-hose family with different documented connections and fitment."
-        }
-      ],
-      "autods": {
-        "productId": "f112f89adf5ec2abe88d9739",
-        "idOnSite": "B0052TVX7I",
-        "variationId": "B0052TVX7I",
-        "site": "amazon",
-        "supplier": "Amazon.com",
-        "warehouse": "US",
-        "stockStatus": "in_stock",
-        "minDays": 5,
-        "maxDays": 5,
-        "cost": 2269,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "lg-aap73631702-refrigerator-door-bin",
-      "sku": "UTY-LG-AAP73631702",
-      "name": "LG AAP73631702 refrigerator door bin",
-      "brand": "LG",
-      "mpn": "AAP73631702",
-      "gtin12": "708088523168",
-      "category": "Kitchen",
-      "price": 4295,
-      "image": "https://m.media-amazon.com/images/I/41vHzS55rYL._AC_SL1010_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/41vHzS55rYL._AC_SL1010_.jpg"
-      ],
-      "available": true,
-      "stockCheckedAt": "2026-10-09",
-      "shipsFrom": "US",
-      "minDays": 5,
-      "maxDays": 5,
-      "headline": "Upper-left LG door bin",
-      "fit": "AAP73631702 · model-specific clips · approximately 15.4 in long",
-      "summary": "A genuine LG AAP73631702 refrigerator door bin for the upper or middle position on the left door of specific LG and Kenmore refrigerators. It is a white ABS snap-in bin with a clear front. Similar LG bins can share nearly identical dimensions while using different clip geometry, so match the appliance model and AAP73631702 part number rather than purchasing by appearance alone.",
-      "specs": [
-        {
-          "name": "Manufacturer part number",
-          "value": "AAP73631702",
-          "deciding": true
-        },
-        {
-          "name": "Door position",
-          "value": "Upper or middle position on the left refrigerator door",
-          "deciding": true
-        },
-        {
-          "name": "Published part dimensions",
-          "value": "Approximately 15.4 × 6.3 × 5.65",
-          "unitText": "in",
-          "unitCode": "INH"
-        },
-        {
-          "name": "Attachment",
-          "value": "Model-specific snap-on clips",
+          "name": "Arm",
+          "value": "Folding dual-joint swing arm",
           "deciding": true
         },
         {
           "name": "Material",
-          "value": "White ABS with clear front panel"
+          "value": "Brass"
         },
         {
-          "name": "LG model families",
-          "value": "LFX28968, LFXS27566S, LMXS27626 and LMXS27676D",
+          "name": "Shutoffs",
+          "value": "Dual",
           "deciding": true
         },
         {
-          "name": "Additional documented fits",
-          "value": "Selected Kenmore 72493, 72495 and 73052–73065 series models"
+          "name": "Reach",
+          "value": "9.84x 7.87",
+          "deciding": true
         },
         {
-          "name": "Not interchangeable with",
-          "value": "AAP73631703, AAP73631602 or AAP73631802"
+          "name": "Use",
+          "value": "Cold-water pot-filling line"
         }
       ],
       "exclusions": [
-        "Do not select by visual similarity or dimensions alone.",
-        "Not AAP73631703, AAP73631602 or AAP73631802.",
-        "Exclude any refrigerator model not present in an LG or reliable parts fit list unless fit is separately confirmed."
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
       ],
       "faqs": [
         {
-          "q": "How do I know whether AAP73631702 fits my refrigerator?",
-          "a": "Find the complete refrigerator model number on its rating label and verify it against an AAP73631702 fit list. Do not rely on the LG brand or bin appearance alone."
+          "q": "How do I confirm the Brass Folding Pot Filler Faucet will fit?",
+          "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: 9.84x 7.87. Do not order from the product photo alone."
         },
         {
-          "q": "Where does this bin install?",
-          "a": "It is documented for the upper or middle position on the left refrigerator door of compatible models."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "Can I match the old bin by dimensions?",
-          "a": "Use dimensions only as a secondary check. Similar bins can have different clip spacing and part numbers."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "Is this an aftermarket bin?",
-          "a": "No. The sourced product is identified as genuine LG OEM AAP73631702."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
         }
       ],
-      "autods": {
-        "productId": "b4ccaa779655e387de6e8077",
-        "idOnSite": "B00HN8WRX0",
-        "variationId": "B00HN8WRX0",
-        "site": "amazon",
-        "supplier": "Part Supply House",
+      "cj": {
+        "pid": "2096650911520423937",
+        "vid": "2096650911784665089",
+        "sku": "CJSD31333060001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stockQuantity": 2,
-        "minDays": 5,
-        "maxDays": 5,
-        "cost": 2795,
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 10558,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096650911520423937.html"
       }
     },
     {
-      "slug": "kohler-k-9110-bn-dishwasher-air-gap",
-      "sku": "UTY-KOHLER-K9110BN",
-      "name": "Kohler dishwasher air gap, vibrant brushed nickel",
-      "brand": "Kohler",
-      "mpn": "K-9110-BN",
-      "gtin12": "650531317124",
+      "slug": "dual-joint-pot-filler-faucet",
+      "sku": "UTY-CJ-KIT-5067266",
+      "name": "Dual Joint Pot Filler Faucet",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Kitchen",
-      "price": 4599,
-      "image": "https://images.thdstatic.com/productImages/f8ba5a02-b584-4865-ad10-5ffcba94d9cc/svn/vibrant-brushed-nickel-kohler-dishwasher-air-gaps-k-9110-bn-64_1000.jpg",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 14999,
+      "image": "https://cf.cjdropshipping.com/doba-import/b2c1fb647e1e4ecdbcb1d8ce5f6dc9a1.jpg",
       "images": [
-        "https://images.thdstatic.com/productImages/f8ba5a02-b584-4865-ad10-5ffcba94d9cc/svn/vibrant-brushed-nickel-kohler-dishwasher-air-gaps-k-9110-bn-64_1000.jpg",
-        "https://images.thdstatic.com/productImages/bac41c5e-bce1-4131-af14-05da5b4a69a8/svn/vibrant-brushed-nickel-kohler-dishwasher-air-gaps-k-9110-bn-e1_1000.jpg"
+        "https://utiliy.com/assets/explainers/dual-joint-pot-filler-faucet/place.jpg",
+        "https://utiliy.com/assets/explainers/dual-joint-pot-filler-faucet/detail.jpg"
       ],
       "available": true,
-      "stockCheckedAt": "2026-10-09",
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 4,
-      "maxDays": 4,
-      "headline": "1–1.1875 in mounting hole",
-      "fit": "2 in max deck · 5/8 in inlet · 7/8 in outlet",
-      "summary": "A complete Kohler K-9110-BN dishwasher air-gap body and solid-brass cover in Vibrant Brushed Nickel. It mounts through a 1 to 1.1875 inch sink-deck hole, supports a deck up to 2 inches thick, and uses a 5/8 inch dishwasher inlet with a 7/8 inch outlet to the disposal or sink drain. This is the body-and-cover kit, not a decorative cap alone and not the Vibrant Stainless variant.",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "Wall mount • Folding dual-joint swing arm • Confirm reference configuration",
+      "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87",
+      "summary": "Dual Joint Pot Filler Faucet ships from verified US inventory. Complete your gourmet kitchen modify with the Wall-Mount Pot Filler.. Designed to retract and swivel above your stove, this product keeps cooking tasks efficient.. Brass construction gives the faucet a high-end quality that feels durable to the touch.. Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Model",
-          "value": "K-9110-BN",
+          "name": "Mounting",
+          "value": "Wall mount",
           "deciding": true
         },
         {
-          "name": "Mounting-hole diameter",
-          "value": "1–1.1875",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Arm",
+          "value": "Folding dual-joint swing arm",
           "deciding": true
         },
         {
-          "name": "Maximum deck thickness",
-          "value": "2",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Material",
+          "value": "Brass"
+        },
+        {
+          "name": "Shutoffs",
+          "value": "Confirm reference configuration",
           "deciding": true
         },
         {
-          "name": "Dishwasher inlet",
-          "value": "5/8",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Reach",
+          "value": "9.84 x 7.87",
           "deciding": true
         },
         {
-          "name": "Outlet to disposal or sink",
-          "value": "7/8",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Product height",
-          "value": "8.75",
-          "unitText": "in",
-          "unitCode": "INH"
-        },
-        {
-          "name": "Finish",
-          "value": "Vibrant Brushed Nickel",
-          "deciding": true
-        },
-        {
-          "name": "Included",
-          "value": "Durable plastic air-gap body and solid-brass cover"
-        },
-        {
-          "name": "Not this variant",
-          "value": "K-9110-VS Vibrant Stainless"
+          "name": "Use",
+          "value": "Cold-water pot-filling line"
         }
       ],
       "exclusions": [
-        "Not for mounting holes larger than 1.1875 inches or decks thicker than 2 inches.",
-        "Do not substitute K-9110-VS Vibrant Stainless for this brushed-nickel SKU.",
-        "Do not list as a cover-only product; the body and cover are included.",
-        "Confirm the 5/8-inch inlet and 7/8-inch outlet hose sizes before installation."
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
       ],
       "faqs": [
         {
-          "q": "Does K-9110-BN include the air-gap body?",
-          "a": "Yes. It includes the plastic valve body and solid-brass Vibrant Brushed Nickel cover."
+          "q": "How do I confirm the Dual Joint Pot Filler Faucet will fit?",
+          "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87. Do not order from the product photo alone."
         },
         {
-          "q": "What mounting hole does it require?",
-          "a": "A hole from 1 inch through 1.1875 inches in diameter, through a deck no thicker than 2 inches."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What hose connections does it use?",
-          "a": "A 5/8-inch dishwasher inlet and a 7/8-inch outlet to the disposal or sink drain."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "Is Vibrant Brushed Nickel the same as Vibrant Stainless?",
-          "a": "No. K-9110-BN is Vibrant Brushed Nickel. K-9110-VS is a separate finish variant."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
         }
       ],
-      "autods": {
-        "productId": "68be30fbc87dda2dcffa7202",
-        "idOnSite": "100626485",
-        "variationId": "100626485",
-        "site": "the home depot",
-        "supplier": "homedepot",
+      "cj": {
+        "pid": "2096650878205067266",
+        "vid": "2096650878410588162",
+        "sku": "CJSD31333050001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stockQuantity": 16,
-        "minDays": 4,
-        "maxDays": 4,
-        "cost": 3551,
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 9447,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096650878205067266.html"
+      }
+    },
+    {
+      "slug": "compact-wall-mount-pot-filler-faucet",
+      "sku": "UTY-CJ-KIT-3974145",
+      "name": "Compact Wall Mount Pot Filler Faucet",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Kitchen",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 14499,
+      "image": "https://cf.cjdropshipping.com/doba-import/c8848b1dedb149f090484170671bdee7.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/compact-wall-mount-pot-filler-faucet/place.jpg",
+        "https://utiliy.com/assets/explainers/compact-wall-mount-pot-filler-faucet/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "Wall mount • Folding dual-joint swing arm • Confirm reference configuration",
+      "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87",
+      "summary": "Compact Wall Mount Pot Filler Faucet ships from verified US inventory. Complete your gourmet kitchen modify with the Wall-Mount Pot Filler. Designed to retract and swivel above your stove, this product keeps cooking tasks efficient. Brass construction gives the faucet a high-end quality that feels durable to the touch. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Mounting",
+          "value": "Wall mount",
+          "deciding": true
+        },
+        {
+          "name": "Arm",
+          "value": "Folding dual-joint swing arm",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Brass"
+        },
+        {
+          "name": "Shutoffs",
+          "value": "Confirm reference configuration",
+          "deciding": true
+        },
+        {
+          "name": "Reach",
+          "value": "9.84 x 7.87",
+          "deciding": true
+        },
+        {
+          "name": "Use",
+          "value": "Cold-water pot-filling line"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Compact Wall Mount Pot Filler Faucet will fit?",
+          "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
+      ],
+      "cj": {
+        "pid": "2096649998323974145",
+        "vid": "2096649998567243778",
+        "sku": "CJSD31332910001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 9128,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096649998323974145.html"
       }
     }
   ],
   "prompts": [
     {
-      "slug": "insinkerator-standard-sink-flange",
-      "packshot": "Using only the supplied source images as identity reference, create a pure white-background catalog packshot of the exact four InSinkErator standard flanges FLG-ORB, FLG-MTBLK, FLG-SSB and FLG-WH arranged separately in one orderly row. Preserve each exact shape, 4.5 by 1.75 inch proportions, material and finish. No stopper, baffle, disposal, packaging, labels, text, logos added by the image model, invented parts or altered colors.",
-      "place": "Using the exact sourced InSinkErator standard flange geometry, show one selected flange correctly installed at a kitchen-sink drain above an InSinkErator garbage disposal, with the under-sink mounting context visible and realistic. Show a standard-thickness sink, not a farmhouse or thick sink. No text, arrows, labels, floating parts, invented hardware or unverified brand substitutions.",
-      "detail": "Create a source-faithful close-up showing the decisive fit points of the exact standard InSinkErator flange: the 4.5-inch top rim, 1.75-inch depth and the sink-to-disposal mounting interface. Keep the selected finish exact and show why a thick sink may need a different extended flange without adding comparison text, dimensions, arrows or invented components."
+      "slug": "eighteen-inch-undermount-workstation-sink",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 18 Inch Undermount Workstation Sink. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Overall dimensions 18 in x 18 in, Mounting Undermount, Bowl Single bowl. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 18 Inch Undermount Workstation Sink. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Overall dimensions 18 in x 18 in, Mounting Undermount, Bowl Single bowl. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 18 Inch Undermount Workstation Sink. Center the most important selection points: Overall dimensions 18 in x 18 in, Mounting Undermount, Bowl Single bowl. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "insinkerator-qcb-am-evolution-baffle",
-      "packshot": "Using only the supplied source images, create a pure white-background packshot of one exact black InSinkErator QCB-AM antimicrobial Quiet Collar sink baffle. Preserve its molded rubber shape, retaining groove and proportions. No disposal, sink, packaging, text, labels, logos added by the image model, invented ridges or extra parts.",
-      "place": "Show the exact QCB-AM baffle correctly pressed into the sink opening above a compatible InSinkErator Evolution-series disposal in a clean residential kitchen. The baffle must sit naturally in the flange and remain removable. Do not show a Badger disposal, tools, text, arrows, labels or invented mounting hardware.",
-      "detail": "Create a tight source-faithful installation close-up of the exact QCB-AM retaining groove engaging the sink-flange opening, emphasizing the removable splash-control geometry that decides fit. No measurements, text, arrows, labels, altered profile or invented parts."
+      "slug": "twenty-seven-inch-undermount-workstation-sink",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 27 Inch Undermount Workstation Sink. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Overall dimensions 27 in x 19 in, Mounting Undermount, Bowl Single bowl. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 27 Inch Undermount Workstation Sink. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Overall dimensions 27 in x 19 in, Mounting Undermount, Bowl Single bowl. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 27 Inch Undermount Workstation Sink. Center the most important selection points: Overall dimensions 27 in x 19 in, Mounting Undermount, Bowl Single bowl. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "moen-150259-pulldown-hose-kit",
-      "packshot": "Using only the supplied source images, create a pure white-background packshot of the exact genuine Moen 150259 service kit with its gray 68-inch hose, rubber washer and supplied hose adapters neatly separated. Preserve the exact hose ends and connector geometry. No faucet, packaging, text, labels, logos added by the image model, invented adapters or altered connectors.",
-      "place": "Show the exact Moen 150259 hose correctly installed under a compatible Moen pulldown kitchen faucet, routed naturally through the faucet body with the documented quick-connect arrangement visible. Keep the installation realistic and uncluttered. No pullout-faucet substitution, text, arrows, labels or invented plumbing parts.",
-      "detail": "Create a source-faithful macro close-up of both exact Moen 150259 hose-end connections and the included washer and adapters, with enough surrounding faucet hardware to evaluate connector fit. No dimensions, text, arrows, labels, connector changes or invented parts."
+      "slug": "thirty-three-inch-top-mount-workstation-sink",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 33 Inch Top Mount Workstation Sink. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Overall dimensions 33x22x9, Mounting Top mount / drop-in, Bowl Single bowl. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 33 Inch Top Mount Workstation Sink. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Overall dimensions 33x22x9, Mounting Top mount / drop-in, Bowl Single bowl. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 33 Inch Top Mount Workstation Sink. Center the most important selection points: Overall dimensions 33x22x9, Mounting Top mount / drop-in, Bowl Single bowl. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "lg-aap73631702-refrigerator-door-bin",
-      "packshot": "Using only the supplied source image, create a pure white-background packshot of one exact genuine LG AAP73631702 refrigerator door bin. Preserve the white ABS body, clear front panel, exact clip geometry, rim profile and proportions. No refrigerator, food, packaging, text, labels, logos added by the image model, altered clips or invented features.",
-      "place": "Show the exact LG AAP73631702 bin snapped into its documented upper-left or middle-left door position inside a compatible LG French-door refrigerator. Use realistic scale and leave neighboring bins visible only for installation context. No right-door placement, food labels, text, arrows or invented refrigerator geometry.",
-      "detail": "Create a tight source-faithful close-up of the exact AAP73631702 rear and side snap-in clips engaging the compatible left refrigerator door rails, emphasizing the clip geometry that distinguishes similar-looking LG bins. No measurements, text, arrows, labels, modified clips or invented hardware."
+      "slug": "three-in-one-led-kitchen-faucet-glass-rinser",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 3 In One LED Kitchen Faucet Glass Rinser. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Configuration 3-in-1 faucet and press-type glass rinser, Mounting Deck mount, Finish Brushed nickel, Temperature display Three-color LED. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 3 In One LED Kitchen Faucet Glass Rinser. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Configuration 3-in-1 faucet and press-type glass rinser, Mounting Deck mount, Finish Brushed nickel, Temperature display Three-color LED. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 3 In One LED Kitchen Faucet Glass Rinser. Center the most important selection points: Configuration 3-in-1 faucet and press-type glass rinser, Mounting Deck mount, Finish Brushed nickel, Temperature display Three-color LED. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "kohler-k-9110-bn-dishwasher-air-gap",
-      "packshot": "Using only the supplied source images, create a pure white-background packshot of the exact complete Kohler K-9110-BN dishwasher air gap with Vibrant Brushed Nickel solid-brass cover and plastic valve body. Preserve the exact finish, body shape and inlet and outlet geometry. No sink, hoses, packaging, text, labels, logos added by the image model, invented fittings or alternate finish.",
-      "place": "Show the exact Kohler K-9110-BN installed through a kitchen sink deck with the Vibrant Brushed Nickel cover above the deck and the full air-gap body below, connected to a 5/8-inch dishwasher hose and 7/8-inch disposal or drain hose. No cover-only depiction, text, arrows, labels, leaks or invented adapters.",
-      "detail": "Create a source-faithful split-level close-up of the exact K-9110-BN mounting through the sink deck, clearly showing the deck opening, clamping area, 5/8-inch inlet and 7/8-inch outlet geometry. Preserve the brushed-nickel cover and exact body. No dimensions, text, arrows, labels or invented hardware."
+      "slug": "wall-mount-pot-filler-faucet-folding-arm",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Wall Mount Pot Filler Faucet Folding Arm. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Dual, Reach Verify against installation drawing. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Wall Mount Pot Filler Faucet Folding Arm. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Dual, Reach Verify against installation drawing. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Wall Mount Pot Filler Faucet Folding Arm. Center the most important selection points: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Dual, Reach Verify against installation drawing. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "brass-folding-pot-filler-faucet",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Brass Folding Pot Filler Faucet. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Dual, Reach 9.84x 7.87. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Brass Folding Pot Filler Faucet. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Dual, Reach 9.84x 7.87. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Brass Folding Pot Filler Faucet. Center the most important selection points: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Dual, Reach 9.84x 7.87. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "dual-joint-pot-filler-faucet",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Dual Joint Pot Filler Faucet. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Confirm reference configuration, Reach 9.84 x 7.87. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Dual Joint Pot Filler Faucet. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Confirm reference configuration, Reach 9.84 x 7.87. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Dual Joint Pot Filler Faucet. Center the most important selection points: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Confirm reference configuration, Reach 9.84 x 7.87. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "compact-wall-mount-pot-filler-faucet",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Compact Wall Mount Pot Filler Faucet. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Confirm reference configuration, Reach 9.84 x 7.87. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Compact Wall Mount Pot Filler Faucet. Show it correctly installed or used in a realistic kitchen setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Confirm reference configuration, Reach 9.84 x 7.87. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Compact Wall Mount Pot Filler Faucet. Center the most important selection points: Mounting Wall mount, Arm Folding dual-joint swing arm, Shutoffs Confirm reference configuration, Reach 9.84 x 7.87. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     }
   ]
 }

@@ -4,6 +4,11 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check:margins": "node scripts/check-margins.mjs"
+    "check:margins": "node scripts/check-margins.mjs",
+    "research:cj": "node scripts/research-cj.mjs",
+    "qualify:cj": "node scripts/qualify-cj.mjs",
+    "prepare:cj": "node scripts/prepare-cj-catalog.mjs",
+    "drafts:cj": "node scripts/generate-cj-drafts.mjs",
+    "merge:drafts": "node scripts/merge-drafts.mjs"
   }
 }

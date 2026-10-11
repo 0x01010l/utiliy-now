@@ -10,18 +10,23 @@ let failed = false;
 const maxAgeMs = 30 * 24 * 60 * 60 * 1000;
 
 for (const product of catalog.products) {
+  const productSupplier = product.cj || product.autods;
   const variants = product.variants?.length
     ? product.variants.map((variant) => ({
         ...variant,
-        autods: { ...product.autods, ...variant.autods }
+        supplier: {
+          ...productSupplier,
+          ...(variant.cj || variant.autods)
+        }
       }))
-    : [{ sku: product.sku, price: product.price, autods: product.autods }];
+    : [{ sku: product.sku, price: product.price, supplier: productSupplier }];
 
   for (const variant of variants) {
-    const cost = Number(variant.autods.cost);
-    const shipping = Number(variant.autods.shippingCost);
+    const cost = Number(variant.supplier?.cost);
+    const shipping = Number(variant.supplier?.shippingCost);
+    const supplierTax = Number(variant.supplier?.supplierTax || 0);
     const price = Number(variant.price);
-    const landed = cost + shipping;
+    const landed = cost + shipping + supplierTax;
     const marginMinimum = Math.ceil((landed + stripeFixed) / (1 - targetMargin - stripeRate));
     const landedRatioMinimum = Math.ceil(landed / maxLandedRatio);
     const minimum = Math.max(marginMinimum, landedRatioMinimum);
@@ -29,7 +34,7 @@ for (const product of catalog.products) {
     const profit = price - cost - shipping - fee;
     const margin = profit / price;
     const landedRatio = landed / price;
-    const checkedAt = variant.stockCheckedAt || product.stockCheckedAt || variant.autods.costCheckedAt;
+    const checkedAt = variant.stockCheckedAt || product.stockCheckedAt || variant.supplier?.costCheckedAt;
     const checkedTime = Date.parse(`${checkedAt}T23:59:59Z`);
     const fresh = Number.isFinite(checkedTime) && checkedTime >= Date.now() - maxAgeMs;
     const available = variant.available ?? product.available ?? true;

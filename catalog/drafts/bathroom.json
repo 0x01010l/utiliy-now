@@ -1,338 +1,811 @@
 {
   "products": [
     {
-      "slug": "american-standard-022650-slip-on-tub-spout",
-      "sku": "UTY-AS-0226500020A",
-      "name": "5/8-inch slip-on tub diverter spout, chrome",
-      "brand": "American Standard",
-      "mpn": "022650-0020A",
-      "gtin12": "012611111280",
+      "slug": "six-inch-square-shower-drain-brushed-gold",
+      "sku": "UTY-CJ-BAT-3935490",
+      "name": "6 Inch Square Shower Drain Brushed Gold",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Bathroom",
-      "price": 2799,
-      "image": "https://images.thdstatic.com/productImages/2754e9b9-3467-4a6e-8a73-2090815eecfe/svn/chrome-american-standard-tub-spouts-022650-0020a-64_1000.jpg",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "price": 6499,
+      "image": "https://cf.cjdropshipping.com/17718912/a7ff48c5-d66a-4495-bc9a-f16448977292.jpg",
       "images": [
-        "https://images.thdstatic.com/productImages/2754e9b9-3467-4a6e-8a73-2090815eecfe/svn/chrome-american-standard-tub-spouts-022650-0020a-64_1000.jpg",
-        "https://images.thdstatic.com/productImages/f0727b42-6c19-48be-bb84-aa97c05335a7/svn/chrome-american-standard-tub-spouts-022650-0020a-c3_1000.jpg",
-        "https://images.thdstatic.com/productImages/088919eb-bb6e-453b-8fae-5b97d21c4c33/svn/chrome-american-standard-tub-spouts-022650-0020a-fa_1000.jpg",
-        "https://images.thdstatic.com/productImages/e0bd2b96-f268-42fb-b163-16777882bda5/svn/chrome-american-standard-tub-spouts-022650-0020a-76_1000.jpg"
+        "https://utiliy.com/assets/explainers/six-inch-square-shower-drain-brushed-gold/place.jpg",
+        "https://utiliy.com/assets/explainers/six-inch-square-shower-drain-brushed-gold/detail.jpg"
       ],
       "available": true,
-      "shipsFrom": "US",
-      "minDays": 9,
-      "maxDays": 9,
-      "headline": "5/8 in OD slip-on",
-      "fit": "5.688 in projection · pull-up diverter · chrome",
-      "summary": "One genuine American Standard 022650-0020A polished-chrome tub spout with a pull-up shower diverter. It slips onto 5/8-inch outside-diameter copper tubing and projects 5.688 inches from the finished wall. It is not a threaded IPS or NPT spout, so confirm the bare tube diameter and projection before ordering.",
-      "specs": [
-        {"name": "Connection", "value": "Slip-on over copper tube", "deciding": true},
-        {"name": "Required tube outside diameter", "value": "5/8", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Nominal copper tube size", "value": "1/2", "unitText": "in", "unitCode": "INH"},
-        {"name": "Projection from finished wall", "value": "5.688", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Spout-to-diverter height", "value": "2.875", "unitText": "in", "unitCode": "INH"},
-        {"name": "Diverter", "value": "Pull-up tub-to-shower diverter"},
-        {"name": "Material", "value": "Brass"},
-        {"name": "Finish", "value": "Polished chrome", "deciding": true},
-        {"name": "Documented trim family", "value": "American Standard Colony Soft 2- and 3-handle bath/shower trim"},
-        {"name": "Pack quantity", "value": "1 spout"},
-        {"name": "Not for", "value": "Threaded IPS or NPT nipples, 3/4-inch copper tube, or non-chrome finish matching", "deciding": true}
-      ],
-      "faqs": [
-        {"q": "Will this tub spout screw onto a threaded nipple?", "a": "No. Model 022650-0020A is a slip-on spout for smooth 5/8-inch outside-diameter copper tubing."},
-        {"q": "Does a 1/2-inch copper pipe measure 1/2 inch across?", "a": "No. Standard nominal 1/2-inch copper tubing has a 5/8-inch outside diameter, which is the dimension this spout fits."},
-        {"q": "How far does the spout project from the wall?", "a": "The published projection is 5.688 inches, or 144 millimeters, from the finished wall."},
-        {"q": "Does this spout divert water to a shower head?", "a": "Yes. It has a pull-up diverter on the nose."},
-        {"q": "Is this the brushed-nickel version?", "a": "No. MPN 022650-0020A is polished chrome."}
-      ],
-      "autods": {
-        "productId": "696dbb932dad4f00017e8722",
-        "idOnSite": "205490886",
-        "variationId": "205490886",
-        "site": "the home depot",
-        "buySiteId": 5,
-        "supplier": "homedepot",
-        "warehouse": "US",
-        "inStock": true,
-        "inStockQty": 699,
-        "cost": 2080,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "kohler-pennington-k2196-single-hole-white",
-      "sku": "UTY-KOHLER-K219610",
-      "name": "Pennington 20-1/4-inch drop-in sink, white, single hole",
-      "brand": "KOHLER",
-      "mpn": "K-2196-1-0",
-      "gtin12": "040688573861",
-      "category": "Bathroom",
-      "price": 9270,
-      "image": "https://m.media-amazon.com/images/I/41Ou3nrWp9L._AC_SL1000_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/41Ou3nrWp9L._AC_SL1000_.jpg",
-        "https://m.media-amazon.com/images/I/31OHnIHbZHL._AC_.jpg",
-        "https://m.media-amazon.com/images/I/21Qzd7HI8WL._AC_.jpg",
-        "https://m.media-amazon.com/images/I/31LEE3KOvPL._AC_.jpg"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "minDays": 5,
-      "maxDays": 5,
-      "headline": "20-1/4 × 17-1/2 in",
-      "fit": "Template 1002970-7 · single faucet hole · white",
-      "summary": "One genuine white KOHLER Pennington K-2196-1-0 oval drop-in bathroom sink with a single faucet hole and overflow. Its outside footprint is 20-1/4 by 17-1/2 inches, but countertop fit must be established with the included KOHLER 1002970-7 cutout template rather than the nominal outside dimensions. This is not the 4-inch centerset, 8-inch widespread, biscuit, or almond variant.",
-      "specs": [
-        {"name": "Installation", "value": "Drop-in / self-rimming", "deciding": true},
-        {"name": "Exterior dimensions", "value": "20-1/4 × 17-1/2 × 8-1/2", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Basin dimensions", "value": "16 × 11 × 7", "unitText": "in", "unitCode": "INH"},
-        {"name": "Water depth", "value": "4", "unitText": "in", "unitCode": "INH"},
-        {"name": "Cutout method", "value": "Use current KOHLER template 1002970-7; do not cut from nominal dimensions", "deciding": true},
-        {"name": "Faucet holes", "value": "1", "deciding": true},
-        {"name": "Faucet-hole diameter", "value": "1-3/8", "unitText": "in", "unitCode": "INH"},
-        {"name": "Drain-hole diameter", "value": "1-3/4", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Overflow", "value": "Yes"},
-        {"name": "Material", "value": "Vitreous china"},
-        {"name": "Shape", "value": "Oval"},
-        {"name": "Color", "value": "White", "deciding": true},
-        {"name": "Included", "value": "Sink and cutout template"},
-        {"name": "Not included", "value": "Faucet and drain assembly"},
-        {"name": "Not this variant", "value": "K-2196-4 centerset, K-2196-8 widespread, biscuit, almond, black, dune or ice-grey sink", "deciding": true}
-      ],
-      "faqs": [
-        {"q": "Will this replace any oval sink that is about 20 inches wide?", "a": "Not necessarily. Compare the existing countertop opening with the current KOHLER 1002970-7 template; outside dimensions alone do not establish fit."},
-        {"q": "What faucet drilling does K-2196-1-0 have?", "a": "One 1-3/8-inch faucet hole. It is not drilled for a 4-inch centerset or an 8-inch widespread faucet."},
-        {"q": "Does this sink have an overflow?", "a": "Yes. This exact white single-hole variant includes an overflow passage."},
-        {"q": "What size drain does it accept?", "a": "The published drain-hole diameter is 1-3/4 inches. The drain assembly is not included."},
-        {"q": "Is the countertop cutout 20-1/4 by 17-1/2 inches?", "a": "No. Those are nominal exterior dimensions. Use the included KOHLER cutout template."}
-      ],
-      "autods": {
-        "productId": "331a09cc945e290431708c47",
-        "idOnSite": "B000MYG4JU",
-        "variationId": "B000MYG4JU",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "Jeff's Store",
-        "warehouse": "US",
-        "supplierOption": "White",
-        "inStock": true,
-        "inStockQty": 1,
-        "cost": 7185,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "kohler-1188998-canister-flush-valve",
-      "sku": "UTY-KOHLER-1188998",
-      "name": "Cimarron 2-inch canister flush-valve kit",
-      "brand": "KOHLER",
-      "mpn": "1188998",
-      "gtin12": "885612120458",
-      "category": "Bathroom",
-      "price": 2999,
-      "image": "https://m.media-amazon.com/images/I/71WtTtvryfL._AC_SL1500_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/71WtTtvryfL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61Z+G4C6pDL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/31b0TXF8l5L._AC_.jpg"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "minDays": 6,
-      "maxDays": 6,
-      "headline": "K-4369 and K-4418 tanks",
-      "fit": "3 in canister · 2 in outlet · gasket included",
-      "summary": "One genuine KOHLER 1188998 complete canister flush-valve kit for Cimarron toilet tanks K-4369 and K-4418. The assembly uses a 3-inch canister over a 2-inch outlet and includes the tank-to-bowl gasket. Confirm the tank number molded or stamped inside the rear tank wall; the toilet collection name or bowl number alone does not establish fit.",
-      "specs": [
-        {"name": "Documented tank models", "value": "KOHLER K-4369 and K-4418", "deciding": true},
-        {"name": "Canister diameter", "value": "3", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Outlet size", "value": "2", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Mechanism", "value": "Canister flush valve"},
-        {"name": "Included", "value": "Complete canister assembly and tank-to-bowl gasket"},
-        {"name": "Replacement part numbers", "value": "1089671, 1096384, 1113628 and 1362492"},
-        {"name": "Tank identification location", "value": "Inside rear wall of toilet tank", "deciding": true},
-        {"name": "Pack quantity", "value": "1 kit"},
-        {"name": "Not for", "value": "Unlisted KOHLER tanks, flapper-style valves, 3-inch outlets, or seal-only repair when only GP1059291 is needed", "deciding": true}
-      ],
-      "faqs": [
-        {"q": "Will KOHLER 1188998 fit every Cimarron toilet?", "a": "No. The documented tank models are K-4369 and K-4418. Read the number inside the rear tank wall before ordering."},
-        {"q": "Is this a two-inch or three-inch flush valve?", "a": "It has a 3-inch canister and a 2-inch outlet. Both measurements matter."},
-        {"q": "Does the kit include the tank-to-bowl gasket?", "a": "Yes. This is the complete canister assembly with the gasket."},
-        {"q": "Can I identify fit from the bowl model?", "a": "No. Use the tank model number, because bowls and tanks can be paired or replaced separately."},
-        {"q": "Do I need this kit if only the canister seal leaks?", "a": "Possibly not. For a seal-only repair, compare your toilet with KOHLER GP1059291 before replacing the complete valve."}
-      ],
-      "autods": {
-        "productId": "4c922ffab343a196fc076933",
-        "idOnSite": "B00CXRZH1U",
-        "variationId": "B00CXRZH1U",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "Amazon.com",
-        "warehouse": "US",
-        "supplierOption": "Pack of 1",
-        "inStock": true,
-        "inStockQty": 1000000,
-        "stockNote": "AutoDS uses 1000000 as an availability sentinel; treat as in stock, not literal unit count.",
-        "cost": 2055,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "revent-rvs50-roomside-bath-fan",
-      "sku": "UTY-REVENT-RVS50",
-      "name": "RVS50 room-side bathroom exhaust fan",
-      "brand": "ReVent",
-      "mpn": "RVS50",
-      "gtin12": "855448008305",
-      "category": "Bathroom",
-      "price": 7999,
-      "image": "https://images.thdstatic.com/productImages/4065588b-8c28-43e7-bc0f-dcf3d5524c06/svn/white-revent-bath-fans-rvs50-64_1000.jpg",
-      "images": [
-        "https://images.thdstatic.com/productImages/4065588b-8c28-43e7-bc0f-dcf3d5524c06/svn/white-revent-bath-fans-rvs50-64_1000.jpg",
-        "https://images.thdstatic.com/productImages/aa29ab05-6232-44e2-9c2a-19f550ccd8cb/svn/white-revent-bath-fans-rvs50-e1_1000.jpg",
-        "https://images.thdstatic.com/productImages/f87271a7-8f86-4c18-b9c4-dbeb77b0bba1/svn/white-revent-bath-fans-rvs50-40_1000.jpg",
-        "https://images.thdstatic.com/productImages/7d00160b-06da-4517-8cee-9ef3355650f9/svn/white-revent-bath-fans-rvs50-a0_1000.jpg",
-        "https://images.thdstatic.com/productImages/4f06a47d-d6ce-4c58-859d-8c7e8f3fd7f6/svn/white-revent-bath-fans-rvs50-1f_1000.jpg"
-      ],
-      "available": true,
+      "stockQuantity": 230,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
       "minDays": 3,
-      "maxDays": 3,
-      "headline": "7-1/4 × 7-1/2 in opening",
-      "fit": "4-3/8 in deep · 4 in duct · 50 CFM",
-      "summary": "One ReVent RVS50 room-side bathroom exhaust fan for a measured 7-1/4 by 7-1/2-inch ceiling or wall opening with at least 4-3/8 inches of housing depth and a 4-inch exhaust duct. It moves 50 CFM for bathrooms up to about 50 square feet and uses a 9-3/4-inch square shield. This exact variant is not the lower-cost RVP50ES or the larger RVS110.",
+      "maxDays": 5,
+      "headline": "6 in • Reversible flat and tile-insert • Brushed gold",
+      "fit": "Nominal size: 6 in · Cover: Reversible flat and tile-insert · Finish: Brushed gold",
+      "summary": "6 Inch Square Shower Drain Brushed Gold ships from verified US inventory. Available Ship to:United States Details. 2-IN-1 Cover Design: Square shower drain cover features two sides—one flat, the other tile-insert. The tile-insert side can match your flooring style as needed, and the inset design creates an elegant, discreet look.. Confirm every deciding measurement and connection before ordering.",
       "specs": [
-        {"name": "Required opening", "value": "7-1/4 × 7-1/2", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Housing dimensions", "value": "7-1/4 × 7-1/2 × 4-3/8", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Shield dimensions", "value": "9-3/4 × 9-3/4", "unitText": "in", "unitCode": "INH"},
-        {"name": "Duct diameter", "value": "4", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Airflow", "value": "50", "unitText": "CFM", "deciding": true},
-        {"name": "Maximum room size", "value": "50", "unitText": "sq ft", "deciding": true},
-        {"name": "Sound level", "value": "1.0", "unitText": "sones"},
-        {"name": "Voltage", "value": "120", "unitText": "V", "unitCode": "VLT"},
-        {"name": "Fan power", "value": "5.5", "unitText": "W", "unitCode": "WTT"},
-        {"name": "Installation", "value": "Room-side ceiling or wall installation; no attic access required"},
-        {"name": "Over-tub or shower condition", "value": "Install on a GFCI-protected circuit"},
-        {"name": "Certifications", "value": "ENERGY STAR, HVI and ETL"},
-        {"name": "Not this model", "value": "RVP50ES, RVS110, lighted RVL50 or humidity-sensing RVSH50", "deciding": true},
-        {"name": "Not for", "value": "Openings or cavities smaller than the stated housing, or direct 3-inch duct connection without an approved transition", "deciding": true}
+        {
+          "name": "Nominal size",
+          "value": "6",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Cover",
+          "value": "Reversible flat and tile-insert",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "304 stainless steel"
+        },
+        {
+          "name": "Finish",
+          "value": "Brushed gold",
+          "deciding": true
+        },
+        {
+          "name": "Included debris control",
+          "value": "Removable cover and hair strainer"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
       ],
       "faqs": [
-        {"q": "What ceiling opening does the ReVent RVS50 need?", "a": "Measure for a 7-1/4 by 7-1/2-inch opening and at least 4-3/8 inches of housing depth."},
-        {"q": "Is the 9-3/4-inch shield the fan housing size?", "a": "No. The shield is 9-3/4 inches square; the housing and opening are smaller at 7-1/4 by 7-1/2 inches."},
-        {"q": "What duct size fits the RVS50?", "a": "It is specified for a 4-inch exhaust duct."},
-        {"q": "Does this fan require attic access?", "a": "No. Its SheetLock system supports installation from the room side."},
-        {"q": "Can it ventilate a 100-square-foot bathroom?", "a": "No. This exact variant is rated at 50 CFM for rooms up to about 50 square feet; choose a correctly sized larger model."},
-        {"q": "Can it be installed over a bathtub or shower?", "a": "Yes, only when installed according to the instructions on a GFCI-protected circuit."}
+        {
+          "q": "How do I confirm the 6 Inch Square Shower Drain Brushed Gold will fit?",
+          "a": "Check these deciding details against the installation: Nominal size: 6 in · Cover: Reversible flat and tile-insert · Finish: Brushed gold. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 230 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
       ],
-      "autods": {
-        "productId": "658a60f45135b2cba04edacb",
-        "idOnSite": "307868409",
-        "variationId": "307868329",
-        "site": "the home depot",
-        "buySiteId": 5,
-        "supplier": "homedepot",
+      "cj": {
+        "pid": "2026197492783935490",
+        "vid": "2026197492968484865",
+        "sku": "CJSD27660830001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "supplierOption": "50 CFM / RVS50",
-        "inStock": true,
-        "inStockQty": 8,
-        "mappingNote": "AutoDS groups this exact 307868329 RVS50 variation under the 307868409 fan-family parent.",
-        "cost": 5661,
+        "stockQuantity": 230,
+        "cjStockQuantity": 230,
+        "cost": 4882,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "USPS US to US #7",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2026197492783935490.html"
       }
     },
     {
-      "slug": "fluidmaster-6100-two-inch-tank-gasket",
-      "sku": "UTY-FLUIDMASTER-6100",
-      "name": "Universal 2-inch tank-to-bowl gasket",
-      "brand": "Fluidmaster",
-      "mpn": "6100",
-      "gtin12": "039961061003",
+      "slug": "wall-mount-bathroom-faucet-no-overflow-drain",
+      "sku": "UTY-CJ-BAT-0646657",
+      "name": "Wall Mount Bathroom Faucet No Overflow Drain",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Bathroom",
-      "price": 849,
-      "image": "https://m.media-amazon.com/images/I/71oLCOmcV-L._AC_SL1500_.jpg",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 11999,
+      "image": "https://cf.cjdropshipping.com/doba-import/4e6e812b378e4032b11a2988ef153ad6.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/71oLCOmcV-L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71UneSuouvL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71K5IsVeFzL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71w09foHlCL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/41HWiPBn96L._AC_.jpg",
-        "https://m.media-amazon.com/images/I/71qqI93pJjL._AC_SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/wall-mount-bathroom-faucet-no-overflow-drain/place.jpg",
+        "https://utiliy.com/assets/explainers/wall-mount-bathroom-faucet-no-overflow-drain/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 1,
-      "maxDays": 1,
-      "headline": "2 in flush valves",
-      "fit": "Close-coupled toilets · round or hex nut · not Gerber",
-      "summary": "One Fluidmaster 6100 sponge-rubber tank-to-bowl gasket for most close-coupled toilets with a 2-inch flush valve and a round or hex-shaped flush-valve nut. The word universal does not include 3-inch flush valves or Gerber toilets, and this package contains the gasket only, without tank bolts or other mounting hardware.",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "Wall mount • Single handle • See reference image",
+      "fit": "Mounting: Wall mount · Controls: Single handle · Finish: See reference image · Drain: Pop-up, for sinks without overflow",
+      "summary": "Wall Mount Bathroom Faucet No Overflow Drain ships from verified US inventory. This wall mounted bathroom faucet features a single handle design, allowing users to easily adjust the water temperature and water flow. The spout can be rotated 360 degrees as needed to meet your daily bathroom water needs, such as brushing teeth, washing face, etc.. High-quality aerators make the water flow from the tap smoother, produce enough bubbles, prevent splashing, and reduce water scouring.. Confirm every deciding measurement and connection before ordering.",
       "specs": [
-        {"name": "Flush-valve size", "value": "2", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Toilet construction", "value": "Close-coupled two-piece toilet", "deciding": true},
-        {"name": "Compatible flush-valve nut shapes", "value": "Round or hex-shaped", "deciding": true},
-        {"name": "Material", "value": "Sponge rubber"},
-        {"name": "Product dimensions", "value": "4.75 × 1.38 × 6.75", "unitText": "in", "unitCode": "INH"},
-        {"name": "Pack quantity", "value": "1 gasket"},
-        {"name": "Hardware included", "value": "No", "deciding": true},
-        {"name": "Warranty", "value": "1 year"},
-        {"name": "Not for", "value": "Gerber toilets, 3-inch flush valves, one-piece toilets, or installations requiring included bolts", "deciding": true}
+        {
+          "name": "Mounting",
+          "value": "Wall mount",
+          "deciding": true
+        },
+        {
+          "name": "Controls",
+          "value": "Single handle",
+          "deciding": true
+        },
+        {
+          "name": "Finish",
+          "value": "See reference image",
+          "deciding": true
+        },
+        {
+          "name": "Drain",
+          "value": "Pop-up, for sinks without overflow",
+          "deciding": true
+        },
+        {
+          "name": "Supply hoses",
+          "value": "Confirm plumbing connection"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
       ],
       "faqs": [
-        {"q": "Does Fluidmaster 6100 fit a 3-inch flush valve?", "a": "No. Model 6100 is for 2-inch flush-valve toilets."},
-        {"q": "Does universal mean it fits Gerber toilets?", "a": "No. Fluidmaster explicitly excludes Gerber toilets from this gasket's fit."},
-        {"q": "Are tank bolts included?", "a": "No. This package contains one gasket only; mounting hardware is sold separately."},
-        {"q": "What toilet style does it fit?", "a": "It fits most close-coupled two-piece toilets with a 2-inch flush valve and a round or hex-shaped flush-valve nut."},
-        {"q": "How do I verify the flush-valve size?", "a": "Turn off the water, separate the tank only if safe to do so, and identify the valve outlet or existing gasket size. Do not choose from brand name alone."}
+        {
+          "q": "How do I confirm the Wall Mount Bathroom Faucet No Overflow Drain will fit?",
+          "a": "Check these deciding details against the installation: Mounting: Wall mount · Controls: Single handle · Finish: See reference image · Drain: Pop-up, for sinks without overflow. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
       ],
-      "autods": {
-        "productId": "9b93af4bf139d9399a81ce3a",
-        "idOnSite": "B000DZGNIU",
-        "variationId": "B000DZGNIU",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "Jeff's Store",
+      "cj": {
+        "pid": "2096919438280646657",
+        "vid": "2096919438490361857",
+        "sku": "CJLY31365280001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "inStock": true,
-        "inStockQty": 1000000,
-        "stockNote": "AutoDS uses 1000000 as an availability sentinel; treat as in stock, not literal unit count.",
-        "cost": 578,
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 8011,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096919438280646657.html"
+      }
+    },
+    {
+      "slug": "four-inch-centerset-bathroom-faucet-brushed-nickel",
+      "sku": "UTY-CJ-BAT-8740609",
+      "name": "4 Inch Centerset Bathroom Faucet Brushed Nickel",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Bathroom",
+      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "price": 6799,
+      "image": "https://cf.cjdropshipping.com/doba-import/2f1623a17d5e450ca3f95c6d434fa60d.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/four-inch-centerset-bathroom-faucet-brushed-nickel/place.jpg",
+        "https://utiliy.com/assets/explainers/four-inch-centerset-bathroom-faucet-brushed-nickel/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "4-inch centerset, 3-hole • Two handle • Brushed nickel",
+      "fit": "Mounting: 4-inch centerset, 3-hole · Controls: Two handle · Finish: Brushed nickel · Drain: Pop-up drain included",
+      "summary": "4 Inch Centerset Bathroom Faucet Brushed Nickel ships from verified US inventory. DESIGN: The Brushed Nickel finish bathroom sink faucet is avant-garde and fashion, which can match with various decoration styles. The superior quality material is heavier and reliable than ordinary faucets. Also it has durable brushed surface, easy to clean.. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Mounting",
+          "value": "4-inch centerset, 3-hole",
+          "deciding": true
+        },
+        {
+          "name": "Controls",
+          "value": "Two handle",
+          "deciding": true
+        },
+        {
+          "name": "Finish",
+          "value": "Brushed nickel",
+          "deciding": true
+        },
+        {
+          "name": "Drain",
+          "value": "Pop-up drain included",
+          "deciding": true
+        },
+        {
+          "name": "Supply hoses",
+          "value": "Included"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Existing plumbing, valves and countertop or wall modification"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 4 Inch Centerset Bathroom Faucet Brushed Nickel will fit?",
+          "a": "Check these deciding details against the installation: Mounting: 4-inch centerset, 3-hole · Controls: Two handle · Finish: Brushed nickel · Drain: Pop-up drain included. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification."
+        }
+      ],
+      "cj": {
+        "pid": "2096656866668740609",
+        "vid": "2096656866836512770",
+        "sku": "CJSD31333780001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 5236,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096656866668740609.html"
+      }
+    },
+    {
+      "slug": "adjustable-80-110-130-cfm-rgb-bath-fan",
+      "sku": "UTY-CJ-BAT-0238722",
+      "name": "Adjustable 80 110 130 CFM RGB Bath Fan",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Bathroom",
+      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "price": 7999,
+      "image": "https://cf.cjdropshipping.com/17660160/6f12bb79-94da-446e-b368-f5798018e374.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/adjustable-80-110-130-cfm-rgb-bath-fan/place.jpg",
+        "https://utiliy.com/assets/explainers/adjustable-80-110-130-cfm-rgb-bath-fan/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 202,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "80-110-130 CFM • 1.5 sones • 4 in",
+      "fit": "Airflow: 80-110-130 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
+      "summary": "Adjustable 80 110 130 CFM RGB Bath Fan ships from verified US inventory. Powerful Ventilation: Equipped with a premium DC motor, this bathroom exhaust fan delivers a steady airflow of 80 / 110 / 130CFM, ideal for covering 129-161 ft² (12-15 m²) spaces. It efficiently clean off damp and unpleasant smell, keeping bathroom fresh . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan runs as quietly as a soft conversation, ideal for bathrooms near bedrooms to ensure peaceful rest . Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Airflow",
+          "value": "80-110-130",
+          "unitText": "CFM",
+          "deciding": true
+        },
+        {
+          "name": "Noise rating",
+          "value": "1.5",
+          "unitText": "sones",
+          "deciding": true
+        },
+        {
+          "name": "Duct connection",
+          "value": "4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Installation",
+          "value": "Ceiling mount",
+          "deciding": true
+        },
+        {
+          "name": "Light",
+          "value": "Seven-color RGB",
+          "deciding": true
+        },
+        {
+          "name": "Housing color",
+          "value": "White"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Ductwork, roof or wall cap, and electrical wiring"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Adjustable 80 110 130 CFM RGB Bath Fan will fit?",
+          "a": "Check these deciding details against the installation: Airflow: 80-110-130 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 202 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring."
+        }
+      ],
+      "cj": {
+        "pid": "2001510513150238722",
+        "vid": "2001510513498365954",
+        "sku": "CJFU26558020001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 202,
+        "cjStockQuantity": 202,
+        "cost": 4792,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #40",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001510513150238722.html"
+      }
+    },
+    {
+      "slug": "eighty-cfm-led-bathroom-exhaust-fan",
+      "sku": "UTY-CJ-BAT-5028226",
+      "name": "80 CFM LED Bathroom Exhaust Fan",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Bathroom",
+      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "price": 6499,
+      "image": "https://cf.cjdropshipping.com/17660160/e7cc0eca-7ddf-4b76-92de-fdc4643cee0c.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/eighty-cfm-led-bathroom-exhaust-fan/place.jpg",
+        "https://utiliy.com/assets/explainers/eighty-cfm-led-bathroom-exhaust-fan/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 145,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "80 CFM • 1.5 sones • 4 in",
+      "fit": "Airflow: 80 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
+      "summary": "80 CFM LED Bathroom Exhaust Fan ships from verified US inventory. Powerful Ventilation: Equipped with a premium AC motor, this bathroom exhaust fan delivers a steady airflow of 80CFM, quickly covering 129–161 ft² (12–15 m²). It restoring fresh air even after long showers, ensure more comfortable bathroom experience . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan is as quiet as a soft conversation, ideal for bathrooms near bedrooms, providing strong ventilation while maintaining a peaceful bathing condition . Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Airflow",
+          "value": "80",
+          "unitText": "CFM",
+          "deciding": true
+        },
+        {
+          "name": "Noise rating",
+          "value": "1.5",
+          "unitText": "sones",
+          "deciding": true
+        },
+        {
+          "name": "Duct connection",
+          "value": "4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Installation",
+          "value": "Ceiling mount",
+          "deciding": true
+        },
+        {
+          "name": "Light",
+          "value": "Integrated LED",
+          "deciding": true
+        },
+        {
+          "name": "Housing color",
+          "value": "White"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Ductwork, roof or wall cap, and electrical wiring"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 80 CFM LED Bathroom Exhaust Fan will fit?",
+          "a": "Check these deciding details against the installation: Airflow: 80 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 145 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring."
+        }
+      ],
+      "cj": {
+        "pid": "2001503580815028226",
+        "vid": "2001503581175738370",
+        "sku": "CJFU26556730001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 145,
+        "cjStockQuantity": 145,
+        "cost": 3912,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #40",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001503580815028226.html"
+      }
+    },
+    {
+      "slug": "adjustable-50-80-110-cfm-bath-fan",
+      "sku": "UTY-CJ-BAT-1147521",
+      "name": "Adjustable 50 80 110 CFM Bath Fan",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Bathroom",
+      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "price": 6299,
+      "image": "https://cf.cjdropshipping.com/17660160/9e34cf36-f4ab-4540-81ef-ecef59302077.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/adjustable-50-80-110-cfm-bath-fan/place.jpg",
+        "https://utiliy.com/assets/explainers/adjustable-50-80-110-cfm-bath-fan/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 724,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "50-80-110 CFM • 1.5 sones • 4 in",
+      "fit": "Airflow: 50-80-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
+      "summary": "Adjustable 50 80 110 CFM Bath Fan ships from verified US inventory. Powerful Ventilation: Equipped with a premium AC motor, this bathroom exhaust fan delivers a steady airflow of 50 / 80 / 110CFM, quickly covering 129–161 ft² (12–15 m²). It restoring fresh air even after long showers, ensure more comfortable bathroom experience . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan is as quiet as a soft conversation, ideal for bathrooms near bedrooms, providing strong ventilation while maintaining a peaceful bathing condition . Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Airflow",
+          "value": "50-80-110",
+          "unitText": "CFM",
+          "deciding": true
+        },
+        {
+          "name": "Noise rating",
+          "value": "1.5",
+          "unitText": "sones",
+          "deciding": true
+        },
+        {
+          "name": "Duct connection",
+          "value": "4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Installation",
+          "value": "Ceiling mount",
+          "deciding": true
+        },
+        {
+          "name": "Light",
+          "value": "Not included",
+          "deciding": true
+        },
+        {
+          "name": "Housing color",
+          "value": "White"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Ductwork, roof or wall cap, and electrical wiring"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Adjustable 50 80 110 CFM Bath Fan will fit?",
+          "a": "Check these deciding details against the installation: Airflow: 50-80-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 724 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring."
+        }
+      ],
+      "cj": {
+        "pid": "2001504264391147521",
+        "vid": "2001504264818966529",
+        "sku": "CJFU26557030001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 724,
+        "cjStockQuantity": 724,
+        "cost": 3832,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001504264391147521.html"
+      }
+    },
+    {
+      "slug": "roomside-110-cfm-bathroom-exhaust-fan",
+      "sku": "UTY-CJ-BAT-6499586",
+      "name": "Roomside 110 CFM Bathroom Exhaust Fan",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Bathroom",
+      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "price": 5999,
+      "image": "https://cf.cjdropshipping.com/17660160/b9820608-f57d-4f0f-95b1-a0e1f40a13c1.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/roomside-110-cfm-bathroom-exhaust-fan/place.jpg",
+        "https://utiliy.com/assets/explainers/roomside-110-cfm-bathroom-exhaust-fan/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 616,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "110 CFM • 1.5 sones • 4 in",
+      "fit": "Airflow: 110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Room-side; no attic access required",
+      "summary": "Roomside 110 CFM Bathroom Exhaust Fan ships from verified US inventory. LED Lighting and Ventilation in One: Our exhaust fan combines LED lighting and ventilation for versatile use. The soft, glare-free LED light provides 900LM with adjustable color temperatures (3000K/4000K/5000K) to suit your needs, offering ideal lighting for tasks like shaving, makeup, or various scenarios. Quiet Operation: Designed with a silent airflow pathway and a lightweight PPFR plastic impeller to minimize air resistance and noise. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Airflow",
+          "value": "110",
+          "unitText": "CFM",
+          "deciding": true
+        },
+        {
+          "name": "Noise rating",
+          "value": "1.5",
+          "unitText": "sones",
+          "deciding": true
+        },
+        {
+          "name": "Duct connection",
+          "value": "4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Installation",
+          "value": "Room-side; no attic access required",
+          "deciding": true
+        },
+        {
+          "name": "Light",
+          "value": "Integrated LED",
+          "deciding": true
+        },
+        {
+          "name": "Housing color",
+          "value": "White"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Ductwork, roof or wall cap, and electrical wiring"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Roomside 110 CFM Bathroom Exhaust Fan will fit?",
+          "a": "Check these deciding details against the installation: Airflow: 110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Room-side; no attic access required. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 616 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring."
+        }
+      ],
+      "cj": {
+        "pid": "2001529158386499586",
+        "vid": "2001529158755598338",
+        "sku": "CJFU26565830001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 616,
+        "cjStockQuantity": 616,
+        "cost": 3521,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001529158386499586.html"
+      }
+    },
+    {
+      "slug": "110-cfm-bath-fan-light-heater",
+      "sku": "UTY-CJ-BAT-4320129",
+      "name": "110 CFM Bath Fan Light Heater",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Bathroom",
+      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "price": 10999,
+      "image": "https://cf.cjdropshipping.com/17660160/2d268d0d-1bcf-4642-ad08-90de86bf7c39.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/110-cfm-bath-fan-light-heater/place.jpg",
+        "https://utiliy.com/assets/explainers/110-cfm-bath-fan-light-heater/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 146,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "80-90-110 CFM • 1.5 sones • 4 in",
+      "fit": "Airflow: 80-90-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
+      "summary": "110 CFM Bath Fan Light Heater ships from verified US inventory. Powerful Ventilation: Equipped with a premium DC motor, this bathroom exhaust fan delivers a steady airflow of 80 / 90 / 110CFM, ideal for covering 129-161 ft² (12-15 m²) spaces. It efficiently clean off damp and unpleasant smell, keeping bathroom fresh . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan runs quietly. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Airflow",
+          "value": "80-90-110",
+          "unitText": "CFM",
+          "deciding": true
+        },
+        {
+          "name": "Noise rating",
+          "value": "1.5",
+          "unitText": "sones",
+          "deciding": true
+        },
+        {
+          "name": "Duct connection",
+          "value": "4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Installation",
+          "value": "Ceiling mount",
+          "deciding": true
+        },
+        {
+          "name": "Light",
+          "value": "Integrated LED",
+          "deciding": true
+        },
+        {
+          "name": "Heater power",
+          "value": "1500",
+          "unitText": "W",
+          "unitCode": "WTT",
+          "deciding": true
+        },
+        {
+          "name": "Housing color",
+          "value": "White"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Ductwork, roof or wall cap, and electrical wiring"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 110 CFM Bath Fan Light Heater will fit?",
+          "a": "Check these deciding details against the installation: Airflow: 80-90-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 146 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring."
+        }
+      ],
+      "cj": {
+        "pid": "2001511915334320129",
+        "vid": "2001511915699224577",
+        "sku": "CJFU26558590001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 146,
+        "cjStockQuantity": 146,
+        "cost": 6472,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001511915334320129.html"
       }
     }
   ],
   "prompts": [
     {
-      "slug": "american-standard-022650-slip-on-tub-spout",
-      "packshot": "Use the exact American Standard 022650-0020A reference product. Preserve the polished-chrome brass body, curved profile, circular wall end, underside slip-on set-screw area and pull-up diverter exactly. Create a clean three-quarter white-background ecommerce packshot with a soft natural shadow. No text, labels, packaging, extra hardware, alternate finish or invented features.",
-      "place": "Use the exact reference construction and polished-chrome finish. Show the American Standard 022650-0020A installed on a smooth 5/8-inch outside-diameter copper stub-out at a realistic bathtub wall, with the spout flush to the finished tile and the pull-up diverter visible. Keep the product shape exact. No text, people, water claims, extra fixtures or invented adapters.",
-      "detail": "Use the exact reference spout. Create a close-up fit scene showing the circular slip-on inlet aligned with a smooth copper tube and a simple visual measurement relationship for 5/8-inch outside diameter and wall projection, using a ruler or caliper without readable text. Preserve the real set-screw location and construction. No labels, numbers, arrows, cutaways or invented parts."
+      "slug": "six-inch-square-shower-drain-brushed-gold",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 6 Inch Square Shower Drain Brushed Gold. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Nominal size 6 in, Cover Reversible flat and tile-insert, Finish Brushed gold. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 6 Inch Square Shower Drain Brushed Gold. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Nominal size 6 in, Cover Reversible flat and tile-insert, Finish Brushed gold. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 6 Inch Square Shower Drain Brushed Gold. Center the most important selection points: Nominal size 6 in, Cover Reversible flat and tile-insert, Finish Brushed gold. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "kohler-pennington-k2196-single-hole-white",
-      "packshot": "Use the exact KOHLER Pennington K-2196-1-0 reference sink. Preserve the white vitreous-china oval self-rimming form, single faucet hole, overflow opening, rim proportions and basin depth. Create a clean elevated three-quarter white-background ecommerce packshot with a soft shadow. No faucet, drain, text, packaging, alternate drilling, alternate color or invented accessories.",
-      "place": "Use the exact white single-hole K-2196-1-0 reference sink installed as a drop-in basin in a realistic neutral bathroom countertop. Keep the raised rim, oval proportions, single faucet hole and overflow exact; leave the faucet and drain absent so the sellable product remains clear. No text, people, alternate color, extra holes or invented claims.",
-      "detail": "Use the exact reference sink and create a close-up installation-fit scene centered on the self-rimming edge and countertop cutout relationship, with the supplied paper-template concept and a ruler visible but no readable writing. Also keep the one faucet hole and overflow visually unambiguous. No dimensions rendered as text, no extra holes and no invented hardware."
+      "slug": "wall-mount-bathroom-faucet-no-overflow-drain",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Wall Mount Bathroom Faucet No Overflow Drain. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mounting Wall mount, Controls Single handle, Finish See reference image, Drain Pop-up, for sinks without overflow. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Wall Mount Bathroom Faucet No Overflow Drain. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mounting Wall mount, Controls Single handle, Finish See reference image, Drain Pop-up, for sinks without overflow. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Wall Mount Bathroom Faucet No Overflow Drain. Center the most important selection points: Mounting Wall mount, Controls Single handle, Finish See reference image, Drain Pop-up, for sinks without overflow. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "kohler-1188998-canister-flush-valve",
-      "packshot": "Use the exact KOHLER 1188998 reference assembly. Preserve the black and white 3-inch canister, 2-inch outlet base, chain, seals, tabs and included tank-to-bowl gasket exactly. Create a white-background ecommerce packshot with all included components arranged naturally and a soft shadow. No text, packaging, toilet tank, alternate valve or invented components.",
-      "place": "Use the exact KOHLER 1188998 reference construction installed inside a clean open KOHLER-style two-piece toilet tank, with the canister vertical and the outlet seated correctly. The scene should communicate model-specific replacement without showing or implying another valve type. No text, people, branding alterations, flapper mechanism or invented parts.",
-      "detail": "Use the exact reference assembly. Create a close-up compatibility scene that clearly contrasts the larger canister body with the narrower outlet base and shows the tank-model stamping area on the inside rear wall in soft focus, without readable text. Preserve all real seals, chain and connection geometry. No labels, numbers, arrows or invented claims."
+      "slug": "four-inch-centerset-bathroom-faucet-brushed-nickel",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 4 Inch Centerset Bathroom Faucet Brushed Nickel. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mounting 4-inch centerset, 3-hole, Controls Two handle, Finish Brushed nickel, Drain Pop-up drain included. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 4 Inch Centerset Bathroom Faucet Brushed Nickel. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mounting 4-inch centerset, 3-hole, Controls Two handle, Finish Brushed nickel, Drain Pop-up drain included. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 4 Inch Centerset Bathroom Faucet Brushed Nickel. Center the most important selection points: Mounting 4-inch centerset, 3-hole, Controls Two handle, Finish Brushed nickel, Drain Pop-up drain included. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "revent-rvs50-roomside-bath-fan",
-      "packshot": "Use the exact ReVent RVS50 reference product, not RVP50ES, RVS110, RVL50 or RVSH50. Preserve the white 9-3/4-inch square shield, metal 7-1/4 by 7-1/2-inch housing, 4-inch duct collar and room-side SheetLock construction. Create a white-background ecommerce packshot showing shield and housing accurately. No text, packaging, light, sensor or invented components.",
-      "place": "Use the exact ReVent RVS50 reference fan installed from the room side in a realistic bathroom ceiling. Show the white square shield seated flat and a small adjacent unfinished cutaway area revealing the correctly proportioned housing and 4-inch duct, without altering the product. No text, people, attic scene, light, humidity sensor or performance claims.",
-      "detail": "Use the exact RVS50 reference construction. Create a close-up fit scene with the metal housing aligned to a measured rectangular ceiling opening and the 4-inch round duct collar visible; include a ruler or tape measure without readable text to communicate opening and depth checks. No numeric overlays, arrows, alternate model parts or invented features."
+      "slug": "adjustable-80-110-130-cfm-rgb-bath-fan",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Adjustable 80 110 130 CFM RGB Bath Fan. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Airflow 80-110-130 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Seven-color RGB. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Adjustable 80 110 130 CFM RGB Bath Fan. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Airflow 80-110-130 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Seven-color RGB. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Adjustable 80 110 130 CFM RGB Bath Fan. Center the most important selection points: Airflow 80-110-130 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Seven-color RGB. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "fluidmaster-6100-two-inch-tank-gasket",
-      "packshot": "Use the exact Fluidmaster 6100 reference gasket. Preserve the red sponge-rubber ring profile, stepped contours, center opening, thickness and single-piece construction. Create a clean white-background ecommerce packshot with a soft shadow. No text, packaging, bolts, nuts, extra gaskets, alternate color or invented hardware.",
-      "place": "Use the exact Fluidmaster 6100 red sponge-rubber gasket positioned correctly between a close-coupled toilet tank and bowl around a 2-inch flush-valve outlet. Show the tank slightly lifted so the gasket location is visible while keeping the installation realistic. No text, people, Gerber branding, 3-inch valve, bolts included in the product or invented parts.",
-      "detail": "Use the exact reference gasket. Create a close-up fit comparison showing its center opening aligned with a 2-inch flush-valve outlet and a round or hex-shaped valve nut nearby, with a caliper or ruler present but no readable text. Preserve the real sponge-rubber profile. No labels, numbers, arrows, 3-inch fit implication or included-hardware claim."
+      "slug": "eighty-cfm-led-bathroom-exhaust-fan",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 80 CFM LED Bathroom Exhaust Fan. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Airflow 80 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Integrated LED. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 80 CFM LED Bathroom Exhaust Fan. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Airflow 80 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Integrated LED. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 80 CFM LED Bathroom Exhaust Fan. Center the most important selection points: Airflow 80 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Integrated LED. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "adjustable-50-80-110-cfm-bath-fan",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Adjustable 50 80 110 CFM Bath Fan. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Airflow 50-80-110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Not included. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Adjustable 50 80 110 CFM Bath Fan. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Airflow 50-80-110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Not included. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Adjustable 50 80 110 CFM Bath Fan. Center the most important selection points: Airflow 50-80-110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Not included. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "roomside-110-cfm-bathroom-exhaust-fan",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Roomside 110 CFM Bathroom Exhaust Fan. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Airflow 110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Room-side; no attic access required, Light Integrated LED. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Roomside 110 CFM Bathroom Exhaust Fan. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Airflow 110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Room-side; no attic access required, Light Integrated LED. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Roomside 110 CFM Bathroom Exhaust Fan. Center the most important selection points: Airflow 110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Room-side; no attic access required, Light Integrated LED. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "110-cfm-bath-fan-light-heater",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 110 CFM Bath Fan Light Heater. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Airflow 80-90-110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Integrated LED. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 110 CFM Bath Fan Light Heater. Show it correctly installed or used in a realistic bathroom setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Airflow 80-90-110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Integrated LED. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 110 CFM Bath Fan Light Heater. Center the most important selection points: Airflow 80-90-110 CFM, Noise rating 1.5 sones, Duct connection 4 in, Installation Ceiling mount, Light Integrated LED. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     }
   ]
 }

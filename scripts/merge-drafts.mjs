@@ -34,8 +34,15 @@ if (duplicateSlugs.length || duplicateSkus.length) {
 }
 
 const incomingBySlug = new Map(incomingProducts.map((product) => [product.slug, product]));
+const incomingCjPids = new Set(
+  incomingProducts.map((product) => product.cj?.pid).filter(Boolean)
+);
 catalog.products = [
-  ...catalog.products.filter((product) => !incomingBySlug.has(product.slug)),
+  ...catalog.products.filter(
+    (product) =>
+      !incomingBySlug.has(product.slug) &&
+      !(product.cj?.pid && incomingCjPids.has(product.cj.pid))
+  ),
   ...incomingProducts
 ];
 

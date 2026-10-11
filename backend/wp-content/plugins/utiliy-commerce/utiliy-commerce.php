@@ -828,9 +828,10 @@ final class Utiliy_Commerce {
             $product->set_sku($sku);
             $product->set_regular_price(wc_format_decimal(((int) $record['price']) / 100, 2));
             $product->set_price(wc_format_decimal(((int) $record['price']) / 100, 2));
-            self::set_supplier_meta($product, array_merge($record['autods'] ?? [], [
+            $record_supplier = $record['cj'] ?? ($record['autods'] ?? []);
+            self::set_supplier_meta($product, array_merge($record_supplier, [
                 'available' => $record['available'] ?? true,
-                'stockCheckedAt' => $record['stockCheckedAt'] ?? ($record['autods']['costCheckedAt'] ?? ''),
+                'stockCheckedAt' => $record['stockCheckedAt'] ?? ($record_supplier['costCheckedAt'] ?? ''),
             ]));
             self::assert_margin($sku, (int) $record['price'], $product);
             self::apply_stock_guard($product);
@@ -845,9 +846,10 @@ final class Utiliy_Commerce {
             \WP_CLI::error('Slug has the wrong product type: ' . $record['slug']);
         }
         self::set_common_product_fields($parent, $record, $category_id);
-        self::set_supplier_meta($parent, array_merge($record['autods'] ?? [], [
+        $record_supplier = $record['cj'] ?? ($record['autods'] ?? []);
+        self::set_supplier_meta($parent, array_merge($record_supplier, [
             'available' => $record['available'] ?? true,
-            'stockCheckedAt' => $record['stockCheckedAt'] ?? ($record['autods']['costCheckedAt'] ?? ''),
+            'stockCheckedAt' => $record['stockCheckedAt'] ?? ($record_supplier['costCheckedAt'] ?? ''),
         ]));
 
         $attribute = new WC_Product_Attribute();
@@ -875,12 +877,13 @@ final class Utiliy_Commerce {
             $variation->set_virtual(false);
             $variation->set_attributes(['option' => (string) $variant_record['label']]);
             $variation->update_meta_data('_utiliy_managed', 'yes');
-            $supplier = array_merge($record['autods'] ?? [], $variant_record['autods'] ?? [], [
+            $variant_supplier = $variant_record['cj'] ?? ($variant_record['autods'] ?? []);
+            $supplier = array_merge($record_supplier, $variant_supplier, [
                 'available' => $variant_record['available'] ?? ($record['available'] ?? true),
                 'stockCheckedAt' => $variant_record['stockCheckedAt']
-                    ?? ($variant_record['autods']['costCheckedAt']
+                    ?? ($variant_supplier['costCheckedAt']
                     ?? ($record['stockCheckedAt']
-                    ?? ($record['autods']['costCheckedAt'] ?? ''))),
+                    ?? ($record_supplier['costCheckedAt'] ?? ''))),
             ]);
             self::set_supplier_meta($variation, $supplier);
             self::assert_margin($sku, (int) $variant_record['price'], $variation);
@@ -931,8 +934,10 @@ final class Utiliy_Commerce {
     private static function set_supplier_meta(WC_Product $product, array $supplier): void {
         $site = (string) ($supplier['site'] ?? '');
         $site_id = (string) ($supplier['idOnSite'] ?? '');
-        $product_id = (string) ($supplier['productId'] ?? '');
-        if ($site === 'aliexpress' && $site_id) {
+        $product_id = (string) ($supplier['pid'] ?? ($supplier['productId'] ?? ''));
+        if (!empty($supplier['sourceUrl'])) {
+            $url = esc_url_raw((string) $supplier['sourceUrl']);
+        } elseif ($site === 'aliexpress' && $site_id) {
             $url = 'https://www.aliexpress.com/item/' . rawurlencode($site_id) . '.html';
         } elseif ($product_id) {
             $url = 'https://platform.autods.com/marketplace/all-products/' . rawurlencode($product_id);
@@ -943,15 +948,20 @@ final class Utiliy_Commerce {
             'supplier' => (string) ($supplier['supplier'] ?? ''),
             'supplier_url' => $url,
             'supplier_option' => (string) ($supplier['supplierOption'] ?? ''),
-            'supplier_variation_id' => (string) ($supplier['variationId'] ?? ''),
             'supplier_product_id' => $product_id,
+            'supplier_variation_id' => (string) ($supplier['vid'] ?? ($supplier['variationId'] ?? '')),
             'supplier_cost' => (int) ($supplier['cost'] ?? 0),
             'shipping_cost' => (int) ($supplier['shippingCost'] ?? 0),
+            'supplier_tax' => (int) ($supplier['supplierTax'] ?? 0),
             'cost_checked_at' => (string) ($supplier['costCheckedAt'] ?? ''),
             'stock_checked_at' => (string) ($supplier['stockCheckedAt'] ?? ($supplier['costCheckedAt'] ?? '')),
             'available' => !isset($supplier['available']) || filter_var($supplier['available'], FILTER_VALIDATE_BOOLEAN) ? 'yes' : 'no',
         ];
-        $meta['minimum_price'] = self::minimum_price($meta['supplier_cost'], $meta['shipping_cost']);
+        $meta['minimum_price'] = self::minimum_price(
+            $meta['supplier_cost'],
+            $meta['shipping_cost'],
+            $meta['supplier_tax']
+        );
         foreach ($meta as $key => $value) {
             $product->update_meta_data('_utiliy_' . $key, $value);
         }
@@ -996,7 +1006,7 @@ final class Utiliy_Commerce {
         }
     }
 
-    private static function minimum_price(int $cost, int $shipping): int {
+    private static function minimum_price(int $cost, int $shipping, int $supplier_tax = 0): int {
         if ($cost <= 0) {
             return 0;
         }
@@ -1004,7 +1014,7 @@ final class Utiliy_Commerce {
         $stripe_fixed_cents = 30;
         $target_margin = 0.15;
         $max_landed_ratio = 0.78;
-        $landed = $cost + $shipping;
+        $landed = $cost + $shipping + $supplier_tax;
         $margin_minimum = (int) ceil(($landed + $stripe_fixed_cents) / (1 - $target_margin - $stripe_percentage));
         $ratio_minimum = (int) ceil($landed / $max_landed_ratio);
         return max($margin_minimum, $ratio_minimum);

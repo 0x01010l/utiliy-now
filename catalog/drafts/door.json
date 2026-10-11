@@ -1,681 +1,806 @@
 {
   "products": [
     {
-      "slug": "standard-duty-storm-door-closer-black",
-      "sku": "UTY-WRIGHT-V1020BL",
-      "name": "Standard-duty storm-door closer, black",
-      "brand": "Wright Products",
-      "mpn": "V1020BL",
+      "slug": "sixty-nine-inch-soft-close-pocket-door-track",
+      "sku": "UTY-CJ-DOO-2141185",
+      "name": "69 Inch Soft Close Pocket Door Track",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Door",
-      "price": 1431,
-      "image": "https://m.media-amazon.com/images/I/61Jqm6lS8HL._AC_SL1500_.jpg",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 6849,
+      "image": "https://cf.cjdropshipping.com/17743968/2c5039cb-2477-4568-9ebd-4616d00e3d92.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/61Jqm6lS8HL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71FUH-8ZMHL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61qqg+oowHL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/619Iw1F+WuL._AC_SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/sixty-nine-inch-soft-close-pocket-door-track/place.jpg",
+        "https://utiliy.com/assets/explainers/sixty-nine-inch-soft-close-pocket-door-track/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 106,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "stockQuantity": 1000000,
-      "minDays": 4,
-      "maxDays": 4,
-      "headline": "Standard duty · 12-5/8 in",
-      "fit": "Outswinging light-to-medium storm doors · black · 90°",
-      "summary": "One genuine Wright Products V1020BL black pneumatic closer for an outswinging light-to-medium storm, screen, home or security door. The closer is 12-5/8 inches long unextended, opens to 90 degrees, and has adjustable closing speed and seasonal latching adjustment. Use two standard-duty closers or a specified heavy-duty closer on a heavier full-view door.",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "68.74 in • 36 in • 1 to 1-3/4 in",
+      "fit": "Track length: 68.74 in · Door width: 36 in · Door thickness: 1 to 1-3/4 in",
+      "summary": "69 Inch Soft Close Pocket Door Track ships from verified US inventory. Clear Size Compatibility: This pocket door track kit fits common interior door sizes. Featuring a 68.74 in (1746 mm) track, it fits 36 in (914 mm) wide doors with thicknesses from 1 to 1-3/4 in (25–45 mm). Ideal for bedrooms, closets, and storage rooms . Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Duty class",
-          "value": "Standard duty for light-to-medium doors",
-          "deciding": true
-        },
-        {
-          "name": "Door swing",
-          "value": "Outswinging",
-          "deciding": true
-        },
-        {
-          "name": "Unextended length",
-          "value": "12-5/8",
+          "name": "Track length",
+          "value": "68.74",
           "unitText": "in",
           "unitCode": "INH",
           "deciding": true
         },
         {
-          "name": "Opening",
-          "value": "90",
-          "unitText": "degrees",
-          "unitCode": "DD"
+          "name": "Door width",
+          "value": "36",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
         },
         {
-          "name": "Closing speed",
-          "value": "Adjustable"
+          "name": "Door thickness",
+          "value": "1 to 1-3/4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
         },
         {
-          "name": "Latching",
-          "value": "Seasonal adjustment for screen or glass inserts"
+          "name": "Close action",
+          "value": "Soft close"
+        },
+        {
+          "name": "Door count",
+          "value": "1"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 69 Inch Soft Close Pocket Door Track will fit?",
+          "a": "Check these deciding details against the installation: Track length: 68.74 in · Door width: 36 in · Door thickness: 1 to 1-3/4 in. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 106 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
+        }
+      ],
+      "cj": {
+        "pid": "2036718611922141185",
+        "vid": "2036718612081524738",
+        "sku": "CJYL28040490001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 106,
+        "cjStockQuantity": 106,
+        "cost": 5272,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #4",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2036718611922141185.html"
+      }
+    },
+    {
+      "slug": "thirty-one-inch-stainless-panic-exit-bar",
+      "sku": "UTY-CJ-DOO-3524098",
+      "name": "31 Inch Stainless Panic Exit Bar",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Door",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 8999,
+      "image": "https://cf.cjdropshipping.com/17660160/765014a9-4abb-4888-9258-9e8a803e569d.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/thirty-one-inch-stainless-panic-exit-bar/place.jpg",
+        "https://utiliy.com/assets/explainers/thirty-one-inch-stainless-panic-exit-bar/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 429,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "30 to 36 in • Confirm door handing • Included",
+      "fit": "Door width: 30 to 36 in · Handing: Confirm door handing · Exterior lever: Included · Application: Metal or wood exit door",
+      "summary": "31 Inch Stainless Panic Exit Bar ships from verified US inventory. Panic Bar for Exit Door: This push bar door lock is constructed from thickened 304 stainless steel, rust and corrosion-resistant. It complies with ANSI testing standards, enduring over 500,000 cycles of opening/closing tests. It's also fire-resistant and heat-resistant, making it the ideal choice for high-traffic emergency doors. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Door width",
+          "value": "30 to 36",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Handing",
+          "value": "Confirm door handing",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "304 stainless steel"
+        },
+        {
+          "name": "Exterior lever",
+          "value": "Included",
+          "deciding": true
+        },
+        {
+          "name": "Keys",
+          "value": "3 included"
+        },
+        {
+          "name": "Application",
+          "value": "Metal or wood exit door",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 31 Inch Stainless Panic Exit Bar will fit?",
+          "a": "Check these deciding details against the installation: Door width: 30 to 36 in · Handing: Confirm door handing · Exterior lever: Included · Application: Metal or wood exit door. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 429 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
+        }
+      ],
+      "cj": {
+        "pid": "2001530539563524098",
+        "vid": "2001530540050063361",
+        "sku": "CJFU26566190001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 429,
+        "cjStockQuantity": 429,
+        "cost": 6312,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001530539563524098.html"
+      }
+    },
+    {
+      "slug": "reversible-carbon-steel-panic-exit-bar",
+      "sku": "UTY-CJ-DOO-6769538",
+      "name": "Reversible Carbon Steel Panic Exit Bar",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Door",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 6499,
+      "image": "https://cf.cjdropshipping.com/17660160/3791c73c-f8d2-4507-99bc-78a7ffd603af.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/reversible-carbon-steel-panic-exit-bar/place.jpg",
+        "https://utiliy.com/assets/explainers/reversible-carbon-steel-panic-exit-bar/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 974,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "Verify product drawing in • Left or right • Included",
+      "fit": "Door width: Verify product drawing in · Handing: Left or right · Exterior lever: Included · Application: Metal or wood exit door",
+      "summary": "Reversible Carbon Steel Panic Exit Bar ships from verified US inventory. Heavy-Duty Panic Bar for Exit Door: This push bar door lock is constructed from thickened carbon steel with a rust-resistant coating, ensuring high strength and resistance to damage. It complies with ANSI testing standards, enduring over 500,000 cycles of opening/closing tests. It's also fire-resistant and heat-resistant, making it the ideal choice for high-traffic emergency doors. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Door width",
+          "value": "Verify product drawing",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Handing",
+          "value": "Left or right",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Coated carbon steel"
+        },
+        {
+          "name": "Exterior lever",
+          "value": "Included",
+          "deciding": true
+        },
+        {
+          "name": "Keys",
+          "value": "3 included"
+        },
+        {
+          "name": "Application",
+          "value": "Metal or wood exit door",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Reversible Carbon Steel Panic Exit Bar will fit?",
+          "a": "Check these deciding details against the installation: Door width: Verify product drawing in · Handing: Left or right · Exterior lever: Included · Application: Metal or wood exit door. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 974 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
+        }
+      ],
+      "cj": {
+        "pid": "2001530716296769538",
+        "vid": "2001530716896555010",
+        "sku": "CJFU26566240001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 974,
+        "cjStockQuantity": 974,
+        "cost": 4552,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #40",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001530716296769538.html"
+      }
+    },
+    {
+      "slug": "two-inch-aluminum-threshold-ramp",
+      "sku": "UTY-CJ-DOO-8262657",
+      "name": "2 Inch Aluminum Threshold Ramp",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Door",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 5499,
+      "image": "https://cf.cjdropshipping.com/17659296/26e53b34-865e-4c95-bbff-67594cfe0ecb.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/two-inch-aluminum-threshold-ramp/place.jpg",
+        "https://utiliy.com/assets/explainers/two-inch-aluminum-threshold-ramp/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 126,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "2 in • 11.7 W x 34 L x 2 H in • 800 lb",
+      "fit": "Rise: 2 in · Overall size: 11.7 W x 34 L x 2 H in · Capacity: 800 lb",
+      "summary": "2 Inch Aluminum Threshold Ramp ships from verified US inventory. Easy Access: This threshold ramp (11.7 in W x 34.0 in L x 2 in H) makes thresholds and curbs a breeze. Wheelchairs, scooters, carts, or bikes roll over smoothly without bumps . Heavy-Duty Load: Built from 6063-T5 aircraft aluminum with a solid 2 mm core, this door threshold ramp supports up to 800 lbs. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Rise",
+          "value": "2",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Overall size",
+          "value": "11.7 W x 34 L x 2 H",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Capacity",
+          "value": "800",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "6063-T5 anodized aluminum"
+        },
+        {
+          "name": "Core thickness",
+          "value": "2",
+          "unitText": "mm",
+          "unitCode": "MMT"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 2 Inch Aluminum Threshold Ramp will fit?",
+          "a": "Check these deciding details against the installation: Rise: 2 in · Overall size: 11.7 W x 34 L x 2 H in · Capacity: 800 lb. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 126 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
+        }
+      ],
+      "cj": {
+        "pid": "2001233499128262657",
+        "vid": "2001233499476389889",
+        "sku": "CJFU26532820001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 126,
+        "cjStockQuantity": 126,
+        "cost": 3672,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001233499128262657.html"
+      }
+    },
+    {
+      "slug": "silver-fingerprint-deadbolt-handle-set",
+      "sku": "UTY-CJ-DOO-1681665",
+      "name": "Silver Fingerprint Deadbolt Handle Set",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Door",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 5999,
+      "image": "https://cf.cjdropshipping.com/17742240/55ba2022-2a4b-4d63-8387-1628f1bcf618.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/silver-fingerprint-deadbolt-handle-set/place.jpg",
+        "https://utiliy.com/assets/explainers/silver-fingerprint-deadbolt-handle-set/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 633,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "Fingerprint, PIN, backup key • 50 • Silver",
+      "fit": "Entry methods: Fingerprint, PIN, backup key · Fingerprint capacity: 50 · Finish: Silver · Door preparation: Confirm bore, backset and handing",
+      "summary": "Silver Fingerprint Deadbolt Handle Set ships from verified US inventory. Convenient Keyless Entry: Unlock your door in seconds with the fingerprint door lock set—no keys to lose or carry. The unique UI panel with extra finger space ensures smoother operation and effortless door handling for the whole family . Customizable Access for Family & Guests: Our fingerprint door lock with handles supports 50 fingerprints, 100 user codes, and one-time PINs. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Entry methods",
+          "value": "Fingerprint, PIN, backup key",
+          "deciding": true
+        },
+        {
+          "name": "Fingerprint capacity",
+          "value": "50",
+          "deciding": true
+        },
+        {
+          "name": "Code capacity",
+          "value": "100"
         },
         {
           "name": "Finish",
-          "value": "Black"
+          "value": "Silver",
+          "deciding": true
         },
         {
-          "name": "Included",
-          "value": "Closer and installation hardware"
+          "name": "Locking",
+          "value": "Automatic locking"
         },
         {
-          "name": "Not for",
-          "value": "Inswinging doors, commercial hydraulic-closer applications, or a heavy full-view door using one standard closer"
+          "name": "Door preparation",
+          "value": "Confirm bore, backset and handing",
+          "deciding": true
         }
       ],
       "exclusions": [
-        "Not the Wright Products V150 heavy-duty closer.",
-        "Not for an inswinging door.",
-        "Do not specify one unit for a heavy full-view storm door.",
-        "Verify the existing bracket layout before treating it as a hole-for-hole replacement."
+        "Professional installation",
+        "Tools and consumables"
       ],
       "faqs": [
         {
-          "q": "Will the V1020BL close a heavy full-view storm door?",
-          "a": "Not as the recommended single-closer setup. Use two standard-duty closers or the specified heavy-duty closer for a heavier full-view door."
+          "q": "How do I confirm the Silver Fingerprint Deadbolt Handle Set will fit?",
+          "a": "Check these deciding details against the installation: Entry methods: Fingerprint, PIN, backup key · Fingerprint capacity: 50 · Finish: Silver · Door preparation: Confirm bore, backset and handing. Do not order from the product photo alone."
         },
         {
-          "q": "Does this closer fit an inswinging door?",
-          "a": "No. V1020BL is designed for outswinging storm, screen, home and security doors."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 633 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "Is the closing speed adjustable?",
-          "a": "Yes. The pneumatic closer has an end adjustment for closing speed and force."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "What should I compare before replacing an existing closer?",
-          "a": "Confirm the door swings outward, is in the light-to-medium class, and that the existing jamb and door bracket locations can accept the included hardware."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables."
         }
       ],
-      "autods": {
-        "productId": "d595aeba8ebfa4c8bd102cff",
-        "idOnSite": "B0009YDHHU",
-        "variationId": "B0009YDHHU",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "Amazon.com",
+      "cj": {
+        "pid": "2035993453821681665",
+        "vid": "2035993454534713346",
+        "sku": "CJYL28004880001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stockQuantity": 1000000,
-        "cost": 1048,
+        "stockQuantity": 633,
+        "cjStockQuantity": 633,
+        "cost": 3558,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2035993453821681665.html"
       }
     },
     {
-      "slug": "one-inch-rubber-threshold-ramp",
-      "sku": "UTY-THRESHOLD-1IN",
-      "name": "One-inch rubber threshold ramp",
+      "slug": "black-touchscreen-fingerprint-lock-set",
+      "sku": "UTY-CJ-DOO-3058561",
+      "name": "Black Touchscreen Fingerprint Lock Set",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Door",
-      "price": 3499,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FXBLYPDGB1445XG06OV0_2Fgoods_img-v3_2Fcurb-ramp-m100-1.2_0bcb1871-663a-474d-b8db-61bfa36ecdfc.jpg?v=1784710996",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 7499,
+      "image": "https://cf.cjdropshipping.com/17742240/a40660d8-1fc0-421f-8191-200076af82b0.jpg",
       "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FXBLYPDGB1445XG06OV0_2Fgoods_img-v3_2Fcurb-ramp-m100-1.2_0bcb1871-663a-474d-b8db-61bfa36ecdfc.jpg?v=1784710996",
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/curb-ramp-f1w_b718a0c5-f9be-444f-833c-810c94482cdd.jpg?v=1784710998",
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/curb-ramp-f2w_799b1485-2111-4ef9-9623-74ca27e1bf85.jpg?v=1784710997",
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/curb-ramp-f3w_f54123a2-4b9b-44d5-b3c2-cbebfea8aadc.jpg?v=1784710999"
+        "https://utiliy.com/assets/explainers/black-touchscreen-fingerprint-lock-set/place.jpg",
+        "https://utiliy.com/assets/explainers/black-touchscreen-fingerprint-lock-set/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 219,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "stockQuantity": 440,
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "Exactly 1 in rise",
-      "fit": "44.5 × 9.5 in · beveled rubber · one cable channel",
-      "summary": "One unbranded recycled-rubber threshold ramp for a measured 1-inch rise. It is 44.5 inches wide, provides a 9.5-inch approach, has beveled edges and a textured surface, and includes one underside channel for a cable. Measure the actual vertical transition; this is not a substitute for an accessibility-code or slope assessment.",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "Fingerprint, PIN, IC card, backup key • 50 • Matte black",
+      "fit": "Entry methods: Fingerprint, PIN, IC card, backup key · Fingerprint capacity: 50 · Finish: Matte black · Door preparation: Confirm bore, backset and handing",
+      "summary": "Black Touchscreen Fingerprint Lock Set ships from verified US inventory. Convenient Keyless Entry: Keypad access keeps your home secure and hassle-free. Lock and unlock your door in seconds with the fingerprint door lock set—no keys to lose or carry. Enjoy smooth entry and dependable use for every family member . Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Threshold rise",
-          "value": "1",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Entry methods",
+          "value": "Fingerprint, PIN, IC card, backup key",
           "deciding": true
         },
         {
-          "name": "Overall width",
-          "value": "44.5",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Fingerprint capacity",
+          "value": "50",
           "deciding": true
         },
         {
-          "name": "Approach depth",
-          "value": "9.5",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Code capacity",
+          "value": "100"
+        },
+        {
+          "name": "Finish",
+          "value": "Matte black",
           "deciding": true
         },
         {
-          "name": "Dimensions",
-          "value": "44.5 × 9.5 × 1",
-          "unitText": "in",
-          "unitCode": "INH"
+          "name": "Locking",
+          "value": "Automatic locking"
         },
         {
-          "name": "Material",
-          "value": "Recycled natural rubber"
-        },
-        {
-          "name": "Surface",
-          "value": "Textured, with beveled approach edges"
-        },
-        {
-          "name": "Underside channels",
-          "value": "1"
-        },
-        {
-          "name": "Stated load capacity",
-          "value": "33069",
-          "unitText": "lb",
-          "unitCode": "LBR"
-        },
-        {
-          "name": "Not for",
-          "value": "Transitions materially above or below 1 inch"
+          "name": "Door preparation",
+          "value": "Confirm bore, backset and handing",
+          "deciding": true
         }
       ],
       "exclusions": [
-        "Not an ADA-compliance determination.",
-        "Not for a threshold whose measured rise is materially different from 1 inch.",
-        "Confirm the 44.5-inch width and 9.5-inch approach fit the doorway and landing.",
-        "Permanent mounting requires suitable fasteners and substrate."
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
       ],
       "faqs": [
         {
-          "q": "What threshold height does this ramp fit?",
-          "a": "A measured vertical transition of approximately 1 inch."
+          "q": "How do I confirm the Black Touchscreen Fingerprint Lock Set will fit?",
+          "a": "Check these deciding details against the installation: Entry methods: Fingerprint, PIN, IC card, backup key · Fingerprint capacity: 50 · Finish: Matte black · Door preparation: Confirm bore, backset and handing. Do not order from the product photo alone."
         },
         {
-          "q": "How much clear width does the ramp provide?",
-          "a": "The ramp is 44.5 inches wide and 9.5 inches deep."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 219 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "Can a cable pass underneath it?",
-          "a": "Yes. The underside has one reserved cable channel."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "Does buying this ramp make the doorway ADA compliant?",
-          "a": "No. Compliance depends on the complete installed slope, landing, clear width, fastening and local requirements."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
         }
       ],
-      "autods": {
-        "productId": "6a262c4a6005c34d9f86de4b",
-        "idOnSite": "8438763684032",
-        "variationId": "48648978202816",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
+      "cj": {
+        "pid": "2035993643333058561",
+        "vid": "2035993643525996546",
+        "sku": "CJYL28004920001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "supplierOption": "1 inch H",
-        "stockQuantity": 440,
-        "cost": 2513,
+        "stockQuantity": 219,
+        "cjStockQuantity": 219,
+        "cost": 4872,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #7",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2035993643333058561.html"
       }
     },
     {
-      "slug": "four-foot-bypass-door-hardware",
-      "sku": "UTY-BYPASS-YMXTXC404B",
-      "name": "Four-foot dual-track bypass-door hardware",
-      "mpn": "YMXT-XC40-4B",
+      "slug": "bronze-mechanical-keypad-door-lock",
+      "sku": "UTY-CJ-DOO-8702977",
+      "name": "Bronze Mechanical Keypad Door Lock",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Door",
-      "price": 6390,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM4FTSUG8DUV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2_131453b3-0f2a-4699-9ee5-eef9fd138c34.jpg?v=1784285602",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 6299,
+      "image": "https://cf.cjdropshipping.com/17743968/3aaf82f6-3d95-43f9-99a1-dea98dc3f484.jpg",
       "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM4FTSUG8DUV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2_131453b3-0f2a-4699-9ee5-eef9fd138c34.jpg?v=1784285602"
+        "https://utiliy.com/assets/explainers/bronze-mechanical-keypad-door-lock/place.jpg",
+        "https://utiliy.com/assets/explainers/bronze-mechanical-keypad-door-lock/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 144,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "stockQuantity": 174,
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "Two 24.5 in doors",
-      "fit": "1-3/8–1-3/4 in thick · dual track · 150 lb",
-      "summary": "One unbranded YMXT-XC40-4B four-foot dual-track bypass kit for two overlapping 24.5-inch door panels. It accepts panels from 1-3/8 to 1-3/4 inches thick and supports up to 150 pounds. The aluminum track, four wheel assemblies, two finger pulls, floor guide, stopper and installation hardware are included; door panels are not.",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "Mechanical; no battery or wiring • 4 to 7 digits • Single-sided push button",
+      "fit": "Operation: Mechanical; no battery or wiring · Code length: 4 to 7 digits · Keypad: Single-sided push button · Door preparation: Confirm bore, backset and handing",
+      "summary": "Bronze Mechanical Keypad Door Lock ships from verified US inventory. Upgraded 2.0 Mechanical Lock Keypad: Update your code directly using the handle and keypad without removing the lock. Unlock with a simple mechanical code—no electronics to worry about, and clear input with the C key for quick corrections . Reliable Security without Batteries: This single-sided mechanical keyless door lock operates without batteries or wiring. Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Track type",
-          "value": "Dual track",
+          "name": "Operation",
+          "value": "Mechanical; no battery or wiring",
           "deciding": true
         },
+        {
+          "name": "Code length",
+          "value": "4 to 7 digits",
+          "deciding": true
+        },
+        {
+          "name": "Keypad",
+          "value": "Single-sided push button",
+          "deciding": true
+        },
+        {
+          "name": "Finish",
+          "value": "Oil-rubbed bronze"
+        },
+        {
+          "name": "Door use",
+          "value": "Indoor or outdoor"
+        },
+        {
+          "name": "Door preparation",
+          "value": "Confirm bore, backset and handing",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Bronze Mechanical Keypad Door Lock will fit?",
+          "a": "Check these deciding details against the installation: Operation: Mechanical; no battery or wiring · Code length: 4 to 7 digits · Keypad: Single-sided push button · Door preparation: Confirm bore, backset and handing. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 144 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
+        }
+      ],
+      "cj": {
+        "pid": "2036716929368702977",
+        "vid": "2036716929498726401",
+        "sku": "CJYL28039600001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 144,
+        "cjStockQuantity": 144,
+        "cost": 4072,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #7",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2036716929368702977.html"
+      }
+    },
+    {
+      "slug": "six-foot-coffee-finish-barn-door-hardware",
+      "sku": "UTY-CJ-DOO-1859969",
+      "name": "6 Foot Coffee Finish Barn Door Hardware",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Door",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 8499,
+      "image": "https://cf.cjdropshipping.com/doba-import/afbbdd49bafc4690a017fd36b0f8d088.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/six-foot-coffee-finish-barn-door-hardware/place.jpg",
+        "https://utiliy.com/assets/explainers/six-foot-coffee-finish-barn-door-hardware/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 230,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "70.75 in • 35.5 in • 0.75 to 1 in",
+      "fit": "Track length: 70.75 in · Maximum door width: 35.5 in · Door thickness: 0.75 to 1 in · Capacity: 44 lb",
+      "summary": "6 Foot Coffee Finish Barn Door Hardware ships from verified US inventory. Widely Apply: Our sliding door hardware suitable for both contemporary and rustic style, you can apply for cabinet, TV stand, storage, closet, pet house and so on.. Scope of Application: The 70.75\" sliding barn door hardware kit accommodates the maximum door width: 35.5\"; fits door thickness: 0.75\"-1\"; maximum weight capacity: 44lbs. Sliding Smoothly: Ultra-durable pulleys move smoothly as they travel the length of the rail, fasten anti-jump pad to prevent them from jumping off of the track.. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
         {
           "name": "Track length",
-          "value": "47.99",
+          "value": "70.75",
           "unitText": "in",
           "unitCode": "INH",
           "deciding": true
         },
         {
-          "name": "Compatible door width",
-          "value": "24.5 × 2",
+          "name": "Maximum door width",
+          "value": "35.5",
           "unitText": "in",
           "unitCode": "INH",
           "deciding": true
         },
         {
-          "name": "Compatible door thickness",
-          "value": "1-3/8–1-3/4",
+          "name": "Door thickness",
+          "value": "0.75 to 1",
           "unitText": "in",
           "unitCode": "INH",
           "deciding": true
         },
         {
-          "name": "Maximum supported weight",
-          "value": "150",
+          "name": "Capacity",
+          "value": "44",
           "unitText": "lb",
           "unitCode": "LBR",
           "deciding": true
         },
         {
-          "name": "Track material",
-          "value": "Aluminum alloy"
+          "name": "Finish",
+          "value": "Coffee"
         },
         {
-          "name": "Included",
-          "value": "Track, 4 wheel assemblies, floor guide, stopper, 2 finger pulls, wrench and installation screws"
-        },
-        {
-          "name": "Not included",
-          "value": "Door panels"
+          "name": "Door material",
+          "value": "Wood",
+          "deciding": true
         }
       ],
       "exclusions": [
-        "Not for one 48-inch-wide panel.",
-        "Not for panels thinner than 1-3/8 inch or thicker than 1-3/4 inch.",
-        "Not the single-track variant.",
-        "Door panels and structural framing are not included."
+        "Professional installation",
+        "Tools and consumables",
+        "Door slab, frame repair and structural blocking unless explicitly listed"
       ],
       "faqs": [
         {
-          "q": "What door widths fit this bypass kit?",
-          "a": "Two overlapping panels measuring approximately 24.5 inches wide each."
+          "q": "How do I confirm the 6 Foot Coffee Finish Barn Door Hardware will fit?",
+          "a": "Check these deciding details against the installation: Track length: 70.75 in · Maximum door width: 35.5 in · Door thickness: 0.75 to 1 in · Capacity: 44 lb. Do not order from the product photo alone."
         },
         {
-          "q": "What door thickness fits?",
-          "a": "Panels from 1-3/8 through 1-3/4 inches thick."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 230 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "Is this a single-track kit?",
-          "a": "No. This exact four-foot variant uses a dual track."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "Are the closet doors included?",
-          "a": "No. The package contains the track and installation hardware, not the door panels."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed."
         }
       ],
-      "autods": {
-        "productId": "6a262c1f6005c34d9f86dc60",
-        "idOnSite": "8439381262528",
-        "variationId": "47267791798464",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
+      "cj": {
+        "pid": "2100051083371859969",
+        "vid": "2100051083501883393",
+        "sku": "CJMG31680760001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "supplierOption": "Dual Track, 4 ft",
-        "stockQuantity": 174,
-        "cost": 4686,
+        "stockQuantity": 230,
+        "cjStockQuantity": 230,
+        "cost": 5401,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "pocket-door-track-24-to-30-inch",
-      "sku": "UTY-POCKET-YMXTXC395",
-      "name": "Pocket-door track for 24–30 in doors",
-      "mpn": "YMXT-XC39-5",
-      "category": "Door",
-      "price": 5490,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM5FTD3SJQDV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2.jpg?v=1784286097",
-      "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FTLMTZTLM5FTD3SJQDV0_2Fgoods_img-v3_2Fsliding-door-track-m100-1.2.jpg?v=1784286097"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "stockQuantity": 304,
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "24–30 in door panels",
-      "fit": "1–1-3/4 in thick · 56.73 in track · 220 lb",
-      "summary": "One unbranded YMXT-XC39-5 single-track pocket-door hardware kit for a 24-to-30-inch-wide panel from 1 to 1-3/4 inches thick. The 56.73-inch aluminum track and three-wheel hanger system support a door up to 220 pounds. Measure the panel, wall cavity and finished opening before ordering; the door slab and pocket framing are not included.",
-      "specs": [
-        {
-          "name": "Track type",
-          "value": "Single pocket-door track",
-          "deciding": true
-        },
-        {
-          "name": "Track length",
-          "value": "56.73",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Compatible door width",
-          "value": "24–30",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Compatible door thickness",
-          "value": "1–1-3/4",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Maximum door weight",
-          "value": "220",
-          "unitText": "lb",
-          "unitCode": "LBR",
-          "deciding": true
-        },
-        {
-          "name": "Track material",
-          "value": "Aluminum alloy"
-        },
-        {
-          "name": "Included",
-          "value": "Track, 2 three-wheel assemblies, 2 stops, floor knob, wrench and installation screws"
-        },
-        {
-          "name": "Not included",
-          "value": "Door slab and pocket wall framing"
-        }
-      ],
-      "exclusions": [
-        "Not for a door wider than 30 inches.",
-        "Not for a panel thicker than 1-3/4 inches.",
-        "Not bypass or bifold hardware.",
-        "The wall cavity, structural header, door slab and finish trim are not included."
-      ],
-      "faqs": [
-        {
-          "q": "Will this track fit a 32-inch pocket door?",
-          "a": "No. The published door-panel range is 24 through 30 inches."
-        },
-        {
-          "q": "What door thickness fits?",
-          "a": "A panel from 1 inch through 1-3/4 inches thick."
-        },
-        {
-          "q": "How much door weight can the kit support?",
-          "a": "Up to 220 pounds when correctly installed into suitable structure."
-        },
-        {
-          "q": "Does the kit include the door or pocket frame?",
-          "a": "No. It includes the track and moving hardware only."
-        }
-      ],
-      "autods": {
-        "productId": "6a262b9e6005c34d9f86d8b1",
-        "idOnSite": "8439381164224",
-        "variationId": "47267791700160",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
-        "warehouse": "US",
-        "supplierOption": "Single Track, 5 ft",
-        "stockQuantity": 304,
-        "cost": 4165,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "screen-spline-0125-inch-100-foot",
-      "sku": "UTY-SPLINE-0125-100",
-      "name": "Hollow screen spline, 0.125 in × 100 ft",
-      "category": "Door",
-      "price": 999,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDPSWYT100FT0HXU8DV0_2Fgoods_img-v2_2Fscreen-spline-m100-1.2.jpg?v=1784285000",
-      "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDPSWYT100FT0HXU8DV0_2Fgoods_img-v2_2Fscreen-spline-m100-1.2.jpg?v=1784285000",
-        "https://d2qc09rl1gfuof.cloudfront.net/product/DPSWYT100FT0HXU8D/screen-spline-a100-1.4-pt.jpg",
-        "https://d2qc09rl1gfuof.cloudfront.net/product/DPSWYT100FT0HXU8D/screen-spline-a100-2.2-pt.jpg",
-        "https://d2qc09rl1gfuof.cloudfront.net/product/DPSWYT100FT0HXU8D/screen-spline-a100-2.3-pt.jpg"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "stockQuantity": 64,
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "Exactly 0.125 in",
-      "fit": "100 ft · hollow serrated PVC · matching screen channels",
-      "summary": "One 100-foot roll of unbranded black PVC screen-retainer spline with an exact 0.125-inch diameter and a hollow serrated profile. Use it only when the bare frame channel and the removed spline call for this diameter. It can retain screen mesh in matching aluminum or wood window, patio-screen, balcony-screen or pet-screen frames; a brand name alone does not establish fit.",
-      "specs": [
-        {
-          "name": "Spline diameter",
-          "value": "0.125",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Spline diameter metric",
-          "value": "3.2",
-          "unitText": "mm",
-          "unitCode": "MMT"
-        },
-        {
-          "name": "Length",
-          "value": "100",
-          "unitText": "ft",
-          "unitCode": "FOT",
-          "deciding": true
-        },
-        {
-          "name": "Profile",
-          "value": "Hollow, round and serrated",
-          "deciding": true
-        },
-        {
-          "name": "Material",
-          "value": "Black PVC"
-        },
-        {
-          "name": "Compatible frames",
-          "value": "Screen-door and window frames with a matching channel"
-        },
-        {
-          "name": "Not included",
-          "value": "Screen mesh and spline roller"
-        },
-        {
-          "name": "Not for",
-          "value": "Channels requiring 0.140, 0.175, 0.220 inch or another profile"
-        }
-      ],
-      "exclusions": [
-        "Not interchangeable with 0.140-, 0.175- or 0.220-inch spline.",
-        "Not compatible based on screen-door brand alone.",
-        "Screen mesh and installation roller are not included.",
-        "Measure the old spline and the bare channel before ordering."
-      ],
-      "faqs": [
-        {
-          "q": "How do I know whether 0.125-inch spline fits?",
-          "a": "Measure the removed spline and the bare frame channel. Order this roll only when the required diameter is 0.125 inch."
-        },
-        {
-          "q": "Can it be used on a patio screen door?",
-          "a": "Yes, when that door's screen-retainer channel requires a 0.125-inch hollow round spline."
-        },
-        {
-          "q": "Is the spline solid?",
-          "a": "No. It has a hollow serrated PVC profile for flexibility and grip."
-        },
-        {
-          "q": "Are mesh and a spline roller included?",
-          "a": "No. The package is one 100-foot roll of spline only."
-        }
-      ],
-      "autods": {
-        "productId": "6a262b4d6005c34d9f86d62e",
-        "idOnSite": "8530760564928",
-        "variationId": "48005351899328",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
-        "warehouse": "US",
-        "supplierOption": "0.125 inch",
-        "stockQuantity": 64,
-        "cost": 686,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "eight-foot-j-hanger-barn-door-kit",
-      "sku": "UTY-BARN-004244M",
-      "name": "Eight-foot J-hanger barn-door kit",
-      "mpn": "004-2.44M",
-      "category": "Door",
-      "price": 6850,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FGCYMWJTJHS8FCZEIRV0_2Fgoods_img-v2_2Fbarn-door-hardware-kit-m100-1.2.jpg?v=1784282403",
-      "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FGCYMWJTJHS8FCZEIRV0_2Fgoods_img-v2_2Fbarn-door-hardware-kit-m100-1.2.jpg?v=1784282403"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "stockQuantity": 142,
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "3.7–4.3 ft door",
-      "fit": "1.3–1.8 in thick · J hangers · 330 lb",
-      "summary": "One unbranded 004-2.44M eight-foot black steel barn-door hardware kit for a single 3.7-to-4.3-foot-wide panel from 1.3 to 1.8 inches thick. The two-piece track and J-shaped hangers are rated for a door up to 330 pounds. Door slab and load-bearing wall structure are not included.",
-      "specs": [
-        {
-          "name": "Track length",
-          "value": "8",
-          "unitText": "ft",
-          "unitCode": "FOT",
-          "deciding": true
-        },
-        {
-          "name": "Track construction",
-          "value": "Two 4-foot sections"
-        },
-        {
-          "name": "Hanger shape",
-          "value": "J-type",
-          "deciding": true
-        },
-        {
-          "name": "Compatible door width",
-          "value": "3.7–4.3",
-          "unitText": "ft",
-          "unitCode": "FOT",
-          "deciding": true
-        },
-        {
-          "name": "Compatible door thickness",
-          "value": "1.3–1.8",
-          "unitText": "in",
-          "unitCode": "INH",
-          "deciding": true
-        },
-        {
-          "name": "Maximum door weight",
-          "value": "330",
-          "unitText": "lb",
-          "unitCode": "LBR",
-          "deciding": true
-        },
-        {
-          "name": "Material",
-          "value": "Black powder-coated carbon steel"
-        },
-        {
-          "name": "Included",
-          "value": "Track, 2 J hangers, anti-jump hardware, 2 door stops, floor guide, spacers, fasteners and installation tool"
-        },
-        {
-          "name": "Not included",
-          "value": "Door slab and structural wall reinforcement"
-        }
-      ],
-      "exclusions": [
-        "Not the I-hanger or double-door variant.",
-        "Not for panels narrower than 3.7 feet or wider than 4.3 feet.",
-        "Not for panels thinner than 1.3 inches or thicker than 1.8 inches.",
-        "The wall and header must safely support the complete moving load."
-      ],
-      "faqs": [
-        {
-          "q": "What door width fits this kit?",
-          "a": "One panel from 3.7 through 4.3 feet wide."
-        },
-        {
-          "q": "What door thickness fits?",
-          "a": "A panel from 1.3 through 1.8 inches thick."
-        },
-        {
-          "q": "Is this the double-door kit?",
-          "a": "No. This exact eight-foot J-hanger kit is for one door."
-        },
-        {
-          "q": "Does the package include the door slab?",
-          "a": "No. It contains the track and mounting hardware only."
-        }
-      ],
-      "autods": {
-        "productId": "6a262aff6005c34d9f86d15e",
-        "idOnSite": "8439212966080",
-        "variationId": "48630687039680",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
-        "warehouse": "US",
-        "supplierOption": "J-Type, 8 ft",
-        "stockQuantity": 142,
-        "cost": 5034,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "USPS US to US #7",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2100051083371859969.html"
       }
     }
   ],
   "prompts": [
     {
-      "slug": "standard-duty-storm-door-closer-black",
-      "packshot": "Photorealistic white seamless-background packshot of the exact Wright Products V1020BL black pneumatic closer and only its real included mounting hardware, preserving the exact black cylinder, rod, brackets, pins, hold-open washer and fasteners visible in the source product; orderly complete kit, no extra parts, no text, no dimension labels, no invented hardware.",
-      "place": "Photorealistic installation scene of the exact black standard-duty pneumatic closer mounted horizontally near the top on the interior side of an outswinging light-to-medium black-framed storm door, real bracket geometry and 90-degree operating path, screen insert visible, no second closer, no text, no invented hardware.",
-      "detail": "Photorealistic decisive-fit close-up of the exact black pneumatic closer fully retracted beside a physical measuring reference showing its real 12-5/8-inch unextended body-and-rod arrangement, adjustment screw and seasonal two-position latching connection clearly visible, no readable text, no floating labels, no extra hardware."
+      "slug": "sixty-nine-inch-soft-close-pocket-door-track",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 69 Inch Soft Close Pocket Door Track. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Track length 68.74 in, Door width 36 in, Door thickness 1 to 1-3/4 in. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 69 Inch Soft Close Pocket Door Track. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Track length 68.74 in, Door width 36 in, Door thickness 1 to 1-3/4 in. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 69 Inch Soft Close Pocket Door Track. Center the most important selection points: Track length 68.74 in, Door width 36 in, Door thickness 1 to 1-3/4 in. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "one-inch-rubber-threshold-ramp",
-      "packshot": "Photorealistic white seamless-background packshot of the exact one-piece black recycled-rubber threshold ramp, preserving the real 44.5 by 9.5 by 1 inch proportions, beveled sides, textured top, underside grid, one cable channel and actual mounting holes; no accessories beyond the real fasteners, no text, no invented features.",
-      "place": "Photorealistic real-world doorway installation with the exact black one-inch-rise rubber ramp spanning a 44.5-inch opening and meeting an actual one-inch threshold, wheelchair caster approaching on the 9.5-inch slope, cable routed only through the real underside channel, no text, no accessibility claims, no invented hardware.",
-      "detail": "Photorealistic low-angle close-up across the exact ramp profile with a physical gauge demonstrating the one-inch vertical rise and 9.5-inch approach depth, beveled edge, traction texture and single underside cable channel visible, no readable text or overlaid dimensions, no invented construction."
+      "slug": "thirty-one-inch-stainless-panic-exit-bar",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 31 Inch Stainless Panic Exit Bar. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Show the complete sellable kit together: one exact push bar, its exterior lever and exactly three keys. Deciding details: Door width 30 to 36 in, Handing Confirm door handing, Exterior lever Included, Application Metal or wood exit door. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 31 Inch Stainless Panic Exit Bar. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Door width 30 to 36 in, Handing Confirm door handing, Exterior lever Included, Application Metal or wood exit door. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 31 Inch Stainless Panic Exit Bar. Center the most important selection points: Door width 30 to 36 in, Handing Confirm door handing, Exterior lever Included, Application Metal or wood exit door. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "four-foot-bypass-door-hardware",
-      "packshot": "Photorealistic white seamless-background packshot of the exact YMXT-XC40-4B four-foot aluminum dual-track bypass kit, showing the real 47.99-inch dual track, four three-wheel assemblies, two finger pulls, floor guide, stopper, wrench and actual screw kit only; no door slabs, no text, no invented pieces.",
-      "place": "Photorealistic installed closet scene using the exact four-foot dual-track kit with two overlapping 24.5-inch door panels, each visibly within the real 1-3/8 to 1-3/4 inch thickness range, correct bypass overlap and floor guide, track carrying no more than the real 150-pound class, no text, no extra hardware.",
-      "detail": "Photorealistic decisive-fit close-up at the top of the exact dual track showing both panel paths, real three-wheel hanger geometry and a caliper-style physical comparison of a 1-3/8 to 1-3/4 inch panel edge, no readable numbers, no overlays, no invented rollers or brackets."
+      "slug": "reversible-carbon-steel-panic-exit-bar",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Reversible Carbon Steel Panic Exit Bar. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Door width Verify product drawing in, Handing Left or right, Exterior lever Included, Application Metal or wood exit door. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Reversible Carbon Steel Panic Exit Bar. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Door width Verify product drawing in, Handing Left or right, Exterior lever Included, Application Metal or wood exit door. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Reversible Carbon Steel Panic Exit Bar. Center the most important selection points: Door width Verify product drawing in, Handing Left or right, Exterior lever Included, Application Metal or wood exit door. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "pocket-door-track-24-to-30-inch",
-      "packshot": "Photorealistic white seamless-background packshot of the exact YMXT-XC39-5 pocket-door kit, preserving the real 56.73-inch single aluminum track, two three-wheel assemblies, two stops, floor knob, wrench and actual installation screws only; no door slab, no wall framing, no text, no invented hardware.",
-      "place": "Photorealistic correct installation scene with the exact single track mounted in an open pocket-door frame above one 24-to-30-inch-wide panel, real three-wheel hanger arrangement, panel thickness within 1 to 1-3/4 inches, wall cavity exposed only enough to show fit, no text, no invented framing connectors or hardware.",
-      "detail": "Photorealistic close-up of the exact pocket-door track cross-section and real three-wheel hanger attached to the top of a correctly sized panel, physical measuring references demonstrating the 56.73-inch track and 1 to 1-3/4 inch panel-thickness decision without readable labels, no invented parts."
+      "slug": "two-inch-aluminum-threshold-ramp",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 2 Inch Aluminum Threshold Ramp. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Rise 2 in, Overall size 11.7 W x 34 L x 2 H in, Capacity 800 lb. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 2 Inch Aluminum Threshold Ramp. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Rise 2 in, Overall size 11.7 W x 34 L x 2 H in, Capacity 800 lb. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 2 Inch Aluminum Threshold Ramp. Center the most important selection points: Rise 2 in, Overall size 11.7 W x 34 L x 2 H in, Capacity 800 lb. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "screen-spline-0125-inch-100-foot",
-      "packshot": "Photorealistic white seamless-background packshot of the exact 100-foot coil of black 0.125-inch hollow serrated PVC screen spline, preserving the real round coil, surface texture and cut end revealing the hollow profile; spline only, no roller, no mesh, no packaging text, no invented accessories.",
-      "place": "Photorealistic installation scene showing the exact black 0.125-inch hollow spline being pressed with a standard spline roller into a correctly matching aluminum patio-screen-door channel over real insect mesh, proper corner progression and taut screen, no text, no invented channel geometry.",
-      "detail": "Extreme photorealistic macro close-up of the exact 0.125-inch hollow serrated round spline beside the bare matching screen-frame channel and removed original spline, physical caliper jaws indicating diameter without readable numbers, hollow core and serrations sharp, no text or invented profile."
+      "slug": "silver-fingerprint-deadbolt-handle-set",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Silver Fingerprint Deadbolt Handle Set. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Entry methods Fingerprint, PIN, backup key, Fingerprint capacity 50, Finish Silver, Door preparation Confirm bore, backset and handing. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Silver Fingerprint Deadbolt Handle Set. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Entry methods Fingerprint, PIN, backup key, Fingerprint capacity 50, Finish Silver, Door preparation Confirm bore, backset and handing. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Silver Fingerprint Deadbolt Handle Set. Center the most important selection points: Entry methods Fingerprint, PIN, backup key, Fingerprint capacity 50, Finish Silver, Door preparation Confirm bore, backset and handing. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "eight-foot-j-hanger-barn-door-kit",
-      "packshot": "Photorealistic white seamless-background packshot of the exact 004-2.44M black carbon-steel barn-door hardware kit, preserving two real four-foot track sections, two J-shaped hangers, anti-jump blocks, two stops, floor guide, spacers, fasteners and installation tool only; no door slab, no text, no invented hardware.",
-      "place": "Photorealistic installed interior scene with the exact two-section eight-foot black track and two J hangers carrying one 3.7-to-4.3-foot-wide barn-door panel that is 1.3-to-1.8 inches thick, correct wall spacers, stops, anti-jump blocks and floor guide visible, no second door, no text, no invented hardware.",
-      "detail": "Photorealistic decisive-clearance close-up of the exact J hanger over the real black track and the attached door edge, physical gauges demonstrating the 1.3-to-1.8-inch panel thickness and required overhead hardware clearance without readable labels, anti-jump block and stop visible, no invented components."
+      "slug": "black-touchscreen-fingerprint-lock-set",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Black Touchscreen Fingerprint Lock Set. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Entry methods Fingerprint, PIN, IC card, backup key, Fingerprint capacity 50, Finish Matte black, Door preparation Confirm bore, backset and handing. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Black Touchscreen Fingerprint Lock Set. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Entry methods Fingerprint, PIN, IC card, backup key, Fingerprint capacity 50, Finish Matte black, Door preparation Confirm bore, backset and handing. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Black Touchscreen Fingerprint Lock Set. Center the most important selection points: Entry methods Fingerprint, PIN, IC card, backup key, Fingerprint capacity 50, Finish Matte black, Door preparation Confirm bore, backset and handing. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "bronze-mechanical-keypad-door-lock",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Bronze Mechanical Keypad Door Lock. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Operation Mechanical; no battery or wiring, Code length 4 to 7 digits, Keypad Single-sided push button, Door preparation Confirm bore, backset and handing. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Bronze Mechanical Keypad Door Lock. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Operation Mechanical; no battery or wiring, Code length 4 to 7 digits, Keypad Single-sided push button, Door preparation Confirm bore, backset and handing. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Bronze Mechanical Keypad Door Lock. Center the most important selection points: Operation Mechanical; no battery or wiring, Code length 4 to 7 digits, Keypad Single-sided push button, Door preparation Confirm bore, backset and handing. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "six-foot-coffee-finish-barn-door-hardware",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 6 Foot Coffee Finish Barn Door Hardware. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Track length 70.75 in, Maximum door width 35.5 in, Door thickness 0.75 to 1 in, Capacity 44 lb, Door material Wood. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 6 Foot Coffee Finish Barn Door Hardware. Show it correctly installed or used in a realistic door setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Track length 70.75 in, Maximum door width 35.5 in, Door thickness 0.75 to 1 in, Capacity 44 lb, Door material Wood. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 6 Foot Coffee Finish Barn Door Hardware. Center the most important selection points: Track length 70.75 in, Maximum door width 35.5 in, Door thickness 0.75 to 1 in, Capacity 44 lb, Door material Wood. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     }
   ]
 }

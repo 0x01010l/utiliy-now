@@ -1,769 +1,821 @@
 {
   "products": [
     {
-      "slug": "active-displayport-to-hdmi-4k60-adapter",
-      "name": "Active DisplayPort to HDMI 4K60 adapter",
-      "brand": "StarTech.com",
+      "slug": "forty-eight-amp-j1772-extension-cable-21-foot",
+      "sku": "UTY-CJ-CAB-9225473",
+      "name": "48 Amp J1772 Extension Cable 21 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Cable",
-      "image": "https://m.media-amazon.com/images/I/71fk2QSK--L._AC_SL1500_.jpg",
+      "googleCategory": "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories",
+      "price": 12099,
+      "image": "https://cf.cjdropshipping.com/17659296/5252417e-5769-44c5-8203-70e3fa98b359.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/71fk2QSK--L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81QP890t06L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81dVMuRq3FL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81GRlucEP2L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61GE24cJKqL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71GBVqj7DpL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71D6jXTS39L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/912aUi6Vf1L._AC_SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/forty-eight-amp-j1772-extension-cable-21-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/forty-eight-amp-j1772-extension-cable-21-foot/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 204,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 2,
-      "maxDays": 5,
-      "headline": "DP source → HDMI display",
-      "fit": "active conversion · 4K 60Hz · choose standard or HDR10",
-      "summary": "One active StarTech.com adapter for connecting a DisplayPort computer or dock to one HDMI monitor, television, or projector at up to 3840 by 2160 at 60 Hz. It is directional and does not connect an HDMI source to a DisplayPort display. Choose DP2HD4K60S for standard HDMI 2.0 output or DP2HD4K60H when the complete source-to-display chain supports HDR10 over HDMI 2.0b.",
-      "sharedSpecs": [
-        {
-          "name": "Signal direction",
-          "value": "DisplayPort source to HDMI display",
-          "deciding": true
-        },
-        {
-          "name": "Conversion",
-          "value": "Active",
-          "deciding": true
-        },
-        {
-          "name": "Source connector",
-          "value": "DisplayPort male, latching"
-        },
-        {
-          "name": "Display connector",
-          "value": "HDMI female"
-        },
-        {
-          "name": "Maximum stated resolution",
-          "value": "3840 × 2160 at 60 Hz",
-          "deciding": true
-        },
-        {
-          "name": "Maximum stated bandwidth",
-          "value": "18",
-          "unitText": "Gbps"
-        },
-        {
-          "name": "Audio",
-          "value": "Up to 7.1-channel HDMI audio"
-        },
-        {
-          "name": "Displays",
-          "value": "1"
-        },
-        {
-          "name": "Driver",
-          "value": "No driver required"
-        },
-        {
-          "name": "Not reversible",
-          "value": "Does not convert an HDMI source to a DisplayPort display",
-          "deciding": true
-        },
-        {
-          "name": "Not for",
-          "value": "4K 120Hz, HDMI 2.1, multiple displays, USB-C sources, or HDMI-to-DisplayPort conversion"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "Does this adapter connect a DisplayPort computer to an HDMI monitor?",
-          "a": "Yes. The DisplayPort male plug connects to the source computer, graphics card, or compatible dock, and an HDMI cable connects the adapter's HDMI female port to the display."
-        },
-        {
-          "q": "Can this adapter convert HDMI to DisplayPort?",
-          "a": "No. Both variants work only from a DisplayPort source to an HDMI display."
-        },
-        {
-          "q": "Which variant should I choose for HDR10?",
-          "a": "Choose DP2HD4K60H. HDR10 also requires a DisplayPort 1.4 source, compatible content, a suitable HDMI cable, and an HDMI 2.0b HDR display. DP2HD4K60S has no HDR10 claim."
-        },
-        {
-          "q": "What is required for 4K at 60 Hz?",
-          "a": "Use a compatible DisplayPort source, a 4K60-capable HDMI display, and an HDMI cable rated for the required 18 Gbps link. Lower-capability equipment can reduce the resolution or refresh rate."
-        },
-        {
-          "q": "Does the source need dual-mode DisplayPort or DP++?",
-          "a": "No. These are active adapters and support standard DisplayPort and DP++ sources within the maker's published requirements."
-        },
-        {
-          "q": "Does this adapter support 4K at 120 Hz?",
-          "a": "No. The published maximum is 3840 by 2160 at 60 Hz."
-        }
-      ],
-      "variants": [
-        {
-          "sku": "UTY-STARTECH-DP2HD4K60S",
-          "label": "4K60, HDMI 2.0",
-          "price": 4099,
-          "mpn": "DP2HD4K60S",
-          "gtin12": "065030865722",
-          "decidingSpec": {
-            "name": "Output capability",
-            "value": "HDMI 2.0, 4K 60Hz; no HDR10 claim"
-          },
-          "specs": [
-            {
-              "name": "DisplayPort input",
-              "value": "DisplayPort 1.4"
-            },
-            {
-              "name": "HDMI output",
-              "value": "HDMI 2.0"
-            },
-            {
-              "name": "Content protection",
-              "value": "HDCP 2.2 and DPCP"
-            },
-            {
-              "name": "Attached lead",
-              "value": "4.2",
-              "unitText": "in"
-            }
-          ],
-          "economics": {
-            "currency": "USD",
-            "marketPrice": 4099,
-            "sellingPrice": 4099,
-            "itemCost": 2940,
-            "shippingCost": 0,
-            "landedCost": 2940,
-            "stripeFee": 149,
-            "profitAfterStripe": 1010,
-            "landedRatioBps": 7172,
-            "marginAfterStripeBps": 2464
-          },
-          "autods": {
-            "productId": "b8881d4502a459b168d37461",
-            "idOnSite": "B01M6WK3KU",
-            "variationId": "B01M6WK3KU",
-            "site": "amazon",
-            "supplier": "Jeff's Store",
-            "warehouse": "US",
-            "cost": 2940,
-            "shippingCost": 0,
-            "costCheckedAt": "2026-10-09"
-          }
-        },
-        {
-          "sku": "UTY-STARTECH-DP2HD4K60H",
-          "label": "4K60, HDMI 2.0b HDR10",
-          "price": 4299,
-          "mpn": "DP2HD4K60H",
-          "gtin12": "065030879729",
-          "decidingSpec": {
-            "name": "Output capability",
-            "value": "HDMI 2.0b, 4K 60Hz, HDR10"
-          },
-          "specs": [
-            {
-              "name": "DisplayPort input",
-              "value": "DisplayPort 1.4"
-            },
-            {
-              "name": "HDMI output",
-              "value": "HDMI 2.0b"
-            },
-            {
-              "name": "HDR",
-              "value": "HDR10; full source, content, cable and display support required"
-            },
-            {
-              "name": "Chroma claim",
-              "value": "YCbCr 4:4:4, 8-bit"
-            },
-            {
-              "name": "Content protection",
-              "value": "HDCP 2.2 and DPCP"
-            },
-            {
-              "name": "Attached lead",
-              "value": "4.8",
-              "unitText": "in"
-            },
-            {
-              "name": "Compatibility note",
-              "value": "Some NVIDIA combinations may restrict 4:4:4 chroma or 5.1/7.1 audio"
-            }
-          ],
-          "economics": {
-            "currency": "USD",
-            "marketPrice": 4299,
-            "sellingPrice": 4299,
-            "itemCost": 3210,
-            "shippingCost": 0,
-            "landedCost": 3210,
-            "stripeFee": 155,
-            "profitAfterStripe": 934,
-            "landedRatioBps": 7467,
-            "marginAfterStripeBps": 2173
-          },
-          "autods": {
-            "productId": "d9da0c1705a4f3b09342c36b",
-            "idOnSite": "B07MWSPSK8",
-            "variationId": "B07MWSPSK8",
-            "site": "amazon",
-            "supplier": "Amazon.com",
-            "warehouse": "US",
-            "cost": 3210,
-            "shippingCost": 0,
-            "costCheckedAt": "2026-10-09"
-          }
-        }
-      ]
-    },
-    {
-      "slug": "hdmi-to-displayport-4k30-adapter",
-      "sku": "UTY-STARTECH-HD2DP",
-      "name": "Active HDMI to DisplayPort 4K30 adapter",
-      "brand": "StarTech.com",
-      "mpn": "HD2DP",
-      "gtin12": "065030861588",
-      "category": "Cable",
-      "price": 5699,
-      "image": "https://m.media-amazon.com/images/I/71xdr0QtXDL._AC_SL1500_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/71xdr0QtXDL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71yrGjpqx8S._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81AqEeGjkMS._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61gQYfhrSmS._AC_SL1500_.jpg"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "minDays": 5,
-      "maxDays": 5,
-      "headline": "HDMI source → DisplayPort display",
-      "fit": "active · USB-powered · 4K 30Hz maximum",
-      "summary": "One StarTech.com HD2DP active converter for connecting an HDMI source to one DisplayPort monitor or projector. The HDMI male plug carries video from the source, the DisplayPort female port accepts the display cable, and USB supplies power. It is not the common reverse-direction DisplayPort-to-HDMI adapter.",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "SAE J1772 • 48 A • 21 ft",
+      "fit": "Connector: SAE J1772 · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V",
+      "summary": "48 Amp J1772 Extension Cable 21 Foot ships from verified US inventory. Extra Length, Zero Hassle: Extending your charging reach for J1772 EVs/PHEVs. The 21 ft EV charger extension cable gives you the freedom to charge from almost any angle, even if your outlet is far from your EV port . Charge Anywhere with Dual Voltage: Compatible with both 120V and 240V outlets, this EV charger extension cord works whether you're charging from a standard home socket or a Level 2 station—great for daily use or road trips . Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Signal direction",
-          "value": "HDMI source to DisplayPort display",
+          "name": "Connector",
+          "value": "SAE J1772",
           "deciding": true
         },
         {
-          "name": "Conversion",
-          "value": "Active",
+          "name": "Maximum current",
+          "value": "48",
+          "unitText": "A",
+          "unitCode": "AMP",
           "deciding": true
         },
         {
-          "name": "Video input",
-          "value": "HDMI 1.4 male"
-        },
-        {
-          "name": "Video output",
-          "value": "DisplayPort 1.2 female"
-        },
-        {
-          "name": "Power",
-          "value": "USB-powered; USB extension included",
-          "deciding": true
-        },
-        {
-          "name": "Maximum stated resolution",
-          "value": "3840 × 2160 at 30 Hz",
-          "deciding": true
-        },
-        {
-          "name": "Additional stated mode",
-          "value": "1920 × 1080 at 120 Hz"
-        },
-        {
-          "name": "Audio",
-          "value": "Up to 7.1-channel"
-        },
-        {
-          "name": "HDCP 2.2",
-          "value": "Not supported",
-          "deciding": true
-        },
-        {
-          "name": "Product length",
-          "value": "10",
-          "unitText": "in"
-        },
-        {
-          "name": "Not reversible",
-          "value": "Does not connect a DisplayPort source to an HDMI display"
-        },
-        {
-          "name": "Not for",
-          "value": "4K 60Hz, HDCP 2.2-protected 4K playback, DisplayPort-to-HDMI conversion, or multiple displays"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "Is this an HDMI to DisplayPort adapter or DisplayPort to HDMI adapter?",
-          "a": "It is HDMI source to DisplayPort display. It is specifically for the less common reverse direction and is not interchangeable with a DisplayPort-to-HDMI adapter."
-        },
-        {
-          "q": "Why does the HD2DP adapter need USB?",
-          "a": "USB powers the active signal converter. The USB connection does not carry the video signal."
-        },
-        {
-          "q": "Will HD2DP show 4K at 60 Hz?",
-          "a": "No. Its published 4K maximum is 3840 by 2160 at 30 Hz."
-        },
-        {
-          "q": "Will this adapter play HDCP 2.2-protected 4K streaming video?",
-          "a": "No. StarTech.com states that HD2DP does not support HDCP 2.2."
-        },
-        {
-          "q": "What connects to each end?",
-          "a": "Connect the HDMI male plug to the source, a DisplayPort cable from the female DisplayPort output to the display, and USB to a powered USB port."
-        }
-      ],
-      "economics": {
-        "currency": "USD",
-        "marketPrice": 5699,
-        "sellingPrice": 5699,
-        "itemCost": 4265,
-        "shippingCost": 0,
-        "landedCost": 4265,
-        "stripeFee": 195,
-        "profitAfterStripe": 1239,
-        "landedRatioBps": 7484,
-        "marginAfterStripeBps": 2174
-      },
-      "autods": {
-        "productId": "c1c0471014c11419ddac0971",
-        "idOnSite": "B0144NS4Z6",
-        "variationId": "B0144NS4Z6",
-        "site": "amazon",
-        "supplier": "Aspire Tech LLC",
-        "warehouse": "US",
-        "cost": 4265,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "dvi-d-to-displayport-adapter",
-      "sku": "UTY-STARTECH-DVI2DP2",
-      "name": "Active DVI-D to DisplayPort adapter",
-      "brand": "StarTech.com",
-      "mpn": "DVI2DP2",
-      "gtin12": "065030875851",
-      "category": "Cable",
-      "price": 5095,
-      "image": "https://m.media-amazon.com/images/I/81qjSfBT8sL._AC_SL1500_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/81qjSfBT8sL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71BbB8uBuRS._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81K4QIKqm8L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/813Yri+WIBL._AC_SL1500_.jpg"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "minDays": 6,
-      "maxDays": 6,
-      "headline": "DVI-D source → DisplayPort display",
-      "fit": "active · USB-powered · 1920 × 1200 at 60Hz",
-      "summary": "One StarTech.com DVI2DP2 active converter for connecting a digital DVI-D source to one DisplayPort monitor or projector. The built-in USB lead supplies power only. Its conservative published ceiling is 1920 by 1200 at 60 Hz, and it does not convert analog DVI-A or VGA.",
-      "specs": [
-        {
-          "name": "Signal direction",
-          "value": "DVI-D source to DisplayPort display",
-          "deciding": true
-        },
-        {
-          "name": "Conversion",
-          "value": "Active",
-          "deciding": true
-        },
-        {
-          "name": "Video input",
-          "value": "DVI-D digital male"
-        },
-        {
-          "name": "Video output",
-          "value": "DisplayPort 1.2 female"
-        },
-        {
-          "name": "Power",
-          "value": "Built-in 8 in USB power lead; 24 in USB extension included",
-          "deciding": true
-        },
-        {
-          "name": "Maximum stated resolution",
-          "value": "1920 × 1200 at 60 Hz",
-          "deciding": true
-        },
-        {
-          "name": "USB signal role",
-          "value": "Power only; no video or data"
-        },
-        {
-          "name": "Audio",
-          "value": "No audio claim; DVI input is treated as video"
-        },
-        {
-          "name": "Not reversible",
-          "value": "Does not connect a DisplayPort source to a DVI display"
-        },
-        {
-          "name": "Not for",
-          "value": "Analog DVI-A, VGA, DisplayPort-to-DVI conversion, 4K, or audio-dependent installations"
-        }
-      ],
-      "faqs": [
-        {
-          "q": "Does DVI2DP2 connect an older DVI computer to a DisplayPort monitor?",
-          "a": "Yes, when the source supplies a compatible digital DVI-D signal. The DisplayPort female side connects to the monitor cable."
-        },
-        {
-          "q": "Can this adapter connect a DisplayPort computer to a DVI monitor?",
-          "a": "No. DVI2DP2 works only from a DVI-D source to a DisplayPort display."
-        },
-        {
-          "q": "Does the USB cable carry video?",
-          "a": "No. The USB lead powers the active converter and carries no video or user data."
-        },
-        {
-          "q": "Will DVI2DP2 convert analog DVI or VGA?",
-          "a": "No. It requires a digital DVI-D source signal."
-        },
-        {
-          "q": "What is the maximum supported resolution?",
-          "a": "The conservative manufacturer-published maximum is 1920 by 1200 at 60 Hz."
-        }
-      ],
-      "economics": {
-        "currency": "USD",
-        "marketPrice": 5095,
-        "sellingPrice": 5095,
-        "itemCost": 3900,
-        "shippingCost": 0,
-        "landedCost": 3900,
-        "stripeFee": 178,
-        "profitAfterStripe": 1017,
-        "landedRatioBps": 7655,
-        "marginAfterStripeBps": 1996
-      },
-      "autods": {
-        "productId": "6d6bc65727c5f1cc660ac0cb",
-        "idOnSite": "B077FYJTDL",
-        "variationId": "B077FYJTDL",
-        "site": "amazon",
-        "supplier": "Amazon.com",
-        "warehouse": "US",
-        "cost": 3900,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "usb-b-panel-mount-extension",
-      "sku": "UTY-STARTECH-USBPNLBFBM3",
-      "name": "USB-B panel-mount extension cable",
-      "brand": "StarTech.com",
-      "mpn": "USBPNLBFBM3",
-      "gtin12": "065030852128",
-      "category": "Cable",
-      "price": 1599,
-      "image": "https://m.media-amazon.com/images/I/81km2wo1RpL._SL1500_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/81km2wo1RpL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81GdnFjDwcL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71gCS-TqQ2L._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81rVxuPIsjL._SL1500_.jpg"
-      ],
-      "available": true,
-      "shipsFrom": "US",
-      "minDays": 2,
-      "maxDays": 2,
-      "headline": "USB-B female panel → USB-B male",
-      "fit": "3 ft · USB 2.0 · custom enclosure access",
-      "summary": "One StarTech.com USBPNLBFBM3 shielded extension cable for placing a USB-B female port on a custom enclosure, kiosk, instrument panel, or internally mounted USB-B device. The user-facing end is USB-B female and the internal device end is USB-B male. It is USB 2.0, not USB 3.x.",
-      "specs": [
-        {
-          "name": "Panel connector",
-          "value": "USB-B female",
-          "deciding": true
-        },
-        {
-          "name": "Internal device connector",
-          "value": "USB-B male",
-          "deciding": true
-        },
-        {
-          "name": "USB version",
-          "value": "USB 2.0"
-        },
-        {
-          "name": "Maximum stated data rate",
-          "value": "480",
-          "unitText": "Mbps"
-        },
-        {
-          "name": "Maximum stated power",
-          "value": "2.5",
-          "unitText": "W"
-        },
-        {
-          "name": "Cable length",
-          "value": "3",
+          "name": "Length",
+          "value": "21",
           "unitText": "ft",
           "unitCode": "FOT",
           "deciding": true
         },
         {
-          "name": "Cable length metric",
-          "value": "91.4",
-          "unitText": "cm",
-          "unitCode": "CMT"
-        },
-        {
-          "name": "Wire gauge",
-          "value": "24/28 AWG"
-        },
-        {
-          "name": "Shield",
-          "value": "Aluminum-Mylar foil with braid"
-        },
-        {
-          "name": "Published connector-body envelope",
-          "value": "1.5 × 0.6",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Voltage",
+          "value": "120-240",
+          "unitText": "V",
+          "unitCode": "VLT",
           "deciding": true
         },
         {
-          "name": "Measure before ordering",
-          "value": "Panel opening, screw spacing, rear connector depth, and cable bend clearance"
+          "name": "Ingress protection",
+          "value": "IP66"
         },
         {
-          "name": "Not for",
-          "value": "USB-A panels, USB-C, USB 3.x speeds, or an ordinary USB-A-to-B printer connection"
+          "name": "Use",
+          "value": "AC Level 1 / Level 2 extension only",
+          "deciding": true
         }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
       ],
       "faqs": [
         {
-          "q": "Which USB-B connector mounts on the outside of the panel?",
-          "a": "The USB-B female connector is the panel-mounted user-facing port. The USB-B male connector attaches to the internal device."
+          "q": "How do I confirm the 48 Amp J1772 Extension Cable 21 Foot will fit?",
+          "a": "Check these deciding details against the installation: Connector: SAE J1772 · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V. Do not order from the product photo alone."
         },
         {
-          "q": "Is USBPNLBFBM3 a USB 3.0 cable?",
-          "a": "No. It is USB 2.0 with a stated maximum data rate of 480 Mbps."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 204 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "How long is the USB-B panel-mount extension?",
-          "a": "It is 3 feet, or 91.4 centimeters, from end to end."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "What should I measure before cutting an enclosure?",
-          "a": "Confirm the panel opening and screw spacing against the physical product, then leave space for the approximately 1.5 by 0.6 inch connector body and for the cable to bend without stressing the strain relief."
-        },
-        {
-          "q": "Can this replace a standard USB-A to USB-B printer cable?",
-          "a": "No. Both ends use USB-B geometry: one female panel port and one male internal-device plug."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
         }
       ],
-      "economics": {
-        "currency": "USD",
-        "marketPrice": 1599,
-        "sellingPrice": 1599,
-        "itemCost": 1099,
-        "shippingCost": 0,
-        "landedCost": 1099,
-        "stripeFee": 76,
-        "profitAfterStripe": 424,
-        "landedRatioBps": 6873,
-        "marginAfterStripeBps": 2652
-      },
-      "autods": {
-        "productId": "1ef07ca954614d3f083e4eeb",
-        "idOnSite": "B00FSYBKPM",
-        "variationId": "B00FSYBKPM",
-        "site": "amazon",
-        "supplier": "Amazon.com",
+      "cj": {
+        "pid": "2001238260309225473",
+        "vid": "2001238260678324225",
+        "sku": "CJFU26535190001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "cost": 1099,
+        "stockQuantity": 204,
+        "cjStockQuantity": 204,
+        "cost": 9352,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001238260309225473.html"
       }
     },
     {
-      "slug": "displayport-to-mini-displayport-adapter",
-      "sku": "UTY-STARTECH-DP2MDPMF6IN",
-      "name": "DisplayPort to Mini DisplayPort adapter cable",
-      "brand": "StarTech.com",
-      "mpn": "DP2MDPMF6IN",
-      "gtin12": "065030839921",
+      "slug": "thirty-two-amp-j1772-extension-cable-21-foot",
+      "sku": "UTY-CJ-CAB-7451138",
+      "name": "32 Amp J1772 Extension Cable 21 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Cable",
-      "price": 1499,
-      "image": "https://m.media-amazon.com/images/I/61J-qsipU9L._SL1500_.jpg",
+      "googleCategory": "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories",
+      "price": 10399,
+      "image": "https://cf.cjdropshipping.com/17660160/ac7bb0ca-395c-4ee8-a195-02bbf41b77e1.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/61J-qsipU9L._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71om7dvwyIL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71wJ3RJCTsL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81VEDqRcQIL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71N6H3arEaL._SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/thirty-two-amp-j1772-extension-cable-21-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/thirty-two-amp-j1772-extension-cable-21-foot/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 107,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
       "minDays": 2,
-      "maxDays": 2,
-      "headline": "DP male → Mini DisplayPort female",
-      "fit": "6 in · 4.7 mm OD · not for Thunderbolt displays",
-      "summary": "One passive StarTech.com DP2MDPMF6IN adapter cable for connecting a standard DisplayPort source to a Mini DisplayPort monitor cable or Mini DisplayPort display. It is not a Thunderbolt cable and does not work with Apple Thunderbolt Display A1407 or iMac Target Display Mode. Because the maker's datasheet conflicts on maximum resolution, this page conservatively states 2560 by 1600 at 60 Hz rather than promising 4K.",
+      "maxDays": 5,
+      "headline": "SAE J1772 • 32 A • 21 ft",
+      "fit": "Connector: SAE J1772 · Maximum current: 32 A · Length: 21 ft · Voltage: 120-240 V",
+      "summary": "32 Amp J1772 Extension Cable 21 Foot ships from verified US inventory. Extra Length, Zero Hassle: Extending your charging reach for J1772 EVs/PHEVs. The 21 ft EV charger extension cable gives you the freedom to charge from almost any angle, even if your outlet is far from your EV port . Charge Anywhere with Dual Voltage: Compatible with both 120V and 240V outlets, this EV charger extension cord works whether you're charging from a standard home socket or a Level 2 station—great for daily use or road trips . Confirm every deciding measurement and connection before ordering.",
       "specs": [
         {
-          "name": "Source connector",
-          "value": "Standard DisplayPort male, latching",
+          "name": "Connector",
+          "value": "SAE J1772",
           "deciding": true
         },
         {
-          "name": "Display connector",
-          "value": "Mini DisplayPort female",
+          "name": "Maximum current",
+          "value": "32",
+          "unitText": "A",
+          "unitCode": "AMP",
           "deciding": true
         },
         {
-          "name": "Signal direction",
-          "value": "Standard DisplayPort source to Mini DisplayPort monitor or cable"
-        },
-        {
-          "name": "Conversion",
-          "value": "Passive connector-format adapter"
-        },
-        {
-          "name": "DisplayPort version",
-          "value": "DisplayPort 1.2"
-        },
-        {
-          "name": "Conservative maximum resolution",
-          "value": "2560 × 1600 at 60 Hz",
+          "name": "Length",
+          "value": "21",
+          "unitText": "ft",
+          "unitCode": "FOT",
           "deciding": true
         },
         {
-          "name": "Resolution evidence note",
-          "value": "The maker's narrative states 2560 × 1600 at 60 Hz while its feature table claims 3840 × 2400 at 60 Hz; Utiliy does not promise the conflicting higher figure"
-        },
-        {
-          "name": "Maximum stated link bandwidth",
-          "value": "21.6",
-          "unitText": "Gbps"
-        },
-        {
-          "name": "Protocols",
-          "value": "HBR2, MST, GTC and up to 8-channel audio"
-        },
-        {
-          "name": "Cable length",
-          "value": "6",
-          "unitText": "in",
-          "unitCode": "INH",
+          "name": "Voltage",
+          "value": "120-240",
+          "unitText": "V",
+          "unitCode": "VLT",
           "deciding": true
         },
         {
-          "name": "Cable OD",
-          "value": "4.7",
-          "unitText": "mm",
-          "unitCode": "MMT",
-          "deciding": true
+          "name": "Ingress protection",
+          "value": "IP66"
         },
         {
-          "name": "Maximum connector width",
-          "value": "20",
-          "unitText": "mm",
-          "unitCode": "MMT"
-        },
-        {
-          "name": "Wire gauge",
-          "value": "32 AWG"
-        },
-        {
-          "name": "Not compatible with",
-          "value": "Thunderbolt displays including Apple A1407, iMac Target Display Mode, HDMI, or USB-C",
+          "name": "Use",
+          "value": "AC Level 1 / Level 2 extension only",
           "deciding": true
         }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
       ],
       "faqs": [
         {
-          "q": "Which end plugs into the computer?",
-          "a": "The full-size DisplayPort male plug connects to the source computer, graphics card, or compatible dock. The Mini DisplayPort female side accepts the display's Mini DisplayPort connection."
+          "q": "How do I confirm the 32 Amp J1772 Extension Cable 21 Foot will fit?",
+          "a": "Check these deciding details against the installation: Connector: SAE J1772 · Maximum current: 32 A · Length: 21 ft · Voltage: 120-240 V. Do not order from the product photo alone."
         },
         {
-          "q": "Will DP2MDPMF6IN connect an Apple Thunderbolt Display?",
-          "a": "No. Mini DisplayPort and Thunderbolt 1 or 2 use a similar connector shape, but this is a DisplayPort adapter and StarTech.com excludes Thunderbolt displays such as Apple A1407."
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 107 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "Will this cable work with iMac Target Display Mode?",
-          "a": "No. The manufacturer explicitly excludes iMac Target Display Mode."
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
         },
         {
-          "q": "Is 4K guaranteed?",
-          "a": "No. The manufacturer datasheet contains conflicting resolution statements. Utiliy conservatively publishes 2560 by 1600 at 60 Hz and does not promise the higher 4K figure."
-        },
-        {
-          "q": "How much connector and cable clearance is required?",
-          "a": "Allow for a connector up to 20 millimeters wide, a 4.7 millimeter cable diameter, the six-inch cable length, and a gradual bend beyond the strain relief."
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
         }
       ],
-      "economics": {
-        "currency": "USD",
-        "marketPrice": 1499,
-        "sellingPrice": 1499,
-        "itemCost": 1000,
-        "shippingCost": 0,
-        "landedCost": 1000,
-        "stripeFee": 73,
-        "profitAfterStripe": 426,
-        "landedRatioBps": 6671,
-        "marginAfterStripeBps": 2842
-      },
-      "autods": {
-        "productId": "e184588cc0c3b8b4703adbd4",
-        "idOnSite": "B003N3DTKY",
-        "variationId": "B003N3DTKY",
-        "site": "amazon",
-        "supplier": "Amazon.com",
+      "cj": {
+        "pid": "2001459635007451138",
+        "vid": "2001459635351384066",
+        "sku": "CJFU26538430001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "cost": 1000,
+        "stockQuantity": 107,
+        "cjStockQuantity": 107,
+        "cost": 7992,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001459635007451138.html"
+      }
+    },
+    {
+      "slug": "forty-eight-amp-nacs-extension-cable-21-foot",
+      "sku": "UTY-CJ-CAB-0906625",
+      "name": "48 Amp NACS Extension Cable 21 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Cable",
+      "googleCategory": "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories",
+      "price": 12999,
+      "image": "https://cf.cjdropshipping.com/17660160/f77c2d7d-60b1-4673-88c8-33042bacf4c6.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/forty-eight-amp-nacs-extension-cable-21-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/forty-eight-amp-nacs-extension-cable-21-foot/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 253,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "NACS / Tesla AC • 48 A • 21 ft",
+      "fit": "Connector: NACS / Tesla AC · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V",
+      "summary": "48 Amp NACS Extension Cable 21 Foot ships from verified US inventory. Extra Length, Zero Hassle: Extending your charging reach for Tesla EVs. The 21 ft EV charger extension cable gives you the freedom to charge from almost any angle, even if your outlet is far from your EV port . Works with Most Tesla AC Chargers: This EV charger extension cord is compatible with the Tesla wall connector, mobile connector, and destination charger for flexible home or travel charging. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Connector",
+          "value": "NACS / Tesla AC",
+          "deciding": true
+        },
+        {
+          "name": "Maximum current",
+          "value": "48",
+          "unitText": "A",
+          "unitCode": "AMP",
+          "deciding": true
+        },
+        {
+          "name": "Length",
+          "value": "21",
+          "unitText": "ft",
+          "unitCode": "FOT",
+          "deciding": true
+        },
+        {
+          "name": "Voltage",
+          "value": "120-240",
+          "unitText": "V",
+          "unitCode": "VLT",
+          "deciding": true
+        },
+        {
+          "name": "Ingress protection",
+          "value": "IP66"
+        },
+        {
+          "name": "Use",
+          "value": "AC Level 1 / Level 2 extension only",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 48 Amp NACS Extension Cable 21 Foot will fit?",
+          "a": "Check these deciding details against the installation: Connector: NACS / Tesla AC · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 253 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
+        }
+      ],
+      "cj": {
+        "pid": "2001458782810906625",
+        "vid": "2001458783247114242",
+        "sku": "CJFU26538070001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 253,
+        "cjStockQuantity": 253,
+        "cost": 9992,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001458782810906625.html"
+      }
+    },
+    {
+      "slug": "ten-awg-solar-wire-pair-100-foot",
+      "sku": "UTY-CJ-CAB-2790145",
+      "name": "10 AWG Solar Wire Pair 100 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Cable",
+      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "price": 11899,
+      "image": "https://cf.cjdropshipping.com/17743968/89075162-5418-466b-8dce-48c56b7cb219.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/ten-awg-solar-wire-pair-100-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/ten-awg-solar-wire-pair-100-foot/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 289,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "10 AWG • 100 ft red + 100 ft black • Red and black pair",
+      "fit": "Wire gauge: 10 AWG · Length: 100 ft red + 100 ft black · Polarity: Red and black pair",
+      "summary": "10 AWG Solar Wire Pair 100 Foot ships from verified US inventory. Excellent Conductivity: This solar panel extension cable uses a 100% tinned copper conductor to deliver high efficiency and low resistance power transfer. It reduces energy loss and ensures stable performance even in harsh outdoor environments . Thick XLPE Insulation: The solar panel extension wire features a thick XLPE jacket with strong resistance to sunlight, corrosion, and high temperatures, slowing aging and ensuring over 25 years of reliable outdoor use in changing climates . Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Wire gauge",
+          "value": "10",
+          "unitText": "AWG",
+          "deciding": true
+        },
+        {
+          "name": "Length",
+          "value": "100 ft red + 100 ft black",
+          "deciding": true
+        },
+        {
+          "name": "Conductor",
+          "value": "Tinned copper"
+        },
+        {
+          "name": "Jacket",
+          "value": "XLPE"
+        },
+        {
+          "name": "Ingress protection",
+          "value": "IP67"
+        },
+        {
+          "name": "Polarity",
+          "value": "Red and black pair",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 10 AWG Solar Wire Pair 100 Foot will fit?",
+          "a": "Check these deciding details against the installation: Wire gauge: 10 AWG · Length: 100 ft red + 100 ft black · Polarity: Red and black pair. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 289 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
+        }
+      ],
+      "cj": {
+        "pid": "2036732119382790145",
+        "vid": "2036732119504424962",
+        "sku": "CJYL28042800001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 289,
+        "cjStockQuantity": 289,
+        "cost": 9192,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #4",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2036732119382790145.html"
+      }
+    },
+    {
+      "slug": "ten-awg-solar-extension-cable-50-foot",
+      "sku": "UTY-CJ-CAB-2282753",
+      "name": "10 AWG Solar Extension Cable 50 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Cable",
+      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "price": 8099,
+      "image": "https://cf.cjdropshipping.com/17743968/431ce057-8f0a-4cfe-9401-98bb8424bac3.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/ten-awg-solar-extension-cable-50-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/ten-awg-solar-extension-cable-50-foot/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 133,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "10 AWG • 50 ft • Red and black pair",
+      "fit": "Wire gauge: 10 AWG · Length: 50 ft · Polarity: Red and black pair",
+      "summary": "10 AWG Solar Extension Cable 50 Foot ships from verified US inventory. Excellent Conductivity: This solar panel extension cable features a 100% tinned copper conductor to deliver high efficiency and low resistance power transfer. It reduces energy loss and ensures stable performance even in harsh outdoor environments . Flame-Retardant Protection: This solar panel wire uses XLPE insulation that is sun-resistant, corrosion-resistant, and heat-resistant. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Wire gauge",
+          "value": "10",
+          "unitText": "AWG",
+          "deciding": true
+        },
+        {
+          "name": "Length",
+          "value": "50 ft",
+          "deciding": true
+        },
+        {
+          "name": "Conductor",
+          "value": "Tinned copper"
+        },
+        {
+          "name": "Jacket",
+          "value": "XLPE"
+        },
+        {
+          "name": "Ingress protection",
+          "value": "IP67"
+        },
+        {
+          "name": "Polarity",
+          "value": "Red and black pair",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 10 AWG Solar Extension Cable 50 Foot will fit?",
+          "a": "Check these deciding details against the installation: Wire gauge: 10 AWG · Length: 50 ft · Polarity: Red and black pair. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 133 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
+        }
+      ],
+      "cj": {
+        "pid": "2036732566862282753",
+        "vid": "2036732567013277697",
+        "sku": "CJYL28042890001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 133,
+        "cjStockQuantity": 133,
+        "cost": 6232,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #7",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2036732566862282753.html"
+      }
+    },
+    {
+      "slug": "ten-awg-solar-extension-cable-30-foot",
+      "sku": "UTY-CJ-CAB-0196097",
+      "name": "10 AWG Solar Extension Cable 30 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Cable",
+      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "price": 5099,
+      "image": "https://cf.cjdropshipping.com/17743968/71b95275-ccb3-4828-9d13-46eb34857fbd.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/ten-awg-solar-extension-cable-30-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/ten-awg-solar-extension-cable-30-foot/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 175,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "10 AWG • 30 ft • Red and black pair",
+      "fit": "Wire gauge: 10 AWG · Length: 30 ft · Polarity: Red and black pair",
+      "summary": "10 AWG Solar Extension Cable 30 Foot ships from verified US inventory. Excellent Conductivity: This solar panel extension cable features a 100% tinned copper conductor to deliver high efficiency and low resistance power transfer. It reduces energy loss and ensures stable performance even in harsh outdoor environments . Flame-Retardant Protection: This solar panel wire uses XLPE insulation that is sun-resistant, corrosion-resistant, and heat-resistant. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Wire gauge",
+          "value": "10",
+          "unitText": "AWG",
+          "deciding": true
+        },
+        {
+          "name": "Length",
+          "value": "30 ft",
+          "deciding": true
+        },
+        {
+          "name": "Conductor",
+          "value": "Tinned copper"
+        },
+        {
+          "name": "Jacket",
+          "value": "XLPE"
+        },
+        {
+          "name": "Ingress protection",
+          "value": "IP67"
+        },
+        {
+          "name": "Polarity",
+          "value": "Red and black pair",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 10 AWG Solar Extension Cable 30 Foot will fit?",
+          "a": "Check these deciding details against the installation: Wire gauge: 10 AWG · Length: 30 ft · Polarity: Red and black pair. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 175 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
+        }
+      ],
+      "cj": {
+        "pid": "2036732318920196097",
+        "vid": "2036732319113134081",
+        "sku": "CJYL28042850001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 175,
+        "cjStockQuantity": 175,
+        "cost": 3912,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #4",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2036732318920196097.html"
+      }
+    },
+    {
+      "slug": "thirty-amp-generator-cord-inlet-kit-25-foot",
+      "sku": "UTY-CJ-CAB-4820098",
+      "name": "30 Amp Generator Cord Inlet Kit 25 Foot",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Cable",
+      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "price": 8199,
+      "image": "https://cf.cjdropshipping.com/17660160/baae9d24-d808-4903-a422-fbe04d167d18.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/thirty-amp-generator-cord-inlet-kit-25-foot/place.jpg",
+        "https://utiliy.com/assets/explainers/thirty-amp-generator-cord-inlet-kit-25-foot/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 1271,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "30 A • 25 ft • 4 x 10 AWG STW",
+      "fit": "Current: 30 A · Length: 25 ft · Wire: 4 x 10 AWG STW · Connectors: NEMA L14-30P to L14-30R",
+      "summary": "30 Amp Generator Cord Inlet Kit 25 Foot ships from verified US inventory. Premium 30A Generator Cord: Our generator cord is STW gauge with a 4 x 10AWG wire, supporting up to 30 AMP current. Featuring a NEMA L14-30P male plug designed to fit into a 30A generator output and a twist-lock NEMA L14-30R female plug for a secure connection to a 30A power inlet box with a NEMA L14-30P male end. Perfect for emergency power needs in any weather! Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Current",
+          "value": "30",
+          "unitText": "A",
+          "unitCode": "AMP",
+          "deciding": true
+        },
+        {
+          "name": "Length",
+          "value": "25",
+          "unitText": "ft",
+          "unitCode": "FOT",
+          "deciding": true
+        },
+        {
+          "name": "Wire",
+          "value": "4 x 10 AWG STW",
+          "deciding": true
+        },
+        {
+          "name": "Connectors",
+          "value": "NEMA L14-30P to L14-30R",
+          "deciding": true
+        },
+        {
+          "name": "Power inlet box",
+          "value": "Pre-drilled, included",
+          "deciding": true
+        },
+        {
+          "name": "Certification",
+          "value": "ETL listed"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 30 Amp Generator Cord Inlet Kit 25 Foot will fit?",
+          "a": "Check these deciding details against the installation: Current: 30 A · Length: 25 ft · Wire: 4 x 10 AWG STW · Connectors: NEMA L14-30P to L14-30R. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 1271 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
+        }
+      ],
+      "cj": {
+        "pid": "2001484306274820098",
+        "vid": "2001484306757165057",
+        "sku": "CJFU26545690001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 1271,
+        "cjStockQuantity": 1271,
+        "cost": 6312,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001484306274820098.html"
+      }
+    },
+    {
+      "slug": "nema-14-50-y-splitter-cord",
+      "sku": "UTY-CJ-CAB-2250753",
+      "name": "NEMA 14 50 Y Splitter Cord",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Cable",
+      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "price": 6799,
+      "image": "https://cf.cjdropshipping.com/17745696/83325f9a-3708-4b90-ad25-d83074830c40.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/nema-14-50-y-splitter-cord/place.jpg",
+        "https://utiliy.com/assets/explainers/nema-14-50-y-splitter-cord/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 662,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "NEMA 14-50P, 4-prong • Dual NEMA 14-50R • 50 A",
+      "fit": "Input: NEMA 14-50P, 4-prong · Outputs: Dual NEMA 14-50R · Current: 50 A · Voltage: 240 V",
+      "summary": "NEMA 14 50 Y Splitter Cord ships from verified US inventory. Splitter Adapter Cord: The NEMA 14-50 Y splitter adapter cord allows one outlet to power two devices at the same time, supporting RVs, EV charging, and dryers. It helps reduce frequent plugging and unplugging for added convenience . Dual NEMA 14-50 Outlets: Each outlet of this Y splitter extension cord features an independent cable layout to minimize plug interference, even with bulky adapters. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Input",
+          "value": "NEMA 14-50P, 4-prong",
+          "deciding": true
+        },
+        {
+          "name": "Outputs",
+          "value": "Dual NEMA 14-50R",
+          "deciding": true
+        },
+        {
+          "name": "Current",
+          "value": "50",
+          "unitText": "A",
+          "unitCode": "AMP",
+          "deciding": true
+        },
+        {
+          "name": "Voltage",
+          "value": "240",
+          "unitText": "V",
+          "unitCode": "VLT",
+          "deciding": true
+        },
+        {
+          "name": "Cable",
+          "value": "6/3 + 8/1 STW"
+        },
+        {
+          "name": "Use",
+          "value": "RV and EV power distribution",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Charger, power source, branch-circuit work and adapters not named in specifications"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the NEMA 14 50 Y Splitter Cord will fit?",
+          "a": "Check these deciding details against the installation: Input: NEMA 14-50P, 4-prong · Outputs: Dual NEMA 14-50R · Current: 50 A · Voltage: 240 V. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 662 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications."
+        }
+      ],
+      "cj": {
+        "pid": "2037415698722250753",
+        "vid": "2037415698877440001",
+        "sku": "CJYL28078400001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 662,
+        "cjStockQuantity": 662,
+        "cost": 5192,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #7",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2037415698722250753.html"
       }
     }
   ],
   "prompts": [
     {
-      "slug": "active-displayport-to-hdmi-4k60-adapter",
-      "packshot": "Exact StarTech.com active DisplayPort male to HDMI female adapter product family on a seamless pure white studio background, compact black adapter body, short attached cable, latching full-size DisplayPort plug and HDMI female socket both fully visible, one standard version and one HDR10 version arranged as two separate exact variants without mixing parts, realistic commercial catalog photography, soft grounded shadow, square composition, no packaging, no hands, no added accessories, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "place": "Correct installation scene in a clean home-office workstation: a desktop computer graphics card or dock with a full-size DisplayPort output connected through the exact compact active adapter to an HDMI cable leading to one modern HDMI monitor, connector direction physically accurate from DisplayPort source toward HDMI display, tidy cable routing, realistic scale, no USB-C port, no reverse connection, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "detail": "Extreme close-up connector study of the exact adapter showing the latching full-size DisplayPort male source plug on the left and HDMI female display socket on the right, both connector geometries and pin cavities unobstructed, cable strain relief visible, directional left-to-right composition communicated only through physical installation and orientation, photorealistic macro lighting, no arrows, no labels, no logos, no text, no letters, no numbers, no watermark"
+      "slug": "forty-eight-amp-j1772-extension-cable-21-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 48 Amp J1772 Extension Cable 21 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Connector SAE J1772, Maximum current 48 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 48 Amp J1772 Extension Cable 21 Foot. Show the extension used inline between a wall-mounted J1772 EVSE charging cable and a J1772 vehicle inlet: EVSE cable plug into the extension's female end, extension's male end into the car. Do not connect this cable directly to a household wall outlet. Preserve these fit facts: Connector SAE J1772, Maximum current 48 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 48 Amp J1772 Extension Cable 21 Foot. Center the most important selection points: Connector SAE J1772, Maximum current 48 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "hdmi-to-displayport-4k30-adapter",
-      "packshot": "Exact StarTech.com HD2DP active HDMI male to DisplayPort female adapter with its built-in USB power lead and included USB extension, isolated on a seamless pure white studio background, HDMI male plug, DisplayPort female socket, and USB power connector all clearly separated and fully visible, realistic black molded housing and cable proportions, commercial packshot, square composition, no packaging, no monitor, no extra cables, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "place": "Correct source-to-display installation scene: an HDMI output on a laptop or compact media source connects to the exact HD2DP adapter, its USB power lead connects to a powered USB port, and a DisplayPort cable runs from the adapter's female output to a DisplayPort monitor, all three connections physically accurate and visible, modern desk, tidy cables, realistic scale, no reverse DisplayPort-to-HDMI arrangement, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "detail": "Photorealistic macro detail showing the exact HD2DP connection chain at close range: HDMI male source plug entering an HDMI source, USB power lead connected separately, DisplayPort female output accepting a DisplayPort cable toward the display, connector shells and latches sharply rendered, directionality shown only by spatial arrangement, no arrows, no labels, no logos, no text, no letters, no numbers, no watermark"
+      "slug": "thirty-two-amp-j1772-extension-cable-21-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 32 Amp J1772 Extension Cable 21 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Connector SAE J1772, Maximum current 32 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 32 Amp J1772 Extension Cable 21 Foot. Show the extension used inline between a wall-mounted J1772 EVSE charging cable and a J1772 vehicle inlet: EVSE cable plug into the extension's female end, extension's male end into the car. Do not connect this cable directly to a household wall outlet. Preserve these fit facts: Connector SAE J1772, Maximum current 32 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 32 Amp J1772 Extension Cable 21 Foot. Center the most important selection points: Connector SAE J1772, Maximum current 32 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "dvi-d-to-displayport-adapter",
-      "packshot": "Exact StarTech.com DVI2DP2 active DVI-D male to DisplayPort female converter on seamless white, digital DVI-D male connector with screw posts, compact black converter body, DisplayPort female output and built-in USB power lead all fully visible, included USB extension placed neatly beside it, accurate connector pin geometry, realistic catalog photography, square frame, no packaging, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "place": "Correct installation in a practical legacy-computer workstation: digital DVI-D output from an older desktop connects to the exact active converter, USB lead connects to the same computer for power only, and a DisplayPort cable runs from the converter to a modern DisplayPort monitor, accurate source-to-display direction and realistic cable routing, no VGA, no analog adapter, no reverse DisplayPort-to-DVI setup, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "detail": "Close macro scene of exact connector direction: DVI-D male source connector and screw posts on one side, powered converter body in the center, DisplayPort female output receiving a latching DisplayPort cable on the other side, USB power lead visible but visually separate from the video path, crisp pin geometry, no arrows, no labels, no logos, no text, no letters, no numbers, no watermark"
+      "slug": "forty-eight-amp-nacs-extension-cable-21-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 48 Amp NACS Extension Cable 21 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Connector NACS / Tesla AC, Maximum current 48 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 48 Amp NACS Extension Cable 21 Foot. Show the extension used inline between a Tesla/NACS wall connector charging lead and a NACS vehicle inlet: charger plug into the extension's female end, extension's male end into the car. Do not connect this cable directly to a household wall outlet. Preserve these fit facts: Connector NACS / Tesla AC, Maximum current 48 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 48 Amp NACS Extension Cable 21 Foot. Center the most important selection points: Connector NACS / Tesla AC, Maximum current 48 A, Length 21 ft, Voltage 120-240 V, Use AC Level 1 / Level 2 extension only. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "usb-b-panel-mount-extension",
-      "packshot": "Exact StarTech.com USBPNLBFBM3 three-foot USB 2.0 panel-mount cable isolated on pure white, square USB-B female panel connector with both mounting ears and holes facing camera, cable gently coiled without sharp bends, USB-B male internal-device plug beside it, black PVC jacket and molded strain reliefs accurate, realistic commercial packshot, no panel, no printer, no packaging, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "place": "Correct custom-enclosure installation scene: the exact USB-B female panel end secured through a clean metal instrument or kiosk panel with mounting screws, an external USB-B cable approaching the user-facing female port, the attached three-foot cable routed behind the panel to its USB-B male plug entering an internal USB-B device, rear clearance and gradual cable bend visible, realistic engineering workshop, no USB-A, no USB-C, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "detail": "Split-depth macro detail of the exact USB-B panel mount: front view of the square USB-B female receptacle and mounting ears on the enclosure face while the rear shows the molded body, strain relief, shielded cable, and USB-B male device end, physically accurate connector direction without arrows, no labels, no logos, no text, no letters, no numbers, no watermark"
+      "slug": "ten-awg-solar-wire-pair-100-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 10 AWG Solar Wire Pair 100 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Wire gauge 10 AWG, Length 100 ft red + 100 ft black, Polarity Red and black pair. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 10 AWG Solar Wire Pair 100 Foot. Show it correctly installed or used in a realistic cable setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Wire gauge 10 AWG, Length 100 ft red + 100 ft black, Polarity Red and black pair. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 10 AWG Solar Wire Pair 100 Foot. Center the most important selection points: Wire gauge 10 AWG, Length 100 ft red + 100 ft black, Polarity Red and black pair. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "displayport-to-mini-displayport-adapter",
-      "packshot": "Exact StarTech.com DP2MDPMF6IN six-inch passive adapter cable isolated on seamless white, latching full-size DisplayPort male plug at one end and Mini DisplayPort female socket at the other, short black 4.7 millimeter diameter cable laid in a relaxed curve, accurate 20 millimeter maximum connector scale, realistic commercial packshot, no Thunderbolt symbol, no packaging, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "place": "Correct source-to-display installation scene: full-size DisplayPort output on a desktop workstation or docking station connects to the exact six-inch adapter's DisplayPort male plug, a Mini DisplayPort monitor cable connects to the adapter's Mini DisplayPort female socket and runs to a Mini DisplayPort monitor, compact desk environment, correct connector direction, clearly not a Thunderbolt display and not an iMac, no HDMI, no USB-C, no labels, no logos, no text, no letters, no numbers, no watermark",
-      "detail": "Photorealistic macro connector study with full-size latching DisplayPort male source connector on one side and smaller Mini DisplayPort female display connector on the other, six-inch short cable and strain relief shown at true relative scale, connector cavities clearly distinguish the two sizes, directionality conveyed only through physical arrangement, no Thunderbolt symbol, no arrows, no labels, no logos, no text, no letters, no numbers, no watermark"
+      "slug": "ten-awg-solar-extension-cable-50-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 10 AWG Solar Extension Cable 50 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Wire gauge 10 AWG, Length 50 ft, Polarity Red and black pair. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 10 AWG Solar Extension Cable 50 Foot. Show it correctly installed or used in a realistic cable setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Wire gauge 10 AWG, Length 50 ft, Polarity Red and black pair. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 10 AWG Solar Extension Cable 50 Foot. Center the most important selection points: Wire gauge 10 AWG, Length 50 ft, Polarity Red and black pair. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "ten-awg-solar-extension-cable-30-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 10 AWG Solar Extension Cable 30 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Wire gauge 10 AWG, Length 30 ft, Polarity Red and black pair. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 10 AWG Solar Extension Cable 30 Foot. Show it correctly installed or used in a realistic cable setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Wire gauge 10 AWG, Length 30 ft, Polarity Red and black pair. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 10 AWG Solar Extension Cable 30 Foot. Center the most important selection points: Wire gauge 10 AWG, Length 30 ft, Polarity Red and black pair. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "thirty-amp-generator-cord-inlet-kit-25-foot",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 30 Amp Generator Cord Inlet Kit 25 Foot. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Current 30 A, Length 25 ft, Wire 4 x 10 AWG STW, Connectors NEMA L14-30P to L14-30R, Power inlet box Pre-drilled, included. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 30 Amp Generator Cord Inlet Kit 25 Foot. Show it correctly installed or used in a realistic cable setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Current 30 A, Length 25 ft, Wire 4 x 10 AWG STW, Connectors NEMA L14-30P to L14-30R, Power inlet box Pre-drilled, included. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 30 Amp Generator Cord Inlet Kit 25 Foot. Center the most important selection points: Current 30 A, Length 25 ft, Wire 4 x 10 AWG STW, Connectors NEMA L14-30P to L14-30R, Power inlet box Pre-drilled, included. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "nema-14-50-y-splitter-cord",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact NEMA 14 50 Y Splitter Cord. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Input NEMA 14-50P, 4-prong, Outputs Dual NEMA 14-50R, Current 50 A, Voltage 240 V, Use RV and EV power distribution. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact NEMA 14 50 Y Splitter Cord. Show it correctly installed or used in a realistic cable setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Input NEMA 14-50P, 4-prong, Outputs Dual NEMA 14-50R, Current 50 A, Voltage 240 V, Use RV and EV power distribution. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced NEMA 14 50 Y Splitter Cord. Center the most important selection points: Input NEMA 14-50P, 4-prong, Outputs Dual NEMA 14-50R, Current 50 A, Voltage 240 V, Use RV and EV power distribution. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     }
   ]
 }

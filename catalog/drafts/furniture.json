@@ -1,327 +1,791 @@
 {
   "products": [
     {
-      "slug": "vevor-gd60fd-leveling-casters",
-      "sku": "UTY-VEVOR-GD60FD-4",
-      "name": "2-inch leveling casters, 58 × 58 mm plate, 4 pack",
-      "brand": "VEVOR",
-      "mpn": "GD-60FD",
+      "slug": "twenty-inch-high-speed-linear-actuator",
+      "sku": "UTY-CJ-FUR-9430273",
+      "name": "20 Inch High Speed Linear Actuator",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Furniture",
-      "price": 3411,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDJJLBSDJPBS4QUJMHV0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1753233619",
+      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "price": 4599,
+      "image": "https://cf.cjdropshipping.com/17639424/4d3bd691-8919-401e-9ad9-91b5ee0d5971.jpg",
       "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FDJJLBSDJPBS4QUJMHV0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1753233619"
+        "https://utiliy.com/assets/explainers/twenty-inch-high-speed-linear-actuator/place.jpg",
+        "https://utiliy.com/assets/explainers/twenty-inch-high-speed-linear-actuator/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 308,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "58 × 58 mm hole centers",
-      "fit": "2 in wheel · 3.22 in installed · 275 lb each",
-      "summary": "Four VEVOR GD-60FD leveling casters for a workbench, cabinet, machine base, or heavy furniture frame with a 73 × 73 mm mounting area and 58 × 58 mm bolt-hole centers. Each 2-inch caster is rated for 275 pounds, installs 3.22 inches high, swivels for movement, and lowers onto a vibration-damping leveling foot for stationary support.",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "20 in • 12 V • 0.55 in/s",
+      "fit": "Stroke length: 20 in · Voltage: 12 V · Speed: 0.55 in/s · Thrust: 220 lb",
+      "summary": "20 Inch High Speed Linear Actuator ships from verified US inventory. Fast & Efficient Stroke Adjustment: Lift or lower effortlessly with Utiliy linear actuator, moving at a swift 0.55\"/s. Perfect for applications requiring frequent height adjustments, whether it's altering furniture heights or raising and lowering office desks and chairs. Reliable Torque Output: 220lbs robust torque output ensure stable thrust for medium-duty tasks like lifting platforms and motorized doors and windows. Confirm every deciding measurement and connection before ordering.",
       "specs": [
-        {"name": "Mounting plate", "value": "73 × 73", "unitText": "mm", "unitCode": "MMT", "deciding": true},
-        {"name": "Bolt-hole centers", "value": "58 × 58", "unitText": "mm", "unitCode": "MMT", "deciding": true},
-        {"name": "Mounting-hole diameter", "value": "7 or 8.5", "unitText": "mm", "unitCode": "MMT", "deciding": true},
-        {"name": "Wheel diameter", "value": "2", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Wheel width", "value": "0.98", "unitText": "in", "unitCode": "INH"},
-        {"name": "Installation height", "value": "3.22", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Leveling travel", "value": "0.39", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Load per caster", "value": "275", "unitText": "lb", "unitCode": "LBR", "deciding": true},
-        {"name": "Maximum set load", "value": "1100", "unitText": "lb", "unitCode": "LBR"},
-        {"name": "Pack quantity", "value": "4"},
-        {"name": "Wheel material", "value": "Nylon"},
-        {"name": "Leveling mechanism", "value": "Hand-adjusted retractable foot with vibration-damping pad"},
-        {"name": "Not for", "value": "Stem sockets, office-chair bases, or mounting surfaces smaller than the stated plate"}
+        {
+          "name": "Stroke length",
+          "value": "20",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Voltage",
+          "value": "12",
+          "unitText": "V",
+          "unitCode": "VLT",
+          "deciding": true
+        },
+        {
+          "name": "Speed",
+          "value": "0.55",
+          "unitText": "in/s",
+          "deciding": true
+        },
+        {
+          "name": "Thrust",
+          "value": "220",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Ingress protection",
+          "value": "IP54",
+          "deciding": true
+        },
+        {
+          "name": "Force",
+          "value": "1000",
+          "unitText": "N"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables"
       ],
       "faqs": [
-        {"q": "Will these casters match my existing bolt holes?", "a": "Only if the mounting surface accepts a 73 × 73 mm plate with hole centers measuring 58 × 58 mm. Measure center to center before ordering."},
-        {"q": "Is the 1,100-pound rating for each wheel?", "a": "No. Each caster is rated for 275 pounds; 1,100 pounds is the maximum evenly distributed rating for all four."},
-        {"q": "How tall are the casters after installation?", "a": "The stated installation height is 3.22 inches."},
-        {"q": "How do the leveling feet work?", "a": "Move the furniture on the swivel wheels, then use the handles to lower the feet and level the frame over a range of about 0.39 inch."},
-        {"q": "Are these stem-mounted casters?", "a": "No. They require a flat mounting surface and four fasteners through each square plate."}
+        {
+          "q": "How do I confirm the 20 Inch High Speed Linear Actuator will fit?",
+          "a": "Check these deciding details against the installation: Stroke length: 20 in · Voltage: 12 V · Speed: 0.55 in/s · Thrust: 220 lb. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 308 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables."
+        }
       ],
-      "autods": {
-        "productId": "6a262c651606ae9d640f620c",
-        "idOnSite": "8144659939520",
-        "variationId": "48618759291072",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
-        "supplierOption": "2 inch, 4 pack",
+      "cj": {
+        "pid": "1992988657429430273",
+        "vid": "1992988657911775234",
+        "sku": "CJGJ26183370001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stock": 247,
-        "cost": 2607,
+        "stockQuantity": 308,
+        "cjStockQuantity": 308,
+        "cost": 3512,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #40",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-1992988657429430273.html"
       }
     },
     {
-      "slug": "vevor-cc-pbjl-4-plate-casters",
-      "sku": "UTY-VEVOR-CCPBJL4-4",
-      "name": "4-inch locking plate casters, 74 × 45 mm holes, 4 pack",
-      "brand": "VEVOR",
-      "mpn": "CC-PBJL-4",
+      "slug": "twenty-eight-inch-adjustable-desk-legs",
+      "sku": "UTY-CJ-FUR-8078465",
+      "name": "28 Inch Adjustable Desk Legs",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Furniture",
-      "price": 2899,
-      "image": "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FPBJLCSJAZ4J3LNWL1V0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1769476501",
+      "googleCategory": "Home & Garden > Furniture > Furniture Parts",
+      "price": 4999,
+      "image": "https://cf.cjdropshipping.com/17639424/3cacbdf2-4a16-4925-a250-c28874354136.jpg",
       "images": [
-        "https://cdn.shopify.com/s/files/1/0637/1255/9296/files/us_2FPBJLCSJAZ4J3LNWL1V0_2Fgoods_img-v1_2Fcaster-wheels-m100-1.2.jpg?v=1769476501"
+        "https://utiliy.com/assets/explainers/twenty-eight-inch-adjustable-desk-legs/place.jpg",
+        "https://utiliy.com/assets/explainers/twenty-eight-inch-adjustable-desk-legs/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 715,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 6,
-      "maxDays": 8,
-      "headline": "74 × 45 mm bolt pattern",
-      "fit": "4 in wheel · 5.11 in installed · 350 lb each",
-      "summary": "Four VEVOR CC-PBJL-4 locking swivel plate casters for furniture, carts, cabinets, and workbenches whose mounting surface accepts a 94 × 64 mm plate with 74 × 45 mm hole centers. Each PVC wheel is 4 inches in diameter, installs 5.11 inches high, and carries up to 350 pounds when correctly fastened.",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "28 in • 2 legs • Black powder coat",
+      "fit": "Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb",
+      "summary": "28 Inch Adjustable Desk Legs ships from verified US inventory. Exceptional Load Capacity: Our 28-inch table leg, cast from solid steel rods, delivers exceptional strength, supporting up to 1000 pounds. The welded mounting plate enhances durability and structural integrity. Wear-resistant and Rust-proof: The high-performance matte black powder coating, applied through an electrostatic process and high-temperature baking, forms a protective layer that resists corrosion, rust, and wear for long-lasting durability. Confirm every deciding measurement and connection before ordering.",
       "specs": [
-        {"name": "Mounting plate", "value": "94 × 64", "unitText": "mm", "unitCode": "MMT", "deciding": true},
-        {"name": "Bolt-hole centers", "value": "74 × 45", "unitText": "mm", "unitCode": "MMT", "deciding": true},
-        {"name": "Mounting holes", "value": "4 slotted holes, 9 mm", "deciding": true},
-        {"name": "Included fasteners", "value": "16 M8 screws, nuts, flat washers and spring washers"},
-        {"name": "Wheel diameter", "value": "4", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Wheel width", "value": "1.25", "unitText": "in", "unitCode": "INH"},
-        {"name": "Axle diameter", "value": "0.39", "unitText": "in", "unitCode": "INH"},
-        {"name": "Installation height", "value": "5.11", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Load per caster", "value": "350", "unitText": "lb", "unitCode": "LBR", "deciding": true},
-        {"name": "Maximum set load", "value": "1400", "unitText": "lb", "unitCode": "LBR"},
-        {"name": "Pack quantity", "value": "4"},
-        {"name": "Motion and brake", "value": "360-degree swivel with A/B locking brake"},
-        {"name": "Wheel material", "value": "Non-marking PVC"},
-        {"name": "Not for", "value": "Stem sockets or furniture legs too narrow for the 94 × 64 mm plate"}
+        {
+          "name": "Leg height",
+          "value": "28",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Set quantity",
+          "value": "2 legs",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Steel"
+        },
+        {
+          "name": "Finish",
+          "value": "Black powder coat",
+          "deciding": true
+        },
+        {
+          "name": "Load capacity",
+          "value": "1000",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Top",
+          "value": "Customer-supplied tabletop required",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Tabletop"
       ],
       "faqs": [
-        {"q": "What bolt pattern do these 4-inch casters use?", "a": "The four slotted mounting holes have 74 × 45 mm center spacing on a 94 × 64 mm plate."},
-        {"q": "How much weight does each caster support?", "a": "Up to 350 pounds per caster when mounted correctly. The four-caster set rating is 1,400 pounds with an evenly distributed load."},
-        {"q": "How much height will the casters add?", "a": "The stated installation height is 5.11 inches."},
-        {"q": "Do all four wheels swivel and lock?", "a": "Yes. All four swivel through 360 degrees and include A/B brakes."},
-        {"q": "Are mounting bolts included?", "a": "Yes. The package includes M8 screws, nuts, flat washers, spring washers, two wrenches, and four casters."}
+        {
+          "q": "How do I confirm the 28 Inch Adjustable Desk Legs will fit?",
+          "a": "Check these deciding details against the installation: Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 715 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Tabletop."
+        }
       ],
-      "autods": {
-        "productId": "6a262b036005c34d9f86d1ad",
-        "idOnSite": "8439214899392",
-        "variationId": "48618864836800",
-        "site": "private_suppliers",
-        "buySiteId": 27,
-        "supplier": "Jackson Qin",
-        "supplierOption": "4 inch, 4 pack",
+      "cj": {
+        "pid": "1992883266438078465",
+        "vid": "1992883266639405058",
+        "sku": "CJGJ26159840001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stock": 821,
-        "cost": 2252,
+        "stockQuantity": 715,
+        "cjStockQuantity": 715,
+        "cost": 3832,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-1992883266438078465.html"
       }
     },
     {
-      "slug": "yormtoir-low-profile-repair-casters",
-      "sku": "UTY-YORMTOIR-LZ000-4",
-      "name": "0.9-inch low-profile fixed repair casters, 4 pack",
-      "brand": "YORMTOIR",
-      "mpn": "LZ000",
+      "slug": "twenty-eight-inch-z-shape-table-legs",
+      "sku": "UTY-CJ-FUR-4245250",
+      "name": "28 Inch Z Shape Table Legs",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Furniture",
-      "price": 999,
-      "image": "https://m.media-amazon.com/images/I/71iMzVK6trL._SL1500_.jpg",
+      "googleCategory": "Home & Garden > Furniture > Furniture Parts",
+      "price": 6199,
+      "image": "https://cf.cjdropshipping.com/17639424/181bcc76-72ac-4eeb-b39b-3643276edc9a.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/71iMzVK6trL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71kpj3M5y9L._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71ZYeOkktpL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61Tgdg55PeL._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/615yOhfKkML._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71bUKpZ-I2L._SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71oPAjxXe8L._SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/twenty-eight-inch-z-shape-table-legs/place.jpg",
+        "https://utiliy.com/assets/explainers/twenty-eight-inch-z-shape-table-legs/detail.jpg"
       ],
       "available": true,
-      "shipsFrom": "US",
-      "minDays": 4,
-      "maxDays": 4,
-      "headline": "1 in installed height",
-      "fit": "0.9 in fixed wheel · 30 lb each · 4 pack",
-      "summary": "Four YORMTOIR LZ000 low-profile fixed casters for supporting a sagging wooden door or lightweight cabinet, drawer unit, coffee table, or under-bed bin without adding the height of a conventional caster. Each rigid nylon wheel is 0.9 inch in diameter, installs about 1 inch high, and supports up to 30 pounds.",
-      "specs": [
-        {"name": "Wheel diameter", "value": "0.9", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Wheel width", "value": "0.7", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Installation height", "value": "1", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Bracket size", "value": "2.95 × 0.9", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Mounting-hole spacing", "value": "1.26 × 0.33", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Mounting-hole diameter", "value": "0.157", "unitText": "in", "unitCode": "INH"},
-        {"name": "Load per caster", "value": "30", "unitText": "lb", "unitCode": "LBR", "deciding": true},
-        {"name": "Maximum set load", "value": "120", "unitText": "lb", "unitCode": "LBR"},
-        {"name": "Caster motion", "value": "Rigid fixed direction; does not swivel", "deciding": true},
-        {"name": "Mounting positions", "value": "Side, vertical or bottom"},
-        {"name": "Material", "value": "Nylon wheel and steel bracket"},
-        {"name": "Included", "value": "4 casters and 16 screws"},
-        {"name": "Not for", "value": "Carpet, uneven floors, outdoor use, water exposure, or loads over 120 lb per set"}
-      ],
-      "faqs": [
-        {"q": "How much height does each repair caster add?", "a": "The stated installation height is approximately 1 inch."},
-        {"q": "Will these wheels swivel?", "a": "No. They are rigid, one-direction fixed casters intended to support movement along a straight path."},
-        {"q": "Can these support a sagging bedroom door?", "a": "Yes, when the door construction accepts the bracket and the load at the wheel does not exceed 30 pounds. Confirm floor clearance through the full swing."},
-        {"q": "Can I install the casters on the side of furniture?", "a": "Yes. The supplied bracket can be mounted on a side, vertically, or on the bottom when the structure provides solid screw support."},
-        {"q": "Do these work on carpet?", "a": "No. They are specified for smooth, even indoor flooring rather than carpet or uneven surfaces."}
-      ],
-      "autods": {
-        "productId": "2c574e24e468c2bde5c1d533",
-        "idOnSite": "B0F26SPLXZ",
-        "variationId": "B0F26SPLXZ",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "Meimao SJ",
-        "supplierOption": "4 casters",
-        "warehouse": "US",
-        "stockStatus": "in_stock",
-        "cost": 699,
-        "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
-      }
-    },
-    {
-      "slug": "souldershop-three-inch-recliner-springs",
-      "sku": "UTY-SOULDERSHOP-031A-2",
-      "name": "3-inch short-neck recliner tension springs, 2 pack",
-      "brand": "Souldershop",
-      "mpn": "031a",
-      "category": "Furniture",
-      "price": 1299,
-      "image": "https://m.media-amazon.com/images/I/61AF-9x89WL._AC_SL1500_.jpg",
-      "images": [
-        "https://m.media-amazon.com/images/I/61AF-9x89WL._AC_SL1500_.jpg"
-      ],
-      "available": true,
+      "stockQuantity": 123,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
       "minDays": 2,
-      "maxDays": 2,
-      "headline": "2.82 in inside-hook length",
-      "fit": "3 in overall · 2 mm wire · short-neck hooks",
-      "summary": "Two Souldershop 031a galvanized recliner mechanism tension springs measuring 3 inches overall and 2.82 inches from the inside of one hook to the inside of the other. Match the 11/16-inch coil diameter, 18-turn body, 2 mm wire, short-neck hooks, and 45-degree hook deflection to the removed spring before ordering.",
+      "maxDays": 5,
+      "headline": "28 in • 2 legs • Black powder coat",
+      "fit": "Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb",
+      "summary": "28 Inch Z Shape Table Legs ships from verified US inventory. PREMIUM METAL MATERIAL- The table legs are made of heavy-duty steel material. Product size: 28 x 18 inches, square pipe thickness: 0.08\"/2 mm. The legs' surface is coated with matte against corrosion, rust, and scratches. Confirm every deciding measurement and connection before ordering.",
       "specs": [
-        {"name": "Overall length", "value": "3", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Inside-hook length", "value": "2.82", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Coil diameter", "value": "11/16", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Coil-body length", "value": "1-12/19", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Wire diameter", "value": "2", "unitText": "mm", "unitCode": "MMT", "deciding": true},
-        {"name": "Coil turns", "value": "18", "deciding": true},
-        {"name": "Hook style", "value": "Short neck with 45-degree deflection", "deciding": true},
-        {"name": "Material", "value": "Galvanized high-carbon steel"},
-        {"name": "Pack quantity", "value": "2"},
-        {"name": "Installation instructions", "value": "Not included"},
-        {"name": "Not for", "value": "Long-neck hooks or mechanisms with different length, coil diameter, turns, wire diameter, or hook angle"}
+        {
+          "name": "Leg height",
+          "value": "28",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Set quantity",
+          "value": "2 legs",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Steel"
+        },
+        {
+          "name": "Finish",
+          "value": "Black powder coat",
+          "deciding": true
+        },
+        {
+          "name": "Load capacity",
+          "value": "1000",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Top",
+          "value": "Customer-supplied tabletop required",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Tabletop"
       ],
       "faqs": [
-        {"q": "Is the 3-inch measurement taken between the hooks?", "a": "No. Three inches is the overall length. The inside-hook-to-inside-hook measurement is 2.82 inches."},
-        {"q": "Will these springs fit any recliner brand?", "a": "No. Furniture brand does not establish fit. Match the removed spring's full geometry, including hook style, wire diameter, coil diameter, turns, and both length measurements."},
-        {"q": "Are these long-neck or short-neck springs?", "a": "They are short-neck springs with approximately 45-degree hook deflection."},
-        {"q": "How many springs are included?", "a": "Two matching Souldershop 031a springs."},
-        {"q": "Are installation instructions included?", "a": "No. Installation instructions are not included, and a tensioned furniture mechanism should be serviced cautiously."}
+        {
+          "q": "How do I confirm the 28 Inch Z Shape Table Legs will fit?",
+          "a": "Check these deciding details against the installation: Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 123 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Tabletop."
+        }
       ],
-      "autods": {
-        "productId": "dec6e2e1b7e529c41ecafaf6",
-        "idOnSite": "B0CZDYWJRD",
-        "variationId": "B0CZDYWJRD",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "Souldershop",
-        "supplierOption": "3 inch, 2 pack",
+      "cj": {
+        "pid": "1992997318984245250",
+        "vid": "1992997319068131330",
+        "sku": "CJGJ26185110001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stock": 19,
-        "cost": 999,
+        "stockQuantity": 123,
+        "cjStockQuantity": 123,
+        "cost": 4712,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-1992997318984245250.html"
       }
     },
     {
-      "slug": "keileoho-150n-lift-top-hinges",
-      "sku": "UTY-KEILEOHO-150N-PAIR",
-      "name": "150 N lift-top table hinge pair, 9.52-inch rise",
-      "brand": "KEILEOHO",
+      "slug": "twenty-eight-inch-box-section-table-legs",
+      "sku": "UTY-CJ-FUR-5019009",
+      "name": "28 Inch Box Section Table Legs",
+      "brand": "Utiliy",
+      "identifierExists": false,
       "category": "Furniture",
-      "price": 2599,
-      "image": "https://m.media-amazon.com/images/I/61YkY2fsGTL._AC_SL1500_.jpg",
+      "googleCategory": "Home & Garden > Furniture > Furniture Parts",
+      "price": 7499,
+      "image": "https://cf.cjdropshipping.com/17659296/48d681b4-84fd-4ae5-b66a-5ae5a34acabe.jpg",
       "images": [
-        "https://m.media-amazon.com/images/I/61YkY2fsGTL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61SzdL7xu5L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61hkoYRctjL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/61eK5MLaZ7L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/81j3CPM0u+L._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/7105i-hDGNL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71hvQav3QhL._AC_SL1500_.jpg",
-        "https://m.media-amazon.com/images/I/71ER+DR79oL._AC_SL1500_.jpg"
+        "https://utiliy.com/assets/explainers/twenty-eight-inch-box-section-table-legs/place.jpg",
+        "https://utiliy.com/assets/explainers/twenty-eight-inch-box-section-table-legs/detail.jpg"
       ],
       "available": true,
+      "stockQuantity": 132,
+      "stockCheckedAt": "2026-10-11",
       "shipsFrom": "US",
-      "minDays": 6,
-      "maxDays": 6,
-      "headline": "150 N · 9.52 in lift",
-      "fit": "left + right pair · 125° · 100 lb conservative load",
-      "summary": "One left-and-right pair of KEILEOHO gas-supported lift-top table hinges for a coffee table, storage top, desk, or cabinet project. The mechanism provides a 9.52-inch rise, uses 150 N supports, and opens to approximately 125 degrees. Treat 100 pounds as the conservative supported-load claim and verify the folded envelope, mounting structure, and screw depth before installation.",
+      "minDays": 1,
+      "maxDays": 3,
+      "headline": "24 in • 2 legs • Black powder coat",
+      "fit": "Leg height: 24 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb",
+      "summary": "28 Inch Box Section Table Legs ships from verified US inventory. HIGH QUALITY- Color: Black; Height: 28.3\"; Width: 23.6\"; Amount: 2; Box Section: 3.15\" x 1.57\"; Top plate size: 3.9\". These table legs adopts cold rolled steel with sandblasted finished. The surface is sprayed with black powder, compared with other table legs using oil paint finished, it is more durable and can effectively prevent them from cracking, rust and corroding. Confirm every deciding measurement and connection before ordering.",
       "specs": [
-        {"name": "Support force", "value": "150", "unitText": "N", "unitCode": "NEW", "deciding": true},
-        {"name": "Lift height", "value": "9.52", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Lift height in metric", "value": "242", "unitText": "mm", "unitCode": "MMT"},
-        {"name": "Opening angle", "value": "125", "unitText": "degrees", "unitCode": "DD", "deciding": true},
-        {"name": "Conservative supported load", "value": "100", "unitText": "lb", "unitCode": "LBR", "deciding": true},
-        {"name": "Mechanism size", "value": "9.5 × 7", "unitText": "in", "unitCode": "INH", "deciding": true},
-        {"name": "Steel section thicknesses", "value": "2.5 and 4", "unitText": "mm", "unitCode": "MMT"},
-        {"name": "Mounting holes", "value": "18"},
-        {"name": "Mounting screws", "value": "20 M5 screws included"},
-        {"name": "Pack quantity", "value": "2 mechanisms: one left and one right"},
-        {"name": "Material", "value": "Heavy-duty black steel"},
-        {"name": "Not for", "value": "Single-side installation, unsupported particleboard edges, or applications requiring an unconditional 220 lb rating"}
+        {
+          "name": "Leg height",
+          "value": "24",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Set quantity",
+          "value": "2 legs",
+          "deciding": true
+        },
+        {
+          "name": "Material",
+          "value": "Steel"
+        },
+        {
+          "name": "Finish",
+          "value": "Black powder coat",
+          "deciding": true
+        },
+        {
+          "name": "Load capacity",
+          "value": "1000",
+          "unitText": "lb",
+          "unitCode": "LBR",
+          "deciding": true
+        },
+        {
+          "name": "Top",
+          "value": "Customer-supplied tabletop required",
+          "deciding": true
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables",
+        "Tabletop"
       ],
       "faqs": [
-        {"q": "Does the package contain one hinge or a pair?", "a": "It contains one left mechanism and one right mechanism, plus 20 M5 mounting screws."},
-        {"q": "How high does the tabletop rise?", "a": "The stated lift height is 9.52 inches, or 242 millimeters."},
-        {"q": "What force are the gas supports?", "a": "The supplied mechanism is specified at 150 N."},
-        {"q": "Can the pair safely support 220 pounds?", "a": "Do not publish or design around 220 pounds as an unconditional rating. The source contains conflicting load language, so this draft uses 100 pounds as the conservative supported-load claim."},
-        {"q": "What should I measure before installation?", "a": "Check the 9.5 × 7 inch mechanism envelope, 9.52-inch travel path, closed clearance, panel thickness, framing strength, and safe screw penetration."},
-        {"q": "Can I install only one side?", "a": "No. This product is prepared as a matched left-and-right pair for balanced support."}
+        {
+          "q": "How do I confirm the 28 Inch Box Section Table Legs will fit?",
+          "a": "Check these deciding details against the installation: Leg height: 24 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 132 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables, Tabletop."
+        }
       ],
-      "autods": {
-        "productId": "e1e2ec42f80a1b43bad2f5af",
-        "idOnSite": "B086WYS84V",
-        "variationId": "B086WYS84V",
-        "site": "amazon",
-        "buySiteId": 1,
-        "supplier": "KEILEOHO",
-        "supplierOption": "150 N, left and right pair",
+      "cj": {
+        "pid": "2001209238175019009",
+        "vid": "2001209238602838018",
+        "sku": "CJFU26525850001",
+        "supplier": "CJdropshipping",
         "warehouse": "US",
-        "stockStatus": "in_stock",
-        "cost": 1959,
+        "stockQuantity": 132,
+        "cjStockQuantity": 132,
+        "cost": 5832,
         "shippingCost": 0,
-        "costCheckedAt": "2026-10-09"
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #39",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001209238175019009.html"
+      }
+    },
+    {
+      "slug": "four-foot-folding-utility-table",
+      "sku": "UTY-CJ-FUR-4008321",
+      "name": "4 Foot Folding Utility Table",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Furniture",
+      "googleCategory": "Home & Garden > Furniture > Tables",
+      "price": 7499,
+      "image": "https://cf.cjdropshipping.com/doba-import/4c1a7156de38404f997176c8cb0f6598.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/four-foot-folding-utility-table/place.jpg",
+        "https://utiliy.com/assets/explainers/four-foot-folding-utility-table/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "4-foot length • Rectangular",
+      "fit": "Table size: 4-foot length · Shape: Rectangular",
+      "summary": "4 Foot Folding Utility Table ships from verified US inventory. What you see is our 4ft Outdoor Use Aluminum Alloy Folding Table, which is ideal for family reunions, picnics, camping trips, buffets or barbecues. This table is great for entertaining and can be used as a serving table, game table, or outdoor dining table. Made of high-strength aluminum alloy, it is solid and durable to use. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Table size",
+          "value": "4-foot length",
+          "deciding": true
+        },
+        {
+          "name": "Shape",
+          "value": "Rectangular",
+          "deciding": true
+        },
+        {
+          "name": "Top material",
+          "value": "Aluminum alloy"
+        },
+        {
+          "name": "Base",
+          "value": "Folding steel legs"
+        },
+        {
+          "name": "Storage",
+          "value": "Folds for storage"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 4 Foot Folding Utility Table will fit?",
+          "a": "Check these deciding details against the installation: Table size: 4-foot length · Shape: Rectangular. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables."
+        }
+      ],
+      "cj": {
+        "pid": "2096643982094008321",
+        "vid": "2096643982278557698",
+        "sku": "CJZS31332240001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 4514,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096643982094008321.html"
+      }
+    },
+    {
+      "slug": "forty-eight-inch-round-folding-table",
+      "sku": "UTY-CJ-FUR-2589057",
+      "name": "48 Inch Round Folding Table",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Furniture",
+      "googleCategory": "Home & Garden > Furniture > Tables",
+      "price": 10999,
+      "image": "https://cf.cjdropshipping.com/doba-import/0719cdc45d004917802f80af7263988e.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/forty-eight-inch-round-folding-table/place.jpg",
+        "https://utiliy.com/assets/explainers/forty-eight-inch-round-folding-table/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 460,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 3,
+      "maxDays": 5,
+      "headline": "48-inch diameter • Round",
+      "fit": "Table size: 48-inch diameter · Shape: Round",
+      "summary": "48 Inch Round Folding Table ships from verified US inventory. The 48inch Round Folding Table Outdoor Folding Utility Table is a best choice for you. The table is made from HDPE and the leg is made of steel. It's of great outdoor leisure furniture. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Table size",
+          "value": "48-inch diameter",
+          "deciding": true
+        },
+        {
+          "name": "Shape",
+          "value": "Round",
+          "deciding": true
+        },
+        {
+          "name": "Top material",
+          "value": "HDPE"
+        },
+        {
+          "name": "Base",
+          "value": "Folding steel legs"
+        },
+        {
+          "name": "Storage",
+          "value": "Folds for storage"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the 48 Inch Round Folding Table will fit?",
+          "a": "Check these deciding details against the installation: Table size: 48-inch diameter · Shape: Round. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables."
+        }
+      ],
+      "cj": {
+        "pid": "2096573721772589057",
+        "vid": "2096573722028441602",
+        "sku": "CJZS31323270001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 460,
+        "cjStockQuantity": 460,
+        "cost": 7226,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #9",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2096573721772589057.html"
+      }
+    },
+    {
+      "slug": "full-size-folding-wood-bunkie-board",
+      "sku": "UTY-CJ-FUR-5719425",
+      "name": "Full Size Folding Wood Bunkie Board",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Furniture",
+      "googleCategory": "Home & Garden > Furniture > Beds & Accessories",
+      "price": 6999,
+      "image": "https://cf.cjdropshipping.com/17661024/18a4bc8d-4df5-4480-9ee6-2ca278a41f8f.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/full-size-folding-wood-bunkie-board/place.jpg",
+        "https://utiliy.com/assets/explainers/full-size-folding-wood-bunkie-board/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 634,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "Full • 0.4 in • 8-piece foldable wooden slats",
+      "fit": "Mattress size: Full · Thickness: 0.4 in · Construction: 8-piece foldable wooden slats",
+      "summary": "Full Size Folding Wood Bunkie Board ships from verified US inventory. Say Goodbye to Mattress Sagging: Over time, mattresses can lose their shape and start sagging. Our bunkie board provides extra support to bring your mattress back to life, giving you better back support and a more restful night's sleep . Foldable Bunkie Boards: Our bed board can be unfolded for use when needed, and conveniently folded away when not in use, making it much easier to store and manage . Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Mattress size",
+          "value": "Full",
+          "deciding": true
+        },
+        {
+          "name": "Thickness",
+          "value": "0.4",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Construction",
+          "value": "8-piece foldable wooden slats",
+          "deciding": true
+        },
+        {
+          "name": "Placement",
+          "value": "Under mattress"
+        },
+        {
+          "name": "Purpose",
+          "value": "Supplemental mattress support"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Full Size Folding Wood Bunkie Board will fit?",
+          "a": "Check these deciding details against the installation: Mattress size: Full · Thickness: 0.4 in · Construction: 8-piece foldable wooden slats. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 634 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables."
+        }
+      ],
+      "cj": {
+        "pid": "2001914060255719425",
+        "vid": "2001914060696121345",
+        "sku": "CJFU26614140001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 634,
+        "cjStockQuantity": 634,
+        "cost": 4392,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2001914060255719425.html"
+      }
+    },
+    {
+      "slug": "twin-size-covered-wood-bunkie-board",
+      "sku": "UTY-CJ-FUR-7687554",
+      "name": "Twin Size Covered Wood Bunkie Board",
+      "brand": "Utiliy",
+      "identifierExists": false,
+      "category": "Furniture",
+      "googleCategory": "Home & Garden > Furniture > Beds & Accessories",
+      "price": 5999,
+      "image": "https://cf.cjdropshipping.com/17743968/557fa653-0aec-496a-a5bd-a02ed05085b3.jpg",
+      "images": [
+        "https://utiliy.com/assets/explainers/twin-size-covered-wood-bunkie-board/place.jpg",
+        "https://utiliy.com/assets/explainers/twin-size-covered-wood-bunkie-board/detail.jpg"
+      ],
+      "available": true,
+      "stockQuantity": 337,
+      "stockCheckedAt": "2026-10-11",
+      "shipsFrom": "US",
+      "minDays": 2,
+      "maxDays": 5,
+      "headline": "Twin • 1.5 in • 2-piece wooden slats with 200D Oxford cover",
+      "fit": "Mattress size: Twin · Thickness: 1.5 in · Construction: 2-piece wooden slats with 200D Oxford cover",
+      "summary": "Twin Size Covered Wood Bunkie Board ships from verified US inventory. Say Goodbye to Mattress Sagging: Over time, mattresses can lose their shape and start sagging. Our bunkie board provides extra support to bring your mattress back to life, giving you better back support and a more restful night's sleep . Modular Bunkie Boards: Designed for flexibility and easy setup, these bunkie boards come in separate pieces that can be connected and adjusted to fit your needs. Confirm every deciding measurement and connection before ordering.",
+      "specs": [
+        {
+          "name": "Mattress size",
+          "value": "Twin",
+          "deciding": true
+        },
+        {
+          "name": "Thickness",
+          "value": "1.5",
+          "unitText": "in",
+          "unitCode": "INH",
+          "deciding": true
+        },
+        {
+          "name": "Construction",
+          "value": "2-piece wooden slats with 200D Oxford cover",
+          "deciding": true
+        },
+        {
+          "name": "Placement",
+          "value": "Under mattress"
+        },
+        {
+          "name": "Purpose",
+          "value": "Supplemental mattress support"
+        }
+      ],
+      "exclusions": [
+        "Professional installation",
+        "Tools and consumables"
+      ],
+      "faqs": [
+        {
+          "q": "How do I confirm the Twin Size Covered Wood Bunkie Board will fit?",
+          "a": "Check these deciding details against the installation: Mattress size: Twin · Thickness: 1.5 in · Construction: 2-piece wooden slats with 200D Oxford cover. Do not order from the product photo alone."
+        },
+        {
+          "q": "Is this item stocked in the United States?",
+          "a": "Yes. CJdropshipping US inventory was verified at 337 units on 2026-10-11. Inventory can change before checkout."
+        },
+        {
+          "q": "What identifier should I use for Google Shopping?",
+          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+        },
+        {
+          "q": "What is not included?",
+          "a": "Professional installation, Tools and consumables."
+        }
+      ],
+      "cj": {
+        "pid": "2036730597697687554",
+        "vid": "2036730597840293890",
+        "sku": "CJYL28042460001",
+        "supplier": "CJdropshipping",
+        "warehouse": "US",
+        "stockQuantity": 337,
+        "cjStockQuantity": 337,
+        "cost": 3593,
+        "shippingCost": 0,
+        "supplierTax": 0,
+        "costCheckedAt": "2026-10-11",
+        "selectedLogistics": "Fedex US to US #4",
+        "sourceUrl": "https://cjdropshipping.com/product/-p-2036730597697687554.html"
       }
     }
   ],
   "prompts": [
     {
-      "slug": "vevor-gd60fd-leveling-casters",
-      "packshot": "Studio product photograph on a pure white seamless background of the exact VEVOR GD-60FD set: exactly four matching 2-inch black nylon swivel leveling casters, square steel top plates, silver aluminum bodies, orange hand-adjustment handles, and black retractable leveling feet. Arrange all four clearly as one retail set with no packaging, no text, no labels, no logos added, no extra hardware, and no invented features.",
-      "place": "Realistic installation photograph of the exact four VEVOR GD-60FD leveling casters mounted by their square plates under the four corners of a heavy wooden workshop bench on a concrete floor, all four casters visibly identical, two leveling feet lowered to stabilize the bench and the others naturally visible, accurate 2-inch wheel scale and 3.22-inch installed height, no text, no labels, no callouts, no invented parts.",
-      "detail": "Macro product close-up of one exact VEVOR GD-60FD caster mounted beneath a sturdy furniture frame, clearly showing the 73 mm square top plate, four-hole mounting geometry, 2-inch wheel, orange adjustment handle, and lowered vibration-damping foot; include a neutral physical ruler and caliper in the scene to visually communicate plate and wheel scale without readable numbers or graphic overlays, no text, no labels, no invented load claim."
+      "slug": "twenty-inch-high-speed-linear-actuator",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 20 Inch High Speed Linear Actuator. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Stroke length 20 in, Voltage 12 V, Speed 0.55 in/s, Thrust 220 lb, Ingress protection IP54. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 20 Inch High Speed Linear Actuator. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Stroke length 20 in, Voltage 12 V, Speed 0.55 in/s, Thrust 220 lb, Ingress protection IP54. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 20 Inch High Speed Linear Actuator. Center the most important selection points: Stroke length 20 in, Voltage 12 V, Speed 0.55 in/s, Thrust 220 lb, Ingress protection IP54. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "vevor-cc-pbjl-4-plate-casters",
-      "packshot": "Studio product photograph on a pure white seamless background of exactly four matching VEVOR CC-PBJL-4 orange-and-black 4-inch swivel plate casters with A/B brakes, plus only the supplied mounting hardware grouped neatly: 16 M8 screws, nuts, flat washers, spring washers, and two wrenches. Preserve the exact real caster design, wheel count, plate shape, PVC wheels, and pack quantity; no packaging, no text, no labels, no extra parts, no invented features.",
-      "place": "Realistic installation photograph showing the exact set of four VEVOR CC-PBJL-4 casters mounted under the four corners of a substantial mobile workbench, orange 4-inch PVC wheels and locking brake mechanisms visible at true scale, workbench resting on a smooth workshop floor, mounting plates fully supported by the wooden frame, no text, no labels, no graphic overlays, no invented hardware.",
-      "detail": "Close-up underside view of one exact VEVOR CC-PBJL-4 caster installed with M8 hardware, emphasizing the rectangular 94 × 64 mm plate, four slotted holes in a 74 × 45 mm pattern, 4-inch wheel, 5.11-inch installed profile, swivel race and brake; a plain caliper and ruler may be present for physical scale but without readable annotations, no text, no labels, no invented dimensions or load graphics."
+      "slug": "twenty-eight-inch-adjustable-desk-legs",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 28 Inch Adjustable Desk Legs. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Leg height 28 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 28 Inch Adjustable Desk Legs. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Leg height 28 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 28 Inch Adjustable Desk Legs. Center the most important selection points: Leg height 28 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "yormtoir-low-profile-repair-casters",
-      "packshot": "Studio product photograph on a pure white seamless background of the exact YORMTOIR LZ000 product: exactly four identical black 0.9-inch nylon rigid fixed casters with elongated steel side brackets and exactly 16 matching screws arranged beside them. Preserve the real low-profile shape, fixed wheel direction, bracket proportions and four-pack count; no packaging, no text, no labels, no swivel housings, no extra parts, no invented features.",
-      "place": "Realistic home repair photograph of one exact YORMTOIR LZ000 low-profile fixed caster correctly side-mounted near the lower edge of a slightly sagging solid wooden interior door so its small black nylon wheel supports the door on a smooth hardwood floor; show the other three identical casters and unused screws nearby as the remainder of the exact four-pack, realistic 1-inch installed height, no text, no labels, no invented claims.",
-      "detail": "Macro close-up of one exact YORMTOIR LZ000 rigid caster and steel bracket at the edge of a lightweight wooden cabinet, showing the 0.9-inch wheel, 0.7-inch wheel width, elongated bracket, four mounting holes and fixed one-direction geometry; include a plain ruler and caliper for visual scale without readable text or digital overlays, no carpet, no swivel mechanism, no invented load badge."
+      "slug": "twenty-eight-inch-z-shape-table-legs",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 28 Inch Z Shape Table Legs. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Leg height 28 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 28 Inch Z Shape Table Legs. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Leg height 28 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 28 Inch Z Shape Table Legs. Center the most important selection points: Leg height 28 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "souldershop-three-inch-recliner-springs",
-      "packshot": "Studio macro product photograph on a pure white seamless background of exactly two identical Souldershop 031a galvanized short-neck recliner tension springs, each preserving the real 3-inch overall length, 18-turn coil body, 11/16-inch coil diameter, 2 mm wire, and opposing short hooks with 45-degree deflection. No packaging, no text, no labels, no furniture brands, no additional springs, no invented hook geometry.",
-      "place": "Realistic underside furniture-repair photograph showing one exact Souldershop 031a 3-inch short-neck tension spring installed between two matching attachment points in a manual recliner mechanism, with the second identical spring from the two-pack lying safely uninstalled nearby for comparison; mechanism unloaded and secured, galvanized spring geometry clearly visible, no text, no labels, no OEM branding, no invented compatibility claims.",
-      "detail": "Extreme close-up of one exact Souldershop 031a spring beside a neutral physical caliper and ruler, visually emphasizing overall length versus inside-hook length, 11/16-inch coil diameter, 18 turns, 2 mm wire and short-neck 45-degree hook geometry; preserve the actual galvanized finish and proportions, no readable measurement text, no graphic arrows, no labels, no invented force rating."
+      "slug": "twenty-eight-inch-box-section-table-legs",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 28 Inch Box Section Table Legs. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Leg height 24 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 28 Inch Box Section Table Legs. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Leg height 24 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 28 Inch Box Section Table Legs. Center the most important selection points: Leg height 24 in, Set quantity 2 legs, Finish Black powder coat, Load capacity 1000 lb, Top Customer-supplied tabletop required. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     },
     {
-      "slug": "keileoho-150n-lift-top-hinges",
-      "packshot": "Studio product photograph on a pure white seamless background of the exact KEILEOHO lift-top hardware set: exactly one left and one right black steel folding lift mechanism with their attached 150 N supports, plus exactly 20 matching M5 mounting screws arranged neatly. Preserve the real linkage geometry, handed pair, black finish and product proportions; no tabletop, no packaging, no text, no labels, no extra hinges, no invented features.",
-      "place": "Realistic living-room installation photograph of the exact KEILEOHO left-and-right hinge pair correctly installed inside a wooden lift-top coffee table, tabletop raised smoothly about 9.52 inches with both mechanisms parallel and visible, modest everyday objects on the top with total load clearly conservative, realistic screw placement and structural framing, no text, no labels, no unsupported particleboard mounting, no invented components.",
-      "detail": "Detailed side close-up of one installed KEILEOHO 150 N mechanism while the matching opposite mechanism remains visible in the background, showing the black steel linkage, gas support, mounting holes, folded envelope and raised travel geometry; include a neutral physical ruler for scale without readable annotations, no force arrows, no load badge, no text, no labels, no invented 220-pound claim."
+      "slug": "four-foot-folding-utility-table",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 4 Foot Folding Utility Table. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Table size 4-foot length, Shape Rectangular. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 4 Foot Folding Utility Table. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Table size 4-foot length, Shape Rectangular. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 4 Foot Folding Utility Table. Center the most important selection points: Table size 4-foot length, Shape Rectangular. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "forty-eight-inch-round-folding-table",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact 48 Inch Round Folding Table. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Table size 48-inch diameter, Shape Round. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact 48 Inch Round Folding Table. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Table size 48-inch diameter, Shape Round. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced 48 Inch Round Folding Table. Center the most important selection points: Table size 48-inch diameter, Shape Round. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "full-size-folding-wood-bunkie-board",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Full Size Folding Wood Bunkie Board. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mattress size Full, Thickness 0.4 in, Construction 8-piece foldable wooden slats. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Full Size Folding Wood Bunkie Board. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mattress size Full, Thickness 0.4 in, Construction 8-piece foldable wooden slats. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Full Size Folding Wood Bunkie Board. Center the most important selection points: Mattress size Full, Thickness 0.4 in, Construction 8-piece foldable wooden slats. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
+    },
+    {
+      "slug": "twin-size-covered-wood-bunkie-board",
+      "packshot": "Use the supplied CJ product images as strict reference for the exact Twin Size Covered Wood Bunkie Board. Preserve real geometry, material, finish, connectors, included parts, proportions and configuration. Deciding details: Mattress size Twin, Thickness 1.5 in, Construction 2-piece wooden slats with 200D Oxford cover. Create a photorealistic square ecommerce packshot on a seamless pure #ffffff background with a soft grounded shadow. Remove supplier logos and packaging. No text, labels, badges, people, alternate colors, extra accessories or invented features.",
+      "place": "Use the supplied images as strict reference for the exact Twin Size Covered Wood Bunkie Board. Show it correctly installed or used in a realistic furniture setting at true scale, with every connection and orientation physically plausible. Preserve these fit facts: Mattress size Twin, Thickness 1.5 in, Construction 2-piece wooden slats with 200D Oxford cover. Keep the sellable item visually clear. No text, labels, logos, people, unsafe setup, extra included parts or invented features.",
+      "detail": "Create a photorealistic close-up fitment explainer of the exact referenced Twin Size Covered Wood Bunkie Board. Center the most important selection points: Mattress size Twin, Thickness 1.5 in, Construction 2-piece wooden slats with 200D Oxford cover. Show interfaces and a physical ruler, caliper or matching component where useful, but no readable writing or overlaid graphics. Preserve exact source geometry. No arrows, labels, logos, numbers, cutaway inventions, alternate models or unsupported claims."
     }
   ]
 }
