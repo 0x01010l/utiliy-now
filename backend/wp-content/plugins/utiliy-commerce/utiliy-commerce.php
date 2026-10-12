@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless WooCommerce cart handoff, catalog sync, fulfillment, and order status for utiliy.com.
- * Version: 1.4.0
+ * Version: 1.5.0
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -176,6 +176,10 @@ final class Utiliy_Commerce {
     }
 
     public static function load_checkout_cart(): void {
+        if (!empty($_GET['merchant_id'])) {
+            self::load_merchant_checkout_product();
+            return;
+        }
         if (empty($_GET['utiliy_cart_token'])) {
             return;
         }
@@ -256,6 +260,49 @@ final class Utiliy_Commerce {
                 return;
             }
         }
+    }
+
+    private static function load_merchant_checkout_product(): void {
+        self::require_woocommerce();
+        $sku = sanitize_text_field(wp_unslash($_GET['merchant_id']));
+        if (!$sku || strlen($sku) > 100) {
+            wp_die('This checkout link is invalid.', 'Checkout unavailable', ['response' => 400]);
+        }
+
+        $product_id = wc_get_product_id_by_sku($sku);
+        $product = $product_id ? wc_get_product($product_id) : false;
+        if (
+            !$product ||
+            !$product->is_purchasable() ||
+            !$product->is_in_stock() ||
+            !$product->has_enough_stock(1) ||
+            self::product_guard_error($product)
+        ) {
+            wp_die('This product is currently unavailable.', 'Checkout unavailable', ['response' => 404]);
+        }
+
+        if (function_exists('wc_load_cart') && !WC()->cart) {
+            wc_load_cart();
+        }
+        if (!WC()->cart) {
+            wp_die('Checkout could not be initialized.', 'Checkout unavailable', ['response' => 503]);
+        }
+
+        WC()->cart->empty_cart();
+        if ($product->is_type('variation')) {
+            $added = WC()->cart->add_to_cart(
+                $product->get_parent_id(),
+                1,
+                $product->get_id(),
+                $product->get_variation_attributes()
+            );
+        } else {
+            $added = WC()->cart->add_to_cart($product->get_id(), 1);
+        }
+        if (!$added) {
+            wp_die('This product could not be added to checkout.', 'Checkout unavailable', ['response' => 409]);
+        }
+        WC()->cart->calculate_totals();
     }
 
     public static function copy_supplier_to_order(WC_Order_Item_Product $item, string $cart_item_key, array $values, WC_Order $order): void {
