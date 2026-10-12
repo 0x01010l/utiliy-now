@@ -1710,10 +1710,8 @@ function tsvCell(value) {
   return /["\t\n,]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 }
 function groupedPart(value) {
-  return String(value)
-    .replaceAll("\\", "\\\\")
-    .replaceAll(",", "\\,")
-    .replaceAll(":", "\\:");
+  const text = String(value).replaceAll("\t", " ").replaceAll("\n", " ").replaceAll("\r", " ");
+  return /[,:"]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 }
 function groupedRecord(parts) {
   return parts.map(groupedPart).join(":");
@@ -1755,7 +1753,9 @@ function merchantHighlights(product, variant) {
   return [...new Set(highlights.map((value) => repeatedValue(limitText(value, 150))))].join(",");
 }
 function merchantRows() {
-  const header = ["id", "title", "short_title", "description", "link", "canonical_link", "image_link", "additional_image_link", "availability", "price", "brand", "gtin", "mpn", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "item_group_title", "size", "color", "material", "product_highlight", "product_detail", "question_and_answer"];
+  const productDetailHeader = "product_detail(section_name:attribute_name:attribute_value)";
+  const questionAnswerHeader = "question_and_answer";
+  const header = ["id", "title", "short_title", "description", "link", "canonical_link", "image_link", "additional_image_link", "availability", "price", "brand", "gtin", "mpn", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "item_group_title", "size", "color", "material", "product_highlight", productDetailHeader, questionAnswerHeader];
   const colorOf = { "cable-raceway": "White", "door-draft-stopper": "Black", "furniture-sliders": "Transparent" };
   const rows = [header];
   for (const product of merchantProducts) {
@@ -1809,7 +1809,10 @@ function merchantRows() {
       ]);
     }
   }
-  return rows.map((row) => row.map(tsvCell).join("\t")).join("\n") + "\n";
+  const groupedColumns = new Set([header.indexOf(productDetailHeader), header.indexOf(questionAnswerHeader)]);
+  return rows.map((row, rowIndex) => row.map((cell, columnIndex) =>
+    rowIndex > 0 && groupedColumns.has(columnIndex) ? String(cell ?? "") : tsvCell(cell)
+  ).join("\t")).join("\n") + "\n";
 }
 await writeFile(path.join(dist, "feeds/google-merchant.tsv"), merchantRows());
 const checkoutOpenApi = {

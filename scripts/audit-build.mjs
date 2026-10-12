@@ -31,42 +31,21 @@ function localFile(urlPath) {
 }
 
 function parseTsv(text) {
-  const rows = [];
-  let row = [];
-  let cell = "";
+  return text.trimEnd().split("\n").map((line) => line.split("\t"));
+}
+function splitGrouped(value, delimiter) {
+  const parts = [];
+  let part = "";
   let quoted = false;
-  for (let index = 0; index < text.length; index += 1) {
-    const char = text[index];
-    if (quoted && char === '"' && text[index + 1] === '"') {
-      cell += '"';
+  for (let index = 0; index < value.length; index += 1) {
+    const char = value[index];
+    if (char === '"' && quoted && value[index + 1] === '"') {
+      part += '""';
       index += 1;
     } else if (char === '"') {
       quoted = !quoted;
-    } else if (!quoted && char === "\t") {
-      row.push(cell);
-      cell = "";
-    } else if (!quoted && char === "\n") {
-      row.push(cell);
-      rows.push(row);
-      row = [];
-      cell = "";
-    } else {
-      cell += char;
-    }
-  }
-  return rows.filter((item) => item.some(Boolean));
-}
-function splitEscaped(value, delimiter) {
-  const parts = [];
-  let part = "";
-  let escaped = false;
-  for (const char of value) {
-    if (escaped) {
-      part += char === delimiter ? char : `\\${char}`;
-      escaped = false;
-    } else if (char === "\\") {
-      escaped = true;
-    } else if (char === delimiter) {
+      part += char;
+    } else if (!quoted && char === delimiter) {
       parts.push(part);
       part = "";
     } else {
@@ -151,6 +130,10 @@ for (const file of htmlFiles) {
 
 const rows = parseTsv(await readFile(path.join(dist, "feeds/google-merchant.tsv"), "utf8"));
 const header = rows[0];
+const productDetailHeader = "product_detail(section_name:attribute_name:attribute_value)";
+const questionAnswerHeader = "question_and_answer";
+if (!header.includes(productDetailHeader)) fail(`Merchant feed is missing ${productDetailHeader}`);
+if (!header.includes(questionAnswerHeader)) fail(`Merchant feed is missing ${questionAnswerHeader}`);
 const records = rows.slice(1).map((row) => Object.fromEntries(header.map((name, index) => [name, row[index] ?? ""])));
 const ids = new Set();
 const approvedGoogleCategories = new Set([
@@ -174,12 +157,14 @@ for (const [index, row] of records.entries()) {
   if (!["in_stock", "out_of_stock"].includes(row.availability)) fail(`${row.id} has invalid availability`);
   if (!["yes", "no"].includes(row.identifier_exists)) fail(`${row.id} has invalid identifier_exists`);
   if (row.identifier_exists === "yes" && !row.gtin && !(row.brand && row.mpn)) fail(`${row.id} claims identifiers without GTIN or brand plus MPN`);
-  if (/Google Shopping|identifier_exists|supplier's internal/i.test(row.question_and_answer)) fail(`${row.id} exposes implementation language in Q&A`);
-  for (const detail of splitEscaped(row.product_detail, ",")) {
-    if (splitEscaped(detail, ":").length !== 3) fail(`${row.id} has malformed product_detail grouped attributes`);
+  const productDetails = row[productDetailHeader];
+  const questionsAndAnswers = row[questionAnswerHeader];
+  if (/Google Shopping|identifier_exists|supplier's internal/i.test(questionsAndAnswers)) fail(`${row.id} exposes implementation language in Q&A`);
+  for (const detail of splitGrouped(productDetails, ",")) {
+    if (splitGrouped(detail, ":").length !== 3) fail(`${row.id} has malformed product_detail grouped attributes`);
   }
-  for (const answer of splitEscaped(row.question_and_answer, ",")) {
-    if (answer && splitEscaped(answer, ":").length !== 2) fail(`${row.id} has malformed question_and_answer grouped attributes`);
+  for (const answer of splitGrouped(questionsAndAnswers, ",")) {
+    if (answer && splitGrouped(answer, ":").length !== 2) fail(`${row.id} has malformed question_and_answer grouped attributes`);
   }
 }
 
