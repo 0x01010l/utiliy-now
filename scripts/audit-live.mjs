@@ -32,6 +32,7 @@ const required = [
   `${site}/contact/`,
   `${site}/feeds/products.json`,
   `${site}/feeds/google-merchant.tsv`,
+  `${site}/feeds/checkout-openapi.json`,
   `${site}/.well-known/agent-commerce.json`,
   `${site}/llms.txt`
 ];
@@ -58,5 +59,18 @@ const missing = await fetch(missingUrl, {
 if (missing.status !== 404) throw new Error(`Unknown URL returned HTTP ${missing.status}, expected 404`);
 const missingHtml = await missing.text();
 if (!/name="robots" content="noindex,follow"/.test(missingHtml)) throw new Error("Live 404 response is missing noindex,follow");
+if (/rel="canonical"|hreflang=/.test(missingHtml)) throw new Error("Live 404 response must not declare canonical or hreflang URLs");
 
-console.log(`Live audit passed: ${targets.length} public URLs returned 200, canonicals matched, and an unknown URL returned 404.`);
+const checkoutOptions = await fetch("https://commerce.utiliy.com/wp-json/utiliy/v1/checkout-session", {
+  method: "OPTIONS",
+  headers: {
+    Origin: site,
+    "Access-Control-Request-Method": "POST",
+    "Access-Control-Request-Headers": "content-type"
+  }
+});
+if (!checkoutOptions.ok) throw new Error(`Checkout API preflight returned HTTP ${checkoutOptions.status}`);
+if (checkoutOptions.headers.get("access-control-allow-origin") !== site) throw new Error("Checkout API does not allow the storefront origin");
+if (!checkoutOptions.headers.get("allow")?.includes("POST")) throw new Error("Checkout API does not advertise POST");
+
+console.log(`Live audit passed: ${targets.length} public URLs returned 200, canonicals matched, the 404 was correct, and checkout preflight passed.`);

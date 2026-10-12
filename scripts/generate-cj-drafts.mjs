@@ -76,16 +76,14 @@ function sourceImage(product) {
   return product.images.find((url) => /^https?:\/\//.test(url));
 }
 
-function sentenceSummary(product, name) {
-  const cleaned = cleanText(product.description)
-    .replace(/^(Specification Available Ship to:United States Details|Description Features|Introductions:|Product Description)\s*/i, "")
-    .replace(/[♥•【】]/g, "");
-  const sentences = cleaned
-    .split(/(?<=[.!?])\s+/)
-    .map((sentence) => sentence.trim())
-    .filter((sentence) => sentence.length >= 35 && sentence.length <= 260);
-  const body = sentences.slice(0, 3).join(" ").slice(0, 620);
-  return `${name} ships from verified US inventory. ${body || "Built for the exact dimensions and connection details shown in the specifications."} Confirm every deciding measurement and connection before ordering.`;
+function sentenceSummary(name, specs, fit, exclusions) {
+  const facts = specs
+    .filter((item) => item.deciding)
+    .slice(0, 5)
+    .map((item) => `${item.name.toLowerCase()} ${item.value}${item.unitText ? ` ${item.unitText}` : ""}`)
+    .join(", ");
+  const notIncluded = exclusions.slice(0, 3).join(", ");
+  return `${name} for installations matching ${fit}. Key published specifications: ${facts}.${notIncluded ? ` Not included: ${notIncluded}.` : ""}`;
 }
 
 function spec(name, value, deciding = false, unitText, unitCode) {
@@ -303,13 +301,14 @@ function googleCategoryFor(product) {
   if (/bunkie-board/.test(slug)) return "2720"; // Mattress Foundations
   if (/j1772|nacs-extension/.test(slug)) return "8231"; // Motor Vehicle Power & Electrical Systems
   if (/solar|generator-cord|splitter-cord/.test(slug)) return "259"; // Cables
-  if (/linear-actuator/.test(slug)) return "499933"; // Springs
+  if (/linear-actuator/.test(slug)) return "2878"; // Hardware Accessories
   return "6343"; // Door Hardware
 }
 
 function productRecord(product) {
   const name = catalogName(product.slug);
   const specs = specsFor(product);
+  const exclusions = exclusionsFor(product);
   const deciding = specs.filter((item) => item.deciding).slice(0, 4);
   const fit = deciding.map((item) => `${item.name}: ${item.value}${item.unitText ? ` ${item.unitText}` : ""}`).join(" · ");
   const headline = deciding
@@ -340,17 +339,17 @@ function productRecord(product) {
     maxDays: product.maxDays,
     headline,
     fit,
-    summary: sentenceSummary(product, name),
+    summary: sentenceSummary(name, specs, fit, exclusions),
     specs,
-    exclusions: exclusionsFor(product),
+    exclusions,
     faqs: [
       {
         q: `How do I confirm the ${name} will fit?`,
         a: `Check these deciding details against the installation: ${fit}. Do not order from the product photo alone.`,
       },
       {
-        q: "Is this item stocked in the United States?",
-        a: `Yes. CJdropshipping US inventory was verified at ${product.stockQuantity} units on ${product.checkedAt}. Inventory can change before checkout.`,
+        q: "Where does this item ship from?",
+        a: "This item ships from a United States warehouse. Availability is confirmed again before checkout.",
       },
       {
         q: "Is shipping included in the listed price?",

@@ -576,6 +576,7 @@ tr.deciding th, tr.deciding td { font-weight: 700; color: #000; }
   border-radius: 6px;
   padding: 20px;
 }
+.plate-no-art { grid-template-columns: 1fr; }
 .plate h2 {
   font-weight: 600;
   letter-spacing: -0.02em;

@@ -99,7 +99,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-10"
       },
-      "googleCategory": "6343"
+      "googleCategory": "574",
+      "stockCheckedAt": "2026-10-10"
     },
     {
       "slug": "bamboo-drawer-organizer",
@@ -173,7 +174,8 @@
         "shippingCost": 350,
         "costCheckedAt": "2026-10-10"
       },
-      "googleCategory": "6343"
+      "googleCategory": "8058",
+      "stockCheckedAt": "2026-10-10"
     },
     {
       "slug": "under-sink-organizer",
@@ -255,7 +257,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-10"
       },
-      "googleCategory": "1673"
+      "googleCategory": "2948",
+      "stockCheckedAt": "2026-10-10"
     },
     {
       "slug": "cable-raceway",
@@ -344,7 +347,8 @@
             "cost": 873,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07"
         },
         {
           "sku": "UTY-RACE-6M",
@@ -362,7 +366,8 @@
             "cost": 1336,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07"
         },
         {
           "sku": "UTY-RACE-8M",
@@ -380,7 +385,8 @@
             "cost": 1663,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07"
         }
       ],
       "autods": {
@@ -391,7 +397,7 @@
         "supplier": "Stone's Store",
         "warehouse": "CN"
       },
-      "googleCategory": "6343"
+      "googleCategory": "3328"
     },
     {
       "slug": "door-draft-stopper",
@@ -479,7 +485,9 @@
             "cost": 601,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-SWEEP-53",
@@ -497,7 +505,9 @@
             "cost": 1092,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         }
       ],
       "autods": {
@@ -508,7 +518,7 @@
         "supplier": "Hose Harmony Boutique Store",
         "warehouse": "CN"
       },
-      "googleCategory": "6343"
+      "googleCategory": "505295"
     },
     {
       "slug": "tension-rod",
@@ -588,7 +598,9 @@
             "cost": 312,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-ROD-55",
@@ -606,7 +618,9 @@
             "cost": 415,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-ROD-60",
@@ -624,7 +638,9 @@
             "cost": 1685,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         }
       ],
       "autods": {
@@ -635,7 +651,7 @@
         "supplier": "CHUKE Store",
         "warehouse": "CN"
       },
-      "googleCategory": "6343"
+      "googleCategory": "6254"
     },
     {
       "slug": "adjustable-bed-frame-casters",
@@ -753,7 +769,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "4437",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "kerf-door-seal-81-white",
@@ -848,7 +865,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "505295",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "extra-wide-door-sweep-36-white",
@@ -940,7 +958,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "505295",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "fixed-mount-wire-shelf-clips",
@@ -1032,7 +1051,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "heavy-duty-closet-pole-sockets",
@@ -1128,7 +1148,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "kv-rp-0495-bn-shelf-rod-bracket",
@@ -1262,7 +1283,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "korky-100bp-two-inch-toilet-flapper",
@@ -1361,7 +1383,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "1425",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "broan-qt20000-charcoal-filter",
@@ -1450,7 +1473,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "8087",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "five-pound-flour-keeper",
@@ -1552,7 +1576,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "2626",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "furniture-sliders",
@@ -1630,7 +1655,9 @@
             "cost": 710,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-SLIDE-L",
@@ -1648,7 +1675,9 @@
             "cost": 905,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-SLIDE-XL",
@@ -1666,7 +1695,9 @@
             "cost": 1206,
             "shippingCost": 199,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         }
       ],
       "autods": {
@@ -1677,7 +1708,7 @@
         "supplier": "HomeWhimsy Store",
         "warehouse": "CN"
       },
-      "googleCategory": "6343"
+      "googleCategory": "7214"
     },
     {
       "slug": "furniture-anchors",
@@ -1760,7 +1791,9 @@
         "shippingCost": 199,
         "costCheckedAt": "2026-10-07"
       },
-      "googleCategory": "6343"
+      "googleCategory": "4491",
+      "stockCheckedAt": "2026-10-07",
+      "available": true
     },
     {
       "slug": "closet-rod",
@@ -1838,7 +1871,9 @@
             "cost": 1321,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-CLOSET-50",
@@ -1856,7 +1891,9 @@
             "cost": 1819,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-CLOSET-70",
@@ -1874,7 +1911,9 @@
             "cost": 3786,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-CLOSET-90",
@@ -1892,7 +1931,9 @@
             "cost": 4615,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         },
         {
           "sku": "UTY-CLOSET-110",
@@ -1910,7 +1951,9 @@
             "cost": 4053,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-07"
-          }
+          },
+          "stockCheckedAt": "2026-10-07",
+          "available": true
         }
       ],
       "autods": {
@@ -2036,7 +2079,9 @@
         "shippingCost": 199,
         "costCheckedAt": "2026-10-07"
       },
-      "googleCategory": "5558"
+      "googleCategory": "594",
+      "stockCheckedAt": "2026-10-07",
+      "available": true
     },
     {
       "slug": "american-standard-022650-slip-on-tub-spout",
@@ -2156,7 +2201,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "2463"
+      "googleCategory": "2463",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "kohler-pennington-k2196-single-hole-white",
@@ -2297,7 +2343,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "2886"
+      "googleCategory": "2886",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "kohler-1188998-canister-flush-valve",
@@ -2406,7 +2453,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "2691"
+      "googleCategory": "2691",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "revent-rvs50-roomside-bath-fan",
@@ -2554,7 +2602,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "4485"
+      "googleCategory": "4485",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "fluidmaster-6100-two-inch-tank-gasket",
@@ -2665,7 +2714,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "2691"
+      "googleCategory": "2691",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "active-displayport-to-hdmi-4k60-adapter",
@@ -2819,7 +2869,8 @@
             "cost": 2940,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-09"
-          }
+          },
+          "stockCheckedAt": "2026-10-09"
         },
         {
           "sku": "UTY-STARTECH-DP2HD4K60H",
@@ -2884,7 +2935,8 @@
             "cost": 3210,
             "shippingCost": 0,
             "costCheckedAt": "2026-10-09"
-          }
+          },
+          "stockCheckedAt": "2026-10-09"
         }
       ],
       "googleCategory": "1867"
@@ -3013,7 +3065,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "1867"
+      "googleCategory": "1867",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "dvi-d-to-displayport-adapter",
@@ -3129,7 +3182,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "1867"
+      "googleCategory": "1867",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "usb-b-panel-mount-extension",
@@ -3261,7 +3315,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "259"
+      "googleCategory": "259",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "displayport-to-mini-displayport-adapter",
@@ -3403,7 +3458,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "1867"
+      "googleCategory": "1867",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "closetmaid-shelftrack-shelf-brackets",
@@ -3535,7 +3591,8 @@
             "minDays": 3,
             "maxDays": 3,
             "costCheckedAt": "2026-10-09"
-          }
+          },
+          "stockCheckedAt": "2026-10-09"
         },
         {
           "sku": "UTY-CM-2855",
@@ -3593,7 +3650,8 @@
             "minDays": 2,
             "maxDays": 2,
             "costCheckedAt": "2026-10-09"
-          }
+          },
+          "stockCheckedAt": "2026-10-09"
         }
       ],
       "googleCategory": "5558"
@@ -3716,7 +3774,8 @@
         "maxDays": 2,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "closetmaid-shelftrack-vertical-standards",
@@ -3857,7 +3916,8 @@
             "minDays": 4,
             "maxDays": 4,
             "costCheckedAt": "2026-10-09"
-          }
+          },
+          "stockCheckedAt": "2026-10-09"
         },
         {
           "sku": "UTY-CM-2801",
@@ -3906,7 +3966,8 @@
             "minDays": 3,
             "maxDays": 3,
             "costCheckedAt": "2026-10-09"
-          }
+          },
+          "stockCheckedAt": "2026-10-09"
         }
       ],
       "googleCategory": "5558"
@@ -4032,7 +4093,8 @@
         "maxDays": 2,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "kv-closet-culture-basket-surround",
@@ -4157,7 +4219,8 @@
         "maxDays": 6,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "closetmaid-5629-superslide-supports",
@@ -4299,7 +4362,8 @@
         "maxDays": 4,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "standard-duty-storm-door-closer-black",
@@ -4406,7 +4470,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6446"
+      "googleCategory": "6446",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "one-inch-rubber-threshold-ramp",
@@ -4518,7 +4583,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "115"
+      "googleCategory": "115",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "four-foot-bypass-door-hardware",
@@ -4624,7 +4690,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "6343",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "pocket-door-track-24-to-30-inch",
@@ -4730,7 +4797,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "6343",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "screen-spline-0125-inch-100-foot",
@@ -4834,7 +4902,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "6343",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "eight-foot-j-hanger-barn-door-kit",
@@ -4944,7 +5013,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6343"
+      "googleCategory": "6343",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "vevor-gd60fd-leveling-casters",
@@ -5080,7 +5150,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "499981"
+      "googleCategory": "499981",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "vevor-cc-pbjl-4-plate-casters",
@@ -5217,7 +5288,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "499981"
+      "googleCategory": "499981",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "yormtoir-low-profile-repair-casters",
@@ -5357,7 +5429,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "499981"
+      "googleCategory": "499981",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "souldershop-three-inch-recliner-springs",
@@ -5477,7 +5550,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "499933"
+      "googleCategory": "499933",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "keileoho-150n-lift-top-hinges",
@@ -5613,7 +5687,8 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "1771"
+      "googleCategory": "1771",
+      "stockCheckedAt": "2026-10-09"
     },
     {
       "slug": "insinkerator-standard-sink-flange",
@@ -6272,7 +6347,7 @@
       "maxDays": 5,
       "headline": "6 in • Reversible flat and tile-insert • Brushed gold",
       "fit": "Nominal size: 6 in · Cover: Reversible flat and tile-insert · Finish: Brushed gold",
-      "summary": "6 Inch Square Shower Drain Brushed Gold ships from verified US inventory. Available Ship to:United States Details. 2-IN-1 Cover Design: Square shower drain cover features two sides—one flat, the other tile-insert. The tile-insert side can match your flooring style as needed, and the inset design creates an elegant, discreet look.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "6 Inch Square Shower Drain Brushed Gold for installations matching Nominal size: 6 in · Cover: Reversible flat and tile-insert · Finish: Brushed gold. Key published specifications: nominal size 6 in, cover Reversible flat and tile-insert, finish Brushed gold. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Nominal size",
@@ -6311,8 +6386,8 @@
           "a": "Check these deciding details against the installation: Nominal size: 6 in · Cover: Reversible flat and tile-insert · Finish: Brushed gold. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 230 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6361,7 +6436,7 @@
       "maxDays": 5,
       "headline": "Wall mount • Single handle • See reference image",
       "fit": "Mounting: Wall mount · Controls: Single handle · Finish: See reference image · Drain: Pop-up, for sinks without overflow",
-      "summary": "Wall Mount Bathroom Faucet No Overflow Drain ships from verified US inventory. This wall mounted bathroom faucet features a single handle design, allowing users to easily adjust the water temperature and water flow. The spout can be rotated 360 degrees as needed to meet your daily bathroom water needs, such as brushing teeth, washing face, etc.. High-quality aerators make the water flow from the tap smoother, produce enough bubbles, prevent splashing, and reduce water scouring.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Wall Mount Bathroom Faucet No Overflow Drain for installations matching Mounting: Wall mount · Controls: Single handle · Finish: See reference image · Drain: Pop-up, for sinks without overflow. Key published specifications: mounting Wall mount, controls Single handle, finish See reference image, drain Pop-up, for sinks without overflow. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Mounting",
@@ -6399,8 +6474,8 @@
           "a": "Check these deciding details against the installation: Mounting: Wall mount · Controls: Single handle · Finish: See reference image · Drain: Pop-up, for sinks without overflow. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6449,7 +6524,7 @@
       "maxDays": 5,
       "headline": "4-inch centerset, 3-hole • Two handle • Brushed nickel",
       "fit": "Mounting: 4-inch centerset, 3-hole · Controls: Two handle · Finish: Brushed nickel · Drain: Pop-up drain included",
-      "summary": "4 Inch Centerset Bathroom Faucet Brushed Nickel ships from verified US inventory. DESIGN: The Brushed Nickel finish bathroom sink faucet is avant-garde and fashion, which can match with various decoration styles. The superior quality material is heavier and reliable than ordinary faucets. Also it has durable brushed surface, easy to clean.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "4 Inch Centerset Bathroom Faucet Brushed Nickel for installations matching Mounting: 4-inch centerset, 3-hole · Controls: Two handle · Finish: Brushed nickel · Drain: Pop-up drain included. Key published specifications: mounting 4-inch centerset, 3-hole, controls Two handle, finish Brushed nickel, drain Pop-up drain included. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Mounting",
@@ -6487,8 +6562,8 @@
           "a": "Check these deciding details against the installation: Mounting: 4-inch centerset, 3-hole · Controls: Two handle · Finish: Brushed nickel · Drain: Pop-up drain included. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6522,7 +6597,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "608",
+      "googleCategory": "4485",
       "price": 7999,
       "image": "https://cf.cjdropshipping.com/17660160/6f12bb79-94da-446e-b368-f5798018e374.jpg",
       "images": [
@@ -6537,7 +6612,7 @@
       "maxDays": 3,
       "headline": "80-110-130 CFM • 1.5 sones • 4 in",
       "fit": "Airflow: 80-110-130 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
-      "summary": "Adjustable 80 110 130 CFM RGB Bath Fan ships from verified US inventory. Powerful Ventilation: Equipped with a premium DC motor, this bathroom exhaust fan delivers a steady airflow of 80 / 110 / 130CFM, ideal for covering 129-161 ft² (12-15 m²) spaces. It efficiently clean off damp and unpleasant smell, keeping bathroom fresh . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan runs as quietly as a soft conversation, ideal for bathrooms near bedrooms to ensure peaceful rest . Confirm every deciding measurement and connection before ordering.",
+      "summary": "Adjustable 80 110 130 CFM RGB Bath Fan for installations matching Airflow: 80-110-130 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Key published specifications: airflow 80-110-130 CFM, noise rating 1.5 sones, duct connection 4 in, installation Ceiling mount, light Seven-color RGB. Not included: Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring.",
       "specs": [
         {
           "name": "Airflow",
@@ -6584,8 +6659,8 @@
           "a": "Check these deciding details against the installation: Airflow: 80-110-130 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 202 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6619,7 +6694,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "608",
+      "googleCategory": "4485",
       "price": 6499,
       "image": "https://cf.cjdropshipping.com/17660160/e7cc0eca-7ddf-4b76-92de-fdc4643cee0c.jpg",
       "images": [
@@ -6634,7 +6709,7 @@
       "maxDays": 3,
       "headline": "80 CFM • 1.5 sones • 4 in",
       "fit": "Airflow: 80 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
-      "summary": "80 CFM LED Bathroom Exhaust Fan ships from verified US inventory. Powerful Ventilation: Equipped with a premium AC motor, this bathroom exhaust fan delivers a steady airflow of 80CFM, quickly covering 129–161 ft² (12–15 m²). It restoring fresh air even after long showers, ensure more comfortable bathroom experience . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan is as quiet as a soft conversation, ideal for bathrooms near bedrooms, providing strong ventilation while maintaining a peaceful bathing condition . Confirm every deciding measurement and connection before ordering.",
+      "summary": "80 CFM LED Bathroom Exhaust Fan for installations matching Airflow: 80 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Key published specifications: airflow 80 CFM, noise rating 1.5 sones, duct connection 4 in, installation Ceiling mount, light Integrated LED. Not included: Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring.",
       "specs": [
         {
           "name": "Airflow",
@@ -6681,8 +6756,8 @@
           "a": "Check these deciding details against the installation: Airflow: 80 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 145 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6716,7 +6791,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "608",
+      "googleCategory": "4485",
       "price": 6299,
       "image": "https://cf.cjdropshipping.com/17660160/9e34cf36-f4ab-4540-81ef-ecef59302077.jpg",
       "images": [
@@ -6731,7 +6806,7 @@
       "maxDays": 3,
       "headline": "50-80-110 CFM • 1.5 sones • 4 in",
       "fit": "Airflow: 50-80-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
-      "summary": "Adjustable 50 80 110 CFM Bath Fan ships from verified US inventory. Powerful Ventilation: Equipped with a premium AC motor, this bathroom exhaust fan delivers a steady airflow of 50 / 80 / 110CFM, quickly covering 129–161 ft² (12–15 m²). It restoring fresh air even after long showers, ensure more comfortable bathroom experience . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan is as quiet as a soft conversation, ideal for bathrooms near bedrooms, providing strong ventilation while maintaining a peaceful bathing condition . Confirm every deciding measurement and connection before ordering.",
+      "summary": "Adjustable 50 80 110 CFM Bath Fan for installations matching Airflow: 50-80-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Key published specifications: airflow 50-80-110 CFM, noise rating 1.5 sones, duct connection 4 in, installation Ceiling mount, light Not included. Not included: Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring.",
       "specs": [
         {
           "name": "Airflow",
@@ -6778,8 +6853,8 @@
           "a": "Check these deciding details against the installation: Airflow: 50-80-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 724 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6813,7 +6888,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "608",
+      "googleCategory": "4485",
       "price": 5999,
       "image": "https://cf.cjdropshipping.com/17660160/b9820608-f57d-4f0f-95b1-a0e1f40a13c1.jpg",
       "images": [
@@ -6828,7 +6903,7 @@
       "maxDays": 3,
       "headline": "110 CFM • 1.5 sones • 4 in",
       "fit": "Airflow: 110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Room-side; no attic access required",
-      "summary": "Roomside 110 CFM Bathroom Exhaust Fan ships from verified US inventory. LED Lighting and Ventilation in One: Our exhaust fan combines LED lighting and ventilation for versatile use. The soft, glare-free LED light provides 900LM with adjustable color temperatures (3000K/4000K/5000K) to suit your needs, offering ideal lighting for tasks like shaving, makeup, or various scenarios. Quiet Operation: Designed with a silent airflow pathway and a lightweight PPFR plastic impeller to minimize air resistance and noise. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Roomside 110 CFM Bathroom Exhaust Fan for installations matching Airflow: 110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Room-side; no attic access required. Key published specifications: airflow 110 CFM, noise rating 1.5 sones, duct connection 4 in, installation Room-side; no attic access required, light Integrated LED. Not included: Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring.",
       "specs": [
         {
           "name": "Airflow",
@@ -6875,8 +6950,8 @@
           "a": "Check these deciding details against the installation: Airflow: 110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Room-side; no attic access required. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 616 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -6910,7 +6985,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "608",
+      "googleCategory": "4485",
       "price": 10999,
       "image": "https://cf.cjdropshipping.com/17660160/2d268d0d-1bcf-4642-ad08-90de86bf7c39.jpg",
       "images": [
@@ -6925,7 +7000,7 @@
       "maxDays": 5,
       "headline": "80-90-110 CFM • 1.5 sones • 4 in",
       "fit": "Airflow: 80-90-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount",
-      "summary": "110 CFM Bath Fan Light Heater ships from verified US inventory. Powerful Ventilation: Equipped with a premium DC motor, this bathroom exhaust fan delivers a steady airflow of 80 / 90 / 110CFM, ideal for covering 129-161 ft² (12-15 m²) spaces. It efficiently clean off damp and unpleasant smell, keeping bathroom fresh . Quiet Operation: Operating at only 1.5 sones (≤60dB), this bathroom fan runs quietly. Confirm every deciding measurement and connection before ordering.",
+      "summary": "110 CFM Bath Fan Light Heater for installations matching Airflow: 80-90-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Key published specifications: airflow 80-90-110 CFM, noise rating 1.5 sones, duct connection 4 in, installation Ceiling mount, light Integrated LED. Not included: Professional installation, Tools and consumables, Ductwork, roof or wall cap, and electrical wiring.",
       "specs": [
         {
           "name": "Airflow",
@@ -6979,8 +7054,8 @@
           "a": "Check these deciding details against the installation: Airflow: 80-90-110 CFM · Noise rating: 1.5 sones · Duct connection: 4 in · Installation: Ceiling mount. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 146 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7029,7 +7104,7 @@
       "maxDays": 3,
       "headline": "SAE J1772 • 48 A • 21 ft",
       "fit": "Connector: SAE J1772 · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V",
-      "summary": "48 Amp J1772 Extension Cable 21 Foot ships from verified US inventory. Extra Length, Zero Hassle: Extending your charging reach for J1772 EVs/PHEVs. The 21 ft EV charger extension cable gives you the freedom to charge from almost any angle, even if your outlet is far from your EV port . Charge Anywhere with Dual Voltage: Compatible with both 120V and 240V outlets, this EV charger extension cord works whether you're charging from a standard home socket or a Level 2 station—great for daily use or road trips . Confirm every deciding measurement and connection before ordering.",
+      "summary": "48 Amp J1772 Extension Cable 21 Foot for installations matching Connector: SAE J1772 · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V. Key published specifications: connector SAE J1772, maximum current 48 A, length 21 ft, voltage 120-240 V, use AC Level 1 / Level 2 extension only. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Connector",
@@ -7078,8 +7153,8 @@
           "a": "Check these deciding details against the installation: Connector: SAE J1772 · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 204 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7128,7 +7203,7 @@
       "maxDays": 5,
       "headline": "SAE J1772 • 32 A • 21 ft",
       "fit": "Connector: SAE J1772 · Maximum current: 32 A · Length: 21 ft · Voltage: 120-240 V",
-      "summary": "32 Amp J1772 Extension Cable 21 Foot ships from verified US inventory. Extra Length, Zero Hassle: Extending your charging reach for J1772 EVs/PHEVs. The 21 ft EV charger extension cable gives you the freedom to charge from almost any angle, even if your outlet is far from your EV port . Charge Anywhere with Dual Voltage: Compatible with both 120V and 240V outlets, this EV charger extension cord works whether you're charging from a standard home socket or a Level 2 station—great for daily use or road trips . Confirm every deciding measurement and connection before ordering.",
+      "summary": "32 Amp J1772 Extension Cable 21 Foot for installations matching Connector: SAE J1772 · Maximum current: 32 A · Length: 21 ft · Voltage: 120-240 V. Key published specifications: connector SAE J1772, maximum current 32 A, length 21 ft, voltage 120-240 V, use AC Level 1 / Level 2 extension only. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Connector",
@@ -7177,8 +7252,8 @@
           "a": "Check these deciding details against the installation: Connector: SAE J1772 · Maximum current: 32 A · Length: 21 ft · Voltage: 120-240 V. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 107 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7227,7 +7302,7 @@
       "maxDays": 3,
       "headline": "NACS / Tesla AC • 48 A • 21 ft",
       "fit": "Connector: NACS / Tesla AC · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V",
-      "summary": "48 Amp NACS Extension Cable 21 Foot ships from verified US inventory. Extra Length, Zero Hassle: Extending your charging reach for Tesla EVs. The 21 ft EV charger extension cable gives you the freedom to charge from almost any angle, even if your outlet is far from your EV port . Works with Most Tesla AC Chargers: This EV charger extension cord is compatible with the Tesla wall connector, mobile connector, and destination charger for flexible home or travel charging. Confirm every deciding measurement and connection before ordering.",
+      "summary": "48 Amp NACS Extension Cable 21 Foot for installations matching Connector: NACS / Tesla AC · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V. Key published specifications: connector NACS / Tesla AC, maximum current 48 A, length 21 ft, voltage 120-240 V, use AC Level 1 / Level 2 extension only. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Connector",
@@ -7276,8 +7351,8 @@
           "a": "Check these deciding details against the installation: Connector: NACS / Tesla AC · Maximum current: 48 A · Length: 21 ft · Voltage: 120-240 V. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 253 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7326,7 +7401,7 @@
       "maxDays": 5,
       "headline": "10 AWG • 100 ft red + 100 ft black • Red and black pair",
       "fit": "Wire gauge: 10 AWG · Length: 100 ft red + 100 ft black · Polarity: Red and black pair",
-      "summary": "10 AWG Solar Wire Pair 100 Foot ships from verified US inventory. Excellent Conductivity: This solar panel extension cable uses a 100% tinned copper conductor to deliver high efficiency and low resistance power transfer. It reduces energy loss and ensures stable performance even in harsh outdoor environments . Thick XLPE Insulation: The solar panel extension wire features a thick XLPE jacket with strong resistance to sunlight, corrosion, and high temperatures, slowing aging and ensuring over 25 years of reliable outdoor use in changing climates . Confirm every deciding measurement and connection before ordering.",
+      "summary": "10 AWG Solar Wire Pair 100 Foot for installations matching Wire gauge: 10 AWG · Length: 100 ft red + 100 ft black · Polarity: Red and black pair. Key published specifications: wire gauge 10 AWG, length 100 ft red + 100 ft black, polarity Red and black pair. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Wire gauge",
@@ -7368,8 +7443,8 @@
           "a": "Check these deciding details against the installation: Wire gauge: 10 AWG · Length: 100 ft red + 100 ft black · Polarity: Red and black pair. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 289 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7418,7 +7493,7 @@
       "maxDays": 5,
       "headline": "10 AWG • 50 ft • Red and black pair",
       "fit": "Wire gauge: 10 AWG · Length: 50 ft · Polarity: Red and black pair",
-      "summary": "10 AWG Solar Extension Cable 50 Foot ships from verified US inventory. Excellent Conductivity: This solar panel extension cable features a 100% tinned copper conductor to deliver high efficiency and low resistance power transfer. It reduces energy loss and ensures stable performance even in harsh outdoor environments . Flame-Retardant Protection: This solar panel wire uses XLPE insulation that is sun-resistant, corrosion-resistant, and heat-resistant. Confirm every deciding measurement and connection before ordering.",
+      "summary": "10 AWG Solar Extension Cable 50 Foot for installations matching Wire gauge: 10 AWG · Length: 50 ft · Polarity: Red and black pair. Key published specifications: wire gauge 10 AWG, length 50 ft, polarity Red and black pair. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Wire gauge",
@@ -7460,8 +7535,8 @@
           "a": "Check these deciding details against the installation: Wire gauge: 10 AWG · Length: 50 ft · Polarity: Red and black pair. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 133 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7510,7 +7585,7 @@
       "maxDays": 5,
       "headline": "10 AWG • 30 ft • Red and black pair",
       "fit": "Wire gauge: 10 AWG · Length: 30 ft · Polarity: Red and black pair",
-      "summary": "10 AWG Solar Extension Cable 30 Foot ships from verified US inventory. Excellent Conductivity: This solar panel extension cable features a 100% tinned copper conductor to deliver high efficiency and low resistance power transfer. It reduces energy loss and ensures stable performance even in harsh outdoor environments . Flame-Retardant Protection: This solar panel wire uses XLPE insulation that is sun-resistant, corrosion-resistant, and heat-resistant. Confirm every deciding measurement and connection before ordering.",
+      "summary": "10 AWG Solar Extension Cable 30 Foot for installations matching Wire gauge: 10 AWG · Length: 30 ft · Polarity: Red and black pair. Key published specifications: wire gauge 10 AWG, length 30 ft, polarity Red and black pair. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Wire gauge",
@@ -7552,8 +7627,8 @@
           "a": "Check these deciding details against the installation: Wire gauge: 10 AWG · Length: 30 ft · Polarity: Red and black pair. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 175 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7602,7 +7677,7 @@
       "maxDays": 3,
       "headline": "30 A • 25 ft • 4 x 10 AWG STW",
       "fit": "Current: 30 A · Length: 25 ft · Wire: 4 x 10 AWG STW · Connectors: NEMA L14-30P to L14-30R",
-      "summary": "30 Amp Generator Cord Inlet Kit 25 Foot ships from verified US inventory. Premium 30A Generator Cord: Our generator cord is STW gauge with a 4 x 10AWG wire, supporting up to 30 AMP current. Featuring a NEMA L14-30P male plug designed to fit into a 30A generator output and a twist-lock NEMA L14-30R female plug for a secure connection to a 30A power inlet box with a NEMA L14-30P male end. Perfect for emergency power needs in any weather! Confirm every deciding measurement and connection before ordering.",
+      "summary": "30 Amp Generator Cord Inlet Kit 25 Foot for installations matching Current: 30 A · Length: 25 ft · Wire: 4 x 10 AWG STW · Connectors: NEMA L14-30P to L14-30R. Key published specifications: current 30 A, length 25 ft, wire 4 x 10 AWG STW, connectors NEMA L14-30P to L14-30R, power inlet box Pre-drilled, included. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Current",
@@ -7649,8 +7724,8 @@
           "a": "Check these deciding details against the installation: Current: 30 A · Length: 25 ft · Wire: 4 x 10 AWG STW · Connectors: NEMA L14-30P to L14-30R. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 1271 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7699,7 +7774,7 @@
       "maxDays": 5,
       "headline": "NEMA 14-50P, 4-prong • Dual NEMA 14-50R • 50 A",
       "fit": "Input: NEMA 14-50P, 4-prong · Outputs: Dual NEMA 14-50R · Current: 50 A · Voltage: 240 V",
-      "summary": "NEMA 14 50 Y Splitter Cord ships from verified US inventory. Splitter Adapter Cord: The NEMA 14-50 Y splitter adapter cord allows one outlet to power two devices at the same time, supporting RVs, EV charging, and dryers. It helps reduce frequent plugging and unplugging for added convenience . Dual NEMA 14-50 Outlets: Each outlet of this Y splitter extension cord features an independent cable layout to minimize plug interference, even with bulky adapters. Confirm every deciding measurement and connection before ordering.",
+      "summary": "NEMA 14 50 Y Splitter Cord for installations matching Input: NEMA 14-50P, 4-prong · Outputs: Dual NEMA 14-50R · Current: 50 A · Voltage: 240 V. Key published specifications: input NEMA 14-50P, 4-prong, outputs Dual NEMA 14-50R, current 50 A, voltage 240 V, use RV and EV power distribution. Not included: Professional installation, Tools and consumables, Charger, power source, branch-circuit work and adapters not named in specifications.",
       "specs": [
         {
           "name": "Input",
@@ -7746,8 +7821,8 @@
           "a": "Check these deciding details against the installation: Input: NEMA 14-50P, 4-prong · Outputs: Dual NEMA 14-50R · Current: 50 A · Voltage: 240 V. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 662 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7781,7 +7856,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 6399,
       "image": "https://cf.cjdropshipping.com/17743968/53f390e7-8baf-4f94-88d0-034b23c1db33.jpg",
       "images": [
@@ -7796,7 +7871,7 @@
       "maxDays": 5,
       "headline": "4 ft • 2 bypassing doors • 24 in",
       "fit": "Track length: 4 ft · Door count: 2 bypassing doors · Door width: 24 in · Door thickness: 1 to 1-3/4 in",
-      "summary": "4 Foot Dual Track Bypass Closet Door Kit ships from verified US inventory. Independent Dual-Door Stability: The integrated stacked-track bypass door hardware allows two doors to glide smoothly on separate paths. The 4-ft track fits 24 in wide doors with thicknesses from 1 to 1-3/4 in, supporting up to 150 lbs per door . Smooth & Quiet Operation: Our bypass sliding door hardware kit includes three-wheel hangers, wear-resistant nylon wheels, and a balanced track. Confirm every deciding measurement and connection before ordering.",
+      "summary": "4 Foot Dual Track Bypass Closet Door Kit for installations matching Track length: 4 ft · Door count: 2 bypassing doors · Door width: 24 in · Door thickness: 1 to 1-3/4 in. Key published specifications: track length 4 ft, door count 2 bypassing doors, door width 24 in, door thickness 1 to 1-3/4 in, capacity 150 per door lb. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Track length",
@@ -7847,8 +7922,8 @@
           "a": "Check these deciding details against the installation: Track length: 4 ft · Door count: 2 bypassing doors · Door width: 24 in · Door thickness: 1 to 1-3/4 in. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 130 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7882,7 +7957,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 11999,
       "image": "https://cf.cjdropshipping.com/doba-import/1b6e5e27e8d942bcaef16ecb6f99a5fe.jpg",
       "images": [
@@ -7897,7 +7972,7 @@
       "maxDays": 5,
       "headline": "44.9x17.13x77.95 in • 4 • 3",
       "fit": "Assembled size: 44.9x17.13x77.95 in · Tiers: 4 · Hanging rods: 3 · Mobility: Lockable rolling casters",
-      "summary": "4 Tier 463 Pound Garment Rack ships from verified US inventory. Featuring a spacious size of 44.9x17.13x77.95in, our clothing rack with wheels provides 4 tiers, 3 hanging rods and 2 side shelves to keep all your daily clothes in one place. Great for your dresses, shirts, pants, coats, bed linens, kids toys, folded clothes, bath towel, handbags, shoes and extra laundry sundries. Constructed out of robust galvanized carbon steel tubes and heavy duty enough to hold 463lbs weight. Confirm every deciding measurement and connection before ordering.",
+      "summary": "4 Tier 463 Pound Garment Rack for installations matching Assembled size: 44.9x17.13x77.95 in · Tiers: 4 · Hanging rods: 3 · Mobility: Lockable rolling casters. Key published specifications: assembled size 44.9x17.13x77.95 in, tiers 4, hanging rods 3, mobility Lockable rolling casters, total capacity 463 lb. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Assembled size",
@@ -7943,8 +8018,8 @@
           "a": "Check these deciding details against the installation: Assembled size: 44.9x17.13x77.95 in · Tiers: 4 · Hanging rods: 3 · Mobility: Lockable rolling casters. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -7978,7 +8053,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 9899,
       "image": "https://cf.cjdropshipping.com/doba-import/ee417a0346f44698aead8c8dfbdabdf8.jpg",
       "images": [
@@ -7993,7 +8068,7 @@
       "maxDays": 5,
       "headline": "44.9x17.13x77.95 in • 4 • 3",
       "fit": "Assembled size: 44.9x17.13x77.95 in · Tiers: 4 · Hanging rods: 3 · Mobility: Lockable rolling casters",
-      "summary": "4 Tier 3 Rod Garment Rack ships from verified US inventory. 4 Tier Large Garment Rack: Our 4 tier clothing rack features a spacious size of 44.9x17.13x77.95in to keep all your daily clothes in one place. Great for your dresses, shirts, pants, coats, bed linens, kids toys, folded clothes, bath towel, handbags, shoes and extra laundry sundries.. 3 Hanging Rods: Our heavy duty garment rack with wheels comes with 3 hanging rods for more hanging space, keeping your clothes tidy and easy to reach.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "4 Tier 3 Rod Garment Rack for installations matching Assembled size: 44.9x17.13x77.95 in · Tiers: 4 · Hanging rods: 3 · Mobility: Lockable rolling casters. Key published specifications: assembled size 44.9x17.13x77.95 in, tiers 4, hanging rods 3, mobility Lockable rolling casters, total capacity 463 lb. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Assembled size",
@@ -8039,8 +8114,8 @@
           "a": "Check these deciding details against the installation: Assembled size: 44.9x17.13x77.95 in · Tiers: 4 · Hanging rods: 3 · Mobility: Lockable rolling casters. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8074,7 +8149,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 8199,
       "image": "https://cf.cjdropshipping.com/17751744/e94b5b00-d4a9-4c37-bcb7-e98b50f69f7e.jpg",
       "images": [
@@ -8089,7 +8164,7 @@
       "maxDays": 5,
       "headline": "See product drawing in • 3 • 1",
       "fit": "Assembled size: See product drawing in · Tiers: 3 · Hanging rods: 1 · Mobility: Lockable rolling casters",
-      "summary": "3 Tier Chrome Rolling Garment Rack ships from verified US inventory. Product Name:Heavy Duty Garment Rack on Wheels, Rolling Freestanding Closet Organizer and Clothes Rack for Hanging Clothes with 1 Hang Rod, Adjustable Metal Wardrobe, 15.7\" D x 45.3\" W x 75.6\" H, Chrome. Confirm every deciding measurement and connection before ordering.",
+      "summary": "3 Tier Chrome Rolling Garment Rack for installations matching Assembled size: See product drawing in · Tiers: 3 · Hanging rods: 1 · Mobility: Lockable rolling casters. Key published specifications: assembled size See product drawing in, tiers 3, hanging rods 1, mobility Lockable rolling casters. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Assembled size",
@@ -8128,8 +8203,8 @@
           "a": "Check these deciding details against the installation: Assembled size: See product drawing in · Tiers: 3 · Hanging rods: 1 · Mobility: Lockable rolling casters. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 198 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8163,7 +8238,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 2849,
       "image": "https://cf.cjdropshipping.com/17857152/ce364663-0f18-470a-b8f7-e864636115dc.jpg",
       "images": [
@@ -8178,7 +8253,7 @@
       "maxDays": 3,
       "headline": "26 • Rechargeable pump included",
       "fit": "Bag count: 26 · Pump: Rechargeable pump included",
-      "summary": "26 Pack Vacuum Storage Bag Kit ships from verified US inventory. Built for the exact dimensions and connection details shown in the specifications. Confirm every deciding measurement and connection before ordering.",
+      "summary": "26 Pack Vacuum Storage Bag Kit for installations matching Bag count: 26 · Pump: Rechargeable pump included. Key published specifications: bag count 26, pump Rechargeable pump included. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Bag count",
@@ -8213,8 +8288,8 @@
           "a": "Check these deciding details against the installation: Bag count: 26 · Pump: Rechargeable pump included. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 2255 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8248,7 +8323,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 9999,
       "image": "https://cf.cjdropshipping.com/doba-import/9b6e4e7eba6b444f91c0f55f14767f81.jpg",
       "images": [
@@ -8263,7 +8338,7 @@
       "maxDays": 5,
       "headline": "7 • 360 degrees • Black",
       "fit": "Tier count: 7 · Rotation: 360 degrees · Color: Black · Footprint: 60cm x 60cm",
-      "summary": "7 Tier Black Rotating Shoe Rack ships from verified US inventory. Introducing the sleek and modern 7-Tier 360° Rotating Shoe Rack, an innovative storage solution designed to maximize space and organization. Constructed from durable wood-plastic composite (WPC), this robust rack stands 184cm tall with a 60cm x 60cm square footprint, featuring seven spacious tiers to accommodate a substantial shoe collection. The highlight is its smooth 360-degree rotation mechanism, providing effortless all-around access without needing to move the unit. Confirm every deciding measurement and connection before ordering.",
+      "summary": "7 Tier Black Rotating Shoe Rack for installations matching Tier count: 7 · Rotation: 360 degrees · Color: Black · Footprint: 60cm x 60cm. Key published specifications: tier count 7, rotation 360 degrees, color Black, footprint 60cm x 60cm. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Tier count",
@@ -8300,8 +8375,8 @@
           "a": "Check these deciding details against the installation: Tier count: 7 · Rotation: 360 degrees · Color: Black · Footprint: 60cm x 60cm. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 1150 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8335,7 +8410,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 15999,
       "image": "https://cf.cjdropshipping.com/doba-import/0721c7efb6064bbd8c85780ea8ad0505.jpg",
       "images": [
@@ -8350,7 +8425,7 @@
       "maxDays": 5,
       "headline": "8 • 360 degrees • White",
       "fit": "Tier count: 8 · Rotation: 360 degrees · Color: White · Footprint: Verify product drawing",
-      "summary": "8 Tier White Rotating Shoe Rack ships from verified US inventory. Maximize Storage with Space-Saving Design – Effortlessly fit this 23.7\"W x 23.7\"D x 72.44\"H shoe rack can be easily placed in closets or entryways to hold 32 pairs of shoes, bags, or accessories, freeing valuable floor space and eliminating clutter.. Effortless Visibility & Organization via 8-Tier Spinning System – Rotating lazy susan mechanism ensures every shoe is instantly visible and accessible; no more digging through piles to find your favorite pair, keeping your home clean and tidy.. Hold More in Less Space with Smart Rotation – Innovative spinning design crams maximum capacity into minimal square footage, Confirm every deciding measurement and connection before ordering.",
+      "summary": "8 Tier White Rotating Shoe Rack for installations matching Tier count: 8 · Rotation: 360 degrees · Color: White · Footprint: Verify product drawing. Key published specifications: tier count 8, rotation 360 degrees, color White, footprint Verify product drawing. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Tier count",
@@ -8391,8 +8466,8 @@
           "a": "Check these deciding details against the installation: Tier count: 8 · Rotation: 360 degrees · Color: White · Footprint: Verify product drawing. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8426,7 +8501,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "636",
+      "googleCategory": "5558",
       "price": 9999,
       "image": "https://cf.cjdropshipping.com/17658432/0fe1cd17-6082-4885-b465-dca4a5f21820.jpg",
       "images": [
@@ -8441,7 +8516,7 @@
       "maxDays": 5,
       "headline": "6 • 360 degrees • White",
       "fit": "Tier count: 6 · Rotation: 360 degrees · Color: White · Footprint: Verify product drawing",
-      "summary": "6 Tier White Rotating Shoe Rack ships from verified US inventory. 360° Rotating Design: The rotating shoe rack features a 360° rotating base and 4 compartments. The 21 cm inner height fits various shoe types; the 40 cm high bottom tier can be used to store boots, solving the trouble of searching and making access quick . Large-Capacity Storage: The 6-tier spinning shoe rack provides ample vertical storage to hold 24 pairs of shoes. Confirm every deciding measurement and connection before ordering.",
+      "summary": "6 Tier White Rotating Shoe Rack for installations matching Tier count: 6 · Rotation: 360 degrees · Color: White · Footprint: Verify product drawing. Key published specifications: tier count 6, rotation 360 degrees, color White, footprint Verify product drawing. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Tier count",
@@ -8478,8 +8553,8 @@
           "a": "Check these deciding details against the installation: Tier count: 6 · Rotation: 360 degrees · Color: White · Footprint: Verify product drawing. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 257 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8528,7 +8603,7 @@
       "maxDays": 5,
       "headline": "68.74 in • 36 in • 1 to 1-3/4 in",
       "fit": "Track length: 68.74 in · Door width: 36 in · Door thickness: 1 to 1-3/4 in",
-      "summary": "69 Inch Soft Close Pocket Door Track ships from verified US inventory. Clear Size Compatibility: This pocket door track kit fits common interior door sizes. Featuring a 68.74 in (1746 mm) track, it fits 36 in (914 mm) wide doors with thicknesses from 1 to 1-3/4 in (25–45 mm). Ideal for bedrooms, closets, and storage rooms . Confirm every deciding measurement and connection before ordering.",
+      "summary": "69 Inch Soft Close Pocket Door Track for installations matching Track length: 68.74 in · Door width: 36 in · Door thickness: 1 to 1-3/4 in. Key published specifications: track length 68.74 in, door width 36 in, door thickness 1 to 1-3/4 in. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Track length",
@@ -8571,8 +8646,8 @@
           "a": "Check these deciding details against the installation: Track length: 68.74 in · Door width: 36 in · Door thickness: 1 to 1-3/4 in. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 106 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8621,7 +8696,7 @@
       "maxDays": 3,
       "headline": "30 to 36 in • Confirm door handing • Included",
       "fit": "Door width: 30 to 36 in · Handing: Confirm door handing · Exterior lever: Included · Application: Metal or wood exit door",
-      "summary": "31 Inch Stainless Panic Exit Bar ships from verified US inventory. Panic Bar for Exit Door: This push bar door lock is constructed from thickened 304 stainless steel, rust and corrosion-resistant. It complies with ANSI testing standards, enduring over 500,000 cycles of opening/closing tests. It's also fire-resistant and heat-resistant, making it the ideal choice for high-traffic emergency doors. Confirm every deciding measurement and connection before ordering.",
+      "summary": "31 Inch Stainless Panic Exit Bar for installations matching Door width: 30 to 36 in · Handing: Confirm door handing · Exterior lever: Included · Application: Metal or wood exit door. Key published specifications: door width 30 to 36 in, handing Confirm door handing, exterior lever Included, application Metal or wood exit door. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Door width",
@@ -8665,8 +8740,8 @@
           "a": "Check these deciding details against the installation: Door width: 30 to 36 in · Handing: Confirm door handing · Exterior lever: Included · Application: Metal or wood exit door. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 429 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8715,7 +8790,7 @@
       "maxDays": 3,
       "headline": "Verify product drawing in • Left or right • Included",
       "fit": "Door width: Verify product drawing in · Handing: Left or right · Exterior lever: Included · Application: Metal or wood exit door",
-      "summary": "Reversible Carbon Steel Panic Exit Bar ships from verified US inventory. Heavy-Duty Panic Bar for Exit Door: This push bar door lock is constructed from thickened carbon steel with a rust-resistant coating, ensuring high strength and resistance to damage. It complies with ANSI testing standards, enduring over 500,000 cycles of opening/closing tests. It's also fire-resistant and heat-resistant, making it the ideal choice for high-traffic emergency doors. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Reversible Carbon Steel Panic Exit Bar for installations matching Door width: Verify product drawing in · Handing: Left or right · Exterior lever: Included · Application: Metal or wood exit door. Key published specifications: door width Verify product drawing in, handing Left or right, exterior lever Included, application Metal or wood exit door. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Door width",
@@ -8759,8 +8834,8 @@
           "a": "Check these deciding details against the installation: Door width: Verify product drawing in · Handing: Left or right · Exterior lever: Included · Application: Metal or wood exit door. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 974 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8794,7 +8869,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "6343",
+      "googleCategory": "115",
       "price": 5499,
       "image": "https://cf.cjdropshipping.com/17659296/26e53b34-865e-4c95-bbff-67594cfe0ecb.jpg",
       "images": [
@@ -8809,7 +8884,7 @@
       "maxDays": 5,
       "headline": "2 in • 11.7 W x 34 L x 2 H in • 800 lb",
       "fit": "Rise: 2 in · Overall size: 11.7 W x 34 L x 2 H in · Capacity: 800 lb",
-      "summary": "2 Inch Aluminum Threshold Ramp ships from verified US inventory. Easy Access: This threshold ramp (11.7 in W x 34.0 in L x 2 in H) makes thresholds and curbs a breeze. Wheelchairs, scooters, carts, or bikes roll over smoothly without bumps . Heavy-Duty Load: Built from 6063-T5 aircraft aluminum with a solid 2 mm core, this door threshold ramp supports up to 800 lbs. Confirm every deciding measurement and connection before ordering.",
+      "summary": "2 Inch Aluminum Threshold Ramp for installations matching Rise: 2 in · Overall size: 11.7 W x 34 L x 2 H in · Capacity: 800 lb. Key published specifications: rise 2 in, overall size 11.7 W x 34 L x 2 H in, capacity 800 lb. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Rise",
@@ -8854,8 +8929,8 @@
           "a": "Check these deciding details against the installation: Rise: 2 in · Overall size: 11.7 W x 34 L x 2 H in · Capacity: 800 lb. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 126 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8889,7 +8964,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "6343",
+      "googleCategory": "503730",
       "price": 5999,
       "image": "https://cf.cjdropshipping.com/17742240/55ba2022-2a4b-4d63-8387-1628f1bcf618.jpg",
       "images": [
@@ -8904,7 +8979,7 @@
       "maxDays": 5,
       "headline": "Fingerprint, PIN, backup key • 50 • Silver",
       "fit": "Entry methods: Fingerprint, PIN, backup key · Fingerprint capacity: 50 · Finish: Silver · Door preparation: Confirm bore, backset and handing",
-      "summary": "Silver Fingerprint Deadbolt Handle Set ships from verified US inventory. Convenient Keyless Entry: Unlock your door in seconds with the fingerprint door lock set—no keys to lose or carry. The unique UI panel with extra finger space ensures smoother operation and effortless door handling for the whole family . Customizable Access for Family & Guests: Our fingerprint door lock with handles supports 50 fingerprints, 100 user codes, and one-time PINs. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Silver Fingerprint Deadbolt Handle Set for installations matching Entry methods: Fingerprint, PIN, backup key · Fingerprint capacity: 50 · Finish: Silver · Door preparation: Confirm bore, backset and handing. Key published specifications: entry methods Fingerprint, PIN, backup key, fingerprint capacity 50, finish Silver, door preparation Confirm bore, backset and handing. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Entry methods",
@@ -8945,8 +9020,8 @@
           "a": "Check these deciding details against the installation: Entry methods: Fingerprint, PIN, backup key · Fingerprint capacity: 50 · Finish: Silver · Door preparation: Confirm bore, backset and handing. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 633 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -8980,7 +9055,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "6343",
+      "googleCategory": "503730",
       "price": 7499,
       "image": "https://cf.cjdropshipping.com/17742240/a40660d8-1fc0-421f-8191-200076af82b0.jpg",
       "images": [
@@ -8995,7 +9070,7 @@
       "maxDays": 5,
       "headline": "Fingerprint, PIN, IC card, backup key • 50 • Matte black",
       "fit": "Entry methods: Fingerprint, PIN, IC card, backup key · Fingerprint capacity: 50 · Finish: Matte black · Door preparation: Confirm bore, backset and handing",
-      "summary": "Black Touchscreen Fingerprint Lock Set ships from verified US inventory. Convenient Keyless Entry: Keypad access keeps your home secure and hassle-free. Lock and unlock your door in seconds with the fingerprint door lock set—no keys to lose or carry. Enjoy smooth entry and dependable use for every family member . Confirm every deciding measurement and connection before ordering.",
+      "summary": "Black Touchscreen Fingerprint Lock Set for installations matching Entry methods: Fingerprint, PIN, IC card, backup key · Fingerprint capacity: 50 · Finish: Matte black · Door preparation: Confirm bore, backset and handing. Key published specifications: entry methods Fingerprint, PIN, IC card, backup key, fingerprint capacity 50, finish Matte black, door preparation Confirm bore, backset and handing. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Entry methods",
@@ -9037,8 +9112,8 @@
           "a": "Check these deciding details against the installation: Entry methods: Fingerprint, PIN, IC card, backup key · Fingerprint capacity: 50 · Finish: Matte black · Door preparation: Confirm bore, backset and handing. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 219 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9072,7 +9147,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "6343",
+      "googleCategory": "503730",
       "price": 6299,
       "image": "https://cf.cjdropshipping.com/17743968/3aaf82f6-3d95-43f9-99a1-dea98dc3f484.jpg",
       "images": [
@@ -9087,7 +9162,7 @@
       "maxDays": 5,
       "headline": "Mechanical; no battery or wiring • 4 to 7 digits • Single-sided push button",
       "fit": "Operation: Mechanical; no battery or wiring · Code length: 4 to 7 digits · Keypad: Single-sided push button · Door preparation: Confirm bore, backset and handing",
-      "summary": "Bronze Mechanical Keypad Door Lock ships from verified US inventory. Upgraded 2.0 Mechanical Lock Keypad: Update your code directly using the handle and keypad without removing the lock. Unlock with a simple mechanical code—no electronics to worry about, and clear input with the C key for quick corrections . Reliable Security without Batteries: This single-sided mechanical keyless door lock operates without batteries or wiring. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Bronze Mechanical Keypad Door Lock for installations matching Operation: Mechanical; no battery or wiring · Code length: 4 to 7 digits · Keypad: Single-sided push button · Door preparation: Confirm bore, backset and handing. Key published specifications: operation Mechanical; no battery or wiring, code length 4 to 7 digits, keypad Single-sided push button, door preparation Confirm bore, backset and handing. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Operation",
@@ -9129,8 +9204,8 @@
           "a": "Check these deciding details against the installation: Operation: Mechanical; no battery or wiring · Code length: 4 to 7 digits · Keypad: Single-sided push button · Door preparation: Confirm bore, backset and handing. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 144 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9179,7 +9254,7 @@
       "maxDays": 5,
       "headline": "70.75 in • 35.5 in • 0.75 to 1 in",
       "fit": "Track length: 70.75 in · Maximum door width: 35.5 in · Door thickness: 0.75 to 1 in · Capacity: 44 lb",
-      "summary": "6 Foot Coffee Finish Barn Door Hardware ships from verified US inventory. Widely Apply: Our sliding door hardware suitable for both contemporary and rustic style, you can apply for cabinet, TV stand, storage, closet, pet house and so on.. Scope of Application: The 70.75\" sliding barn door hardware kit accommodates the maximum door width: 35.5\"; fits door thickness: 0.75\"-1\"; maximum weight capacity: 44lbs. Sliding Smoothly: Ultra-durable pulleys move smoothly as they travel the length of the rail, fasten anti-jump pad to prevent them from jumping off of the track.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "6 Foot Coffee Finish Barn Door Hardware for installations matching Track length: 70.75 in · Maximum door width: 35.5 in · Door thickness: 0.75 to 1 in · Capacity: 44 lb. Key published specifications: track length 70.75 in, maximum door width 35.5 in, door thickness 0.75 to 1 in, capacity 44 lb, door material Wood. Not included: Professional installation, Tools and consumables, Door slab, frame repair and structural blocking unless explicitly listed.",
       "specs": [
         {
           "name": "Track length",
@@ -9230,8 +9305,8 @@
           "a": "Check these deciding details against the installation: Track length: 70.75 in · Maximum door width: 35.5 in · Door thickness: 0.75 to 1 in · Capacity: 44 lb. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 230 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9265,7 +9340,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "499933",
+      "googleCategory": "2878",
       "price": 4599,
       "image": "https://cf.cjdropshipping.com/17639424/4d3bd691-8919-401e-9ad9-91b5ee0d5971.jpg",
       "images": [
@@ -9280,7 +9355,7 @@
       "maxDays": 3,
       "headline": "20 in • 12 V • 0.55 in/s",
       "fit": "Stroke length: 20 in · Voltage: 12 V · Speed: 0.55 in/s · Thrust: 220 lb",
-      "summary": "20 Inch High Speed Linear Actuator ships from verified US inventory. Fast & Efficient Stroke Adjustment: Lift or lower effortlessly with Utiliy linear actuator, moving at a swift 0.55\"/s. Perfect for applications requiring frequent height adjustments, whether it's altering furniture heights or raising and lowering office desks and chairs. Reliable Torque Output: 220lbs robust torque output ensure stable thrust for medium-duty tasks like lifting platforms and motorized doors and windows. Confirm every deciding measurement and connection before ordering.",
+      "summary": "20 Inch High Speed Linear Actuator for installations matching Stroke length: 20 in · Voltage: 12 V · Speed: 0.55 in/s · Thrust: 220 lb. Key published specifications: stroke length 20 in, voltage 12 V, speed 0.55 in/s, thrust 220 lb, ingress protection IP54. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Stroke length",
@@ -9330,8 +9405,8 @@
           "a": "Check these deciding details against the installation: Stroke length: 20 in · Voltage: 12 V · Speed: 0.55 in/s · Thrust: 220 lb. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 308 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9380,7 +9455,7 @@
       "maxDays": 3,
       "headline": "28 in • 2 legs • Black powder coat",
       "fit": "Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb",
-      "summary": "28 Inch Adjustable Desk Legs ships from verified US inventory. Exceptional Load Capacity: Our 28-inch table leg, cast from solid steel rods, delivers exceptional strength, supporting up to 1000 pounds. The welded mounting plate enhances durability and structural integrity. Wear-resistant and Rust-proof: The high-performance matte black powder coating, applied through an electrostatic process and high-temperature baking, forms a protective layer that resists corrosion, rust, and wear for long-lasting durability. Confirm every deciding measurement and connection before ordering.",
+      "summary": "28 Inch Adjustable Desk Legs for installations matching Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Key published specifications: leg height 28 in, set quantity 2 legs, finish Black powder coat, load capacity 1000 lb, top Customer-supplied tabletop required. Not included: Professional installation, Tools and consumables, Tabletop.",
       "specs": [
         {
           "name": "Leg height",
@@ -9427,8 +9502,8 @@
           "a": "Check these deciding details against the installation: Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 715 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9477,7 +9552,7 @@
       "maxDays": 5,
       "headline": "28 in • 2 legs • Black powder coat",
       "fit": "Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb",
-      "summary": "28 Inch Z Shape Table Legs ships from verified US inventory. PREMIUM METAL MATERIAL- The table legs are made of heavy-duty steel material. Product size: 28 x 18 inches, square pipe thickness: 0.08\"/2 mm. The legs' surface is coated with matte against corrosion, rust, and scratches. Confirm every deciding measurement and connection before ordering.",
+      "summary": "28 Inch Z Shape Table Legs for installations matching Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Key published specifications: leg height 28 in, set quantity 2 legs, finish Black powder coat, load capacity 1000 lb, top Customer-supplied tabletop required. Not included: Professional installation, Tools and consumables, Tabletop.",
       "specs": [
         {
           "name": "Leg height",
@@ -9524,8 +9599,8 @@
           "a": "Check these deciding details against the installation: Leg height: 28 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 123 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9574,7 +9649,7 @@
       "maxDays": 3,
       "headline": "24 in • 2 legs • Black powder coat",
       "fit": "Leg height: 24 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb",
-      "summary": "28 Inch Box Section Table Legs ships from verified US inventory. HIGH QUALITY- Color: Black; Height: 28.3\"; Width: 23.6\"; Amount: 2; Box Section: 3.15\" x 1.57\"; Top plate size: 3.9\". These table legs adopts cold rolled steel with sandblasted finished. The surface is sprayed with black powder, compared with other table legs using oil paint finished, it is more durable and can effectively prevent them from cracking, rust and corroding. Confirm every deciding measurement and connection before ordering.",
+      "summary": "28 Inch Box Section Table Legs for installations matching Leg height: 24 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Key published specifications: leg height 24 in, set quantity 2 legs, finish Black powder coat, load capacity 1000 lb, top Customer-supplied tabletop required. Not included: Professional installation, Tools and consumables, Tabletop.",
       "specs": [
         {
           "name": "Leg height",
@@ -9621,8 +9696,8 @@
           "a": "Check these deciding details against the installation: Leg height: 24 in · Set quantity: 2 legs · Finish: Black powder coat · Load capacity: 1000 lb. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 132 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9671,7 +9746,7 @@
       "maxDays": 5,
       "headline": "4-foot length • Rectangular",
       "fit": "Table size: 4-foot length · Shape: Rectangular",
-      "summary": "4 Foot Folding Utility Table ships from verified US inventory. What you see is our 4ft Outdoor Use Aluminum Alloy Folding Table, which is ideal for family reunions, picnics, camping trips, buffets or barbecues. This table is great for entertaining and can be used as a serving table, game table, or outdoor dining table. Made of high-strength aluminum alloy, it is solid and durable to use. Confirm every deciding measurement and connection before ordering.",
+      "summary": "4 Foot Folding Utility Table for installations matching Table size: 4-foot length · Shape: Rectangular. Key published specifications: table size 4-foot length, shape Rectangular. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Table size",
@@ -9706,8 +9781,8 @@
           "a": "Check these deciding details against the installation: Table size: 4-foot length · Shape: Rectangular. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9756,7 +9831,7 @@
       "maxDays": 5,
       "headline": "48-inch diameter • Round",
       "fit": "Table size: 48-inch diameter · Shape: Round",
-      "summary": "48 Inch Round Folding Table ships from verified US inventory. The 48inch Round Folding Table Outdoor Folding Utility Table is a best choice for you. The table is made from HDPE and the leg is made of steel. It's of great outdoor leisure furniture. Confirm every deciding measurement and connection before ordering.",
+      "summary": "48 Inch Round Folding Table for installations matching Table size: 48-inch diameter · Shape: Round. Key published specifications: table size 48-inch diameter, shape Round. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Table size",
@@ -9791,8 +9866,8 @@
           "a": "Check these deciding details against the installation: Table size: 48-inch diameter · Shape: Round. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9841,7 +9916,7 @@
       "maxDays": 5,
       "headline": "Full • 0.4 in • 8-piece foldable wooden slats",
       "fit": "Mattress size: Full · Thickness: 0.4 in · Construction: 8-piece foldable wooden slats",
-      "summary": "Full Size Folding Wood Bunkie Board ships from verified US inventory. Say Goodbye to Mattress Sagging: Over time, mattresses can lose their shape and start sagging. Our bunkie board provides extra support to bring your mattress back to life, giving you better back support and a more restful night's sleep . Foldable Bunkie Boards: Our bed board can be unfolded for use when needed, and conveniently folded away when not in use, making it much easier to store and manage . Confirm every deciding measurement and connection before ordering.",
+      "summary": "Full Size Folding Wood Bunkie Board for installations matching Mattress size: Full · Thickness: 0.4 in · Construction: 8-piece foldable wooden slats. Key published specifications: mattress size Full, thickness 0.4 in, construction 8-piece foldable wooden slats. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Mattress size",
@@ -9879,8 +9954,8 @@
           "a": "Check these deciding details against the installation: Mattress size: Full · Thickness: 0.4 in · Construction: 8-piece foldable wooden slats. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 634 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -9929,7 +10004,7 @@
       "maxDays": 5,
       "headline": "Twin • 1.5 in • 2-piece wooden slats with 200D Oxford cover",
       "fit": "Mattress size: Twin · Thickness: 1.5 in · Construction: 2-piece wooden slats with 200D Oxford cover",
-      "summary": "Twin Size Covered Wood Bunkie Board ships from verified US inventory. Say Goodbye to Mattress Sagging: Over time, mattresses can lose their shape and start sagging. Our bunkie board provides extra support to bring your mattress back to life, giving you better back support and a more restful night's sleep . Modular Bunkie Boards: Designed for flexibility and easy setup, these bunkie boards come in separate pieces that can be connected and adjusted to fit your needs. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Twin Size Covered Wood Bunkie Board for installations matching Mattress size: Twin · Thickness: 1.5 in · Construction: 2-piece wooden slats with 200D Oxford cover. Key published specifications: mattress size Twin, thickness 1.5 in, construction 2-piece wooden slats with 200D Oxford cover. Not included: Professional installation, Tools and consumables.",
       "specs": [
         {
           "name": "Mattress size",
@@ -9967,8 +10042,8 @@
           "a": "Check these deciding details against the installation: Mattress size: Twin · Thickness: 1.5 in · Construction: 2-piece wooden slats with 200D Oxford cover. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 337 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10017,7 +10092,7 @@
       "maxDays": 5,
       "headline": "18 in x 18 in • Undermount • Single bowl",
       "fit": "Overall dimensions: 18 in x 18 in · Mounting: Undermount · Bowl: Single bowl",
-      "summary": "18 Inch Undermount Workstation Sink ships from verified US inventory. FASTER DRAINING DESIGN: The undermount kitchen sink has X-shaped drain grooves on the bottom that slope gently towards the drain for quick drainage and prevent water from pooling, keeping the work area clean. The sink also has a bottom grid that shields the deep sink surface from scratches and allows water to flow beneath for optimal drainage when rinsing items.. 3 mm THICKER MATERIAL FOR EXTRA DURABILITY: The single bowl kitchen sink is made of SUS304 premium stainless steel that is easy to clean, and durable with resistance to stains, scratches, and corrosion. Confirm every deciding measurement and connection before ordering.",
+      "summary": "18 Inch Undermount Workstation Sink for installations matching Overall dimensions: 18 in x 18 in · Mounting: Undermount · Bowl: Single bowl. Key published specifications: overall dimensions 18 in x 18 in, mounting Undermount, bowl Single bowl. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Overall dimensions",
@@ -10058,8 +10133,8 @@
           "a": "Check these deciding details against the installation: Overall dimensions: 18 in x 18 in · Mounting: Undermount · Bowl: Single bowl. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10108,7 +10183,7 @@
       "maxDays": 5,
       "headline": "27 in x 19 in • Undermount • Single bowl",
       "fit": "Overall dimensions: 27 in x 19 in · Mounting: Undermount · Bowl: Single bowl",
-      "summary": "27 Inch Undermount Workstation Sink ships from verified US inventory. FASTER DRAINING DESIGN: The undermount kitchen sink has X-shaped drain grooves on the bottom that slope gently towards the drain for quick drainage and prevent water from pooling, keeping the work area clean. The sink also has a bottom grid that shields the deep sink surface from scratches and allows water to flow beneath for optimal drainage when rinsing items.. 3 mm THICKER MATERIAL FOR EXTRA DURABILITY: The single bowl kitchen sink is made of SUS304 premium stainless steel that is easy to clean, and durable with resistance to stains, scratches, and corrosion. Confirm every deciding measurement and connection before ordering.",
+      "summary": "27 Inch Undermount Workstation Sink for installations matching Overall dimensions: 27 in x 19 in · Mounting: Undermount · Bowl: Single bowl. Key published specifications: overall dimensions 27 in x 19 in, mounting Undermount, bowl Single bowl. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Overall dimensions",
@@ -10149,8 +10224,8 @@
           "a": "Check these deciding details against the installation: Overall dimensions: 27 in x 19 in · Mounting: Undermount · Bowl: Single bowl. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10199,7 +10274,7 @@
       "maxDays": 5,
       "headline": "33x22x9 • Top mount / drop-in • Single bowl",
       "fit": "Overall dimensions: 33x22x9 · Mounting: Top mount / drop-in · Bowl: Single bowl",
-      "summary": "33 Inch Top Mount Workstation Sink ships from verified US inventory. Introducing our Stainless Steel 201 Single Basin Hotel Kitchen Sink, designed to meet the demanding needs of commercial kitchens and hotel environments. With dimensions of 33 inches in length, 22 inches in width, and 9 inches in depth, this robust and durable sink offers ample space for all your washing and preparation tasks. Crafted from high-quality 201 stainless steel, it provides exceptional resistance to corrosion, stains, and scratches, ensuring long-lasting performance and a professional appearance. Confirm every deciding measurement and connection before ordering.",
+      "summary": "33 Inch Top Mount Workstation Sink for installations matching Overall dimensions: 33x22x9 · Mounting: Top mount / drop-in · Bowl: Single bowl. Key published specifications: overall dimensions 33x22x9, mounting Top mount / drop-in, bowl Single bowl. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Overall dimensions",
@@ -10240,8 +10315,8 @@
           "a": "Check these deciding details against the installation: Overall dimensions: 33x22x9 · Mounting: Top mount / drop-in · Bowl: Single bowl. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10290,7 +10365,7 @@
       "maxDays": 5,
       "headline": "3-in-1 faucet and press-type glass rinser • Deck mount • Brushed nickel",
       "fit": "Configuration: 3-in-1 faucet and press-type glass rinser · Mounting: Deck mount · Finish: Brushed nickel · Temperature display: Three-color LED",
-      "summary": "3 In One LED Kitchen Faucet Glass Rinser ships from verified US inventory. Product Name:3-in-1 Kitchen Faucet with 3-Color LED Temperature Display, Press-Type Glass Rinser, High-Arc Pull-Down Sprayer, 3 Spray Modes, Brushed Nickel Finish for Modern Kitchen Sink. Assembly Length (inches):Not Applicable. Assembly Width (inches):Not Applicable. Confirm every deciding measurement and connection before ordering.",
+      "summary": "3 In One LED Kitchen Faucet Glass Rinser for installations matching Configuration: 3-in-1 faucet and press-type glass rinser · Mounting: Deck mount · Finish: Brushed nickel · Temperature display: Three-color LED. Key published specifications: configuration 3-in-1 faucet and press-type glass rinser, mounting Deck mount, finish Brushed nickel, temperature display Three-color LED. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Configuration",
@@ -10332,8 +10407,8 @@
           "a": "Check these deciding details against the installation: Configuration: 3-in-1 faucet and press-type glass rinser · Mounting: Deck mount · Finish: Brushed nickel · Temperature display: Three-color LED. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 53 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10382,7 +10457,7 @@
       "maxDays": 5,
       "headline": "Wall mount • Folding dual-joint swing arm • Dual",
       "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: Verify against installation drawing",
-      "summary": "Wall Mount Pot Filler Faucet Folding Arm ships from verified US inventory. The pot filler faucet features a free-swivel arm design, making it easier to fill any pot on the stovetop and for easier cleaning.. The double handles can well control the water flow, facilitate operation, and prevent dripping.. the surface is specially treated to prevent corrosion and fingerprints.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Wall Mount Pot Filler Faucet Folding Arm for installations matching Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: Verify against installation drawing. Key published specifications: mounting Wall mount, arm Folding dual-joint swing arm, shutoffs Dual, reach Verify against installation drawing. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Mounting",
@@ -10424,8 +10499,8 @@
           "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: Verify against installation drawing. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10474,7 +10549,7 @@
       "maxDays": 5,
       "headline": "Wall mount • Folding dual-joint swing arm • Dual",
       "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: 9.84x 7.87",
-      "summary": "Brass Folding Pot Filler Faucet ships from verified US inventory. Wall Mount Pot Filler Kitchen Faucet offers the most aesthetic and hygienic faucet available. Dual shut-off on the Pot Filler faucet allows you to turn the water off at either the wall or the spout, controlling the water flow at the point of use. Dual swing joints allow the pot filler to easily fold away when not in use and with the simple on and off with a quarter turn of the handle.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Brass Folding Pot Filler Faucet for installations matching Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: 9.84x 7.87. Key published specifications: mounting Wall mount, arm Folding dual-joint swing arm, shutoffs Dual, reach 9.84x 7.87. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Mounting",
@@ -10516,8 +10591,8 @@
           "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Dual · Reach: 9.84x 7.87. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10566,7 +10641,7 @@
       "maxDays": 5,
       "headline": "Wall mount • Folding dual-joint swing arm • Confirm reference configuration",
       "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87",
-      "summary": "Dual Joint Pot Filler Faucet ships from verified US inventory. Complete your gourmet kitchen modify with the Wall-Mount Pot Filler.. Designed to retract and swivel above your stove, this product keeps cooking tasks efficient.. Brass construction gives the faucet a high-end quality that feels durable to the touch.. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Dual Joint Pot Filler Faucet for installations matching Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87. Key published specifications: mounting Wall mount, arm Folding dual-joint swing arm, shutoffs Confirm reference configuration, reach 9.84 x 7.87. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Mounting",
@@ -10608,8 +10683,8 @@
           "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
@@ -10658,7 +10733,7 @@
       "maxDays": 5,
       "headline": "Wall mount • Folding dual-joint swing arm • Confirm reference configuration",
       "fit": "Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87",
-      "summary": "Compact Wall Mount Pot Filler Faucet ships from verified US inventory. Complete your gourmet kitchen modify with the Wall-Mount Pot Filler. Designed to retract and swivel above your stove, this product keeps cooking tasks efficient. Brass construction gives the faucet a high-end quality that feels durable to the touch. Confirm every deciding measurement and connection before ordering.",
+      "summary": "Compact Wall Mount Pot Filler Faucet for installations matching Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87. Key published specifications: mounting Wall mount, arm Folding dual-joint swing arm, shutoffs Confirm reference configuration, reach 9.84 x 7.87. Not included: Professional installation, Tools and consumables, Existing plumbing, valves and countertop or wall modification.",
       "specs": [
         {
           "name": "Mounting",
@@ -10700,8 +10775,8 @@
           "a": "Check these deciding details against the installation: Mounting: Wall mount · Arm: Folding dual-joint swing arm · Shutoffs: Confirm reference configuration · Reach: 9.84 x 7.87. Do not order from the product photo alone."
         },
         {
-          "q": "Is this item stocked in the United States?",
-          "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
+          "q": "Where does this item ship from?",
+          "a": "This item ships from a United States warehouse. Availability is confirmed again before checkout."
         },
         {
           "q": "Is shipping included in the listed price?",
