@@ -98,7 +98,8 @@
         "cost": 1231,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-10"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "bamboo-drawer-organizer",
@@ -171,7 +172,8 @@
         "cost": 3199,
         "shippingCost": 350,
         "costCheckedAt": "2026-10-10"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "under-sink-organizer",
@@ -252,7 +254,8 @@
         "cost": 2020,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-10"
-      }
+      },
+      "googleCategory": "1673"
     },
     {
       "slug": "cable-raceway",
@@ -387,7 +390,8 @@
         "buySiteId": 2,
         "supplier": "Stone's Store",
         "warehouse": "CN"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "door-draft-stopper",
@@ -503,7 +507,8 @@
         "buySiteId": 2,
         "supplier": "Hose Harmony Boutique Store",
         "warehouse": "CN"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "tension-rod",
@@ -629,7 +634,8 @@
         "buySiteId": 2,
         "supplier": "CHUKE Store",
         "warehouse": "CN"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "adjustable-bed-frame-casters",
@@ -746,7 +752,8 @@
         "cost": 2176,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "kerf-door-seal-81-white",
@@ -840,7 +847,8 @@
         "cost": 690,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "extra-wide-door-sweep-36-white",
@@ -931,7 +939,8 @@
         "cost": 1798,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "fixed-mount-wire-shelf-clips",
@@ -1022,7 +1031,8 @@
         "cost": 1236,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "heavy-duty-closet-pole-sockets",
@@ -1117,7 +1127,8 @@
         "cost": 898,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "kv-rp-0495-bn-shelf-rod-bracket",
@@ -1250,7 +1261,8 @@
         "cost": 1229,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "korky-100bp-two-inch-toilet-flapper",
@@ -1348,7 +1360,8 @@
         "cost": 684,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "broan-qt20000-charcoal-filter",
@@ -1436,7 +1449,8 @@
         "cost": 1584,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "five-pound-flour-keeper",
@@ -1537,7 +1551,8 @@
         "cost": 1695,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "furniture-sliders",
@@ -1661,7 +1676,8 @@
         "buySiteId": 2,
         "supplier": "HomeWhimsy Store",
         "warehouse": "CN"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "furniture-anchors",
@@ -1743,7 +1759,8 @@
         "cost": 702,
         "shippingCost": 199,
         "costCheckedAt": "2026-10-07"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "closet-rod",
@@ -1903,7 +1920,8 @@
         "buySiteId": 2,
         "supplier": "Kawaii Homedecor Store",
         "warehouse": "CN"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "closet-motion-light",
@@ -2017,7 +2035,8 @@
         "cost": 319,
         "shippingCost": 199,
         "costCheckedAt": "2026-10-07"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "american-standard-022650-slip-on-tub-spout",
@@ -2136,7 +2155,8 @@
         "cost": 2080,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "2463"
     },
     {
       "slug": "kohler-pennington-k2196-single-hole-white",
@@ -2276,7 +2296,8 @@
         "cost": 7185,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "2886"
     },
     {
       "slug": "kohler-1188998-canister-flush-valve",
@@ -2384,7 +2405,8 @@
         "cost": 2055,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "2691"
     },
     {
       "slug": "revent-rvs50-roomside-bath-fan",
@@ -2531,7 +2553,8 @@
         "cost": 5661,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "4485"
     },
     {
       "slug": "fluidmaster-6100-two-inch-tank-gasket",
@@ -2641,7 +2664,8 @@
         "cost": 578,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "2691"
     },
     {
       "slug": "active-displayport-to-hdmi-4k60-adapter",
@@ -2862,7 +2886,8 @@
             "costCheckedAt": "2026-10-09"
           }
         }
-      ]
+      ],
+      "googleCategory": "1867"
     },
     {
       "slug": "hdmi-to-displayport-4k30-adapter",
@@ -2987,7 +3012,8 @@
         "cost": 4265,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "1867"
     },
     {
       "slug": "dvi-d-to-displayport-adapter",
@@ -3102,7 +3128,8 @@
         "cost": 3900,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "1867"
     },
     {
       "slug": "usb-b-panel-mount-extension",
@@ -3233,7 +3260,8 @@
         "cost": 1099,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "259"
     },
     {
       "slug": "displayport-to-mini-displayport-adapter",
@@ -3374,7 +3402,8 @@
         "cost": 1000,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "1867"
     },
     {
       "slug": "closetmaid-shelftrack-shelf-brackets",
@@ -3566,7 +3595,8 @@
             "costCheckedAt": "2026-10-09"
           }
         }
-      ]
+      ],
+      "googleCategory": "5558"
     },
     {
       "slug": "closetmaid-2817-shoe-shelf-brackets",
@@ -3685,7 +3715,8 @@
         "minDays": 2,
         "maxDays": 2,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "closetmaid-shelftrack-vertical-standards",
@@ -3877,7 +3908,8 @@
             "costCheckedAt": "2026-10-09"
           }
         }
-      ]
+      ],
+      "googleCategory": "5558"
     },
     {
       "slug": "kv-cd-0017-brz-pole-end-caps",
@@ -3999,7 +4031,8 @@
         "minDays": 2,
         "maxDays": 2,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "kv-closet-culture-basket-surround",
@@ -4123,7 +4156,8 @@
         "minDays": 6,
         "maxDays": 6,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "closetmaid-5629-superslide-supports",
@@ -4264,7 +4298,8 @@
         "minDays": 4,
         "maxDays": 4,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "5558"
     },
     {
       "slug": "standard-duty-storm-door-closer-black",
@@ -4370,7 +4405,8 @@
         "cost": 1048,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6446"
     },
     {
       "slug": "one-inch-rubber-threshold-ramp",
@@ -4481,7 +4517,8 @@
         "cost": 2513,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "115"
     },
     {
       "slug": "four-foot-bypass-door-hardware",
@@ -4586,7 +4623,8 @@
         "cost": 4686,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "pocket-door-track-24-to-30-inch",
@@ -4691,7 +4729,8 @@
         "cost": 4165,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "screen-spline-0125-inch-100-foot",
@@ -4794,7 +4833,8 @@
         "cost": 686,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "eight-foot-j-hanger-barn-door-kit",
@@ -4903,7 +4943,8 @@
         "cost": 5034,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6343"
     },
     {
       "slug": "vevor-gd60fd-leveling-casters",
@@ -5038,7 +5079,8 @@
         "cost": 2607,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "499981"
     },
     {
       "slug": "vevor-cc-pbjl-4-plate-casters",
@@ -5174,7 +5216,8 @@
         "cost": 2252,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "499981"
     },
     {
       "slug": "yormtoir-low-profile-repair-casters",
@@ -5313,7 +5356,8 @@
         "cost": 699,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "499981"
     },
     {
       "slug": "souldershop-three-inch-recliner-springs",
@@ -5432,7 +5476,8 @@
         "cost": 999,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "499933"
     },
     {
       "slug": "keileoho-150n-lift-top-hinges",
@@ -5567,7 +5612,8 @@
         "cost": 1959,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "1771"
     },
     {
       "slug": "insinkerator-standard-sink-flange",
@@ -5787,7 +5833,8 @@
         "site": "the home depot",
         "supplier": "homedepot",
         "warehouse": "US"
-      }
+      },
+      "googleCategory": "6747"
     },
     {
       "slug": "insinkerator-qcb-am-evolution-baffle",
@@ -5884,7 +5931,8 @@
         "cost": 749,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "6747"
     },
     {
       "slug": "moen-150259-pulldown-hose-kit",
@@ -5983,7 +6031,8 @@
         "cost": 2269,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "1489"
     },
     {
       "slug": "lg-aap73631702-refrigerator-door-bin",
@@ -6082,7 +6131,8 @@
         "cost": 2795,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "3848"
     },
     {
       "slug": "kohler-k-9110-bn-dishwasher-air-gap",
@@ -6197,7 +6247,8 @@
         "cost": 3551,
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
-      }
+      },
+      "googleCategory": "3443"
     },
     {
       "slug": "six-inch-square-shower-drain-brushed-gold",
@@ -6206,7 +6257,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "googleCategory": "1673",
       "price": 6499,
       "image": "https://cf.cjdropshipping.com/17718912/a7ff48c5-d66a-4495-bc9a-f16448977292.jpg",
       "images": [
@@ -6264,8 +6315,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 230 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6295,7 +6346,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 11999,
       "image": "https://cf.cjdropshipping.com/doba-import/4e6e812b378e4032b11a2988ef153ad6.jpg",
       "images": [
@@ -6352,8 +6403,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6383,7 +6434,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 6799,
       "image": "https://cf.cjdropshipping.com/doba-import/2f1623a17d5e450ca3f95c6d434fa60d.jpg",
       "images": [
@@ -6440,8 +6491,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6471,7 +6522,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "googleCategory": "608",
       "price": 7999,
       "image": "https://cf.cjdropshipping.com/17660160/6f12bb79-94da-446e-b368-f5798018e374.jpg",
       "images": [
@@ -6537,8 +6588,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 202 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6568,7 +6619,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "googleCategory": "608",
       "price": 6499,
       "image": "https://cf.cjdropshipping.com/17660160/e7cc0eca-7ddf-4b76-92de-fdc4643cee0c.jpg",
       "images": [
@@ -6634,8 +6685,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 145 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6665,7 +6716,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "googleCategory": "608",
       "price": 6299,
       "image": "https://cf.cjdropshipping.com/17660160/9e34cf36-f4ab-4540-81ef-ecef59302077.jpg",
       "images": [
@@ -6731,8 +6782,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 724 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6762,7 +6813,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "googleCategory": "608",
       "price": 5999,
       "image": "https://cf.cjdropshipping.com/17660160/b9820608-f57d-4f0f-95b1-a0e1f40a13c1.jpg",
       "images": [
@@ -6828,8 +6879,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 616 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6859,7 +6910,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Bathroom",
-      "googleCategory": "Home & Garden > Household Appliances > Climate Control Appliances > Fans",
+      "googleCategory": "608",
       "price": 10999,
       "image": "https://cf.cjdropshipping.com/17660160/2d268d0d-1bcf-4642-ad08-90de86bf7c39.jpg",
       "images": [
@@ -6932,8 +6983,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 146 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -6963,7 +7014,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories",
+      "googleCategory": "8231",
       "price": 12099,
       "image": "https://cf.cjdropshipping.com/17659296/5252417e-5769-44c5-8203-70e3fa98b359.jpg",
       "images": [
@@ -7031,8 +7082,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 204 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7062,7 +7113,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories",
+      "googleCategory": "8231",
       "price": 10399,
       "image": "https://cf.cjdropshipping.com/17660160/ac7bb0ca-395c-4ee8-a195-02bbf41b77e1.jpg",
       "images": [
@@ -7130,8 +7181,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 107 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7161,7 +7212,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories",
+      "googleCategory": "8231",
       "price": 12999,
       "image": "https://cf.cjdropshipping.com/17660160/f77c2d7d-60b1-4673-88c8-33042bacf4c6.jpg",
       "images": [
@@ -7229,8 +7280,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 253 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7260,7 +7311,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "googleCategory": "259",
       "price": 11899,
       "image": "https://cf.cjdropshipping.com/17743968/89075162-5418-466b-8dce-48c56b7cb219.jpg",
       "images": [
@@ -7321,8 +7372,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 289 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7352,7 +7403,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "googleCategory": "259",
       "price": 8099,
       "image": "https://cf.cjdropshipping.com/17743968/431ce057-8f0a-4cfe-9401-98bb8424bac3.jpg",
       "images": [
@@ -7413,8 +7464,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 133 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7444,7 +7495,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "googleCategory": "259",
       "price": 5099,
       "image": "https://cf.cjdropshipping.com/17743968/71b95275-ccb3-4828-9d13-46eb34857fbd.jpg",
       "images": [
@@ -7505,8 +7556,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 175 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7536,7 +7587,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "googleCategory": "259",
       "price": 8199,
       "image": "https://cf.cjdropshipping.com/17660160/baae9d24-d808-4903-a422-fbe04d167d18.jpg",
       "images": [
@@ -7602,8 +7653,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 1271 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7633,7 +7684,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Cable",
-      "googleCategory": "Electronics > Electronics Accessories > Cables",
+      "googleCategory": "259",
       "price": 6799,
       "image": "https://cf.cjdropshipping.com/17745696/83325f9a-3708-4b90-ad25-d83074830c40.jpg",
       "images": [
@@ -7699,8 +7750,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 662 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7730,7 +7781,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 6399,
       "image": "https://cf.cjdropshipping.com/17743968/53f390e7-8baf-4f94-88d0-034b23c1db33.jpg",
       "images": [
@@ -7800,8 +7851,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 130 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7831,7 +7882,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 11999,
       "image": "https://cf.cjdropshipping.com/doba-import/1b6e5e27e8d942bcaef16ecb6f99a5fe.jpg",
       "images": [
@@ -7896,8 +7947,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -7927,7 +7978,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 9899,
       "image": "https://cf.cjdropshipping.com/doba-import/ee417a0346f44698aead8c8dfbdabdf8.jpg",
       "images": [
@@ -7992,8 +8043,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8023,7 +8074,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 8199,
       "image": "https://cf.cjdropshipping.com/17751744/e94b5b00-d4a9-4c37-bcb7-e98b50f69f7e.jpg",
       "images": [
@@ -8081,8 +8132,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 198 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8112,7 +8163,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 2849,
       "image": "https://cf.cjdropshipping.com/17857152/ce364663-0f18-470a-b8f7-e864636115dc.jpg",
       "images": [
@@ -8166,8 +8217,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 2255 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8197,7 +8248,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 9999,
       "image": "https://cf.cjdropshipping.com/doba-import/9b6e4e7eba6b444f91c0f55f14767f81.jpg",
       "images": [
@@ -8253,8 +8304,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 1150 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8284,7 +8335,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 15999,
       "image": "https://cf.cjdropshipping.com/doba-import/0721c7efb6064bbd8c85780ea8ad0505.jpg",
       "images": [
@@ -8344,8 +8395,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8375,7 +8426,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Closet",
-      "googleCategory": "Home & Garden > Household Supplies > Storage & Organization",
+      "googleCategory": "636",
       "price": 9999,
       "image": "https://cf.cjdropshipping.com/17658432/0fe1cd17-6082-4885-b465-dca4a5f21820.jpg",
       "images": [
@@ -8431,8 +8482,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 257 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8462,7 +8513,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 6849,
       "image": "https://cf.cjdropshipping.com/17743968/2c5039cb-2477-4568-9ebd-4616d00e3d92.jpg",
       "images": [
@@ -8524,8 +8575,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 106 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8555,7 +8606,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 8999,
       "image": "https://cf.cjdropshipping.com/17660160/765014a9-4abb-4888-9258-9e8a803e569d.jpg",
       "images": [
@@ -8618,8 +8669,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 429 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8649,7 +8700,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 6499,
       "image": "https://cf.cjdropshipping.com/17660160/3791c73c-f8d2-4507-99bc-78a7ffd603af.jpg",
       "images": [
@@ -8712,8 +8763,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 974 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8743,7 +8794,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 5499,
       "image": "https://cf.cjdropshipping.com/17659296/26e53b34-865e-4c95-bbff-67594cfe0ecb.jpg",
       "images": [
@@ -8807,8 +8858,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 126 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8838,7 +8889,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 5999,
       "image": "https://cf.cjdropshipping.com/17742240/55ba2022-2a4b-4d63-8387-1628f1bcf618.jpg",
       "images": [
@@ -8898,8 +8949,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 633 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -8929,7 +8980,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 7499,
       "image": "https://cf.cjdropshipping.com/17742240/a40660d8-1fc0-421f-8191-200076af82b0.jpg",
       "images": [
@@ -8990,8 +9041,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 219 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9021,7 +9072,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 6299,
       "image": "https://cf.cjdropshipping.com/17743968/3aaf82f6-3d95-43f9-99a1-dea98dc3f484.jpg",
       "images": [
@@ -9082,8 +9133,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 144 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9113,7 +9164,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Door",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "6343",
       "price": 8499,
       "image": "https://cf.cjdropshipping.com/doba-import/afbbdd49bafc4690a017fd36b0f8d088.jpg",
       "images": [
@@ -9183,8 +9234,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 230 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9214,7 +9265,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Hardware > Building Materials > Doors > Door Hardware",
+      "googleCategory": "499933",
       "price": 4599,
       "image": "https://cf.cjdropshipping.com/17639424/4d3bd691-8919-401e-9ad9-91b5ee0d5971.jpg",
       "images": [
@@ -9283,8 +9334,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 308 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9314,7 +9365,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Furniture Parts",
+      "googleCategory": "6911",
       "price": 4999,
       "image": "https://cf.cjdropshipping.com/17639424/3cacbdf2-4a16-4925-a250-c28874354136.jpg",
       "images": [
@@ -9380,8 +9431,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 715 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9411,7 +9462,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Furniture Parts",
+      "googleCategory": "6911",
       "price": 6199,
       "image": "https://cf.cjdropshipping.com/17639424/181bcc76-72ac-4eeb-b39b-3643276edc9a.jpg",
       "images": [
@@ -9477,8 +9528,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 123 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9508,7 +9559,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Furniture Parts",
+      "googleCategory": "6911",
       "price": 7499,
       "image": "https://cf.cjdropshipping.com/17659296/48d681b4-84fd-4ae5-b66a-5ae5a34acabe.jpg",
       "images": [
@@ -9574,8 +9625,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 132 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9605,7 +9656,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Tables",
+      "googleCategory": "4080",
       "price": 7499,
       "image": "https://cf.cjdropshipping.com/doba-import/4c1a7156de38404f997176c8cb0f6598.jpg",
       "images": [
@@ -9659,8 +9710,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9690,7 +9741,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Tables",
+      "googleCategory": "4080",
       "price": 10999,
       "image": "https://cf.cjdropshipping.com/doba-import/0719cdc45d004917802f80af7263988e.jpg",
       "images": [
@@ -9744,8 +9795,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9775,7 +9826,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Beds & Accessories",
+      "googleCategory": "2720",
       "price": 6999,
       "image": "https://cf.cjdropshipping.com/17661024/18a4bc8d-4df5-4480-9ee6-2ca278a41f8f.jpg",
       "images": [
@@ -9832,8 +9883,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 634 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9863,7 +9914,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Furniture",
-      "googleCategory": "Home & Garden > Furniture > Beds & Accessories",
+      "googleCategory": "2720",
       "price": 5999,
       "image": "https://cf.cjdropshipping.com/17743968/557fa653-0aec-496a-a5bd-a02ed05085b3.jpg",
       "images": [
@@ -9920,8 +9971,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 337 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -9951,7 +10002,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "googleCategory": "1673",
       "price": 17999,
       "image": "https://cf.cjdropshipping.com/doba-import/8f8d6a07bd0b44649f24d2ba3bd6e334.jpg",
       "images": [
@@ -10011,8 +10062,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10042,7 +10093,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "googleCategory": "1673",
       "price": 15399,
       "image": "https://cf.cjdropshipping.com/doba-import/cf2a703d48a44ac383f304ca25ad3791.jpg",
       "images": [
@@ -10102,8 +10153,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10133,7 +10184,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures",
+      "googleCategory": "1673",
       "price": 18999,
       "image": "https://cf.cjdropshipping.com/doba-import/38e1fa832da4482fb6041e5815d0e819.jpg",
       "images": [
@@ -10193,8 +10244,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10224,7 +10275,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 10699,
       "image": "https://cf.cjdropshipping.com/17740512/d755c874-33fa-438f-ba84-04faad559db6.jpg",
       "images": [
@@ -10285,8 +10336,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 53 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10316,7 +10367,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 16999,
       "image": "https://cf.cjdropshipping.com/doba-import/eb680b35bd9f45f3b3cc1d9b3c3f3982.jpg",
       "images": [
@@ -10377,8 +10428,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10408,7 +10459,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 15999,
       "image": "https://cf.cjdropshipping.com/doba-import/d2c150520a9a4075ab48593600b91e54.jpg",
       "images": [
@@ -10469,8 +10520,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10500,7 +10551,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 14999,
       "image": "https://cf.cjdropshipping.com/doba-import/b2c1fb647e1e4ecdbcb1d8ce5f6dc9a1.jpg",
       "images": [
@@ -10561,8 +10612,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",
@@ -10592,7 +10643,7 @@
       "brand": "Utiliy",
       "identifierExists": false,
       "category": "Kitchen",
-      "googleCategory": "Hardware > Plumbing > Plumbing Fixtures > Faucets",
+      "googleCategory": "2032",
       "price": 14499,
       "image": "https://cf.cjdropshipping.com/doba-import/c8848b1dedb149f090484170671bdee7.jpg",
       "images": [
@@ -10653,8 +10704,8 @@
           "a": "Yes. CJdropshipping US inventory was verified at 460 units on 2026-10-11. Inventory can change before checkout."
         },
         {
-          "q": "What identifier should I use for Google Shopping?",
-          "a": "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN."
+          "q": "Is shipping included in the listed price?",
+          "a": "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page."
         },
         {
           "q": "What is not included?",

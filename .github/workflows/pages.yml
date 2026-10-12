@@ -24,6 +24,7 @@ jobs:
           node-version: 22
       - run: npm run check:margins
       - run: node scripts/build.mjs
+      - run: npm run audit:build
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
@@ -49,3 +50,14 @@ jobs:
       - name: Notify search and AI indexes
         continue-on-error: true
         run: node scripts/submit-indexnow.mjs
+
+  audit-live:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Verify public URLs, canonicals, and 404 handling
+        run: npm run audit:live

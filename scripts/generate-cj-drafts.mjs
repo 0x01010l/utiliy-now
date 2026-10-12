@@ -294,16 +294,17 @@ function exclusionsFor(product) {
 
 function googleCategoryFor(product) {
   const slug = product.slug;
-  if (/faucet/.test(slug)) return "Hardware > Plumbing > Plumbing Fixtures > Faucets";
-  if (/sink|shower-drain/.test(slug)) return "Hardware > Plumbing > Plumbing Fixtures";
-  if (/bath.*fan/.test(slug)) return "Home & Garden > Household Appliances > Climate Control Appliances > Fans";
-  if (/closet|garment|shoe-rack|vacuum-storage/.test(slug)) return "Home & Garden > Household Supplies > Storage & Organization";
-  if (/table-legs|desk-legs/.test(slug)) return "Home & Garden > Furniture > Furniture Parts";
-  if (/table/.test(slug)) return "Home & Garden > Furniture > Tables";
-  if (/bunkie-board/.test(slug)) return "Home & Garden > Furniture > Beds & Accessories";
-  if (/j1772|nacs-extension/.test(slug)) return "Vehicles & Parts > Vehicle Parts & Accessories > Electric Vehicle Charging Accessories";
-  if (/solar|generator-cord|splitter-cord/.test(slug)) return "Electronics > Electronics Accessories > Cables";
-  return "Hardware > Building Materials > Doors > Door Hardware";
+  if (/faucet/.test(slug)) return "2032"; // Plumbing Fixtures > Faucets
+  if (/sink|shower-drain/.test(slug)) return "1673"; // Plumbing Fixtures
+  if (/bath.*fan/.test(slug)) return "4485"; // Ventilation Fans
+  if (/closet|garment|shoe-rack|vacuum-storage/.test(slug)) return "5558"; // Clothing & Closet Storage
+  if (/table-legs|desk-legs/.test(slug)) return "6911"; // Table Legs
+  if (/table/.test(slug)) return "4080"; // Folding Tables
+  if (/bunkie-board/.test(slug)) return "2720"; // Mattress Foundations
+  if (/j1772|nacs-extension/.test(slug)) return "8231"; // Motor Vehicle Power & Electrical Systems
+  if (/solar|generator-cord|splitter-cord/.test(slug)) return "259"; // Cables
+  if (/linear-actuator/.test(slug)) return "499933"; // Springs
+  return "6343"; // Door Hardware
 }
 
 function productRecord(product) {
@@ -352,8 +353,8 @@ function productRecord(product) {
         a: `Yes. CJdropshipping US inventory was verified at ${product.stockQuantity} units on ${product.checkedAt}. Inventory can change before checkout.`,
       },
       {
-        q: "What identifier should I use for Google Shopping?",
-        a: "This is a generic Utiliy product without a verified GS1 GTIN. The listing correctly uses identifier_exists=no and does not claim the supplier's internal barcode as a GTIN.",
+        q: "Is shipping included in the listed price?",
+        a: "Yes. The listed price includes standard shipping to a United States address. The current delivery window is shown on this product page.",
       },
       {
         q: "What is not included?",

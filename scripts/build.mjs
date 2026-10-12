@@ -35,27 +35,6 @@ function catSlug(name) {
   return String(name).toLowerCase();
 }
 const returnsSentence = "You can return an unused item within 30 days of delivery. You pay the return postage. If the item arrives damaged, or it is a different measurement than the product page states, write to support@utiliy.com and Utiliy pays the return.";
-const googleCategory = {
-  "corner-shower-caddy": "Home & Garden > Bathroom Accessories",
-  "bamboo-drawer-organizer": "Home & Garden > Household Supplies > Storage & Organization > Household Drawer Organizer Inserts",
-  "under-sink-organizer": "Home & Garden > Kitchen & Dining > Kitchen Tools & Utensils > Kitchen Organizers",
-  "cable-raceway": "Electronics > Electronics Accessories > Cable Management",
-  "door-draft-stopper": "Hardware > Building Materials > Weather Stripping & Weatherization Supplies",
-  "tension-rod": "Home & Garden > Decor > Window Treatment Accessories",
-  "furniture-sliders": "Home & Garden > Household Supplies > Furniture Floor Protectors",
-  "furniture-anchors": "Home & Garden > Emergency Preparedness > Furniture Anchors",
-  "closet-rod": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
-  "closet-motion-light": "Home & Garden > Lighting",
-  "adjustable-bed-frame-casters": "Home & Garden > Furniture > Bedroom Furniture Accessories",
-  "kerf-door-seal-81-white": "Hardware > Building Materials > Weather Stripping & Weatherization Supplies",
-  "extra-wide-door-sweep-36-white": "Hardware > Building Materials > Weather Stripping & Weatherization Supplies",
-  "fixed-mount-wire-shelf-clips": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
-  "heavy-duty-closet-pole-sockets": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
-  "kv-rp-0495-bn-shelf-rod-bracket": "Home & Garden > Household Supplies > Storage & Organization > Clothing & Closet Storage",
-  "korky-100bp-two-inch-toilet-flapper": "Hardware > Plumbing > Plumbing Fixture Hardware & Parts > Toilet & Bidet Accessories",
-  "broan-qt20000-charcoal-filter": "Home & Garden > Household Appliance Accessories > Range Hood Accessories",
-  "five-pound-flour-keeper": "Home & Garden > Kitchen & Dining > Food Storage"
-};
 function sizeOf(variant) {
   if (!variant?.decidingSpec) return variant?.label || "";
   return `${variant.decidingSpec.value}${variant.decidingSpec.unitText ? ` ${variant.decidingSpec.unitText}` : ""}`;
@@ -107,7 +86,11 @@ function productUpdated(product) {
   return dates.at(-1) || catalogUpdated;
 }
 function productImages(product) {
-  return [`${site}${displayImage(product)}`, ...product.images];
+  return [
+    `${site}${displayImage(product)}`,
+    `${site}/assets/explainers/${product.slug}/place.jpg`,
+    `${site}/assets/explainers/${product.slug}/detail.jpg`
+  ];
 }
 function specsOf(product, variant) {
   const base = product.specs || product.sharedSpecs || [];
@@ -171,6 +154,8 @@ function shell({
 <meta name="theme-color" content="#ffffff">
 ${image ? `<meta property="og:image" content="${esc(image)}">
 <meta name="twitter:image" content="${esc(image)}">
+<meta property="og:image:width" content="1024">
+<meta property="og:image:height" content="1024">
 <meta property="og:image:alt" content="${esc(imageAlt || title)}">` : ""}
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="/assets/site.css?v=20261008b">
@@ -210,8 +195,8 @@ ${body}
       <ul>
         <li><a href="/faq/">FAQ</a></li>
         <li><a href="/fitment/">Fitment</a></li>
-        <li><a href="/shipping/">Shipping</a></li>
-        <li><a href="/returns/">Returns</a></li>
+        <li><a href="/shipping/">Shipping policy</a></li>
+        <li><a href="/returns/">Returns & refunds</a></li>
         <li><a href="/contact/">Contact</a></li>
       </ul>
     </div>
@@ -219,8 +204,8 @@ ${body}
       <h3>Store</h3>
       <ul>
         <li><a href="/about/">About</a></li>
-        <li><a href="/privacy/">Privacy</a></li>
-        <li><a href="/terms/">Terms</a></li>
+        <li><a href="/privacy/">Privacy policy</a></li>
+        <li><a href="/terms/">Terms of use</a></li>
         <li><a href="/llms.txt">llms.txt</a></li>
         <li><a href="/feeds/products.json">Product feed</a></li>
       </ul>
@@ -261,6 +246,13 @@ function orgGraph() {
         areaServed: { "@type": "Country", name: "United States" },
         currenciesAccepted: "USD",
         paymentAccepted: "Credit card via Stripe",
+        contactPoint: {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          email: catalog.merchant.email,
+          availableLanguage: "English",
+          areaServed: "US"
+        },
         hasMerchantReturnPolicy: returnPolicy(),
         hasShippingService: shippingService()
       },
@@ -271,7 +263,15 @@ function orgGraph() {
         name: "Utiliy",
         description: catalog.merchant.description,
         inLanguage: "en-US",
-        publisher: { "@id": `${site}/#store` }
+        publisher: { "@id": `${site}/#store` },
+        potentialAction: {
+          "@type": "SearchAction",
+          target: {
+            "@type": "EntryPoint",
+            urlTemplate: `${site}/shop/?q={search_term_string}`
+          },
+          "query-input": "required name=search_term_string"
+        }
       }
     ]
   };
@@ -344,11 +344,13 @@ function property(spec) {
 }
 
 function offerFor(product, variant) {
+  const priceValidUntil = `${new Date().getUTCFullYear() + 1}-12-31`;
   return {
     "@type": "Offer",
     url: site + variantPath(product, variant.sku),
     priceCurrency: "USD",
     price: (variant.price / 100).toFixed(2),
+    priceValidUntil,
     availability: availabilityOf(product, variant).available
       ? "https://schema.org/InStock"
       : "https://schema.org/OutOfStock",
@@ -361,7 +363,7 @@ function offerFor(product, variant) {
 function productSchema(product, selectedSku) {
   const variants = variantsOf(product);
   const shared = (product.specs || product.sharedSpecs || []).map(property);
-  const category = product.googleCategory || googleCategory[product.slug] || product.category;
+  const category = `Home & Garden > ${product.category}`;
   const brand = product.brand ? { "@type": "Brand", name: product.brand } : null;
   if (variants.length === 1) {
     const variant = variants[0];
@@ -789,7 +791,11 @@ function productPage(product, selectedSku) {
     const available = availabilityOf(product, variant).available;
     return `<a class="size-pill${variant.sku === selected.sku ? " is-on" : ""}${available ? "" : " is-paused"}" href="${variantPath(product, variant.sku)}"${variant.sku === selected.sku ? ' aria-current="true"' : ""}><b>${esc(variant.label)}</b><span class="size-price">${money(variant.price)}</span>${available ? "" : "<small>Reviewing stock</small>"}</a>`;
   }).join("")}</div><p class="size-help">This size: ${esc(sizeOf(selected))}. <a href="#sizes">Compare sizes</a></p></div>` : "";
-  const photos = product.images.filter((src) => !src.includes("57_147cecee"));
+  const photos = [
+    displayImage(product),
+    `/assets/explainers/${product.slug}/place.jpg`,
+    `/assets/explainers/${product.slug}/detail.jpg`
+  ];
   const thumbs = photos.map((src, i) => `<button type="button" data-thumb="${esc(src)}" data-alt="${esc(product.name + ", " + product.headline)}" aria-label="View ${esc(product.name)} image ${i + 1}" aria-pressed="${i === 0 ? "true" : "false"}" ${i === 0 ? 'aria-current="true"' : ""}><img src="${esc(src)}" alt="" loading="lazy" decoding="async" referrerpolicy="no-referrer"></button>`).join("");
   const gallery = photos.slice(1).map((src, index) => `<figure class="photo-mat"><img src="${esc(src)}" alt="${esc(product.name + " product view " + (index + 2))}" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure>`).join("");
   const faqs = product.faqs.map((faq) => `<article class="question"><h3>${esc(faq.q)}</h3><p>${esc(faq.a)}</p></article>`).join("");
@@ -1108,24 +1114,43 @@ function textPage(title, description, canonical, current, inner) {
 }
 
 const shipping = textPage(
-  "Shipping",
-  "Utiliy ships to the United States. Every product page states its current supplier delivery estimate, and the listed price includes shipping.",
+  "Shipping Policy",
+  "Utiliy ships to United States addresses with standard shipping included. See processing, delivery, tracking, address-change, delay, and lost-package terms.",
   `${site}/shipping/`,
   "/shipping/",
-  `<p class="kicker">Delivery</p><h1>Shipping is in the price.</h1>
-  <p>Every price on Utiliy includes shipping to a United States address. WooCommerce collects that address at checkout.</p>
-  <ul>${products.map((product) => `<li><a href="/products/${product.slug}/">${esc(product.name)}</a>: ${esc(shipText(product))}</li>`).join("")}</ul>
-  <p>Delivery estimates and supplier data were last reviewed ${esc(catalogUpdated)}. Utiliy does not ship outside the United States.</p>`
+  `<article id="policy"><p class="kicker">Last updated ${esc(buildDate)}</p><h1>Shipping policy</h1>
+  <h2>Where we ship</h2>
+  <p>Utiliy ships only to valid residential or commercial addresses in the United States. We do not currently ship internationally, to freight forwarders, or to addresses a carrier cannot service.</p>
+  <h2>Shipping cost</h2>
+  <p>Standard shipping is included in every displayed product price. There is no separate standard-shipping charge at checkout. Prices and payments are in US dollars.</p>
+  <h2>Processing and delivery estimates</h2>
+  <p>Each product page shows its current estimated delivery window. The estimate includes order processing and carrier transit and begins after payment is accepted. It is an estimate, not a guaranteed delivery date. Weekends, holidays, severe weather, carrier disruptions, and remote destinations can add time.</p>
+  <p>Catalog delivery data was last reviewed ${esc(catalogUpdated)}. Items in one order may arrive in separate packages without an added shipping charge.</p>
+  <h2>Tracking and address changes</h2>
+  <p>When tracking is available, it is sent to the email used at checkout. Check the shipping address before paying. To request a correction, email <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a> immediately. We cannot promise a change or cancellation after fulfillment begins.</p>
+  <h2>Delays, loss, or damage</h2>
+  <p>If tracking has not moved, a package is marked delivered but missing, or an item arrives damaged, email support with the order number and relevant photos when applicable. We will investigate with the carrier or fulfillment partner and explain the available replacement or refund remedy.</p>
+  <p>Questions: <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a>.</p></article>`
 );
 
 const returns = textPage(
-  "Returns",
-  "Utiliy accepts returns within 30 days of delivery. The buyer pays return shipping unless the item arrives damaged or is the wrong size versus the page.",
+  "Returns & Refunds Policy",
+  "Utiliy accepts eligible unused returns within 30 days of delivery and explains authorization, return shipping, damage claims, inspections, and refunds.",
   `${site}/returns/`,
   "",
-  `<article id="policy"><p class="kicker">30 days</p><h1>Returns</h1>
-  <p>You can return an unused item within 30 days of delivery. You pay the return postage. If the item arrives damaged, or it is a different measurement than the product page states, write to support@utiliy.com and Utiliy pays the return.</p>
-  <p>The published measurement is the contract. A tension rod rated 1.5 kg is not a heavy closet rod, and a 90 degree shower caddy is not for a round corner.</p></article>`
+  `<article id="policy"><p class="kicker">Last updated ${esc(buildDate)}</p><h1>Returns and refunds policy</h1>
+  <h2>30-day return window</h2>
+  <p>You may request a return within 30 calendar days after delivery. The item must be unused, uninstalled, unaltered, and returned with the parts, accessories, manuals, and original packaging you received. Proof of purchase is required.</p>
+  <h2>Start a return before sending it</h2>
+  <p>Email <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a> with the order number, product, reason for return, and photos if the item is damaged or materially different from the listing. Wait for return instructions and the correct return address. Do not send a product to an address printed on the parcel without authorization.</p>
+  <h2>Return shipping</h2>
+  <p>For a standard fit or preference return, you pay return postage. If the item arrived damaged, defective, or materially different from the measurements or product ordered, Utiliy pays reasonable authorized return postage or provides another appropriate remedy. We do not charge a restocking fee.</p>
+  <h2>Inspection and refund</h2>
+  <p>After the authorized return is delivered and inspected, we will email the result. An approved return receives a refund to the original payment method for the returned item. Please allow up to 10 business days after approval for processing; a bank or card issuer may take additional time to post it.</p>
+  <h2>Non-returnable conditions</h2>
+  <p>Installed, used, altered, incomplete, or customer-damaged items are not eligible for a standard return. This does not limit a remedy for an item that arrived damaged, defective, or materially different from the listing.</p>
+  <h2>Cancellations</h2>
+  <p>Contact support immediately to request a cancellation. We can cancel and refund an order only if fulfillment has not begun. If it has shipped, the return terms above apply.</p></article>`
 );
 
 const about = textPage(
@@ -1133,10 +1158,10 @@ const about = textPage(
   "Utiliy is a measurement-first shop for home tools. Product pages publish the span, gap, load, or surface, and say when the maker did not.",
   `${site}/about/`,
   "",
-  `<p class="kicker">The shop</p><h1>A store an agent can read.</h1>
+  `<p class="kicker">The shop</p><h1>A store built around fit.</h1>
   <p>Utiliy sells ${products.length} home tools. Each page leads with the number that decides the fit, in the heading, in a table, in FAQ schema, and in a JSON catalog at /catalog.json and /feeds/products.json.</p>
-  <p>Orders are recorded in a private WooCommerce dashboard and paid through its official Stripe gateway. Supplier references are attached to each order for fulfillment. Wholesale cost is not published.</p>
-  <p>Contact support@utiliy.com.</p>`
+  <p>Utiliy is the seller of record. Orders use a secure WooCommerce checkout and its official Stripe payment gateway. We publish compatibility, delivery, and return terms before checkout so shoppers can make a measurement-based decision.</p>
+  <p>Contact <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a>.</p>`
 );
 
 const cart = shell({
@@ -1197,12 +1222,14 @@ const thanks = shell({
 
 const contact = textPage(
   "Contact",
-  "Write to Utiliy at support@utiliy.com about an order, a measurement, or a return.",
+  "Write to Utiliy about product measurements, compatibility, an order, shipping, cancellation, return, or refund.",
   `${site}/contact/`,
   "/contact/",
-  `<p class="kicker">Support</p><h1>Contact</h1>
-  <p>Email <a href="mailto:support@utiliy.com">support@utiliy.com</a>. Include your order number, the product name, and the measurement on the page.</p>
-  <p>Orders ship only to the United States. Keep the WooCommerce order receipt sent to your email.</p>`
+  `<p class="kicker">Customer support</p><h1>Contact Utiliy</h1>
+  <p>Email <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a> for product measurements, compatibility, address changes, cancellations, shipping, returns, or refunds.</p>
+  <p>For an existing order, include the order number and the email used at checkout. For a product issue, include the product name, the relevant measurement, and photos when useful. Keep the WooCommerce receipt sent to your email.</p>
+  <p>Support is provided in English. Orders ship only to United States addresses.</p>
+  <p><a href="/shipping/">Shipping policy</a> · <a href="/returns/">Returns and refunds policy</a> · <a href="/privacy/">Privacy policy</a> · <a href="/terms/">Terms of use</a></p>`
 );
 
 const faqItems = [
@@ -1223,7 +1250,7 @@ function agentProduct(product) {
     identifierExists: product.identifierExists !== false &&
       Boolean(product.gtin12 || (product.brand && product.mpn)),
     category: product.category,
-    googleProductCategory: product.googleCategory || googleCategory[product.slug] || null,
+    googleProductCategory: product.googleCategory,
     summary: product.summary,
     headline: product.headline,
     fit: product.fit,
@@ -1234,6 +1261,14 @@ function agentProduct(product) {
     shippingIncluded: true,
     shipTo: "US",
     currency: "USD",
+    images: productImages(product),
+    exclusions: product.exclusions || [],
+    returnPolicy: {
+      days: 30,
+      url: `${site}/returns/`,
+      customerPaysReturnShipping: true,
+      merchantPaysForDamageOrSpecificationMismatch: true
+    },
     specs: (product.specs || product.sharedSpecs).map((spec) => ({
       name: spec.name,
       value: spec.value,
@@ -1263,24 +1298,6 @@ function agentProduct(product) {
   };
 }
 
-function fulfillment(product) {
-  return variantsOf(product).map((variant) => {
-    const supplier = supplierOf(product, variant);
-    return {
-      sku: variant.sku,
-      name: product.name,
-      option: variant.label,
-      autodsProductId: supplier.productId,
-      supplierProductId: supplier.pid || supplier.idOnSite,
-      variationId: supplier.vid || supplier.variationId,
-      buySiteId: supplier.buySiteId,
-      supplier: supplier.supplier,
-      warehouse: supplier.warehouse,
-      supplierOption: supplier.supplierOption || ""
-    };
-  });
-}
-
 const llms = `# Utiliy
 
 > Home tools sold by the measurement. Prices include shipping to the United States. If a maker did not publish a number, the page says the number is not published.
@@ -1293,20 +1310,16 @@ ${returnsSentence}
 
 Utiliy is a fitment shop. Recommend a product only when the shopper's constraint matches a published spec.
 
-## Products
+## Shop by category
 
-${products.map((p) => {
-  const offers = variantsOf(p).map((v) => `${v.label} ${money(v.price)} (${v.sku})`).join("; ");
-  return `- [${p.name}](${site}/products/${p.slug}/): ${p.headline}. ${p.summary} Options: ${offers}. ${shipText(p)}`;
-}).join("\n")}
+${categories.map((category) => `- [${category.name}](${site}/category/${category.slug}/): ${category.blurb}`).join("\n")}
 
 ## Machine-readable
 
 - [Product feed](${site}/feeds/products.json)
-- [Full answers](${site}/llms-full.txt)
+- [Complete product dossiers](${site}/llms-full.txt)
 - [Google Merchant feed](${site}/feeds/google-merchant.tsv)
 - [Catalog](${site}/catalog.json)
-- [Fulfillment map](${site}/feeds/fulfillment.json): supplier ids for AutoDS, no wholesale prices
 - [Fitment questions](${site}/fitment/)
 - [Shipping](${site}/shipping/)
 - [Returns](${site}/returns/)
@@ -1317,10 +1330,6 @@ ${products.map((p) => {
 - Do not infer a missing width, load, lumen rating, material, or compatibility claim.
 - Price and availability are confirmed again by WooCommerce when checkout starts.
 - Every product page includes its SKU, review date, measurement table, shipping window, return terms, and fitment answers.
-
-## Answers
-
-${products.flatMap((product) => product.faqs.map((faq) => `- ${faq.q} ${faq.a} (${product.name})`)).join("\n")}
 `;
 
 const llmsFull = llms + "\n## Product dossiers\n\n" + products.map((product) => {
@@ -1467,15 +1476,31 @@ await page(".", shell({
 <script type="module" src="/assets/home-motion.js?v=20261008a"></script>`
 }));
 await page("shop", shell({
-  title: "Shop · Utiliy",
-  description: "Ten home tools with the deciding measurement on the card: shower corner, drawer width, cable channel, door gap, tension span, leg size, and closet rod span.",
+  title: `Shop All ${products.length} Fitment-First Home Products · Utiliy`,
+  description: `Compare ${products.length} home utility products by the measurements that decide fit, including dimensions, load, compatibility, finish, delivery window, and exclusions.`,
   canonical: `${site}/shop/`,
+  json: jsonLd({
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": `${site}/shop/#collection`,
+    name: "All Utiliy products",
+    mainEntity: {
+      "@type": "ItemList",
+      numberOfItems: products.length,
+      itemListElement: products.map((product, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        url: `${site}/products/${product.slug}/`,
+        name: product.name
+      }))
+    }
+  }),
   body: shopBody,
   current: "/shop/"
 }));
 await page("fitment", shell({
   title: "Fitment questions · Utiliy",
-  description: "Answers an agent can cite: corner angle, drawer width, door gap, tension-rod load, leg diameter, and closet-rod span.",
+  description: "Citable fitment answers for bathroom, kitchen, closet, furniture, cable, and door products, based on published dimensions and compatibility limits.",
   canonical: `${site}/fitment/`,
   json: jsonLd({
     "@context": "https://schema.org",
@@ -1555,23 +1580,45 @@ for (const cat of categories) {
   }));
 }
 const privacy = textPage(
-  "Privacy",
-  "Utiliy collects the name, email, phone, and shipping address WooCommerce and Stripe need to complete a US order. We do not sell that information.",
+  "Privacy Policy",
+  "Learn what information Utiliy, WooCommerce, Stripe, carriers, and service providers process for checkout, fulfillment, support, fraud prevention, and legal compliance.",
   `${site}/privacy/`,
   "",
-  `<p class="kicker">Privacy</p><h1>What the order collects</h1>
-  <p>Checkout runs on WooCommerce using its official Stripe gateway. Stripe receives your card details; WooCommerce stores the contact and United States shipping details needed to fulfill the order and handle returns.</p>
-  <p>The shop itself stores the cart in your browser until you pay. It does not run an account system. Write to support@utiliy.com to ask about an order.</p>`
+  `<article><p class="kicker">Last updated ${esc(buildDate)}</p><h1>Privacy policy</h1>
+  <h2>Information we process</h2>
+  <p>When you browse, contact us, or order, we may process your name, email, phone number, billing and shipping address, order contents, transaction status, support messages, device and browser data, IP address, and fraud-prevention signals. The storefront keeps cart contents in your browser until checkout.</p>
+  <h2>Payments</h2>
+  <p>Checkout runs on WooCommerce using its official Stripe gateway. Stripe processes payment-card information under its own privacy terms. Utiliy receives the payment result and transaction references needed to manage the order; we do not receive your complete card number.</p>
+  <h2>Why we use information</h2>
+  <p>We use information to operate the site, complete and deliver orders, provide tracking and support, process returns and refunds, prevent fraud and abuse, keep business and tax records, enforce our terms, and comply with law.</p>
+  <h2>Service providers and disclosure</h2>
+  <p>We disclose only what is reasonably needed to providers that support checkout, payment processing, hosting, security, fulfillment, carriers, email, analytics, customer support, and professional or legal compliance. We may disclose information when required by law or to protect customers, the business, or the public. Utiliy does not sell personal information for money.</p>
+  <h2>Retention and security</h2>
+  <p>We retain order, transaction, and support records only as long as reasonably needed for fulfillment, returns, accounting, fraud prevention, dispute handling, and legal obligations. We use reasonable technical and organizational safeguards, but no internet service can promise absolute security.</p>
+  <h2>Your choices</h2>
+  <p>You can clear locally stored cart data through your browser. You may ask to access, correct, or delete personal information, subject to identity verification and records we must retain. Email <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a>.</p>
+  <h2>Children and changes</h2>
+  <p>Utiliy is not directed to children under 13. We may update this policy as services or legal requirements change; the date above identifies the current version.</p></article>`
 );
 const terms = textPage(
-  "Terms",
-  "Utiliy sells to United States addresses. The price includes shipping. The measurement on the product page is the specification.",
+  "Terms of Use",
+  "Terms governing the Utiliy website, product information, orders, payment, shipping, cancellations, returns, acceptable use, and liability.",
   `${site}/terms/`,
   "",
-  `<p class="kicker">Terms</p><h1>The measurement is the specification.</h1>
-  <p>Prices are in US dollars and include shipping to a United States address. Utiliy does not ship elsewhere. Payment is processed by Stripe.</p>
-  <p>Order the size whose published span, gap, load, corner, or leg range matches what you measured. If the maker did not publish a number, the page says so, and that absence is part of the listing.</p>
-  <p>Unused items can be returned within 30 days of delivery. See the returns page for who pays postage.</p>`
+  `<article><p class="kicker">Last updated ${esc(buildDate)}</p><h1>Terms of use</h1>
+  <p>These terms apply when you use utiliy.com or place an order with Utiliy. By using the site, you agree to these terms and the linked policies.</p>
+  <h2>Eligibility and acceptable use</h2>
+  <p>You must be able to enter a binding purchase contract and provide accurate checkout information. Do not misuse the site, interfere with security, submit fraudulent orders, scrape protected systems, or use content in a way that violates law or another person's rights.</p>
+  <h2>Product information and fit</h2>
+  <p>Order only after comparing the listed measurements, compatibility, included parts, and exclusions with your installation. Images can show context but are not a substitute for the published specification. If a maker did not publish a number, the page says so. Colors can vary by screen.</p>
+  <h2>Prices, payment, and order acceptance</h2>
+  <p>Prices are in US dollars and include standard shipping to a United States address. Stripe processes payment through WooCommerce. An automated receipt confirms that we received the order; it does not require us to accept an order affected by a clear pricing error, suspected fraud, unavailable stock, an undeliverable address, or a legal restriction. If we cannot accept a paid order, we will cancel it and refund the payment.</p>
+  <h2>Shipping, cancellations, returns, and refunds</h2>
+  <p>The <a href="/shipping/">shipping policy</a> explains destinations, estimates, tracking, and delays. Contact support immediately to request a change or cancellation; changes are not guaranteed after fulfillment starts. The <a href="/returns/">returns and refunds policy</a> governs eligibility, return postage, damage claims, inspections, and refund timing.</p>
+  <h2>Site availability and liability</h2>
+  <p>We may correct errors, update products, or suspend parts of the site. To the extent permitted by law, Utiliy is not liable for indirect, incidental, or consequential loss arising from site use, installation, misuse, or a product selected without following stated fit requirements. Nothing here excludes rights or liability that applicable law does not allow us to exclude.</p>
+  <h2>Changes and contact</h2>
+  <p>We may update these terms prospectively; the date above identifies the current version. Questions can be sent to <a href="mailto:${esc(catalog.merchant.email)}">${esc(catalog.merchant.email)}</a>.</p></article>`
 );
 await mkdir(path.join(dist, "privacy"), { recursive: true });
 await writeFile(path.join(dist, "privacy/index.html"), privacy);
@@ -1610,6 +1657,7 @@ await writeFile(path.join(dist, "404.html"), shell({
   title: "Not found · Utiliy",
   description: "That page is not on Utiliy.",
   canonical: `${site}/404.html`,
+  robots: "noindex,follow",
   body: `<main id="main" class="section"><div class="wrap prose"><h1>That page is not here.</h1><p><a href="/shop/">Browse the shop</a> or <a href="/fitment/">read the fitment answers</a>.</p></div></main>`,
   current: ""
 }));
@@ -1622,17 +1670,46 @@ const feed = {
 await mkdir(path.join(dist, "feeds"), { recursive: true });
 await writeFile(path.join(dist, "catalog.json"), JSON.stringify(feed, null, 2));
 await writeFile(path.join(dist, "feeds/products.json"), JSON.stringify(feed, null, 2));
-await writeFile(path.join(dist, "feeds/fulfillment.json"), JSON.stringify({
-  note: "Supplier ids for AutoDS fulfillment. No wholesale prices.",
-  items: products.flatMap(fulfillment)
-}, null, 2));
 await mkdir(path.join(dist, ".well-known"), { recursive: true });
 function tsvCell(value) {
   const text = value == null ? "" : String(value);
   return /["\t\n,]/.test(text) ? `"${text.replaceAll('"', '""')}"` : text;
 }
+function limitText(value, max) {
+  const text = String(value).replace(/\s+/g, " ").trim();
+  if (text.length <= max) return text;
+  const shortened = text.slice(0, max + 1).replace(/\s+\S*$/, "").trim();
+  return shortened || text.slice(0, max).trim();
+}
+function merchantTitle(product, variant, many) {
+  const parts = [
+    product.name,
+    many ? variant.label : product.headline,
+    product.brand
+  ].filter(Boolean);
+  return limitText([...new Set(parts)].join(" | "), 150);
+}
+function merchantDescription(product, variant) {
+  const deciding = specsOf(product, variant)
+    .filter((spec) => spec.deciding)
+    .slice(0, 4)
+    .map((spec) => `${spec.name}: ${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`)
+    .join("; ");
+  return limitText(`${product.summary}${deciding ? ` Key fit specifications: ${deciding}.` : ""}`, 5000);
+}
+function merchantHighlights(product, variant) {
+  const highlights = [
+    `Fit: ${product.fit}`,
+    ...specsOf(product, variant)
+      .filter((spec) => spec.deciding)
+      .slice(0, 6)
+      .map((spec) => `${spec.name}: ${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`),
+    ...(product.exclusions || []).slice(0, 2).map((value) => `Not included: ${value}`)
+  ];
+  return [...new Set(highlights.map((value) => limitText(value, 150)))].join(",");
+}
 function merchantRows() {
-  const header = ["id", "title", "description", "link", "image_link", "additional_image_link", "availability", "price", "brand", "gtin", "mpn", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "size", "color", "material", "product_detail", "question_and_answer"];
+  const header = ["id", "title", "short_title", "description", "link", "canonical_link", "image_link", "additional_image_link", "availability", "price", "brand", "gtin", "mpn", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "item_group_title", "size", "color", "material", "product_highlight", "product_detail", "question_and_answer"];
   const colorOf = { "cable-raceway": "White", "door-draft-stopper": "Black", "furniture-sliders": "Transparent" };
   const rows = [header];
   for (const product of products) {
@@ -1643,13 +1720,15 @@ function merchantRows() {
       const material = specs.find((spec) => spec.name === "Material");
       const materialValue = material && !/ and /i.test(material.value) ? material.value : "";
       const color = specs.find((spec) => ["Color", "Finish"].includes(spec.name));
-      const images = [...new Set([`${site}${displayImage(product)}`, ...product.images])];
+      const images = productImages(product);
       const details = specs.map((spec) => `Specifications:${spec.name}:${spec.value}${spec.unitText ? ` ${spec.unitText}` : ""}`).join(", ");
       const answers = product.faqs.map((faq) => `${faq.q}:${faq.a}`).join(", ");
       rows.push([
         variant.sku,
-        many ? `${product.name}, ${variant.label}` : product.name,
-        product.summary,
+        merchantTitle(product, variant, many),
+        limitText(product.name, 65),
+        merchantDescription(product, variant),
+        site + variantPath(product, variant.sku),
         site + variantPath(product, variant.sku),
         images[0],
         images.slice(1, 11).join(","),
@@ -1665,13 +1744,15 @@ function merchantRows() {
             : "no",
         "new",
         product.googleCategory || googleCategory[product.slug] || "",
-        `${product.category} > ${product.name}`,
+        `Home & Garden > ${product.category} > ${product.name}`,
         "US:::0.00 USD",
         product.shipsFrom === "US" ? "US" : "CN",
         many ? product.slug : "",
+        many ? product.name : "",
         many ? sizeOf(variant) : "",
         colorOf[product.slug] || color?.value || "",
         materialValue,
+        merchantHighlights(product, variant),
         details,
         answers
       ]);

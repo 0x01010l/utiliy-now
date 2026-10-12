@@ -4,6 +4,9 @@
   "type": "module",
   "scripts": {
     "build": "node scripts/build.mjs",
+    "audit:build": "node scripts/audit-build.mjs",
+    "audit:live": "node scripts/audit-live.mjs",
+    "verify": "npm run check:margins && npm run build && npm run audit:build",
     "check:margins": "node scripts/check-margins.mjs",
     "research:cj": "node scripts/research-cj.mjs",
     "qualify:cj": "node scripts/qualify-cj.mjs",
