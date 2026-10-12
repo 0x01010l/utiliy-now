@@ -641,6 +641,10 @@ final class Utiliy_Commerce {
                 font-size:11px;
                 line-height:18px
             }
+            body.woocommerce-checkout .wc-block-checkout__sidebar .wc-block-components-order-summary-item__quantity,
+            body.woocommerce-checkout .wc-block-checkout__sidebar .wc-block-components-order-summary-item__quantity span{
+                color:#080808!important
+            }
             body.woocommerce-checkout .wp-block-woocommerce-checkout-order-summary-block>.wc-block-components-checkout-step__heading{margin:0 0 18px}
             body.woocommerce-checkout .wp-block-woocommerce-checkout-order-summary-block{padding:0!important;border:0!important}
             body.woocommerce-checkout .wp-block-woocommerce-checkout-order-summary-block .wc-block-components-title{
