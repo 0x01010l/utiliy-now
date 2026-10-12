@@ -69,6 +69,11 @@ Merchant Center's account-level checkout URL is
 `https://commerce.utiliy.com/checkout/?merchant_id={id}`. Google replaces
 `{id}` with the offer ID, which is the matching WooCommerce SKU.
 
+The commerce host is checkout infrastructure, not a second public storefront.
+Its home, shop, product, and category pages permanently redirect to their
+`utiliy.com` equivalents; checkout, account, API, and administration routes
+remain on `commerce.utiliy.com`.
+
 ## Fulfillment
 
 Paid orders include a **Utiliy manual fulfillment** panel in WooCommerce with

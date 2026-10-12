@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless WooCommerce cart handoff, catalog sync, fulfillment, and order status for utiliy.com.
- * Version: 1.5.0
+ * Version: 1.6.0
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -171,7 +171,7 @@ final class Utiliy_Commerce {
         $token = bin2hex(random_bytes(24));
         set_transient('utiliy_cart_' . $token, $cart, 15 * MINUTE_IN_SECONDS);
         return new WP_REST_Response([
-            'url' => add_query_arg('utiliy_cart_token', $token, home_url('/')),
+            'url' => add_query_arg('utiliy_cart_token', $token, wc_get_checkout_url()),
         ], 201);
     }
 
@@ -181,6 +181,7 @@ final class Utiliy_Commerce {
             return;
         }
         if (empty($_GET['utiliy_cart_token'])) {
+            self::redirect_public_storefront();
             return;
         }
         $token = sanitize_text_field(wp_unslash($_GET['utiliy_cart_token']));
@@ -242,6 +243,30 @@ final class Utiliy_Commerce {
         }
         WC()->cart->calculate_totals();
         wp_safe_redirect(wc_get_checkout_url());
+        exit;
+    }
+
+    private static function redirect_public_storefront(): void {
+        if (
+            (function_exists('is_checkout') && is_checkout()) ||
+            (function_exists('is_cart') && is_cart()) ||
+            (function_exists('is_account_page') && is_account_page())
+        ) {
+            return;
+        }
+
+        $path = (string) parse_url(wp_unslash($_SERVER['REQUEST_URI'] ?? '/'), PHP_URL_PATH);
+        if (preg_match('#^/product/([^/]+)/?$#', $path, $match)) {
+            $target = 'https://utiliy.com/products/' . rawurlencode($match[1]) . '/';
+        } elseif ($path === '/shop' || $path === '/shop/') {
+            $target = 'https://utiliy.com/shop/';
+        } elseif (preg_match('#^/product-category/([^/]+)/?$#', $path, $match)) {
+            $target = 'https://utiliy.com/category/' . rawurlencode($match[1]) . '/';
+        } else {
+            $target = 'https://utiliy.com/';
+        }
+
+        wp_redirect($target, 301, 'Utiliy');
         exit;
     }
 

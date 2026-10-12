@@ -61,6 +61,21 @@ const missingHtml = await missing.text();
 if (!/name="robots" content="noindex,follow"/.test(missingHtml)) throw new Error("Live 404 response is missing noindex,follow");
 if (/rel="canonical"|hreflang=/.test(missingHtml)) throw new Error("Live 404 response must not declare canonical or hreflang URLs");
 
+for (const [commercePath, expected] of [
+  ["/", `${site}/`],
+  ["/shop/", `${site}/shop/`],
+  ["/product/broan-qt20000-charcoal-filter/", `${site}/products/broan-qt20000-charcoal-filter/`]
+]) {
+  const response = await fetch(`https://commerce.utiliy.com${commercePath}`, {
+    cache: "no-store",
+    redirect: "manual",
+    headers: { "User-Agent": "Googlebot/2.1 (+http://www.google.com/bot.html)" }
+  });
+  if (response.status !== 301 || response.headers.get("location") !== expected) {
+    throw new Error(`${commercePath} did not redirect to the primary storefront`);
+  }
+}
+
 const checkoutOptions = await fetch("https://commerce.utiliy.com/wp-json/utiliy/v1/checkout-session", {
   method: "OPTIONS",
   headers: {
