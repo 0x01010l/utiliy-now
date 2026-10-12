@@ -1352,6 +1352,7 @@ ${categories.map((category) => `- [${category.name}](${site}/category/${category
 - [Complete product dossiers](${site}/llms-full.txt)
 - [Google Merchant feed](${site}/feeds/google-merchant.tsv)
 - [Catalog](${site}/catalog.json)
+- [XML sitemap](${site}/sitemap-store.xml)
 - [Checkout handoff OpenAPI](${site}/feeds/checkout-openapi.json)
 - [Fitment questions](${site}/fitment/)
 - [Shipping](${site}/shipping/)
