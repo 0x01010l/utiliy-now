@@ -58,11 +58,16 @@ PaymentIntents directly.
 - `GET /wp-json/utiliy/v1/catalog`
 - `POST /wp-json/utiliy/v1/checkout-session`
 - `GET /wp-json/utiliy/v1/orders/{id}?key={order_key}`
+- `GET /checkout/?merchant_id={sku}` for Google Merchant direct checkout
 
 The checkout-session endpoint resolves every SKU, price, current supplier
 review date, margin floor, and stock state in WooCommerce. It returns a
 single-use cart URL that transfers the customer into the standard WooCommerce
 checkout. Browser prices are never authoritative.
+
+Merchant Center's account-level checkout URL is
+`https://commerce.utiliy.com/checkout/?merchant_id={id}`. Google replaces
+`{id}` with the offer ID, which is the matching WooCommerce SKU.
 
 ## Fulfillment
 

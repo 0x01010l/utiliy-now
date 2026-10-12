@@ -73,4 +73,10 @@ if (!checkoutOptions.ok) throw new Error(`Checkout API preflight returned HTTP $
 if (checkoutOptions.headers.get("access-control-allow-origin") !== site) throw new Error("Checkout API does not allow the storefront origin");
 if (!checkoutOptions.headers.get("allow")?.includes("POST")) throw new Error("Checkout API does not advertise POST");
 
-console.log(`Live audit passed: ${targets.length} public URLs returned 200, canonicals matched, the 404 was correct, and checkout preflight passed.`);
+const merchantCheckout = await fetchWithRetry("https://commerce.utiliy.com/checkout/?merchant_id=UTY-BROAN-BPQTF");
+const merchantCheckoutHtml = await merchantCheckout.text();
+if (!merchantCheckoutHtml.includes("UTY-BROAN-BPQTF") || !merchantCheckoutHtml.includes("QT20000")) {
+  throw new Error("Merchant checkout template did not preload the requested product");
+}
+
+console.log(`Live audit passed: ${targets.length} public URLs returned 200, canonicals matched, the 404 was correct, and both checkout paths passed.`);
