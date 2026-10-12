@@ -100,7 +100,12 @@
         "costCheckedAt": "2026-10-10"
       },
       "googleCategory": "574",
-      "stockCheckedAt": "2026-10-10"
+      "stockCheckedAt": "2026-10-10",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "bamboo-drawer-organizer",
@@ -175,7 +180,12 @@
         "costCheckedAt": "2026-10-10"
       },
       "googleCategory": "8058",
-      "stockCheckedAt": "2026-10-10"
+      "stockCheckedAt": "2026-10-10",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "under-sink-organizer",
@@ -258,7 +268,12 @@
         "costCheckedAt": "2026-10-10"
       },
       "googleCategory": "2948",
-      "stockCheckedAt": "2026-10-10"
+      "stockCheckedAt": "2026-10-10",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "cable-raceway",
@@ -397,7 +412,12 @@
         "supplier": "Stone's Store",
         "warehouse": "CN"
       },
-      "googleCategory": "3328"
+      "googleCategory": "3328",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "door-draft-stopper",
@@ -518,7 +538,12 @@
         "supplier": "Hose Harmony Boutique Store",
         "warehouse": "CN"
       },
-      "googleCategory": "505295"
+      "googleCategory": "505295",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "tension-rod",
@@ -651,7 +676,12 @@
         "supplier": "CHUKE Store",
         "warehouse": "CN"
       },
-      "googleCategory": "6254"
+      "googleCategory": "6254",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "adjustable-bed-frame-casters",
@@ -770,7 +800,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "4437",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "kerf-door-seal-81-white",
@@ -866,7 +901,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "505295",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "extra-wide-door-sweep-36-white",
@@ -959,7 +999,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "505295",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "fixed-mount-wire-shelf-clips",
@@ -1052,7 +1097,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "heavy-duty-closet-pole-sockets",
@@ -1149,7 +1199,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "kv-rp-0495-bn-shelf-rod-bracket",
@@ -1284,7 +1339,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "korky-100bp-two-inch-toilet-flapper",
@@ -1384,7 +1444,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "1425",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "broan-qt20000-charcoal-filter",
@@ -1474,7 +1539,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "8087",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "five-pound-flour-keeper",
@@ -1577,7 +1647,12 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "2626",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "furniture-sliders",
@@ -1708,7 +1783,12 @@
         "supplier": "HomeWhimsy Store",
         "warehouse": "CN"
       },
-      "googleCategory": "7214"
+      "googleCategory": "7214",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "furniture-anchors",
@@ -1793,7 +1873,12 @@
       },
       "googleCategory": "4491",
       "stockCheckedAt": "2026-10-07",
-      "available": true
+      "available": true,
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "closet-rod",
@@ -1964,7 +2049,12 @@
         "supplier": "Kawaii Homedecor Store",
         "warehouse": "CN"
       },
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "closet-motion-light",
@@ -2081,7 +2171,12 @@
       },
       "googleCategory": "594",
       "stockCheckedAt": "2026-10-07",
-      "available": true
+      "available": true,
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
+      }
     },
     {
       "slug": "american-standard-022650-slip-on-tub-spout",
@@ -2202,7 +2297,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "2463",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "kohler-pennington-k2196-single-hole-white",
@@ -2344,7 +2445,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "2886",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "kohler-1188998-canister-flush-valve",
@@ -2454,7 +2561,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "2691",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "revent-rvs50-roomside-bath-fan",
@@ -2603,7 +2716,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "4485",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "fluidmaster-6100-two-inch-tank-gasket",
@@ -2715,7 +2834,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "2691",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "active-displayport-to-hdmi-4k60-adapter",
@@ -2939,7 +3064,13 @@
           "stockCheckedAt": "2026-10-09"
         }
       ],
-      "googleCategory": "1867"
+      "googleCategory": "1867",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "hdmi-to-displayport-4k30-adapter",
@@ -3066,7 +3197,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "1867",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "dvi-d-to-displayport-adapter",
@@ -3183,7 +3320,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "1867",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "usb-b-panel-mount-extension",
@@ -3316,7 +3459,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "259",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "displayport-to-mini-displayport-adapter",
@@ -3459,7 +3608,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "1867",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "closetmaid-shelftrack-shelf-brackets",
@@ -3654,7 +3809,13 @@
           "stockCheckedAt": "2026-10-09"
         }
       ],
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "closetmaid-2817-shoe-shelf-brackets",
@@ -3775,7 +3936,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "closetmaid-shelftrack-vertical-standards",
@@ -3970,7 +4137,13 @@
           "stockCheckedAt": "2026-10-09"
         }
       ],
-      "googleCategory": "5558"
+      "googleCategory": "5558",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "kv-cd-0017-brz-pole-end-caps",
@@ -4094,7 +4267,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "kv-closet-culture-basket-surround",
@@ -4220,7 +4399,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "closetmaid-5629-superslide-supports",
@@ -4363,7 +4548,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "5558",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "standard-duty-storm-door-closer-black",
@@ -4471,7 +4662,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "6446",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "one-inch-rubber-threshold-ramp",
@@ -4584,7 +4781,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "115",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "four-foot-bypass-door-hardware",
@@ -4691,7 +4894,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "6343",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "pocket-door-track-24-to-30-inch",
@@ -4798,7 +5007,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "6343",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "screen-spline-0125-inch-100-foot",
@@ -4903,7 +5118,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "6343",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "eight-foot-j-hanger-barn-door-kit",
@@ -5014,7 +5235,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "6343",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "vevor-gd60fd-leveling-casters",
@@ -5151,7 +5378,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "499981",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "vevor-cc-pbjl-4-plate-casters",
@@ -5289,7 +5522,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "499981",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "yormtoir-low-profile-repair-casters",
@@ -5430,7 +5669,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "499981",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "souldershop-three-inch-recliner-springs",
@@ -5551,7 +5796,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "499933",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "keileoho-150n-lift-top-hinges",
@@ -5688,7 +5939,13 @@
         "costCheckedAt": "2026-10-09"
       },
       "googleCategory": "1771",
-      "stockCheckedAt": "2026-10-09"
+      "stockCheckedAt": "2026-10-09",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "insinkerator-standard-sink-flange",
@@ -5909,7 +6166,13 @@
         "supplier": "homedepot",
         "warehouse": "US"
       },
-      "googleCategory": "6747"
+      "googleCategory": "6747",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "insinkerator-qcb-am-evolution-baffle",
@@ -6007,7 +6270,13 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "6747"
+      "googleCategory": "6747",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "moen-150259-pulldown-hose-kit",
@@ -6107,7 +6376,13 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "1489"
+      "googleCategory": "1489",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "lg-aap73631702-refrigerator-door-bin",
@@ -6207,7 +6482,13 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "3848"
+      "googleCategory": "3848",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "kohler-k-9110-bn-dishwasher-air-gap",
@@ -6323,7 +6604,13 @@
         "shippingCost": 0,
         "costCheckedAt": "2026-10-09"
       },
-      "googleCategory": "3443"
+      "googleCategory": "3443",
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": false,
+        "googleMerchantReason": "Published for GEO and agentic discovery; not qualified for Google Merchant Center."
+      }
     },
     {
       "slug": "six-inch-square-shower-drain-brushed-gold",
@@ -6412,6 +6699,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "USPS US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2026197492783935490.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -6500,6 +6792,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096919438280646657.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -6588,6 +6885,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096656866668740609.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -6685,6 +6987,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #40",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001510513150238722.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -6782,6 +7089,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #40",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001503580815028226.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -6879,6 +7191,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001504264391147521.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -6976,6 +7293,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001529158386499586.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7080,6 +7402,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001511915334320129.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7179,6 +7506,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001238260309225473.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7278,6 +7610,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001459635007451138.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7377,6 +7714,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001458782810906625.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7469,6 +7811,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #4",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036732119382790145.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7561,6 +7908,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036732566862282753.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7653,6 +8005,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #4",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036732318920196097.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7750,6 +8107,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001484306274820098.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7847,6 +8209,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2037415698722250753.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -7948,6 +8315,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036718698343993345.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8044,6 +8416,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2097087821064200193.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8140,6 +8517,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "USPS US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2100414232151314434.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8229,6 +8611,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2039908112102715393.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8314,6 +8701,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #41",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2084189745017630721.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8401,6 +8793,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2097185270424428545.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8492,6 +8889,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2097219265689661442.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8579,6 +8981,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2000876710484619266.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8672,6 +9079,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #4",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036718611922141185.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8766,6 +9178,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001530539563524098.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8860,6 +9277,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #40",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001530716296769538.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -8955,6 +9377,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001233499128262657.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9046,6 +9473,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2035993453821681665.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9138,6 +9570,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2035993643333058561.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9230,6 +9667,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036716929368702977.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9331,6 +9773,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "USPS US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2100051083371859969.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9431,6 +9878,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #40",
         "sourceUrl": "https://cjdropshipping.com/product/-p-1992988657429430273.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9528,6 +9980,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-1992883266438078465.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9625,6 +10082,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-1992997318984245250.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9722,6 +10184,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001209238175019009.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9807,6 +10274,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096643982094008321.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9892,6 +10364,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096573721772589057.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -9980,6 +10457,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001914060255719425.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10068,6 +10550,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #4",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036730597697687554.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10159,6 +10646,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096573170645237761.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10250,6 +10742,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096571530257137665.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10341,6 +10838,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096587500199641089.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10433,6 +10935,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #98",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2035225224618426370.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10525,6 +11032,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096918699256864769.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10617,6 +11129,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096650911520423937.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10709,6 +11226,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096650878205067266.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -10801,6 +11323,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #9",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2096649998323974145.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     }
   ]

@@ -906,6 +906,7 @@ ${related ? `<section class="section pdp-tail" id="also"><div class="wrap"><div 
 }
 
 const products = catalog.products;
+const merchantProducts = products.filter((product) => product.channels?.googleMerchant !== false);
 
 function roomIcon(slug) {
   const icons = {
@@ -1262,6 +1263,7 @@ function agentProduct(product) {
   return {
     url: `${site}/products/${product.slug}/`,
     name: product.name,
+    channels: product.channels || { website: true, aiDiscovery: true, googleMerchant: true },
     brand: product.brand || null,
     gtin12: product.gtin12 || null,
     mpn: product.mpn || null,
@@ -1350,7 +1352,7 @@ ${categories.map((category) => `- [${category.name}](${site}/category/${category
 
 - [Product feed](${site}/feeds/products.json)
 - [Complete product dossiers](${site}/llms-full.txt)
-- [Google Merchant feed](${site}/feeds/google-merchant.tsv)
+- [Google Merchant feed](${site}/feeds/google-merchant.tsv): only products explicitly qualified for Google Merchant Center
 - [Catalog](${site}/catalog.json)
 - [XML sitemap](${site}/map.xml)
 - [Checkout handoff OpenAPI](${site}/feeds/checkout-openapi.json)
@@ -1756,7 +1758,7 @@ function merchantRows() {
   const header = ["id", "title", "short_title", "description", "link", "canonical_link", "image_link", "additional_image_link", "availability", "price", "brand", "gtin", "mpn", "identifier_exists", "condition", "google_product_category", "product_type", "shipping", "ships_from_country", "item_group_id", "item_group_title", "size", "color", "material", "product_highlight", "product_detail", "question_and_answer"];
   const colorOf = { "cable-raceway": "White", "door-draft-stopper": "Black", "furniture-sliders": "Transparent" };
   const rows = [header];
-  for (const product of products) {
+  for (const product of merchantProducts) {
     const variants = variantsOf(product);
     const many = variants.length > 1;
     for (const variant of variants) {
@@ -1894,4 +1896,4 @@ await writeFile(path.join(dist, ".well-known/agent-commerce.json"), JSON.stringi
   policies: { shipping: `${site}/shipping/`, returns: `${site}/returns/` }
 }, null, 2));
 
-console.log(`Built ${products.length} products to ${dist}`);
+console.log(`Built ${products.length} products and ${merchantProducts.length} Merchant-eligible products to ${dist}`);

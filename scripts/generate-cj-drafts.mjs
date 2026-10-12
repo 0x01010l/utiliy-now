@@ -323,6 +323,11 @@ function productRecord(product) {
     name,
     brand: "Utiliy",
     identifierExists: false,
+    channels: {
+      website: true,
+      aiDiscovery: true,
+      googleMerchant: true,
+    },
     category: product.category,
     googleCategory: googleCategoryFor(product),
     price: product.price,

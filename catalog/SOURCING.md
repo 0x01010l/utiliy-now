@@ -26,6 +26,14 @@ GTIN is optional. A product can qualify without a GTIN when its GEO and agentic-
 
 ## Publication
 
+Publication channels are explicit per product:
+
+- `website` controls the storefront.
+- `aiDiscovery` controls GEO, LLM, and agentic catalog discovery.
+- `googleMerchant` controls inclusion in the Google Merchant TSV feed.
+
+GEO/agentic-only products must set `googleMerchant: false`. They remain available on the storefront and in AI discovery records but must not appear in the Merchant Center data source.
+
 Every published product must include:
 
 - the deciding fit facts and explicit non-fit cases;

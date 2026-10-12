@@ -97,6 +97,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001238260309225473.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -196,6 +201,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001459635007451138.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -295,6 +305,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001458782810906625.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -387,6 +402,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #4",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036732119382790145.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -479,6 +499,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036732566862282753.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -571,6 +596,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #4",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2036732318920196097.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -668,6 +698,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #39",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2001484306274820098.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     },
     {
@@ -765,6 +800,11 @@
         "costCheckedAt": "2026-10-11",
         "selectedLogistics": "Fedex US to US #7",
         "sourceUrl": "https://cjdropshipping.com/product/-p-2037415698722250753.html"
+      },
+      "channels": {
+        "website": true,
+        "aiDiscovery": true,
+        "googleMerchant": true
       }
     }
   ],

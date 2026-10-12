@@ -184,8 +184,15 @@ for (const [index, row] of records.entries()) {
 }
 
 const feed = JSON.parse(await readFile(path.join(dist, "feeds/products.json"), "utf8"));
-const offerCount = feed.products.reduce((total, product) => total + product.offers.length, 0);
+const merchantEligibleProducts = feed.products.filter((product) => product.channels?.googleMerchant !== false);
+const merchantExcludedProducts = feed.products.filter((product) => product.channels?.googleMerchant === false);
+const offerCount = merchantEligibleProducts.reduce((total, product) => total + product.offers.length, 0);
 if (offerCount !== records.length) fail(`JSON feed has ${offerCount} offers but Merchant feed has ${records.length}`);
+for (const product of merchantExcludedProducts) {
+  for (const offer of product.offers) {
+    if (ids.has(offer.sku)) fail(`${offer.sku} is GEO/agentic-only but leaked into the Merchant feed`);
+  }
+}
 if (allFiles.some((file) => file.endsWith("/feeds/fulfillment.json"))) fail("Public supplier fulfillment map must not be generated");
 const checkoutOpenApi = JSON.parse(await readFile(path.join(dist, "feeds/checkout-openapi.json"), "utf8"));
 if (!checkoutOpenApi.paths?.["/wp-json/utiliy/v1/checkout-session"]?.post) fail("Checkout OpenAPI contract is missing its POST operation");
