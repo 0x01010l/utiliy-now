@@ -1352,7 +1352,7 @@ ${categories.map((category) => `- [${category.name}](${site}/category/${category
 - [Complete product dossiers](${site}/llms-full.txt)
 - [Google Merchant feed](${site}/feeds/google-merchant.tsv)
 - [Catalog](${site}/catalog.json)
-- [XML sitemap](${site}/sitemap-store.xml)
+- [XML sitemap](${site}/map.xml)
 - [Checkout handoff OpenAPI](${site}/feeds/checkout-openapi.json)
 - [Fitment questions](${site}/fitment/)
 - [Shipping](${site}/shipping/)
@@ -1427,7 +1427,7 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: ${site}/sitemap-store.xml
+Sitemap: ${site}/map.xml
 `;
 
 const staticPaths = ["/", "/shop/", "/fitment/", "/faq/", "/contact/", "/shipping/", "/returns/", "/privacy/", "/terms/", "/about/"];
@@ -1462,15 +1462,10 @@ function xml(value) {
   return String(value).replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;");
 }
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${urlRecords.map((record) => `  <url>
     <loc>${xml(site + record.path)}</loc>
-    <lastmod>${record.lastmod}</lastmod>${record.image ? `
-    <image:image>
-      <image:loc>${xml(record.image.loc)}</image:loc>
-      <image:title>${xml(record.image.title)}</image:title>${record.image.caption ? `
-      <image:caption>${xml(record.image.caption)}</image:caption>` : ""}
-    </image:image>` : ""}
+    <lastmod>${record.lastmod}</lastmod>
   </url>`).join("\n")}
 </urlset>
 `;
@@ -1687,7 +1682,7 @@ await cp(path.join(root, "assets/product-images"), path.join(dist, "assets/produ
 await writeFile(path.join(dist, "CNAME"), "utiliy.com\n");
 await writeFile(path.join(dist, `${indexNowConfig.key}.txt`), `${indexNowConfig.key}\n`);
 await writeFile(path.join(dist, "robots.txt"), robots);
-await writeFile(path.join(dist, "sitemap-store.xml"), sitemap);
+await writeFile(path.join(dist, "map.xml"), sitemap);
 await writeFile(path.join(dist, "llms.txt"), llms);
 await writeFile(path.join(dist, "llms-full.txt"), llmsFull);
 await writeFile(path.join(dist, "404.html"), shell({

@@ -17,7 +17,7 @@ async function fetchPublished(path, expected) {
 }
 
 await fetchPublished(`/${key}.txt`, key);
-const sitemap = await fetchPublished("/sitemap-store.xml");
+const sitemap = await fetchPublished("/map.xml");
 const urlList = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
   .map((match) => match[1].replaceAll("&amp;", "&"))
   .filter((url) => url.startsWith(`${site}/`));

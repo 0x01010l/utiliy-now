@@ -80,7 +80,7 @@ function splitEscaped(value, delimiter) {
 const requiredRoutes = [
   "/", "/shop/", "/about/", "/contact/", "/faq/", "/fitment/",
   "/shipping/", "/returns/", "/privacy/", "/terms/", "/robots.txt",
-  "/sitemap-store.xml", "/feeds/products.json", "/feeds/google-merchant.tsv",
+  "/map.xml", "/feeds/products.json", "/feeds/google-merchant.tsv",
   "/feeds/checkout-openapi.json",
   "/.well-known/agent-commerce.json", "/llms.txt", "/llms-full.txt"
 ];
@@ -126,7 +126,11 @@ for (const file of htmlFiles) {
   }
 }
 
-const sitemap = await readFile(path.join(dist, "sitemap-store.xml"), "utf8");
+const sitemap = await readFile(path.join(dist, "map.xml"), "utf8");
+if (!sitemap.startsWith('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')) {
+  fail("Sitemap must use the minimal standard urlset format");
+}
+if (sitemap.includes("<image:")) fail("Primary sitemap must not contain optional image extensions");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1].replaceAll("&amp;", "&"));
 const sitemapSet = new Set(sitemapUrls);
 if (sitemapSet.size !== sitemapUrls.length) fail("Sitemap contains duplicate URLs");
