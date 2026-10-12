@@ -17,7 +17,7 @@ async function fetchWithRetry(url, options = {}) {
   throw new Error(`${url} returned HTTP ${lastStatus || "network error"}`);
 }
 
-const sitemapResponse = await fetchWithRetry(`${site}/sitemap.xml?audit=${Date.now()}`);
+const sitemapResponse = await fetchWithRetry(`${site}/sitemap-store.xml?audit=${Date.now()}`);
 const sitemap = await sitemapResponse.text();
 const urls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
   .map((match) => match[1].replaceAll("&amp;", "&"))

@@ -80,7 +80,7 @@ function splitEscaped(value, delimiter) {
 const requiredRoutes = [
   "/", "/shop/", "/about/", "/contact/", "/faq/", "/fitment/",
   "/shipping/", "/returns/", "/privacy/", "/terms/", "/robots.txt",
-  "/sitemap.xml", "/feeds/products.json", "/feeds/google-merchant.tsv",
+  "/sitemap-store.xml", "/feeds/products.json", "/feeds/google-merchant.tsv",
   "/feeds/checkout-openapi.json",
   "/.well-known/agent-commerce.json", "/llms.txt", "/llms-full.txt"
 ];
@@ -126,7 +126,7 @@ for (const file of htmlFiles) {
   }
 }
 
-const sitemap = await readFile(path.join(dist, "sitemap.xml"), "utf8");
+const sitemap = await readFile(path.join(dist, "sitemap-store.xml"), "utf8");
 const sitemapUrls = [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1].replaceAll("&amp;", "&"));
 const sitemapSet = new Set(sitemapUrls);
 if (sitemapSet.size !== sitemapUrls.length) fail("Sitemap contains duplicate URLs");

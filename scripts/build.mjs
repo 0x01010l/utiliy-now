@@ -1426,7 +1426,7 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-Sitemap: ${site}/sitemap.xml
+Sitemap: ${site}/sitemap-store.xml
 `;
 
 const staticPaths = ["/", "/shop/", "/fitment/", "/faq/", "/contact/", "/shipping/", "/returns/", "/privacy/", "/terms/", "/about/"];
@@ -1686,7 +1686,7 @@ await cp(path.join(root, "assets/product-images"), path.join(dist, "assets/produ
 await writeFile(path.join(dist, "CNAME"), "utiliy.com\n");
 await writeFile(path.join(dist, `${indexNowConfig.key}.txt`), `${indexNowConfig.key}\n`);
 await writeFile(path.join(dist, "robots.txt"), robots);
-await writeFile(path.join(dist, "sitemap.xml"), sitemap);
+await writeFile(path.join(dist, "sitemap-store.xml"), sitemap);
 await writeFile(path.join(dist, "llms.txt"), llms);
 await writeFile(path.join(dist, "llms-full.txt"), llmsFull);
 await writeFile(path.join(dist, "404.html"), shell({
