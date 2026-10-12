@@ -73,9 +73,9 @@ if (!checkoutOptions.ok) throw new Error(`Checkout API preflight returned HTTP $
 if (checkoutOptions.headers.get("access-control-allow-origin") !== site) throw new Error("Checkout API does not allow the storefront origin");
 if (!checkoutOptions.headers.get("allow")?.includes("POST")) throw new Error("Checkout API does not advertise POST");
 
-const merchantCheckout = await fetchWithRetry("https://commerce.utiliy.com/checkout/?merchant_id=UTY-BROAN-BPQTF");
+const merchantCheckout = await fetchWithRetry("https://commerce.utiliy.com/checkout/?merchant_id=UTY-CJ-KIT-5067266");
 const merchantCheckoutHtml = await merchantCheckout.text();
-if (!merchantCheckoutHtml.includes("UTY-BROAN-BPQTF") || !merchantCheckoutHtml.includes("QT20000")) {
+if (!merchantCheckoutHtml.includes("UTY-CJ-KIT-5067266") || !merchantCheckoutHtml.includes("Dual%20Joint%20Pot%20Filler%20Faucet")) {
   throw new Error("Merchant checkout template did not preload the requested product");
 }
 
