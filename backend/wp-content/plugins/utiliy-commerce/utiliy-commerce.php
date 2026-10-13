@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Utiliy Commerce
  * Description: Headless WooCommerce cart handoff, catalog sync, fulfillment, and order status for utiliy.com.
- * Version: 1.6.1
+ * Version: 1.6.2
  * Requires PHP: 8.1
  * Requires Plugins: woocommerce
  */
@@ -181,6 +181,17 @@ final class Utiliy_Commerce {
             return;
         }
         if (empty($_GET['utiliy_cart_token'])) {
+            if (
+                function_exists('is_checkout') &&
+                is_checkout() &&
+                !is_wc_endpoint_url('order-pay') &&
+                !is_wc_endpoint_url('order-received') &&
+                WC()->cart &&
+                WC()->cart->is_empty()
+            ) {
+                wp_redirect('https://utiliy.com/shop/', 302, 'Utiliy');
+                exit;
+            }
             self::redirect_public_storefront();
             return;
         }
